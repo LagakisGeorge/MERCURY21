@@ -1006,19 +1006,19 @@ Private Sub akyrotiko_Click()
      F_PAROCHOS = Val(FINDPARAMETROI(1, "PAR7MYDATA", "f_parochos", "0", "0=MyData 1=пАЯОВОР"))
 
        If F_PAROCHOS = 1 Then
-             PAR1.TDBGrid1.Col = 1
+             PAR1.tdbgrid1.Col = 1
            ' c = Replace(PAR1.TDBGrid1.Text, ",", ".")
 
-            Dim mpar As String: mpar = Left(PAR1.TDBGrid1.Text, 1) 'TDBGrid1.CurrentRow.cells(1).Value.toString.Substring(0, 1)
+            Dim mpar As String: mpar = Left(PAR1.tdbgrid1.Text, 1) 'TDBGrid1.CurrentRow.cells(1).Value.toString.Substring(0, 1)
             
-            PAR1.TDBGrid1.Col = 8
-            Dim mmark As String: mmark = PAR1.TDBGrid1.Text
+            PAR1.tdbgrid1.Col = 8
+            Dim mmark As String: mmark = PAR1.tdbgrid1.Text
           
             Dim MYEID As String: MYEID = GGET_CVALUE("SELECT MYEID FROM PARASTAT  WHERE EIDOS='" + mpar + "'")
             If MYEID = "9.3" Then
-                PAR1.TDBGrid1.Col = 7
+                PAR1.tdbgrid1.Col = 7
                 Dim mmID_NUM As String
-                 mmID_NUM = PAR1.TDBGrid1.Text
+                 mmID_NUM = PAR1.tdbgrid1.Text
                   Par7MyData.Visible = False
                   Par7MyData.Caption = "" ' иса иса ма амоицеи то FORM_LOAD циа ма дIабасеи P_USER
                 Par7MyData.CancelDelivery mmID_NUM, mmark
@@ -1051,8 +1051,8 @@ Private Sub akyrotiko_Click()
 m_akyr_neo = Val(FINDPARAMETROI(1, "PAR1", "f_akyr_neo", "0", "ц.49.мео айуяытийо амтихето выяис диацяажг=1 ови=0"))
 
 Dim mID_NUM As String
- PAR1.TDBGrid1.Col = 7
-    mID_NUM = PAR1.TDBGrid1.Text
+ PAR1.tdbgrid1.Col = 7
+    mID_NUM = PAR1.tdbgrid1.Text
     
     Dim MAKY As Integer
     MAKY = PAR1.GET_NVALUE("SELECT AKYROMENO FROM TIM WHERE ID_NUM=" + mID_NUM)
@@ -1097,8 +1097,8 @@ Dim mID_NUM As String
     
 
  Dim c As String
-  PAR1.TDBGrid1.Col = 1
-    c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+  PAR1.tdbgrid1.Col = 1
+    c = Replace(PAR1.tdbgrid1.Text, ",", ".")
 
 
 
@@ -1107,8 +1107,8 @@ Dim mID_NUM As String
 
 
 Dim cHME As String
- PAR1.TDBGrid1.Col = 0
-    cHME = Replace(PAR1.TDBGrid1.Text, ",", ".")
+ PAR1.tdbgrid1.Col = 0
+    cHME = Replace(PAR1.tdbgrid1.Text, ",", ".")
 'den katalabainei oti einai benzinadiko
 
 If f_is_benzinadiko = 1 Then
@@ -1146,8 +1146,8 @@ PAR1.PAR_GIA_AKYROSH.Caption = mID(c, 2, 7)
   '  C = Replace(PAR1.TDBGrid1.Text, ",", ".")
          
          Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
        
         
   Dim ISOK As Integer
@@ -1489,13 +1489,13 @@ Private Sub diortosis_Click()
 
     Dim c As String
          
-    PAR1.TDBGrid1.Col = 1
-    c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+    PAR1.tdbgrid1.Col = 1
+    c = Replace(PAR1.tdbgrid1.Text, ",", ".")
     
     Dim mmark As String
     
-    PAR1.TDBGrid1.Col = 8
-    mmark = Replace(PAR1.TDBGrid1.Text, ",", ".")
+    PAR1.tdbgrid1.Col = 8
+    mmark = Replace(PAR1.tdbgrid1.Text, ",", ".")
     
     If Len(Trim(mmark)) > 2 Then
       If Left$(mmark, 2) = "ER" Then
@@ -1509,8 +1509,8 @@ Private Sub diortosis_Click()
     
          
          Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
        
         
          
@@ -3394,15 +3394,15 @@ Dim CC As Integer
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         m = Val(FINDPARAMETROI(9, "PAR1", "METASX_DA", "3", "а/а д.а. СТА ПАЯАСТАТИЙэ да(летасв.се да)0-99"))
 100     PAR1.metasx.Value = vbChecked
         
         
          Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-         m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+         m_ID = Val(PAR1.tdbgrid1.Text)
          PAR1.METASX_SE_TIM m, c, m_ID, False, CC
          
 
@@ -3430,8 +3430,8 @@ CC = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO METAсв.(LIAN)
 
         Dim c As String
          
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         'PAR1.Text5.Text = "*" + C
         
         m = Val(FINDPARAMETROI(9, "PAR1", "METASX_LIAN", "3", "а/а дк.да СТА ПАЯАСТАТИЙэ (лЕТАСВ.СЕ кИАМИЙч)0-99"))
@@ -3439,8 +3439,8 @@ CC = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO METAсв.(LIAN)
 
 
          Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
         PAR1.METASX_SE_TIM m, c, m_ID, False, CC
         
 
@@ -3469,8 +3469,8 @@ Private Sub metasx_par_Click()
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         
         PAR1.metasx.Value = vbChecked
         PAR1.METASX_SE_TIM 99, c, 0, False, 0
@@ -3532,16 +3532,16 @@ Dim CC As Integer
 
         Dim c As String
          
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         'PAR1.Text5.Text = "*" + C
         
         m = Val(FINDPARAMETROI(1, "PAR1", "METASX_TIM", "3", "паяастатийO дк.да(летасв.се киамийг)0-99"))
 100     PAR1.metasx.Value = vbChecked
 
          Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
 '        PAR1.METASX_SE_TIM m, C, m_ID
         PAR1.METASX_SE_TIM m, c, m_ID, False, CC
         
@@ -4533,7 +4533,7 @@ Private Sub picMenu_Resize()
 End Sub
 
 Private Sub test_Click()
-    frmdummy.SHOW
+   ' frmdummy.SHOW
 
 End Sub
 
