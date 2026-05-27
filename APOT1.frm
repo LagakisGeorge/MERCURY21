@@ -1,19 +1,19 @@
 VERSION 5.00
 Object = "{CCA214C0-DFEB-4C91-9F0D-2665F77F6E23}#1.2#0"; "IDAutomationLinear.dll"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Begin VB.Form APOT1 
    BackColor       =   &H00FF0000&
    Caption         =   "Form2"
-   ClientHeight    =   10605
-   ClientLeft      =   -315
-   ClientTop       =   135
+   ClientHeight    =   10608
+   ClientLeft      =   -312
+   ClientTop       =   132
    ClientWidth     =   15120
    LinkTopic       =   "Form2"
-   ScaleHeight     =   10605
+   ScaleHeight     =   10608
    ScaleWidth      =   15120
    StartUpPosition =   2  'CenterScreen
    Begin VB.ListBox List1 
-      Height          =   1230
+      Height          =   1200
       Left            =   7080
       TabIndex        =   53
       Top             =   120
@@ -76,7 +76,7 @@ Begin VB.Form APOT1
       AutoRedraw      =   -1  'True
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
-      Height          =   240
+      Height          =   192
       Left            =   5985
       Picture         =   "APOT1.frx":0000
       ScaleHeight     =   16
@@ -85,13 +85,13 @@ Begin VB.Form APOT1
       TabIndex        =   44
       Top             =   7845
       Visible         =   0   'False
-      Width           =   1200
+      Width           =   960
    End
    Begin VB.PictureBox Skin1 
       AutoRedraw      =   -1  'True
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
-      Height          =   300
+      Height          =   240
       Left            =   5985
       Picture         =   "APOT1.frx":0F42
       ScaleHeight     =   20
@@ -100,13 +100,13 @@ Begin VB.Form APOT1
       TabIndex        =   43
       Top             =   8145
       Visible         =   0   'False
-      Width           =   2250
+      Width           =   1800
    End
    Begin VB.PictureBox MyButtonDefSkin 
       AutoRedraw      =   -1  'True
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
-      Height          =   315
+      Height          =   252
       Left            =   7950
       Picture         =   "APOT1.frx":149F
       ScaleHeight     =   21
@@ -115,7 +115,7 @@ Begin VB.Form APOT1
       TabIndex        =   42
       Top             =   6870
       Visible         =   0   'False
-      Width           =   2250
+      Width           =   1800
    End
    Begin VB.CommandButton Command3 
       Caption         =   "Εκτύπωση ετικετας"
@@ -202,8 +202,8 @@ Begin VB.Form APOT1
       Top             =   7800
       Visible         =   0   'False
       Width           =   1335
-      _ExtentX        =   2355
-      _ExtentY        =   582
+      _ExtentX        =   2350
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -234,7 +234,7 @@ Begin VB.Form APOT1
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -377,8 +377,8 @@ Begin VB.Form APOT1
       Top             =   7320
       Visible         =   0   'False
       Width           =   2070
-      _ExtentX        =   3651
-      _ExtentY        =   582
+      _ExtentX        =   3641
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -409,7 +409,7 @@ Begin VB.Form APOT1
       Caption         =   "BARCODES"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -446,7 +446,7 @@ Begin VB.Form APOT1
       Caption         =   "Κατηγορία"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -474,7 +474,7 @@ Begin VB.Form APOT1
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.25
+         Size            =   8.4
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -486,7 +486,7 @@ Begin VB.Form APOT1
       DataToEncode    =   "123456789012"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0,03
+      NarrowBarWidth  =   0.03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -496,8 +496,8 @@ Begin VB.Form APOT1
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0,2
-      TopMarginCM     =   0,2
+      LeftMarginCM    =   0.2
+      TopMarginCM     =   0.2
       SupplementToEncode=   ""
    End
    Begin VB.Label FLAG 
@@ -555,7 +555,7 @@ Begin VB.Form APOT1
       Caption         =   "Υποοικογένεια"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -663,7 +663,7 @@ Begin VB.Form APOT1
       Caption         =   "Οικογένεια"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -694,7 +694,7 @@ Begin VB.Form APOT1
       Caption         =   "Μονάδα μέτρησης"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -794,7 +794,7 @@ Function get_next_EID(ARX As String) As String
 
         Dim k  As Long
 
-        Dim x  As String
+        Dim X  As String
         Dim r2      As New ADODB.Recordset
 
 100     r2.Open "SELECT KOD FROM EID WHERE KOD LIKE '" + ARX + "%' ORDER BY KOD ", Gdb, adOpenDynamic, adLockOptimistic
@@ -880,7 +880,7 @@ Sub LAG2_ETIK()
         On Error GoTo LAG2_ETIK_Err
 
         '</EhHeader>
-        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         Dim DB As Database, DUM, rec As New ADODB.Recordset
 
@@ -896,13 +896,13 @@ Sub LAG2_ETIK()
 
         'On Error Resume NextN  N
 
-        Dim x As Printer
+        Dim X As Printer
 
-100     For Each x In Printers
+100     For Each X In Printers
 
-110         If InStr(x.DeviceName, "SATO") > 0 Then
+110         If InStr(X.DeviceName, "SATO") > 0 Then
                 ' Set printer as system default.
-120             Set Printer = x
+120             Set Printer = X
 
                 ' Stop looking for a printer.
                 Exit For
@@ -1006,7 +1006,7 @@ Sub LAG_ETIK()
         On Error GoTo LAG_ETIK_Err
 
         '</EhHeader>
-        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         Dim DB As Database, DUM, rec As New ADODB.Recordset
 
@@ -1024,13 +1024,13 @@ Sub LAG_ETIK()
 
         'On Error Resume NextN  N
 
-        Dim x As Printer
+        Dim X As Printer
 
-100     For Each x In Printers
+100     For Each X In Printers
 
-110         If InStr(x.DeviceName, "SATO") > 0 Then
+110         If InStr(X.DeviceName, "SATO") > 0 Then
                 ' Set printer as system default.
-120             Set Printer = x
+120             Set Printer = X
 
                 ' Stop looking for a printer.
                 Exit For
@@ -1449,7 +1449,7 @@ Private Sub Command2_Click()
         '</EhHeader>
         Dim k      As Integer, DUM As Integer, DB As Database, R As New ADODB.Recordset
 Dim n11 As Long
-        Dim x      As String
+        Dim X      As String
 
         Dim mlabel As String
 
@@ -1552,22 +1552,22 @@ End If
             '   dum = Update_Next_Pel(x)
             On Error GoTo NoUpdate
 
-350         data1.Recordset.AddNew
+350         Data1.Recordset.AddNew
 
             On Error Resume Next
 
-360         data1.Recordset("kod") = UCase(Text1(0))  ', "0000")
-370         data1.Recordset("ONO") = Left(Text1(1).Text, data1.Recordset("ONO").DefinedSize)
+360         Data1.Recordset("kod") = UCase(Text1(0))  ', "0000")
+370         Data1.Recordset("ONO") = Left(Text1(1).Text, Data1.Recordset("ONO").DefinedSize)
 
-380         data1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
+380         Data1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
 
-390         data1.Recordset("mon") = Combo1.Text
-400         data1.Recordset("lastupd") = gEnarjh '
+390         Data1.Recordset("mon") = Combo1.Text
+400         Data1.Recordset("lastupd") = gEnarjh '
 
 
             '       DATA2.Recordset("kodlog") = Val(left(Combo3.Text, 3)) ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
-410         data1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+410         Data1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
             'Data1.Recordset("kodlog") = Right(Combo3.Text, 3)
 
             '       'αν εχω προσθέσει υπο οικογένεια την καταχωρεί αυτόματα
@@ -1576,31 +1576,31 @@ End If
             '           Gdb.Execute SQL3
             '       End If
 
-420         data1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
+420         Data1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
 
-430         data1.Recordset("xti") = Val(Replace(Text1(2).Text, ",", "."))
-440         data1.Recordset("lti") = Val(Replace(Text1(3).Text, ",", "."))    'Val(Text1(3).Text)
-450         data1.Recordset("lti5") = Val(Replace(Text1(10).Text, ",", "."))    ' Val(Text1(10).Text)
-460         data1.Recordset("pos_kerD") = Val(Replace(Text1(5).Text, ",", "."))    ' Val(Text1(5).Text)
+430         Data1.Recordset("xti") = Val(Replace(Text1(2).Text, ",", "."))
+440         Data1.Recordset("lti") = Val(Replace(Text1(3).Text, ",", "."))    'Val(Text1(3).Text)
+450         Data1.Recordset("lti5") = Val(Replace(Text1(10).Text, ",", "."))    ' Val(Text1(10).Text)
+460         Data1.Recordset("pos_kerD") = Val(Replace(Text1(5).Text, ",", "."))    ' Val(Text1(5).Text)
 
-470         data1.Recordset("prom") = Text1(7).Text
-480         data1.Recordset("spa") = Val(Text1(9).Text)
+470         Data1.Recordset("prom") = Text1(7).Text
+480         Data1.Recordset("spa") = Val(Text1(9).Text)
             ' DATA1.Recordset("apos") = Val(Text1(8).Text)
-490         data1.Recordset("ues") = Text1(6).Text
+490         Data1.Recordset("ues") = Text1(6).Text
 
-500         data1.Recordset("kodsynod") = Text1(12).Text
-510         data1.Recordset("kodlogag") = Text1(11).Text
+500         Data1.Recordset("kodsynod") = Text1(12).Text
+510         Data1.Recordset("kodlogag") = Text1(11).Text
 
-520         data1.Recordset("CH1") = CH1.Text
+520         Data1.Recordset("CH1") = CH1.Text
 
-530         data1.Recordset("ERG") = Text1(4).Text    'ΕΡΓ
-540         data1.Recordset("KODERG") = Text1(13).Text    ' ΚΩΔ.ΠΡΟΜΗΘΕΥΤΗ
-550         data1.Recordset("MEMO") = Text14.Text
-560         data1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+530         Data1.Recordset("ERG") = Text1(4).Text    'ΕΡΓ
+540         Data1.Recordset("KODERG") = Text1(13).Text    ' ΚΩΔ.ΠΡΟΜΗΘΕΥΤΗ
+550         Data1.Recordset("MEMO") = Text14.Text
+560         Data1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
             On Error GoTo NoUpdate
 
-570         data1.Recordset.Update
+570         Data1.Recordset.Update
 
 Dim FLAG_BARC As Integer
 FLAG_BARC = 0
@@ -1790,11 +1790,11 @@ Private Sub Command4_Click()
         On Error GoTo Command4_Click_Err
 
         '</EhHeader>
-        Dim x As String
+        Dim X As String
 
         '   If Len(Text1(0).Text) = 6 And Mid$(Text1(0).Text, 3, 1) = "-" And Mid$(Text1(0).Text, 6, 1) = "-" Then
-100     x = Text1(0).Text
-110     Text1(0).Text = get_next_EID(x)
+100     X = Text1(0).Text
+110     Text1(0).Text = get_next_EID(X)
         '   Else
         '     If Len(Text1(0).Text) = 0 Then
         '      Else
@@ -1968,10 +1968,10 @@ Private Sub Form_Activate()
 630     If F_OIKO = 0 Then Combo4.Visible = False
 640     If F_YPOOIK = 0 Then Combo3.Visible = False
 
-650     data1.ConnectionString = gConnect   ' "dBase IV;"
+650     Data1.ConnectionString = gConnect   ' "dBase IV;"
 
-660     data1.RecordSource = "SELECT TOP 10 *FROM EID"
-670     data1.Refresh
+660     Data1.RecordSource = "SELECT TOP 10 *FROM EID"
+670     Data1.Refresh
 
 680     Command2_Click
         ' Me.Refresh
@@ -2433,7 +2433,7 @@ Private Sub Text1_LostFocus(index As Integer)
         On Error GoTo Text1_LostFocus_Err
 
         '</EhHeader>
-        Dim x As String
+        Dim X As String
 
 100     Text1(index).BackColor = vbWhite
 

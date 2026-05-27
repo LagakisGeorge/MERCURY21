@@ -1,35 +1,35 @@
 VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{E9C5BC0B-5CEA-42E0-805D-ACA6384FFB51}#1.0#0"; "jcMDITabs12.ocx"
 Begin VB.MDIForm MDIForm1 
    BackColor       =   &H00FF0000&
    Caption         =   "oe"
    ClientHeight    =   9540
-   ClientLeft      =   165
-   ClientTop       =   2205
-   ClientWidth     =   16890
+   ClientLeft      =   168
+   ClientTop       =   2208
+   ClientWidth     =   16884
    Icon            =   "MDIFORM14.frx":0000
    LinkTopic       =   "MDIForm1"
    Begin jc_MDITabs.jcMDITabs jcMDITabs2 
       Left            =   0
       Top             =   360
-      _ExtentX        =   847
-      _ExtentY        =   847
+      _ExtentX        =   677
+      _ExtentY        =   677
       Style           =   4
    End
    Begin VB.PictureBox Picture1 
       Align           =   3  'Align Left
       BackColor       =   &H80000014&
       BorderStyle     =   0  'None
-      Height          =   8805
+      Height          =   8892
       Left            =   0
-      ScaleHeight     =   8805
-      ScaleWidth      =   2985
+      ScaleHeight     =   8892
+      ScaleWidth      =   2988
       TabIndex        =   2
-      Top             =   420
+      Top             =   336
       Width           =   2988
       Begin VB.CommandButton cmdset 
          BackColor       =   &H80000010&
@@ -62,7 +62,7 @@ Begin VB.MDIForm MDIForm1
             Visible         =   0   'False
             Width           =   1020
             _ExtentX        =   1799
-            _ExtentY        =   159
+            _ExtentY        =   169
             LabelEdit       =   1
             LabelWrap       =   0   'False
             HideSelection   =   -1  'True
@@ -76,7 +76,7 @@ Begin VB.MDIForm MDIForm1
             MousePointer    =   99
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
-               Size            =   8.25
+               Size            =   8.4
                Charset         =   161
                Weight          =   400
                Underline       =   0   'False
@@ -91,7 +91,7 @@ Begin VB.MDIForm MDIForm1
             BackStyle       =   0  'Transparent
             BeginProperty Font 
                Name            =   "Tahoma"
-               Size            =   8.25
+               Size            =   8.4
                Charset         =   0
                Weight          =   400
                Underline       =   0   'False
@@ -125,8 +125,8 @@ Begin VB.MDIForm MDIForm1
             Top             =   5184
             Visible         =   0   'False
             Width           =   492
-            _ExtentX        =   900
-            _ExtentY        =   450
+            _ExtentX        =   910
+            _ExtentY        =   445
             LabelEdit       =   1
             LabelWrap       =   0   'False
             HideSelection   =   -1  'True
@@ -140,7 +140,7 @@ Begin VB.MDIForm MDIForm1
             MousePointer    =   99
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
-               Size            =   8.25
+               Size            =   8.4
                Charset         =   161
                Weight          =   400
                Underline       =   0   'False
@@ -157,7 +157,7 @@ Begin VB.MDIForm MDIForm1
             TabIndex        =   10
             Top             =   0
             Width           =   2964
-            _ExtentX        =   5239
+            _ExtentX        =   5228
             _ExtentY        =   15875
             _Version        =   327682
             Indentation     =   0
@@ -168,7 +168,7 @@ Begin VB.MDIForm MDIForm1
             Appearance      =   1
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "MS Sans Serif"
-               Size            =   8.25
+               Size            =   7.8
                Charset         =   161
                Weight          =   700
                Underline       =   0   'False
@@ -180,7 +180,7 @@ Begin VB.MDIForm MDIForm1
             BackStyle       =   0  'Transparent
             BeginProperty Font 
                Name            =   "Tahoma"
-               Size            =   8.25
+               Size            =   8.4
                Charset         =   0
                Weight          =   400
                Underline       =   0   'False
@@ -219,8 +219,8 @@ Begin VB.MDIForm MDIForm1
       TabIndex        =   0
       Top             =   9228
       Width           =   16884
-      _ExtentX        =   29792
-      _ExtentY        =   556
+      _ExtentX        =   29782
+      _ExtentY        =   550
       SimpleText      =   ""
       _Version        =   327682
       BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
@@ -228,10 +228,12 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -246,24 +248,28 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
+            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -285,15 +291,15 @@ Begin VB.MDIForm MDIForm1
    End
    Begin MSComctlLib.Toolbar tlbToolBar 
       Align           =   1  'Align Top
-      Height          =   420
+      Height          =   336
       Left            =   0
       TabIndex        =   1
       Top             =   0
-      Width           =   16890
-      _ExtentX        =   29792
-      _ExtentY        =   741
-      ButtonWidth     =   609
-      ButtonHeight    =   582
+      Width           =   16884
+      _ExtentX        =   29782
+      _ExtentY        =   593
+      ButtonWidth     =   487
+      ButtonHeight    =   466
       AllowCustomize  =   0   'False
       Wrappable       =   0   'False
       Appearance      =   1
@@ -331,7 +337,7 @@ Begin VB.MDIForm MDIForm1
          Visible         =   0   'False
          Width           =   2640
          _ExtentX        =   4657
-         _ExtentY        =   582
+         _ExtentY        =   572
          ConnectMode     =   0
          CursorLocation  =   3
          IsolationLevel  =   -1
@@ -362,7 +368,7 @@ Begin VB.MDIForm MDIForm1
          Caption         =   "Adodc1"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -388,8 +394,8 @@ Begin VB.MDIForm MDIForm1
    Begin MSComctlLib.ImageList imlToolbarPics 
       Left            =   1605
       Top             =   2295
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483634
       ImageWidth      =   16
       ImageHeight     =   16
@@ -442,8 +448,8 @@ Begin VB.MDIForm MDIForm1
    Begin MSComctlLib.ImageList i32x32 
       Left            =   0
       Top             =   0
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483643
       ImageWidth      =   32
       ImageHeight     =   32
@@ -528,8 +534,8 @@ Begin VB.MDIForm MDIForm1
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   0
       Top             =   2160
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483643
       ImageWidth      =   32
       ImageHeight     =   32
@@ -642,8 +648,8 @@ Begin VB.MDIForm MDIForm1
    Begin ComctlLib.ImageList ImgLstFolder 
       Left            =   0
       Top             =   0
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483643
       ImageWidth      =   16
       ImageHeight     =   16
@@ -905,7 +911,6 @@ Begin VB.MDIForm MDIForm1
       End
       Begin VB.Menu email_par 
          Caption         =   "Σε email το παρασ/κό"
-         Enabled         =   0   'False
       End
       Begin VB.Menu metasx_lian 
          Caption         =   "Μετασχηματισμός σε ΑΠΟΔ."
@@ -1006,19 +1011,19 @@ Private Sub akyrotiko_Click()
      F_PAROCHOS = Val(FINDPARAMETROI(1, "PAR7MYDATA", "f_parochos", "0", "0=MyData 1=Παροχος"))
 
        If F_PAROCHOS = 1 Then
-             PAR1.tdbgrid1.Col = 1
+             PAR1.TDBGrid1.Col = 1
            ' c = Replace(PAR1.TDBGrid1.Text, ",", ".")
 
-            Dim mpar As String: mpar = Left(PAR1.tdbgrid1.Text, 1) 'TDBGrid1.CurrentRow.cells(1).Value.toString.Substring(0, 1)
+            Dim mpar As String: mpar = Left(PAR1.TDBGrid1.Text, 1) 'TDBGrid1.CurrentRow.cells(1).Value.toString.Substring(0, 1)
             
-            PAR1.tdbgrid1.Col = 8
-            Dim mmark As String: mmark = PAR1.tdbgrid1.Text
+            PAR1.TDBGrid1.Col = 8
+            Dim mmark As String: mmark = PAR1.TDBGrid1.Text
           
             Dim MYEID As String: MYEID = GGET_CVALUE("SELECT MYEID FROM PARASTAT  WHERE EIDOS='" + mpar + "'")
             If MYEID = "9.3" Then
-                PAR1.tdbgrid1.Col = 7
+                PAR1.TDBGrid1.Col = 7
                 Dim mmID_NUM As String
-                 mmID_NUM = PAR1.tdbgrid1.Text
+                 mmID_NUM = PAR1.TDBGrid1.Text
                   Par7MyData.Visible = False
                   Par7MyData.Caption = "" ' ΙΣΑ ΙΣΑ ΝΑ ΑΝΟΙΓΕΙ ΤΟ FORM_LOAD ΓΙΑ ΝΑ ΔIΑΒΑΣΕΙ P_USER
                 Par7MyData.CancelDelivery mmID_NUM, mmark
@@ -1051,8 +1056,8 @@ Private Sub akyrotiko_Click()
 m_akyr_neo = Val(FINDPARAMETROI(1, "PAR1", "f_akyr_neo", "0", "Γ.49.ΝΕΟ ΑΚΥΡΩΤΙΚΟ ΑΝΤΙΘΕΤΟ ΧΩΡΙΣ ΔΙΑΓΡΑΦΗ=1 ΟΧΙ=0"))
 
 Dim mID_NUM As String
- PAR1.tdbgrid1.Col = 7
-    mID_NUM = PAR1.tdbgrid1.Text
+ PAR1.TDBGrid1.Col = 7
+    mID_NUM = PAR1.TDBGrid1.Text
     
     Dim MAKY As Integer
     MAKY = PAR1.GET_NVALUE("SELECT AKYROMENO FROM TIM WHERE ID_NUM=" + mID_NUM)
@@ -1097,8 +1102,8 @@ Dim mID_NUM As String
     
 
  Dim c As String
-  PAR1.tdbgrid1.Col = 1
-    c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+  PAR1.TDBGrid1.Col = 1
+    c = Replace(PAR1.TDBGrid1.Text, ",", ".")
 
 
 
@@ -1107,8 +1112,8 @@ Dim mID_NUM As String
 
 
 Dim cHME As String
- PAR1.tdbgrid1.Col = 0
-    cHME = Replace(PAR1.tdbgrid1.Text, ",", ".")
+ PAR1.TDBGrid1.Col = 0
+    cHME = Replace(PAR1.TDBGrid1.Text, ",", ".")
 'den katalabainei oti einai benzinadiko
 
 If f_is_benzinadiko = 1 Then
@@ -1146,8 +1151,8 @@ PAR1.PAR_GIA_AKYROSH.Caption = mID(c, 2, 7)
   '  C = Replace(PAR1.TDBGrid1.Text, ",", ".")
          
          Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
        
         
   Dim ISOK As Integer
@@ -1489,13 +1494,13 @@ Private Sub diortosis_Click()
 
     Dim c As String
          
-    PAR1.tdbgrid1.Col = 1
-    c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+    PAR1.TDBGrid1.Col = 1
+    c = Replace(PAR1.TDBGrid1.Text, ",", ".")
     
     Dim mmark As String
     
-    PAR1.tdbgrid1.Col = 8
-    mmark = Replace(PAR1.tdbgrid1.Text, ",", ".")
+    PAR1.TDBGrid1.Col = 8
+    mmark = Replace(PAR1.TDBGrid1.Text, ",", ".")
     
     If Len(Trim(mmark)) > 2 Then
       If Left$(mmark, 2) = "ER" Then
@@ -1509,8 +1514,8 @@ Private Sub diortosis_Click()
     
          
          Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
        
         
          
@@ -2832,19 +2837,19 @@ gisOnlineMydata = 0
         '  Picture1.Visible = True
         'End If
 
-370     Listview1.ListItems.Add , "a1", "Καρτέλλα", 2, 2
-380     Listview1.ListItems.Add , "a2", "Διόρθ.Πελάτη", 3, 3
-390     Listview1.ListItems.Add , "a3", "Εισ.Παρ/κου", 6, 6
-400     Listview1.ListItems.Add , "a4", "Παραμ.Παραστατικων", 15, 15
-410     Listview1.ListItems.Add , "a5", "Πωλήσεις/Αγορές", 16, 16
-420     Listview1.ListItems.Add , "a6", "Προβολη Παρ/κού", 17, 17
-430     Listview1.ListItems.Add , "a7", "Υπόλοιπα Πελατών", 18, 18
+370     Listview1.ListItems.ADD , "a1", "Καρτέλλα", 2, 2
+380     Listview1.ListItems.ADD , "a2", "Διόρθ.Πελάτη", 3, 3
+390     Listview1.ListItems.ADD , "a3", "Εισ.Παρ/κου", 6, 6
+400     Listview1.ListItems.ADD , "a4", "Παραμ.Παραστατικων", 15, 15
+410     Listview1.ListItems.ADD , "a5", "Πωλήσεις/Αγορές", 16, 16
+420     Listview1.ListItems.ADD , "a6", "Προβολη Παρ/κού", 17, 17
+430     Listview1.ListItems.ADD , "a7", "Υπόλοιπα Πελατών", 18, 18
         'Listview1.ListItems.Add , "b3", "Aναζήτηση", 5, 5
     
-440     ListView2.ListItems.Add , "b1", "Πίνακες", 1, 1
-450     ListView2.ListItems.Add , "b2", "Back-Up", 17, 17
+440     ListView2.ListItems.ADD , "b1", "Πίνακες", 1, 1
+450     ListView2.ListItems.ADD , "b2", "Back-Up", 17, 17
         'Listview2.ListItems.Add , "a8", "Business Info", 25, 25
-460     ListView2.ListItems.Add , "b3", "Για το πρόγραμμα ", 18, 18
+460     ListView2.ListItems.ADD , "b3", "Για το πρόγραμμα ", 18, 18
 
 470     pelat.Enabled = True
 480     apot.Enabled = True
@@ -3394,15 +3399,15 @@ Dim CC As Integer
 
         Dim c As String
 
-        PAR1.tdbgrid1.Col = 2
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         m = Val(FINDPARAMETROI(9, "PAR1", "METASX_DA", "3", "Α/Α Δ.Α. στα παραστατικά ΔΑ(ΜΕΤΑΣΧ.ΣΕ ΔΑ)0-99"))
 100     PAR1.metasx.Value = vbChecked
         
         
          Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-         m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+         m_ID = Val(PAR1.TDBGrid1.Text)
          PAR1.METASX_SE_TIM m, c, m_ID, False, CC
          
 
@@ -3430,8 +3435,8 @@ CC = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO METAΣΧ.(LIAN)
 
         Dim c As String
          
-        PAR1.tdbgrid1.Col = 2
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         'PAR1.Text5.Text = "*" + C
         
         m = Val(FINDPARAMETROI(9, "PAR1", "METASX_LIAN", "3", "Α/Α ΔΛ.ΔΑ στα παραστατικά (Μετασχ.σε Λιανική)0-99"))
@@ -3439,8 +3444,8 @@ CC = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO METAΣΧ.(LIAN)
 
 
          Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
         PAR1.METASX_SE_TIM m, c, m_ID, False, CC
         
 
@@ -3469,8 +3474,8 @@ Private Sub metasx_par_Click()
 
         Dim c As String
 
-        PAR1.tdbgrid1.Col = 2
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         
         PAR1.metasx.Value = vbChecked
         PAR1.METASX_SE_TIM 99, c, 0, False, 0
@@ -3532,16 +3537,16 @@ Dim CC As Integer
 
         Dim c As String
          
-        PAR1.tdbgrid1.Col = 2
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         'PAR1.Text5.Text = "*" + C
         
         m = Val(FINDPARAMETROI(1, "PAR1", "METASX_TIM", "3", "ΠΑΡΑΣΤΑΤΙΚO ΔΛ.ΔΑ(ΜΕΤΑΣΧ.ΣΕ ΛΙΑΝΙΚΗ)0-99"))
 100     PAR1.metasx.Value = vbChecked
 
          Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 '        PAR1.METASX_SE_TIM m, C, m_ID
         PAR1.METASX_SE_TIM m, c, m_ID, False, CC
         
@@ -5128,55 +5133,55 @@ Private Sub GetDriveList()
 '    roytina(3) = "dior"
     'For idx = 0 To 3 ' DriveBox.ListCount - 1
         'dPath = Left(DriveBox.List(idx), 2) & "\"
-        tvDir.Nodes.Add , , "Πελάτες", "Πελάτες", 1
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Διόρθωση"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Παρουσίαση Πελατών"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Καρτέλα Πελάτου"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Κινήσεις Πελατών"
+        tvDir.Nodes.ADD , , "Πελάτες", "Πελάτες", 1
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Διόρθωση"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Παρουσίαση Πελατών"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Καρτέλα Πελάτου"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Κινήσεις Πελατών"
         
         
         
-        tvDir.Nodes.Add , , "Προμηθευτές", "Προμηθευτές", 1
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Εισαγωγή."
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Διορθωση"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Παρουσίαση Προμηθευτών"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Καρτέλα Προμηθευτή"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Κινήσεις Προμηθευτών"
+        tvDir.Nodes.ADD , , "Προμηθευτές", "Προμηθευτές", 1
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Εισαγωγή."
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Διορθωση"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Παρουσίαση Προμηθευτών"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Καρτέλα Προμηθευτή"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Κινήσεις Προμηθευτών"
         
-        tvDir.Nodes.Add , , "Αποθήκη", "Αποθήκη", 1
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Διόρθωση"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Παρουσίαση Ειδών"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Τιμοκατάλογοι"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Κινήσεις Ειδών"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Ρυθμιζόμενες Εκτυπώσεις"
+        tvDir.Nodes.ADD , , "Αποθήκη", "Αποθήκη", 1
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Διόρθωση"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Παρουσίαση Ειδών"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Τιμοκατάλογοι"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Κινήσεις Ειδών"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Ρυθμιζόμενες Εκτυπώσεις"
         
-        tvDir.Nodes.Add , , "Επιταγές", "Επιταγές", 1
-        tvDir.Nodes.Add "Επιταγές", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Επιταγές", tvwChild, , "Παρουσίαση-Διόρθωση"
-        
-        
-         tvDir.Nodes.Add , , "Παραστατικά", "Παραστατικά", 1
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Παραστατικά"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Προβολή κατά ημέρα"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Παρουσίαση ενός Παραστατικού"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Στατιστικά-Παρουσίαση Παραστατικών"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Ταμείο Ημέρας"
+        tvDir.Nodes.ADD , , "Επιταγές", "Επιταγές", 1
+        tvDir.Nodes.ADD "Επιταγές", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Επιταγές", tvwChild, , "Παρουσίαση-Διόρθωση"
         
         
-         tvDir.Nodes.Add , , "Βοηθητικά", "Βοηθητικά", 1
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "1.Πίνακες"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "2.Παράμετροι Προγράμματος"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "3.Παράμετροι Παραστατικών"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "4.Παράμετροι Κινήσεων Πελατών"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "5.Import-Export"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "6.Αλλαγή Κωδικών Χρήστη"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "7.Αποστολή σε φορητά τερματικά"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "8.Μεταφορές Αρχείων-Πόντοι"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "9.Αντίγραφα Επαναφορά"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "10.Συγκεντρωτική Τιμολογίων"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "11.Ελεγχοι Πληρότητας Αρχείων"
+         tvDir.Nodes.ADD , , "Παραστατικά", "Παραστατικά", 1
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Παραστατικά"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Προβολή κατά ημέρα"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Παρουσίαση ενός Παραστατικού"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Στατιστικά-Παρουσίαση Παραστατικών"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Ταμείο Ημέρας"
+        
+        
+         tvDir.Nodes.ADD , , "Βοηθητικά", "Βοηθητικά", 1
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "1.Πίνακες"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "2.Παράμετροι Προγράμματος"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "3.Παράμετροι Παραστατικών"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "4.Παράμετροι Κινήσεων Πελατών"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "5.Import-Export"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "6.Αλλαγή Κωδικών Χρήστη"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "7.Αποστολή σε φορητά τερματικά"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "8.Μεταφορές Αρχείων-Πόντοι"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "9.Αντίγραφα Επαναφορά"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "10.Συγκεντρωτική Τιμολογίων"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "11.Ελεγχοι Πληρότητας Αρχείων"
         
    ' Next idx
 End Sub
@@ -5228,7 +5233,7 @@ Private Sub tvDir_Expand(ByVal Node As ComctlLib.Node)
     GoTo ExitSub
 ErrHdler:
     'If Drive not ready handle error and re-instate removed item
-    tvDir.Nodes.Add Node.key, tvwChild, , ""
+    tvDir.Nodes.ADD Node.key, tvwChild, , ""
     Resume ExitSub
 ExitSub:
     MousePointer = 0
