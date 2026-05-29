@@ -1,16 +1,16 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
-   ClientHeight    =   11052
+   ClientHeight    =   11055
    ClientLeft      =   60
-   ClientTop       =   348
+   ClientTop       =   345
    ClientWidth     =   19080
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   11052
+   ScaleHeight     =   11055
    ScaleWidth      =   19080
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame4 
@@ -134,7 +134,7 @@ Begin VB.Form bohu5
          Caption         =   "ÃñáììïãñÜöçóç åîáã.Ðåëáôùí"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   -1  'True
@@ -153,7 +153,7 @@ Begin VB.Form bohu5
          Caption         =   "ÃñáììïãñÜöçóç åîáã.Åéäþí"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   -1  'True
@@ -172,7 +172,7 @@ Begin VB.Form bohu5
          Caption         =   "ÃñáììïãñÜöçóç Ôéìïê.Åéäþí"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   -1  'True
@@ -261,14 +261,14 @@ Begin VB.Form bohu5
          Width           =   3840
       End
       Begin VB.ListBox List1 
-         Height          =   240
+         Height          =   255
          Left            =   360
          TabIndex        =   26
          Top             =   4560
          Width           =   3840
       End
       Begin VB.ListBox List2 
-         Height          =   1584
+         Height          =   1425
          Left            =   360
          TabIndex        =   25
          Top             =   5520
@@ -367,7 +367,7 @@ Begin VB.Form bohu5
          Width           =   855
       End
       Begin VB.ListBox Z 
-         Height          =   1008
+         Height          =   840
          Left            =   1080
          TabIndex        =   6
          Top             =   4680
@@ -408,10 +408,10 @@ Begin VB.Form bohu5
          TabIndex        =   12
          Top             =   630
          Width           =   1710
-         _ExtentX        =   3006
-         _ExtentY        =   508
+         _ExtentX        =   3016
+         _ExtentY        =   503
          _Version        =   393216
-         Format          =   134414337
+         Format          =   454230017
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -502,8 +502,8 @@ Begin VB.Form bohu5
       Top             =   8400
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4890
-      _ExtentY        =   572
+      _ExtentX        =   4895
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -534,7 +534,7 @@ Begin VB.Form bohu5
       Caption         =   "kin1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -565,7 +565,7 @@ Begin VB.Form bohu5
       Top             =   8280
       Visible         =   0   'False
       Width           =   3195
-      _ExtentX        =   5630
+      _ExtentX        =   5636
       _ExtentY        =   741
       ConnectMode     =   0
       CursorLocation  =   3
@@ -597,7 +597,7 @@ Begin VB.Form bohu5
       Caption         =   "Adodc2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -800,9 +800,9 @@ Private Sub Command1_Click()
 
         End If
 
-130     ADODC2.ConnectionString = gConnect
-140     ADODC2.RecordSource = "select * FROM " + Combo1.Text    'PEL WHERE  EIDOS='e' ORDER BY KOD"
-150     ADODC2.Refresh
+130     Adodc2.ConnectionString = gConnect
+140     Adodc2.RecordSource = "select * FROM " + Combo1.Text    'PEL WHERE  EIDOS='e' ORDER BY KOD"
+150     Adodc2.Refresh
 
         'Set fSCR = CreateObject("MSScriptControl.ScriptControl")
         'fSCR.language = "vbscript"
@@ -811,8 +811,8 @@ Private Sub Command1_Click()
 
 160     a = toascii2(Text1.Text, Text2.Text)
 
-170     ADODC2.RecordSource = "select * FROM EID ORDER BY KOD"
-180     ADODC2.Refresh
+170     Adodc2.RecordSource = "select * FROM EID ORDER BY KOD"
+180     Adodc2.Refresh
 
         ' A = toascii2("C:\MERCVB\F33.TXT", "C:\EID.TXT")
 
@@ -942,18 +942,18 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
 240             If Trim(UCase(Trim(gm_f(k)))) = "KOD" Then    '  Then
 250                 If Combo1.Text = "PEL" Then
-260                     ADODC2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "' and EIDOS='" + meidos + "'"
+260                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "' and EIDOS='" + meidos + "'"
                     Else
-270                     ADODC2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "'"
+270                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "'"
                     End If
 
-280                 ADODC2.Refresh
+280                 Adodc2.Refresh
 
-290                 If ADODC2.Recordset.EOF Then
-300                     ADODC2.Recordset.AddNew
+290                 If Adodc2.Recordset.EOF Then
+300                     Adodc2.Recordset.AddNew
 
 310                     If Combo1.Text = "PEL" Then
-320                         ADODC2.Recordset("EIDOS") = meidos
+320                         Adodc2.Recordset("EIDOS") = meidos
                         End If
                     End If
 
@@ -967,14 +967,14 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
 340             If Len(gm_f(k)) > 0 Then
 
-350                 If ADODC2.Recordset(Trim(gm_f(k))).Type = adVarChar Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
-360                     ADODC2.Recordset(Trim(gm_f(k))) = mID$(h$, gm_c(k), Len(Trim(gpic(k))))
+350                 If Adodc2.Recordset(Trim(gm_f(k))).Type = adVarChar Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
+360                     Adodc2.Recordset(Trim(gm_f(k))) = mID$(h$, gm_c(k), Len(Trim(gpic(k))))
                     End If
 
                     'adDouble
 
-370                 If ADODC2.Recordset(Trim(gm_f(k))).Type = adDouble Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
-380                     ADODC2.Recordset(Trim(gm_f(k))) = Val(mID$(h$, gm_c(k), Len(gpic(k))))
+370                 If Adodc2.Recordset(Trim(gm_f(k))).Type = adDouble Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
+380                     Adodc2.Recordset(Trim(gm_f(k))) = Val(mID$(h$, gm_c(k), Len(gpic(k))))
                     End If
 
                 End If
@@ -983,14 +983,14 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
 390         DoEvents
 400         Me.Caption = h$
-410         ADODC2.Recordset.Update
+410         Adodc2.Recordset.Update
 
             '   Print #1, S2
-420         ADODC2.Recordset.MoveNext
+420         Adodc2.Recordset.MoveNext
         Loop
 
 430     Close #1
-440     ADODC2.Recordset.Close
+440     Adodc2.Recordset.Close
 
 450     If Combo1.Text = "EID" Then
 460         Gdb.Execute "UPDATE EID SET FPA=2 WHERE FPA=19"
@@ -2635,14 +2635,23 @@ Private Sub Command16_Click()
  ' Dim GDBDRAMA As New ADODB.Connection
  ' GDBDRAMA.Open "DSN=doytsios;uid=sa;pwd=p@ssw0rd"
  F_DOUTSIOSREM = Trim(F_DOUTSIOSREM)
+ 
+ 
+ If Len(Trim(F_DOUTSIOSREM)) < 10 Then
+     MsgBox "ÄÅÍ Å×ÅÔÅ ÏÑÉÓÅÉ ÓÅÑÂÅÑ"
+     Exit Sub
+ End If
+ 
+ 
+ 
  ' F_DOUTSIOSPARAS = Trim(F_DOUTSIOSPARAS)
- On Error GoTo SFALMA
+ On Error GoTo SFALMA1
   Dim R As New ADODB.Recordset
   R.Open "select top " + ARPAR.Text + " ATIM,HME,ID_NUM  from " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM WHERE LEFT(ATIM,1)='" + F_LINKED_PARAST + "' order by ID_NUM DESC", Gdb, adOpenDynamic, adLockOptimistic
-  
+  Me.Caption = "OK OPEN " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM"
   
   Dim COLTIM As String
-  
+  On Error GoTo SFALMA
   Dim N As Integer
   Dim MATIM As String
   Dim mID_NUM As Long
@@ -2653,18 +2662,48 @@ Private Sub Command16_Click()
   PROTO = 0
   Dim eis As Integer
   eis = 0
-  
+  Dim r0 As New ADODB.Recordset
+  Dim DOKTIM As String
   Dim TEL_ID_NUM As Long
   Do While Not R.EOF
   
    
    If PROTO = 0 Then
+        Me.Caption = "PROTO=0 OK "
        Gdb.Execute "delete from BARCODES"
            Gdb.Execute "  INSERT INTO BARCODES (KOD,ERG) SELECT KOD,ERG FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.BARCODES"
            Me.Caption = "BARCODES OK"
           MILSEC 1000
            Gdb.Execute "delete from EID"
-       Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID"
+           Dim TROPOS As Integer
+           TROPOS = 2
+           
+           If TROPOS = 1 Then
+           
+                Gdb.Execute "SELECT KOD,ONO,FPA,NUM1,LTI into DOKEIDD FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
+                Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM DOKEIDD"
+                
+                Gdb.Execute "DROP TABLE DOKEIDD"
+                
+           ElseIf TROPOS = 2 Then
+                 Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
+           ElseIf TROPOS = 3 Then
+               r0.Open "SELECT ID  from " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID ", Gdb, adOpenDynamic, adLockOptimistic
+           
+               N = 0:
+               Do While Not r0.EOF
+                   N = N + 1
+                  Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID where ID=" + str(r0(0))
+                  Me.Caption = str(N)
+                  If N Mod 20 = 0 Then DoEvents
+                  r0.MoveNext
+               Loop
+               r0.Close
+           End If
+           
+           
+           
+           
           MILSEC 1000
        Gdb.Execute "UPDATE EID SET LTI5=NUM1"
        Gdb.Execute "UPDATE EID SET FPA=3 WHERE FPA=7"
@@ -2680,9 +2719,11 @@ Private Sub Command16_Click()
     'äåí õðáñ÷åé ôï ðáñáóôáôéêï åäù áñá ôï öïñôùíù
      If GGET_NVALUE("select count(*) from TIM WHERE ATIM='" + MATIM + "'") = 0 Then
         eis = eis + 1
-        
+          Me.Caption = "PROTO=1 OK "
         
         Gdb.Execute "INSERT INTO TIM (" + COLTIM + ") SELECT " + COLTIM + " FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM  WHERE  ID_NUM=" + str(mID_NUM), N
+        Me.Caption = "INSERT INTO TIM  OK " + str(eis)
+        
         If N = 1 Then
             TEL_ID_NUM = GGET_NVALUE("select MAX(ID_NUM) from TIM ")
             Gdb.Execute "INSERT INTO EGGTIM (" + FEGGTIM + ",ID_NUM ) SELECT " + FEGGTIM + "," + str(TEL_ID_NUM) + " FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EGGTIM  WHERE ID_NUM=" + str(mID_NUM)
@@ -2702,6 +2743,10 @@ MsgBox "OK " + str(eis)
 
 
 
+Exit Sub
+SFALMA1:
+
+MsgBox "ÄÅÍ ÏËÏÊËÇÑÙÈÇÊÅ ËÏÃÙ áäõíáìéáò óõíäåóçò"
 Exit Sub
 
 
@@ -2954,7 +2999,7 @@ Private Sub Command3_Click()
 
         Dim R  As New ADODB.Recordset
 
-        Dim c, d, e, F, G, n1, n2
+        Dim c, D, e, F, G, n1, n2
 
         Dim m_hme  ' = hme ' ÔÅËÅÕÔÁÉÁ ÇÌÅÑÏÌÇÍÉÁ
 
@@ -3790,7 +3835,7 @@ Private Sub Command9_Click()
 
         Dim R  As New ADODB.Recordset
 
-        Dim c, d, e, F, G, n1, n2
+        Dim c, D, e, F, G, n1, n2
 
         Dim m_hme  ' = hme ' ÔÅËÅÕÔÁÉÁ ÇÌÅÑÏÌÇÍÉÁ
 
@@ -4289,7 +4334,7 @@ Private Sub Command6_Click()
 
         End If
 
-130     ADODC2.ConnectionString = gConnect
+130     Adodc2.ConnectionString = gConnect
         ' Adodc2.RecordSource = "select * FROM " + Combo1.Text 'PEL WHERE  EIDOS='e' ORDER BY KOD"
         '   Adodc2.Refresh
 
@@ -4405,42 +4450,42 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 
 190         If IsNull(ELEM(6)) Then Exit Do
 
-200         ADODC2.RecordSource = "SELECT * FROM EID WHERE KOD='" + LTrim(ELEM(6)) + "'"
-210         ADODC2.Refresh
+200         Adodc2.RecordSource = "SELECT * FROM EID WHERE KOD='" + LTrim(ELEM(6)) + "'"
+210         Adodc2.Refresh
 
-220         If ADODC2.Recordset.EOF Then
-230             ADODC2.Recordset.AddNew
+220         If Adodc2.Recordset.EOF Then
+230             Adodc2.Recordset.AddNew
             End If
 
             ' ÏÉÊ ÕÐÏ  ONO XTI LTI KOD erg BARCODE fpa mon
 
             ' On Error Resume Next
 
-240         ADODC2.Recordset("ERG") = ELEM(8)
-250         ADODC2.Recordset("AEG") = ELEM(1)
-260         ADODC2.Recordset("KODLOG") = ELEM(2)
-270         ADODC2.Recordset("ONO") = ELEM(3)
+240         Adodc2.Recordset("ERG") = ELEM(8)
+250         Adodc2.Recordset("AEG") = ELEM(1)
+260         Adodc2.Recordset("KODLOG") = ELEM(2)
+270         Adodc2.Recordset("ONO") = ELEM(3)
 
 280         If Val(ELEM(9)) = 0 Then
-290             ADODC2.Recordset("FPA") = 2
+290             Adodc2.Recordset("FPA") = 2
             Else
-300             ADODC2.Recordset("FPA") = ELEM(9)
+300             Adodc2.Recordset("FPA") = ELEM(9)
             End If
 
-310         ADODC2.Recordset("MON") = ELEM(10)
-320         ADODC2.Recordset("XTI") = ELEM(4)
+310         Adodc2.Recordset("MON") = ELEM(10)
+320         Adodc2.Recordset("XTI") = ELEM(4)
 
             'If Not IsNull(Adodc2.Recordset("LTI5")) Then
-330         ADODC2.Recordset("LTI5") = ELEM(5)
+330         Adodc2.Recordset("LTI5") = ELEM(5)
             ' End If
 
-340         ADODC2.Recordset("KOD") = LTrim(ELEM(6))
+340         Adodc2.Recordset("KOD") = LTrim(ELEM(6))
 
 350         OK = 1
 
             On Error GoTo NOTOK
 
-360         ADODC2.Recordset.Update
+360         Adodc2.Recordset.Update
 
             On Error Resume Next
 
@@ -4463,7 +4508,7 @@ Function toascii3(ByVal arxeio As String, moutput As String)
         Loop
 
         ' Close #1
-430     ADODC2.Recordset.Close
+430     Adodc2.Recordset.Close
 440     Close #1
 
 450     If Combo1.Text = "EID" Then
@@ -4556,20 +4601,20 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
-Dim d1, d2 As String
+Dim D1, d2 As String
 
-d1 = "01/01/2026"
+D1 = "01/01/2026"
 d2 = "31/01/2026"
-d1 = InputBox("ÁÐÏ ", "áðü", d1)
+D1 = InputBox("ÁÐÏ ", "áðü", D1)
 
 d2 = InputBox("ÅÙÓ ", "Ýùò", d2)
 
-If Len(Trim(d1)) <> 10 Or Len(Trim(d2)) <> 10 Then
+If Len(Trim(D1)) <> 10 Or Len(Trim(d2)) <> 10 Then
     MsgBox " ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
     Exit Sub
 End If
 
-d1 = mID(d1, 4, 3) + Left(d1, 3) + Right(d1, 4)
+D1 = mID(D1, 4, 3) + Left(D1, 3) + Right(D1, 4)
 d2 = mID(d2, 4, 3) + Left(d2, 3) + Right(d2, 4)
 
 
@@ -4590,7 +4635,7 @@ Dim N As Integer
 ' FROM [LAGAKIS.DDNS.NET\SQLEXPRESS,49818].[EMP].[dbo].[PEL] WHERE EIDOS='r'
 Dim R As New ADODB.Recordset
 F_LINKEDSERVER = Trim(F_LINKEDSERVER)
-R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + d1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
+R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + D1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
 Dim mmID As Long
 Do While Not R.EOF
     mmID = R!id_num
