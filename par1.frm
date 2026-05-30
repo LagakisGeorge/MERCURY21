@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   308674561
+         Format          =   243269633
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   308674562
+         Format          =   480444418
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   308740097
+      Format          =   479657985
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -6543,7 +6543,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
 320     If F_XONDR = 3 Then
             ' F_ELGA = Round((SYN_ME_FPA * 0.25 / 100) * 1.036, f_psifiaAjias)  F_ELGA
              
-322         Gdb.Execute "UPDATE TIM SET B_C2='" + f_elga_typoi_krat + "',PARAKRATISI=" + Replace(str(F_ELGA / 1.036), ",", ".") + "  WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
+322       '  Gdb.Execute "UPDATE TIM SET B_C2='" + f_elga_typoi_krat + "',PARAKRATISI=" + Replace(str(F_ELGA / 1.036), ",", ".") + "  WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
 324        ' Gdb.Execute "UPDATE TIM SET KR1=" + Replace(str(F_ELGA - F_ELGA / 1.036), ",", ".") + "  WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
                Gdb.Execute "UPDATE TIM SET KR1=0  WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
         End If
