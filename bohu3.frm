@@ -1,14 +1,14 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form bohu3 
    BackColor       =   &H00FF0000&
    Caption         =   "Παραμ.Παραστατικών"
    ClientHeight    =   9420
    ClientLeft      =   60
-   ClientTop       =   456
+   ClientTop       =   450
    ClientWidth     =   19080
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
@@ -28,141 +28,160 @@ Begin VB.Form bohu3
          TabIndex        =   22
          Top             =   360
          Width           =   13176
-         _ExtentX        =   23220
-         _ExtentY        =   9440
+         _ExtentX        =   23230
+         _ExtentY        =   9446
          _Version        =   393216
          Tabs            =   6
-         Tab             =   5
+         Tab             =   2
          TabHeight       =   420
          ShowFocusRect   =   0   'False
          TabCaption(0)   =   "ΛΟΓΙΣΤΙΚΗ"
          TabPicture(0)   =   "bohu3.frx":0000
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "mPaste"
-         Tab(0).Control(1)=   "log2(17)"
-         Tab(0).Control(2)=   "log2(16)"
-         Tab(0).Control(3)=   "log2(6)"
-         Tab(0).Control(4)=   "log2(7)"
-         Tab(0).Control(5)=   "mCopy"
-         Tab(0).Control(6)=   "log2(0)"
-         Tab(0).Control(7)=   "log2(5)"
-         Tab(0).Control(8)=   "log2(4)"
-         Tab(0).Control(9)=   "log2(3)"
-         Tab(0).Control(10)=   "log2(2)"
-         Tab(0).Control(11)=   "log2(1)"
-         Tab(0).Control(12)=   "log1(6)"
-         Tab(0).Control(13)=   "log1(7)"
-         Tab(0).Control(14)=   "log1(0)"
-         Tab(0).Control(15)=   "log1(5)"
-         Tab(0).Control(16)=   "log1(4)"
-         Tab(0).Control(17)=   "log1(3)"
-         Tab(0).Control(18)=   "log1(2)"
-         Tab(0).Control(19)=   "log1(1)"
-         Tab(0).Control(20)=   "Command1"
-         Tab(0).Control(21)=   "txtFields(14)"
-         Tab(0).Control(22)=   "Label13"
-         Tab(0).Control(23)=   "Label111"
-         Tab(0).Control(24)=   "Label9"
-         Tab(0).Control(25)=   "Label7"
-         Tab(0).Control(26)=   "LABEL1(56)"
-         Tab(0).Control(27)=   "LABEL1(57)"
-         Tab(0).Control(28)=   "Label8"
-         Tab(0).Control(29)=   "LABEL1(55)"
-         Tab(0).Control(30)=   "LABEL1(54)"
-         Tab(0).Control(31)=   "LABEL1(53)"
-         Tab(0).Control(32)=   "LABEL1(52)"
-         Tab(0).Control(33)=   "LABEL1(51)"
-         Tab(0).Control(34)=   "Label6"
-         Tab(0).Control(35)=   "lblLabels(13)"
+         Tab(0).Control(0)=   "lblLabels(13)"
+         Tab(0).Control(1)=   "Label6"
+         Tab(0).Control(2)=   "LABEL1(51)"
+         Tab(0).Control(3)=   "LABEL1(52)"
+         Tab(0).Control(4)=   "LABEL1(53)"
+         Tab(0).Control(5)=   "LABEL1(54)"
+         Tab(0).Control(6)=   "LABEL1(55)"
+         Tab(0).Control(7)=   "Label8"
+         Tab(0).Control(8)=   "LABEL1(57)"
+         Tab(0).Control(9)=   "LABEL1(56)"
+         Tab(0).Control(10)=   "Label7"
+         Tab(0).Control(11)=   "Label9"
+         Tab(0).Control(12)=   "Label111"
+         Tab(0).Control(13)=   "Label13"
+         Tab(0).Control(14)=   "txtFields(14)"
+         Tab(0).Control(15)=   "Command1"
+         Tab(0).Control(16)=   "log1(1)"
+         Tab(0).Control(17)=   "log1(2)"
+         Tab(0).Control(18)=   "log1(3)"
+         Tab(0).Control(19)=   "log1(4)"
+         Tab(0).Control(20)=   "log1(5)"
+         Tab(0).Control(21)=   "log1(0)"
+         Tab(0).Control(22)=   "log1(7)"
+         Tab(0).Control(23)=   "log1(6)"
+         Tab(0).Control(24)=   "log2(1)"
+         Tab(0).Control(25)=   "log2(2)"
+         Tab(0).Control(26)=   "log2(3)"
+         Tab(0).Control(27)=   "log2(4)"
+         Tab(0).Control(28)=   "log2(5)"
+         Tab(0).Control(29)=   "log2(0)"
+         Tab(0).Control(30)=   "mCopy"
+         Tab(0).Control(31)=   "log2(7)"
+         Tab(0).Control(32)=   "log2(6)"
+         Tab(0).Control(33)=   "log2(16)"
+         Tab(0).Control(34)=   "log2(17)"
+         Tab(0).Control(35)=   "mPaste"
          Tab(0).ControlCount=   36
          TabCaption(1)   =   "MYDATA-ΜΥΦ-ΦΟΡΟΛ"
          TabPicture(1)   =   "bohu3.frx":001C
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Checkb2g"
-         Tab(1).Control(1)=   "ComboUBL"
-         Tab(1).Control(2)=   "isDiakin"
-         Tab(1).Control(3)=   "ISMYDATA"
-         Tab(1).Control(4)=   "myCatExod"
-         Tab(1).Control(5)=   "myTypEXod"
-         Tab(1).Control(6)=   "mydata"
-         Tab(1).Control(7)=   "txtFields(10)"
-         Tab(1).Control(8)=   "ELINES"
-         Tab(1).Control(9)=   "typos_par"
-         Tab(1).Control(10)=   "tameiaki"
-         Tab(1).Control(11)=   "myf"
-         Tab(1).Control(12)=   "MYEID"
-         Tab(1).Control(13)=   "myTypEsod"
-         Tab(1).Control(14)=   "mycateg"
-         Tab(1).Control(15)=   "MYISAYTOTIM"
-         Tab(1).Control(16)=   "lblΠροσοχήΤο"
-         Tab(1).Control(17)=   "lblLabels(27)"
-         Tab(1).Control(18)=   "lblLabels(26)"
-         Tab(1).Control(19)=   "Label15"
-         Tab(1).Control(20)=   "lblLabels(10)"
-         Tab(1).Control(21)=   "Label12"
-         Tab(1).Control(22)=   "lblΑριθμΤαμειακής"
-         Tab(1).Control(23)=   "lblLabel11"
-         Tab(1).Control(24)=   "lblLabels(22)"
-         Tab(1).Control(25)=   "lblLabels(23)"
-         Tab(1).Control(26)=   "lblLabels(24)"
-         Tab(1).Control(27)=   "lblLabels(25)"
+         Tab(1).Control(0)=   "lblLabels(25)"
+         Tab(1).Control(1)=   "lblLabels(24)"
+         Tab(1).Control(2)=   "lblLabels(23)"
+         Tab(1).Control(3)=   "lblLabels(22)"
+         Tab(1).Control(4)=   "lblLabel11"
+         Tab(1).Control(5)=   "lblΑριθμΤαμειακής"
+         Tab(1).Control(6)=   "Label12"
+         Tab(1).Control(7)=   "lblLabels(10)"
+         Tab(1).Control(8)=   "Label15"
+         Tab(1).Control(9)=   "lblLabels(26)"
+         Tab(1).Control(10)=   "lblLabels(27)"
+         Tab(1).Control(11)=   "lblΠροσοχήΤο"
+         Tab(1).Control(12)=   "MYISAYTOTIM"
+         Tab(1).Control(13)=   "mycateg"
+         Tab(1).Control(14)=   "myTypEsod"
+         Tab(1).Control(15)=   "MYEID"
+         Tab(1).Control(16)=   "myf"
+         Tab(1).Control(17)=   "tameiaki"
+         Tab(1).Control(18)=   "typos_par"
+         Tab(1).Control(19)=   "ELINES"
+         Tab(1).Control(20)=   "txtFields(10)"
+         Tab(1).Control(21)=   "mydata"
+         Tab(1).Control(22)=   "myTypEXod"
+         Tab(1).Control(23)=   "myCatExod"
+         Tab(1).Control(24)=   "ISMYDATA"
+         Tab(1).Control(25)=   "isDiakin"
+         Tab(1).Control(26)=   "ComboUBL"
+         Tab(1).Control(27)=   "Checkb2g"
          Tab(1).ControlCount=   28
          TabCaption(2)   =   "ΦΟΡΜΕΣ-ΑΡΙΘΜΗΣΗ"
          TabPicture(2)   =   "bohu3.frx":0038
-         Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "ApallFpa"
-         Tab(2).Control(1)=   "DESMIA"
-         Tab(2).Control(2)=   "DEFAULTAPALL"
-         Tab(2).Control(3)=   "chKvAT"
-         Tab(2).Control(4)=   "List1"
-         Tab(2).Control(5)=   "txtFields(12)"
-         Tab(2).Control(6)=   "txtFields(17)"
-         Tab(2).Control(7)=   "txtFields(16)"
-         Tab(2).Control(8)=   "txtFields(11)"
+         Tab(2).ControlEnabled=   -1  'True
+         Tab(2).Control(0)=   "ΑΡΙΘΜΗΣΗ"
+         Tab(2).Control(0).Enabled=   0   'False
+         Tab(2).Control(1)=   "lblLabels(16)"
+         Tab(2).Control(1).Enabled=   0   'False
+         Tab(2).Control(2)=   "lblLabels(17)"
+         Tab(2).Control(2).Enabled=   0   'False
+         Tab(2).Control(3)=   "lblLabels(11)"
+         Tab(2).Control(3).Enabled=   0   'False
+         Tab(2).Control(4)=   "lblLabels(12)"
+         Tab(2).Control(4).Enabled=   0   'False
+         Tab(2).Control(5)=   "lblΠροεπιλεγμένηΑπαλλαγή"
+         Tab(2).Control(5).Enabled=   0   'False
+         Tab(2).Control(6)=   "Label10"
+         Tab(2).Control(6).Enabled=   0   'False
+         Tab(2).Control(7)=   "SEIRES"
+         Tab(2).Control(7).Enabled=   0   'False
+         Tab(2).Control(8)=   "Frame3"
+         Tab(2).Control(8).Enabled=   0   'False
          Tab(2).Control(9)=   "ARITMISI"
-         Tab(2).Control(10)=   "Frame3"
-         Tab(2).Control(11)=   "SEIRES"
-         Tab(2).Control(12)=   "Label10"
-         Tab(2).Control(13)=   "lblΠροεπιλεγμένηΑπαλλαγή"
-         Tab(2).Control(14)=   "lblLabels(12)"
-         Tab(2).Control(15)=   "lblLabels(11)"
-         Tab(2).Control(16)=   "lblLabels(17)"
-         Tab(2).Control(17)=   "lblLabels(16)"
-         Tab(2).Control(18)=   "ΑΡΙΘΜΗΣΗ"
+         Tab(2).Control(9).Enabled=   0   'False
+         Tab(2).Control(10)=   "txtFields(11)"
+         Tab(2).Control(10).Enabled=   0   'False
+         Tab(2).Control(11)=   "txtFields(16)"
+         Tab(2).Control(11).Enabled=   0   'False
+         Tab(2).Control(12)=   "txtFields(17)"
+         Tab(2).Control(12).Enabled=   0   'False
+         Tab(2).Control(13)=   "txtFields(12)"
+         Tab(2).Control(13).Enabled=   0   'False
+         Tab(2).Control(14)=   "List1"
+         Tab(2).Control(14).Enabled=   0   'False
+         Tab(2).Control(15)=   "chKvAT"
+         Tab(2).Control(15).Enabled=   0   'False
+         Tab(2).Control(16)=   "DEFAULTAPALL"
+         Tab(2).Control(16).Enabled=   0   'False
+         Tab(2).Control(17)=   "DESMIA"
+         Tab(2).Control(17).Enabled=   0   'False
+         Tab(2).Control(18)=   "ApallFpa"
+         Tab(2).Control(18).Enabled=   0   'False
          Tab(2).ControlCount=   19
          TabCaption(3)   =   "Κινήσεις-Ενημερώσεις"
          TabPicture(3)   =   "bohu3.frx":0054
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "PEL"
-         Tab(3).Control(1)=   "POS_APOU"
-         Tab(3).Control(2)=   "AJIA_APOU"
-         Tab(3).Control(3)=   "txtFields(3)"
-         Tab(3).Control(4)=   "txtFields(15)"
-         Tab(3).Control(5)=   "Label5"
-         Tab(3).Control(6)=   "Label3"
-         Tab(3).Control(7)=   "lblLabels(6)"
-         Tab(3).Control(8)=   "lblLabels(5)"
-         Tab(3).Control(9)=   "lblLabels(4)"
-         Tab(3).Control(10)=   "lblLabels(3)"
-         Tab(3).Control(11)=   "lblLabels(15)"
+         Tab(3).Control(0)=   "lblLabels(15)"
+         Tab(3).Control(1)=   "lblLabels(3)"
+         Tab(3).Control(2)=   "lblLabels(4)"
+         Tab(3).Control(3)=   "lblLabels(5)"
+         Tab(3).Control(4)=   "lblLabels(6)"
+         Tab(3).Control(5)=   "Label3"
+         Tab(3).Control(6)=   "Label5"
+         Tab(3).Control(7)=   "txtFields(15)"
+         Tab(3).Control(8)=   "txtFields(3)"
+         Tab(3).Control(9)=   "AJIA_APOU"
+         Tab(3).Control(10)=   "POS_APOU"
+         Tab(3).Control(11)=   "PEL"
          Tab(3).ControlCount=   12
          TabCaption(4)   =   "Μετασχηματισμοί Ακυρώσεις"
          TabPicture(4)   =   "bohu3.frx":0070
          Tab(4).ControlEnabled=   0   'False
-         Tab(4).Control(0)=   "combometasx"
-         Tab(4).Control(1)=   "ComboAKYR"
-         Tab(4).Control(2)=   "STADIO"
-         Tab(4).Control(3)=   "txtFields(8)"
-         Tab(4).Control(4)=   "akyr"
-         Tab(4).Control(5)=   "txtFields(13)"
-         Tab(4).Control(6)=   "lblLabels(7)"
-         Tab(4).Control(7)=   "lblLabels(8)"
-         Tab(4).Control(8)=   "lblLabels(18)"
-         Tab(4).Control(9)=   "lblLabels(14)"
+         Tab(4).Control(0)=   "lblLabels(14)"
+         Tab(4).Control(1)=   "lblLabels(18)"
+         Tab(4).Control(2)=   "lblLabels(8)"
+         Tab(4).Control(3)=   "lblLabels(7)"
+         Tab(4).Control(4)=   "txtFields(13)"
+         Tab(4).Control(5)=   "akyr"
+         Tab(4).Control(6)=   "txtFields(8)"
+         Tab(4).Control(7)=   "STADIO"
+         Tab(4).Control(8)=   "ComboAKYR"
+         Tab(4).Control(9)=   "combometasx"
          Tab(4).ControlCount=   10
          TabCaption(5)   =   "Λοιπά"
          TabPicture(5)   =   "bohu3.frx":008C
-         Tab(5).ControlEnabled=   -1  'True
+         Tab(5).ControlEnabled=   0   'False
          Tab(5).Control(0)=   "lblLabels(19)"
          Tab(5).Control(0).Enabled=   0   'False
          Tab(5).Control(1)=   "lblΠΩΛΗΤΕΣ"
@@ -198,23 +217,23 @@ Begin VB.Form bohu3
          Tab(5).ControlCount=   16
          Begin VB.TextBox proepilFPA 
             Height          =   288
-            Left            =   4440
+            Left            =   -70560
             TabIndex        =   155
             Top             =   4920
             Width           =   1692
          End
          Begin VB.ComboBox katforou 
-            Height          =   288
-            Left            =   6960
+            Height          =   315
+            Left            =   -68040
             Style           =   2  'Dropdown List
             TabIndex        =   154
             Top             =   3360
             Width           =   4692
          End
          Begin VB.ComboBox foros 
-            Height          =   288
+            Height          =   315
             ItemData        =   "bohu3.frx":00A8
-            Left            =   6960
+            Left            =   -68040
             List            =   "bohu3.frx":00B8
             Style           =   2  'Dropdown List
             TabIndex        =   153
@@ -222,8 +241,8 @@ Begin VB.Form bohu3
             Width           =   4692
          End
          Begin VB.ComboBox ApallFpa 
-            Height          =   288
-            Left            =   -75000
+            Height          =   315
+            Left            =   0
             TabIndex        =   152
             Text            =   "Combo1"
             Top             =   3600
@@ -231,7 +250,7 @@ Begin VB.Form bohu3
          End
          Begin VB.TextBox DESMIA 
             Height          =   288
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   150
             Top             =   2520
             Width           =   372
@@ -267,7 +286,7 @@ Begin VB.Form bohu3
          End
          Begin VB.TextBox DEFAULTAPALL 
             Height          =   285
-            Left            =   -69960
+            Left            =   5040
             TabIndex        =   140
             Top             =   3600
             Width           =   300
@@ -275,7 +294,7 @@ Begin VB.Form bohu3
          Begin VB.CheckBox chKvAT 
             Caption         =   "Υποχρεωτικό ΑΦΜ"
             Height          =   255
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   139
             Top             =   3120
             Width           =   3375
@@ -302,7 +321,7 @@ Begin VB.Form bohu3
             DataSource      =   "adodc1"
             Height          =   375
             Index           =   8
-            Left            =   4440
+            Left            =   -70560
             TabIndex        =   133
             Top             =   3960
             Width           =   1692
@@ -671,16 +690,16 @@ Begin VB.Form bohu3
             BackColor       =   &H00C0FFC0&
             BeginProperty Font 
                Name            =   "Arial Narrow"
-               Size            =   8.4
+               Size            =   8.25
                Charset         =   161
                Weight          =   400
                Underline       =   0   'False
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   252
+            Height          =   285
             ItemData        =   "bohu3.frx":18A1
-            Left            =   -71760
+            Left            =   3240
             List            =   "bohu3.frx":18E1
             TabIndex        =   53
             Top             =   1932
@@ -693,7 +712,7 @@ Begin VB.Form bohu3
             Enabled         =   0   'False
             Height          =   285
             Index           =   12
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   52
             Top             =   1932
             Width           =   372
@@ -702,7 +721,7 @@ Begin VB.Form bohu3
             Enabled         =   0   'False
             Height          =   285
             Index           =   17
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   51
             Top             =   4428
             Width           =   3375
@@ -713,7 +732,7 @@ Begin VB.Form bohu3
             Enabled         =   0   'False
             Height          =   285
             Index           =   16
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   50
             Top             =   4080
             Width           =   3375
@@ -734,7 +753,7 @@ Begin VB.Form bohu3
             Enabled         =   0   'False
             Height          =   285
             Index           =   11
-            Left            =   -72600
+            Left            =   2400
             TabIndex        =   48
             Top             =   1560
             Width           =   3375
@@ -765,8 +784,8 @@ Begin VB.Form bohu3
             Width           =   3375
          End
          Begin VB.ListBox ARITMISI 
-            Height          =   1200
-            Left            =   -69120
+            Height          =   1035
+            Left            =   5880
             TabIndex        =   44
             Top             =   4080
             Width           =   6015
@@ -776,7 +795,7 @@ Begin VB.Form bohu3
             Caption         =   "Eνεργό σε Υποκ3"
             ForeColor       =   &H00FF0000&
             Height          =   255
-            Left            =   3000
+            Left            =   -72000
             TabIndex        =   43
             Top             =   3144
             Width           =   1695
@@ -784,7 +803,7 @@ Begin VB.Form bohu3
          Begin VB.TextBox Parakratisi 
             ForeColor       =   &H00FF0000&
             Height          =   285
-            Left            =   4440
+            Left            =   -70560
             TabIndex        =   42
             Top             =   3564
             Width           =   1692
@@ -792,7 +811,7 @@ Begin VB.Form bohu3
          Begin VB.TextBox POLITES 
             ForeColor       =   &H00FF0000&
             Height          =   285
-            Left            =   4440
+            Left            =   -70560
             TabIndex        =   41
             Top             =   4584
             Width           =   1692
@@ -802,7 +821,7 @@ Begin VB.Form bohu3
             Caption         =   "Eνεργό σε Υποκ2"
             ForeColor       =   &H00FF0000&
             Height          =   255
-            Left            =   3000
+            Left            =   -72000
             TabIndex        =   40
             Top             =   2784
             Width           =   1695
@@ -812,7 +831,7 @@ Begin VB.Form bohu3
             Caption         =   "Eνεργό σε Υποκ1"
             ForeColor       =   &H00FF0000&
             Height          =   255
-            Left            =   3000
+            Left            =   -72000
             TabIndex        =   39
             Top             =   2424
             Width           =   1695
@@ -822,15 +841,15 @@ Begin VB.Form bohu3
             Caption         =   "Eνεργό σε Κεντρ"
             ForeColor       =   &H00FF0000&
             Height          =   255
-            Left            =   3000
+            Left            =   -72000
             TabIndex        =   38
             Top             =   2064
             Width           =   1695
          End
          Begin VB.ComboBox AYTOKINHTO 
             ForeColor       =   &H00FF0000&
-            Height          =   288
-            Left            =   4440
+            Height          =   315
+            Left            =   -70560
             Style           =   2  'Dropdown List
             TabIndex        =   37
             Top             =   1560
@@ -877,7 +896,7 @@ Begin VB.Form bohu3
             BackColor       =   &H00C0FFC0&
             Caption         =   "Εναλλακτικά"
             Height          =   2292
-            Left            =   -69120
+            Left            =   5880
             TabIndex        =   23
             Top             =   1440
             Width           =   6015
@@ -927,28 +946,28 @@ Begin VB.Form bohu3
                Width           =   2175
             End
             Begin VB.Image Image1 
-               Height          =   180
+               Height          =   225
                Index           =   3
                Left            =   5280
                Picture         =   "bohu3.frx":2F4A
                Top             =   1440
-               Width           =   192
+               Width           =   240
             End
             Begin VB.Image Image1 
-               Height          =   180
+               Height          =   225
                Index           =   2
                Left            =   5280
                Picture         =   "bohu3.frx":347C
                Top             =   840
-               Width           =   192
+               Width           =   240
             End
             Begin VB.Image Image1 
-               Height          =   180
+               Height          =   225
                Index           =   1
                Left            =   5280
                Picture         =   "bohu3.frx":39AE
                Top             =   240
-               Width           =   192
+               Width           =   240
             End
             Begin VB.Label Label14 
                AutoSize        =   -1  'True
@@ -990,7 +1009,7 @@ Begin VB.Form bohu3
             Caption         =   "Προεπιλεγμένο ΦΠΑ για όλα τα είδη"
             ForeColor       =   &H00FF0000&
             Height          =   192
-            Left            =   960
+            Left            =   -74040
             TabIndex        =   156
             Top             =   4920
             Width           =   2616
@@ -1000,7 +1019,7 @@ Begin VB.Form bohu3
             BackStyle       =   0  'Transparent
             Caption         =   "......"
             Height          =   192
-            Left            =   -71280
+            Left            =   3720
             TabIndex        =   151
             Top             =   2520
             Width           =   1536
@@ -1010,7 +1029,7 @@ Begin VB.Form bohu3
             BackStyle       =   0  'Transparent
             Caption         =   "Σειρές εκτύπωσης 0/2"
             Height          =   192
-            Left            =   -74400
+            Left            =   600
             TabIndex        =   149
             Top             =   2520
             Width           =   1572
@@ -1030,7 +1049,7 @@ Begin VB.Form bohu3
             BackStyle       =   0  'Transparent
             Caption         =   "Προεπιλεγμένη Απαλλαγή ΦΠΑ"
             Height          =   192
-            Left            =   -75000
+            Left            =   0
             TabIndex        =   141
             Top             =   3360
             Width           =   2316
@@ -1061,7 +1080,7 @@ Begin VB.Form bohu3
             Caption         =   "Προεπιλ.Κατηγ και Τύπος Φόρου π.χ. 3;6 Για λοιποί φόροι(3) και ξενοδοχ.1-2 αστέρια(6)"
             ForeColor       =   &H00FF0000&
             Height          =   384
-            Left            =   960
+            Left            =   -74040
             TabIndex        =   134
             Top             =   3960
             Width           =   3372
@@ -1071,7 +1090,7 @@ Begin VB.Form bohu3
             Caption         =   "Δύο φόροι=3 Ενα Φόρος=1  Καθόλου=0"
             ForeColor       =   &H00FF0000&
             Height          =   252
-            Left            =   960
+            Left            =   -74040
             TabIndex        =   132
             Top             =   3600
             Width           =   3132
@@ -1370,7 +1389,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF8080&
             Height          =   252
             Index           =   12
-            Left            =   -74520
+            Left            =   480
             TabIndex        =   102
             ToolTipText     =   "11 LASER 10 LASER ΜΙΑ ΕΚΤΥΠΩΣΗ 12 LASER ΦΟΡΜΑ ΤΙΜΟL2  99 ΑΚΙΔΩΝ F90.TXT ΦΟΡΜΑ  18 τριπλο 13=TIMOL3"
             Top             =   1920
@@ -1383,7 +1402,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF8080&
             Height          =   252
             Index           =   11
-            Left            =   -74520
+            Left            =   480
             TabIndex        =   101
             Top             =   1560
             Width           =   1812
@@ -1395,7 +1414,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF8080&
             Height          =   360
             Index           =   17
-            Left            =   -74280
+            Left            =   720
             TabIndex        =   100
             Top             =   4488
             Width           =   1812
@@ -1407,7 +1426,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF8080&
             Height          =   360
             Index           =   16
-            Left            =   -74280
+            Left            =   720
             TabIndex        =   99
             Top             =   4152
             Width           =   1812
@@ -1465,7 +1484,7 @@ Begin VB.Form bohu3
             BackStyle       =   0  'Transparent
             Caption         =   "ΜΕΤΡΗΤΕΣ ΑΡΙΘΜΗΣΗΣ ΠΑΡΑΣΤΑΤΙΚΩΝ"
             Height          =   252
-            Left            =   -68760
+            Left            =   6240
             TabIndex        =   94
             Top             =   3840
             Width           =   3612
@@ -1488,7 +1507,7 @@ Begin VB.Form bohu3
             Caption         =   "ΠΩΛΗΤΕΣ"
             ForeColor       =   &H00FF0000&
             Height          =   192
-            Left            =   3000
+            Left            =   -72000
             TabIndex        =   92
             Top             =   4680
             Width           =   732
@@ -1500,7 +1519,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   192
             Index           =   19
-            Left            =   960
+            Left            =   -74040
             TabIndex        =   91
             Top             =   1560
             Width           =   3012
@@ -1653,8 +1672,8 @@ Begin VB.Form bohu3
       Top             =   9120
       Visible         =   0   'False
       Width           =   1812
-      _ExtentX        =   3196
-      _ExtentY        =   572
+      _ExtentX        =   3201
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1685,7 +1704,7 @@ Begin VB.Form bohu3
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1700,8 +1719,8 @@ Begin VB.Form bohu3
       Top             =   9120
       Visible         =   0   'False
       Width           =   4332
-      _ExtentX        =   7641
-      _ExtentY        =   656
+      _ExtentX        =   7646
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1732,7 +1751,7 @@ Begin VB.Form bohu3
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1747,8 +1766,8 @@ Begin VB.Form bohu3
       Top             =   9120
       Visible         =   0   'False
       Width           =   4332
-      _ExtentX        =   7641
-      _ExtentY        =   656
+      _ExtentX        =   7646
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1779,7 +1798,7 @@ Begin VB.Form bohu3
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1791,8 +1810,8 @@ Begin VB.Form bohu3
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   1800
       Top             =   9120
-      _ExtentX        =   995
-      _ExtentY        =   995
+      _ExtentX        =   1005
+      _ExtentY        =   1005
       BackColor       =   -2147483643
       ImageWidth      =   16
       ImageHeight     =   16
@@ -1912,19 +1931,19 @@ Begin VB.Form bohu3
          Width           =   3855
       End
       Begin MSComctlLib.ImageCombo Combo2 
-         Height          =   360
+         Height          =   375
          Left            =   120
          TabIndex        =   4
          Top             =   840
-         Width           =   6744
-         _ExtentX        =   11896
-         _ExtentY        =   635
+         Width           =   6750
+         _ExtentX        =   11906
+         _ExtentY        =   661
          _Version        =   393216
          ForeColor       =   -2147483640
          BackColor       =   -2147483643
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Courier New"
-            Size            =   10.8
+            Size            =   10.5
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2464,10 +2483,10 @@ typos_par.Text = CNull(Adodc1.Recordset("C1"))
         
 
 500     If Val(txtFields(16).Text) > 0 Then
-510         ADODC2.ConnectionString = gConnect
-520         ADODC2.RecordSource = "SELECT *FROM ARITMISI WHERE ID=" + txtFields(16).Text
-530         ADODC2.Refresh
-540         txtFields(17) = nNull(ADODC2.Recordset("aritmisi"))
+510         Adodc2.ConnectionString = gConnect
+520         Adodc2.RecordSource = "SELECT *FROM ARITMISI WHERE ID=" + txtFields(16).Text
+530         Adodc2.Refresh
+540         txtFields(17) = nNull(Adodc2.Recordset("aritmisi"))
 550         txtFields(17).SetFocus
         End If
 
@@ -3237,11 +3256,11 @@ ARITMISI.Clear
                 '   Ndefparas = k + 1
                 'End If
 350             If R("POL") = 2 Then  ' αγορες
-360                 Combo2.ComboItems.ADD k + 1, "", Format(k + 1, "##") + "-" + R("eidos") + "  " + R("TITLOS") + Space(1) + R("eidos"), 6
+360                 Combo2.ComboItems.Add k + 1, "", Format(k + 1, "##") + "-" + R("eidos") + "  " + R("TITLOS") + Space(1) + R("eidos"), 6
                     ' Combo2.ComboItems(k).Image = 6
                 Else
              
-370                 Combo2.ComboItems.ADD k + 1, "", Format(k + 1, "##") + "-" + R("eidos") + "  " + R("TITLOS") + Space(1) + R("eidos"), 3
+370                 Combo2.ComboItems.Add k + 1, "", Format(k + 1, "##") + "-" + R("eidos") + "  " + R("TITLOS") + Space(1) + R("eidos"), 3
                     ' Combo2.ComboItems(k).Image = 3
                 End If
 
@@ -4043,10 +4062,10 @@ Private Sub txtFields_LostFocus(index As Integer)
 100     txtFields(index).BackColor = vbWhite
 
          If index = 16 And Val(txtFields(16).Text) > 0 Then
-           ADODC2.ConnectionString = gConnect
-           ADODC2.RecordSource = "SELECT *FROM ARITMISI WHERE ID=" + txtFields(16).Text
-           ADODC2.Refresh
-           txtFields(17).Text = ADODC2.Recordset("aritmisi")
+           Adodc2.ConnectionString = gConnect
+           Adodc2.RecordSource = "SELECT *FROM ARITMISI WHERE ID=" + txtFields(16).Text
+           Adodc2.Refresh
+           txtFields(17).Text = Adodc2.Recordset("aritmisi")
            txtFields(17).SetFocus
          End If
         '<EhFooter>

@@ -13,6 +13,7 @@ Begin VB.MDIForm MDIForm1
    ClientWidth     =   16890
    Icon            =   "MDIFORM14.frx":0000
    LinkTopic       =   "MDIForm1"
+   WindowState     =   2  'Maximized
    Begin jc_MDITabs.jcMDITabs jcMDITabs2 
       Left            =   0
       Top             =   360
@@ -24,12 +25,12 @@ Begin VB.MDIForm MDIForm1
       Align           =   3  'Align Left
       BackColor       =   &H80000014&
       BorderStyle     =   0  'None
-      Height          =   8565
+      Height          =   8805
       Left            =   0
-      ScaleHeight     =   8565
+      ScaleHeight     =   8805
       ScaleWidth      =   2985
       TabIndex        =   2
-      Top             =   660
+      Top             =   420
       Width           =   2988
       Begin VB.CommandButton cmdset 
          BackColor       =   &H80000010&
@@ -228,12 +229,10 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -248,28 +247,24 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -291,15 +286,15 @@ Begin VB.MDIForm MDIForm1
    End
    Begin MSComctlLib.Toolbar tlbToolBar 
       Align           =   1  'Align Top
-      Height          =   660
+      Height          =   420
       Left            =   0
       TabIndex        =   1
       Top             =   0
       Width           =   16890
       _ExtentX        =   29792
-      _ExtentY        =   1164
-      ButtonWidth     =   487
-      ButtonHeight    =   466
+      _ExtentY        =   741
+      ButtonWidth     =   609
+      ButtonHeight    =   582
       AllowCustomize  =   0   'False
       Wrappable       =   0   'False
       Appearance      =   1

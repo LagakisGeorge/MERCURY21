@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -8,15 +8,23 @@ Begin VB.Form apot7
    BackColor       =   &H00FF0000&
    Caption         =   "—ıËÏÈÊ¸ÏÂÌÂÚ ≈ÍÙı˛ÛÂÈÚ"
    ClientHeight    =   9900
-   ClientLeft      =   228
-   ClientTop       =   768
-   ClientWidth     =   19104
+   ClientLeft      =   225
+   ClientTop       =   765
+   ClientWidth     =   19110
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   9900
-   ScaleWidth      =   19104
+   ScaleWidth      =   19110
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdREPORT 
+      Caption         =   "REPORT"
+      Height          =   240
+      Left            =   4800
+      TabIndex        =   41
+      Top             =   1200
+      Width           =   990
+   End
    Begin VB.CommandButton Unilever 
       Caption         =   "Unilever"
       Height          =   360
@@ -132,9 +140,9 @@ Begin VB.Form apot7
       AutoSize        =   -1  'True
       Height          =   450
       Left            =   16425
-      ScaleHeight     =   20.4
+      ScaleHeight     =   19.5
       ScaleMode       =   2  'Point
-      ScaleWidth      =   40.2
+      ScaleWidth      =   39.75
       TabIndex        =   23
       Top             =   7335
       Visible         =   0   'False
@@ -143,8 +151,8 @@ Begin VB.Form apot7
    Begin VB.PictureBox Picture2 
       Height          =   3855
       Left            =   13800
-      ScaleHeight     =   3804
-      ScaleWidth      =   5064
+      ScaleHeight     =   3795
+      ScaleWidth      =   5055
       TabIndex        =   22
       Top             =   4680
       Visible         =   0   'False
@@ -239,7 +247,7 @@ Begin VB.Form apot7
       TabIndex        =   6
       Top             =   12
       Width           =   7608
-      _ExtentX        =   13420
+      _ExtentX        =   13414
       _ExtentY        =   6138
       _Version        =   393217
       Enabled         =   0   'False
@@ -262,7 +270,7 @@ Begin VB.Form apot7
       Width           =   2085
    End
    Begin VB.FileListBox File1 
-      Height          =   1800
+      Height          =   1650
       Left            =   0
       TabIndex        =   3
       Top             =   1080
@@ -275,8 +283,8 @@ Begin VB.Form apot7
       TabIndex        =   2
       Top             =   4680
       Width           =   13755
-      _ExtentX        =   24257
-      _ExtentY        =   8192
+      _ExtentX        =   24262
+      _ExtentY        =   8202
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -329,7 +337,7 @@ Begin VB.Form apot7
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).PartialRightColumn=   0   'False
       Splits(0).MarqueeStyle=   4
-      Splits(0).RecordSelectorWidth=   699
+      Splits(0).RecordSelectorWidth=   688
       Splits(0)._SavedRecordSelectors=   -1  'True
       Splits(0).AllowColMove=   -1  'True
       Splits(0).DividerColor=   14215660
@@ -337,57 +345,57 @@ Begin VB.Form apot7
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
       Splits(0)._ColumnProps(0)=   "Columns.Count=11"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=2731"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=2725"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
       Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
       Splits(0)._ColumnProps(5)=   "Column(0).Order=1"
-      Splits(0)._ColumnProps(6)=   "Column(1).Width=2731"
+      Splits(0)._ColumnProps(6)=   "Column(1).Width=2725"
       Splits(0)._ColumnProps(7)=   "Column(1).DividerColor=0"
       Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2646"
       Splits(0)._ColumnProps(9)=   "Column(1)._EditAlways=0"
       Splits(0)._ColumnProps(10)=   "Column(1).Order=2"
-      Splits(0)._ColumnProps(11)=   "Column(2).Width=2731"
+      Splits(0)._ColumnProps(11)=   "Column(2).Width=2725"
       Splits(0)._ColumnProps(12)=   "Column(2).DividerColor=0"
       Splits(0)._ColumnProps(13)=   "Column(2)._WidthInPix=2646"
       Splits(0)._ColumnProps(14)=   "Column(2)._EditAlways=0"
       Splits(0)._ColumnProps(15)=   "Column(2).Order=3"
-      Splits(0)._ColumnProps(16)=   "Column(3).Width=2731"
+      Splits(0)._ColumnProps(16)=   "Column(3).Width=2725"
       Splits(0)._ColumnProps(17)=   "Column(3).DividerColor=0"
       Splits(0)._ColumnProps(18)=   "Column(3)._WidthInPix=2646"
       Splits(0)._ColumnProps(19)=   "Column(3)._EditAlways=0"
       Splits(0)._ColumnProps(20)=   "Column(3).Order=4"
-      Splits(0)._ColumnProps(21)=   "Column(4).Width=2731"
+      Splits(0)._ColumnProps(21)=   "Column(4).Width=2725"
       Splits(0)._ColumnProps(22)=   "Column(4).DividerColor=0"
       Splits(0)._ColumnProps(23)=   "Column(4)._WidthInPix=2646"
       Splits(0)._ColumnProps(24)=   "Column(4)._EditAlways=0"
       Splits(0)._ColumnProps(25)=   "Column(4).Order=5"
-      Splits(0)._ColumnProps(26)=   "Column(5).Width=2731"
+      Splits(0)._ColumnProps(26)=   "Column(5).Width=2725"
       Splits(0)._ColumnProps(27)=   "Column(5).DividerColor=0"
       Splits(0)._ColumnProps(28)=   "Column(5)._WidthInPix=2646"
       Splits(0)._ColumnProps(29)=   "Column(5)._EditAlways=0"
       Splits(0)._ColumnProps(30)=   "Column(5).Order=6"
-      Splits(0)._ColumnProps(31)=   "Column(6).Width=2731"
+      Splits(0)._ColumnProps(31)=   "Column(6).Width=2725"
       Splits(0)._ColumnProps(32)=   "Column(6).DividerColor=0"
       Splits(0)._ColumnProps(33)=   "Column(6)._WidthInPix=2646"
       Splits(0)._ColumnProps(34)=   "Column(6)._EditAlways=0"
       Splits(0)._ColumnProps(35)=   "Column(6).Order=7"
-      Splits(0)._ColumnProps(36)=   "Column(7).Width=2731"
+      Splits(0)._ColumnProps(36)=   "Column(7).Width=2725"
       Splits(0)._ColumnProps(37)=   "Column(7).DividerColor=0"
       Splits(0)._ColumnProps(38)=   "Column(7)._WidthInPix=2646"
       Splits(0)._ColumnProps(39)=   "Column(7)._EditAlways=0"
       Splits(0)._ColumnProps(40)=   "Column(7).Order=8"
-      Splits(0)._ColumnProps(41)=   "Column(8).Width=2731"
+      Splits(0)._ColumnProps(41)=   "Column(8).Width=2725"
       Splits(0)._ColumnProps(42)=   "Column(8).DividerColor=0"
       Splits(0)._ColumnProps(43)=   "Column(8)._WidthInPix=2646"
       Splits(0)._ColumnProps(44)=   "Column(8)._EditAlways=0"
       Splits(0)._ColumnProps(45)=   "Column(8).Order=9"
-      Splits(0)._ColumnProps(46)=   "Column(9).Width=2731"
+      Splits(0)._ColumnProps(46)=   "Column(9).Width=2725"
       Splits(0)._ColumnProps(47)=   "Column(9).DividerColor=0"
       Splits(0)._ColumnProps(48)=   "Column(9)._WidthInPix=2646"
       Splits(0)._ColumnProps(49)=   "Column(9)._EditAlways=0"
       Splits(0)._ColumnProps(50)=   "Column(9).Order=10"
-      Splits(0)._ColumnProps(51)=   "Column(10).Width=2731"
+      Splits(0)._ColumnProps(51)=   "Column(10).Width=2725"
       Splits(0)._ColumnProps(52)=   "Column(10).DividerColor=0"
       Splits(0)._ColumnProps(53)=   "Column(10)._WidthInPix=2646"
       Splits(0)._ColumnProps(54)=   "Column(10)._EditAlways=0"
@@ -395,8 +403,8 @@ Begin VB.Form apot7
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -762,12 +770,12 @@ Begin VB.Form apot7
       ToolTipText     =   "@x1  .˜.  HME>@x1"
       Top             =   2280
       Width           =   1605
-      _ExtentX        =   2836
-      _ExtentY        =   656
+      _ExtentX        =   2831
+      _ExtentY        =   661
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   90898433
+      Format          =   309657601
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -777,12 +785,12 @@ Begin VB.Form apot7
       ToolTipText     =   "@x2"
       Top             =   2670
       Width           =   1605
-      _ExtentX        =   2836
-      _ExtentY        =   656
+      _ExtentX        =   2831
+      _ExtentY        =   661
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   90898433
+      Format          =   309657601
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -791,8 +799,8 @@ Begin VB.Form apot7
       Top             =   9360
       Visible         =   0   'False
       Width           =   3375
-      _ExtentX        =   5948
-      _ExtentY        =   656
+      _ExtentX        =   5953
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -823,7 +831,7 @@ Begin VB.Form apot7
       Caption         =   "SQL SERVER"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -852,7 +860,7 @@ Begin VB.Form apot7
       Caption         =   "‘…‘Àœ”"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -871,7 +879,7 @@ Begin VB.Form apot7
       Caption         =   "¡–œ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -890,7 +898,7 @@ Begin VB.Form apot7
       Caption         =   "¡–œ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -933,7 +941,7 @@ Begin VB.Form apot7
       Caption         =   "¡–œ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -952,7 +960,7 @@ Begin VB.Form apot7
       Caption         =   "≈Ÿ”"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -1030,7 +1038,7 @@ End Property
 
 
 
-Function PutDates(ByVal x As String)
+Function PutDates(ByVal X As String)
 
         '<EhHeader>
         On Error GoTo PutDates_Err
@@ -1044,7 +1052,7 @@ Function PutDates(ByVal x As String)
 
         Dim SQL2 As String
 
-120     SQL2 = x    ' TEXT2.Text
+120     SQL2 = X    ' TEXT2.Text
 
 130     SQL2 = Replace(SQL2, "@X1", X1)
 140     SQL2 = Replace(SQL2, "@X2", X2)
@@ -1091,7 +1099,7 @@ Private Sub cmdClearFilter_Click()
 
 120     Next Col
 
-130     ADODC2.Recordset.Filter = adFilterNone
+130     Adodc2.Recordset.Filter = adFilterNone
 
         '<EhFooter>
         Exit Sub
@@ -1191,6 +1199,10 @@ CMDAPOTHIKEYSI_Click_Err:
 
         '</EhFooter>
 
+End Sub
+
+Private Sub cmdREPORT_Click()
+    Shell "EXPLORER.EXE " + "C:\MERCVB\REPORTS\TAMEIO3.RPT", vbMaximizedFocus
 End Sub
 
 Private Sub Command1_Click()
@@ -2243,24 +2255,24 @@ Private Sub Command2_Click()
 
         '</EhHeader>
 
-100     ADODC2.Recordset.MoveFirst
+100     Adodc2.Recordset.MoveFirst
 
         Dim par As String
 
-110     Do While Not ADODC2.Recordset.EOF
+110     Do While Not Adodc2.Recordset.EOF
 
-120         If Left(ADODC2.Recordset("ATIM"), 1) = "A" Then
-130             par = "ƒ¡" + mID(ADODC2.Recordset("ATIM"), 2, 6) + "¬"
-140         ElseIf Left(ADODC2.Recordset("ATIM"), 1) = "L" Then
-150             par = "ƒ¡" + mID(ADODC2.Recordset("ATIM"), 2, 6) + "√"
+120         If Left(Adodc2.Recordset("ATIM"), 1) = "A" Then
+130             par = "ƒ¡" + mID(Adodc2.Recordset("ATIM"), 2, 6) + "¬"
+140         ElseIf Left(Adodc2.Recordset("ATIM"), 1) = "L" Then
+150             par = "ƒ¡" + mID(Adodc2.Recordset("ATIM"), 2, 6) + "√"
 
-160         ElseIf Left(ADODC2.Recordset("ATIM"), 1) = "E" Then
-170             par = "ƒ≈" + mID(ADODC2.Recordset("ATIM"), 2, 6)
+160         ElseIf Left(Adodc2.Recordset("ATIM"), 1) = "E" Then
+170             par = "ƒ≈" + mID(Adodc2.Recordset("ATIM"), 2, 6)
             Else
-180             par = ADODC2.Recordset("ATIM")
+180             par = Adodc2.Recordset("ATIM")
             End If
 
-190         STR_EKT = Format(ADODC2.Recordset("HME"), "DD/MM/YYYY") + " " + Left(par + Space(10), 10) + " " + Left(ADODC2.Recordset("KODE") + Space(10), 10) + " " + Left(ADODC2.Recordset("ONOMA") + Space(25), 25) + " " + " …¬" + " " + Left(Format(ADODC2.Recordset("TIMM"), "###") + Space(4), 4) + " TEM " + " " + Right("        " + Format(ADODC2.Recordset("XRE"), "###0"), 6) + " " + Right("       " + Format(ADODC2.Recordset("PIS"), "###0"), 6)
+190         STR_EKT = Format(Adodc2.Recordset("HME"), "DD/MM/YYYY") + " " + Left(par + Space(10), 10) + " " + Left(Adodc2.Recordset("KODE") + Space(10), 10) + " " + Left(Adodc2.Recordset("ONOMA") + Space(25), 25) + " " + " …¬" + " " + Left(Format(Adodc2.Recordset("TIMM"), "###") + Space(4), 4) + " TEM " + " " + Right("        " + Format(Adodc2.Recordset("XRE"), "###0"), 6) + " " + Right("       " + Format(Adodc2.Recordset("PIS"), "###0"), 6)
 
 200         MILSEC 100
 
@@ -2268,7 +2280,7 @@ Private Sub Command2_Click()
 220         Print #1, Chr(15) + to437(STR_EKT)
 230         Close 1
 
-240         ADODC2.Recordset.MoveNext
+240         Adodc2.Recordset.MoveNext
 
         Loop
 
@@ -2340,9 +2352,9 @@ Private Sub Command5_Click()
 
         Dim k
 
-        Dim a$, B, x
+        Dim a$, B, X
 
-        Dim d
+        Dim D
 
         Dim FPA As Integer
 
@@ -3139,7 +3151,7 @@ Function Get_GEF()
 
         Dim DB  As Database
 
-        Dim R   As New ADODB.Recordset, x As String
+        Dim R   As New ADODB.Recordset, X As String
 
         Dim GEF As String
     
@@ -3849,7 +3861,7 @@ Private Sub TDBGrid_FilterChange()
 
 120     TDBGrid.HoldFields
 
-130     ADODC2.Recordset.Filter = getFilter()
+130     Adodc2.Recordset.Filter = getFilter()
 
 140     TDBGrid.Col = c
 
@@ -3901,7 +3913,7 @@ Private Function getFilter() As String
 140                 tmp = tmp & " AND "
                 End If
 
-150             If ADODC2.Recordset(Col.ColIndex).Type = 5 Then    '
+150             If Adodc2.Recordset(Col.ColIndex).Type = 5 Then    '
 160                 If InStr(">< >= <=  = ", Left(Col.FILTERTEXT, 1)) > 0 And Len(Col.FILTERTEXT) > 1 And IsNumeric(Right(Col.FILTERTEXT, 1)) Then
 170                     tmp = tmp & Col.DataField & Col.FILTERTEXT
                     Else
@@ -3965,24 +3977,24 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         DATA2.Connect = "ODBC;" + gConnect
-130         DATA2.RecordSource = PutDates(Text2.Text)
-140         DATA2.Refresh
+120         data2.Connect = "ODBC;" + gConnect
+130         data2.RecordSource = PutDates(Text2.Text)
+140         data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
             If Len(FDSN) > 1 Then
                 'gdb2.Open FDSN
-                ADODC2.ConnectionString = FDSN
+                Adodc2.ConnectionString = FDSN
             Else
 170             'Gdb.Execute PutDates(TEXT2.Text), lo
-                ADODC2.ConnectionString = gConnect
+                Adodc2.ConnectionString = gConnect
             End If
 
-            ADODC2.RecordSource = PutDates(Text2.Text)
-            ADODC2.Refresh
+            Adodc2.RecordSource = PutDates(Text2.Text)
+            Adodc2.Refresh
 
-180         ADODC2.Recordset.MoveFirst
+180         Adodc2.Recordset.MoveFirst
 
             On Error Resume Next
 
@@ -4019,25 +4031,25 @@ Public Sub CMDPROVOLI_Click()
              
              
             
-190         Do While Not ADODC2.Recordset.EOF
+190         Do While Not Adodc2.Recordset.EOF
                  If FF.CancelButton.Enabled = False Then
                           FF.Hide
                           Set FF = Nothing
                           Exit Do
                  End If
 
-200             For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
-                  If ADODC2.Recordset.FIELDS(k).Type = 200 Then
+200             For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+                  If Adodc2.Recordset.FIELDS(k).Type = 200 Then
                   Else
-210                 If IsNumeric(ADODC2.Recordset.FIELDS(k).Value) And ADODC2.Recordset.FIELDS(k).Type <> 202 Then
-220                     sumes(k) = sumes(k) + nNull(ADODC2.Recordset.FIELDS(k).Value)
+210                 If IsNumeric(Adodc2.Recordset.FIELDS(k).Value) And Adodc2.Recordset.FIELDS(k).Type <> 202 Then
+220                     sumes(k) = sumes(k) + nNull(Adodc2.Recordset.FIELDS(k).Value)
                     End If
                   End If
                 Next
 
                 DoEvents
                 KL = KL + 1: Me.Caption = KL
-230             ADODC2.Recordset.MoveNext
+230             Adodc2.Recordset.MoveNext
 
                 '  Exit Do
             Loop
@@ -4048,7 +4060,7 @@ Public Sub CMDPROVOLI_Click()
 
 
 
-240         For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+240         For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 
 250             If sumes(k) > 0 Then
 260                 TDBGrid.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
@@ -4425,7 +4437,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     ADODC2.Recordset.sort = strSort
+160     Adodc2.Recordset.Sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4478,17 +4490,17 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
         'TDBGrid.HoldFields
         Dim sumes(100) As String
 
-100     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 160         TDBGrid.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
