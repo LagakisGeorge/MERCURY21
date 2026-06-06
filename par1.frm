@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -13,15 +13,15 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form par1 
    BackColor       =   &H00FF0000&
    Caption         =   "Õ›Ô –·Ò·ÛÙ·ÙÈÍ¸"
-   ClientHeight    =   12516
-   ClientLeft      =   -5592
+   ClientHeight    =   12510
+   ClientLeft      =   -5595
    ClientTop       =   540
    ClientWidth     =   19260
    ForeColor       =   &H0000FF00&
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   12516
+   ScaleHeight     =   12510
    ScaleWidth      =   19260
    WindowState     =   2  'Maximized
    Begin VB.CommandButton Command9 
@@ -84,8 +84,8 @@ Begin VB.Form par1
    Begin VB.PictureBox Picture1 
       Height          =   492
       Left            =   18480
-      ScaleHeight     =   444
-      ScaleWidth      =   444
+      ScaleHeight     =   435
+      ScaleWidth      =   435
       TabIndex        =   154
       TabStop         =   0   'False
       Top             =   480
@@ -132,8 +132,8 @@ Begin VB.Form par1
       TabIndex        =   139
       Top             =   720
       Width           =   4845
-      _ExtentX        =   8551
-      _ExtentY        =   6011
+      _ExtentX        =   8546
+      _ExtentY        =   6006
       _Version        =   393216
       TabHeight       =   520
       BackColor       =   -2147483635
@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -277,16 +277,12 @@ Begin VB.Form par1
          TabIndex        =   171
          Top             =   840
          Width           =   1215
-         _ExtentX        =   2138
-         _ExtentY        =   550
+         _ExtentX        =   2143
+         _ExtentY        =   556
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-<<<<<<< .mine
-         Format          =   76939265
-=======
-         Format          =   306380801
->>>>>>> .theirs
+         Format          =   155648001
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -295,12 +291,12 @@ Begin VB.Form par1
          TabIndex        =   172
          Top             =   1440
          Width           =   1215
-         _ExtentX        =   2138
-         _ExtentY        =   550
+         _ExtentX        =   2143
+         _ExtentY        =   556
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   76939266
+         Format          =   155648002
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -472,7 +468,7 @@ Begin VB.Form par1
          BackColor       =   &H00FFFFC0&
          BeginProperty Font 
             Name            =   "Courier New"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -516,7 +512,7 @@ Begin VB.Form par1
          Caption         =   "AME EGTL"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -534,7 +530,7 @@ Begin VB.Form par1
          Caption         =   "Diesel »›ÒÏ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -552,7 +548,7 @@ Begin VB.Form par1
          Caption         =   "¡ÏÔÎ.100"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -572,7 +568,7 @@ Begin VB.Form par1
          Caption         =   "VPAM98"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -592,7 +588,7 @@ Begin VB.Form par1
          Caption         =   "¡Ï¸Îı‚‰Á 95"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -612,7 +608,7 @@ Begin VB.Form par1
          Caption         =   "V Power"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -632,7 +628,7 @@ Begin VB.Form par1
          Caption         =   "Diesel  ﬂÌ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -725,7 +721,7 @@ Begin VB.Form par1
          BackColor       =   &H00FFFFC0&
          BeginProperty Font 
             Name            =   "Courier New"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -780,7 +776,7 @@ Begin VB.Form par1
          Caption         =   "≈ÌÙÔÎ›·Ú"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -836,7 +832,7 @@ Begin VB.Form par1
          Caption         =   "–ÂÒÈ„Ò·ˆﬁ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -856,7 +852,7 @@ Begin VB.Form par1
          Caption         =   "¡ÒÈË.‘ÂÏ·˜ﬂ˘Ì"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -876,7 +872,7 @@ Begin VB.Form par1
          Caption         =   "≈ﬂ‰ÔÚ ”ıÛÍÂı·Ûﬂ·Ú"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -896,7 +892,7 @@ Begin VB.Form par1
          Caption         =   "≈ﬂ‰ÔÚ ≈ÏÔÒÂ˝Ï·ÙÔÚ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -916,7 +912,7 @@ Begin VB.Form par1
          Caption         =   "ÃÈÍ.¬‹ÒÔÚ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -1003,7 +999,7 @@ Begin VB.Form par1
       Top             =   9840
       Width           =   1200
       _ExtentX        =   2117
-      _ExtentY        =   656
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1034,7 +1030,7 @@ Begin VB.Form par1
       Caption         =   "PARTIDES"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1094,8 +1090,8 @@ Begin VB.Form par1
    Begin MSCommLib.MSComm MSComm1 
       Left            =   1680
       Top             =   10200
-      _ExtentX        =   995
-      _ExtentY        =   995
+      _ExtentX        =   1005
+      _ExtentY        =   1005
       _Version        =   393216
       DTREnable       =   -1  'True
    End
@@ -1115,8 +1111,8 @@ Begin VB.Form par1
       Top             =   4560
       Visible         =   0   'False
       Width           =   3225
-      _ExtentX        =   5694
-      _ExtentY        =   4466
+      _ExtentX        =   5689
+      _ExtentY        =   4471
       _Version        =   393216
       Rows            =   12
       Cols            =   3
@@ -1128,7 +1124,7 @@ Begin VB.Form par1
       Visible         =   0   'False
       Width           =   1200
       _ExtentX        =   2117
-      _ExtentY        =   572
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1159,7 +1155,7 @@ Begin VB.Form par1
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1176,7 +1172,7 @@ Begin VB.Form par1
       Top             =   8040
       Width           =   10428
       _ExtentX        =   18415
-      _ExtentY        =   4149
+      _ExtentY        =   4154
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -1190,7 +1186,7 @@ Begin VB.Form par1
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   699
+      Splits(0).RecordSelectorWidth=   688
       Splits(0)._SavedRecordSelectors=   -1  'True
       Splits(0).DividerColor=   14215660
       Splits(0).SpringMode=   0   'False
@@ -1207,8 +1203,8 @@ Begin VB.Form par1
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -1323,8 +1319,8 @@ Begin VB.Form par1
       TabIndex        =   29
       Top             =   4845
       Width           =   5565
-      _ExtentX        =   9821
-      _ExtentY        =   4784
+      _ExtentX        =   9816
+      _ExtentY        =   4789
       _Version        =   393216
       AllowUpdate     =   0   'False
       BackColor       =   11064319
@@ -1332,7 +1328,7 @@ Begin VB.Form par1
       RowHeight       =   20
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1341,7 +1337,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Courier New"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1449,7 +1445,7 @@ Begin VB.Form par1
       Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -1560,8 +1556,8 @@ Begin VB.Form par1
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   2625
       Top             =   9600
-      _ExtentX        =   593
-      _ExtentY        =   593
+      _ExtentX        =   741
+      _ExtentY        =   741
       _Version        =   262150
       Destination     =   1
       PrintFileType   =   5
@@ -1574,7 +1570,7 @@ Begin VB.Form par1
       Top             =   4920
       Width           =   5340
       _ExtentX        =   9419
-      _ExtentY        =   4678
+      _ExtentY        =   4683
       _Version        =   393216
       _NumberOfBands  =   1
       _Band(0).Cols   =   2
@@ -1585,8 +1581,8 @@ Begin VB.Form par1
       Top             =   9600
       Visible         =   0   'False
       Width           =   2055
-      _ExtentX        =   3620
-      _ExtentY        =   572
+      _ExtentX        =   3625
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1617,7 +1613,7 @@ Begin VB.Form par1
       Caption         =   "DOK"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1632,8 +1628,8 @@ Begin VB.Form par1
       Top             =   9270
       Visible         =   0   'False
       Width           =   2175
-      _ExtentX        =   3831
-      _ExtentY        =   656
+      _ExtentX        =   3836
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1664,7 +1660,7 @@ Begin VB.Form par1
       Caption         =   "EGGTIM"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1679,8 +1675,8 @@ Begin VB.Form par1
       Top             =   9270
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3196
-      _ExtentY        =   656
+      _ExtentX        =   3201
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1711,7 +1707,7 @@ Begin VB.Form par1
       Caption         =   "PEL"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1726,8 +1722,8 @@ Begin VB.Form par1
       Top             =   9480
       Visible         =   0   'False
       Width           =   1455
-      _ExtentX        =   2561
-      _ExtentY        =   572
+      _ExtentX        =   2566
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1758,7 +1754,7 @@ Begin VB.Form par1
       Caption         =   "EID"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1941,7 +1937,7 @@ Begin VB.Form par1
       Top             =   1320
       Width           =   10320
       _ExtentX        =   18203
-      _ExtentY        =   6160
+      _ExtentY        =   6165
       _Version        =   393216
       BackColor       =   16744576
       Rows            =   300
@@ -1950,7 +1946,7 @@ Begin VB.Form par1
       AllowUserResizing=   1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1966,12 +1962,12 @@ Begin VB.Form par1
       TabIndex        =   5
       Top             =   240
       Width           =   1215
-      _ExtentX        =   2138
-      _ExtentY        =   550
+      _ExtentX        =   2143
+      _ExtentY        =   556
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   77201409
+      Format          =   309329921
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -1981,7 +1977,7 @@ Begin VB.Form par1
       TabIndex        =   27
       Top             =   1320
       Width           =   10296
-      _ExtentX        =   18140
+      _ExtentX        =   18150
       _ExtentY        =   6138
       _Version        =   393216
       AllowUpdate     =   0   'False
@@ -1993,7 +1989,7 @@ Begin VB.Form par1
       RowDividerStyle =   6
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2002,7 +1998,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2053,7 +2049,7 @@ Begin VB.Form par1
       Top             =   3120
       Visible         =   0   'False
       Width           =   3765
-      _ExtentX        =   6646
+      _ExtentX        =   6641
       _ExtentY        =   1799
       _Version        =   393216
       AllowUpdate     =   -1  'True
@@ -2064,7 +2060,7 @@ Begin VB.Form par1
       AllowAddNew     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2073,7 +2069,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "System"
-         Size            =   9.6
+         Size            =   9.75
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2264,7 +2260,7 @@ Begin VB.Form par1
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2282,7 +2278,7 @@ Begin VB.Form par1
          BackColor       =   &H000080FF&
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2389,7 +2385,7 @@ Begin VB.Form par1
          Caption         =   "–ÎÁÒ˘Ù›Ô"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2410,7 +2406,7 @@ Begin VB.Form par1
          Caption         =   "÷¸ÒÔÈ/–·Ò·ÍÒ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2430,7 +2426,7 @@ Begin VB.Form par1
          Caption         =   "¡·ÎÎ·„›Ú ÷–¡"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2460,7 +2456,7 @@ Begin VB.Form par1
          Caption         =   "…ÛÔÙÈÏﬂ·"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2479,7 +2475,7 @@ Begin VB.Form par1
          Caption         =   "‹ÎÎ· ›ÓÔ‰·"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2499,7 +2495,7 @@ Begin VB.Form par1
       Caption         =   "√ÂÌ.≈ÍÙ˘ÛÁ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2518,7 +2514,7 @@ Begin VB.Form par1
       Caption         =   "DEL ADDRES              /SXOLIA"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2537,7 +2533,7 @@ Begin VB.Form par1
       Caption         =   "cont          ¡Ò.¡ıÙÔÍ."
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -2556,7 +2552,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2574,7 +2570,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2592,7 +2588,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2691,7 +2687,7 @@ Begin VB.Form par1
       Caption         =   "÷–¡"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2744,7 +2740,7 @@ Begin VB.Form par1
       Caption         =   "–ÎÁÒ˘Ù›Ô"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2797,7 +2793,7 @@ Begin VB.Form par1
       Caption         =   "–ÒÔÛÔ˜ﬁ ÔÈ ÙÈÏÂÚ ÂﬂÌ·È ÏÂ ÷–¡"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2816,7 +2812,7 @@ Begin VB.Form par1
       Caption         =   "DESTIN    proorismos"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2836,7 +2832,7 @@ Begin VB.Form par1
       Caption         =   "DEL.TERMS    fort"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2855,7 +2851,7 @@ Begin VB.Form par1
       Caption         =   "DEL.TIM      skopos"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2874,7 +2870,7 @@ Begin VB.Form par1
       Caption         =   "PAYM.TERM"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2920,7 +2916,7 @@ Begin VB.Form par1
       Caption         =   "”ÂÈÒ‹"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2939,7 +2935,7 @@ Begin VB.Form par1
       Caption         =   "¡ÒÈËÏ¸Ú"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -2958,7 +2954,7 @@ Begin VB.Form par1
       Caption         =   "–·Ò·ÛÙ·ÙÈÍ¸"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2977,7 +2973,7 @@ Begin VB.Form par1
       Caption         =   "≈ﬂ‰ÔÚ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2997,7 +2993,7 @@ Begin VB.Form par1
       Caption         =   "¡ÔËﬁÍÁ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -3017,7 +3013,7 @@ Begin VB.Form par1
       Caption         =   "–˘ÎÁÙﬁÚ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -3036,7 +3032,7 @@ Begin VB.Form par1
       Caption         =   "ƒÈÂ˝ËıÌÛÁ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3056,7 +3052,7 @@ Begin VB.Form par1
       Caption         =   "¡.÷.Ã."
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3076,7 +3072,7 @@ Begin VB.Form par1
       Caption         =   "≈˛ÌıÏÔ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3096,7 +3092,7 @@ Begin VB.Form par1
       Caption         =   " ˘‰ÈÍ¸Ú"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -6489,7 +6485,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
 272         SQLTIM = SQLTIM + "'" + Left(f_matim, f_psifia_atim + 2) + PEL.Recordset("kod") + "',"    ' KEY
         End If
 
-274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
+274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(Time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
 
         Dim NTIM As Long
 
@@ -10939,7 +10935,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.Data1.ConnectionString = gConnect
+116     fpelat4.data1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -12033,7 +12029,7 @@ Private Sub Command7_Click()
         '     f_strogg_FPA = K
         ' End If
         'Next
-If Val(sfpa.Text) = 0 Then
+If Val(sfpa.Caption) = 0 Then
     '·Ì ÂÈÌ·È ˜˘ÒÈÛ ˆ· ‰ÂÌ Í·ÌÂÈ ÛÙÒÔ„„ıÎÔÔÈÁÛÁ
 Else
 100     If f_strogg = 0.01 Then
@@ -12051,7 +12047,7 @@ End Sub
 
 Private Sub Command8_Click()
 
-If Val(sfpa.Text) = 0 Then
+If Val(sfpa.Caption) = 0 Then
     '·Ì ÂÈÌ·È ˜˘ÒÈÛ ˆ· ‰ÂÌ Í·ÌÂÈ ÛÙÒÔ„„ıÎÔÔÈÁÛÁ
 Else
 100     If f_strogg = -0.01 Then
@@ -12082,8 +12078,8 @@ qrl = InputBox("ÛÍ·Ì‹ÒÈÛÂ ÙÔ qrcode", " ")
 
 
            Dim m_ID As Long
-         par1.TDBGrid1.Col = 7
-       m_ID = Val(par1.TDBGrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -12177,13 +12173,13 @@ Public Sub menuToTransport(parametros As Integer)
 
         Dim c As String
 
-        par1.TDBGrid1.Col = 4  'PELKOD
-        c = Replace(par1.TDBGrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 4  'PELKOD
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         par1.TDBGrid1.Col = 7
-       m_ID = Val(par1.TDBGrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 Dim AFMEPIX As String
 AFMEPIX = GGET_CVALUE("SELECT TOP 1 AFMPEL FROM MEM ORDER BY ID")
@@ -12243,20 +12239,20 @@ Private Sub Form_DblClick()
 
         '</EhHeader>
 
-100     PARAMETROI.Category.AddItem "1 .–¡—¡√√≈À…≈”"
-102     PARAMETROI.Category.AddItem "2. Ã¡— .À…¡Õ… «"
+100     PARAMETROI.category.AddItem "1 .–¡—¡√√≈À…≈”"
+102     PARAMETROI.category.AddItem "2. Ã¡— .À…¡Õ… «"
          
-104     PARAMETROI.Category.AddItem "3 .√≈Õ… ≈” –¡—¡Ã≈‘—œ…"
-106     PARAMETROI.Category.AddItem "4 .÷œ—Ã≈”-PDF"
-108     PARAMETROI.Category.AddItem "5 .≈…ƒ… ≈” ≈÷¡—Ãœ√≈”-CUSTOMS"
-110     PARAMETROI.Category.AddItem "6.–À¡‘« ”‘«ÀŸÕ ‘…ÃœÀœ√«”«”"
+104     PARAMETROI.category.AddItem "3 .√≈Õ… ≈” –¡—¡Ã≈‘—œ…"
+106     PARAMETROI.category.AddItem "4 .÷œ—Ã≈”-PDF"
+108     PARAMETROI.category.AddItem "5 .≈…ƒ… ≈” ≈÷¡—Ãœ√≈”-CUSTOMS"
+110     PARAMETROI.category.AddItem "6.–À¡‘« ”‘«ÀŸÕ ‘…ÃœÀœ√«”«”"
          
-112     PARAMETROI.Category.AddItem "7 .”’Ã–≈—…÷œ—¡ ‘…ÃœÀœ√«”«”"
+112     PARAMETROI.category.AddItem "7 .”’Ã–≈—…÷œ—¡ ‘…ÃœÀœ√«”«”"
         
-114     PARAMETROI.Category.AddItem "8.¡—.ÿ«÷…ŸÕ-‘…Ã≈”"
-116     PARAMETROI.Category.AddItem "9.Ã≈‘¡”◊«Ã¡‘…”Ãœ”"
+114     PARAMETROI.category.AddItem "8.¡—.ÿ«÷…ŸÕ-‘…Ã≈”"
+116     PARAMETROI.category.AddItem "9.Ã≈‘¡”◊«Ã¡‘…”Ãœ”"
         
-118     PARAMETROI.Category.Visible = True
+118     PARAMETROI.category.Visible = True
         
 120     PARAMETROI.PARAM.Caption = "PAR1"
 122     PARAMETROI.SHOW 1
@@ -15713,7 +15709,7 @@ Private Sub GridPelaton_KeyUp(KeyCode As Integer, Shift As Integer)
         '</EhHeader>
 100     If KeyCode = 13 Then
 102         KeyCode = 0
-104         par1.KeyPreview = False
+104         PAR1.KeyPreview = False
 
 106         mmGridPelaton_DblClick 1, 0, 0, 0
 
@@ -16225,9 +16221,9 @@ R_arr.Close
 136         GridPelaton.Height = 2000 '  2295  '2295
 138         Frame2(0).Visible = True
 140         DoEvents
-142         par1.Refresh
+142         PAR1.Refresh
 144         DoEvents
-146         par1.Refresh
+146         PAR1.Refresh
 148         Frame2(0).Top = 1320
      
 150         If F_IS_BYTIO >= 1 Then
@@ -16379,7 +16375,7 @@ R_arr.Close
      
         End If
 
-276     mForm_Load par1, fh, fw, ft, fl
+276     mForm_Load PAR1, fh, fw, ft, fl
 F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESIZE H FORMA 0=OXI Ÿ” ≈◊≈… ")) '
 278     f_strogg = 0 ' ”‘—œ√√’À≈Ã¡ ÷–¡/‘…ÃœÀœ√…œ’
 
@@ -16670,7 +16666,7 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 
 516     F_add_barc = Val(FINDPARAMETROI(2, "PAR1", "add_barc", "1", "√.16 Barcode ›ÈÌ·È 1. ˘‰ 2.¬ÔÁË. ÎÂÈ‰ﬂ"))
 
-518     par1.KeyPreview = True
+518     PAR1.KeyPreview = True
 
 520     f_PALIAXRONIA = Trim(FINDPARAMETROI(3, "PAR1", "F_PALIAXRONIA", "2005", "DSN ·ÎÈ‹Ú ˜ÒÔÌÈ‹Ú"))
 522     F_EXO_XROMATA = Val(FINDPARAMETROI(5, "PAR1", "F_EXO_XROMATA", "0", "◊ÒÁÛÈÏÔÔÈ˛ ÃÂ„›ËÁ-◊Ò˛Ï·Ù·=1"))   'posa psifia tha exei h kathe seira
@@ -17582,7 +17578,7 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
  
 
 
-1298    par1.Picture = LoadPicture(gPicture)
+1298    PAR1.Picture = LoadPicture(gPicture)
 
         'R.Open "SELECT *FROM TIMEDIT", Fdb, adOpenKeyset, adLockOptimistic
 
@@ -17898,13 +17894,13 @@ m_ID = TDBGrid1.columns("ID_NUM")
 100     TDBGrid1.Col = 1
         'Set par2 = New par2
 
-102     par2.Text1 = Left(TDBGrid1.Text, 8)
+102     PAR2.Text1 = Left(TDBGrid1.Text, 8)
 
 104     TDBGrid1.Col = 0
-106     par2.DTPicker1 = CDate(TDBGrid1.Text)
-108     par2.DTPicker2 = CDate(TDBGrid1.Text)
+106     PAR2.DTPicker1 = CDate(TDBGrid1.Text)
+108     PAR2.DTPicker2 = CDate(TDBGrid1.Text)
 
-110     par2.CallFromOther.Caption = "1"
+110     PAR2.CallFromOther.Caption = "1"
 
         'GIA OLA TA PARASTATIKA
         '  par2.Combo2OnomaParak.Text = "*"
@@ -17919,9 +17915,9 @@ m_ID = TDBGrid1.columns("ID_NUM")
 '        Else
 '         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by HME,PEL.EPO;"
  '       End If
-par2.TIM.ConnectionString = gConnect
-        par2.TIM.RecordSource = XX
-        par2.TIM.Refresh
+PAR2.TIM.ConnectionString = gConnect
+        PAR2.TIM.RecordSource = XX
+        PAR2.TIM.Refresh
         
 
 
@@ -17934,15 +17930,15 @@ par2.TIM.ConnectionString = gConnect
 
 
 
-114     par2.SHOW_TIMOL
-116     par2.SHOW
+114     PAR2.SHOW_TIMOL
+116     PAR2.SHOW
 
-118     par2.bohuitiko.SetFocus
+118     PAR2.bohuitiko.SetFocus
 
 120     DoEvents
 
-122     par2.Command1.SetFocus
-124     par1.LASTTIMOL.Refresh
+122     PAR2.Command1.SetFocus
+124     PAR1.LASTTIMOL.Refresh
 
         'On Error GoTo 0
 
@@ -18209,10 +18205,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
         '
         '
 
-100     If LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-102         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+100     If LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+102         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-104         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+104         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
         '<EhFooter>
@@ -18318,7 +18314,7 @@ Public Sub epanAkyr()
             Dim c, D, SX As String
 
 
-112             par1.TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
+112             PAR1.TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
 
 114             D = TDBGrid1.Text
                 ' d = InputBox("‰˘ÛÂ ÙÔÌ ·ÒÈËÏ¸ ÙÔı id", 0)
@@ -19901,7 +19897,7 @@ Sub timtex3_enter()
 192                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 194                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 196                         r0.Close
-198                         APOT1.Flag.Caption = "1"
+198                         APOT1.flag.Caption = "1"
 200                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 202                         gApoMenu = False
 204                         APOT1.SHOW 1
@@ -20073,7 +20069,7 @@ Sub timtex3_enter()
 310                         r0.Open "select max(ERG) FROM EID WHERE ERG LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 312                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 314                         r0.Close
-316                         APOT1.Flag.Caption = "1"
+316                         APOT1.flag.Caption = "1"
 318                         APOT1.Text1(4).Text = XX + ChDigEAN13(XX)    'timtext3.Text
                               
 320                         gApoMenu = False
@@ -20093,7 +20089,7 @@ Sub timtex3_enter()
 326                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 328                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 330                         r0.Close
-332                         APOT1.Flag.Caption = "1"
+332                         APOT1.flag.Caption = "1"
 334                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 336                         gApoMenu = False
 338                         APOT1.SHOW 1
@@ -20391,7 +20387,7 @@ Sub timtex3_enter()
                         Else
                     
 466                         APOT1.Text1(0).Text = TIMText3.Text
-468                         APOT1.Flag.Caption = "1"
+468                         APOT1.flag.Caption = "1"
 470                         APOT1.SHOW 1
                         End If
 472                     TIMText3.SetFocus
@@ -21725,7 +21721,7 @@ Function printCrystal(MATIM, char_date)
 
         Dim cENTITYMARK As String
 
-        Dim sql         As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql         As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt        As String, DB As Database
 
@@ -21775,12 +21771,12 @@ Function printCrystal(MATIM, char_date)
 
         ' ¡Õ ≈…Õ¡… ¡ ’—Ÿ‘… œ Õ¡ ≈◊≈… ‘«Õ «Ã≈—œÃ«Õ…¡ ‘«” ≈…”œƒœ’ GWORKDAY
 104     If f_Akyr Then
-106         d1 = gWorkDay
+106         D1 = gWorkDay
         Else
-108         d1 = char_date
+108         D1 = char_date
         End If
 
-110     d2 = DateAdd("d", 1, d1)
+110     d2 = DateAdd("d", 1, D1)
 
 112     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
@@ -21915,7 +21911,7 @@ Function printCrystal(MATIM, char_date)
 
         End If
  
-178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
         '700     DB.Execute "delete *from tim"
 180     Rtim.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
         
@@ -22657,7 +22653,7 @@ Function printCrystal(MATIM, char_date)
 730             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
               
 732                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 736                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
                         ' e_pros = -1
@@ -22697,7 +22693,7 @@ Function printCrystal(MATIM, char_date)
 
                     ' Dim gia_akyr_tim As String
 770                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 774                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
 776                     e_pros = -1
@@ -23200,7 +23196,7 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
                     On Error Resume Next
 
 1138                DB.Execute "select * into AS" + MATIM + " from EGGtim WHERE FPA>0"
-1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
+1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
                    
                 End If
          
@@ -23251,7 +23247,7 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
 
 
 1156    DB.Execute "update MEM SET banks='" + Trim(Combo4.Text) + "'" 'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
-1158    DB.Execute "update MEM SET pict='" + time$ + "'"
+1158    DB.Execute "update MEM SET pict='" + Time$ + "'"
 1160    DB.Execute "update MEM SET par1='" + Text1.Text + "'"
 
         DB.Execute "update MEM SET par9='" + ENTITYUID + "'"
@@ -23535,7 +23531,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         '</EhHeader>
 
-        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -23555,8 +23551,8 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         On Error GoTo MHNYMA
 
-100     d1 = DTPicker1.Value
-102     d2 = DateAdd("d", 1, d1)
+100     D1 = DTPicker1.Value
+102     d2 = DateAdd("d", 1, D1)
 
         'Set db = OpenDatabase("c:\mercvb\reports\reports.mdb")
         'If gConnect = "Access" Then
@@ -23663,7 +23659,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         
 142     sql = sql + "SPACE(100) AS MEMO, SPACE(40) AS C1,SPACE(40) AS C2,SPACE(40) AS C3,SPACE(40) AS C4, SPACE(40) AS PAR1,SPACE(40) AS PAR2,SPACE(40) AS PAR3,SPACE(40) AS PAR4,SPACE(40) AS PAR5,SPACE(40) AS PAR6,SPACE(40) AS PICT,SPACE(40) AS BANKS "
 
-144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
 146     Gdb.Execute sql
 
@@ -23728,7 +23724,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 172     fmem("c3") = FORTOSH.Text    'fortosi
 174     fmem("c4") = PROORISMOS.Text    'paradosi
 176     fmem("banks") = mID(Combo4.Text, 3, 30)  'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
-178     fmem("pict") = Left(time$, 5)
+178     fmem("pict") = Left(Time$, 5)
 180     fmem("par1") = Text1.Text
 182     fmem("par2") = SEIRA.Text
 184     fmem("par3") = AYTOKINHTO.Text
@@ -25371,7 +25367,7 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
 104     METASX_TIM = mpar ' Val(FindParametroi(1,"PAR1", "METASX_TIM", "3", "–¡—¡”‘¡‘… O ‘–-ƒ¡(Ã≈‘¡”◊.”≈ ‘…ÃœÀ.)0-99"))
 
-        Dim FF As par2, MKOD As String
+        Dim FF As PAR2, MKOD As String
 
         Dim ATIM
 
@@ -26934,16 +26930,16 @@ Public Sub menu_ektyp_par(ByVal Ektyp1Email2 As Integer)
 
         Dim c As String
 
-        par1.TDBGrid1.Col = 2
-        c = Replace(par1.TDBGrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         par1.TDBGrid1.Col = 7
-       m_ID = Val(par1.TDBGrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
         
         
-        par1.METASX_SE_TIM 99, c, m_ID, False, 0
+        PAR1.METASX_SE_TIM 99, c, m_ID, False, 0
         ' PAR1.METASX_SE_TIM 99, C, 0, False
 
         ' 100     PAR1.diortosis
@@ -26956,10 +26952,10 @@ End If
     
     
     
-        par1.Text2(0).Text = "" ' „È· Ì· ÏÁÌ ‰ÈÔÒË˛ÛÁ Í·Ù· Î·ËÔÚ
-        par1.PARAS.Text = ""
-        par1.Text1.Text = ""
-        par1.b_Katax.Enabled = False
+        PAR1.Text2(0).Text = "" ' „È· Ì· ÏÁÌ ‰ÈÔÒË˛ÛÁ Í·Ù· Î·ËÔÚ
+        PAR1.PARAS.Text = ""
+        PAR1.Text1.Text = ""
+        PAR1.b_Katax.Enabled = False
         F_DIOR = 0
         
         
@@ -26988,8 +26984,8 @@ Public Sub menu_diak_status()
 
      Dim c As String
 
-        par1.TDBGrid1.Col = 8
-        c = Replace(par1.TDBGrid1.Text, "ƒœ ", "")
+        PAR1.TDBGrid1.Col = 8
+        c = Replace(PAR1.TDBGrid1.Text, "ƒœ ", "")
 
        ' MARK = c '  InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
 
@@ -27019,8 +27015,8 @@ Public Sub menuParadosis()
 Dim qrl As String: qrl = "https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=vZGdPC4qtv61lfj3tMcBWCVzle6HNmunsN6JjmX4e9gLqhLIIIUNGzIx6YzWdXmeg0fsTOtxriHc%2bCRo3shXRfuFVdEayG8L9Xt9%2fSH8HaE%3d"
 
            Dim m_ID As Long
-         par1.TDBGrid1.Col = 7
-       m_ID = Val(par1.TDBGrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
