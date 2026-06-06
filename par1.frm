@@ -282,7 +282,11 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
+<<<<<<< .mine
          Format          =   76939265
+=======
+         Format          =   306380801
+>>>>>>> .theirs
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -12029,7 +12033,9 @@ Private Sub Command7_Click()
         '     f_strogg_FPA = K
         ' End If
         'Next
-
+If Val(sfpa.Text) = 0 Then
+    'αν ειναι χωρισ φπα δεν κανει στρογγυλοποιηση
+Else
 100     If f_strogg = 0.01 Then
 102         f_strogg = 0
         Else
@@ -12037,10 +12043,17 @@ Private Sub Command7_Click()
         End If
 
 106     FindSynolo
+End If
+
+
 
 End Sub
 
 Private Sub Command8_Click()
+
+If Val(sfpa.Text) = 0 Then
+    'αν ειναι χωρισ φπα δεν κανει στρογγυλοποιηση
+Else
 100     If f_strogg = -0.01 Then
 102         f_strogg = 0
         Else
@@ -12048,6 +12061,10 @@ Private Sub Command8_Click()
         End If
 
 106     FindSynolo
+
+End If
+
+
 End Sub
 
 Private Sub Command9_Click()
