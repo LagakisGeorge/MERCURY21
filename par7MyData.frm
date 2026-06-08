@@ -3162,7 +3162,7 @@ Private Sub cmdPROPLHROMH_Click()
     Dim MKAU, MFPA
      Dim TID     As String
 
-                            TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  AND PERIGRAFH LIKE '%POS%'") ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
+                            TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  PERIGRAFH LIKE '%POS%'") ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
                             TID = Trim(TID) '.TrimEnd()
     
 Dim C As String
