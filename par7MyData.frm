@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -20,6 +20,14 @@ Begin VB.Form Par7MyData
    ScaleWidth      =   21405
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton PL8_4 
+      Caption         =   "PL8_4"
+      Height          =   360
+      Left            =   15960
+      TabIndex        =   72
+      Top             =   10440
+      Width           =   990
+   End
    Begin VB.CommandButton cmdPROPLHROMH 
       Caption         =   "PROPLHROMH"
       Height          =   360
@@ -816,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   244318209
+      Format          =   162594817
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -828,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   244318209
+      Format          =   162594817
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1185,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1688,7 +1695,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1702,8 +1709,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.ÌÅÔÑ' WHERE TRP LIKE 'ÌÅ%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.ÐÉÓÔ' WHERE TRP LIKE 'ÐÉ%' "
 
-118     apo.SetFocus
-120     eos.SetFocus
+118     APO.SetFocus
+120     EOS.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -1755,12 +1762,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     data1.RecordSource = arxeio
-110     data1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = data1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -2607,7 +2614,7 @@ End Sub
 
 Private Sub cmdPAROCHOS_Click()
 
-        Dim C As String
+        Dim c As String
       If F_dokimi = 3 Then
          ' makeJsonClass
            CreateSimSign
@@ -2615,13 +2622,13 @@ Private Sub cmdPAROCHOS_Click()
            
           ' c = getBratToken()
       Else
-100     C = getToken()
+100     c = getToken()
 
       End If
       
       
       
-102     MsgBox C
+102     MsgBox c
 
 
 End Sub
@@ -3095,7 +3102,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -3165,8 +3172,8 @@ Private Sub cmdPROPLHROMH_Click()
                             TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  PERIGRAFH LIKE '%POS%'") ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
                             TID = Trim(TID) '.TrimEnd()
     
-Dim C As String
-      C = getToken()
+Dim c As String
+      c = getToken()
     
     Mctypos = "8.4"
     
@@ -3174,7 +3181,7 @@ Dim C As String
 
 MKAU = 0: MFPA = 0
 Dim POSO As String
-gf_Bearer = C
+gf_Bearer = c
 
 POSO = InputBox("ÐÏÓÏ ; ", "ÐÏÓÏ ÐÑÏÅÉÓÐÑÁÎÇÓ")
 
@@ -3621,7 +3628,7 @@ Sub deletemarK()
 
 102     If B = "3921" Then
 104         a = InputBox("äùóå ìáñê ðïõ èá áêõñùèåß")
-106         C = CANCEL_INVOICE(Trim(a), Trim(a))
+106         c = CANCEL_INVOICE(Trim(a), Trim(a))
 108         MsgBox "ok"
         Else
 110         MsgBox "ëáèïò"
@@ -4307,11 +4314,11 @@ Private Sub Command12_Click()
 
         On Error GoTo 0
  
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4331,12 +4338,12 @@ Private Sub Command12_Click()
 112         TIMOL = R!AA   '    GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + d)
 114         SX = R!MARK
    
-116         C = CANCEL_INVOICE(Trim(SX), TIMOL)
+116         c = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-118         If Len(Trim(C)) > 5 Then
-120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + C + "' WHERE ID=" + str(R!ID)
+118         If Len(Trim(c)) > 5 Then
+120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + c + "' WHERE ID=" + str(R!ID)
                 'Gdb.Execute "update DOKTIMCANC set SXETMARK='" + C + "' WHERE ID_NUM=" + str(R!ID_NUM)
-122             List1.AddItem SX + " AK " + C
+122             List1.AddItem SX + " AK " + c
             End If   '
    
 124         R.MoveNext
@@ -4776,7 +4783,7 @@ Private Sub cmdKOYKAKH_Click()
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -4980,6 +4987,130 @@ Private Sub cmdKOYKAKH_Click()
     '    "debugging": "d"
     '  }
     ']'
+End Sub
+
+Private Sub PL8_4_Click()
+Dim SJ As String
+
+  
+         SJ = " {""invoice"":{"   ' arxh invoice  ----
+   SJ = " {""issuer"":{"   ' arxh invoice  ----
+
+ SJ = SJ + Chr(13) + " ""vatNumber"": """ + "AFM_COMPANY" + """ ,  "
+ SJ = SJ + Chr(13) + " ""country"": """ + "GR" + """ },  "
+ SJ = SJ + Chr(13) + " ""counterpart"": { "
+
+ SJ = SJ + Chr(13) + " ""vatNumber"": """ + "000000000" + """ },  "
+
+ SJ = SJ + Chr(13) + " ""name"": """ + "000000000" + """ },  "
+  SJ = SJ + Chr(13) + " ""country"": """ + "GR" + """ },  "
+ 
+ SJ = SJ + Chr(13) + " ""invoiceHeader"": { "
+ 
+  SJ = SJ + Chr(13) + " ""series"": """ + "ÅÉÓ" + """ },  "
+   SJ = SJ + Chr(13) + " ""aa"": " + "00001" + "  ,  "
+    SJ = SJ + Chr(13) + " ""issueDate"": """ + "2026-06-10" + """ },  "
+     SJ = SJ + Chr(13) + " ""invoiceType"": """ + "8.4" + """ },  "
+      SJ = SJ + Chr(13) + " ""currency"": """ + "EUR" + """ },  "
+  SJ = SJ + Chr(13) + " ""invoiceNote"": """ + "SXOLIA" + """ }, "
+ 
+ 
+  SJ = SJ + Chr(13) + " ""invoiceDetails"": [{ "
+   SJ = SJ + Chr(13) + " ""netValue"": " + "150.00" + "  ,  "
+  SJ = SJ + Chr(13) + " ""vatCategory"": " + "8" + "  ,  "
+   SJ = SJ + Chr(13) + " ""classificationCategory"": """ + "category1_95" + """ } ], "
+   
+    SJ = SJ + Chr(13) + " ""paymentMethods"": [{ "
+  SJ = SJ + Chr(13) + " ""type"": " + "7" + "  ,  "
+   SJ = SJ + Chr(13) + " ""amount"": " + "150.00" + " }] ,  "
+   
+  SJ = SJ + Chr(13) + " ""invoiceSummary"": { "
+   SJ = SJ + Chr(13) + " ""totalValue"": " + "150.00" + "  },  "
+   
+   SJ = SJ + Chr(13) + " ""Messages"": [{ "
+   SJ = SJ + Chr(13) + " ""type"": " + "0" + "  ,  "
+    SJ = SJ + Chr(13) + " ""recipients"": " + """""" + "  }]}}  "
+  
+
+'   { invoice: { "
+'            "issuer": {
+'                "vatNumber": "000000000",
+'                "country": "GR"
+'            },
+'            "counterpart": {
+'                "vatNumber": "802023570",
+'                "name": "ÐÁÑÏ×ÏÓ ËÕÓÅÙÍ ÐËÇÑÏÖÏÑÉÊÇÓ ÁÍÙÍÕÌÇ ÅÔÁÉÑÅÉÁ",
+'                "country": "GR"
+'            },
+
+'            "invoiceHeader": {
+'                "series": "ÅÉÓ-001",
+'                "aa": 1194474,
+'                "issueDate": "2026-06-10",
+'                "invoiceType": "8.4",
+'                "currency": "EUR",
+
+
+'                "invoiceNote": "Ó×ÏËÉÏ ÐÁÑÁÓÔÁÔÉÊÏÕ"
+'            },
+'            "invoiceDetails": [
+'                {
+'                    "netValue": 150.00,
+'                    "vatCategory": 8,
+'                    "classificationCategory": "category1_95"
+'                }
+'            ],
+'            "paymentMethods": [
+'                {
+'                    "type": 7
+'                    "amount": 150.00
+'                }
+'            ],
+'            "invoiceSummary": {
+'                "totalValue": 150.00
+'            },
+'            "Messages": [
+'                {
+'                    "type": 0,
+'                    "recipients": ""
+'                }
+'            ]
+'        }
+'    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 End Sub
 
 Private Sub Command3_Click()
@@ -6703,7 +6834,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(apo) < 2021 Then
+102     If Year(APO) < 2021 Then
 104         MsgBox "ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6744,7 +6875,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -9226,7 +9357,7 @@ Sub MAKE_request(TXML As String, _
 
 102     strXML = ""
 
-        Dim C As String
+        Dim c As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -10586,8 +10717,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "ËÁÈÏÓ ÓÔÉÓ ÁÍÔÉÓÔÏÉ×ÇÓÅÉÓ ÖÐÁ"
-230             apo.Enabled = False
-232             eos.Enabled = False
+230             APO.Enabled = False
+232             EOS.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10597,8 +10728,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
  
 240     R.Close
   
-242     apo.Value = Now
-244     eos.Value = Now
+242     APO.Value = Now
+244     EOS.Value = Now
 
         Dim sql As String
 
@@ -10606,8 +10737,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
 
 248     If sql = "0" Then
 
-250         apo.Enabled = False
-252         eos.Enabled = False
+250         APO.Enabled = False
+252         EOS.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -10722,7 +10853,7 @@ Form_Load_Err:
 
 End Sub
 
-Function FINDTYPOS(C As String) As String
+Function FINDTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDTYPOS_Err
@@ -10730,7 +10861,7 @@ Function FINDTYPOS(C As String) As String
         '</EhHeader>
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!MYEID + s4!myTypEsod + s4!mycateg) Then
 104         FINDTYPOS = ";;;;;;"
@@ -10763,7 +10894,7 @@ FINDTYPOS_Err:
 
 End Function
     
-Function FINDEXODTYPOS(C As String) As String
+Function FINDEXODTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10772,7 +10903,7 @@ Function FINDEXODTYPOS(C As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FINDEXODTYPOS = ""
@@ -10800,7 +10931,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FIND2_EXODTYPOS(C As String) As String
+Function FIND2_EXODTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10809,7 +10940,7 @@ Function FIND2_EXODTYPOS(C As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FIND2_EXODTYPOS = ""
@@ -10837,7 +10968,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FindTRP(C As String) As String
+Function FindTRP(c As String) As String
 
         '<EhHeader>
         On Error GoTo FindTRP_Err
@@ -10845,7 +10976,7 @@ Function FindTRP(C As String) As String
         '</EhHeader>
         Dim sqlDT4 As New ADODB.Recordset
 
-100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + C + "", Gdb, adOpenDynamic, adLockOptimistic
+100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + c + "", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(sqlDT4(0)) Then
 104         FindTRP = ""
@@ -11236,7 +11367,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11247,7 +11378,7 @@ Private Sub monoApestalmena_Click()
 146    sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [ÓÕÍ.ÊÁÈ],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [ÓÕÍ.ÖÐÁ],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148    sql = sql + "   FROM TIM  "
-150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 152    sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154    sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11285,7 +11416,7 @@ End Sub
 
 Private Sub RESEND_CANCEL_Click()
 
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
 100     D = InputBox("äùóå ôïí áñéèìü ôïõ id", 0)
    
@@ -11302,10 +11433,10 @@ Private Sub RESEND_CANCEL_Click()
 
 108     TIMOL = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + D)
    
-110     C = CANCEL_INVOICE(SX, TIMOL)
+110     c = CANCEL_INVOICE(SX, TIMOL)
 
-112     If Len(C) > 5 Then
-114         Gdb.Execute "update TIM set ENTITYMARK='" + C + "' WHERE ID_NUM=" + D
+112     If Len(c) > 5 Then
+114         Gdb.Execute "update TIM set ENTITYMARK='" + c + "' WHERE ID_NUM=" + D
         End If
 
 End Sub
@@ -11411,10 +11542,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -11481,7 +11612,7 @@ B = InputBox("Ðñïóï÷Þ èá áêõñùèOYN " + str(num) + "EGGRFAES " + Chr(13) + " ÁÐÏ 
 
         On Error GoTo 0
  
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
         'Dim R2 As New ADODB.Recordset
  
@@ -11506,15 +11637,15 @@ B = InputBox("Ðñïóï÷Þ èá áêõñùèOYN " + str(num) + "EGGRFAES " + Chr(13) + " ÁÐÏ 
 112         SX = R!entitymark   '   R!MARK
             'List1.AddItem
    
-114         C = CANCEL_INVOICE(Trim(SX), TIMOL)
+114         c = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-116         If Len(C) > 5 Then
+116         If Len(c) > 5 Then
 
 
-                 Gdb.Execute "update TIM set C12='" + C + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
+                 Gdb.Execute "update TIM set C12='" + c + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
       
-                 Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + C + "' WHERE ID_NUM=" + str(id_num)
-118             List1.AddItem SX + " AK " + C
+                 Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + c + "' WHERE ID_NUM=" + str(id_num)
+118             List1.AddItem SX + " AK " + c
 
 
                            ' loadpar7
@@ -11638,7 +11769,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [ÐÁÑÁÓÔ],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ÊÁÈ.ÁÎÉÁ], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11650,7 +11781,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11832,14 +11963,14 @@ Private Sub UPLOAD_Click()
        
 End Sub
 
-Function chDec(C As String) As String
+Function chDec(c As String) As String
 
         '<EhHeader>
         On Error GoTo chDec_Err
 
         '</EhHeader>
 
-100     chDec = Replace(C, ",", ".")
+100     chDec = Replace(c, ",", ".")
 
         '<EhFooter>
         Exit Function
@@ -12236,7 +12367,7 @@ Private Sub SEND_EXPENS_Click()
 
 106     strXML = ""
 
-        Dim C As String
+        Dim c As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -12514,12 +12645,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     data1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = data1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -12701,10 +12832,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -12797,7 +12928,7 @@ Public Function ToJason(ByVal noask As Integer, _
        
         Dim SUMNET As Double
 
-        Dim Sj     As String
+        Dim SJ     As String
     
 100     ToJason = 1
 
@@ -13152,7 +13283,7 @@ Public Function ToJason(ByVal noask As Integer, _
 312                 is_B2G = GGET_NVALUE("SELECT ISNULL(B2G,0) AS DIMOSIO FROM PARASTAT WHERE EIDOS='" & Left(SQLDT("ATIM"), 1) & "'")
 314                 ubl = GGET_CVALUE("SELECT ISNULL(UBL,'') AS UBL2 FROM PARASTAT WHERE EIDOS='" & Left(SQLDT("ATIM"), 1) & "'")
             
-316                 Sj = " {""invoice"":{"   ' arxh invoice  ----------------------------------------------------------------
+316                 SJ = " {""invoice"":{"   ' arxh invoice  ----------------------------------------------------------------
             
                     ' For I = 0 To UBound(varStock)
 318                 Set invoice = docStock.createElement("invoice")
@@ -13235,16 +13366,16 @@ Public Function ToJason(ByVal noask As Integer, _
 388                         ' Set elem2Field = docStock.createElement("branch"):'elem2Field.Text = m_ypok: ' ' elemField.appendChild elem2Field
 390                        ' .appendChild elemField
                             
-392                         Sj = Sj + Chr(13) + " ""issuer"":{ "
+392                         SJ = SJ + Chr(13) + " ""issuer"":{ "
 
-394                         Sj = Sj + Chr(13) + " ""vatNumber"": """ + afmCompany + """ "
-396                         Sj = Sj + Chr(13) + ",""branch"": " + m_ypok
-398                         Sj = Sj + Chr(13) + ",""street"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELDIE,'') AS PELDIE FROM MEM ") + """"
-400                         Sj = Sj + Chr(13) + ",""streetNumber"": " + GGET_CVALUE("SELECT TOP 1 ISNULL(PELARIT,'0') AS PELARIT FROM MEM ")
-402                         Sj = Sj + Chr(13) + ",""postalCode"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELTK,'0') AS PELTK FROM MEM ") + """"
-404                         Sj = Sj + Chr(13) + ",""city"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELPOL,'') AS PELPOL FROM MEM ") + """"
-406                         Sj = Sj + Chr(13) + ",""COUNTRY"": " + " ""GR"" "
-408                         Sj = Sj + Chr(13) + "}, " 'telos issuer
+394                         SJ = SJ + Chr(13) + " ""vatNumber"": """ + afmCompany + """ "
+396                         SJ = SJ + Chr(13) + ",""branch"": " + m_ypok
+398                         SJ = SJ + Chr(13) + ",""street"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELDIE,'') AS PELDIE FROM MEM ") + """"
+400                         SJ = SJ + Chr(13) + ",""streetNumber"": " + GGET_CVALUE("SELECT TOP 1 ISNULL(PELARIT,'0') AS PELARIT FROM MEM ")
+402                         SJ = SJ + Chr(13) + ",""postalCode"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELTK,'0') AS PELTK FROM MEM ") + """"
+404                         SJ = SJ + Chr(13) + ",""city"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELPOL,'') AS PELPOL FROM MEM ") + """"
+406                         SJ = SJ + Chr(13) + ",""COUNTRY"": " + " ""GR"" "
+408                         SJ = SJ + Chr(13) + "}, " 'telos issuer
                                 
                             '------------ COUNTER PART ------------------------
 410                         If mID(Split(ctypos, ";")(0), 1, 2) = "ÙÙ" Then  'PANTA XREIAZETAI
@@ -13280,24 +13411,24 @@ Public Function ToJason(ByVal noask As Integer, _
 430                             ' ' elemField.appendChild elem2Field
 432                            ' .appendChild elemField
                                 
-434                             Sj = Sj + Chr(13) + " ""counterpart"":{ "
-436                             Sj = Sj + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
-438                             Sj = Sj + Chr(13) + ", ""name"":""" + Trim(SQLDT("EPO")) + """"
-440                             Sj = Sj + Chr(13) + ",""branch"":" + pelst3 ' + """"
-442                             Sj = Sj + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
-444                             Sj = Sj + Chr(13) + ",""streetNumber"":""" + pelst2 + """"
-446                             Sj = Sj + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
-448                             Sj = Sj + Chr(13) + ",""city"":""" + Trim(SQLDT("pol")) + """"
-450                             Sj = Sj + Chr(13) + ",""country"":""" + Trim(SQLDT("COUNTRY")) + """"
+434                             SJ = SJ + Chr(13) + " ""counterpart"":{ "
+436                             SJ = SJ + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
+438                             SJ = SJ + Chr(13) + ", ""name"":""" + Trim(SQLDT("EPO")) + """"
+440                             SJ = SJ + Chr(13) + ",""branch"":" + pelst3 ' + """"
+442                             SJ = SJ + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
+444                             SJ = SJ + Chr(13) + ",""streetNumber"":""" + pelst2 + """"
+446                             SJ = SJ + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
+448                             SJ = SJ + Chr(13) + ",""city"":""" + Trim(SQLDT("pol")) + """"
+450                             SJ = SJ + Chr(13) + ",""country"":""" + Trim(SQLDT("COUNTRY")) + """"
                                 If m_is_benzinadiko = 1 Then
-                                     Sj = Sj + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
+                                     SJ = SJ + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
                                 End If
 
 452                             If is_B2G = 1 Then
-454                                 Sj = Sj + Chr(13) + ",""municipality"":""" + Trim(SQLDT("POL")) + """"
+454                                 SJ = SJ + Chr(13) + ",""municipality"":""" + Trim(SQLDT("POL")) + """"
                                 End If
 
-456                             Sj = Sj + Chr(13) + "}, " 'telos counterpart
+456                             SJ = SJ + Chr(13) + "}, " 'telos counterpart
                                 
                             End If
                         End If
@@ -13329,19 +13460,19 @@ Public Function ToJason(ByVal noask As Integer, _
 
 480                     ' Set elem2Field = docStock.createElement("exchangeRate"):'elem2Field.Text = isot: ' ' elemField.appendChild elem2Field
                                                        
-482                     Sj = Sj + Chr(13) + " ""invoiceHeader"":{ "
-484                     Sj = Sj + Chr(13) + " ""series"":""" + C_SEIRA + """"
-486                     Sj = Sj + Chr(13) + ",""aa"":""" + mID(SQLDT("ATIM"), 2, 6) + """"
-488                     Sj = Sj + Chr(13) + ",""issueDate"":""" + Format(SQLDT("hme"), "yyyy-MM-dd") + """"
-490                     Sj = Sj + Chr(13) + ",""dispatchDate"":""" + Format(SQLDT("HMEPARAD"), "yyyy-MM-dd") + """"
+482                     SJ = SJ + Chr(13) + " ""invoiceHeader"":{ "
+484                     SJ = SJ + Chr(13) + " ""series"":""" + C_SEIRA + """"
+486                     SJ = SJ + Chr(13) + ",""aa"":""" + mID(SQLDT("ATIM"), 2, 6) + """"
+488                     SJ = SJ + Chr(13) + ",""issueDate"":""" + Format(SQLDT("hme"), "yyyy-MM-dd") + """"
+490                     SJ = SJ + Chr(13) + ",""dispatchDate"":""" + Format(SQLDT("HMEPARAD"), "yyyy-MM-dd") + """"
                            
-492                     Sj = Sj + Chr(13) + ",""invoiceCode"":""" + mID(SQLDT("ATIM"), 1, 7) + """"
-494                     Sj = Sj + Chr(13) + ",""invoiceTypeUbl"":""" + ubl + """"
-496                     Sj = Sj + Chr(13) + ",""invoiceType"":""" + Split(ctypos, ";")(0) + """"
+492                     SJ = SJ + Chr(13) + ",""invoiceCode"":""" + mID(SQLDT("ATIM"), 1, 7) + """"
+494                     SJ = SJ + Chr(13) + ",""invoiceTypeUbl"":""" + ubl + """"
+496                     SJ = SJ + Chr(13) + ",""invoiceType"":""" + Split(ctypos, ";")(0) + """"
 
                         If isDiakin = 2 Then
                         Else
-498                         Sj = Sj + Chr(13) + ",""currency"":""" + "EUR" + """"
+498                         SJ = SJ + Chr(13) + ",""currency"":""" + "EUR" + """"
                         End If
                         
                         '                           he.movePurpose = Val(SQLDT.rows(klm)("SKOPOS").toString.Substring(0, 2))
@@ -13349,10 +13480,10 @@ Public Function ToJason(ByVal noask As Integer, _
                         '                            he.OTHERMOVEPURPOSETITLE = SQLDT.rows(klm)("OTHERMOVEPURPOSETITLE").toString
                         '                        End If
 
-500                     Sj = Sj + Chr(13) + ",""movePurpose"":" + LTrim(str(Val(SQLDT("SKOPOS"))))
+500                     SJ = SJ + Chr(13) + ",""movePurpose"":" + LTrim(str(Val(SQLDT("SKOPOS"))))
 
                         If Val(SQLDT("SKOPOS")) = 19 Then
-                            Sj = Sj + Chr(13) + ",""otherMovePurposeTitle"":""" + SQLDT("OTHERMOVEPURPOSETITLE") + """"
+                            SJ = SJ + Chr(13) + ",""otherMovePurposeTitle"":""" + SQLDT("OTHERMOVEPURPOSETITLE") + """"
                         
                         End If
 
@@ -13362,13 +13493,13 @@ Public Function ToJason(ByVal noask As Integer, _
 
                         If m_is_benzinadiko = 0 Then
 
-504                         Sj = Sj + Chr(13) + ",""fuelInvoice"":false"
+504                         SJ = SJ + Chr(13) + ",""fuelInvoice"":false"
                         Else
-                            Sj = Sj + Chr(13) + ",""fuelInvoice"":true"
+                            SJ = SJ + Chr(13) + ",""fuelInvoice"":true"
                         End If
 
 506                     If is_B2G = 1 Then
-508                         Sj = Sj + Chr(13) + ",""paymentTerms"":""" + mID(SQLDT("TRP"), 3, 7) + """"
+508                         SJ = SJ + Chr(13) + ",""paymentTerms"":""" + mID(SQLDT("TRP"), 3, 7) + """"
                         End If
                         
                         
@@ -13380,12 +13511,12 @@ Public Function ToJason(ByVal noask As Integer, _
                             If SQLDT("EIDOS") = "r" Then
                                 If Left(mTypPar, 3) = "1.1" Then     ' Left(mTypPar, 3) = "3.1" Or Left(mTypPar, 3) = "13." Then ' TITLOS KTHSHS- áãïñá åå
                                     '' Set elem2Field = docStock.createElement("selfPricing"):'elem2Field.Text = "true": ' ' elemField.appendChild elem2Field
-                                    Sj = Sj + Chr(13) + ",""selfPricing"":true"
+                                    SJ = SJ + Chr(13) + ",""selfPricing"":true"
                                 End If
 
                             Else
                                 '' Set elem2Field = docStock.createElement("selfPricing"):'elem2Field.Text = "true": ' ' elemField.appendChild elem2Field
-                                Sj = Sj + Chr(13) + ",""selfPricing"":false"
+                                SJ = SJ + Chr(13) + ",""selfPricing"":false"
                             End If
                             
                         End If
@@ -13401,8 +13532,8 @@ Public Function ToJason(ByVal noask As Integer, _
                         
                         
                         
-602                     Sj = Sj + Chr(13) + ",""vatPaymentSuspension"":false "
-604                     Sj = Sj + Chr(13) + ",""vehicleNumber"":""" + SQLDT("AYTOK") + """  "
+602                     SJ = SJ + Chr(13) + ",""vatPaymentSuspension"":false "
+604                     SJ = SJ + Chr(13) + ",""vehicleNumber"":""" + SQLDT("AYTOK") + """  "
                          
                         ' "specialInvoiceCategory": 11,
                         '"otherCorrelatedEntities": [
@@ -13440,54 +13571,54 @@ Public Function ToJason(ByVal noask As Integer, _
                             CODE_kays = GGET_CVALUE("SELECT KODE FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM"))) 'ÐÁÉÑÍÙ ÔÏÍ ÊÙÄÉÊÏ ÐÏÕ ÐÏÕËÇÈÇÊÅ
                             
                             If mTHERM = 1 And CODE_kays = "30" Then '=========== T?????S? =========
-                                Sj = Sj + Chr(13) + ",""specialInvoiceCategory"":11  "
+                                SJ = SJ + Chr(13) + ",""specialInvoiceCategory"":11  "
                                 'he.specialInvoiceCategory = 11
                             End If
                             
-                            Sj = Sj + Chr(13) + ",""otherCorrelatedEntitities"":[{  "                                   'otherCorrelatedEntitity
-                            Sj = Sj + Chr(13) + " ""type"":1 "
-                            Sj = Sj + Chr(13) + ",""entityData"":{ "
-                            Sj = Sj + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
-                            Sj = Sj + Chr(13) + " , ""branch"":0 "
-                            Sj = Sj + Chr(13) + ",""Name"":""" + Trim(SQLDT("EPO")) + """"
+                            SJ = SJ + Chr(13) + ",""otherCorrelatedEntitities"":[{  "                                   'otherCorrelatedEntitity
+                            SJ = SJ + Chr(13) + " ""type"":1 "
+                            SJ = SJ + Chr(13) + ",""entityData"":{ "
+                            SJ = SJ + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
+                            SJ = SJ + Chr(13) + " , ""branch"":0 "
+                            SJ = SJ + Chr(13) + ",""Name"":""" + Trim(SQLDT("EPO")) + """"
                                                            
                       '      Sj = Sj + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
-                            Sj = Sj + Chr(13) + ",""address"":{ "
-                            Sj = Sj + Chr(13) + " ""country"":""GR"" "
-                            Sj = Sj + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
-                            Sj = Sj + Chr(13) + ",""number"":""" + Trim(SQLDT("STREETNUMBER")) + """"
-                            Sj = Sj + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
-                            Sj = Sj + Chr(13) + " ,""city"":""" + Trim(SQLDT("POL")) + """"
-                            Sj = Sj + Chr(13) + " }}}]"
+                            SJ = SJ + Chr(13) + ",""address"":{ "
+                            SJ = SJ + Chr(13) + " ""country"":""GR"" "
+                            SJ = SJ + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
+                            SJ = SJ + Chr(13) + ",""number"":""" + Trim(SQLDT("STREETNUMBER")) + """"
+                            SJ = SJ + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
+                            SJ = SJ + Chr(13) + " ,""city"":""" + Trim(SQLDT("POL")) + """"
+                            SJ = SJ + Chr(13) + " }}}]"
                         End If  '  If m_is_Benzinadiko = 1 Then
                         
 606                     If isDiakin >= 1 Then   'tda=1  äåë.áðïóô=2
                        
 608                         If isDiakin = 1 Then   'tda=1
-610                             Sj = Sj + Chr(13) + ",""isDeliveryNote"":1 "
+610                             SJ = SJ + Chr(13) + ",""isDeliveryNote"":1 "
                             End If
                        
-612                         Sj = Sj + Chr(13) + ",""otherDeliveryNoteHeader"": { " '----------------
+612                         SJ = SJ + Chr(13) + ",""otherDeliveryNoteHeader"": { " '----------------
                                  
-614                         Sj = Sj + Chr(13) + " ""deliveryAddress"": { "
-616                         Sj = Sj + Chr(13) + " ""street"": """ + CNull(SQLDT("STREET")) + """  "
-618                         Sj = Sj + Chr(13) + ",""number"": """ + CNull(SQLDT("STREETNUMBER")) + """  "
-620                         Sj = Sj + Chr(13) + ",""postalCode"": """ + CNull(SQLDT("POSTALCODE")) + """  "
-622                         Sj = Sj + Chr(13) + ",""city"": """ + CNull(SQLDT("CITY")) + """  "
-624                         Sj = Sj + Chr(13) + " } "
+614                         SJ = SJ + Chr(13) + " ""deliveryAddress"": { "
+616                         SJ = SJ + Chr(13) + " ""street"": """ + CNull(SQLDT("STREET")) + """  "
+618                         SJ = SJ + Chr(13) + ",""number"": """ + CNull(SQLDT("STREETNUMBER")) + """  "
+620                         SJ = SJ + Chr(13) + ",""postalCode"": """ + CNull(SQLDT("POSTALCODE")) + """  "
+622                         SJ = SJ + Chr(13) + ",""city"": """ + CNull(SQLDT("CITY")) + """  "
+624                         SJ = SJ + Chr(13) + " } "
                                     
-626                         Sj = Sj + Chr(13) + ",""loadingAddress"": { "
+626                         SJ = SJ + Chr(13) + ",""loadingAddress"": { "
                                    
-628                         Sj = Sj + Chr(13) + " ""street"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELDIE,'') AS PELDIE FROM MEM ") + """"
-630                         Sj = Sj + Chr(13) + ",""number"": " + GGET_CVALUE("SELECT TOP 1 ISNULL(PELARIT,'0') AS PELARIT FROM MEM ")
-632                         Sj = Sj + Chr(13) + ",""postalCode"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELTK,'0') AS PELTK FROM MEM ") + """"
-634                         Sj = Sj + Chr(13) + ",""city"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELPOL,'') AS PELPOL FROM MEM ") + """"
+628                         SJ = SJ + Chr(13) + " ""street"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELDIE,'') AS PELDIE FROM MEM ") + """"
+630                         SJ = SJ + Chr(13) + ",""number"": " + GGET_CVALUE("SELECT TOP 1 ISNULL(PELARIT,'0') AS PELARIT FROM MEM ")
+632                         SJ = SJ + Chr(13) + ",""postalCode"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELTK,'0') AS PELTK FROM MEM ") + """"
+634                         SJ = SJ + Chr(13) + ",""city"": """ + GGET_CVALUE("SELECT TOP 1 ISNULL(PELPOL,'') AS PELPOL FROM MEM ") + """"
                         
-636                         Sj = Sj + Chr(13) + " } "
+636                         SJ = SJ + Chr(13) + " } "
                                      
-638                         Sj = Sj + Chr(13) + ",""startShippingBranch"": 0  "
-640                         Sj = Sj + Chr(13) + ",""completeShippingBranch"": 0  "
-642                         Sj = Sj + Chr(13) + " } " '---------------otherDeliveryNoteHeader"
+638                         SJ = SJ + Chr(13) + ",""startShippingBranch"": 0  "
+640                         SJ = SJ + Chr(13) + ",""completeShippingBranch"": 0  "
+642                         SJ = SJ + Chr(13) + " } " '---------------otherDeliveryNoteHeader"
 
                         Else
                             '                            Dim NSXETMARKS As Integer
@@ -13502,11 +13633,11 @@ Public Function ToJason(ByVal noask As Integer, _
                             '                            End If
                         End If
                               
-514                     Sj = Sj + Chr(13) + "} " 'telos invoiceHeader
+514                     SJ = SJ + Chr(13) + "} " 'telos invoiceHeader
                           
 516                     If is_B2G = 1 Then
                           
-518                         Sj = Sj + Chr(13) + " , ""publishType"":2"
+518                         SJ = SJ + Chr(13) + " , ""publishType"":2"
 
                             'organizationalUnitName 2 NO String BT-10 Name of internal organizational unit of public authority that will receive the invoice, if any.
                             'organizationalUnitCode 2 NO String BT-10 Code of internal organizational unit of public authority that will receive the invoice, if any.
@@ -13522,17 +13653,17 @@ Public Function ToJason(ByVal noask As Integer, _
                             ' publ.contractingAuthorityID = sqlDt.Rows(klm)("CONTRACTINGAUTHORITYID")  ' "1017.0000000000.0001"
                             ' bud.type = sqlDt.Rows(klm)("BUDTYPE") ' 1         '"??p?? ????p?????sµ??"   '?p????? ??µ?? ap? ta pa?a??t?:
                            
-520                         Sj = Sj + Chr(13) + ",""publishDetails"":{ "
-522                         Sj = Sj + Chr(13) + " ""contractingAuthorityID"":""" + SQLDT("contractingAuthorityID") + """"
-524                         Sj = Sj + Chr(13) + ",""budget"":{ "
-526                         Sj = Sj + Chr(13) + " ""type"": " + SQLDT("BUDTYPE") + ""
-528                         Sj = Sj + Chr(13) + ",""identifier"":""" + SQLDT("BUDIDENTIFIER") + """"
-530                         Sj = Sj + Chr(13) + "} " 'telos budget
-532                         Sj = Sj + Chr(13) + ",""contractIdentifier"":""" + SQLDT("contractIdentifier") + """"
-534                         Sj = Sj + Chr(13) + ",""organizationalUnitName"":""" + SQLDT("ORGANIZATIONALUNITNAME") + """"
-536                         Sj = Sj + Chr(13) + ",""organizationalUnitCode"":""" + SQLDT("organizationalUnitCode") + """"
+520                         SJ = SJ + Chr(13) + ",""publishDetails"":{ "
+522                         SJ = SJ + Chr(13) + " ""contractingAuthorityID"":""" + SQLDT("contractingAuthorityID") + """"
+524                         SJ = SJ + Chr(13) + ",""budget"":{ "
+526                         SJ = SJ + Chr(13) + " ""type"": " + SQLDT("BUDTYPE") + ""
+528                         SJ = SJ + Chr(13) + ",""identifier"":""" + SQLDT("BUDIDENTIFIER") + """"
+530                         SJ = SJ + Chr(13) + "} " 'telos budget
+532                         SJ = SJ + Chr(13) + ",""contractIdentifier"":""" + SQLDT("contractIdentifier") + """"
+534                         SJ = SJ + Chr(13) + ",""organizationalUnitName"":""" + SQLDT("ORGANIZATIONALUNITNAME") + """"
+536                         SJ = SJ + Chr(13) + ",""organizationalUnitCode"":""" + SQLDT("organizationalUnitCode") + """"
                            
-538                         Sj = Sj + Chr(13) + "} " 'telos publishDetails
+538                         SJ = SJ + Chr(13) + "} " 'telos publishDetails
                           
                         End If
                                                        
@@ -13596,7 +13727,7 @@ Public Function ToJason(ByVal noask As Integer, _
                                  
                                 End If
                                 
-568                             Sj = Sj + Chr(13) + ",""correlatedInvoices"":[{ ""extSystemId"":null, ""mark"":" + CR8 + " }] "
+568                             SJ = SJ + Chr(13) + ",""correlatedInvoices"":[{ ""extSystemId"":null, ""mark"":" + CR8 + " }] "
                                 
                                 '       "correlatedInvoices": [
                                 '        {
@@ -13985,7 +14116,7 @@ Public Function ToJason(ByVal noask As Integer, _
 648                     Dim SumEsodExod(10) As Double: For L = 1 To 10: SumEsodExod(L) = 0: Next
                      
 650                     L = 0
-652                     Sj = Sj + Chr(13) + ",""invoiceDetails"":[" 'arxizoyn oi seires=======================================================================
+652                     SJ = SJ + Chr(13) + ",""invoiceDetails"":[" 'arxizoyn oi seires=======================================================================
 
                         '====================================================================================================================
 654                     Do While Not EGGTIM.EOF
@@ -14043,17 +14174,17 @@ Public Function ToJason(ByVal noask As Integer, _
 694                         ' Set elem2Field = docStock.createElement("vatAmount"):'elem2Field.Text = chDec(Format(fpaRow, "######0.##")): ' ' elemField.appendChild elem2Field
 
 696                         If L = 1 Then
-698                             Sj = Sj + Chr(13) + "{ ""lineNumber"":" + str(L)
+698                             SJ = SJ + Chr(13) + "{ ""lineNumber"":" + str(L)
                             Else
-700                             Sj = Sj + Chr(13) + ", { ""lineNumber"":" + str(L)
+700                             SJ = SJ + Chr(13) + ", { ""lineNumber"":" + str(L)
                             End If
                            
-702                         Sj = Sj + Chr(13) + ",""recType"":0"
-704                         Sj = Sj + Chr(13) + ",""quantity"":" + Replace(Format(Round(EGGTIM("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
-706                         Sj = Sj + Chr(13) + ",""entityName"":""" + Replace(EGGTIM("onoma"), """", "`") + """"
+702                         SJ = SJ + Chr(13) + ",""recType"":0"
+704                         SJ = SJ + Chr(13) + ",""quantity"":" + Replace(Format(Round(EGGTIM("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
+706                         SJ = SJ + Chr(13) + ",""entityName"":""" + Replace(EGGTIM("onoma"), """", "`") + """"
                            
-708                         Sj = Sj + Chr(13) + ",""netValue"":" + Replace(Format(Round(AJ, 2), "#####0.00"), ",", ".")
-710                         Sj = Sj + Chr(13) + ",""vatCategory"":" + Replace(str(VAT), ",", ".")
+708                         SJ = SJ + Chr(13) + ",""netValue"":" + Replace(Format(Round(AJ, 2), "#####0.00"), ",", ".")
+710                         SJ = SJ + Chr(13) + ",""vatCategory"":" + Replace(str(VAT), ",", ".")
                             ' 1ï ìåñïò detail
                             
                             '  Sj = Sj + Chr(13) + ",""itemCode"":" + EGGTIM("KODE")
@@ -14061,7 +14192,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             If m_is_benzinadiko = 1 Then
                                 ' newitem(NEGG).fuelCode = EGGTIM.rows(NEGG)("KODE") ' 30 ' "ITEMCODE"
-                                Sj = Sj + Chr(13) + ",""fuelCode"":" + EGGTIM("KODE")
+                                SJ = SJ + Chr(13) + ",""fuelCode"":" + EGGTIM("KODE")
                             End If
 
 712                         Dim FPAUBL As String: FPAUBL = GGET_CVALUE("Select ISNULL(C2,'') AS UBL FROM PINAKES  WHERE TYPOS=1 AND N1=" + VAT)
@@ -14074,9 +14205,9 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             End If
                             
-720                         Sj = Sj + Chr(13) + ", ""vatCategoryUbl"":""" + Trim(FPAUBL) + """"
-722                         Sj = Sj + Chr(13) + ",""vatAmount"":" + Replace(Format(Round(fpaRow, 2), "####0.00"), ",", ".")
-724                         Sj = Sj + Chr(13) + ",""vatPercent"":" + Replace(str(IIf(VAT = 1, 24, IIf(VAT = 2, 13, IIf(VAT = 3, 6, IIf(VAT = 4, 17, IIf(VAT = 5, 9, IIf(VAT = 6, 4, 0))))))), ",", ".")
+720                         SJ = SJ + Chr(13) + ", ""vatCategoryUbl"":""" + Trim(FPAUBL) + """"
+722                         SJ = SJ + Chr(13) + ",""vatAmount"":" + Replace(Format(Round(fpaRow, 2), "####0.00"), ",", ".")
+724                         SJ = SJ + Chr(13) + ",""vatPercent"":" + Replace(str(IIf(VAT = 1, 24, IIf(VAT = 2, 13, IIf(VAT = 3, 6, IIf(VAT = 4, 17, IIf(VAT = 5, 9, IIf(VAT = 6, 4, 0))))))), ",", ".")
 
                             'newitem(NEGG).vatAmount = System.Math.Round(fpaRow, 2) 'fpaRow '24
                             'newitem(NEGG).vatPercent = IIf(VAT = 1, 24, IIf(VAT = 2, 13, IIf(VAT = 3, 6, IIf(VAT = 4, 17, IIf(VAT = 5, 9, IIf(VAT = 6, 4, 0))))))
@@ -14088,9 +14219,9 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             Unitmy = GGET_NVALUE("select str(TIMH) FROM PINAKES  WHERE TYPOS=2 AND PERIGRAFH LIKE '%" + monada + "%'")
                           
-                            Sj = Sj + Chr(13) + ", ""measurementUnit"":""" + Trim(Unitmy) + """"
+                            SJ = SJ + Chr(13) + ", ""measurementUnit"":""" + Trim(Unitmy) + """"
 
-726                         Sj = Sj + Chr(13) + ",""lineComments"":""---""   "       '       "lineComments": "string",
+726                         SJ = SJ + Chr(13) + ",""lineComments"":""---""   "       '       "lineComments": "string",
 
 728
 
@@ -14121,16 +14252,16 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             End If
 
-750                         Sj = Sj + Chr(13) + ", ""measurementUnitUbl"":""" + Trim(UNITUBL) + """"
+750                         SJ = SJ + Chr(13) + ", ""measurementUnitUbl"":""" + Trim(UNITUBL) + """"
 
                             '  newitem(NEGG).measurementUnitUbl = Trim(UNITUBL) ' "H87"
 
                             'newitem(NEGG).lineComments = ""  ' "S?????"
-752                         Sj = Sj + Chr(13) + ", ""lineComments"":""" + "" + """"
+752                         SJ = SJ + Chr(13) + ", ""lineComments"":""" + "" + """"
 
-754                         Sj = Sj + Chr(13) + ",""totalValue"":" + Replace(Format(Round(AJ + fpaRow, 2), "#####0.00"), ",", ".")
+754                         SJ = SJ + Chr(13) + ",""totalValue"":" + Replace(Format(Round(AJ + fpaRow, 2), "#####0.00"), ",", ".")
 
-756                         Sj = Sj + Chr(13) + ", ""cpvCode"":""" + EGGTIM("CPV") + """"
+756                         SJ = SJ + Chr(13) + ", ""cpvCode"":""" + EGGTIM("CPV") + """"
 
                             '-------------------------------------------------------------------------------
 758                         If Len(EGGTIM("CPV")) = 0 Then
@@ -14164,11 +14295,11 @@ Public Function ToJason(ByVal noask As Integer, _
                                     
                                     'newitem(NEGG).vatExemption = mAPAL ' EGGTIM.Rows(NEGG)("CPV")  ' "45233222-1"
                                      
-780                                 Sj = Sj + Chr(13) + ",""vatExemption"":""" + Trim(mAPAL) + """"
+780                                 SJ = SJ + Chr(13) + ",""vatExemption"":""" + Trim(mAPAL) + """"
                                      
 782                                 Dim APALUBL As String: APALUBL = GGET_CVALUE("Select ISNULL(C2,'') AS UBL FROM PINAKES  WHERE TYPOS=44 AND AYJON=" + mAPAL)
 
-784                                 Sj = Sj + Chr(13) + ",""vatExemptionUbl"":""" + Trim(APALUBL) + """"
+784                                 SJ = SJ + Chr(13) + ",""vatExemptionUbl"":""" + Trim(APALUBL) + """"
                                    
 786                                 If Len(APALUBL) = 0 Then
 788                                     MsgBox ("äåí Ý÷ù êùäéêü áðáëëáãÞò ÖÐÁ UBL óåéñÜ " + str(NEGG))
@@ -14217,7 +14348,7 @@ Public Function ToJason(ByVal noask As Integer, _
 822                                 If Len(Trim(Split(ctypos, ";")(1))) = 0 Or isDiakin = 2 Then   ' äåí å÷åé Å3 ð.÷. 1_95  Þ åéíáé äåëôéï áðïóôïëçò
                                     Else '-------------------------------  ÐÁÉÑÍÅÉ ÁÐÏ ÐÁÑÁÓÔÁÔÔÉÊÏ
 824                                     '' Set elem3Field = docStock.createElement("n1:classificationType"):'elem3Field.Text = Split(ctypos, ";")(1): ' elem2Field.appendChild elem3Field
-                                        Sj = Sj + Chr(13) + ",""classificationType"":""" + Split(ctypos, ";")(1) + """"
+                                        SJ = SJ + Chr(13) + ",""classificationType"":""" + Split(ctypos, ";")(1) + """"
 
                                     End If
 
@@ -14225,7 +14356,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
                                     '  newitem(NEGG).classificationCategory = Split(ctypos, ";")(2) ' "category1_1"
                                     '  newitem(NEGG).classificationType = Split(ctypos, ";")(1) '"E3_561_001"
-828                                 Sj = Sj + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2)) + """"
+828                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2)) + """"
 830
 
                                 Else
@@ -14243,14 +14374,14 @@ Public Function ToJason(ByVal noask As Integer, _
                                              
 840                                     '' Set elem3Field = docStock.createElement("n1:classificationType"):'elem3Field.Text = E3type: ' elem2Field.appendChild elem3Field
                                         ' newitem(NEGG).classificationType = E3type ' Split(ctypos, ";")(1) '"E3_561_001"
-842                                     Sj = Sj + Chr(13) + ",""classificationType"":""" + E3type + """"
+842                                     SJ = SJ + Chr(13) + ",""classificationType"":""" + E3type + """"
                                     End If
 
                                     ' êáôçãïñéá áðï ôï "Êáôçãïñßá Ýéäïõò"
 844                                 '' Set elem3Field = docStock.createElement("n1:classificationCategory"):'elem3Field.Text = fKatEsod(EGGTIM("kathgoria")): ' elem2Field.appendChild elem3Field
 
                                     'newitem(NEGG).classificationCategory = fKatEsod(EGGTIM.Rows(NEGG)("kathgoria"))
-846                                 Sj = Sj + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria"))) + """"
+846                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria"))) + """"
 
                                 End If
 
@@ -14259,12 +14390,12 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If
                       
 852                        ' .appendChild elemField
-854                         Sj = Sj + Chr(13) + "}" ' åäù êëåéíåé ç óåéñá=============================================
+854                         SJ = SJ + Chr(13) + "}" ' åäù êëåéíåé ç óåéñá=============================================
 856                         EGGTIM.MoveNext
                             'Next
                         Loop
 
-858                     Sj = Sj + Chr(13) + "]" 'ëçãïõí oi seires=======================================================================
+858                     SJ = SJ + Chr(13) + "]" 'ëçãïõí oi seires=======================================================================
                         '====================================================================================================================
       
 860                     Gdb.Execute "UPDATE TIM SET AADEKAU=" + Replace(Format(SYN_KAU, "######0.#####"), ",", ".") + ",AADEFPA=" + Replace(Format(SYN_FPA, "######0.#####"), ",", ".") + " WHERE ID_NUM=" + str(SQLDT("ID_NUM"))
@@ -14402,7 +14533,7 @@ Public Function ToJason(ByVal noask As Integer, _
 890                         '' Set elem3Field = docStock.createElement("taxType"):'elem3Field.Text = RR(0): ' elem2Field.appendChild elem3Field
 
                             'taxesTotals
-892                         Sj = Sj + Chr(13) + ",""taxesTotals"":[ {"
+892                         SJ = SJ + Chr(13) + ",""taxesTotals"":[ {"
 
                             Dim CATUBL As String: CATUBL = " "
 
@@ -14415,8 +14546,8 @@ Public Function ToJason(ByVal noask As Integer, _
                             If RR(0) = 1 Then ' ÐÁÑÁÊÑÁÔÇÓÇ ÖÏÑÏÕ
                             
 894                             If gVal(RR(1)) > 0 Then  ' KATHGORIA PARAKRATHSHS KAI POSOSTO PARAKRATHSHS
-896                                 Sj = Sj + Chr(13) + "  ""taxCategory"":" + RR(1)
-898                                 Sj = Sj + Chr(13) + ",""taxCategoryUbl"":""104"" "
+896                                 SJ = SJ + Chr(13) + "  ""taxCategory"":" + RR(1)
+898                                 SJ = SJ + Chr(13) + ",""taxCategoryUbl"":""104"" "
 
                                     Dim taxPercent As Single
 
@@ -14440,22 +14571,22 @@ Public Function ToJason(ByVal noask As Integer, _
 936                                     taxPercent = 15
                                     End If
 
-938                                 Sj = Sj + Chr(13) + ",""taxPercent"":" + str(taxPercent)
+938                                 SJ = SJ + Chr(13) + ",""taxPercent"":" + str(taxPercent)
                                 End If
                            
                             ElseIf RR(0) = 3 Then 'LOPOI FOROI
                             
                                 If gVal(RR(1)) > 0 Then  ' KATHGORIA LOIPOI FOROI
-                                    Sj = Sj + Chr(13) + "  ""taxCategory"":" + RR(1)
-                                    Sj = Sj + Chr(13) + ",""taxType"":3 "
-                                    Sj = Sj + Chr(13) + ",""taxCategoryUbl"":""AEF"" "
+                                    SJ = SJ + Chr(13) + "  ""taxCategory"":" + RR(1)
+                                    SJ = SJ + Chr(13) + ",""taxType"":3 "
+                                    SJ = SJ + Chr(13) + ",""taxCategoryUbl"":""AEF"" "
                                 End If
                              ElseIf RR(0) = 4 Then 'psifiako telos
                             
                                If gVal(RR(1)) > 0 Then  '
-                                    Sj = Sj + Chr(13) + "  ""taxCategory"":" + RR(1)
-                                    Sj = Sj + Chr(13) + ",""taxType"":4 "
-                                    Sj = Sj + Chr(13) + ",""taxCategoryUbl"":""SAE"" "
+                                    SJ = SJ + Chr(13) + "  ""taxCategory"":" + RR(1)
+                                    SJ = SJ + Chr(13) + ",""taxType"":4 "
+                                    SJ = SJ + Chr(13) + ",""taxCategoryUbl"":""SAE"" "
                                 End If
                             
                             
@@ -14468,9 +14599,9 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             ' newTax(1).UnderlyingValue = SYN_KAU
                             'newTax(1).taxAmount = sqlDt.rows(klm)("PARAKRAT")
-946                         Sj = Sj + Chr(13) + " ,""UnderlyingValue"":" + Replace(Format(SYN_KAU, "#####0.00"), ",", ".")
-948                         Sj = Sj + Chr(13) + ",""taxAmount"":" + Replace(Format(SQLDT("PARAKRAT"), "######0.00"), ",", ".")
-950                         Sj = Sj + Chr(13) + "}" 'êëåéíåé ôï taxtotal  Replace(Format(Round(fpaRow, 2), "####0.00"), ",", ".")
+946                         SJ = SJ + Chr(13) + " ,""UnderlyingValue"":" + Replace(Format(SYN_KAU, "#####0.00"), ",", ".")
+948                         SJ = SJ + Chr(13) + ",""taxAmount"":" + Replace(Format(SQLDT("PARAKRAT"), "######0.00"), ",", ".")
+950                         SJ = SJ + Chr(13) + "}" 'êëåéíåé ôï taxtotal  Replace(Format(Round(fpaRow, 2), "####0.00"), ",", ".")
 
                             ' å÷åé êáé 2ç ðáñáêñáôçóç
 952                         If UBound(RR) > 2 Then
@@ -14491,14 +14622,14 @@ Public Function ToJason(ByVal noask As Integer, _
                            
 972                         '.appendChild elemField  '.appendChild elemField
                             
-974                         Sj = Sj + Chr(13) + " ] " ' kleinei to taxestotals
+974                         SJ = SJ + Chr(13) + " ] " ' kleinei to taxestotals
  
                         End If
       
                         If isDiakin <> 2 Then  ' óôï äá äåí èåëåé PAYMENT
       
-594                         Sj = Sj + Chr(13) + ",""paymentMethods"":[{ ""type"":" + cTrp ' """"
-596                         Sj = Sj + Chr(13) + ",""amount"":" + chDec(Format(Round(SUMNET + SumFpa, 2), "####0.00"))
+594                         SJ = SJ + Chr(13) + ",""paymentMethods"":[{ ""type"":" + cTrp ' """"
+596                         SJ = SJ + Chr(13) + ",""amount"":" + chDec(Format(Round(SUMNET + SumFpa, 2), "####0.00"))
 598
 
                             If IS_POS = 1 Then
@@ -14511,7 +14642,7 @@ Public Function ToJason(ByVal noask As Integer, _
                           
                             End If
                            
-600                         Sj = Sj + Chr(13) + "}] " 'telos paymentMethods
+600                         SJ = SJ + Chr(13) + "}] " 'telos paymentMethods
       
                         End If
       
@@ -14521,7 +14652,7 @@ Public Function ToJason(ByVal noask As Integer, _
 978                     ' ' Set elem2Field = docStock.createElement("totalNetValue"):'elem2Field.Text = chDec(Format(Round(SYN_KAU, 2), "######0.##")): ' ' elemField.appendChild ELEM2FIELD
 980                     ' ' Set elem2Field = docStock.createElement("totalVatAmount"):'elem2Field.Text = chDec(Format(Round(SYN_FPA, 2), "######0.##")): ' ' elemField.appendChild ELEM2FIELD
 
-982                     Sj = Sj + Chr(13) + " , ""invoiceSummary"":{ "
+982                     SJ = SJ + Chr(13) + " , ""invoiceSummary"":{ "
 
                         Dim synoloxorisFPA As Double
 
@@ -14531,9 +14662,9 @@ Public Function ToJason(ByVal noask As Integer, _
                             synoloxorisFPA = SYN_KAU
                         End If
 
-984                     Sj = Sj + Chr(13) + " ""totalNetValue"":" + Replace(Format(synoloxorisFPA, "#####0.00"), ",", ".")
+984                     SJ = SJ + Chr(13) + " ""totalNetValue"":" + Replace(Format(synoloxorisFPA, "#####0.00"), ",", ".")
 
-986                     Sj = Sj + Chr(13) + ",""totalVatAmount"":" + Replace(Format(Round(SYN_FPA, 2), "#####0.00"), ",", ".") ' Replace(str(SYN_FPA), ",", ".")
+986                     SJ = SJ + Chr(13) + ",""totalVatAmount"":" + Replace(Format(Round(SYN_FPA, 2), "#####0.00"), ",", ".") ' Replace(str(SYN_FPA), ",", ".")
                           
                         Dim synn As Double
 
@@ -14552,14 +14683,14 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If
                         End If
 
-988                     Sj = Sj + Chr(13) + ",""totalValue"":" + Replace(Format(Round(synn, 2), "######0.00"), ",", ".")
-990                     Sj = Sj + Chr(13) + " } " ' kleinei to Invoice sUMMARY
+988                     SJ = SJ + Chr(13) + ",""totalValue"":" + Replace(Format(Round(synn, 2), "######0.00"), ",", ".")
+990                     SJ = SJ + Chr(13) + " } " ' kleinei to Invoice sUMMARY
                               
 992                     If Len(SQLDT("jwt")) > 10 Then
-994                         Sj = Sj + Chr(13) + ", ""delayedProcessCode"":""" + SQLDT("jwt") + """ "
+994                         SJ = SJ + Chr(13) + ", ""delayedProcessCode"":""" + SQLDT("jwt") + """ "
                         End If
                               
-996                     Sj = Sj + Chr(13) + " }} " ' kleinei to Invoice
+996                     SJ = SJ + Chr(13) + " }} " ' kleinei to Invoice
 
                         ' PARAKRATHSH
 998                     If SYN_KRATIS(1) > 0 Then CPOSO_F = chDec(Format(Round(SYN_KRATIS(1), 2), "####0.00")) Else CPOSO_F = "0.00"
@@ -14728,7 +14859,7 @@ Public Function ToJason(ByVal noask As Integer, _
                 
 1124                'MATIM = FERE_TRANSACTIONID(mID_NUM) Dim F_PAROX_SIGNATURE As String
 
-                    SendToParochos Sj, SQLDT("id_num"), F_PAROX_SIGNATURE, TID, MFPA + MKAU, POSTransactionId, IS_POS, ubl, UPLOAD
+                    SendToParochos SJ, SQLDT("id_num"), F_PAROX_SIGNATURE, TID, MFPA + MKAU, POSTransactionId, IS_POS, ubl, UPLOAD
                   
 1126                SQLDT.MoveNext
                 Loop
@@ -14810,7 +14941,7 @@ End Function
 
 
 
-Sub SendToParochos(Sj As String, id_num, posSignature As String, TID As String, POS_AMOUNT As Single, POSTransactionId As String, IS_POS As Integer, ubl As String, ByVal UPLOAD As Integer)
+Sub SendToParochos(SJ As String, id_num, posSignature As String, TID As String, POS_AMOUNT As Single, POSTransactionId As String, IS_POS As Integer, ubl As String, ByVal UPLOAD As Integer)
 
         '==========================================================================================
         On Error Resume Next
@@ -14820,7 +14951,7 @@ Sub SendToParochos(Sj As String, id_num, posSignature As String, TID As String, 
 100     fnamejson = "vb6jsonInstantReply" + str(id_num) + str(KN) + ".txt"
 102     mqq = "c:\txtfiles\" + fnamejson
 104     Open mqq For Output As #2
-106     Print #2, Sj
+106     Print #2, SJ
 108     Close #2
  
         '--------------------------- áðïèçêåýù ôï ÁÑ×ÅÉÏ  inv ÓÅ fakelo "c:\"+F_TXTFILES+"\sendinv\yyyy-mm-dd  ------------------------------
@@ -14853,7 +14984,7 @@ Sub SendToParochos(Sj As String, id_num, posSignature As String, TID As String, 
        ' TO ANTIGRAFEI GIA NA BLEPV TO TELEYTAIO  JSON
         FileCopy mqq, "C:\" + F_TXTFILES + "\INV.JSN"
         '--------------ÁÐÏÓÔÏËÇ ÓÅ ÐÁÑÏ×Ï ----------------------------------
-130     Dim ResultJSON As String: ResultJSON = Sj 'ResultJSON ' " {""externa
+130     Dim ResultJSON As String: ResultJSON = SJ 'ResultJSON ' " {""externa
 
         Dim REQ        As WinHttp.WinHttpRequest
 
@@ -15475,32 +15606,32 @@ On Error Resume Next
 
 1200
 
-        Dim Sj As String: Sj = ""
+        Dim SJ As String: SJ = ""
        ' bearer = REQPAROCHOS()
        ' AMOUNT = "1.5"
-         Sj = Sj + Chr(13) + "   {  ""externalSystemId"":""" + Trim(LTrim(extID)) + ""","
-        Sj = Sj + Chr(13) + "     ""mark"":" + MARK + ","
+         SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + Trim(LTrim(extID)) + ""","
+        SJ = SJ + Chr(13) + "     ""mark"":" + MARK + ","
        
-        Sj = Sj + Chr(13) + "     ""paymentInfo"":[{"
-        Sj = Sj + Chr(13) + "     ""type"":7,"
-        Sj = Sj + Chr(13) + "     ""amount"":" + Replace(AMOUNT, ",", ".") + ","
+        SJ = SJ + Chr(13) + "     ""paymentInfo"":[{"
+        SJ = SJ + Chr(13) + "     ""type"":7,"
+        SJ = SJ + Chr(13) + "     ""amount"":" + Replace(AMOUNT, ",", ".") + ","
         'Sj = Sj + Chr(13) + "     ""paymentMethodInfo"":"""" ,"
         'Sj = Sj + Chr(13) + "     ""tipAmount"":0,"
-        Sj = Sj + Chr(13) + "     ""transactionId"":""" + TransactionId + ""","
-        Sj = Sj + Chr(13) + "     ""signature"":""" + signatureParochos + ""","
+        SJ = SJ + Chr(13) + "     ""transactionId"":""" + TransactionId + ""","
+        SJ = SJ + Chr(13) + "     ""signature"":""" + signatureParochos + ""","
         
-        Sj = Sj + Chr(13) + "     ""terminalId"":""" + TID + """}]}"
+        SJ = SJ + Chr(13) + "     ""terminalId"":""" + TID + """}]}"
         
        ' Exit Function
         
         Open "C:\TXTFILES\SUBM" + extID + ".TXT" For Output As #1
-          Write #1, Sj
+          Write #1, SJ
         Close #1
         
 MILSEC 1000
 
   Open "C:\TXTFILES\REQUESTAPOPAROXO" + extID + ".TXT" For Input As #1
-          Input #1, Sj
+          Input #1, SJ
           'Write #1, F_PAROX_SIGNATURE
   Close #1
  
@@ -15516,7 +15647,7 @@ MILSEC 1000
                 .setRequestHeader "Accept", "text/*, application/hal+json, application/json"
                 .setRequestHeader "Authorization", "Bearer " + gf_Bearer
                 .setRequestHeader "X-Version", "3"
-                .send (Sj)
+                .send (SJ)
                  MsgBox (Reqpos.responseText)
             End With
             
@@ -15524,7 +15655,7 @@ MILSEC 1000
             
            ' MsgBox Reqpos.responseText
             Open "C:\TXTFILES\SUBMANSW" + extID + ".TXT" For Output As #1
-          Write #1, Sj
+          Write #1, SJ
         Close #1
             
           ' GoTo 1200
@@ -15588,10 +15719,10 @@ POS_submitpayment = "ok"
         Set Reqpos = New WinHttp.WinHttpRequest
 
 
-        Dim Sj As String
-        Sj = ""
-        Sj = Sj + Chr(13) + "   {  ""externalSystemId"":""" + extID + ""","
-        Sj = Sj + Chr(13) + "     ""signature"":""" + signature + """ } "
+        Dim SJ As String
+        SJ = ""
+        SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + extID + ""","
+        SJ = SJ + Chr(13) + "     ""signature"":""" + signature + """ } "
 
 
             'ðáéñíù ôçí áðáíôçóç áðï ôïí ðáñï÷ï
@@ -15604,7 +15735,7 @@ POS_submitpayment = "ok"
                 .setRequestHeader "X-Version", "3"
 
                
-                .send (Sj)
+                .send (SJ)
 
             End With
 
