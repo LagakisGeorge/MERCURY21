@@ -504,7 +504,7 @@ Private Sub Form_Load()
         TDBGrid.Splits(0).AlternatingRowStyle = True
         TDBGrid.Splits(0).ExtendRightColumn = True
         
-    
+    'TDBGrid1.Splits(0).columns(0).Locked = True
         
         
         
@@ -531,6 +531,12 @@ Sub GRIDREFRESH()
               
 End Sub
 
+Private Sub TDBGrid_BeforeColEdit(ByVal ColIndex As Integer, ByVal KeyAscii As Integer, Cancel As Integer)
+    If ColIndex = 0 Then
+        Cancel = True ' ??????e? t?? epe?e??as?a
+    End If
+End Sub
+
 Private Sub TDBGrid_Click()
 TDBGrid.Refresh
 
@@ -549,6 +555,16 @@ TDBGrid.Col = 0
 
 
 End Sub
+
+
+
+
+'Private Sub TDBGrid1_BeforeColEdit(ByVal ColIndex As Integer, ByVal KeyAscii As Integer, Cancel As Integer)
+'    ' ?? ? ???st?? p?e? ?a epe?e??aste? t?? p??t? st??? (Index 0)
+'    If ColIndex = 0 Then
+'        Cancel = True ' ??????e? t?? epe?e??as?a
+'    End If
+'End Sub
 
 Private Sub TDBGrid_DblClick()
 
