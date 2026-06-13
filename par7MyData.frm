@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   306839553
+      Format          =   192675841
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   306839553
+      Format          =   192675841
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1696,7 +1695,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1710,8 +1709,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.ÌÅÔÑ' WHERE TRP LIKE 'ÌÅ%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.ÐÉÓÔ' WHERE TRP LIKE 'ÐÉ%' "
 
-118     APO.SetFocus
-120     EOS.SetFocus
+118     apo.SetFocus
+120     eos.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -3103,7 +3102,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -4322,11 +4321,11 @@ Private Sub Command12_Click()
 
         On Error GoTo 0
  
-        Dim c, d, SX As String
+        Dim c, D, SX As String
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4791,7 +4790,7 @@ Private Sub cmdKOYKAKH_Click()
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -6842,7 +6841,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(APO) < 2021 Then
+102     If Year(apo) < 2021 Then
 104         MsgBox "ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6883,7 +6882,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -10725,8 +10724,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "ËÁÈÏÓ ÓÔÉÓ ÁÍÔÉÓÔÏÉ×ÇÓÅÉÓ ÖÐÁ"
-230             APO.Enabled = False
-232             EOS.Enabled = False
+230             apo.Enabled = False
+232             eos.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10736,8 +10735,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
  
 240     R.Close
   
-242     APO.Value = Now
-244     EOS.Value = Now
+242     apo.Value = Now
+244     eos.Value = Now
 
         Dim sql As String
 
@@ -10745,8 +10744,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Í
 
 248     If sql = "0" Then
 
-250         APO.Enabled = False
-252         EOS.Enabled = False
+250         apo.Enabled = False
+252         eos.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -11375,7 +11374,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11386,7 +11385,7 @@ Private Sub monoApestalmena_Click()
 146    sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [ÓÕÍ.ÊÁÈ],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [ÓÕÍ.ÖÐÁ],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148    sql = sql + "   FROM TIM  "
-150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 152    sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154    sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11424,11 +11423,11 @@ End Sub
 
 Private Sub RESEND_CANCEL_Click()
 
-        Dim c, d, SX As String
+        Dim c, D, SX As String
 
-100     d = InputBox("äùóå ôïí áñéèìü ôïõ id", 0)
+100     D = InputBox("äùóå ôïí áñéèìü ôïõ id", 0)
    
-102     SX = GET_CVALUE("select ISNULL(SXETMARK,'00') AS SXX from TIM WHERE ID_NUM=" + d)
+102     SX = GET_CVALUE("select ISNULL(SXETMARK,'00') AS SXX from TIM WHERE ID_NUM=" + D)
 
 104     If SX = "00" Then
 106         MsgBox "ÄÅÍ ÕÐÁÑ×ÅÉ ÔÏ ÌÁÑÊ ÐÏÕ ÈÁ ÁÊÕÑÙÈÅÉ"
@@ -11439,12 +11438,12 @@ Private Sub RESEND_CANCEL_Click()
 
         Dim TIMOL As String
 
-108     TIMOL = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + d)
+108     TIMOL = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + D)
    
 110     c = CANCEL_INVOICE(SX, TIMOL)
 
 112     If Len(c) > 5 Then
-114         Gdb.Execute "update TIM set ENTITYMARK='" + c + "' WHERE ID_NUM=" + d
+114         Gdb.Execute "update TIM set ENTITYMARK='" + c + "' WHERE ID_NUM=" + D
         End If
 
 End Sub
@@ -11550,10 +11549,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -11620,7 +11619,7 @@ B = InputBox("Ðñïóï÷Þ èá áêõñùèOYN " + str(num) + "EGGRFAES " + Chr(13) + " ÁÐÏ 
 
         On Error GoTo 0
  
-        Dim c, d, SX As String
+        Dim c, D, SX As String
 
         'Dim R2 As New ADODB.Recordset
  
@@ -11777,7 +11776,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [ÐÁÑÁÓÔ],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ÊÁÈ.ÁÎÉÁ], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11789,7 +11788,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -12840,10 +12839,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -15682,30 +15681,29 @@ MILSEC 1000
             
             
             Dim cmark As String
-            'cmark = posser.SelectToken("MARK").toString
+           
 
             
            
            
            Set posser = JObject.parse(posjson)
-            'Set ser = JSON.parse(ANSW)
-        
-    cmark = posser.Item("paymentMark")   ' ("signature")
     Dim ERRMES As String
-     ERRMES = posser.Item("errorMessage")
-   ' posTimestamp = ser.Item("paymentToken")("timestamp")
-   ' posuid = ser.Item("uid")
-            
-    If Len(cmark) > 10 Then
+             
+    Set posser = JSON.parse(posjson)
+    
+    
+     cmark = posser.Item("paymentMark")   ' ("signature")
+      ERRMES = posser.Item("errorMessage")
+     If Len(cmark) > 10 Then
                 Gdb.Execute "UPDATE TIM SET MARKPLHR='" + cmark + "' WHERE ID_NUM=" + extID
                 MsgBox "OK " + cmark
     Else
-            MsgBox errorMessage
+           ' MsgBox errorMessage
+          MsgBox ERRMES
+    
     End If
             
-       Set posser = JObject.parse(posjson)
-            
-          ERRMES = posser.Item("errorMessage")
+      
             
             
             
