@@ -4,14 +4,14 @@ Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form BOHU1 
    BackColor       =   &H00FFFFC0&
    Caption         =   "Πίνακες"
-   ClientHeight    =   9345
+   ClientHeight    =   10470
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   12420
+   ClientWidth     =   13170
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   9345
-   ScaleWidth      =   12420
+   ScaleHeight     =   10470
+   ScaleWidth      =   13170
    WindowState     =   2  'Maximized
    Begin VB.CommandButton Command8 
       Caption         =   "ΔΙΑΓΡΑΦΗ ΧΡΗΣΗΣ"
@@ -1127,8 +1127,9 @@ End Sub
 Private Sub Command3_Click()
 
 
+Dim arxgConnect As String
 
-
+arxgConnect = gConnect
 
 'Private Sub MDIForm_DblClick()
 Dim frm As Form
@@ -1225,7 +1226,7 @@ End If
 
 230     Gdb.Close
 
-        On Error GoTo OUTSIDE
+        On Error GoTo outout
 
 240     Gdb.Open gConnect
 
@@ -1275,6 +1276,11 @@ End If
 '340     Update_Structures
 '        Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + P_VER + "' WHERE  FORMA='MDIFORM1' AND VAR='F_VER' "
 'End If
+
+
+'Gdb.Close
+'Gdb.Open gConnect
+
 PARAMETROI_TO_ARRAY 'par1
 
 
@@ -1292,10 +1298,28 @@ PARAMETROI_TO_ARRAY 'par1
 
         Exit Sub
 
+
+
+outout:
+
+
+MsgBox "αδυνατη η συνδεση"
+
+gConnect = arxgConnect
+Gdb.Open gConnect
+
+Exit Sub
+
+
+
+
+
+
 OUTSIDE:
 
      Update_Structures
-        Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + P_VER + "' WHERE  FORMA='MDIFORM1' AND VAR='F_VER' "
+       'On Error Resume Next
+'        Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + P_VER + "' WHERE  FORMA='MDIFORM1' AND VAR='F_VER' "
 
 
 '330     MsgBox "Αδύνατη η σύνδεση στην εταιρεία " + Trim(DATA3.Recordset("TITLOS"))
