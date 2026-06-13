@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
@@ -203,7 +203,7 @@ Begin VB.Form bohu5
          Top             =   7800
          Width           =   735
       End
-      Begin VB.CommandButton Command16 
+      Begin VB.CommandButton IMPORTSERV 
          Caption         =   "IMPORT апо SERVER"
          Height          =   360
          Left            =   360
@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   120782849
+         Format          =   307167233
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -2631,12 +2631,16 @@ Public Sub EISROON()
 
 End Sub
 
-Private Sub Command16_Click()
+Private Sub IMPORTSERV_Click()
  ' Dim GDBDRAMA As New ADODB.Connection
  ' GDBDRAMA.Open "DSN=doytsios;uid=sa;pwd=p@ssw0rd"
  F_DOUTSIOSREM = Trim(F_DOUTSIOSREM)
  
- 
+ If InStr(F_DOUTSIOSREM, "DOUTSIOS") = 0 Then
+     
+     MsgBox "кахос  254"
+     Exit Sub
+ End If
  If Len(Trim(F_DOUTSIOSREM)) < 10 Then
      MsgBox "дем евете ояисеи сеябея"
      Exit Sub
@@ -4229,7 +4233,11 @@ F_LINKED_PARAST = (FINDPARAMETROI(1, "BOHU5", "F_LINKED_PARAST", "AT", "йыдийои 
 
 
 
-
+ If InStr(F_DOUTSIOSREM, "DOUTSIOS") = 0 Then
+    IMPORTSERV.Enabled = False
+    
+    
+ End If
 
 
 Dim R As New ADODB.Recordset
@@ -4601,20 +4609,20 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
-Dim d1, d2 As String
+Dim D1, d2 As String
 
-d1 = "01/01/2026"
+D1 = "01/01/2026"
 d2 = "31/01/2026"
-d1 = InputBox("апо ", "АПЭ", d1)
+D1 = InputBox("апо ", "АПЭ", D1)
 
 d2 = InputBox("еыс ", "щЫР", d2)
 
-If Len(Trim(d1)) <> 10 Or Len(Trim(d2)) <> 10 Then
+If Len(Trim(D1)) <> 10 Or Len(Trim(d2)) <> 10 Then
     MsgBox " кахос глеяолгмиа"
     Exit Sub
 End If
 
-d1 = mID(d1, 4, 3) + Left(d1, 3) + Right(d1, 4)
+D1 = mID(D1, 4, 3) + Left(D1, 3) + Right(D1, 4)
 d2 = mID(d2, 4, 3) + Left(d2, 3) + Right(d2, 4)
 
 
@@ -4635,7 +4643,7 @@ Dim N As Integer
 ' FROM [LAGAKIS.DDNS.NET\SQLEXPRESS,49818].[EMP].[dbo].[PEL] WHERE EIDOS='r'
 Dim R As New ADODB.Recordset
 F_LINKEDSERVER = Trim(F_LINKEDSERVER)
-R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + d1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
+R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + D1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
 Dim mmID As Long
 Do While Not R.EOF
     mmID = R!id_num
