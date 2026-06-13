@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   307232769
+      Format          =   311820289
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   307232769
+      Format          =   311820289
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -3161,6 +3160,7 @@ Private Sub cmdParochos2_Click()
 End Sub
 
 Private Sub cmdPROPLHROMH_Click()
+Dim SQLDTATIM As String
 
     Dim C_SEIRA As String
     Dim SQLDTBRANCH As String
@@ -3177,6 +3177,12 @@ Dim c As String
       c = getToken()
     
     Mctypos = "8.4"
+    
+    SQLDTBRANCH = "0"
+    
+    SQLDTATIM = "T000001"
+    
+    
     
     
 
@@ -3204,8 +3210,8 @@ POSO = InputBox("посо ; ", "посо пяоеиспяангс")
 
     QQ = QQ + " ""companyBranch"":""" + SQLDTBRANCH + ""","             'OK
     QQ = QQ + " ""invoiceType"":""" + "8.4" + ""","  'Split(Mctypos, ";")(0)
-    QQ = QQ + " ""invoiceSeries"":""" + C_SEIRA + ""","
-    QQ = QQ + " ""invoiceAA"":""" + mID(SQLDTATIM, 2, 6) + ""","
+    QQ = QQ + " ""invoiceSeries"":""" + C_SEIRA + ""","   'C_SEIRA
+    QQ = QQ + " ""invoiceAA"":""" + "000015" + ""","  'mID(SQLDTATIM, 2, 6)
     'QQ = QQ + " ""netValue"":" + Replace(Format(MKAU, "#####0.00"), ",", ".") + ","
     
     
