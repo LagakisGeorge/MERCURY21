@@ -593,6 +593,12 @@ dum2 = ADD_FIELD("PARASTAT", "FORMA3", "CHAR(80)")
         
          dum2 = ADD_FIELD("TIM", "HMEPARAD", "DATETIME")
          dum2 = ADD_FIELD("TIM", "ORAPARAD", "CHAR(6)")
+          dum2 = ADD_FIELD("TIM", "MARKPLHR", "VARCHAR(16)")
+        ' MARKPLHR
+         
+         
+         
+         
         
 dum2 = ADD_FIELD("TIM", "ENTITYUID", "nvarchar(40)")
 dum2 = ADD_FIELD("TIM", "QRURL", "nvarchar(200)")
@@ -1302,7 +1308,7 @@ Function Get_AJ(ByRef pol As String, _
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         'If gConnect = "Access" Then
         '   Set db = OpenDatabase(gDir, False, False)
@@ -1379,7 +1385,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         'If gConnect = "Access" Then
         '   Set db = OpenDatabase(gDir, False, False)
@@ -1479,7 +1485,7 @@ Function Get_EIDPAR(ByRef PolAJ As String, _
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
 100     R.Open UCase("select POL,EIDOS,POS_APOU,AJIA_APOU from PARASTAT"), Gdb, adOpenDynamic, adLockOptimistic
 
@@ -2395,7 +2401,7 @@ UPDATE_YPOLOIPA2_Err:
 End Sub
 
 
-Public Sub TelHmeAgoras(ByVal apo As Date, ByVal eos As Date)
+Public Sub TelHmeAgoras(ByVal APO As Date, ByVal EOS As Date)
 MDIForm1.Caption = " "
         '===================================================================================
         '<EhHeader>
@@ -2430,7 +2436,7 @@ MDIForm1.Caption = " "
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','á',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -2522,7 +2528,7 @@ Public Function Get2_AJ(ByRef pol As String, _
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         'If gConnect = "Access" Then
         '   Set db = OpenDatabase(gDir, False, False)
@@ -2931,15 +2937,15 @@ MILSEC_Err:
 End Sub
 
 Function ypoloipa_pel(ByVal mBUFF As String, _
-                      ByVal apo As Date, _
-                      ByVal eos As Date, ByVal ENERGOS As Integer) As Single
+                      ByVal APO As Date, _
+                      ByVal EOS As Date, ByVal ENERGOS As Integer) As Single
 
         'ypologismos ypoloipon
         '<EhHeader>
         On Error GoTo ypoloipa_pel_Err
 
         '</EhHeader>
-        Dim x As String, order As String
+        Dim X As String, order As String
 
         Dim k As Integer, R As New ADODB.Recordset    ', sum As Single
 
@@ -3796,7 +3802,7 @@ Function gfind_parastat(par As String, ReadWrite As Integer) As Long
 
         Dim k As Integer
 
-        Dim x, Bohuhtiko As String
+        Dim X, Bohuhtiko As String
 
         On Error GoTo MHNYMA
 
@@ -3806,9 +3812,9 @@ Function gfind_parastat(par As String, ReadWrite As Integer) As Long
 100     R.Open "SELECT * FROM PARASTAT WHERE EIDOS='" + par + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 110     If IsNull(R("ARITMISI")) Then
-120         x = 0
+120         X = 0
         Else
-130         x = R("ARITMISI")
+130         X = R("ARITMISI")
         End If
 
 140     R.Close
@@ -3816,7 +3822,7 @@ Function gfind_parastat(par As String, ReadWrite As Integer) As Long
         'MEM..MoveFirst
         'For k = 1 To 9: f_mfpa(k) = R("fpa" + LTrim(Str(k))): Next
 
-150     If x = 0 Then
+150     If X = 0 Then
 160         gfind_parastat = 0
 
             Exit Function
@@ -3824,7 +3830,7 @@ Function gfind_parastat(par As String, ReadWrite As Integer) As Long
         End If
 
 170     If ReadWrite = 0 Then
-180         R.Open "SELECT * FROM ARITMISI WHERE ID=" + str(x), Gdb, adOpenDynamic, adLockOptimistic
+180         R.Open "SELECT * FROM ARITMISI WHERE ID=" + str(X), Gdb, adOpenDynamic, adLockOptimistic
 
 190         If IsNull(R("ARITMISI")) Then
 200             gfind_parastat = 0
@@ -3835,7 +3841,7 @@ Function gfind_parastat(par As String, ReadWrite As Integer) As Long
 220         R.Close
 
         Else
-230         Gdb.Execute "UPDATE ARITMISI SET ARITMISI=ARITMISI+1  WHERE  ID=" + str(x)
+230         Gdb.Execute "UPDATE ARITMISI SET ARITMISI=ARITMISI+1  WHERE  ID=" + str(X)
 
         End If
 
@@ -4110,7 +4116,7 @@ R.Close
 End Sub
 
 
-Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker, eos As DTPicker)
+Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker, EOS As DTPicker)
         'into DOKEGGT1
         'B = "CREATE VIEW dbo.[EIDT3]" _
 
@@ -4165,7 +4171,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker
         a = a + " SUM(CASE APOT  WHEN 3  THEN isnull(XRE,0) ELSE 0  END ) AS S3X," & " SUM(CASE APOT  WHEN 3  THEN isnull(PIS,0) ELSE 0  END ) AS S3P,"
         a = a + " SUM(CASE APOT  WHEN 4  THEN isnull(XRE,0) ELSE 0  END ) AS S4X," & " SUM(CASE APOT  WHEN 4  THEN isnull(PIS,0) ELSE 0  END ) AS S4P  "
 190     a = a + " INTO DOKEGGT1 FROM EGGTIM  "
-200     a = a + "where HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
+200     a = a + "where HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
 
         Dim TT As Long
 

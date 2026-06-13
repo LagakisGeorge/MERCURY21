@@ -229,11 +229,11 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -241,31 +241,30 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   "GDIR"
             TextSave        =   "GDIR"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
-            Key             =   ""
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel8 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -274,12 +273,10 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   ".."
             TextSave        =   ".."
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel9 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Visible         =   0   'False
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -936,6 +933,9 @@ Begin VB.MDIForm MDIForm1
       End
       Begin VB.Menu menu_diak_status 
          Caption         =   "Κατάσταση Διακίνησης"
+      End
+      Begin VB.Menu menu_enhmPLHR 
+         Caption         =   "Ενημέρωση με Πληρωμή"
       End
    End
    Begin VB.Menu EPITAG311 
@@ -2300,8 +2300,8 @@ Private Sub mapot7_Click(index As Integer)
 100     If gXEIRISTHS <= 2 Then
 110         apot7.Dir1.Visible = False
 120         apot7.Text2.Visible = False
-130         apot7.apo.Visible = False
-140         apot7.eos.Visible = False
+130         apot7.APO.Visible = False
+140         apot7.EOS.Visible = False
 150         apot7.Label1.Visible = False
 160         apot7.Label2.Visible = False
         Else
@@ -3371,6 +3371,10 @@ End Sub
 
 Private Sub menu_diak_status_Click()
     PAR1.menu_diak_status
+End Sub
+
+Private Sub menu_enhmPLHR_Click()
+    PAR1.menu_enhmPLHR
 End Sub
 
 Private Sub menuParadosis_Click()
