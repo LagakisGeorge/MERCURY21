@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   454230017
+         Format          =   120782849
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -2680,20 +2680,20 @@ Private Sub Command16_Click()
            
            If TROPOS = 1 Then
            
-                Gdb.Execute "SELECT KOD,ONO,FPA,NUM1,LTI into DOKEIDD FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
-                Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM DOKEIDD"
+                Gdb.Execute "SELECT KOD,ONO,FPA,NUM1,LTI,MON into DOKEIDD FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
+                Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI,MON) SELECT KOD,ONO,FPA,NUM1,LTI,MON FROM DOKEIDD"
                 
                 Gdb.Execute "DROP TABLE DOKEIDD"
                 
            ElseIf TROPOS = 2 Then
-                 Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
+                 Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI,MON) SELECT KOD,ONO,FPA,NUM1,LTI,MON FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID "
            ElseIf TROPOS = 3 Then
                r0.Open "SELECT ID  from " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID ", Gdb, adOpenDynamic, adLockOptimistic
            
                N = 0:
                Do While Not r0.EOF
                    N = N + 1
-                  Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI) SELECT KOD,ONO,FPA,NUM1,LTI FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID where ID=" + str(r0(0))
+                  Gdb.Execute "INSERT INTO EID (KOD,ONO,FPA,NUM1,LTI,MON) SELECT KOD,ONO,FPA,NUM1,LTI,MON FROM " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.EID where ID=" + str(r0(0))
                   Me.Caption = str(N)
                   If N Mod 20 = 0 Then DoEvents
                   r0.MoveNext
@@ -4601,20 +4601,20 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
-Dim D1, d2 As String
+Dim d1, d2 As String
 
-D1 = "01/01/2026"
+d1 = "01/01/2026"
 d2 = "31/01/2026"
-D1 = InputBox("ÁÐÏ ", "áðü", D1)
+d1 = InputBox("ÁÐÏ ", "áðü", d1)
 
 d2 = InputBox("ÅÙÓ ", "Ýùò", d2)
 
-If Len(Trim(D1)) <> 10 Or Len(Trim(d2)) <> 10 Then
+If Len(Trim(d1)) <> 10 Or Len(Trim(d2)) <> 10 Then
     MsgBox " ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
     Exit Sub
 End If
 
-D1 = mID(D1, 4, 3) + Left(D1, 3) + Right(D1, 4)
+d1 = mID(d1, 4, 3) + Left(d1, 3) + Right(d1, 4)
 d2 = mID(d2, 4, 3) + Left(d2, 3) + Right(d2, 4)
 
 
@@ -4635,7 +4635,7 @@ Dim N As Integer
 ' FROM [LAGAKIS.DDNS.NET\SQLEXPRESS,49818].[EMP].[dbo].[PEL] WHERE EIDOS='r'
 Dim R As New ADODB.Recordset
 F_LINKEDSERVER = Trim(F_LINKEDSERVER)
-R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + D1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
+R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + d1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
 Dim mmID As Long
 Do While Not R.EOF
     mmID = R!id_num
