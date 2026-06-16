@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   307167233
+         Format          =   293797889
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
