@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   192675841
+      Format          =   308936705
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   192675841
+      Format          =   308936705
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1762,12 +1763,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     Data1.RecordSource = arxeio
-110     Data1.Refresh
+108     data1.RecordSource = arxeio
+110     data1.Refresh
 
-112     Set rDBF = Data1.Recordset
+112     Set rDBF = data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -3102,7 +3103,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -6918,7 +6919,7 @@ Function FIND_QUERY()
 166     sql = sql + "ISNULL(FPA1,0) AS FPA1,ISNULL(FPA2,0) AS FPA2,ISNULL(FPA3,0) AS FPA3,ISNULL(FPA4,0) AS FPA4 ,ISNULL(FPA6,0) AS FPA6,ISNULL(FPA7,0) AS FPA7,"
 168     sql = sql + "AJI,PEL.EPA,ISNULL(PEL.POL,'.') AS POL,PEL.COUNTRY,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,"
 170     sql = sql + "ISNULL(PEL.XRVMA,'') AS TK,SXETMARK,ISNULL(PARAKRATISI,0) AS PARAKRAT,ISNULL(B_C2,'') AS TYPOSPARAKRAT,isnull(EXCHANGERATE,1) AS EXCHANGERATE,isnull(CURRENCY,'EUR') AS CURRENCY ,ISNULL(ELGA,0) AS ELGA,isnull(KR1,0) AS KR1,ISNULL(KR2,0) AS KR2,PEL.EIDOS AS EIDOS,isnull(ANASTOLHFPA,0) as ANASTOLHFPA ,OTHERMOVEPURPOSETITLE, ORA,AYTOK,ISNULL(SXETMARKS,',') AS SXETMARKS,SKOPOS,AKYROMENO,isnull(JWT,'') AS JWT, "
-        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH "
+        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,PARAT "
 172     sql = sql + "   FROM TIM LEFT JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
 174     sql = sql + fSynt ' " WHERE (ENTITYMARK IS NULL OR LEFT(ENTITYMARK,3)='ERR' ) AND    LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'  "
         'sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
@@ -7543,6 +7544,12 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 
 470                     Set elem2Field = docStock.createElement("exchangeRate"): elem2Field.Text = isot: elemField.appendChild elem2Field
 
+                         If Split(ctypos, ";")(0) = "10.1" Then
+                         
+                               Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
+                                      
+                         End If
+
                  
 524                     If Split(ctypos, ";")(0) = "5.1" Or Split(ctypos, ";")(0) = "9.1" Then  ' -------- συσχετιζομενο
 526                         CR8 = "": CR8B = ""
@@ -7588,7 +7595,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                        
                        
 472                     If isDiakin >= 1 Then   'tda=1  δελ.αποστ=2
-                              If Split(ctypos, ";")(0) = "10.2" Then
+                              If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                               
                               Else
 
@@ -7653,7 +7660,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                             End If
 
                             Dim otherDeli As MSXML2.IXMLDOMElement
-                         If Split(ctypos, ";")(0) = "10.2" Then
+                         If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                               
                          Else
 482                         Set otherDeli = docStock.createElement("otherDeliveryNoteHeader") ' δημιουργω εσοχ'
@@ -11549,10 +11556,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -12652,12 +12659,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     Data1.Refresh
+110     data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     data1.Refresh
 
-114     Set rDBF = Data1.Recordset
+114     Set rDBF = data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -12839,10 +12846,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1

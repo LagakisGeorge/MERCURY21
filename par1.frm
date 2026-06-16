@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   145686529
+         Format          =   308477953
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   145686530
+         Format          =   308477954
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   248643585
+      Format          =   308740097
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3679,13 +3679,13 @@ Private Sub ar_paraggt_LostFocus()
             End If
         End If
 
-134     tdbgrid1.columns(6).Width = 1544.882
-136     tdbgrid1.columns(5).Width = 2610.142
-138     tdbgrid1.columns(4).Width = 480.189
-140     tdbgrid1.columns(3).Width = 3550.142
-142     tdbgrid1.columns(2).Width = 929.7639
-144     tdbgrid1.columns(1).Width = 900.2835
-146     tdbgrid1.columns(0).Width = 1049.953
+134     TDBGrid1.columns(6).Width = 1544.882
+136     TDBGrid1.columns(5).Width = 2610.142
+138     TDBGrid1.columns(4).Width = 480.189
+140     TDBGrid1.columns(3).Width = 3550.142
+142     TDBGrid1.columns(2).Width = 929.7639
+144     TDBGrid1.columns(1).Width = 900.2835
+146     TDBGrid1.columns(0).Width = 1049.953
   
 End Sub
 
@@ -5648,18 +5648,18 @@ OLD145:
 1268    If UBound(RR2) = 8 Then
             Dim LLC As Integer
 1270        For LLC = 0 To 8
-1272            tdbgrid1.columns(LLC).Width = RR2(LLC)
+1272            TDBGrid1.columns(LLC).Width = RR2(LLC)
             Next
         Else
-1274        tdbgrid1.columns(8).Width = 2500 'MARK
-1276        tdbgrid1.columns(7).Width = 0 'DI_NUM
-1278        tdbgrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
-1280        tdbgrid1.columns(5).Width = 1610  ' .142 'PARAT
-1282        tdbgrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
-1284        tdbgrid1.columns(3).Width = 3550 'EPO
-1286        tdbgrid1.columns(2).Width = 1100 'AJI
-1288        tdbgrid1.columns(1).Width = 1700 'ATIM
-1290        tdbgrid1.columns(0).Width = 1049 'HME
+1274        TDBGrid1.columns(8).Width = 2500 'MARK
+1276        TDBGrid1.columns(7).Width = 0 'DI_NUM
+1278        TDBGrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
+1280        TDBGrid1.columns(5).Width = 1610  ' .142 'PARAT
+1282        TDBGrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
+1284        TDBGrid1.columns(3).Width = 3550 'EPO
+1286        TDBGrid1.columns(2).Width = 1100 'AJI
+1288        TDBGrid1.columns(1).Width = 1700 'ATIM
+1290        TDBGrid1.columns(0).Width = 1049 'HME
        
         End If
 
@@ -8347,9 +8347,9 @@ Private Sub submitpayment_Click()
 Dim c, D, SX As String
         'd = TDBGrid1.Columns("ID_NUM").value ' ﬁ TDBGrid1.Col = 7: TDBGrid1.Text
 
-       tdbgrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
+       TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
 
-       D = tdbgrid1.Text
+       D = TDBGrid1.Text
 
 
         Dim midnum As String
@@ -12078,8 +12078,8 @@ qrl = InputBox("ÛÍ·Ì‹ÒÈÛÂ ÙÔ qrcode", " ")
 
 
            Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -12173,13 +12173,13 @@ Public Sub menuToTransport(parametros As Integer)
 
         Dim c As String
 
-        PAR1.tdbgrid1.Col = 4  'PELKOD
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 4  'PELKOD
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 Dim AFMEPIX As String
 AFMEPIX = GGET_CVALUE("SELECT TOP 1 AFMPEL FROM MEM ORDER BY ID")
@@ -12367,7 +12367,7 @@ Private Sub Form_Resize()
     
     If F_GRID_FONT_SIZE > 8 Then
         Grid1.Font.Size = F_GRID_FONT_SIZE
-        tdbgrid1.Font.Size = F_GRID_FONT_SIZE
+        TDBGrid1.Font.Size = F_GRID_FONT_SIZE
         GridPelaton.Font.Size = F_GRID_FONT_SIZE
     Else
         'Grid1.Font.Size = 12
@@ -13406,6 +13406,10 @@ Private Sub PARAS_LostFocus()
 140             f_AkyrParas = Left(LTrim(R("akyr")), 1)
 142             F_TYPOS_PAR = CNull(R("C1")) ' ‘’–œ” –¡—¡”‘¡‘… œ’ √…¡ ≈_À…Õ≈ ÷œ—œÀœ√… œ’
                 F_PROEPILFPA = R("PROEPILFPA2")
+                
+                
+                
+                
 
                   If nNull(R("B2G")) = 1 Then ' is_B2G = GGET_NVALUE("SELECT ISNULL(B2G,0) AS DIMOSIO FROM PARASTAT WHERE EIDOS='" & Left(sqlDt("ATIM"), 1) & "'")
                       MsgBox ("Ù· ÙÈÏÔÎÔ„È· ƒ«Ãœ”…œ’ ≈ ƒŸ”‘≈ ‘¡ ¡–œ ‘œ –—œ√—¡ÃÃ¡ ‘œ’ –¡—œ◊œ’")
@@ -13452,6 +13456,15 @@ Private Sub PARAS_LostFocus()
                 End If
             
 172             f_myEID = CNull(R!MYEID)  ' 1.1 ÙÈÏÔÎÔ„ÈÔ MYDATA
+
+                 If f_myEID = "10.1" Then
+                 
+                    MsgBox ("”‘¡ ”◊œÀ…¡ √—¡ÿ‘≈ ”‘«Õ ¡—◊« ‘œ Ã¡—  ‘œ’ ƒ≈À‘…œ’ ¡–œ”‘.–≈À¡‘«")
+                 
+                 End If
+
+
+
             
 174             f_ISMYDATA = nNull(R!ISMYDATA)
             
@@ -16550,12 +16563,12 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
 
         Dim R As New ADODB.Recordset
 
-442     Set Prospective = tdbgrid1.Styles.Add("Prospective")
+442     Set Prospective = TDBGrid1.Styles.Add("Prospective")
 444     Prospective.Font.Italic = True
 446     Prospective.Font.Bold = True
 448     Prospective.ForeColor = vbBlue
         
-450     Set Distributors = tdbgrid1.Styles.Add("Distributors")
+450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
@@ -16624,7 +16637,7 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
         'R.Close
 
 476     If gXEIRISTHS < 2 Then
-478         tdbgrid1.Visible = False
+478         TDBGrid1.Visible = False
         End If
 
 480     F_UPPER = Val(FINDPARAMETROI(1, "APOT2", "F_UPPER", "1", "Ã≈‘¡‘—œ–« –≈—…√—¡÷ŸÕ ”≈  ≈÷¡À¡…¡ ≈ÀÀ«Õ… ¡=1/0"))
@@ -17540,9 +17553,9 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
 
 1256    LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM+' '+(SELECT top 1 LEFT(TITLOS,15) FROM PARASTAT WHERE ASCII(PARASTAT.EIDOS)=ASCII(LEFT(ATIM,1))) AS [–¡—/ œ],AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,INCMARK AS [MARK ¡ ’—Ÿ”«”] FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
 1258    LASTTIMOL.Refresh
-1260    tdbgrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
-1262    tdbgrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
-1264    tdbgrid1.Splits(0).ExtendRightColumn = True
+1260    TDBGrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
+1262    TDBGrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
+1264    TDBGrid1.Splits(0).ExtendRightColumn = True
           
         Dim RR() As String
    
@@ -17551,18 +17564,18 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
 1268    If UBound(RR) = 8 Then
             Dim LLC As Integer
 1270        For LLC = 0 To 8
-1272            tdbgrid1.columns(LLC).Width = RR(LLC)
+1272            TDBGrid1.columns(LLC).Width = RR(LLC)
             Next
         Else
-1274        tdbgrid1.columns(8).Width = 2500 'MARK
-1276        tdbgrid1.columns(7).Width = 0 'DI_NUM
-1278        tdbgrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
-1280        tdbgrid1.columns(5).Width = 1610  ' .142 'PARAT
-1282        tdbgrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
-1284        tdbgrid1.columns(3).Width = 3550 'EPO
-1286        tdbgrid1.columns(2).Width = 1100 'AJI
-1288        tdbgrid1.columns(1).Width = 1700 'ATIM
-1290        tdbgrid1.columns(0).Width = 1049 'HME
+1274        TDBGrid1.columns(8).Width = 2500 'MARK
+1276        TDBGrid1.columns(7).Width = 0 'DI_NUM
+1278        TDBGrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
+1280        TDBGrid1.columns(5).Width = 1610  ' .142 'PARAT
+1282        TDBGrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
+1284        TDBGrid1.columns(3).Width = 3550 'EPO
+1286        TDBGrid1.columns(2).Width = 1100 'AJI
+1288        TDBGrid1.columns(1).Width = 1700 'ATIM
+1290        TDBGrid1.columns(0).Width = 1049 'HME
        
         End If
        
@@ -17884,21 +17897,21 @@ Sub PAR2SHOWING()
 
         ' Dim par2 As par2
 Dim m_ID As String
-tdbgrid1.Col = 8
- tdbgrid1.Col = 9: ' M_ID = Left(TDBGrid1.Text, 8)
-m_ID = tdbgrid1.columns("ID_NUM")
+TDBGrid1.Col = 8
+ TDBGrid1.Col = 9: ' M_ID = Left(TDBGrid1.Text, 8)
+m_ID = TDBGrid1.columns("ID_NUM")
 
 
 
 
-100     tdbgrid1.Col = 1
+100     TDBGrid1.Col = 1
         'Set par2 = New par2
 
-102     PAR2.Text1 = Left(tdbgrid1.Text, 8)
+102     PAR2.Text1 = Left(TDBGrid1.Text, 8)
 
-104     tdbgrid1.Col = 0
-106     PAR2.DTPicker1 = CDate(tdbgrid1.Text)
-108     PAR2.DTPicker2 = CDate(tdbgrid1.Text)
+104     TDBGrid1.Col = 0
+106     PAR2.DTPicker1 = CDate(TDBGrid1.Text)
+108     PAR2.DTPicker2 = CDate(TDBGrid1.Text)
 
 110     PAR2.CallFromOther.Caption = "1"
 
@@ -18205,10 +18218,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
         '
         '
 
-100     If LASTTIMOL.Recordset.Sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-102         LASTTIMOL.Recordset.Sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+100     If LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+102         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-104         LASTTIMOL.Recordset.Sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+104         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
         '<EhFooter>
@@ -18241,7 +18254,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, _
             'MDIForm1.runt.Item(0).Caption = "–·ÒÔıÛﬂ·ÛÁ"
             'MDIForm1.runt.Item(1).Caption = "ƒÈ¸ÒË˘ÛÁ"
             On Error Resume Next
-102         tdbgrid1.SetFocus
+102         TDBGrid1.SetFocus
 104         Call Me.PopupMenu(MDIForm1.par1menu)
             ' LASTTIMOL.Refresh
 
@@ -18314,9 +18327,9 @@ Public Sub epanAkyr()
             Dim c, D, SX As String
 
 
-112             PAR1.tdbgrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
+112             PAR1.TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
 
-114             D = tdbgrid1.Text
+114             D = TDBGrid1.Text
                 ' d = InputBox("‰˘ÛÂ ÙÔÌ ·ÒÈËÏ¸ ÙÔı id", 0)
 
 116             SX = GET_CVALUE("select ISNULL(SXETMARK,'00') AS SXX from TIM WHERE ID_NUM=" + D)
@@ -18327,7 +18340,7 @@ Public Sub epanAkyr()
                 
                 
                 
-                If Len(tdbgrid1.columns("ENTITYMARK")) > 10 Then
+                If Len(TDBGrid1.columns("ENTITYMARK")) > 10 Then
                    MsgBox ("≈…Õ¡… «ƒ« Ã≈ Ã¡— ")
                    'If 1 = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'") Then
                    
@@ -18335,7 +18348,7 @@ Public Sub epanAkyr()
                     'End If
                 End If
                 Dim N As Integer
-                N = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(tdbgrid1.columns(1), 1) + "'")
+                N = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'")
                 
                 If N = 1 Then
                    MsgBox " ƒ≈Õ ≈…Õ¡… ¡ ’—Ÿ‘… œ. KANTE ¡–œ”‘œÀ« MYDATA"
@@ -25375,11 +25388,11 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
 108     MIDENIZO_GRID
 
-110     tdbgrid1.Col = 4
-112     MKOD = tdbgrid1.Text
+110     TDBGrid1.Col = 4
+112     MKOD = TDBGrid1.Text
 
-114     tdbgrid1.Col = 1
-116     ATIM = tdbgrid1.Text
+114     TDBGrid1.Col = 1
+116     ATIM = TDBGrid1.Text
 
 
 
@@ -25425,8 +25438,8 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
         Next
 
-150     tdbgrid1.Col = 0
-152     DTPicker1.Value = CDate(tdbgrid1.Text)
+150     TDBGrid1.Col = 0
+152     DTPicker1.Value = CDate(TDBGrid1.Text)
 
 154     If k = PARAS.ListCount Then Exit Sub
         ' ‚ÒÈÛÍ˘ ÙÈÚ ·Ò·ÏÂÙÒÔıÚ ÙÔı ·Ò·ÛÙ·ÙÈÍÔ˝
@@ -26841,7 +26854,7 @@ End Sub
   Public Sub toMydata()
   Dim m_ID_NUM As String
   
-  m_ID_NUM = tdbgrid1.columns("ID_NUM") ' ﬁ TDBGrid1.Col = 7: TDBGrid1.Text
+  m_ID_NUM = TDBGrid1.columns("ID_NUM") ' ﬁ TDBGrid1.Col = 7: TDBGrid1.Text
   
 
 536         If f_MYDATAcont = 0 Then
@@ -26850,11 +26863,11 @@ End Sub
             Else
                 Dim stelnei As Integer
                 Dim MATIM As String
-                tdbgrid1.Col = 1
-                MATIM = tdbgrid1.Text
+                TDBGrid1.Col = 1
+                MATIM = TDBGrid1.Text
                 Dim MARK As String
-                tdbgrid1.Col = 8
-                MARK = tdbgrid1.columns("ENTITYMARK")
+                TDBGrid1.Col = 8
+                MARK = TDBGrid1.columns("ENTITYMARK")
                 
                 
                 
@@ -26930,13 +26943,13 @@ Public Sub menu_ektyp_par(ByVal Ektyp1Email2 As Integer)
 
         Dim c As String
 
-        PAR1.tdbgrid1.Col = 2
-        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
         
         
         PAR1.METASX_SE_TIM 99, c, m_ID, False, 0
@@ -26984,8 +26997,8 @@ Public Sub menu_diak_status()
 
      Dim c As String
 
-        PAR1.tdbgrid1.Col = 8
-        c = Replace(PAR1.tdbgrid1.Text, "ƒœ ", "")
+        PAR1.TDBGrid1.Col = 8
+        c = Replace(PAR1.TDBGrid1.Text, "ƒœ ", "")
 
        ' MARK = c '  InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
 
@@ -27015,8 +27028,8 @@ Public Sub menuParadosis()
 Dim qrl As String: qrl = "https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=vZGdPC4qtv61lfj3tMcBWCVzle6HNmunsN6JjmX4e9gLqhLIIIUNGzIx6YzWdXmeg0fsTOtxriHc%2bCRo3shXRfuFVdEayG8L9Xt9%2fSH8HaE%3d"
 
            Dim m_ID As Long
-         PAR1.tdbgrid1.Col = 7
-       m_ID = Val(PAR1.tdbgrid1.Text)
+         PAR1.TDBGrid1.Col = 7
+       m_ID = Val(PAR1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -27043,8 +27056,8 @@ Dim c, D, SX As String
 
 
         Dim midnum As String:
-           PAR1.tdbgrid1.Col = 7
-       midnum = Val(PAR1.tdbgrid1.Text)
+           PAR1.TDBGrid1.Col = 7
+       midnum = Val(PAR1.TDBGrid1.Text)
         
        ' midnum = (tdbgrid1.CurrentRow.cells(7).Value)
         'midnum = InputBox("id_num")
