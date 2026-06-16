@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308936705
+      Format          =   454033409
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308936705
+      Format          =   454033409
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1586,6 +1586,8 @@ Dim F_dokimi           As Integer ' αριθμός δοκιμαστικου user
 '2) Το πεδίο underlyingValue υποδηλώνει την αξία στην οποία εφαρμόζεται ο συγκεκριμένος φόρος
 
 Dim f_par1ypok         As String ' παραστατικά που ανήκουν στο υποκ/μα 1
+
+Dim f_koyk177 As Integer ' 177
 
 Dim f_par2ypok         As String ' παραστατικά που ανήκουν στο υποκ/μα 1
 
@@ -4779,6 +4781,21 @@ End Function
 
 Private Sub cmdKOYKAKH_Click()
 
+  'Dim f_par1ypok As String ' παραστατικά που ανήκουν στο υποκ/μα 1
+        f_koyk177 = Val(FINDPARAMETROI(1, "PAR7MYDATA", "f_koyk177", "0", "0=OXI 000=ΑΡΙΘΜΟΣ ΕΙΔ.ΚΑΤΗΓΟΡΙΑΣ"))
+        
+
+If f_koyk177 = 177 Then
+Else
+
+
+    Exit Sub
+End If
+cmdKOYKAKH.Enabled = False
+
+
+
+
     Dim sql As String
 
     sql = "SELECT        G.ID_NUM AS DocID, R.TITLOS AS DocDescr, R.SYNT_TITL AS DocCode, G.ATIM AS DocNum, SUBSTRING(G.ATIM, 2, 6) AS DocAA, FORMAT(G.HME, 'yyyy-MM-ddTHH:mm:ss.fffZ') AS DocDate, G.PROOD_AJ AS LineNum, P.KOD AS CustCode,"
@@ -4801,7 +4818,7 @@ Private Sub cmdKOYKAKH_Click()
     Dim Q As String
 
     Dim R As New ADODB.Recordset
-  Gdb.Execute "DROP TABLE IF EXISTS TEMP1010;"
+ ' Gdb.Execute "DROP TABLE IF EXISTS TEMP1010;"
  
  Gdb.Execute "IF OBJECT_ID('dbo.TEMP1010', 'U') IS NOT NULL  DROP TABLE dbo.TEMP1010;"
  Gdb.Execute sql
@@ -4861,7 +4878,7 @@ Private Sub cmdKOYKAKH_Click()
         Q = Q + " ""IsActive"": 1,  "
 
         Q = Q + " ""OrderID"": null,  "
-        Q = Q + " ""debugging"": ""d""  "
+        Q = Q + " ""debugging"": ""p""  "
 
         Q = Q + " }  "
     
@@ -10605,7 +10622,7 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Ν
 112         f_YPOK = "0"
         End If
 
-        'Dim f_par1ypok As String ' παραστατικά που ανήκουν στο υποκ/μα 1
+      
 114     f_par1ypok = FINDPARAMETROI(1, "PAR7MYDATA", "f_par1ypok", "", "παραστατικά που ανήκουν στο υποκ/μα 1 π.χ.  αβ  ")
 
 116     f_par2ypok = FINDPARAMETROI(1, "PAR7MYDATA", "f_par2ypok", "", "παραστατικά που ανήκουν στο υποκ/μα 2 π.χ.  gW  ")

@@ -23,6 +23,14 @@ Begin VB.Form bohu10
    ScaleWidth      =   18870
    ShowInTaskbar   =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton CMDSTOP 
+      Caption         =   "STOP"
+      Height          =   360
+      Left            =   15600
+      TabIndex        =   26
+      Top             =   2400
+      Width           =   2895
+   End
    Begin VB.CommandButton cmdPBSGEFYRA 
       Caption         =   "PBS цежуяа"
       Height          =   360
@@ -32,7 +40,7 @@ Begin VB.Form bohu10
       Width           =   4215
    End
    Begin VB.ListBox List2 
-      Height          =   5130
+      Height          =   5325
       Left            =   15600
       TabIndex        =   23
       Top             =   2880
@@ -138,7 +146,7 @@ Begin VB.Form bohu10
       _Version        =   393216
    End
    Begin VB.ListBox List1 
-      Height          =   5520
+      Height          =   5325
       Left            =   960
       TabIndex        =   6
       Top             =   2880
@@ -161,7 +169,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   153878529
+      Format          =   469368833
       CurrentDate     =   44346
    End
    Begin MSComCtl2.DTPicker apo 
@@ -173,7 +181,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   153878529
+      Format          =   469368833
       CurrentDate     =   44346
    End
    Begin VB.CommandButton cmdYPOL 
@@ -189,7 +197,7 @@ Begin VB.Form bohu10
    Begin VB.Frame Frame1 
       BackColor       =   &H00C0FFC0&
       Caption         =   "Frame1"
-      Height          =   5415
+      Height          =   5325
       Left            =   9120
       TabIndex        =   14
       Top             =   2880
@@ -968,6 +976,11 @@ End Sub
 
 
 
+
+Private Sub CMDSTOP_Click()
+    CMDSTOP.Enabled = False
+    
+End Sub
 
 Private Sub cmdYPOL_Click()
  Dim L As Integer
@@ -2164,6 +2177,8 @@ Private Sub GmakeXML(ByVal sql As String, ByVal sqlwh As String, ByVal SQLPEL As
   '=============================================================================================================
 'On Error Resume Next
 'Gdb.CommitTrans
+List1.Clear
+DoEvents
 
 
 'Gdb.BeginTrans
@@ -2701,7 +2716,12 @@ Private Sub GmakeXML(ByVal sql As String, ByVal sqlwh As String, ByVal SQLPEL As
                    '
 
 DoEvents
-
+                    If CMDSTOP.Enabled = False Then
+                       MsgBox "диайопг диадиасиас"
+                       CMDSTOP.Enabled = True
+                       Exit Sub
+                    End If
+                    
 
 442                 R.MoveNext
                     SUMP = 0: SUMX = 0
@@ -3048,9 +3068,9 @@ End Function
 
 
 Function cVAL(ByVal Z As Single) As String  ' STR ME KOMA , !!!!!!!!!!!!!!!!!!!!!!!!!
-    Dim x As String
-    x = Format(Z, "########0.00")
-    cVAL = Replace(x, ".", ",")
+    Dim X As String
+    X = Format(Z, "########0.00")
+    cVAL = Replace(X, ".", ",")
     
    
 End Function
