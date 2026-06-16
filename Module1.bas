@@ -365,6 +365,8 @@ dum2 = ADD_FIELD("PARASTAT", "ISDIAKIN", "INT")
 
 
 dum2 = ADD_FIELD("PARASTAT", "MYTYPEXOD", "nvarCHAR(20)")
+
+
 dum2 = ADD_FIELD("PARASTAT", "MYCATEXOD", "nvarCHAR(20)")
 dum2 = ADD_FIELD("PARASTAT", "DEFAULTAPALL", "INT")
 
@@ -372,6 +374,10 @@ dum2 = ADD_FIELD("PARASTAT", "DEFAULTAPALL", "INT")
 dum2 = ADD_FIELD("PARASTAT", "B2G", "INT")
 
         dum2 = ADD_FIELD("PARASTAT", "UBL", "VARCHAR(30)")
+        
+        
+dum2 = ADD_FIELD("PARASTAT", "ISANASTROFODA", "int DEFAULT (0)")
+dum2 = ADD_FIELD("PARASTAT", "DEFANASTROFO", "int DEFAULT (0)")
         
         
         
@@ -382,8 +388,6 @@ dum2 = ADD_FIELD("PARASTAT", "B2G", "INT")
 
 dum2 = ADD_FIELD("MEM", "MYDATAUSER", "NVARCHAR(80)")
 dum2 = ADD_FIELD("MEM", "MYDATAPASW", "NVARCHAR(80)")
-
-
 
 
 
@@ -2282,7 +2286,7 @@ Sub UPDATE_YPOLOIPA2()
 
         Dim B As String
 
-        Dim d As Long
+        Dim D As Long
 
         'Dim krit As String
 
@@ -2299,11 +2303,11 @@ Sub UPDATE_YPOLOIPA2()
         Dim TT As Long
 
 140     TT = GetCurrentTime()
-150     Gdb.Execute a, d
+150     Gdb.Execute a, D
 
         'MsgBox GetCurrentTime() - TT
 
-160     If d = 0 Then
+160     If D = 0 Then
 170         MsgBox " ƒ≈Õ ≈Õ«Ã≈—Ÿ»« ≈ DOKEGGT1"
 
             Exit Sub
@@ -2319,14 +2323,14 @@ Sub UPDATE_YPOLOIPA2()
         '& " dbo.EID ON dbo.DOKEGGT1.KODE = dbo.EID.KOD"
         'Gdb.Execute b, d
 
-190     Gdb.Execute "update EID SET" & " POS01=(CASE WHEN S1X IS NULL THEN 0 ELSE S1X END) - (CASE WHEN S1P IS NULL THEN 0 ELSE S1P END)," & " POS02=(CASE WHEN S2X IS NULL THEN 0 ELSE S2X END) - (CASE WHEN S2P IS NULL THEN 0 ELSE S2P END)," & " POS03=(CASE WHEN S3X IS NULL THEN 0 ELSE S3X END) - (CASE WHEN S3P IS NULL THEN 0 ELSE S3P END)," & " POS04=(CASE WHEN S4X IS NULL THEN 0 ELSE S4X END) - (CASE WHEN S4P IS NULL THEN 0 ELSE S4P END)" & " FROM EID INNER JOIN DOKEGGT1 ON EID.KOD=DOKEGGT1.KODE ", d
+190     Gdb.Execute "update EID SET" & " POS01=(CASE WHEN S1X IS NULL THEN 0 ELSE S1X END) - (CASE WHEN S1P IS NULL THEN 0 ELSE S1P END)," & " POS02=(CASE WHEN S2X IS NULL THEN 0 ELSE S2X END) - (CASE WHEN S2P IS NULL THEN 0 ELSE S2P END)," & " POS03=(CASE WHEN S3X IS NULL THEN 0 ELSE S3X END) - (CASE WHEN S3P IS NULL THEN 0 ELSE S3P END)," & " POS04=(CASE WHEN S4X IS NULL THEN 0 ELSE S4X END) - (CASE WHEN S4P IS NULL THEN 0 ELSE S4P END)" & " FROM EID INNER JOIN DOKEGGT1 ON EID.KOD=DOKEGGT1.KODE ", D
 
-200     Gdb.Execute "UPDATE EID SET  POS = POS01 + POS02+POS03+POS04", d
+200     Gdb.Execute "UPDATE EID SET  POS = POS01 + POS02+POS03+POS04", D
 
-210     d = 0
+210     D = 0
         'Gdb.Execute "update EIDT3 SET POS01=EXPR1,POS02=EXPR2,POS=EXPR1+EXPR2 ", d
 
-220     d = d + 1
+220     D = D + 1
 
         '--------------------------------------------------------------------
         Exit Sub
@@ -2401,7 +2405,7 @@ UPDATE_YPOLOIPA2_Err:
 End Sub
 
 
-Public Sub TelHmeAgoras(ByVal APO As Date, ByVal EOS As Date)
+Public Sub TelHmeAgoras(ByVal apo As Date, ByVal eos As Date)
 MDIForm1.Caption = " "
         '===================================================================================
         '<EhHeader>
@@ -2436,7 +2440,7 @@ MDIForm1.Caption = " "
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','·',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','·','Î'," + ago + ") AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','·','Î'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -2450,7 +2454,7 @@ MDIForm1.Caption = " "
 
 140     EGGTIM.MoveFirst
 
-        Dim B, d, ATIM
+        Dim B, D, ATIM
 
 150     k = 0
 
@@ -2459,7 +2463,7 @@ MDIForm1.Caption = " "
 160     Do While Not EGGTIM.EOF
             '¬—…” Ÿ ‘«Õ ‘≈À≈’‘¡…¡ ‘…Ã« ¡√œ—¡”
 170         a = EGGTIM("KODE")
-180         d = EGGTIM("HME")
+180         D = EGGTIM("HME")
 190         ATIM = EGGTIM("atim")
 200         k = k + 1
 
@@ -2471,9 +2475,9 @@ MDIForm1.Caption = " "
                     Else
 
 240                     If EGGTIM("TIMM") > 0 Then
-250                         Gdb.Execute "UPDATE EID SET XTI=" + str(nNull(EGGTIM("TIMM") * (1 - nNull(EGGTIM("EKPT")) / 100) * (1 - nNull(EGGTIM("EKPT2")) / 100))) + ",CH1='" + ATIM + "',HPAR='" + Format(d, "MM/DD/YYYY") + "',PAR=" + str(EGGTIM("POSO")) + "  where KOD='" + a + "'", N
+250                         Gdb.Execute "UPDATE EID SET XTI=" + str(nNull(EGGTIM("TIMM") * (1 - nNull(EGGTIM("EKPT")) / 100) * (1 - nNull(EGGTIM("EKPT2")) / 100))) + ",CH1='" + ATIM + "',HPAR='" + Format(D, "MM/DD/YYYY") + "',PAR=" + str(EGGTIM("POSO")) + "  where KOD='" + a + "'", N
                         Else
-260                         Gdb.Execute "UPDATE EID SET CH1='" + ATIM + "',HPAR='" + Format(d, "MM/DD/YYYY") + "',PAR=" + str(EGGTIM("POSO")) + "  where KOD='" + a + "'", N
+260                         Gdb.Execute "UPDATE EID SET CH1='" + ATIM + "',HPAR='" + Format(D, "MM/DD/YYYY") + "',PAR=" + str(EGGTIM("POSO")) + "  where KOD='" + a + "'", N
                         End If
                     End If
               
@@ -2481,7 +2485,7 @@ MDIForm1.Caption = " "
             End If
 
 270         If N > 0 Then
-280             MDIForm1.Caption = Format(k, "####") + " - " + Format(d, "dd/mm/yyyy hh:mm") + " "
+280             MDIForm1.Caption = Format(k, "####") + " - " + Format(D, "dd/mm/yyyy hh:mm") + " "
             End If
 
 290         If (k Mod 10 = 0) Then DoEvents
@@ -2937,8 +2941,8 @@ MILSEC_Err:
 End Sub
 
 Function ypoloipa_pel(ByVal mBUFF As String, _
-                      ByVal APO As Date, _
-                      ByVal EOS As Date, ByVal ENERGOS As Integer) As Single
+                      ByVal apo As Date, _
+                      ByVal eos As Date, ByVal ENERGOS As Integer) As Single
 
         'ypologismos ypoloipon
         '<EhHeader>
@@ -4116,7 +4120,7 @@ R.Close
 End Sub
 
 
-Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker, EOS As DTPicker)
+Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker, eos As DTPicker)
         'into DOKEGGT1
         'B = "CREATE VIEW dbo.[EIDT3]" _
 
@@ -4129,7 +4133,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
 
         Dim B As String
 
-        Dim d As Long
+        Dim D As Long
 
         'Dim krit As String
 
@@ -4171,16 +4175,16 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
         a = a + " SUM(CASE APOT  WHEN 3  THEN isnull(XRE,0) ELSE 0  END ) AS S3X," & " SUM(CASE APOT  WHEN 3  THEN isnull(PIS,0) ELSE 0  END ) AS S3P,"
         a = a + " SUM(CASE APOT  WHEN 4  THEN isnull(XRE,0) ELSE 0  END ) AS S4X," & " SUM(CASE APOT  WHEN 4  THEN isnull(PIS,0) ELSE 0  END ) AS S4P  "
 190     a = a + " INTO DOKEGGT1 FROM EGGTIM  "
-200     a = a + "where HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
+200     a = a + "where HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
 
         Dim TT As Long
 
 210     TT = GetCurrentTime()
-220     Gdb.Execute a, d
+220     Gdb.Execute a, D
 
         'MsgBox GetCurrentTime() - TT
 
-230     If d = 0 Then
+230     If D = 0 Then
 240         MsgBox " ƒ≈Õ ≈Õ«Ã≈—Ÿ»« ≈ DOKEGGT1"
 
             
@@ -4188,7 +4192,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
 
         End If
 
-250     Gdb.Execute "UPDATE " + mTable + " SET POS01=0,POS02=0,POS03=0,POS04=0,POS=0", d
+250     Gdb.Execute "UPDATE " + mTable + " SET POS01=0,POS02=0,POS03=0,POS04=0,POS=0", D
 
         'b = "CREATE VIEW dbo.[EIDT3]" _
         '& "AS " _
@@ -4197,14 +4201,14 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
         '& " dbo.EID ON dbo.DOKEGGT1.KODE = dbo.EID.KOD"
         'Gdb.Execute b, d
 
-260     Gdb.Execute "update " + mTable + " SET" & " POS01=(CASE WHEN S1X IS NULL THEN 0 ELSE S1X END) - (CASE WHEN S1P IS NULL THEN 0 ELSE S1P END)," & " POS02=(CASE WHEN S2X IS NULL THEN 0 ELSE S2X END) - (CASE WHEN S2P IS NULL THEN 0 ELSE S2P END)," & " POS03=(CASE WHEN S3X IS NULL THEN 0 ELSE S3X END) - (CASE WHEN S3P IS NULL THEN 0 ELSE S3P END)," & " POS04=(CASE WHEN S4X IS NULL THEN 0 ELSE S4X END) - (CASE WHEN S4P IS NULL THEN 0 ELSE S4P END)" & " FROM EID INNER JOIN DOKEGGT1 ON EID.KOD=DOKEGGT1.KODE ", d
+260     Gdb.Execute "update " + mTable + " SET" & " POS01=(CASE WHEN S1X IS NULL THEN 0 ELSE S1X END) - (CASE WHEN S1P IS NULL THEN 0 ELSE S1P END)," & " POS02=(CASE WHEN S2X IS NULL THEN 0 ELSE S2X END) - (CASE WHEN S2P IS NULL THEN 0 ELSE S2P END)," & " POS03=(CASE WHEN S3X IS NULL THEN 0 ELSE S3X END) - (CASE WHEN S3P IS NULL THEN 0 ELSE S3P END)," & " POS04=(CASE WHEN S4X IS NULL THEN 0 ELSE S4X END) - (CASE WHEN S4P IS NULL THEN 0 ELSE S4P END)" & " FROM EID INNER JOIN DOKEGGT1 ON EID.KOD=DOKEGGT1.KODE ", D
 
-270     Gdb.Execute "UPDATE " + mTable + " SET  POS = POS01 + POS02+POS03+POS04", d
+270     Gdb.Execute "UPDATE " + mTable + " SET  POS = POS01 + POS02+POS03+POS04", D
 
-280     d = 0
+280     D = 0
         'Gdb.Execute "update EIDT3 SET POS01=EXPR1,POS02=EXPR2,POS=EXPR1+EXPR2 ", d
 
-290     d = d + 1
+290     D = D + 1
 
         '<EhFooter>
         Exit Sub

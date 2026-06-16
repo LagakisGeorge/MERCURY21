@@ -6,15 +6,14 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form bohu3 
    BackColor       =   &H00FF0000&
    Caption         =   "–·Ò·Ï.–·Ò·ÛÙ·ÙÈÍ˛Ì"
-   ClientHeight    =   9420
+   ClientHeight    =   12540
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   19080
+   ClientWidth     =   22335
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   9420
-   ScaleWidth      =   19080
+   ScaleHeight     =   12540
+   ScaleWidth      =   22335
    WindowState     =   2  'Maximized
    Begin VB.Frame Frame4 
       Height          =   6615
@@ -94,45 +93,45 @@ Begin VB.Form bohu3
          Tab(1).Control(6).Enabled=   0   'False
          Tab(1).Control(7)=   "lblLabels(10)"
          Tab(1).Control(7).Enabled=   0   'False
-         Tab(1).Control(8)=   "Label15"
+         Tab(1).Control(8)=   "lblLabels(26)"
          Tab(1).Control(8).Enabled=   0   'False
-         Tab(1).Control(9)=   "lblLabels(26)"
+         Tab(1).Control(9)=   "lblLabels(27)"
          Tab(1).Control(9).Enabled=   0   'False
-         Tab(1).Control(10)=   "lblLabels(27)"
+         Tab(1).Control(10)=   "lbl–ÒÔÛÔ˜ﬁ‘Ô"
          Tab(1).Control(10).Enabled=   0   'False
-         Tab(1).Control(11)=   "lbl–ÒÔÛÔ˜ﬁ‘Ô"
+         Tab(1).Control(11)=   "MYISAYTOTIM"
          Tab(1).Control(11).Enabled=   0   'False
-         Tab(1).Control(12)=   "MYISAYTOTIM"
+         Tab(1).Control(12)=   "mycateg"
          Tab(1).Control(12).Enabled=   0   'False
-         Tab(1).Control(13)=   "mycateg"
+         Tab(1).Control(13)=   "myTypEsod"
          Tab(1).Control(13).Enabled=   0   'False
-         Tab(1).Control(14)=   "myTypEsod"
+         Tab(1).Control(14)=   "MYEID"
          Tab(1).Control(14).Enabled=   0   'False
-         Tab(1).Control(15)=   "MYEID"
+         Tab(1).Control(15)=   "myf"
          Tab(1).Control(15).Enabled=   0   'False
-         Tab(1).Control(16)=   "myf"
+         Tab(1).Control(16)=   "tameiaki"
          Tab(1).Control(16).Enabled=   0   'False
-         Tab(1).Control(17)=   "tameiaki"
+         Tab(1).Control(17)=   "typos_par"
          Tab(1).Control(17).Enabled=   0   'False
-         Tab(1).Control(18)=   "typos_par"
+         Tab(1).Control(18)=   "ELINES"
          Tab(1).Control(18).Enabled=   0   'False
-         Tab(1).Control(19)=   "ELINES"
+         Tab(1).Control(19)=   "txtFields(10)"
          Tab(1).Control(19).Enabled=   0   'False
-         Tab(1).Control(20)=   "txtFields(10)"
+         Tab(1).Control(20)=   "myTypEXod"
          Tab(1).Control(20).Enabled=   0   'False
-         Tab(1).Control(21)=   "mydata"
+         Tab(1).Control(21)=   "myCatExod"
          Tab(1).Control(21).Enabled=   0   'False
-         Tab(1).Control(22)=   "myTypEXod"
+         Tab(1).Control(22)=   "ISMYDATA"
          Tab(1).Control(22).Enabled=   0   'False
-         Tab(1).Control(23)=   "myCatExod"
+         Tab(1).Control(23)=   "isDiakin"
          Tab(1).Control(23).Enabled=   0   'False
-         Tab(1).Control(24)=   "ISMYDATA"
+         Tab(1).Control(24)=   "ComboUBL"
          Tab(1).Control(24).Enabled=   0   'False
-         Tab(1).Control(25)=   "isDiakin"
+         Tab(1).Control(25)=   "Checkb2g"
          Tab(1).Control(25).Enabled=   0   'False
-         Tab(1).Control(26)=   "ComboUBL"
+         Tab(1).Control(26)=   "chkANTISTROFO"
          Tab(1).Control(26).Enabled=   0   'False
-         Tab(1).Control(27)=   "Checkb2g"
+         Tab(1).Control(27)=   "ComKATANTISTROFOY"
          Tab(1).Control(27).Enabled=   0   'False
          Tab(1).ControlCount=   28
          TabCaption(2)   =   "÷œ—Ã≈”-¡—…»Ã«”«"
@@ -208,10 +207,26 @@ Begin VB.Form bohu3
          Tab(5).Control(14)=   "lbl–ŸÀ«‘≈”"
          Tab(5).Control(15)=   "lblLabels(19)"
          Tab(5).ControlCount=   16
+         Begin VB.ComboBox ComKATANTISTROFOY 
+            Height          =   315
+            Left            =   6539
+            Style           =   2  'Dropdown List
+            TabIndex        =   156
+            Top             =   2400
+            Width           =   3375
+         End
+         Begin VB.CheckBox chkANTISTROFO 
+            Caption         =   "ANTISTROFO"
+            Height          =   255
+            Left            =   6600
+            TabIndex        =   155
+            Top             =   2040
+            Width           =   1575
+         End
          Begin VB.TextBox proepilFPA 
             Height          =   288
             Left            =   -70560
-            TabIndex        =   155
+            TabIndex        =   153
             Top             =   4920
             Width           =   1692
          End
@@ -219,7 +234,7 @@ Begin VB.Form bohu3
             Height          =   315
             Left            =   -68040
             Style           =   2  'Dropdown List
-            TabIndex        =   154
+            TabIndex        =   152
             Top             =   3360
             Width           =   4692
          End
@@ -229,14 +244,14 @@ Begin VB.Form bohu3
             Left            =   -68040
             List            =   "bohu3.frx":00B8
             Style           =   2  'Dropdown List
-            TabIndex        =   153
+            TabIndex        =   151
             Top             =   2760
             Width           =   4692
          End
          Begin VB.ComboBox ApallFpa 
             Height          =   315
             Left            =   -75000
-            TabIndex        =   152
+            TabIndex        =   150
             Text            =   "Combo1"
             Top             =   3600
             Width           =   4932
@@ -244,7 +259,7 @@ Begin VB.Form bohu3
          Begin VB.TextBox DESMIA 
             Height          =   288
             Left            =   -72600
-            TabIndex        =   150
+            TabIndex        =   148
             Top             =   2520
             Width           =   372
          End
@@ -253,7 +268,7 @@ Begin VB.Form bohu3
             Caption         =   "≈ﬂÌ·È „È· ƒÁÏ¸ÛÈÔ"
             Height          =   375
             Left            =   7974
-            TabIndex        =   146
+            TabIndex        =   144
             Top             =   4920
             Width           =   1935
          End
@@ -263,7 +278,7 @@ Begin VB.Form bohu3
             Left            =   7854
             List            =   "bohu3.frx":0128
             Style           =   2  'Dropdown List
-            TabIndex        =   145
+            TabIndex        =   143
             Top             =   4560
             Width           =   2055
          End
@@ -273,14 +288,14 @@ Begin VB.Form bohu3
             Left            =   2400
             List            =   "bohu3.frx":01A2
             Style           =   2  'Dropdown List
-            TabIndex        =   144
+            TabIndex        =   142
             Top             =   2400
             Width           =   4215
          End
          Begin VB.TextBox DEFAULTAPALL 
             Height          =   285
             Left            =   -69960
-            TabIndex        =   140
+            TabIndex        =   138
             Top             =   3600
             Width           =   300
          End
@@ -288,7 +303,7 @@ Begin VB.Form bohu3
             Caption         =   "’Ô˜ÒÂ˘ÙÈÍ¸ ¡÷Ã"
             Height          =   255
             Left            =   -72600
-            TabIndex        =   139
+            TabIndex        =   137
             Top             =   3120
             Width           =   3375
          End
@@ -296,7 +311,7 @@ Begin VB.Form bohu3
             Height          =   288
             Left            =   -70080
             Style           =   2  'Dropdown List
-            TabIndex        =   136
+            TabIndex        =   134
             Top             =   2760
             Width           =   5175
          End
@@ -304,7 +319,7 @@ Begin VB.Form bohu3
             Height          =   288
             Left            =   -70080
             Style           =   2  'Dropdown List
-            TabIndex        =   135
+            TabIndex        =   133
             Top             =   1680
             Width           =   5175
          End
@@ -315,7 +330,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   8
             Left            =   -70560
-            TabIndex        =   133
+            TabIndex        =   131
             Top             =   3960
             Width           =   1692
          End
@@ -325,7 +340,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   255
             Left            =   276
-            TabIndex        =   131
+            TabIndex        =   129
             Top             =   3550
             Width           =   2292
          End
@@ -335,7 +350,7 @@ Begin VB.Form bohu3
             Left            =   2400
             List            =   "bohu3.frx":0239
             Style           =   2  'Dropdown List
-            TabIndex        =   128
+            TabIndex        =   126
             Top             =   3240
             Width           =   7514
          End
@@ -345,7 +360,7 @@ Begin VB.Form bohu3
             Left            =   2400
             List            =   "bohu3.frx":0605
             Style           =   2  'Dropdown List
-            TabIndex        =   127
+            TabIndex        =   125
             Top             =   2760
             Width           =   7514
          End
@@ -355,7 +370,7 @@ Begin VB.Form bohu3
             Height          =   255
             Left            =   -67200
             Style           =   1  'Graphical
-            TabIndex        =   86
+            TabIndex        =   85
             Top             =   5280
             Width           =   2535
          End
@@ -365,7 +380,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   17
             Left            =   -68400
-            TabIndex        =   85
+            TabIndex        =   84
             Top             =   4440
             Width           =   1455
          End
@@ -376,7 +391,7 @@ Begin VB.Form bohu3
             HideSelection   =   0   'False
             Index           =   16
             Left            =   -68400
-            TabIndex        =   84
+            TabIndex        =   83
             Top             =   3960
             Width           =   1455
          End
@@ -386,7 +401,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   6
             Left            =   -70440
-            TabIndex        =   83
+            TabIndex        =   82
             Top             =   3960
             Width           =   1815
          End
@@ -396,7 +411,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   7
             Left            =   -70440
-            TabIndex        =   82
+            TabIndex        =   81
             Top             =   4440
             Width           =   1815
          End
@@ -406,7 +421,7 @@ Begin VB.Form bohu3
             Height          =   255
             Left            =   -70440
             Style           =   1  'Graphical
-            TabIndex        =   81
+            TabIndex        =   80
             Top             =   5280
             Width           =   2535
          End
@@ -416,7 +431,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   0
             Left            =   -70440
-            TabIndex        =   80
+            TabIndex        =   79
             Top             =   720
             Width           =   3015
          End
@@ -426,7 +441,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   5
             Left            =   -70440
-            TabIndex        =   79
+            TabIndex        =   78
             Top             =   3360
             Width           =   3015
          End
@@ -436,7 +451,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   4
             Left            =   -70440
-            TabIndex        =   78
+            TabIndex        =   77
             Top             =   2880
             Width           =   3015
          End
@@ -446,7 +461,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   3
             Left            =   -70440
-            TabIndex        =   77
+            TabIndex        =   76
             Top             =   2400
             Width           =   3015
          End
@@ -456,7 +471,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   2
             Left            =   -70440
-            TabIndex        =   76
+            TabIndex        =   75
             Top             =   1920
             Width           =   3015
          End
@@ -466,7 +481,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   1
             Left            =   -70440
-            TabIndex        =   75
+            TabIndex        =   74
             Top             =   1440
             Width           =   3015
          End
@@ -476,7 +491,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   6
             Left            =   -73200
-            TabIndex        =   74
+            TabIndex        =   73
             Top             =   3960
             Width           =   2535
          End
@@ -486,7 +501,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   7
             Left            =   -73200
-            TabIndex        =   73
+            TabIndex        =   72
             Top             =   4440
             Width           =   2535
          End
@@ -496,7 +511,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   0
             Left            =   -73200
-            TabIndex        =   72
+            TabIndex        =   71
             Top             =   720
             Width           =   2535
          End
@@ -506,7 +521,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   5
             Left            =   -73200
-            TabIndex        =   71
+            TabIndex        =   70
             Top             =   3360
             Width           =   2535
          End
@@ -516,7 +531,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   4
             Left            =   -73200
-            TabIndex        =   70
+            TabIndex        =   69
             Top             =   2880
             Width           =   2535
          End
@@ -526,7 +541,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   3
             Left            =   -73200
-            TabIndex        =   69
+            TabIndex        =   68
             Top             =   2400
             Width           =   2535
          End
@@ -536,7 +551,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   2
             Left            =   -73200
-            TabIndex        =   68
+            TabIndex        =   67
             Top             =   1920
             Width           =   2535
          End
@@ -546,7 +561,7 @@ Begin VB.Form bohu3
             Height          =   375
             Index           =   1
             Left            =   -73200
-            TabIndex        =   67
+            TabIndex        =   66
             Top             =   1440
             Width           =   2535
          End
@@ -556,20 +571,10 @@ Begin VB.Form bohu3
             Height          =   255
             Left            =   -73200
             Style           =   1  'Graphical
-            TabIndex        =   66
+            TabIndex        =   65
             Top             =   5280
             Visible         =   0   'False
             Width           =   2535
-         End
-         Begin VB.ComboBox mydata 
-            BackColor       =   &H000080FF&
-            Height          =   315
-            Left            =   11640
-            TabIndex        =   65
-            Text            =   "Combo1"
-            Top             =   2160
-            Visible         =   0   'False
-            Width           =   915
          End
          Begin VB.TextBox txtFields 
             BackColor       =   &H000080FF&
@@ -1003,7 +1008,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   192
             Left            =   -74040
-            TabIndex        =   156
+            TabIndex        =   154
             Top             =   4920
             Width           =   2616
          End
@@ -1013,7 +1018,7 @@ Begin VB.Form bohu3
             Caption         =   "......"
             Height          =   192
             Left            =   -71280
-            TabIndex        =   151
+            TabIndex        =   149
             Top             =   2520
             Width           =   1536
          End
@@ -1023,7 +1028,7 @@ Begin VB.Form bohu3
             Caption         =   "”ÂÈÒ›Ú ÂÍÙ˝˘ÛÁÚ 0/2"
             Height          =   192
             Left            =   -74400
-            TabIndex        =   149
+            TabIndex        =   147
             Top             =   2520
             Width           =   1572
          End
@@ -1033,7 +1038,7 @@ Begin VB.Form bohu3
             Caption         =   "–ÒÔÛÔ˜ﬁ ÙÔ 6% Ì· ÂﬂÌ·È ÛÙÁÌ Í·ÙÁ„.3"
             Height          =   195
             Left            =   9960
-            TabIndex        =   147
+            TabIndex        =   145
             Top             =   4200
             Width           =   2850
          End
@@ -1043,7 +1048,7 @@ Begin VB.Form bohu3
             Caption         =   "–ÒÔÂÈÎÂ„Ï›ÌÁ ¡·ÎÎ·„ﬁ ÷–¡"
             Height          =   192
             Left            =   -75000
-            TabIndex        =   141
+            TabIndex        =   139
             Top             =   3360
             Width           =   2316
          End
@@ -1053,7 +1058,7 @@ Begin VB.Form bohu3
             Caption         =   "¡Ì Ë· ˆ·ﬂÌÔÌÙ·È ÛÙÁÌ Í·ÒÙ›ÎÎ· ÙÔı ÂÎ‹ÙÁ/ÒÔÏÁËÂıÙﬁ Í·È ÛÂ ÔÈ‹ ÛÙﬁÎÁ(◊Ò/–ÈÛ)"
             Height          =   195
             Left            =   -68760
-            TabIndex        =   138
+            TabIndex        =   136
             Top             =   1800
             Width           =   6300
          End
@@ -1063,7 +1068,7 @@ Begin VB.Form bohu3
             Caption         =   "‘· ·ÍıÒ˘ÙÈÍ‹ ‚·Ê˘ 1 „È· Ì· ˆ·ﬂÌÔÌÙ·È ÛÙÁÌ ÎﬂÛÙ· ·ÎÎÔÈ˛Ú ‰ÂÌ Ùı˛ÌÔÌÙ·È"
             Height          =   195
             Left            =   -68760
-            TabIndex        =   137
+            TabIndex        =   135
             Top             =   1200
             Width           =   5745
          End
@@ -1074,7 +1079,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   384
             Left            =   -74040
-            TabIndex        =   134
+            TabIndex        =   132
             Top             =   3960
             Width           =   3372
             WordWrap        =   -1  'True
@@ -1084,7 +1089,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   252
             Left            =   -74040
-            TabIndex        =   132
+            TabIndex        =   130
             Top             =   3600
             Width           =   3132
          End
@@ -1096,7 +1101,7 @@ Begin VB.Form bohu3
             Height          =   192
             Index           =   27
             Left            =   360
-            TabIndex        =   130
+            TabIndex        =   128
             Top             =   3240
             Width           =   1704
          End
@@ -1108,26 +1113,16 @@ Begin VB.Form bohu3
             Height          =   192
             Index           =   26
             Left            =   360
-            TabIndex        =   129
+            TabIndex        =   127
             Top             =   2880
             Width           =   1668
-         End
-         Begin VB.Label Label15 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "–ÒÔÙÂÈÌ¸ÏÂÌÔÈ ÛıÌ‰ı·ÛÏÔﬂ ≈ﬂ‰ÔıÚ-‘˝Ôı- ·ÙÁ„ÔÒﬂ·Ú"
-            Height          =   192
-            Left            =   3240
-            TabIndex        =   126
-            Top             =   1920
-            Width           =   3864
          End
          Begin VB.Label Label13 
             BackStyle       =   0  'Transparent
             Caption         =   "–ﬂÛÙ˘ÛÁ ÷–¡"
             Height          =   252
             Left            =   -68280
-            TabIndex        =   125
+            TabIndex        =   124
             Top             =   3720
             Width           =   1452
          End
@@ -1136,7 +1131,7 @@ Begin VB.Form bohu3
             Caption         =   "XÒ›˘ÛÁ ÷–¡"
             Height          =   252
             Left            =   -69960
-            TabIndex        =   124
+            TabIndex        =   123
             Top             =   3720
             Width           =   1332
          End
@@ -1145,7 +1140,7 @@ Begin VB.Form bohu3
             Caption         =   "Àœ√.¡Œ…¡” ÷–¡"
             Height          =   252
             Left            =   -70320
-            TabIndex        =   123
+            TabIndex        =   122
             Top             =   1200
             Width           =   2412
          End
@@ -1154,7 +1149,7 @@ Begin VB.Form bohu3
             Caption         =   "Àœ√.–…”‘Ÿ”«”"
             Height          =   252
             Left            =   -70200
-            TabIndex        =   122
+            TabIndex        =   121
             Top             =   480
             Width           =   2172
          End
@@ -1166,7 +1161,7 @@ Begin VB.Form bohu3
             Height          =   372
             Index           =   56
             Left            =   -74160
-            TabIndex        =   121
+            TabIndex        =   120
             Top             =   4080
             Width           =   852
          End
@@ -1178,7 +1173,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   57
             Left            =   -74640
-            TabIndex        =   120
+            TabIndex        =   119
             Top             =   4440
             Width           =   1332
          End
@@ -1187,7 +1182,7 @@ Begin VB.Form bohu3
             Caption         =   "Àœ√. ¡».–œ”œ’"
             Height          =   252
             Left            =   -73080
-            TabIndex        =   119
+            TabIndex        =   118
             Top             =   1200
             Width           =   2412
          End
@@ -1199,7 +1194,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   55
             Left            =   -74640
-            TabIndex        =   118
+            TabIndex        =   117
             Top             =   3360
             Width           =   1332
          End
@@ -1211,7 +1206,7 @@ Begin VB.Form bohu3
             Height          =   372
             Index           =   54
             Left            =   -74640
-            TabIndex        =   117
+            TabIndex        =   116
             Top             =   3000
             Width           =   1332
          End
@@ -1223,7 +1218,7 @@ Begin VB.Form bohu3
             Height          =   372
             Index           =   53
             Left            =   -74760
-            TabIndex        =   116
+            TabIndex        =   115
             Top             =   2520
             Width           =   1332
          End
@@ -1235,7 +1230,7 @@ Begin VB.Form bohu3
             Height          =   372
             Index           =   52
             Left            =   -74760
-            TabIndex        =   115
+            TabIndex        =   114
             Top             =   2040
             Width           =   1332
          End
@@ -1247,7 +1242,7 @@ Begin VB.Form bohu3
             Height          =   372
             Index           =   51
             Left            =   -74760
-            TabIndex        =   114
+            TabIndex        =   113
             Top             =   1560
             Width           =   1332
          End
@@ -1256,7 +1251,7 @@ Begin VB.Form bohu3
             Caption         =   "Àœ√.◊—≈Ÿ”«”"
             Height          =   252
             Left            =   -72960
-            TabIndex        =   113
+            TabIndex        =   112
             Top             =   480
             Width           =   2172
          End
@@ -1267,7 +1262,7 @@ Begin VB.Form bohu3
             Height          =   264
             Index           =   10
             Left            =   5640
-            TabIndex        =   112
+            TabIndex        =   111
             Top             =   5280
             Width           =   1452
          End
@@ -1277,7 +1272,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   372
             Left            =   240
-            TabIndex        =   111
+            TabIndex        =   110
             Top             =   4200
             Width           =   1932
          End
@@ -1288,7 +1283,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   192
             Left            =   960
-            TabIndex        =   110
+            TabIndex        =   109
             Top             =   3840
             Width           =   1248
          End
@@ -1299,7 +1294,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   192
             Left            =   1680
-            TabIndex        =   109
+            TabIndex        =   108
             Top             =   4644
             Width           =   396
          End
@@ -1311,7 +1306,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   13
             Left            =   -66720
-            TabIndex        =   108
+            TabIndex        =   107
             Top             =   960
             Width           =   1572
          End
@@ -1323,7 +1318,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   6
             Left            =   -74280
-            TabIndex        =   107
+            TabIndex        =   106
             Top             =   2640
             Width           =   1812
          End
@@ -1335,7 +1330,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   5
             Left            =   -74280
-            TabIndex        =   106
+            TabIndex        =   105
             Top             =   2196
             Width           =   1812
          End
@@ -1347,7 +1342,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   4
             Left            =   -74280
-            TabIndex        =   105
+            TabIndex        =   104
             Top             =   1680
             Width           =   1812
          End
@@ -1359,7 +1354,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   3
             Left            =   -74280
-            TabIndex        =   104
+            TabIndex        =   103
             Top             =   1200
             Width           =   1812
          End
@@ -1371,7 +1366,7 @@ Begin VB.Form bohu3
             Height          =   360
             Index           =   7
             Left            =   -74880
-            TabIndex        =   103
+            TabIndex        =   102
             Top             =   2160
             Width           =   3852
          End
@@ -1383,7 +1378,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   12
             Left            =   -74520
-            TabIndex        =   102
+            TabIndex        =   101
             ToolTipText     =   "11 LASER 10 LASER Ã…¡ ≈ ‘’–Ÿ”« 12 LASER ÷œ—Ã¡ ‘…ÃœL2  99 ¡ …ƒŸÕ F90.TXT ÷œ—Ã¡  18 ÙÒÈÎÔ 13=TIMOL3"
             Top             =   1920
             Width           =   1812
@@ -1396,7 +1391,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   11
             Left            =   -74520
-            TabIndex        =   101
+            TabIndex        =   100
             Top             =   1560
             Width           =   1812
          End
@@ -1408,7 +1403,7 @@ Begin VB.Form bohu3
             Height          =   360
             Index           =   17
             Left            =   -74280
-            TabIndex        =   100
+            TabIndex        =   99
             Top             =   4488
             Width           =   1812
          End
@@ -1420,7 +1415,7 @@ Begin VB.Form bohu3
             Height          =   360
             Index           =   16
             Left            =   -74280
-            TabIndex        =   99
+            TabIndex        =   98
             Top             =   4152
             Width           =   1812
          End
@@ -1432,7 +1427,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   8
             Left            =   -72840
-            TabIndex        =   98
+            TabIndex        =   97
             Top             =   2760
             Width           =   1812
          End
@@ -1444,7 +1439,7 @@ Begin VB.Form bohu3
             Height          =   252
             Index           =   18
             Left            =   -72360
-            TabIndex        =   97
+            TabIndex        =   96
             Top             =   1800
             Width           =   1332
          End
@@ -1456,7 +1451,7 @@ Begin VB.Form bohu3
             Height          =   432
             Index           =   14
             Left            =   -74640
-            TabIndex        =   96
+            TabIndex        =   95
             Top             =   3720
             Width           =   3828
          End
@@ -1468,7 +1463,7 @@ Begin VB.Form bohu3
             Height          =   195
             Index           =   15
             Left            =   -74160
-            TabIndex        =   95
+            TabIndex        =   94
             Top             =   3540
             Width           =   1215
          End
@@ -1478,7 +1473,7 @@ Begin VB.Form bohu3
             Caption         =   "Ã≈‘—«‘≈” ¡—…»Ã«”«” –¡—¡”‘¡‘… ŸÕ"
             Height          =   252
             Left            =   -68760
-            TabIndex        =   94
+            TabIndex        =   93
             Top             =   3840
             Width           =   3612
          End
@@ -1490,7 +1485,7 @@ Begin VB.Form bohu3
             Height          =   216
             Index           =   1
             Left            =   -72240
-            TabIndex        =   93
+            TabIndex        =   92
             Top             =   3624
             Width           =   1308
          End
@@ -1501,7 +1496,7 @@ Begin VB.Form bohu3
             ForeColor       =   &H00FF0000&
             Height          =   192
             Left            =   -72000
-            TabIndex        =   92
+            TabIndex        =   91
             Top             =   4680
             Width           =   732
          End
@@ -1513,7 +1508,7 @@ Begin VB.Form bohu3
             Height          =   192
             Index           =   19
             Left            =   -74040
-            TabIndex        =   91
+            TabIndex        =   90
             Top             =   1560
             Width           =   3012
          End
@@ -1525,7 +1520,7 @@ Begin VB.Form bohu3
             Height          =   264
             Index           =   22
             Left            =   360
-            TabIndex        =   90
+            TabIndex        =   89
             Top             =   840
             Width           =   1452
          End
@@ -1537,7 +1532,7 @@ Begin VB.Form bohu3
             Height          =   264
             Index           =   23
             Left            =   360
-            TabIndex        =   89
+            TabIndex        =   88
             Top             =   1200
             Width           =   1812
          End
@@ -1549,7 +1544,7 @@ Begin VB.Form bohu3
             Height          =   192
             Index           =   24
             Left            =   360
-            TabIndex        =   88
+            TabIndex        =   87
             Top             =   1560
             Width           =   1704
          End
@@ -1561,7 +1556,7 @@ Begin VB.Form bohu3
             Height          =   264
             Index           =   25
             Left            =   360
-            TabIndex        =   87
+            TabIndex        =   86
             Top             =   1920
             Width           =   1932
          End
@@ -1579,7 +1574,7 @@ Begin VB.Form bohu3
          Height          =   492
          Left            =   8400
          Style           =   1  'Graphical
-         TabIndex        =   142
+         TabIndex        =   140
          Top             =   240
          Width           =   1572
       End
@@ -1873,7 +1868,7 @@ Begin VB.Form bohu3
          Caption         =   "‘·ÓÈÌ¸ÏÁÛÁ Í·Ù‹  ˘‰ÈÍ¸ –·Ò/ÍÔ˝"
          Height          =   315
          Left            =   2640
-         TabIndex        =   148
+         TabIndex        =   146
          Top             =   120
          Width           =   2895
       End
@@ -1882,7 +1877,7 @@ Begin VB.Form bohu3
          ItemData        =   "bohu3.frx":7E2C
          Left            =   120
          List            =   "bohu3.frx":7E39
-         TabIndex        =   143
+         TabIndex        =   141
          Top             =   120
          Width           =   2295
       End
@@ -2656,23 +2651,23 @@ Dim R As New ADODB.Recordset
       
       
       Dim k As Integer
-      Dim C As String
+      Dim c As String
       Dim FOUND As Boolean
      
       For k = 1 To Len(LETTERS)
-        C = mID$(LETTERS, k, 1)
+        c = mID$(LETTERS, k, 1)
         
         FOUND = False
         R.MoveFirst
         Do While Not R.EOF
-           If R(0) = C Then
+           If R(0) = c Then
               FOUND = True
               Exit Do
            End If
            R.MoveNext
         Loop
         If FOUND = False Then
-            txtFields(0).Text = C
+            txtFields(0).Text = c
             txtFields(1).Text = "*" + txtFields(1).Text
             Exit For
         End If
@@ -2960,47 +2955,47 @@ fmeArxWidt = Me.Width
 ' fortoma aade
     R.Close
 
-    R.Open "SELECT * FROM PINAKES WHERE TYPOS=43 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-       
-        i = 0
-     Do While Not R.EOF
-            i = i + 1
-         mydata.AddItem str(R!AYJON) + ";" + R!PERIGRAFH
-         R.MoveNext
-        Loop
-        If i = 0 Then
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,1,'‘…ÃœÀœ√…œ –ŸÀ«”«”        ;1.1;E3_561_001;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,2,'‘…ÃœÀœ√…œ –ŸÀ«”«” ≈Õƒœ   ;1.2;E3_561_005;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,3,'‘…ÃœÀœ√…œ –ŸÀ«”«” ‘—…‘ŸÕ ;1.3;E3_561_006;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,4,'”’Ã–À.‘…ÃœÀœ√…œ –ŸÀ«”«”  ;1.6;E3_561_001;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,5,'‘…Ã.–¡—œ◊«” ’–«—.        ;2.1;E3_561_001;category1_3',0 )"
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,6,'‘…Ã.–¡—.’–«—.≈Õƒœ        ;2.2;E3_561_005;category1_3',0 )"
-           
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,7,'‘…Ã.–¡—.’–«—.‘—…‘«”      ;2.3;E3_561_006;category1_3',0 )"
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,8,'–…”‘.‘…ÃœÀœ√…œ ”’”◊      ;5.1;E3_561_001;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,9,'–…”‘.‘…ÃœÀœ√…œ Ã« ”’”◊   ;5.2;E3_561_001;category1_1',0 )"
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,10,'”‘œ…◊≈…œ ¡’‘œ–¡—¡ƒœ”«”  ;6.1;E3_561_001;category1_1',0 )"
-           
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,11,'¡–œƒ.À…¡Õ.–ŸÀ           ;11.1;E3_561_003;category1_1',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,12,'¡–œƒ.–¡—.’–«—           ;11.2;E3_561_003;category1_3',0 )"
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,13,'¡–œƒ.≈–…”‘.À…¡Õ         ;11.4;E3_561_003;category1_1',0 )"
-           
-           
-           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,14,'≈Õƒœ .¡–œ ‘             ;14.1;E3_102_001;category2_1',0 )"
-           
-         
-           
-        End If
-        
-        
-        
-
-    R.Close
+'    R.Open "SELECT * FROM PINAKES WHERE TYPOS=43 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+'
+'        i = 0
+'     Do While Not R.EOF
+'            i = i + 1
+'         mydata.AddItem str(R!AYJON) + ";" + R!PERIGRAFH
+'         R.MoveNext
+'        Loop
+'        If i = 0 Then
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,1,'‘…ÃœÀœ√…œ –ŸÀ«”«”        ;1.1;E3_561_001;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,2,'‘…ÃœÀœ√…œ –ŸÀ«”«” ≈Õƒœ   ;1.2;E3_561_005;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,3,'‘…ÃœÀœ√…œ –ŸÀ«”«” ‘—…‘ŸÕ ;1.3;E3_561_006;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,4,'”’Ã–À.‘…ÃœÀœ√…œ –ŸÀ«”«”  ;1.6;E3_561_001;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,5,'‘…Ã.–¡—œ◊«” ’–«—.        ;2.1;E3_561_001;category1_3',0 )"
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,6,'‘…Ã.–¡—.’–«—.≈Õƒœ        ;2.2;E3_561_005;category1_3',0 )"
+'
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,7,'‘…Ã.–¡—.’–«—.‘—…‘«”      ;2.3;E3_561_006;category1_3',0 )"
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,8,'–…”‘.‘…ÃœÀœ√…œ ”’”◊      ;5.1;E3_561_001;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,9,'–…”‘.‘…ÃœÀœ√…œ Ã« ”’”◊   ;5.2;E3_561_001;category1_1',0 )"
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,10,'”‘œ…◊≈…œ ¡’‘œ–¡—¡ƒœ”«”  ;6.1;E3_561_001;category1_1',0 )"
+'
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,11,'¡–œƒ.À…¡Õ.–ŸÀ           ;11.1;E3_561_003;category1_1',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,12,'¡–œƒ.–¡—.’–«—           ;11.2;E3_561_003;category1_3',0 )"
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,13,'¡–œƒ.≈–…”‘.À…¡Õ         ;11.4;E3_561_003;category1_1',0 )"
+'
+'
+'           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (43,14,'≈Õƒœ .¡–œ ‘             ;14.1;E3_102_001;category2_1',0 )"
+'
+'
+'
+'        End If
+'
+'
+'
+'
+'    R.Close
     
     
         R.Open "SELECT * FROM PINAKES WHERE TYPOS=44 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
@@ -3985,13 +3980,13 @@ mPaste_Click_Err:
 
 End Sub
 
-Private Sub mydata_Click()
-    Dim txtLines() As String
-         txtLines = Split(mydata.Text, ";")
-         
-         txtFields(10).Text = Left(txtLines(2), 15) + ";" + Left(txtLines(3), 10) + ";" + Left(txtLines(4), 15)
-
-End Sub
+'Private Sub mydata_Click()
+'    Dim txtLines() As String
+'         txtLines = Split(MYDATA.Text, ";")
+'
+'         txtFields(10).Text = Left(txtLines(2), 15) + ";" + Left(txtLines(3), 10) + ";" + Left(txtLines(4), 15)
+'
+'End Sub
 
 Private Sub txtFields_GotFocus(index As Integer)
 
