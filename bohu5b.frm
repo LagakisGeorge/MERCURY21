@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   293797889
+         Format          =   308740097
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -2636,7 +2636,7 @@ Private Sub IMPORTSERV_Click()
  ' GDBDRAMA.Open "DSN=doytsios;uid=sa;pwd=p@ssw0rd"
  F_DOUTSIOSREM = Trim(F_DOUTSIOSREM)
  
- If InStr(F_DOUTSIOSREM, "DOUTSIOS") = 0 Then
+ If InStr(UCase(F_DOUTSIOSREM), "DOUTSIOS") = 0 Then
      
      MsgBox "кахос  254"
      Exit Sub

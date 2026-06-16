@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
@@ -37,12 +37,12 @@ Begin VB.Form Par7MyData
       Width           =   2055
    End
    Begin VB.CommandButton cmdKOYKAKH 
-      Caption         =   "koykakh"
+      Caption         =   "update μεσω API"
       Height          =   492
       Left            =   16800
       TabIndex        =   70
       Top             =   4800
-      Width           =   1332
+      Width           =   2295
    End
    Begin VB.CommandButton CMDENARXIAPOSTOLIS 
       Caption         =   "ΕΝΑΡΞΗ αποστολης"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   454033409
+      Format          =   472514561
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   454033409
+      Format          =   472514561
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -4802,7 +4801,7 @@ cmdKOYKAKH.Enabled = False
     sql = sql + " P.EPO AS CustName, P.AFM AS CustAFM, P.EPA AS CustProfession, P.DOY AS CustDOY, P.XRVMA AS CustZipCode, P.DIE AS CustAddress, P.POL AS CustCity, '1' AS VatStatus, LEFT(T.TRP, 1) AS Payment, "
     sql = sql + "  T.TRP AS PaymentDesc, G.KODE AS EidosCode, E.ONO AS EidosDescription, G.MONA AS UNIT, G.POSO AS Qty, G.TIMM AS Price, G.POSO * G.TIMM AS NetValue, (CASE WHEN G.FPA = 1 THEN 13 WHEN G.FPA = 2 THEN 24 END) "
     sql = sql + "   AS FPAPRC, G.MIK_AJIA - G.KAU_AJIA AS VatValue, G.POSO * G.TIMM - G.KAU_AJIA AS DiscVal, 0 AS DiscVal2, CONVERT(CHAR(10), G.HME, 103) AS InsertDate, CONVERT(varCHAR(10), G.HME, 103) "
-    sql = sql + "  + ' ' + T.ORA AS LastDate into TEMP1010"
+    sql = sql + "  + ' ' + T.ORA AS LastDate "
     sql = sql + " FROM            dbo.EGGTIM AS G INNER JOIN "
     sql = sql + "  dbo.PEL AS P ON G.EIDOS = P.EIDOS AND G.PELKOD = P.KOD INNER JOIN "
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
@@ -4820,10 +4819,10 @@ cmdKOYKAKH.Enabled = False
     Dim R As New ADODB.Recordset
  ' Gdb.Execute "DROP TABLE IF EXISTS TEMP1010;"
  
- Gdb.Execute "IF OBJECT_ID('dbo.TEMP1010', 'U') IS NOT NULL  DROP TABLE dbo.TEMP1010;"
- Gdb.Execute sql
+ 'Gdb.Execute "IF OBJECT_ID('dbo.TEMP1010', 'U') IS NOT NULL  DROP TABLE dbo.TEMP1010;"
+' Gdb.Execute sql
   
-    R.Open "SELECT * FROM TEMP1010", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open sql, Gdb, adOpenDynamic, adLockOptimistic  '"SELECT * FROM TEMP1010"
 
     Q = "["
 
