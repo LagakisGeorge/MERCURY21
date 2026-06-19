@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   472514561
+      Format          =   305790977
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   472514561
+      Format          =   305790977
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1604,6 +1604,8 @@ Dim sql                As String
 
 'Dim gdb As New ADODB.Connection
 Dim MARK               As String
+
+Dim f_qrCodeUrl              As String
 
 Dim fMydataFromEID1    As Integer
 
@@ -4888,7 +4890,7 @@ cmdKOYKAKH.Enabled = False
     Loop
 
     Q = Q + " ] "
-    Gdb.Execute "DROP TABLE TEMP1010"
+   ' Gdb.Execute "DROP TABLE TEMP1010"
     Open "C:\MERCVB\KOYKAKIS.TXT" For Output As #3
     Print #3, Q
     Close #3
@@ -6626,6 +6628,8 @@ Public Sub printUSNode(Node As IXMLDOMNode, ByRef AFM As String)
            
 106             If xmlNode.nodeName = "mark" Then MARK = xmlNode.Text
                 '<issuer>
+           
+                If xmlNode.nodeName = "qrCodeUrl" Then f_qrCodeUrl = xmlNode.Text
            
 108             If UCase(xmlNode.nodeName) = "ISSUER" Then
 
@@ -10015,14 +10019,14 @@ mmark = GGET_CVALUE("select TOP 1 ENTITYMARK AS MARK, *from TIM WHERE ENTITYMARK
             End If
         
 174         If FOUND = 0 Then
-176             sql = "INSERT INTO APESTALMENA2  ([MARK],[AFM],[ISSUEDATE],[AA],[TYPOS],[PAYTYPE],[PAYAJI],[TOTALNETVALUE],[TOTALVATAMOUNT],[TOTALGROSSVALUE],[CLASSIFICATIONTYPE])"
-178             sql = sql + " Values ('" + MARK + "','" + Left(AFM, 9) + "','" + issueDate + "','" + AA + "','" + invoiceType + "','" + paytype + "'," + Replace(payaji, ",", ".") + "," + Replace(totalNetValue, ",", ".") + "," + Replace(totalVatAmount, ",", ".") + "," + Replace(totalGrossValue, ",", ".") + ",'" + classificationType + "')"
+176             sql = "INSERT INTO APESTALMENA2  ([MARK],[AFM],[ISSUEDATE],[AA],[TYPOS],[PAYTYPE],[PAYAJI],[TOTALNETVALUE],[TOTALVATAMOUNT],[TOTALGROSSVALUE],[CLASSIFICATIONTYPE],QRCODEURL )"
+178             sql = sql + " Values ('" + MARK + "','" + Left(AFM, 9) + "','" + issueDate + "','" + AA + "','" + invoiceType + "','" + paytype + "'," + Replace(payaji, ",", ".") + "," + Replace(totalNetValue, ",", ".") + "," + Replace(totalVatAmount, ",", ".") + "," + Replace(totalGrossValue, ",", ".") + ",'" + classificationType + "','" + f_qrCodeUrl + "')"
 
                 Dim nn As Long
 
 180             Gdb.Execute sql, nn
             Else
-182             Gdb.Execute "update APESTALMENA2 SET MARK='" + MARK + "',PAYTYPE='" + paytype + "',PAYAJI=" + Replace(payaji, ",", ".") + ",TOTALNETVALUE=" + Replace(totalNetValue, ",", ".") + ",TOTALVATAMOUNT=" + Replace(totalVatAmount, ",", ".") + ",TOTALGROSSVALUE=" + Replace(totalGrossValue, ",", ".") + ",CLASSIFICATIONTYPE='" + classificationType + "' WHERE ID=" + m_ID
+182             Gdb.Execute "update APESTALMENA2 SET QRCODEURL='" + f_qrCodeUrl + "',MARK='" + MARK + "',PAYTYPE='" + paytype + "',PAYAJI=" + Replace(payaji, ",", ".") + ",TOTALNETVALUE=" + Replace(totalNetValue, ",", ".") + ",TOTALVATAMOUNT=" + Replace(totalVatAmount, ",", ".") + ",TOTALGROSSVALUE=" + Replace(totalGrossValue, ",", ".") + ",CLASSIFICATIONTYPE='" + classificationType + "' WHERE ID=" + m_ID
                
             End If
         
@@ -10050,7 +10054,7 @@ Do While Not Adodc2.Recordset.EOF
       M_AFM = GGET_CVALUE("SELECT AFM FROM PEL WHERE EIDOS='e' and KOD='" + M_AFM + "'")
       
       If M_AFM = Trim(Adodc2.Recordset("AFM")) Then
-           Gdb.Execute ("UPDATE TIM SET ENTITYMARK='" + Trim(Adodc2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
+           Gdb.Execute ("UPDATE TIM SET QRURL='" + f_qrCodeUrl + "',ENTITYMARK='" + Trim(Adodc2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
            MsgBox "OK ENHME—Ÿ»« ≈ TO MARK –œ’ ≈À≈…–≈"
       End If
       
@@ -10479,7 +10483,7 @@ Sub create_TABLES_APESTALMENA2()
 
         Dim sql As String
          
-100     sql = " CREATE TABLE [dbo].[APESTALMENA2](" & "[AFM] [nchar](10) NULL," & "[ISSUEDATE] [nchar](10) NULL," & "[AA] [nchar](10) NULL," & "[TYPOS] [nchar](10) NULL," & "[PAYTYPE] [nchar](10) NULL," & "[PAYAJI] [float] NULL," & "[TOTALNETVALUE] [float] NULL," & "[TOTALVATAMOUNT] [float] NULL," & "[TOTALGROSSVALUE] [float] NULL, " & "[CLASSIFICATIONTYPE] [nchar](10) NULL," & "[MARK] [nchar](20) NULL," & "[YPOK] [int],[ID] [int] IDENTITY(1,1) NOT NULL" & ") ON [PRIMARY]"
+100     sql = " CREATE TABLE [dbo].[APESTALMENA2](" & "[AFM] [nchar](10) NULL," & "[ISSUEDATE] [nchar](10) NULL," & "[AA] [nchar](10) NULL," & "[TYPOS] [nchar](10) NULL," & "[PAYTYPE] [nchar](10) NULL," & "[PAYAJI] [float] NULL," & "[TOTALNETVALUE] [float] NULL," & "[TOTALVATAMOUNT] [float] NULL," & "[TOTALGROSSVALUE] [float] NULL, " & "[CLASSIFICATIONTYPE] [nchar](10) NULL," & "[MARK] [nchar](20) NULL," & "[YPOK] [int],[ID] [int] IDENTITY(1,1) NOT NULL , [QRCODEURL] [NCHAR](200) " & ") ON [PRIMARY]"
 
         Dim R As New ADODB.Recordset
          
@@ -10490,6 +10494,10 @@ Sub create_TABLES_APESTALMENA2()
 106         Gdb.Execute sql
         End If
         R.Close
+        
+        ADD_FIELD "APESTALMENA2", "QRCODEURL", "NCHAR(200)"
+        
+        
         
         
          R.Open "SELECT COUNT(*) AS N FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME  = 'APESTALMENA'", Gdb, adOpenDynamic, adLockOptimistic
