@@ -1,17 +1,39 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form apot21 
    BackColor       =   &H0080C0FF&
    Caption         =   "Form1"
    ClientHeight    =   8640
    ClientLeft      =   60
-   ClientTop       =   456
+   ClientTop       =   450
    ClientWidth     =   11520
    LinkTopic       =   "Form1"
    ScaleHeight     =   8640
    ScaleWidth      =   11520
+   Begin VB.CommandButton cmdKODIKOI 
+      Caption         =   "ÁÐÏ ÊÙÄ ÅÙÓ ÊÙÄ"
+      Height          =   360
+      Left            =   9000
+      TabIndex        =   23
+      Top             =   6960
+      Width           =   2415
+   End
+   Begin VB.TextBox EOS 
+      Height          =   285
+      Left            =   10320
+      TabIndex        =   22
+      Top             =   6480
+      Width           =   1095
+   End
+   Begin VB.TextBox APO 
+      Height          =   285
+      Left            =   9000
+      TabIndex        =   21
+      Top             =   6480
+      Width           =   975
+   End
    Begin VB.CommandButton OLES 
       Caption         =   "ÏËÅÓ ÔÉÓ ÊÉÍÇÓÅÉÓ"
       Height          =   360
@@ -103,10 +125,10 @@ Begin VB.Form apot21
       TabIndex        =   5
       Top             =   1980
       Width           =   2505
-      _ExtentX        =   4424
-      _ExtentY        =   445
+      _ExtentX        =   4419
+      _ExtentY        =   450
       _Version        =   393216
-      Format          =   134610945
+      Format          =   315293697
       CurrentDate     =   38947
    End
    Begin VB.TextBox Text3 
@@ -114,7 +136,7 @@ Begin VB.Form apot21
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -133,7 +155,7 @@ Begin VB.Form apot21
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -152,7 +174,7 @@ Begin VB.Form apot21
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -172,8 +194,8 @@ Begin VB.Form apot21
       Top             =   6720
       Visible         =   0   'False
       Width           =   3375
-      _ExtentX        =   5948
-      _ExtentY        =   656
+      _ExtentX        =   5953
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -204,7 +226,7 @@ Begin VB.Form apot21
       Caption         =   "SQL SERVER"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -219,10 +241,10 @@ Begin VB.Form apot21
       TabIndex        =   6
       Top             =   2400
       Width           =   2505
-      _ExtentX        =   4424
-      _ExtentY        =   445
+      _ExtentX        =   4419
+      _ExtentY        =   450
       _Version        =   393216
-      Format          =   106954753
+      Format          =   315293697
       CurrentDate     =   38947
    End
    Begin TrueOleDBGrid80.TDBGrid G1 
@@ -232,7 +254,7 @@ Begin VB.Form apot21
       TabIndex        =   17
       Top             =   780
       Width           =   8430
-      _ExtentX        =   14880
+      _ExtentX        =   14870
       _ExtentY        =   9737
       _LayoutType     =   0
       _RowHeight      =   -2147483647
@@ -250,7 +272,7 @@ Begin VB.Form apot21
       Splits(0).ExtendRightColumn=   -1  'True
       Splits(0).PartialRightColumn=   0   'False
       Splits(0).MarqueeStyle=   4
-      Splits(0).RecordSelectorWidth=   699
+      Splits(0).RecordSelectorWidth=   688
       Splits(0)._SavedRecordSelectors=   -1  'True
       Splits(0).AllowColMove=   -1  'True
       Splits(0).DividerColor=   14215660
@@ -258,12 +280,12 @@ Begin VB.Form apot21
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=2731"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=2725"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
       Splits(0)._ColumnProps(4)=   "Column(0)._EditAlways=0"
       Splits(0)._ColumnProps(5)=   "Column(0).Order=1"
-      Splits(0)._ColumnProps(6)=   "Column(1).Width=2731"
+      Splits(0)._ColumnProps(6)=   "Column(1).Width=2725"
       Splits(0)._ColumnProps(7)=   "Column(1).DividerColor=0"
       Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2646"
       Splits(0)._ColumnProps(9)=   "Column(1)._EditAlways=0"
@@ -271,8 +293,8 @@ Begin VB.Form apot21
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -634,6 +656,218 @@ Attribute F_apis_APOU.VB_VarUserMemId = 1073938432
 
 Dim PROTH_FORA As Boolean
 
+Private Sub cmdKODIKOI_Click()
+
+
+Dim R As New ADODB.Recordset
+
+130     R.Open "SELECT *FROM PARASTAT", Gdb, adOpenDynamic, adLockOptimistic
+
+140     F_xre_APOU = ""
+150     F_axre_APOU = ""
+160     F_pis_APOU = ""
+170     F_apis_APOU = ""
+
+Dim f_AJEIS  As String
+Dim f_AJEX  As String
+
+Dim f_AAJEIS  As String
+Dim f_AAJEX  As String
+
+Dim s1 As String
+
+
+
+f_AJEIS = 0
+f_AJEX = 0
+
+f_AAJEIS = 0
+f_AAJEX = 0
+
+180     R.MoveFirst
+
+190     Do While Not R.EOF
+
+200         If R("POS_APOU") = 1 Then
+210             F_xre_APOU = F_xre_APOU + R("eidos")
+220         ElseIf R("POS_APOU") = 2 Then
+230             F_axre_APOU = F_axre_APOU + R("eidos")
+240         ElseIf R("POS_APOU") = 3 Then
+250             F_pis_APOU = F_pis_APOU + R("eidos")
+260         ElseIf R("POS_APOU") = 4 Then
+270             F_apis_APOU = F_apis_APOU + R("eidos")
+            End If
+
+              If R("AJIA_APOU") = 1 Then
+                  f_AJEIS = f_AJEIS + R("eidos")
+              ElseIf R("AJIA_APOU") = 2 Then
+                  f_AAJEIS = f_AAJEIS + R("eidos")
+              ElseIf R("AJIA_APOU") = 3 Then
+                  f_AJEX = f_AJEX + R("eidos")
+              ElseIf R("AJIA_APOU") = 4 Then
+                  f_AAJEX = f_AAJEX + R("eidos")
+              End If
+
+280         R.MoveNext
+        Loop
+
+290     R.Close
+
+
+
+
+
+
+
+
+
+
+
+Dim FFILE2 As String
+Dim FFILE3 As String
+  FFILE2 = "TEMPP" + Format(Now, "YYMMDDHHmm")
+
+
+ filtroPEL.Caption = "APOT>=1 "
+FFILE3 = " EGGTIM "
+
+
+
+     s = "select E.KODE,CONVERT(CHAR(12),E.HME,3) as [Hìåñ/íßá],E.ATIM+LEFT(PARASTAT.TITLOS,10) as [Áñ Ðáñ/êïý],E.XRE AS [ÅéóáãùãÝò],E.PIS AS [ÅîáãùãÝò]"
+     s = s + " ,PROOD as [Õðüëïéðï],E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100 AS [TEËÉÊ.TIMH], PEL.EPO,"
+     s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEIS + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE (CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEIS + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ÁÎÉÁ EIÓÁÃ],"
+     s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEX + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEX + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ÁÎÉÁ EÎÁÃ], "
+   
+     s1 = "E.TIMM as [Téì Ìïí],CONVERT(DECIMAL(10,2),E.EKPT) AS [Åêð%],CONVERT(DECIMAL(10,2),ISNULL(E.EKPT2,0)) AS [2ç Åêð%],E.KERDOS AS [ÊÅÑÄÏÓ],E.POSO AS [ÐÏÓÏÔÇÔÁ],CONVERT(DECIMAL(10,2),E.FCURRENCY) AS [ÎÅÍÏ ÍÏÌ],E.ID  "
+     s1 = s1 + " INTO " + FFILE2 + " FROM  " + FFILE3 + " E LEFT join PEL on E.EIDOS=PEL.EIDOS and E.PELKOD=PEL.KOD INNER JOIN PARASTAT ON PARASTAT.EIDOS=LEFT(E.ATIM,1) "
+     s1 = s1 + " where " + filtroPEL.Caption + " AND  E.HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND E.HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and E.KODE>='" + apo.Text + "' AND E.KODE<='" + eos.Text + "'"
+     s1 = s1 + " order by convert(char(10),E.HME,2),E.ATIM ;"
+     
+ Gdb.Execute s + s1
+ 
+
+
+380     data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
+
+390  On Error Resume Next
+
+data1.Refresh
+'MsgBox "OK"
+
+data1.Refresh
+
+If data1.Recordset.EOF Then
+      
+      
+   Gdb.Execute "DROP TABLE " + FFILE2
+   Exit Sub
+   
+End If
+   
+
+
+  print3_xar s + s1, "001111111111111111111", m_ep, 0
+  
+  
+  Gdb.Execute "DROP TABLE " + FFILE2
+  
+  Exit Sub
+
+
+
+
+For j = 1 To 10
+  g1.Splits(0).columns(j).Width = 700
+Next
+g1.Splits(0).columns(6).Width = 1800
+g1.Splits(0).columns(1).Width = 1300
+g1.Refresh
+
+'On Error GoTo OUT
+
+         data1.Recordset.MoveFirst
+'          TDBGrid.Splits(0).columns(1).Width = 3500
+         Dim sumes(0 To 20) As Single
+
+         For k = 0 To data1.Recordset.FIELDS.Count - 1
+            sumes(k) = 0
+         Next
+
+
+
+           ' On Error GoTo ektos
+         Do While Not data1.Recordset.EOF
+             For k = 0 To data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+
+                     sumes(k) = sumes(k) + nNull(data1.Recordset.FIELDS(k).Value)
+                    End If
+                Next
+                data1.Recordset.MoveNext
+         Loop
+         For k = 0 To data1.Recordset.FIELDS.Count - 1
+
+               If sumes(k) > 0 Then
+
+                  If k = 4 Or k = 5 Or k = 11 Or k = 12 Then
+                     'ãéá íá ìçí óïõìáñåé õðïëïéðá,ôéìåò,íïìéóìáôá êáé id áíôéóôïé÷á
+                  Else
+                     g1.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
+                  End If
+
+                End If
+
+         Next
+          g1.AlternatingRowStyle = True
+
+     g1.OddRowStyle.BackColor = &H8000000F   ' GRI   vbCyan
+     g1.EvenRowStyle.BackColor = &HFFFFC0   'OYRANI     &H8000000F  ' GRI
+
+
+777
+
+
+Me.MousePointer = vbNormal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'Dim R5 As New ADODB.Recordset
+'R5.Open "SELECT * FROM EID WHERE KOD>='" + APO.Text + "' AND KOD<='" + EOS.Text + "'", Gdb, adOpenDynamic, adLockOptimistic
+'
+'
+'
+'Do While Not R5.EOF
+'   Text1.Text = R5!kod
+'   DoEvents
+'    paint_grid
+'    R5.MoveNext
+'Loop
+
+
+End Sub
+
 Private Sub CmdPrintKarteles_Click()
 
 Dim rrd As New ADODB.Recordset
@@ -929,7 +1163,7 @@ End Sub '   Exit Sub
 '        '</EhFooter>
 
 Private Sub cXronies_Click()
-  If cXRONIES.Value = vbChecked Then
+  If cXronies.Value = vbChecked Then
       paint_grid
   End If
 End Sub
@@ -954,7 +1188,7 @@ Sub paint_grid()
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         Dim s, SX, SP
         
@@ -1066,7 +1300,7 @@ If CHECK_PROOD.Value = vbChecked Then
      GTGDB.Execute "DROP TABLE " + fFILE
      
      On Error GoTo exitcode
-     If cXRONIES.Value = vbChecked Then
+     If cXronies.Value = vbChecked Then
         Dim SQL11 As String
         SQL11 = "SELECT * INTO " + fFILE + " FROM EGGTIM  where " + filtroPEL.Caption + " AND HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and KODE='" + Text1.Text + "' "
      

@@ -2413,13 +2413,14 @@ print7_excel_Err:
         '</EhFooter>
 End Function
 
-
-
-
-Function oldprint7_excel(sql As String, _
+Function print7ADD_excel(sql As String, _
                       SUgm_str, _
                       ByVal EPIKEF As String, _
                       ByVal GROUPN As Integer)
+
+'ΠΡΟΣΘΕΤΕΙ ΣΕΙΡΕΣ ΣΤΟ ΙΔΙΟ EXEL    (YPO KATASKEYH)
+
+
 '10/12/2014
 'οι παρακατω σειρές εγιναν γιατι αλλαξε ο τυπος
 'apo varchar(30) se nvarchar(max) για να δουλευει και κυριλλικά
@@ -2493,13 +2494,13 @@ Function oldprint7_excel(sql As String, _
         '  Dim myXL As excel.Worksheet
 
         'ETSI DOYLEYEI ME OLA TA EXCEL
-        Dim excel    As excel.Application
+        Dim excel    As Object ' excel.Application
 
-        Dim workbook As excel.workbook
+        Dim workbook As Object ' excel.workbook
 
-        Dim myXL     As excel.Worksheet
+        Dim myXL     As Object ' excel.Worksheet
 
-100     Set excel = New excel.Application   'CreateObject("excel.Application")
+100     Set excel = CreateObject("excel.Application")
     
         ' Excel.Visible = True
 102     Set workbook = excel.Workbooks.Add
@@ -2611,13 +2612,7 @@ Function oldprint7_excel(sql As String, _
 160     mPal = "    "
 162     mPAL22 = "     "
 164     MOLIS_ALLAJE = 0
-
-        'If IsNull(EPIK) Then
-        '   EPIK = Format(Date, "dd/mm/yyyy")
-        'End If
-
 166     marxeio2 = "EKT" + xeirisths + ".TXT"
-        'On Error Resume Next
 
 168     m_sthl_ektyp(1) = 0  ' int ( IF(type("STHLES")="U",40,STHLES/2) - lsyn / 2 )
 
@@ -2628,15 +2623,6 @@ Function oldprint7_excel(sql As String, _
 
         Dim R As New ADODB.Recordset
 
-        'R.Open "SELECT *FROM MEM", Gdb, adOpenDynamic, adLockOptimistic
-        '        k = 1
-        '        With myXL
-        '            .cells(1, 3) = R("pelono")
-        '            .cells(2, 3) = R("pelepa")
-        '            .cells(3, 3) = Now
-        '            .cells(4, 3) = EPIKEF
-        '        End With
-        '
         On Error GoTo print7_excel_Err
 
         '----------------------- ΕΠΙΚΕΦΑΛΙΔΑ ----------------------------
@@ -2646,7 +2632,7 @@ Function oldprint7_excel(sql As String, _
 
 180     For k = 0 To N - 1
 182         myXL.cells(5, k + 1) = F_T(k).Name
-184         myXL.cells(5, k + 1).Interior.Color = RGB(180, 180, 180)
+184         myXL.cells(5, k + 1).Interior.Color = RGB(180, 280, 180)
         Next
         
 186     excel.Windows(1).SplitRow = 5
@@ -2659,24 +2645,6 @@ Function oldprint7_excel(sql As String, _
     Else
 194     AYJ = 0
     End If  '=================================================================
-
-
-
-
-        'excel.Windows(1).SplitColumn = 1
-
-        '  ROWS("6:6").Select
-        '    ActiveWindow.FreezePanes = True
-        '    Range("B14").Select
-        '    ActiveWindow.SmallScroll Down:=0
-        '    ROWS("8:8").Select
-        '    With selection.Interior
-        '        .Pattern = xlSolid
-        '        .PatternColorIndex = xlAutomatic
-        '        .ThemeColor = xlThemeColorAccent3
-        '        .TintAndShade = 0.599993896298105
-        '        .PatternTintAndShade = 0
-        '    End With
 
         Dim LAST_TIMH
 
@@ -2718,12 +2686,6 @@ FF.Adodc1.Refresh
 Dim RR As Object
 Set RR = FF.Adodc1.Recordset
 '==================================
-
-
-
-'Dim RR As New ADODB.Recordset
-'RR.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
-
 210     Do While Not RR.EOF
 212         AYJ = AYJ + 1
 
@@ -2732,42 +2694,14 @@ Set RR = FF.Adodc1.Recordset
                 Exit Do
 
             End If
-
-            'If g_Stop = 2 Then
-            '   Exit Do
-            'End If
-
-            'MDIForm1.Caption = AYJ
             '----------------- ΤΥΠΩΣΕ ΟΛΑ ΤΑ ΠΕΔΙΑ ---------------------
 216         For k = 0 To N - 1
-               ' If IsNull(F_T(k)) Then
-              '     MsgBox "null"
-               ' End If
-                'If k = Pedio_epan And timh_epan = F_T(k) Then
 218             If k = Pedio_epan Then
 220                 If timh_epan = RR(k) Then
                         ' MHN TYPVNEIS TO PEDIO XANA
                     Else ' ΑΛΛΑΓΗ GROUP
 222                     AYJ = AYJ + 1
 224                     GoSub PRINTGROUP
-                        '                          For n2 = 0 To n - 1
-                        '
-                        '                               If m_sumes(n2) > 0 Then
-                        '                                  If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
-                        '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), F_T(n2).DefinedSize + 2)
-                        '                                     myXL.cells(AYJ - 1, n2).Interior.Color = RGB(100, 100, 500)
-                        '                                  Else
-                        '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), F_T(n2).DefinedSize + 2)
-                        '                                  End If
-                        '
-                        '                               Else
-                        '                                  myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), F_T(K).DefinedSize);
-                        '                               End If
-                        '
-                        '                               M_SYN(n2) = m_sumes(n2)
-                        '
-                        '                           Next
-
                     End If
                 End If
               
@@ -2779,9 +2713,9 @@ Set RR = FF.Adodc1.Recordset
 232                 ElseIf RR(k).Type = 7 Or RR(k).Type = 5 Or RR(k).Type = 3 Or RR(k).Type = 131 Then   'IsNumeric(RR(K)) πραγματικο
 
 234                     If IsNull(RR(k)) Then
-236                         myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(0, "######,##0.00"), 13)  '  RR(K).DefinedSize)
+236                         'myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(0, "######,##0.00"), 13)  '  RR(K).DefinedSize)
                         Else
-238                         myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(RR(k), "######,##0.00"), 13)    '  RR(K).DefinedSize)
+238                         myXL.cells(AYJ, k + 1) = RR(k) '  Format(RR(k), "######,##0.00") ', 13) ' RR(k) ' Right(Space(30) + Format(RR(k), "######,##0.00"), 13)    '  RR(K).DefinedSize)
                         End If
 
 240                 ElseIf RR(k).Type = 8 Or RR(k).Type = 135 Then   'DATE
@@ -2795,7 +2729,7 @@ Set RR = FF.Adodc1.Recordset
                             ' Print #1, Tab(f_tab(K)); to928(F_T(K));
 246                         If k < N - 1 Then
                                 ' για να μην παταει στην επόμενη στήλη
-248                             myXL.cells(AYJ, k + 1) = "'" + Left(RR(k), f_tab(k + 1) - f_tab(k) - 1)
+248                             myXL.cells(AYJ, k + 1) = "'" + RR(k) ' Left(RR(k), f_tab(k + 1) - f_tab(k) - 1)
                             Else
 250                             myXL.cells(AYJ, k + 1) = "'" + RR(k)    'to928(RR(K))
                             End If
@@ -2818,7 +2752,7 @@ Set RR = FF.Adodc1.Recordset
                 End If    ' mid$(sugm_str,k,1)
 
 260             If AYJ Mod 2 = 0 And F_XROMATA = 1 Then
-262                 myXL.cells(AYJ, k + 1).Interior.Color = RGB(200, 200, 200)
+262                 myXL.cells(AYJ, k + 1).Interior.Color = RGB(200, 300, 200)
                 End If
 
 264             If Pedio_epan >= 0 Then
@@ -2827,38 +2761,7 @@ Set RR = FF.Adodc1.Recordset
 
             Next
 
-            ' Print #1,
-            '   If GROUPN > 0 Then
-            '       LAST_TIMH = RR(GROUPN)
-            '   End If
 268         RR.MoveNext
-            '   If Not RR.EOF Then
-            '      If GROUPN > 0 Then
-            '          If LAST_TIMH <> RR(GROUPN) Then
-            '              AYJ = AYJ + 1
-            '          End If
-            '      End If
-            '  End If
-                   
-            ' αν τελειωσε να κανει μερικη σουμα στο τελευταιο group
-            '                   If RR.EOF Then
-            '                          For n2 = 0 To n - 1
-            '                               If m_sumes(n2) > 0 Then
-            '                                  If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
-            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
-            '                                     myXL.cells(AYJ - 1, n2).Interior.Color = RGB(100, 100, 500)
-            '                                  Else
-            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), RR(n2).DefinedSize + 2)
-            '                                  End If
-            '
-            '                               Else
-            '                                  myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), RR(K).DefinedSize);
-            '                               End If
-            '
-            '                               M_SYN(n2) = m_sumes(n2)
-            '
-            '                           Next
-            '                     End If
 
 270         If AYJ Mod 100 = 0 Then
 
@@ -2913,10 +2816,8 @@ Set RR = FF.Adodc1.Recordset
 294     myXL.columns("A:K").Select
 296     myXL.columns.AutoFit
 
-
-
-
-
+        myXL.columns("A:K").Select
+        myXL.columns("a:k").NumberFormat = "0.00"
 
         'Dim R As New ADODB.Recordset
 298    R.Open "SELECT *FROM MEM", Gdb, adOpenDynamic, adLockOptimistic
@@ -2966,8 +2867,12 @@ PRINTGROUP:
 
 336         If m_sumes(n2) > 0 Then
 338             If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
-340                 myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
-342                 myXL.cells(AYJ - 1, n2 + 1).Interior.Color = RGB(100, 100, 500)
+340                ' myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
+                    ' αντικατασταθηκε με αριθμητικό
+                    myXL.cells(AYJ - 1, n2 + 1) = Round(m_sumes(n2) - M_SYN(n2), 2)
+
+342                 myXL.cells(AYJ - 1, n2 + 1).Interior.Color = RGB(100, 300, 500)
+                    
                 Else
 344                 myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), RR(n2).DefinedSize + 2)
                 End If
@@ -3028,6 +2933,621 @@ print7_excel_Err:
         '</EhFooter>
 End Function
 
+
+
+
+'Function oldprint7_excel(sql As String, _
+'                      SUgm_str, _
+'                      ByVal EPIKEF As String, _
+'                      ByVal GROUPN As Integer)
+''10/12/2014
+''οι παρακατω σειρές εγιναν γιατι αλλαξε ο τυπος
+''apo varchar(30) se nvarchar(max) για να δουλευει και κυριλλικά
+''το προβλημα ηταν ότι στα κυριλλικα εβγαζε κενα
+''==================================
+''F_T.Close
+''FF.Adodc1.ConnectionString = gConnect
+''FF.Adodc1.RecordSource = sql
+''FF.Adodc1.Refresh
+''Dim RR As Object
+''Set RR = FF.Adodc1.Recordset
+''==================================
+'
+'
+'
+'
+'
+'
+'
+'        '<EhHeader>
+'        On Error GoTo print7_excel_Err
+'        '</EhHeader>
+'
+'        '"*********************** P R I N T _ X A R ************************
+'        '"**************      κάνει παρουσίαση αρχείου στο χαρτί
+'        '"*** n=αριθμός fields που παρουσιάζονται
+'        '"*** synuhkh2 η συνθήκη για το  IF, sugm_str βλέπει που θα κάνει σούμες ,π.χ. "00100" κάνει σούμες στο 3ο field
+'        '"*** sum_pic  το picture γιά τις σούμες
+'        '"*** Ei,Fi,Pi  :Επικεφαλίδα παρουσίασης,Fields που παρουσιάζονται,Picture παρουσίασης
+'        '"** synt_eject:=0  αλλάζει σελίδα όταν μεταβάλλεται η στήλη
+'        Dim MFIELDS(120), mSYN
+'
+'        Dim synt_eject
+'
+'        Dim sumes, CC, pp, ar_Print(4), k, m_sthl_ektyp(120), F(120)
+'
+'        Dim mBSEIRA
+'
+'        Dim scr2, dhdr(1), dfld(1), marxeio2, mPal, mPAL22, MOLIS_ALLAJE
+'
+'        Dim PrinSeir1, PrinSeir2, PrinSeir3, PrinSeir4
+'
+'        Dim aaP, aaP2, ektypoths
+'
+'        Dim EPIK, xeirisths, PPF, epik3
+'
+'        Dim Sthles, kw, PPD, SELIS
+'
+'        Dim LSYN, AA, epik2, i As Integer
+'
+'        Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
+'
+'        Dim m_sumes(120), SUMES0(120)
+'
+'        Dim SS
+'
+'        Dim m_ekt As Integer
+'
+'        Dim DUM
+'
+'        Dim returnValue
+'
+'        Dim f_excelPath
+'
+'        'GROUPN = GROUPN - 1
+'
+'        'ETSI DEN DOYLEYEI ME OLA TA EXCEL ALLA SE BOHTHAEI STON KODIKA
+'
+'        '    Dim excel As excel.Application
+'        '   Dim workbook As excel.workbook
+'        '  Dim myXL As excel.Worksheet
+'
+'        'ETSI DOYLEYEI ME OLA TA EXCEL
+'        Dim excel    As excel.Application
+'
+'        Dim workbook As excel.workbook
+'
+'        Dim myXL     As excel.Worksheet
+'
+'100     Set excel = New excel.Application   'CreateObject("excel.Application")
+'
+'        ' Excel.Visible = True
+'102     Set workbook = excel.Workbooks.Add
+'
+'        On Error Resume Next
+'
+'        Dim F_XROMATA As Integer
+'
+'104     F_XROMATA = Val(FINDPARAMETROI(1, "MDIFORM1", "F_XROMATA", "0", "ΧΡΩΜΑΤΑ ΣΤΟ EXCEL=1 ΟΧΙ=0"))
+'
+'        '"MDIFORM1"
+'
+'        '  If (MenuShow.Caption = "&Show") Then
+'        '    MenuShow.Caption = "&Hide"
+'106     workbook.Activate
+'
+'108     Set myXL = workbook.ActiveSheet
+'
+'        Dim FF As New UDialog
+'
+'110     FF.SHOW
+'112     FF.OKButton.Visible = False
+'114     FF.List1.Visible = False
+'
+'116     FF.CancelButton.Caption = "ΔΙΑΚΟΠΗ"
+'118     FF.CancelButton.Top = 120
+'120     FF.CancelButton.Left = 120
+'122     FF.CancelButton.Width = 2895
+'124     FF.CancelButton.Height = 495
+'
+'        'FF.Top = 3000
+'        'FF.Left = 3000
+'
+'126     FF.Width = 3210
+'128     FF.Height = 810
+'
+'130     FF.Left = Screen.Width / 2 - FF.Width / 2
+'132     FF.Top = Screen.Height / 2 - FF.Height / 2
+'
+'        'FF.Top = MDIForm1.Top + (MDIForm1.height) / 2 ' Command2.Top
+'        'FF.Left = MDIForm1.Left + (MDIForm1.width) / 2 ' Command2.Left
+'
+'134     FF.Caption = "ΔΙΑΔΙΚΑΣΙΑ ΥΠΟΛΟΓΙΣΜΟΥ"
+'
+'        ''------------------------ΠΕΤΑΕΙ ΟΛΟΚΛΗΡΟ ΤΟ ΑΡΧΕΙΟ ΑΛΛΑ ΚΟΛΑΕΙ ΣΤΗΝ [ΧΟΝΔ.ΤΙΜΗ]------------------------------
+'        'Dim db1 As Database
+'        'Dim FROM As Long
+'        'On Error Resume Next
+'        '  Kill "C:\EKTYP.XLS"
+'        '  DoEvents
+'        '  myXL.SaveAs "C:\EKTYP.XLS"
+'        '
+'        '  Call workbook.Close(False)
+'        '  excel.Quit
+'        '  Set excel = Nothing
+'        '
+'        'FROM = InStr(1, UCase(sql), "FROM")
+'        'Set db1 = OpenDatabase("", False, False, gConnect)
+'        'db1.Execute Left(sql, FROM - 1) + " " + " into 32 in 'c:\EKTYP.xls' 'Excel 8.0;' " + Trim(Mid(sql, FROM, 500))
+'        ''------------------------------------------------------
+'
+'136     MDIForm1.MousePointer = vbHourglass
+'        'excel.Visible = True
+'
+'        'f_excelPath = FindParametroi(1,"MDIFORM1", "f_excelPath", "C:\Program Files\Microsoft Office\OFFICE11", "Φάκελος Excel")
+'        ''C:\Program Files\Microsoft Office\OFFICE11
+'        'returnValue = Shell(f_excelPath + "\EXCEL.EXE", vbMaximizedFocus) ' vbMinimizedNoFocus) ' Run Microsoft Excel.
+'        '
+'        'Set myXL = GetObject("", "Excel.Sheet")
+'
+'138     For k = 1 To 120: m_sumes(k) = 0: SUMES0(k) = 0: Next
+'
+'        Dim N
+'
+'        Dim F_T As New ADODB.Recordset
+'
+'        Dim TT  As Long
+'
+'140     TT = GetCurrentTime()
+'
+'        'Dim recs As Long, fp As Long
+'        'fp = InStr(UCase(sql), "FROM")
+'
+'        'F_T.Open "select count(*) " + Trim(Mid(sql, fp, 100)), Gdb, adOpenForwardOnly, adLockReadOnly
+'        'recs = F_T(0)
+'        'F_T.Close
+'
+'142     F_T.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
+'
+'144     N = F_T.FIELDS.Count
+'
+'146     For k = 1 To N
+'
+'148         If F_T(k - 1).Type = 8 Or F_T(k - 1).Type = 129 Then    'DATE
+'150             f_tab(k) = 2 + f_tab(k - 1) + 8
+'            Else
+'
+'152             If F_T.FIELDS(k - 1).DefinedSize > 200 Then
+'154                 f_tab(k) = 2 + f_tab(k - 1) + 90
+'                Else
+'156                 f_tab(k) = 3 + f_tab(k - 1) + F_T.FIELDS(k - 1).DefinedSize
+'                End If
+'            End If
+'
+'        Next
+'
+'158     LSYN = f_tab(k - 1)
+'
+'160     mPal = "    "
+'162     mPAL22 = "     "
+'164     MOLIS_ALLAJE = 0
+'
+'        'If IsNull(EPIK) Then
+'        '   EPIK = Format(Date, "dd/mm/yyyy")
+'        'End If
+'
+'166     marxeio2 = "EKT" + xeirisths + ".TXT"
+'        'On Error Resume Next
+'
+'168     m_sthl_ektyp(1) = 0  ' int ( IF(type("STHLES")="U",40,STHLES/2) - lsyn / 2 )
+'
+'170     For k = 1 To N
+'172         AA = LTrim(str(k))
+'174         m_sthl_ektyp(k + 1) = m_sthl_ektyp(k) + Len(macro("p", AA)) + 1
+'        Next
+'
+'        Dim R As New ADODB.Recordset
+'
+'        'R.Open "SELECT *FROM MEM", Gdb, adOpenDynamic, adLockOptimistic
+'        '        k = 1
+'        '        With myXL
+'        '            .cells(1, 3) = R("pelono")
+'        '            .cells(2, 3) = R("pelepa")
+'        '            .cells(3, 3) = Now
+'        '            .cells(4, 3) = EPIKEF
+'        '        End With
+'        '
+'        On Error GoTo print7_excel_Err
+'
+'        '----------------------- ΕΠΙΚΕΦΑΛΙΔΑ ----------------------------
+'
+'176 If F_TYPEHEADER = 1 Then '===============================================
+'178     AYJ = 5
+'
+'180     For k = 0 To N - 1
+'182         myXL.cells(5, k + 1) = F_T(k).Name
+'184         myXL.cells(5, k + 1).Interior.Color = RGB(180, 180, 180)
+'        Next
+'
+'186     excel.Windows(1).SplitRow = 5
+'188     excel.Windows(1).FreezePanes = True
+'
+'190     myXL.rows(5).Font.Size = 14
+'192     myXL.rows(5).Font.fontStyle = 12
+'
+'
+'    Else
+'194     AYJ = 0
+'    End If  '=================================================================
+'
+'
+'
+'
+'        'excel.Windows(1).SplitColumn = 1
+'
+'        '  ROWS("6:6").Select
+'        '    ActiveWindow.FreezePanes = True
+'        '    Range("B14").Select
+'        '    ActiveWindow.SmallScroll Down:=0
+'        '    ROWS("8:8").Select
+'        '    With selection.Interior
+'        '        .Pattern = xlSolid
+'        '        .PatternColorIndex = xlAutomatic
+'        '        .ThemeColor = xlThemeColorAccent3
+'        '        .TintAndShade = 0.599993896298105
+'        '        .PatternTintAndShade = 0
+'        '    End With
+'
+'        Dim LAST_TIMH
+'
+'        Dim synt1
+'
+'196     synt1 = IIf(IsNull("SYNT1"), "true", synt1)   ' όταν έρχεται απο τnν αποθήκη ορίζεται το synt1
+'       ' AYJ = 5
+'
+'198     Typose = 0
+'
+'        Dim row, Pedio_epan As Integer, timh_epan
+'
+'200     Pedio_epan = GROUPN - 1
+'        '   If Pedio_epan < 0 Then Pedio_epan = 0
+'202     timh_epan = "ωωωωωωω"
+'
+'        '     F_T (k)
+'        Dim synola_SELIDOS
+'
+'204     synola_SELIDOS = False
+'
+'        Dim M_SYN(20) As Single
+'
+'        Dim n2
+'
+'206     For n2 = 0 To 20: M_SYN(n2) = 0: Next
+'
+'        '--------------------------------------------------------
+'208     g_Stop = 1    'entos loop
+'
+''οι παρακατω σειρές εγιναν γιατι αλλαξε ο τυπος
+''apo varchar(30) se nvarchar(max) για να δουλευει και κυριλλικά
+''το προβλημα ηταν ότι στα κυριλλικα εβγαζε κενα
+''==================================
+'F_T.Close
+'FF.Adodc1.ConnectionString = gConnect
+'FF.Adodc1.RecordSource = sql
+'FF.Adodc1.Refresh
+'Dim RR As Object
+'Set RR = FF.Adodc1.Recordset
+''==================================
+'
+'
+'
+''Dim RR As New ADODB.Recordset
+''RR.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
+'
+'210     Do While Not RR.EOF
+'212         AYJ = AYJ + 1
+'
+'214         If FF.CancelButton.Enabled = False Then
+'
+'                Exit Do
+'
+'            End If
+'
+'            'If g_Stop = 2 Then
+'            '   Exit Do
+'            'End If
+'
+'            'MDIForm1.Caption = AYJ
+'            '----------------- ΤΥΠΩΣΕ ΟΛΑ ΤΑ ΠΕΔΙΑ ---------------------
+'216         For k = 0 To N - 1
+'               ' If IsNull(F_T(k)) Then
+'              '     MsgBox "null"
+'               ' End If
+'                'If k = Pedio_epan And timh_epan = F_T(k) Then
+'218             If k = Pedio_epan Then
+'220                 If timh_epan = RR(k) Then
+'                        ' MHN TYPVNEIS TO PEDIO XANA
+'                    Else ' ΑΛΛΑΓΗ GROUP
+'222                     AYJ = AYJ + 1
+'224                     GoSub PRINTGROUP
+'                        '                          For n2 = 0 To n - 1
+'                        '
+'                        '                               If m_sumes(n2) > 0 Then
+'                        '                                  If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
+'                        '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), F_T(n2).DefinedSize + 2)
+'                        '                                     myXL.cells(AYJ - 1, n2).Interior.Color = RGB(100, 100, 500)
+'                        '                                  Else
+'                        '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), F_T(n2).DefinedSize + 2)
+'                        '                                  End If
+'                        '
+'                        '                               Else
+'                        '                                  myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), F_T(K).DefinedSize);
+'                        '                               End If
+'                        '
+'                        '                               M_SYN(n2) = m_sumes(n2)
+'                        '
+'                        '                           Next
+'
+'                    End If
+'                End If
+'
+'226             If k = Pedio_epan And timh_epan = RR(k) Then
+'                Else
+'
+'228                 If Left(RR(k), 3) = "@@@" Then    '  A/A
+'230                     myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(AYJ - 5, "######"), RR(k).DefinedSize)
+'232                 ElseIf RR(k).Type = 7 Or RR(k).Type = 5 Or RR(k).Type = 3 Or RR(k).Type = 131 Then   'IsNumeric(RR(K)) πραγματικο
+'
+'234                     If IsNull(RR(k)) Then
+'236                         myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(0, "######,##0.00"), 13)  '  RR(K).DefinedSize)
+'                        Else
+'238                         myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(RR(k), "######,##0.00"), 13)    '  RR(K).DefinedSize)
+'                        End If
+'
+'240                 ElseIf RR(k).Type = 8 Or RR(k).Type = 135 Then   'DATE
+'242                     myXL.cells(AYJ, k + 1) = RR(k) 'Right(Space(30) + Format(RR(k), "DD/MM/YYYY"), 10)
+'                    Else    ' 10 STRING
+'
+'244                     If IsNull(RR(k)) Then
+'
+'                        Else
+'
+'                            ' Print #1, Tab(f_tab(K)); to928(F_T(K));
+'246                         If k < N - 1 Then
+'                                ' για να μην παταει στην επόμενη στήλη
+'248                             myXL.cells(AYJ, k + 1) = "'" + Left(RR(k), f_tab(k + 1) - f_tab(k) - 1)
+'                            Else
+'250                             myXL.cells(AYJ, k + 1) = "'" + RR(k)    'to928(RR(K))
+'                            End If
+'                        End If
+'
+'252                     If m_sthl_ektyp(k) > 2 Then
+'                            ' If K = 1 Then Print #1,
+'                        End If  'm_sthl_ektyp(K) > 2
+'
+'                    End If
+'                End If
+'
+'                ' soymes---------------------
+'254             If mID$(SUgm_str, k + 1, 1) = "1" Or mID$(SUgm_str, k + 1, 1) = "2" Then
+'256                 If IsNull(RR(k)) Then
+'
+'                    Else
+'258                     m_sumes(k) = m_sumes(k) + Val(Replace(RR(k), ",", "."))
+'                    End If
+'                End If    ' mid$(sugm_str,k,1)
+'
+'260             If AYJ Mod 2 = 0 And F_XROMATA = 1 Then
+'262                 myXL.cells(AYJ, k + 1).Interior.Color = RGB(200, 200, 200)
+'                End If
+'
+'264             If Pedio_epan >= 0 Then
+'266                 timh_epan = RR(Pedio_epan)
+'                End If
+'
+'            Next
+'
+'            ' Print #1,
+'            '   If GROUPN > 0 Then
+'            '       LAST_TIMH = RR(GROUPN)
+'            '   End If
+'268         RR.MoveNext
+'            '   If Not RR.EOF Then
+'            '      If GROUPN > 0 Then
+'            '          If LAST_TIMH <> RR(GROUPN) Then
+'            '              AYJ = AYJ + 1
+'            '          End If
+'            '      End If
+'            '  End If
+'
+'            ' αν τελειωσε να κανει μερικη σουμα στο τελευταιο group
+'            '                   If RR.EOF Then
+'            '                          For n2 = 0 To n - 1
+'            '                               If m_sumes(n2) > 0 Then
+'            '                                  If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
+'            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
+'            '                                     myXL.cells(AYJ - 1, n2).Interior.Color = RGB(100, 100, 500)
+'            '                                  Else
+'            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), RR(n2).DefinedSize + 2)
+'            '                                  End If
+'            '
+'            '                               Else
+'            '                                  myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), RR(K).DefinedSize);
+'            '                               End If
+'            '
+'            '                               M_SYN(n2) = m_sumes(n2)
+'            '
+'            '                           Next
+'            '                     End If
+'
+'270         If AYJ Mod 100 = 0 Then
+'
+'272             DoEvents
+'274             FF.Caption = "Εγγραφή " + Format(AYJ, "######")    ' + "/" + Format(RR.RecordCount, "######")
+'            End If
+'
+'        Loop
+'
+'276     Unload FF
+'
+'278     If GROUPN > 0 Then
+'280         AYJ = AYJ + 2
+'282         GoSub PRINTGROUP
+'
+'            '                          For n2 = 0 To n - 1
+'            '                               If m_sumes(n2) > 0 Then
+'            '                                  If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
+'            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
+'            '                                     myXL.cells(AYJ - 1, n2).Interior.Color = RGB(100, 100, 500)
+'            '                                  Else
+'            '                                    myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), RR(n2).DefinedSize + 2)
+'            '                                  End If
+'            '                               Else
+'            '                                  myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), RR(K).DefinedSize);
+'            '                               End If
+'            '                               M_SYN(n2) = m_sumes(n2)
+'            '                           Next
+'        End If
+'
+'284     g_Stop = 0    'adiaforo
+'        '"
+'286     AYJ = AYJ + 1
+'
+'        'myXL.cells(AYJ, 1) = String$(LSYN - 2, "-")
+'        '"
+'        ' Print #1, Chr(13)  ' 6/12/2007
+'        '"
+'        '   aa = f_kodik("sum_seltxt")
+'        Dim PARAM    '
+'
+'288     PARAM = IIf(AA = " ", "  ", macro(AA, 0))
+'        'pr_SUMselidas param
+'        'PRINT2_Xsumes "ΓΕΝΙΚΟ ΣΥΝΟΛΟ"
+'290     AYJ = AYJ + 1
+'292     GoSub printSUM
+'
+'        'AppActivate returnValue
+'
+'        ' On Error Resume Next
+'
+'294     myXL.columns("A:K").Select
+'296     myXL.columns.AutoFit
+'
+'
+'
+'
+'
+'
+'        'Dim R As New ADODB.Recordset
+'298    R.Open "SELECT *FROM MEM", Gdb, adOpenDynamic, adLockOptimistic
+'300    k = 1
+'
+'302 If F_TYPEHEADER = 1 Then
+'
+'304    With myXL
+'306        .cells(1, 1) = R("pelono")
+'308        .cells(2, 1) = R("pelepa")
+'310        .cells(3, 1) = Now
+'312        .cells(4, 1) = EPIKEF
+'        End With
+'
+'    End If
+'
+'
+'
+'314    MDIForm1.MousePointer = vbNormal
+'        'excel.Visible = True
+'
+'316    excel.Visible = True
+'
+'        On Error Resume Next
+'
+'318    Kill "C:\EKTYP.XLS"
+'
+'320    DoEvents
+'
+'322    myXL.SaveAs "C:\EKTYP.XLS"
+'
+'        Dim ANS3 As Long
+'
+'324    ANS3 = MsgBox("Κλείνω το EXCEL", vbYesNo)
+'
+'326    If ANS3 = vbYes Then
+'328        Call workbook.Close(False)
+'330        excel.Quit
+'332        Set excel = Nothing
+'        End If
+'
+'        Exit Function
+'
+'PRINTGROUP:
+'
+'334     For n2 = 0 To N - 1
+'
+'336         If m_sumes(n2) > 0 Then
+'338             If mID$(SUgm_str, n2 + 1, 1) = "1" Then    ' SUMA
+'340                 myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2), "######,##0.00"), RR(n2).DefinedSize + 2)
+'342                 myXL.cells(AYJ - 1, n2 + 1).Interior.Color = RGB(100, 100, 500)
+'                Else
+'344                 myXL.cells(AYJ - 1, n2 + 1) = Right(Space(30) + Format(m_sumes(n2) - M_SYN(n2) / (AYJ - 7), "######,##0.00"), RR(n2).DefinedSize + 2)
+'                End If
+'
+'            Else
+'346             myXL.cells(AYJ - 1, n2 + 1) = ""  ' Right(Space(50), RR(K).DefinedSize);
+'            End If
+'
+'348         M_SYN(n2) = m_sumes(n2)
+'        Next
+'
+'350     Return
+'
+'printSUM:
+'
+'352    For k = 0 To N - 1
+'
+'354        If m_sumes(k) > 0 Then
+'356            If mID$(SUgm_str, k + 1, 1) = "1" Then    ' SUMA
+'358                myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(m_sumes(k), "######,##0.00"), RR(k).DefinedSize + 2)
+'                Else
+'360                myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(m_sumes(k) / (AYJ - 7), "######,##0.00"), RR(k).DefinedSize + 2)
+'                End If
+'
+'            Else
+'362            myXL.cells(AYJ, k + 1) = ""    ' Right(Space(50), RR(K).DefinedSize);
+'            End If
+'
+'        Next
+'
+'364    Return
+'
+'printEpik:
+'
+'366    For k = 0 To N - 1
+'
+'368        If m_sumes(k + 1) > 0 Then
+'370            myXL.cells(AYJ, k + 1) = Right(Space(30) + Format(m_sumes(k + 1), "######,##0.00"), RR(k).DefinedSize + 2)
+'            Else
+'372            myXL.cells(AYJ, k + 1) = Right(Space(50), RR(k).DefinedSize)
+'            End If
+'
+'        Next
+'
+'374    Return
+'
+'
+'        '<EhFooter>
+'        Exit Function
+'
+'print7_excel_Err:
+'        SAVE_ERROR Err.Description & vbCrLf & _
+'               "in ADOMERCNEW.Module5.print7_excel " & _
+'               "at line " & Erl
+'
+'
+'        Resume Next
+'        '</EhFooter>
+'End Function
+'
 
 
 
