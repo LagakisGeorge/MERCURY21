@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form apot21 
    BackColor       =   &H0080C0FF&
@@ -128,7 +128,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   315293697
+      Format          =   171311105
       CurrentDate     =   38947
    End
    Begin VB.TextBox Text3 
@@ -244,7 +244,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   315293697
+      Format          =   171311105
       CurrentDate     =   38947
    End
    Begin TrueOleDBGrid80.TDBGrid G1 
@@ -724,12 +724,12 @@ f_AAJEX = 0
 
 
 Dim FFILE2 As String
-Dim FFILE3 As String
-  FFILE2 = "TEMPP" + Format(Now, "YYMMDDHHmm")
+Dim EGGTIM As String
+  FFILE2 = "TEMPPROS" + Format(Now, "YYMMDDHHmm")
 
 
  filtroPEL.Caption = "APOT>=1 "
-FFILE3 = " EGGTIM "
+EGGTIM = " EGGTIM "
 
 
 
@@ -739,37 +739,77 @@ FFILE3 = " EGGTIM "
      s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEX + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEX + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ÁÎÉÁ EÎÁÃ], "
    
      s1 = "E.TIMM as [Téì Ìïí],CONVERT(DECIMAL(10,2),E.EKPT) AS [Åêð%],CONVERT(DECIMAL(10,2),ISNULL(E.EKPT2,0)) AS [2ç Åêð%],E.KERDOS AS [ÊÅÑÄÏÓ],E.POSO AS [ÐÏÓÏÔÇÔÁ],CONVERT(DECIMAL(10,2),E.FCURRENCY) AS [ÎÅÍÏ ÍÏÌ],E.ID  "
-     s1 = s1 + " INTO " + FFILE2 + " FROM  " + FFILE3 + " E LEFT join PEL on E.EIDOS=PEL.EIDOS and E.PELKOD=PEL.KOD INNER JOIN PARASTAT ON PARASTAT.EIDOS=LEFT(E.ATIM,1) "
+     s1 = s1 + " INTO " + FFILE2 + " FROM  " + EGGTIM + " E LEFT join PEL on E.EIDOS=PEL.EIDOS and E.PELKOD=PEL.KOD INNER JOIN PARASTAT ON PARASTAT.EIDOS=LEFT(E.ATIM,1) "
      s1 = s1 + " where " + filtroPEL.Caption + " AND  E.HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND E.HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and E.KODE>='" + apo.Text + "' AND E.KODE<='" + eos.Text + "'"
-     s1 = s1 + " order by convert(char(10),E.HME,2),E.ATIM ;"
+     s1 = s1 + " order by E.KODE,convert(char(10),E.HME,2),E.ATIM ;"
      
  Gdb.Execute s + s1
  
 
 
-380     data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
+380    ' Data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
 
-390  On Error Resume Next
+390  On Error GoTo 0
+Dim sql As String
+sql = "SELECT * FROM " + FFILE2 '+ " order by KODE,[Hìåñ/íßá]"
+Data1.RecordSource = sql
 
-data1.Refresh
-'MsgBox "OK"
+Data1.Refresh
 
-data1.Refresh
-
-If data1.Recordset.EOF Then
+If Data1.Recordset.EOF Then
       
       
    Gdb.Execute "DROP TABLE " + FFILE2
    Exit Sub
+
+
+End If
+
+
+On Error GoTo 0
+
+Data1.Recordset.MoveFirst
+Dim MK As String
+MK = Data1.Recordset("KODE")
+Dim SSUM As Single
+SSUM = 0
+Do While Not Data1.Recordset.EOF
+  '[ÅéóáãùãÝò],E.PIS AS [ÅîáãùãÝò]
+  If MK = Data1.Recordset("KODE") Then ' STO IDIO EIDOS
+       'ÏÊ
+  Else ' ÁËËÁÎÁ ÅÉÄÏÓ
+       MK = Data1.Recordset("KODE")
+       SSUM = 0 ' ÎÁÍÁÌÇÄÅÍÉÆÙ ÔÏ ÍÅÏ ÅÉÄÏÓ
+  End If
+  
+     SSUM = SSUM + Data1.Recordset("ÅéóáãùãÝò") - Data1.Recordset("ÅîáãùãÝò")
+     Gdb.Execute "UPDATE " + FFILE2 + " SET [Õðüëïéðï] =" + Format(SSUM, "###########0.00") + " WHERE ID=" + str(Data1.Recordset("ID"))
+  
+  Data1.Recordset.MoveNext
+  
+
+
+Loop
+
+Data1.Refresh
+
+
+
+
+'MsgBox "OK"
+
+Data1.Refresh
+
+If Data1.Recordset.EOF Then
    
 End If
    
 
 
-  print3_xar s + s1, "001111111111111111111", m_ep, 0
+  print3_xar "SELECT * FROM " + FFILE2, "00000000000000000000", m_ep, 0
   
   
-  Gdb.Execute "DROP TABLE " + FFILE2
+ Gdb.Execute "DROP TABLE " + FFILE2
   
   Exit Sub
 
@@ -785,27 +825,27 @@ g1.Refresh
 
 'On Error GoTo OUT
 
-         data1.Recordset.MoveFirst
+         Data1.Recordset.MoveFirst
 '          TDBGrid.Splits(0).columns(1).Width = 3500
          Dim sumes(0 To 20) As Single
 
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
             sumes(k) = 0
          Next
 
 
 
            ' On Error GoTo ektos
-         Do While Not data1.Recordset.EOF
-             For k = 0 To data1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+         Do While Not Data1.Recordset.EOF
+             For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
 
-                     sumes(k) = sumes(k) + nNull(data1.Recordset.FIELDS(k).Value)
+                     sumes(k) = sumes(k) + nNull(Data1.Recordset.FIELDS(k).Value)
                     End If
                 Next
-                data1.Recordset.MoveNext
+                Data1.Recordset.MoveNext
          Loop
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
                If sumes(k) > 0 Then
 
@@ -1163,7 +1203,7 @@ End Sub '   Exit Sub
 '        '</EhFooter>
 
 Private Sub cXronies_Click()
-  If cXronies.Value = vbChecked Then
+  If cXRONIES.Value = vbChecked Then
       paint_grid
   End If
 End Sub
@@ -1204,10 +1244,10 @@ f_PALIAXRONIA = Trim(FINDPARAMETROI(1, "PAR1", "F_PALIAXRONIA", "2005", "Ã.18 DS
 
      If Check4.Value = vbChecked Then    '   <> gDir Then ' palia xronia
         GTGDB.Open gConnect + ";DATABASE=" + f_PALIAXRONIA
-        data1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
+        Data1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
         
      Else
-        data1.ConnectionString = gConnect
+        Data1.ConnectionString = gConnect
         GTGDB.Open gConnect
      End If
 
@@ -1300,7 +1340,7 @@ If CHECK_PROOD.Value = vbChecked Then
      GTGDB.Execute "DROP TABLE " + fFILE
      
      On Error GoTo exitcode
-     If cXronies.Value = vbChecked Then
+     If cXRONIES.Value = vbChecked Then
         Dim SQL11 As String
         SQL11 = "SELECT * INTO " + fFILE + " FROM EGGTIM  where " + filtroPEL.Caption + " AND HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and KODE='" + Text1.Text + "' "
      
@@ -1541,13 +1581,13 @@ DoEvents
 '     End If
 
 
-380     data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
+380     Data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
 
-390     data1.Refresh
+390     Data1.Refresh
 
-data1.Refresh
+Data1.Refresh
 
-If data1.Recordset.EOF Then
+If Data1.Recordset.EOF Then
    Exit Sub
    
 End If
@@ -1562,27 +1602,27 @@ g1.Refresh
 
 'On Error GoTo OUT
 
-         data1.Recordset.MoveFirst
+         Data1.Recordset.MoveFirst
 '          TDBGrid.Splits(0).columns(1).Width = 3500
          Dim sumes(0 To 20) As Single
          
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
             sumes(k) = 0
          Next
          
          
          
            ' On Error GoTo ektos
-         Do While Not data1.Recordset.EOF
-             For k = 0 To data1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+         Do While Not Data1.Recordset.EOF
+             For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
                  
-                     sumes(k) = sumes(k) + nNull(data1.Recordset.FIELDS(k).Value)
+                     sumes(k) = sumes(k) + nNull(Data1.Recordset.FIELDS(k).Value)
                     End If
                 Next
-                data1.Recordset.MoveNext
+                Data1.Recordset.MoveNext
          Loop
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
                If sumes(k) > 0 Then
                   
