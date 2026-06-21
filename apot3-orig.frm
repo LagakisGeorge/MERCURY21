@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -8,14 +8,14 @@ Begin VB.Form apot3
    BackColor       =   &H00FF0000&
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Ðáñïõó.Åéäþí"
-   ClientHeight    =   11604
-   ClientLeft      =   48
-   ClientTop       =   216
+   ClientHeight    =   11610
+   ClientLeft      =   45
+   ClientTop       =   210
    ClientWidth     =   19260
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   11604
+   ScaleHeight     =   11610
    ScaleWidth      =   19260
    ShowInTaskbar   =   0   'False
    WindowState     =   2  'Maximized
@@ -31,7 +31,7 @@ Begin VB.Form apot3
       Caption         =   "A/A óôçí åêôýðùóç"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -67,7 +67,7 @@ Begin VB.Form apot3
       Width           =   2000
    End
    Begin VB.ListBox List11 
-      Height          =   240
+      Height          =   255
       Left            =   4200
       MultiSelect     =   1  'Simple
       TabIndex        =   29
@@ -75,7 +75,7 @@ Begin VB.Form apot3
       Width           =   2772
    End
    Begin VB.ListBox AGNOSTOI 
-      Height          =   240
+      Height          =   255
       Left            =   3600
       TabIndex        =   28
       Top             =   10320
@@ -167,7 +167,7 @@ Begin VB.Form apot3
       Width           =   1530
    End
    Begin VB.FileListBox File1 
-      Height          =   648
+      Height          =   480
       Left            =   8835
       TabIndex        =   17
       Top             =   480
@@ -214,7 +214,7 @@ Begin VB.Form apot3
       Caption         =   "Åßäç óå Ýëëåéøç"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -249,8 +249,8 @@ Begin VB.Form apot3
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   4800
       Top             =   9840
-      _ExtentX        =   593
-      _ExtentY        =   593
+      _ExtentX        =   741
+      _ExtentY        =   741
       _Version        =   262150
       ReportFileName  =   "C:\mercvb\reports\dokeggt3.rpt"
       UserName        =   "sa"
@@ -280,8 +280,8 @@ Begin VB.Form apot3
       Top             =   9360
       Visible         =   0   'False
       Width           =   2055
-      _ExtentX        =   3620
-      _ExtentY        =   572
+      _ExtentX        =   3625
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -312,7 +312,7 @@ Begin VB.Form apot3
       Caption         =   "sqlcommand"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -339,7 +339,7 @@ Begin VB.Form apot3
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1476
+      Height          =   1410
       ItemData        =   "apot3-orig.frx":008C
       Left            =   240
       List            =   "apot3-orig.frx":008E
@@ -354,8 +354,8 @@ Begin VB.Form apot3
       Top             =   9240
       Visible         =   0   'False
       Width           =   2895
-      _ExtentX        =   5101
-      _ExtentY        =   572
+      _ExtentX        =   5106
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -386,7 +386,7 @@ Begin VB.Form apot3
       Caption         =   "Adodc2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -401,8 +401,8 @@ Begin VB.Form apot3
       Top             =   9480
       Visible         =   0   'False
       Width           =   1215
-      _ExtentX        =   2138
-      _ExtentY        =   656
+      _ExtentX        =   2143
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -433,7 +433,7 @@ Begin VB.Form apot3
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -447,7 +447,7 @@ Begin VB.Form apot3
       Caption         =   "Åêôýðùóç"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -479,7 +479,7 @@ Begin VB.Form apot3
       TabIndex        =   7
       Top             =   4095
       Width           =   16995
-      _ExtentX        =   29972
+      _ExtentX        =   29977
       _ExtentY        =   9525
       _LayoutType     =   0
       _RowHeight      =   -2147483647
@@ -519,7 +519,7 @@ Begin VB.Form apot3
       Columns.Count   =   8
       Splits(0)._UserFlags=   0
       Splits(0).ExtendRightColumn=   -1  'True
-      Splits(0).RecordSelectorWidth=   699
+      Splits(0).RecordSelectorWidth=   688
       Splits(0)._SavedRecordSelectors=   -1  'True
       Splits(0).AllowColMove=   -1  'True
       Splits(0).AlternatingRowStyle=   -1  'True
@@ -528,44 +528,44 @@ Begin VB.Form apot3
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
       Splits(0)._ColumnProps(0)=   "Columns.Count=8"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=2731"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=2725"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
-      Splits(0)._ColumnProps(5)=   "Column(1).Width=2731"
+      Splits(0)._ColumnProps(5)=   "Column(1).Width=2725"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
       Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2646"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
-      Splits(0)._ColumnProps(9)=   "Column(2).Width=2731"
+      Splits(0)._ColumnProps(9)=   "Column(2).Width=2725"
       Splits(0)._ColumnProps(10)=   "Column(2).DividerColor=0"
       Splits(0)._ColumnProps(11)=   "Column(2)._WidthInPix=2646"
       Splits(0)._ColumnProps(12)=   "Column(2).Order=3"
-      Splits(0)._ColumnProps(13)=   "Column(3).Width=2731"
+      Splits(0)._ColumnProps(13)=   "Column(3).Width=2725"
       Splits(0)._ColumnProps(14)=   "Column(3).DividerColor=0"
       Splits(0)._ColumnProps(15)=   "Column(3)._WidthInPix=2646"
       Splits(0)._ColumnProps(16)=   "Column(3).Order=4"
-      Splits(0)._ColumnProps(17)=   "Column(4).Width=2731"
+      Splits(0)._ColumnProps(17)=   "Column(4).Width=2725"
       Splits(0)._ColumnProps(18)=   "Column(4).DividerColor=0"
       Splits(0)._ColumnProps(19)=   "Column(4)._WidthInPix=2646"
       Splits(0)._ColumnProps(20)=   "Column(4).Order=5"
-      Splits(0)._ColumnProps(21)=   "Column(5).Width=2731"
+      Splits(0)._ColumnProps(21)=   "Column(5).Width=2725"
       Splits(0)._ColumnProps(22)=   "Column(5).DividerColor=0"
       Splits(0)._ColumnProps(23)=   "Column(5)._WidthInPix=2646"
       Splits(0)._ColumnProps(24)=   "Column(5).Button=1"
       Splits(0)._ColumnProps(25)=   "Column(5).Order=6"
-      Splits(0)._ColumnProps(26)=   "Column(6).Width=2731"
+      Splits(0)._ColumnProps(26)=   "Column(6).Width=2725"
       Splits(0)._ColumnProps(27)=   "Column(6).DividerColor=0"
       Splits(0)._ColumnProps(28)=   "Column(6)._WidthInPix=2646"
       Splits(0)._ColumnProps(29)=   "Column(6).Order=7"
-      Splits(0)._ColumnProps(30)=   "Column(7).Width=2731"
+      Splits(0)._ColumnProps(30)=   "Column(7).Width=2725"
       Splits(0)._ColumnProps(31)=   "Column(7).DividerColor=0"
       Splits(0)._ColumnProps(32)=   "Column(7)._WidthInPix=2646"
       Splits(0)._ColumnProps(33)=   "Column(7).Order=8"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).NoClipping=   -1  'True
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
@@ -683,12 +683,12 @@ Begin VB.Form apot3
       TabIndex        =   9
       Top             =   360
       Width           =   1605
-      _ExtentX        =   2836
-      _ExtentY        =   656
+      _ExtentX        =   2831
+      _ExtentY        =   661
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   106037249
+      Format          =   307691521
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -697,12 +697,12 @@ Begin VB.Form apot3
       TabIndex        =   10
       Top             =   720
       Width           =   1605
-      _ExtentX        =   2836
-      _ExtentY        =   656
+      _ExtentX        =   2831
+      _ExtentY        =   661
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   106037249
+      Format          =   307691521
       CurrentDate     =   38814
    End
    Begin VB.CommandButton Command4 
@@ -718,7 +718,7 @@ Begin VB.Form apot3
       Caption         =   "Åôïéìåò Åêôõðþóåéò"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -736,7 +736,7 @@ Begin VB.Form apot3
       Caption         =   "Åêôõðþóåéò - Õðïëïãéóìïß"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -754,7 +754,7 @@ Begin VB.Form apot3
       Caption         =   "Ößëôñá Åêôýðùóçò"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -778,7 +778,7 @@ Begin VB.Form apot3
          Caption         =   "Åùò"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -795,7 +795,7 @@ Begin VB.Form apot3
          Caption         =   "Áðü"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -822,7 +822,7 @@ Begin VB.Form apot3
       Caption         =   "Ôáîéíüìçóç "
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -839,7 +839,7 @@ Begin VB.Form apot3
          Caption         =   "Óýíïëá óå áñéèì.ðåäßá"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -858,7 +858,7 @@ Begin VB.Form apot3
          Caption         =   "ÓôÞëåò åêôýðùóçò"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -976,7 +976,7 @@ Private Sub aritmos_pelaton_Click()
 
         '</EhHeader>
 
-        Dim x       As String
+        Dim X       As String
 
         Dim pol     As String
 
@@ -1004,22 +1004,22 @@ Private Sub aritmos_pelaton_Click()
 
 180     pol = Left(pol, Len(pol) - 1)
 
-190     x = " select PARASTAT.TITLOS,count(*) AS [ÄÉÁÖ.ÅÉÄÇ],count(DISTINCT ATIM) AS [ÐÅËÁÔÅÓ] "
-200     x = x + " FROM EGGTIM INNER JOIN PARASTAT ON LEFT(ATIM,1)=PARASTAT.EIDOS "
-210     x = x + " WHERE LEFT(ATIM,1) IN (" + pol + ") and "
-220     x = x + " HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'"
-230     x = x + " GROUP BY PARASTAT.TITLOS"
+190     X = " select PARASTAT.TITLOS,count(*) AS [ÄÉÁÖ.ÅÉÄÇ],count(DISTINCT ATIM) AS [ÐÅËÁÔÅÓ] "
+200     X = X + " FROM EGGTIM INNER JOIN PARASTAT ON LEFT(ATIM,1)=PARASTAT.EIDOS "
+210     X = X + " WHERE LEFT(ATIM,1) IN (" + pol + ") and "
+220     X = X + " HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'"
+230     X = X + " GROUP BY PARASTAT.TITLOS"
 
-240     Data1.ConnectionString = gConnect
-250     Data1.RecordSource = x
-260     Data1.Refresh
+240     data1.ConnectionString = gConnect
+250     data1.RecordSource = X
+260     data1.Refresh
 
 270     If Check1 Then
 
             'typos2
             On Error GoTo aritmos_pelaton_Click_Err
 
-280         print3_xar UCase(x), "0111111111", "", 0
+280         print3_xar UCase(X), "0111111111", "", 0
         End If
 
         '<EhFooter>
@@ -1117,7 +1117,7 @@ Private Sub YPOLOGISMOS_Click()
 
         '</EhHeader>
 
-        Dim x  As String, order As String
+        Dim X  As String, order As String
 
         Dim k  As Integer, R As New ADODB.Recordset    ', sum As Single
 
@@ -1159,7 +1159,7 @@ Private Sub YPOLOGISMOS_Click()
            
 
 
-180     Data1.ConnectionString = gConnect
+180     data1.ConnectionString = gConnect
 
 
 
@@ -1193,10 +1193,10 @@ Private Sub YPOLOGISMOS_Click()
 
 230     If Check2 Then
 240         SUgm_str = "000"
-250         x = "select  '@@@@@' AS [A/A],LEFT(KOD,20) AS [Êùäéêüò],LEFT(ONO,35) as [ÐåñéãñáöÞ]"    '
+250         X = "select  '@@@@@' AS [A/A],LEFT(KOD,20) AS [Êùäéêüò],LEFT(ONO,35) as [ÐåñéãñáöÞ]"    '
         Else
 260         SUgm_str = "00"
-270         x = "select KOD as [Êùäéêüò],ONO as [ÐåñéãñáöÞ]"    '
+270         X = "select KOD as [Êùäéêüò],ONO as [ÐåñéãñáöÞ]"    '
         End If
 
         Dim KK
@@ -1209,7 +1209,7 @@ Private Sub YPOLOGISMOS_Click()
 
                 'ï ðñáãìáôéêüò äåßêôçò (ãéáôß ìðïñåß íá ìåôáêéíÞèçêå)
 300             temp = Val(Right(List1.List(KK), 2))
-310             x = x + f_list1(temp, 0)
+310             X = X + f_list1(temp, 0)
 320             mc = mc + 1
                 'x = x + f_list1(Val(Right(List1.List(KK), 2)), 0)
 330             F_sum(mc) = f_list1(temp, 1)
@@ -1224,7 +1224,7 @@ Private Sub YPOLOGISMOS_Click()
             End If
 
         Next
-x = x + " ,'' AS [`] " ' ÃÉÁ ÍÁ ÌÇÍ ÊÏËËÁÅÉ ÄÅÎÉÁ ÔÏ ÔÅËÅÕÔÁÉÏ ÐÅÄÉÏ
+X = X + " ,'' AS [`] " ' ÃÉÁ ÍÁ ÌÇÍ ÊÏËËÁÅÉ ÄÅÎÉÁ ÔÏ ÔÅËÅÕÔÁÉÏ ÐÅÄÉÏ
         '
 
         'For K = 0 To List1.ListCount - 1
@@ -1346,9 +1346,9 @@ On Error Resume Next
 
 570         Gdb.Execute a, k
 
-580         x = x + " FROM " + mnow + " E  left JOIN DOKEGGT1  ON DOKEGGT1.KODE=E.KOD "
+580         X = X + " FROM " + mnow + " E  left JOIN DOKEGGT1  ON DOKEGGT1.KODE=E.KOD "
         Else
-590         x = x + " from " + mnow + " E  left JOIN DOKEGGT1  ON DOKEGGT1.KODE=E.KOD"
+590         X = X + " from " + mnow + " E  left JOIN DOKEGGT1  ON DOKEGGT1.KODE=E.KOD"
         End If
        
            Dim mEnerga As String
@@ -1361,14 +1361,14 @@ On Error Resume Next
        
 600     If Len(Text1.Text) > 0 Then
            If Len(mEnerga) > 1 Then
-610           x = x + " WHERE  ENERGO=1 and " + Text1.Text  ' Fsql
+610           X = X + " WHERE  ENERGO=1 and " + Text1.Text  ' Fsql
            Else
-            x = x + " WHERE " + Text1.Text  ' Fsql
+            X = X + " WHERE " + Text1.Text  ' Fsql
            End If
 
         Else
            If Len(mEnerga) > 1 Then
-              x = x + " WHERE  ENERGO=1 "   ' Fsql
+              X = X + " WHERE  ENERGO=1 "   ' Fsql
            End If
         End If
 
@@ -1393,23 +1393,23 @@ On Error Resume Next
 
         Next
 
-760     x = x + " order by " + order
+760     X = X + " order by " + order
              
 770     If rCheck.Value = vbChecked Then    ' AN PAIRNV TO EPILEGMENO REPORT
-780         x = Text4.Text
+780         X = Text4.Text
             If InStr(F_TXT(1), "ÓÕÍÏËÁ") > 0 And InStr(F_TXT(1), "/*") > 0 Then
                 SUgm_str = LTrim(Trim(mID(F_TXT(1), InStr(F_TXT(1), "ÓÕÍÏËÁ") + 6, 20)))
             End If
 
         Else
-790         Text4.Text = x
+790         Text4.Text = X
         End If
 
-800     Data1.RecordSource = x
+800     data1.RecordSource = X
 
         On Error GoTo lathos
 
-810     Data1.Refresh
+810     data1.Refresh
 
         On Error Resume Next
 
@@ -1420,11 +1420,11 @@ On Error Resume Next
 820     If gm_fpa > 0 Then
 830         xd.Value = 1
 840         xd.DisplayValue = "9%"
-850         GR2.columns(gm_fpa).ValueItems.ADD xd
+850         GR2.columns(gm_fpa).ValueItems.Add xd
 
 860         xd.Value = 2
 870         xd.DisplayValue = "19%"
-880         GR2.columns(gm_fpa).ValueItems.ADD xd
+880         GR2.columns(gm_fpa).ValueItems.Add xd
 
 890         GR2.columns(gm_fpa).ValueItems.translate = True
 900         GR2.columns(gm_fpa).ValueItems.Presentation = dbgComboBox
@@ -1441,7 +1441,7 @@ On Error Resume Next
 940             If r7("typos") = 3 Then
 950                 xd.Value = Format(r7("ayjon"), "000")
 960                 xd.DisplayValue = r7("PERIGRAFH")
-970                 GR2.columns(m_kat).ValueItems.ADD xd
+970                 GR2.columns(m_kat).ValueItems.Add xd
                 Else
                 
 
@@ -1479,8 +1479,8 @@ On Error Resume Next
 
         Next
         Dim nT As Long
-        For k = 2 To Data1.Recordset.FIELDS.Count - 1
-          nT = Data1.Recordset(k).Type
+        For k = 2 To data1.Recordset.FIELDS.Count - 1
+          nT = data1.Recordset(k).Type
           If nT = 7 Or nT = 5 Or nT = 3 Or nT = 131 Then
              GR2.columns(k).NumberFormat = "######0.00"
           End If
@@ -1501,7 +1501,7 @@ On Error Resume Next
             On Error GoTo YPOLOGISMOS_Click_Err
 
 1110        If Len(SUgm_str) < 3 Then SUgm_str = "0111111111111111"
-1120        print3_xar UCase(x), SUgm_str, Text2.Text, 0   ' RR.RecordSource
+1120        print3_xar UCase(X), SUgm_str, Text2.Text, 0   ' RR.RecordSource
         End If
 
         'If Check2 Then
@@ -1513,23 +1513,23 @@ On Error Resume Next
 Dim SUMES2(0 To 50)
 
 If synola.Value = vbChecked Then
-         Do While Not Data1.Recordset.EOF
+         Do While Not data1.Recordset.EOF
 
-             For k = 0 To Data1.Recordset.FIELDS.Count - 1
+             For k = 0 To data1.Recordset.FIELDS.Count - 1
 
-                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
-                     SUMES2(k) = SUMES2(k) + Data1.Recordset.FIELDS(k).Value
+                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+                     SUMES2(k) = SUMES2(k) + data1.Recordset.FIELDS(k).Value
                     End If
 
                 Next
                ' DoEvents
 
-                Data1.Recordset.MoveNext
+                data1.Recordset.MoveNext
 
                 '  Exit Do
             Loop
 
-         For k = 0 To Data1.Recordset.FIELDS.Count - 1
+         For k = 0 To data1.Recordset.FIELDS.Count - 1
 
              If SUMES2(k) > 0 Then
                  GR2.Splits(0).columns(k).FooterText = Format(SUMES2(k), "######0.00")
@@ -1696,16 +1696,16 @@ Private Sub Command10_Click()
 
         Dim EGGTIM As New ADODB.Recordset
 
-        Dim x
+        Dim X
 
         Dim sum_str
 
         Dim SUgm_str
 Dim synt As String
 
-120     x = "SELECT KODE,ONOMA,SUM(POSO) as [ÐÏÓ],SUM(POSO*TIMM*(1-EKPT/100)) AS  [ÁÎÉÁ],(CASE WHEN SUM(POSO)=0 THEN 0 ELSE SUM(POSO*TIMM*(1-EKPT/100))/SUM(POSO) END ) AS [MES.ÔÉÌÇ ÁÃÏÑÁÓ] FROM EGGTIM WHERE LEFT(ATIM,1) IN ('ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' group by KODE,ONOMA"
+120     X = "SELECT KODE,ONOMA,SUM(POSO) as [ÐÏÓ],SUM(POSO*TIMM*(1-EKPT/100)) AS  [ÁÎÉÁ],(CASE WHEN SUM(POSO)=0 THEN 0 ELSE SUM(POSO*TIMM*(1-EKPT/100))/SUM(POSO) END ) AS [MES.ÔÉÌÇ ÁÃÏÑÁÓ] FROM EGGTIM WHERE LEFT(ATIM,1) IN ('ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' group by KODE,ONOMA"
 
-130     EGGTIM.Open x, Gdb, adOpenDynamic, adLockOptimistic
+130     EGGTIM.Open X, Gdb, adOpenDynamic, adLockOptimistic
         Gdb.Execute "drop TABLE DOKMESXTI"
         
          synt = " LEFT(ATIM,1) IN ('ë'," + ago + AGOEPIS + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' "
@@ -1746,7 +1746,7 @@ Gdb.Execute sql
             'Dim ff As String
             'DD = X
 
-180         print3_xar x, SUgm_str, Format(apo, "DD/MM/YYYY") + " ?OS " + Format(eos, "DD/MM/YYYY"), 0        ' RR.RecordSource"
+180         print3_xar X, SUgm_str, Format(apo, "DD/MM/YYYY") + " ?OS " + Format(eos, "DD/MM/YYYY"), 0        ' RR.RecordSource"
         End If
 
         '<EhFooter>
@@ -2050,15 +2050,15 @@ Private Sub Command4_Click()
 
         Dim EGGTIM As New ADODB.Recordset
 
-        Dim x
+        Dim X
 
         Dim sum_str
 
         Dim SUgm_str
 
-120     x = "SELECT KODE,ONOMA,SUM(POSO) as [ÓÕÍ.ÐÏÓÏÔ],SUM(POSO*TIMM*(1-EKPT/100)) AS  [ÓÕÍ.ÁÎÉÁÓ],SUM(POSO*TIMM*(1-EKPT/100))/SUM(POSO) AS [MEÓÇ ÔÉÌÇ ÐÙËÇÓÇÓ] FROM EGGTIM WHERE LEFT(ATIM,1) IN ('T','t','L') AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' group by KODE,ONOMA"
+120     X = "SELECT KODE,ONOMA,SUM(POSO) as [ÓÕÍ.ÐÏÓÏÔ],SUM(POSO*TIMM*(1-EKPT/100)) AS  [ÓÕÍ.ÁÎÉÁÓ],SUM(POSO*TIMM*(1-EKPT/100))/SUM(POSO) AS [MEÓÇ ÔÉÌÇ ÐÙËÇÓÇÓ] FROM EGGTIM WHERE LEFT(ATIM,1) IN ('T','t','L') AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' group by KODE,ONOMA"
 
-130     EGGTIM.Open x, Gdb, adOpenDynamic, adLockOptimistic
+130     EGGTIM.Open X, Gdb, adOpenDynamic, adLockOptimistic
 
 140     If Check1 Then
 
@@ -2066,7 +2066,7 @@ Private Sub Command4_Click()
             On Error GoTo Command4_Click_Err
 
 150         SUgm_str = "0111111111111111"
-160         print3_xar UCase(x), SUgm_str, Format(apo, "DD/MM/YYYY") + " ÅÙÓ " + Format(eos, "DD/MM/YYYY"), 0        ' RR.RecordSource"
+160         print3_xar UCase(X), SUgm_str, Format(apo, "DD/MM/YYYY") + " ÅÙÓ " + Format(eos, "DD/MM/YYYY"), 0        ' RR.RecordSource"
         End If
 
         '<EhFooter>
@@ -2289,12 +2289,12 @@ sql = "UPDATE " + EIDISOZ + " SET YPOLPOS=ISNULL(APOGPOS,0)+ISNULL(AGPRPOS,0)+IS
  sql = "UPDATE " + EIDISOZ + " SET YPOLAJ=YPOLPOS*(APOGAJ+AGPRAJ+AGPERAJ)/(APOGPOS+AGPRPOS+AGPERPOS ) WHERE APOGPOS+AGPRPOS+AGPERPOS >0"
  Gdb.Execute sql
 
-Dim ANS2 As Integer, x As String
+Dim ANS2 As Integer, X As String
 
 490     ANS2 = MsgBox("ÌÏÍÏ ÁÕÔÁ ÐÏÕ ÊÉÍÇÈÇÊÁÍ", vbYesNo)
-        x = "SELECT KOD,ONO,APOGPOS AS [ÁÐÏÃ.ÐÏÓ],APOGAJ AS [ÁÐÏÃ.ÁÎÉÁ],AGPRPOS AS [ÁÃÏÑ.ÐÑÏÇÃ],AGPRAJ AS [ÁÎ.ÁÃ.ÐÑÏÇÃ],POLPRPOS AS [ÐÙË.ÐÑÏÇÃ],POLPRAJ AS [ÁÎ.ÐÙË.ÐÑÏÇÃ] ,AGPERPOS AS [ÁÃ.ÐÅÑÉÏÄ],AGPERAJ AS [AÎ.ÁÃ.ÐÅÑ],POLPERPOS AS [ÐÙË.ÐÅÑ],POLPERAJ AS [ÁÎ.ÐÙË.ÐÅÑ],YPOLPOS AS [ÕÐÏË.ÐÏÓ],YPOLAJ AS [ÕÐÏË.ÁÎÉÁ] FROM   " + EIDISOZ
+        X = "SELECT KOD,ONO,APOGPOS AS [ÁÐÏÃ.ÐÏÓ],APOGAJ AS [ÁÐÏÃ.ÁÎÉÁ],AGPRPOS AS [ÁÃÏÑ.ÐÑÏÇÃ],AGPRAJ AS [ÁÎ.ÁÃ.ÐÑÏÇÃ],POLPRPOS AS [ÐÙË.ÐÑÏÇÃ],POLPRAJ AS [ÁÎ.ÐÙË.ÐÑÏÇÃ] ,AGPERPOS AS [ÁÃ.ÐÅÑÉÏÄ],AGPERAJ AS [AÎ.ÁÃ.ÐÅÑ],POLPERPOS AS [ÐÙË.ÐÅÑ],POLPERAJ AS [ÁÎ.ÐÙË.ÐÅÑ],YPOLPOS AS [ÕÐÏË.ÐÏÓ],YPOLAJ AS [ÕÐÏË.ÁÎÉÁ] FROM   " + EIDISOZ
 500     If ANS2 = vbYes Then
-510         x = x + "  WHERE AGPERPOS>0 OR POLPERPOS>0  "
+510         X = X + "  WHERE AGPERPOS>0 OR POLPERPOS>0  "
         Else
 520
         End If
@@ -2306,27 +2306,27 @@ Dim ANS2 As Integer, x As String
 
 
 
-530     Data1.ConnectionString = gConnect
-540     Data1.RecordSource = x
-550     Data1.Refresh
+530     data1.ConnectionString = gConnect
+540     data1.RecordSource = X
+550     data1.Refresh
 
 Dim sumes(39)
 Dim k As Integer
 
 
-         Do While Not Data1.Recordset.EOF
+         Do While Not data1.Recordset.EOF
               
-              For k = 0 To Data1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
-                     sumes(k) = sumes(k) + Data1.Recordset.FIELDS(k).Value
+              For k = 0 To data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+                     sumes(k) = sumes(k) + data1.Recordset.FIELDS(k).Value
                  End If
               Next
-              Data1.Recordset.MoveNext
+              data1.Recordset.MoveNext
          Loop
 
 Dim sum_str
 sum_str = "0011111111111111111"
-         For k = 1 To Data1.Recordset.FIELDS.Count - 1
+         For k = 1 To data1.Recordset.FIELDS.Count - 1
 
              If mID(sum_str, k, 1) = "1" Then
                  GR2.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
@@ -2353,7 +2353,7 @@ sum_str = "0011111111111111111"
             'typos2
           '  On Error GoTo Command8_Click_Err
 
-570         print3_xar UCase(x), sum_str, "", 0
+570         print3_xar UCase(X), sum_str, "", 0
         End If
 
         'If Check2 Then
@@ -2417,17 +2417,17 @@ Private Sub GR2_HeadClick(ByVal ColIndex As Integer)
         Dim sumes(100) As String
 Dim k As Integer
 
-100     For k = 0 To Data1.Recordset.FIELDS.Count - 1
+100     For k = 0 To data1.Recordset.FIELDS.Count - 1
 110         sumes(k) = GR2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If data1.Recordset.Sort = "[" & GR2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         data1.Recordset.Sort = "[" & GR2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc"    ' strSort
+140         data1.Recordset.Sort = "[" & GR2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To Data1.Recordset.FIELDS.Count - 1
+150     For k = 0 To data1.Recordset.FIELDS.Count - 1
 160         GR2.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
@@ -2594,7 +2594,7 @@ Exit Sub
 
         End If
 
-        Dim x As String
+        Dim X As String
 
         Dim ANS2
 
@@ -2614,21 +2614,21 @@ Exit Sub
 
 490     If ANS2 = vbYes Then
 
-500         x = "SELECT  [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ],SUM([ÁÃÏÑÅÓ]) AS [ÁÃÏÑÅÓ],SUM([ÐÙËÇÓÅÉÓ]) AS [ÐÙËÇÓÅÉÓ], SUM([ÁÎ.ÁÃÏÑ]) AS [ÁÎ.ÁÃÏÑÙÍ],SUM([ÁÎ.ÐÙË]) AS [ÁÎ.ÐÙËÇÓ]  FROM DOKEGGT3 " + synt + " GROUP BY  [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]  ORDER BY [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]"
+500         X = "SELECT  [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ],SUM([ÁÃÏÑÅÓ]) AS [ÁÃÏÑÅÓ],SUM([ÐÙËÇÓÅÉÓ]) AS [ÐÙËÇÓÅÉÓ], SUM([ÁÎ.ÁÃÏÑ]) AS [ÁÎ.ÁÃÏÑÙÍ],SUM([ÁÎ.ÐÙË]) AS [ÁÎ.ÐÙËÇÓ]  FROM DOKEGGT3 " + synt + " GROUP BY  [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]  ORDER BY [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]"
         Else
-510         x = "SELECT * FROM DOKEGGT3 " + synt + " ORDER BY [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]"
+510         X = "SELECT * FROM DOKEGGT3 " + synt + " ORDER BY [ÏÉÊÏÃ],[ÕÐÏ-ÏÉÊ]"
         End If
 
-520     Data1.ConnectionString = gConnect
-530     Data1.RecordSource = x
-540     Data1.Refresh
+520     data1.ConnectionString = gConnect
+530     data1.RecordSource = X
+540     data1.Refresh
 
 550     If Check1 Then
 
             'typos2
             On Error GoTo ISOZYGIO_Click_Err
 
-560         print3_xar UCase(x), "000011111221111111111", "", 0
+560         print3_xar UCase(X), "000011111221111111111", "", 0
         End If
 
         'If Check2 Then
@@ -3154,13 +3154,13 @@ Private Sub Command6_Click()
 
         End If
 
-        Dim x As String
+        Dim X As String
 
-420     x = "SELECT * FROM DOKEGGT3"
+420     X = "SELECT * FROM DOKEGGT3"
 
 430     If Check1 Then
             'typos2
-440         print3_xar UCase(x), "00001111111111111111", "", 0
+440         print3_xar UCase(X), "00001111111111111111", "", 0
         End If
 
         'If Check2 Then
@@ -3266,11 +3266,11 @@ Private Sub Command6_Click()
         End If
 
         ' Dim X As String
-810     x = "SELECT * FROM DOKEGGT3"
+810     X = "SELECT * FROM DOKEGGT3"
 
 820     If Check1 Then
             'typos2
-830         print3_xar UCase(x), "000000000", "", 0
+830         print3_xar UCase(X), "000000000", "", 0
         End If
 
         'If Check2 Then
@@ -3494,21 +3494,21 @@ Private Sub Command8_Click()
 
         End If
 
-        Dim x As String
+        Dim X As String
 
         Dim ANS2
 
 490     ANS2 = MsgBox("ÌÏÍÏ ÁÕÔÁ ÐÏÕ ÊÉÍÇÈÇÊÁÍ", vbYesNo)
 
 500     If ANS2 = vbYes Then
-510         x = "SELECT * FROM DOKEGGT3 WHERE [ÁÃÏÑÅÓ]>0 OR [ÐÙËÇÓÅÉÓ]>0 OR [ÁÎ.ÐÙË]>0 "
+510         X = "SELECT * FROM DOKEGGT3 WHERE [ÁÃÏÑÅÓ]>0 OR [ÐÙËÇÓÅÉÓ]>0 OR [ÁÎ.ÐÙË]>0 "
         Else
-520         x = "SELECT * FROM DOKEGGT3"
+520         X = "SELECT * FROM DOKEGGT3"
         End If
 
-530     Data1.ConnectionString = gConnect
-540     Data1.RecordSource = x
-550     Data1.Refresh
+530     data1.ConnectionString = gConnect
+540     data1.RecordSource = X
+550     data1.Refresh
 
 
 
@@ -3527,7 +3527,7 @@ Private Sub Command8_Click()
             'typos2
             On Error GoTo Command8_Click_Err
 
-570         print3_xar UCase(x), "000011111221111111111", "", 0
+570         print3_xar UCase(X), "000011111221111111111", "", 0
         End If
 
         'If Check2 Then
@@ -3639,7 +3639,7 @@ Function Get3_AJ(ByRef pol As String, _
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         'If gConnect = "Access" Then
         '   Set db = OpenDatabase(gDir, False, False)
@@ -4261,28 +4261,28 @@ Private Sub Command9_Click()
 
         End If
 
-        Dim x As String
+        Dim X As String
 
         Dim ANS2
 
 500     ANS2 = MsgBox("ÌÏÍÏ ÁÕÔÁ ÐÏÕ ÊÉÍÇÈÇÊÁÍ", vbYesNo)
 
 510     If ANS2 = vbYes Then
-520         x = "SELECT * FROM DOKEGGT3 WHERE [ÁÃÏÑÅÓ]>0 OR [ÐÙËÇÓÅÉÓ]>0 OR [ÁÎ.ÐÙË]>0 "
+520         X = "SELECT * FROM DOKEGGT3 WHERE [ÁÃÏÑÅÓ]>0 OR [ÐÙËÇÓÅÉÓ]>0 OR [ÁÎ.ÐÙË]>0 "
         Else
-530         x = "SELECT * FROM DOKEGGT3"
+530         X = "SELECT * FROM DOKEGGT3"
         End If
 
-540     Data1.ConnectionString = gConnect
-550     Data1.RecordSource = x
-560     Data1.Refresh
+540     data1.ConnectionString = gConnect
+550     data1.RecordSource = X
+560     data1.Refresh
 
 570     If Check1 Then
 
             'typos2
             On Error GoTo Command9_Click_Err
 
-580         print3_xar UCase(x), "000011111111111111111", "", 0
+580         print3_xar UCase(X), "000011111111111111111", "", 0
         End If
 
         'If Check2 Then
@@ -4889,22 +4889,22 @@ Private Function getFilter() As String
 
 100     For Each F_COL In F_COLS
 
-110         If Trim(F_COL.FilterText) <> "" Then
+110         If Trim(F_COL.FILTERTEXT) <> "" Then
 120             N = N + 1
 
 130             If N > 1 Then
 140                 tmp = tmp & " AND "
                 End If
 
-150             If Data1.Recordset(F_COL.ColIndex).Type = 5 Then    '
-160                 If InStr(">< >= <=  = ", Left(F_COL.FilterText, 1)) > 0 And Len(F_COL.FilterText) > 1 And IsNumeric(Right(F_COL.FilterText, 1)) Then
-170                     tmp = tmp & F_COL.DataField & F_COL.FilterText
+150             If data1.Recordset(F_COL.ColIndex).Type = 5 Then    '
+160                 If InStr(">< >= <=  = ", Left(F_COL.FILTERTEXT, 1)) > 0 And Len(F_COL.FILTERTEXT) > 1 And IsNumeric(Right(F_COL.FILTERTEXT, 1)) Then
+170                     tmp = tmp & F_COL.DataField & F_COL.FILTERTEXT
                     Else
-180                     tmp = tmp & F_COL.DataField & " >  " & Val(F_COL.FilterText)
+180                     tmp = tmp & F_COL.DataField & " >  " & Val(F_COL.FILTERTEXT)
                     End If
 
                 Else
-190                 tmp = tmp & F_COL.DataField & " LIKE '" & F_COL.FilterText & "*'"
+190                 tmp = tmp & F_COL.DataField & " LIKE '" & F_COL.FILTERTEXT & "*'"
                 End If
 
             End If
@@ -4993,7 +4993,7 @@ Private Sub GR2_FilterChange()
 
 120     GR2.HoldFields
 
-130     Data1.Recordset.Filter = getFilter()
+130     data1.Recordset.Filter = getFilter()
 
 140     GR2.Col = c
 
@@ -5056,7 +5056,7 @@ Private Sub GR2_GroupColMove(ByVal Position As Integer, _
 
 150     GR2.HoldFields
 
-160     Data1.Recordset.sort = strSort
+160     data1.Recordset.Sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -5125,7 +5125,7 @@ List1_Click_Err:
 
 End Sub
 
-Private Sub List1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub List1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
         '<EhHeader>
         On Error GoTo List1_MouseDown_Err
@@ -5150,7 +5150,7 @@ List1_MouseDown_Err:
 
 End Sub
 
-Private Sub List1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub List1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
         '<EhHeader>
         On Error GoTo List1_MouseUp_Err
