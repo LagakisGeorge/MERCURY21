@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   168361985
+         Format          =   170328065
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   168361986
+         Format          =   132775938
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   168951809
+      Format          =   171900929
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3718,7 +3718,7 @@ Private Sub b_akyr_Click()
              MDIForm1.StatusBar1.Panels(5).Text = ""
 
             '--------------------  initialization ----------------------------
-108         synolo.Caption = ""
+108         Synolo.Caption = ""
 110         sfpa.Caption = ""
 112         SynoloG.Caption = ""
 
@@ -4181,18 +4181,18 @@ Private Sub SaveParastat(ByVal isAkyrotiko As Boolean)
         'ƒ«À¡ƒ« ƒ…œ—»ŸÕŸ ‘œ ‘000100  ¡… ‘œ’ ¬¡∆Ÿ «Ã≈—œÃ«Õ…¡ 15/3/26 ≈ÕŸ ‘œ ‘000101 ≈◊≈… «Ã≈—œÃ«Õ…¡ 12/3/26
         '«Ã≈—/Õ…¡ ≈–œÃ≈Õœ’ ¡—…»Ãœ’ :   gget_DvalUE("select HME FROM TIM WHERE ATIM='"+LEFT(F_MATIM,1)+FORMAT(VAL( MID(F_MATIM,2,6) )+1,"000000")+"' ")
         If f_FORM_EKTY > 0 Then
-           Dim nextDate As Date
-           nextDate = GGET_DVALUE("select HME FROM TIM WHERE ATIM='" + Left(f_matim, 1) + Format(Val(mID(f_matim, 2, 6)) + 1, "000000") + "' ")
-           If DTPicker1.Value > nextDate And Year(nextDate) > 1900 Then ' an kanei eof tote einai null kai exei year = 1899
-              MsgBox " H HME—OMHNIA EINAI Ã≈√¡À’‘≈—« ¡–œ ‘«Õ «Ã≈—œÃ«Õ…¡ ‘œ’ ≈–œÃ≈Õœ’ –¡—¡”‘¡‘… œ’"
-              Exit Sub
-           End If
-           ' ÒÔÁ„ÔıÏÂÌÔ ÙÈÏÔÎÔ„ÈÔ Ì· ÏÁÌ ÂÈÏ·È ÈÛ˘ ÛÂ ÁÏÂÒÔÏÁÌÈ· ÙÔı ÒÔÁ„ÔıÏÂÌÔı ÙÈÏÔÎÔ„ÈÔı
-             nextDate = GGET_DVALUE("select HME FROM TIM WHERE ATIM='" + Left(f_matim, 1) + Format(Val(mID(f_matim, 2, 6)) - 1, "000000") + "' ")
-           If Val(mID(f_matim, 2, 6)) > 1 And DTPicker1.Value < nextDate And Year(nextDate) > 1900 Then ' an kanei eof tote einai null kai exei year = 1899
-              MsgBox " H HME—OMHNIA EINAI Ã… —œ‘≈—« ¡–œ ‘«Õ «Ã≈—œÃ«Õ…¡ ‘œ’ –—œ«√œ’Ã≈Õœ’ –¡—¡”‘¡‘… œ’"
-              Exit Sub
-           End If
+'           Dim nextDate As Date
+'           nextDate = GGET_DVALUE("select HME FROM TIM WHERE ATIM='" + Left(f_matim, 1) + Format(Val(mID(f_matim, 2, 6)) + 1, "000000") + "' ")
+'           If DTPicker1.Value > nextDate And Year(nextDate) > 1900 Then ' an kanei eof tote einai null kai exei year = 1899
+'              MsgBox " H HME—OMHNIA EINAI Ã≈√¡À’‘≈—« ¡–œ ‘«Õ «Ã≈—œÃ«Õ…¡ ‘œ’ ≈–œÃ≈Õœ’ –¡—¡”‘¡‘… œ’"
+'              Exit Sub
+'           End If
+'           ' ÒÔÁ„ÔıÏÂÌÔ ÙÈÏÔÎÔ„ÈÔ Ì· ÏÁÌ ÂÈÏ·È ÈÛ˘ ÛÂ ÁÏÂÒÔÏÁÌÈ· ÙÔı ÒÔÁ„ÔıÏÂÌÔı ÙÈÏÔÎÔ„ÈÔı
+'             nextDate = GGET_DVALUE("select HME FROM TIM WHERE ATIM='" + Left(f_matim, 1) + Format(Val(mID(f_matim, 2, 6)) - 1, "000000") + "' ")
+'           If Val(mID(f_matim, 2, 6)) > 1 And DTPicker1.Value < nextDate And Year(nextDate) > 1900 Then ' an kanei eof tote einai null kai exei year = 1899
+'              MsgBox " H HME—OMHNIA EINAI Ã… —œ‘≈—« ¡–œ ‘«Õ «Ã≈—œÃ«Õ…¡ ‘œ’ –—œ«√œ’Ã≈Õœ’ –¡—¡”‘¡‘… œ’"
+'              Exit Sub
+'           End If
            
            
            
@@ -4299,7 +4299,7 @@ Private Sub SaveParastat(ByVal isAkyrotiko As Boolean)
             End If
             
         Else
-338         If Val(synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
+338         If Val(Synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
                                     'm500 =®
                  
                
@@ -5890,7 +5890,7 @@ Sub MIDENIZO_GRID()
 
         Dim L As Long
 
-100     synolo.Caption = ""
+100     Synolo.Caption = ""
 102     sfpa.Caption = ""
 104     SynoloG.Caption = ""
 
@@ -7492,13 +7492,13 @@ Sub enhm_apot()
                         
 190                     If kostologhsh And F_STADIO = 4 Then  ' ' 1=–—œ”÷ 2=–¡—¡√√ 3=ƒ¡ 4=‘…Ã.–œÀ 5=≈Õƒœƒ…¡ …Õ…”…
 192                         PAR11.Label10 = EID.Recordset("XTI")
-194                         PAR11.label11 = NeaTim
+194                         PAR11.Label11 = NeaTim
 
 196                         PAR11.ltiproekptosis = Grid1.TextMatrix(k, F_T)
 198                         PAR11.UES = EID.Recordset("UES")
 
-200                         If Val(synolo.Caption) <> 0 Then
-202                             PAR11.Label4 = 100 * Val(metaf) / Val(synolo)
+200                         If Val(Synolo.Caption) <> 0 Then
+202                             PAR11.Label4 = 100 * Val(metaf) / Val(Synolo)
                             End If
 
 204                         PAR11.POSO.Caption = p
@@ -7539,8 +7539,8 @@ Sub enhm_apot()
 
 238                         If kostologhsh Then  ' ÏÁÌ Ùı˜ÔÌ Í·È ·ÍıÒ˘ÛÂ ÙÁÌ ÍÔÛÙÔÎÔ„ÁÛÁ ÂÌ Ù˘ ÏÂÙ·Ó˝
 
-240                             If Val(synolo.Caption) <> 0 Then
-242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(synolo)
+240                             If Val(Synolo.Caption) <> 0 Then
+242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(Synolo)
                                 End If
 
 244                             If IsNull(EID.Recordset("lastupd")) Then
@@ -8328,7 +8328,7 @@ Private Sub calcula_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(ComboPARAKRATISI.Text, 2), ".", ""))
 
-118     parakratisiT.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     parakratisiT.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -8710,7 +8710,7 @@ Private Sub cmdypolo_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(Combo2OnomaParak.Text, 2), ".", ""))
 
-118     AJIA2PARAKR.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     AJIA2PARAKR.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -10929,8 +10929,8 @@ Private Sub Command3_Click()
         Else
         
 108         If f_KENTRA_ADYNATISMATOS = 1 Then
-110             If kentroAdyn.ListIndex = 1 Then
-112                 fpelat4.kentroAdyn.ListIndex = 1
+110             If KentroAdyn.ListIndex = 1 Then
+112                 fpelat4.KentroAdyn.ListIndex = 1
                 End If
             End If
         
@@ -11796,8 +11796,8 @@ Private Sub Command6_Click()
         Else
 
 106         If f_KENTRA_ADYNATISMATOS = 1 Then
-108             If kentroAdyn.ListIndex = 1 Then
-110                 fff.kentroAdyn.ListIndex = 1
+108             If KentroAdyn.ListIndex = 1 Then
+110                 fff.KentroAdyn.ListIndex = 1
                 End If
             Else
 112             fff.PELPROM.Text = "e"  'PELPROM.Text
@@ -12081,8 +12081,8 @@ qrl = InputBox("ÛÍ·Ì‹ÒÈÛÂ ÙÔ qrcode", " ")
 
 
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         par1.TDBGrid1.Col = 7
+       m_ID = Val(par1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -12176,13 +12176,13 @@ Public Sub menuToTransport(parametros As Integer)
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 4  'PELKOD
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        par1.TDBGrid1.Col = 4  'PELKOD
+        c = Replace(par1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         par1.TDBGrid1.Col = 7
+       m_ID = Val(par1.TDBGrid1.Text)
 
 Dim AFMEPIX As String
 AFMEPIX = GGET_CVALUE("SELECT TOP 1 AFMPEL FROM MEM ORDER BY ID")
@@ -12242,20 +12242,20 @@ Private Sub Form_DblClick()
 
         '</EhHeader>
 
-100     PARAMETROI.category.AddItem "1 .–¡—¡√√≈À…≈”"
-102     PARAMETROI.category.AddItem "2. Ã¡— .À…¡Õ… «"
+100     PARAMETROI.Category.AddItem "1 .–¡—¡√√≈À…≈”"
+102     PARAMETROI.Category.AddItem "2. Ã¡— .À…¡Õ… «"
          
-104     PARAMETROI.category.AddItem "3 .√≈Õ… ≈” –¡—¡Ã≈‘—œ…"
-106     PARAMETROI.category.AddItem "4 .÷œ—Ã≈”-PDF"
-108     PARAMETROI.category.AddItem "5 .≈…ƒ… ≈” ≈÷¡—Ãœ√≈”-CUSTOMS"
-110     PARAMETROI.category.AddItem "6.–À¡‘« ”‘«ÀŸÕ ‘…ÃœÀœ√«”«”"
+104     PARAMETROI.Category.AddItem "3 .√≈Õ… ≈” –¡—¡Ã≈‘—œ…"
+106     PARAMETROI.Category.AddItem "4 .÷œ—Ã≈”-PDF"
+108     PARAMETROI.Category.AddItem "5 .≈…ƒ… ≈” ≈÷¡—Ãœ√≈”-CUSTOMS"
+110     PARAMETROI.Category.AddItem "6.–À¡‘« ”‘«ÀŸÕ ‘…ÃœÀœ√«”«”"
          
-112     PARAMETROI.category.AddItem "7 .”’Ã–≈—…÷œ—¡ ‘…ÃœÀœ√«”«”"
+112     PARAMETROI.Category.AddItem "7 .”’Ã–≈—…÷œ—¡ ‘…ÃœÀœ√«”«”"
         
-114     PARAMETROI.category.AddItem "8.¡—.ÿ«÷…ŸÕ-‘…Ã≈”"
-116     PARAMETROI.category.AddItem "9.Ã≈‘¡”◊«Ã¡‘…”Ãœ”"
+114     PARAMETROI.Category.AddItem "8.¡—.ÿ«÷…ŸÕ-‘…Ã≈”"
+116     PARAMETROI.Category.AddItem "9.Ã≈‘¡”◊«Ã¡‘…”Ãœ”"
         
-118     PARAMETROI.category.Visible = True
+118     PARAMETROI.Category.Visible = True
         
 120     PARAMETROI.PARAM.Caption = "PAR1"
 122     PARAMETROI.SHOW 1
@@ -12386,9 +12386,9 @@ Private Sub Form_Resize()
 'SSTab1.Tab = IIf(f_tab > SSTab1.Tabs - 1 Or f_tab < 0, SSTab1.Tabs - 1, f_tab)
 
 Label1(0).Left = Text2(1).Left
-label11(0).Left = Text2(2).Left
+Label11(0).Left = Text2(2).Left
  Label1(0).Top = Label3(0).Top
-  label11(0).Top = Label3(0).Top
+  Label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
  
 LABEL30.Left = 0
@@ -15725,7 +15725,7 @@ Private Sub GridPelaton_KeyUp(KeyCode As Integer, Shift As Integer)
         '</EhHeader>
 100     If KeyCode = 13 Then
 102         KeyCode = 0
-104         PAR1.KeyPreview = False
+104         par1.KeyPreview = False
 
 106         mmGridPelaton_DblClick 1, 0, 0, 0
 
@@ -16237,9 +16237,9 @@ R_arr.Close
 136         GridPelaton.Height = 2000 '  2295  '2295
 138         Frame2(0).Visible = True
 140         DoEvents
-142         PAR1.Refresh
+142         par1.Refresh
 144         DoEvents
-146         PAR1.Refresh
+146         par1.Refresh
 148         Frame2(0).Top = 1320
      
 150         If F_IS_BYTIO >= 1 Then
@@ -16391,7 +16391,7 @@ R_arr.Close
      
         End If
 
-276     mForm_Load PAR1, fh, fw, ft, fl
+276     mForm_Load par1, fh, fw, ft, fl
 F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESIZE H FORMA 0=OXI Ÿ” ≈◊≈… ")) '
 278     f_strogg = 0 ' ”‘—œ√√’À≈Ã¡ ÷–¡/‘…ÃœÀœ√…œ’
 
@@ -16517,7 +16517,7 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
         'Dim f_TIMES_METASX_LIAN As String
  
 390     f_LabAFM = FINDPARAMETROI(1, "PELAT2", "f_LabAFM", "¡÷Ã /ÍÂÈÏ1", "TﬂÙÎÔÚ ÂÙÈÍ›Ù·Ú ¡÷Ã")
-392     label11(0).Caption = f_LabAFM
+392     Label11(0).Caption = f_LabAFM
  
 394     Label18.Caption = "–ÎÁÒ"
 396     Label9.Caption = "”˜¸ÎÈ·"
@@ -16570,12 +16570,12 @@ Frame2(0).Height = F_YCOS_FORM_METAF
 
         Dim R As New ADODB.Recordset
 
-442     Set Prospective = TDBGrid1.Styles.ADD("Prospective")
+442     Set Prospective = TDBGrid1.Styles.Add("Prospective")
 444     Prospective.Font.Italic = True
 446     Prospective.Font.Bold = True
 448     Prospective.ForeColor = vbBlue
         
-450     Set Distributors = TDBGrid1.Styles.ADD("Distributors")
+450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
@@ -16686,7 +16686,7 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 
 516     F_add_barc = Val(FINDPARAMETROI(2, "PAR1", "add_barc", "1", "√.16 Barcode ›ÈÌ·È 1. ˘‰ 2.¬ÔÁË. ÎÂÈ‰ﬂ"))
 
-518     PAR1.KeyPreview = True
+518     par1.KeyPreview = True
 
 520     f_PALIAXRONIA = Trim(FINDPARAMETROI(3, "PAR1", "F_PALIAXRONIA", "2005", "DSN ·ÎÈ‹Ú ˜ÒÔÌÈ‹Ú"))
 522     F_EXO_XROMATA = Val(FINDPARAMETROI(5, "PAR1", "F_EXO_XROMATA", "0", "◊ÒÁÛÈÏÔÔÈ˛ ÃÂ„›ËÁ-◊Ò˛Ï·Ù·=1"))   'posa psifia tha exei h kathe seira
@@ -16749,8 +16749,8 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 576     f_IS_PARTIDES = Val(FINDPARAMETROI(1, "APOT2", "f_IS_PARTIDES", "0", "¡Ì ◊ÒÁÛÈÏÔÔÈ˛ ·ÒÙﬂ‰ÂÚ=1"))
 
 578     If f_KENTRA_ADYNATISMATOS = 1 Then
-580         kentroAdyn.Visible = True
-582         kentroAdyn.ListIndex = 0 ' Combo3.List(0)
+580         KentroAdyn.Visible = True
+582         KentroAdyn.ListIndex = 0 ' Combo3.List(0)
         End If
 
         '  'SkinFramework1.LoadSkin "c:\mercvb\Styles\Office2007.cjstyles", ""
@@ -17500,7 +17500,7 @@ f_EkkremhDeltia = Val(FINDPARAMETROI(6, "PAR1", "f_EkkremhDeltia", "1", "–ÒÔÂÈÎ
         '  Set fDB = OpenDatabase(gDir, False, False, gConnect)
         'End If
 
-1222    synolo = " "    ' √…¡ Õ¡ Ã«Õ ¬√¡∆≈… NULL
+1222    Synolo = " "    ' √…¡ Õ¡ Ã«Õ ¬√¡∆≈… NULL
 
         '
         'If gConnect = "Access" Then
@@ -17598,7 +17598,7 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
  
 
 
-1298    PAR1.Picture = LoadPicture(gPicture)
+1298    par1.Picture = LoadPicture(gPicture)
 
         'R.Open "SELECT *FROM TIMEDIT", Fdb, adOpenKeyset, adLockOptimistic
 
@@ -17914,13 +17914,13 @@ m_ID = TDBGrid1.columns("ID_NUM")
 100     TDBGrid1.Col = 1
         'Set par2 = New par2
 
-102     PAR2.Text1 = Left(TDBGrid1.Text, 8)
+102     par2.Text1 = Left(TDBGrid1.Text, 8)
 
 104     TDBGrid1.Col = 0
-106     PAR2.DTPicker1 = CDate(TDBGrid1.Text)
-108     PAR2.DTPicker2 = CDate(TDBGrid1.Text)
+106     par2.DTPicker1 = CDate(TDBGrid1.Text)
+108     par2.DTPicker2 = CDate(TDBGrid1.Text)
 
-110     PAR2.CallFromOther.Caption = "1"
+110     par2.CallFromOther.Caption = "1"
 
         'GIA OLA TA PARASTATIKA
         '  par2.Combo2OnomaParak.Text = "*"
@@ -17935,9 +17935,9 @@ m_ID = TDBGrid1.columns("ID_NUM")
 '        Else
 '         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by HME,PEL.EPO;"
  '       End If
-PAR2.TIM.ConnectionString = gConnect
-        PAR2.TIM.RecordSource = XX
-        PAR2.TIM.Refresh
+par2.TIM.ConnectionString = gConnect
+        par2.TIM.RecordSource = XX
+        par2.TIM.Refresh
         
 
 
@@ -17950,15 +17950,15 @@ PAR2.TIM.ConnectionString = gConnect
 
 
 
-114     PAR2.SHOW_TIMOL
-116     PAR2.SHOW
+114     par2.SHOW_TIMOL
+116     par2.SHOW
 
-118     PAR2.bohuitiko.SetFocus
+118     par2.bohuitiko.SetFocus
 
 120     DoEvents
 
-122     PAR2.Command1.SetFocus
-124     PAR1.LASTTIMOL.Refresh
+122     par2.Command1.SetFocus
+124     par1.LASTTIMOL.Refresh
 
         'On Error GoTo 0
 
@@ -18334,7 +18334,7 @@ Public Sub epanAkyr()
             Dim c, D, SX As String
 
 
-112             PAR1.TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
+112             par1.TDBGrid1.Col = 7  'id_num  ·ÍıÒ˘ÙÈÍÔı
 
 114             D = TDBGrid1.Text
                 ' d = InputBox("‰˘ÛÂ ÙÔÌ ·ÒÈËÏ¸ ÙÔı id", 0)
@@ -18823,7 +18823,7 @@ Private Sub Text2_LostFocus(Index As Integer)
 
 110     If f_KENTRA_ADYNATISMATOS = 1 Then
 112         If X = "e" Then
-114             If kentroAdyn.List(0) = kentroAdyn.Text Then
+114             If KentroAdyn.List(0) = KentroAdyn.Text Then
 116                 MSYNT = "NUM3=0 AND "
 118                 Grid1.BackColor = &HFF8080     ' mple
                     'Grid1.BackColor = &H80FF80 ' prasino
@@ -19286,7 +19286,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
 200     If KeyCode = 118 And Shift = 0 And F_PosostaOTA Then    ' --------------  F7 ------ 4% ota
 
-202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(synolo.Caption, ",", ".")) * F_PosostaOTA / 100
+202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(Synolo.Caption, ",", ".")) * F_PosostaOTA / 100
               
         End If
 
@@ -19917,7 +19917,7 @@ Sub timtex3_enter()
 192                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 194                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 196                         r0.Close
-198                         APOT1.flag.Caption = "1"
+198                         APOT1.Flag.Caption = "1"
 200                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 202                         gApoMenu = False
 204                         APOT1.SHOW 1
@@ -20089,7 +20089,7 @@ Sub timtex3_enter()
 310                         r0.Open "select max(ERG) FROM EID WHERE ERG LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 312                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 314                         r0.Close
-316                         APOT1.flag.Caption = "1"
+316                         APOT1.Flag.Caption = "1"
 318                         APOT1.Text1(4).Text = XX + ChDigEAN13(XX)    'timtext3.Text
                               
 320                         gApoMenu = False
@@ -20109,7 +20109,7 @@ Sub timtex3_enter()
 326                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 328                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 330                         r0.Close
-332                         APOT1.flag.Caption = "1"
+332                         APOT1.Flag.Caption = "1"
 334                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 336                         gApoMenu = False
 338                         APOT1.SHOW 1
@@ -20407,7 +20407,7 @@ Sub timtex3_enter()
                         Else
                     
 466                         APOT1.Text1(0).Text = TIMText3.Text
-468                         APOT1.flag.Caption = "1"
+468                         APOT1.Flag.Caption = "1"
 470                         APOT1.SHOW 1
                         End If
 472                     TIMText3.SetFocus
@@ -21078,7 +21078,7 @@ Private Static Sub FindSynolo()
 
 164     s = Round(0.00001 + s, f_psifiaAjias)
 
-166     synolo.Caption = Format(s, "####0.00")
+166     Synolo.Caption = Format(s, "####0.00")
 168     F = 0
         
 170     f_strogg_FPA = 0
@@ -21133,7 +21133,7 @@ Private Static Sub FindSynolo()
 
         If F_CUSTOMER_SCREEN = 1 Then
            
-            PAR1CUSTOMER.synolo.Caption = SynoloG.Caption
+            PAR1CUSTOMER.Synolo.Caption = SynoloG.Caption
         End If
 
 
@@ -21231,7 +21231,7 @@ Private Static Sub Find_Lian_Synolo() ' ypologismos lianikhs
 
 160     s = Round(0.00001 + s, f_psifiaAjias)
 
-162     synolo.Caption = Format(s, "####0.00")
+162     Synolo.Caption = Format(s, "####0.00")
 164     F = 0: For k = 1 To 9: F = F + SumFpa(k) * g_Fpa(k) / 100: Next
 
 166     F = Round(0.00001 + F, f_psifiaAjias)
@@ -25387,7 +25387,7 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
 104     METASX_TIM = mpar ' Val(FindParametroi(1,"PAR1", "METASX_TIM", "3", "–¡—¡”‘¡‘… O ‘–-ƒ¡(Ã≈‘¡”◊.”≈ ‘…ÃœÀ.)0-99"))
 
-        Dim FF As PAR2, MKOD As String
+        Dim FF As par2, MKOD As String
 
         Dim ATIM
 
@@ -26950,16 +26950,16 @@ Public Sub menu_ektyp_par(ByVal Ektyp1Email2 As Integer)
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        par1.TDBGrid1.Col = 2
+        c = Replace(par1.TDBGrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         par1.TDBGrid1.Col = 7
+       m_ID = Val(par1.TDBGrid1.Text)
         
         
-        PAR1.METASX_SE_TIM 99, c, m_ID, False, 0
+        par1.METASX_SE_TIM 99, c, m_ID, False, 0
         ' PAR1.METASX_SE_TIM 99, C, 0, False
 
         ' 100     PAR1.diortosis
@@ -26972,10 +26972,10 @@ End If
     
     
     
-        PAR1.Text2(0).Text = "" ' „È· Ì· ÏÁÌ ‰ÈÔÒË˛ÛÁ Í·Ù· Î·ËÔÚ
-        PAR1.PARAS.Text = ""
-        PAR1.Text1.Text = ""
-        PAR1.b_Katax.Enabled = False
+        par1.Text2(0).Text = "" ' „È· Ì· ÏÁÌ ‰ÈÔÒË˛ÛÁ Í·Ù· Î·ËÔÚ
+        par1.PARAS.Text = ""
+        par1.Text1.Text = ""
+        par1.b_Katax.Enabled = False
         F_DIOR = 0
         
         
@@ -27004,8 +27004,8 @@ Public Sub menu_diak_status()
 
      Dim c As String
 
-        PAR1.TDBGrid1.Col = 8
-        c = Replace(PAR1.TDBGrid1.Text, "ƒœ ", "")
+        par1.TDBGrid1.Col = 8
+        c = Replace(par1.TDBGrid1.Text, "ƒœ ", "")
 
        ' MARK = c '  InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
 
@@ -27035,8 +27035,8 @@ Public Sub menuParadosis()
 Dim qrl As String: qrl = "https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=vZGdPC4qtv61lfj3tMcBWCVzle6HNmunsN6JjmX4e9gLqhLIIIUNGzIx6YzWdXmeg0fsTOtxriHc%2bCRo3shXRfuFVdEayG8L9Xt9%2fSH8HaE%3d"
 
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         par1.TDBGrid1.Col = 7
+       m_ID = Val(par1.TDBGrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -27063,8 +27063,8 @@ Dim c, D, SX As String
 
 
         Dim midnum As String:
-           PAR1.TDBGrid1.Col = 7
-       midnum = Val(PAR1.TDBGrid1.Text)
+           par1.TDBGrid1.Col = 7
+       midnum = Val(par1.TDBGrid1.Text)
         
        ' midnum = (tdbgrid1.CurrentRow.cells(7).Value)
         'midnum = InputBox("id_num")
