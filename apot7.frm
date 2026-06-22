@@ -17,6 +17,14 @@ Begin VB.Form apot7
    ScaleWidth      =   19110
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdÅÉÄÇÁÍÁ 
+      Caption         =   "ÅÉÄÇ ÁÍÁ ÐÅËÁÔÇ"
+      Height          =   360
+      Left            =   13800
+      TabIndex        =   42
+      Top             =   2160
+      Width           =   1935
+   End
    Begin VB.CommandButton cmdREPORT 
       Caption         =   "REPORT"
       Height          =   240
@@ -775,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309657601
+      Format          =   153092097
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -790,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309657601
+      Format          =   153092097
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1203,6 +1211,14 @@ End Sub
 
 Private Sub cmdREPORT_Click()
     Shell "EXPLORER.EXE " + "C:\MERCVB\REPORTS\TAMEIO3.RPT", vbMaximizedFocus
+End Sub
+
+Private Sub cmdÅÉÄÇÁÍÁ_Click()
+
+'ÔÏ SQL ÅÉÍÁÉ ÔÏ ÁÊÏËÏÕÈÏ
+Text2.Text = " select D.ONO,SUM(G.XRE) AS SYNEIS,SUM(G.PIS) AS SYNEX,EPO,AFM,KODE FROM EGGTIM G INNER JOIN PEL  P "
+Text2.Text = Text2.Text + " ON G.EIDOS=P.EIDOS AND G.PELKOD=P.KOD  INNER JOIN EID D  ON G.KODE=D.KOD "
+Text2.Text = Text2.Text + " WHERE HME>=@x1 and HME<=@x2 group by D.ONO,EPO,AFM,KODE  ORDER BY D.ONO"
 End Sub
 
 Private Sub Command1_Click()
