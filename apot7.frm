@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   153092097
+      Format          =   311230465
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   153092097
+      Format          =   311230465
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1214,11 +1214,37 @@ Private Sub cmdREPORT_Click()
 End Sub
 
 Private Sub cmdÅÉÄÇÁÍÁ_Click()
+Dim txt(100) As String
 
 'ÔÏ SQL ÅÉÍÁÉ ÔÏ ÁÊÏËÏÕÈÏ
-Text2.Text = " select D.ONO,SUM(G.XRE) AS SYNEIS,SUM(G.PIS) AS SYNEX,EPO,AFM,KODE FROM EGGTIM G INNER JOIN PEL  P "
+txt(1) = "/*#ÁÐÏ ÊÙÄÉÊÏ     */" + Chr(13)
+txt(2) = "/*#ÅÙÓ ÊÙÄÉÊÏ     */" + Chr(13)
+Text2.Text = txt(1) + txt(2) + " select D.ONO,SUM(G.XRE) AS SYNEIS,SUM(G.PIS) AS SYNEX,EPO,AFM,KODE FROM EGGTIM G INNER JOIN PEL  P "
 Text2.Text = Text2.Text + " ON G.EIDOS=P.EIDOS AND G.PELKOD=P.KOD  INNER JOIN EID D  ON G.KODE=D.KOD "
-Text2.Text = Text2.Text + " WHERE HME>=@x1 and HME<=@x2 group by D.ONO,EPO,AFM,KODE  ORDER BY D.ONO"
+Text2.Text = Text2.Text + " WHERE HME>=@x1 and HME<=@x2 AND KODE >='@c1'  and KODE<='@c2' group by D.ONO,EPO,AFM,KODE  ORDER BY D.ONO"
+
+
+        If InStr(txt(1), "#") > 0 And InStr(txt(1), "/*") > 0 Then
+            Label3.Caption = mID(txt(1), InStr(txt(1), "#") + 1, 15)
+        End If
+
+        If InStr(txt(2), "#") > 0 And InStr(txt(2), "/*") > 0 Then
+            Label4.Caption = mID(txt(2), InStr(txt(2), "#") + 1, 15)
+        End If
+
+'        If InStr(txt(3), "#") > 0 And InStr(txt(3), "/*") > 0 Then
+'            Label5.Caption = mID(txt(3), InStr(txt(3), "#") + 1, 15)
+'        End If
+'
+
+
+
+
+
+
+
+
+
 End Sub
 
 Private Sub Command1_Click()
