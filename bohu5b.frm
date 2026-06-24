@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   308740097
+         Format          =   175177729
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -4609,20 +4609,22 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
-Dim D1, d2 As String
-
-D1 = "01/01/2026"
+Dim d1, d2 As String
+Dim LATOS As String
+On Error GoTo OUT
+LATOS = "ημερομηνία"
+d1 = "01/01/2026"
 d2 = "31/01/2026"
-D1 = InputBox("ΑΠΟ ", "από", D1)
+d1 = InputBox("SERVER: " + F_LINKEDSERVER + " πΑΡ/ΚΑ:" + F_LINKED_PARAST + " ΑΠΟ ", "από", d1)
 
-d2 = InputBox("ΕΩΣ ", "έως", d2)
+d2 = InputBox("πΑΡ/ΚΑ:" + F_LINKED_PARAST + " ΕΩΣ ", "έως", d2)
 
-If Len(Trim(D1)) <> 10 Or Len(Trim(d2)) <> 10 Then
+If Len(Trim(d1)) <> 10 Or Len(Trim(d2)) <> 10 Then
     MsgBox " ΛΑΘΟΣ ΗΜΕΡΟΜΗΝΙΑ"
     Exit Sub
 End If
 
-D1 = mID(D1, 4, 3) + Left(D1, 3) + Right(D1, 4)
+d1 = mID(d1, 4, 3) + Left(d1, 3) + Right(d1, 4)
 d2 = mID(d2, 4, 3) + Left(d2, 3) + Right(d2, 4)
 
 
@@ -4633,7 +4635,7 @@ Dim TEL_ID_NUM As Long
 Dim eis As Integer
 Dim N As Integer
 
-
+LATOS = "συνδεση"
  FEGGTIM = "EIDOS,ATIM,POSO,MONA,TIMM,KERDOS,KODE,HME,ERGO,FPA,PROOD,PROOD_AJ,EKPT,KAU_AJIA,MIK_AJIA,ONOMA,MIKTA,KOLA,PELKOD,PROELEYSH,XRE,PIS,APOT,ATIM2,FCURRENCY,EKPT2,MIKTAKILA"
   COLTIM = "KLEIDI,KPE,HME,TRP,ATIM,ART,AJI,EIDOS,METAF,EKPT,EIDPAR,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,FPA8,FPA9,TYP,AJ1, AJ2,AJ3,AJ4,AJ5,AJ6,AJ7,AJ8,AJ9,EKPT1,EKPT2,EKPT3,EKPT4,EKPT5,HME_KATAX,KERDOS,SKOPOS,SXETIKO,PARAT,ELGA,SYNPOS,SKOPOS2,FORTOSH,PROOR,AYTOK,B_C1,B_C2,B_N1,B_N2,KR1,KR2,ATIM2"
  
@@ -4643,8 +4645,9 @@ Dim N As Integer
 ' FROM [LAGAKIS.DDNS.NET\SQLEXPRESS,49818].[EMP].[dbo].[PEL] WHERE EIDOS='r'
 Dim R As New ADODB.Recordset
 F_LINKEDSERVER = Trim(F_LINKEDSERVER)
-R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + D1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
+R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + d1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
 Dim mmID As Long
+LATOS = "εισαγωγή παρ/κων"
 Do While Not R.EOF
     mmID = R!id_num
     If GGET_NVALUE("SELECT COUNT(*) FROM TIM WHERE ATIM='" + R!ATIM + "'") > 0 Then
@@ -4669,6 +4672,10 @@ Loop
 
 MsgBox "OK " + str(eis)
 
+Exit Sub
+OUT:
+
+MsgBox "ΛΑΘΟΣ : " + LATOS + Chr(13) + Err.Description
 
 
 
