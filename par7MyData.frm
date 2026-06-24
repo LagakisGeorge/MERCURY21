@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   136642561
+      Format          =   138149889
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   136642561
+      Format          =   138149889
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7629,6 +7630,9 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 476                             Set elem2Field = docStock.createElement("dispatchTime"): elem2Field.Text = Trim(SQLDT("ORAPARAD")) + ":00.0000000Z": elemField.appendChild elem2Field
 478                             Set elem2Field = docStock.createElement("vehicleNumber"): elem2Field.Text = SQLDT("AYTOK"): elemField.appendChild elem2Field
 480                             Set elem2Field = docStock.createElement("movePurpose"): elem2Field.Text = Left(SQLDT("SKOPOS"), 2): elemField.appendChild elem2Field
+                                 
+                   
+
                              End If
 
 
@@ -7767,6 +7771,19 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                             Set elem2Field = docStock.createElement("otherMovePurposeTitle"): elem2Field.Text = SQLDT("OTHERMOVEPURPOSETITLE"): elemField.appendChild elem2Field
                             
                         End If
+                                                       
+                                      'toWeigh
+                                 If Split(ctypos, ";")(0) = "9.1" Or Split(ctypos, ";")(0) = "9.2" Or Split(ctypos, ";")(0) = "9.3" Then
+                                      Set elem2Field = docStock.createElement("toWeigh"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                                 End If
+                              
+                                                       
+                                                       
+                                                       
+                                                       
+                                                       
+                                                       
+                                                       
                                                        
                         '------------- аутотилокоцгсг --------------------<selfPricing>true</selfPricing>
 514                     If IsAytotim = 1 Then
