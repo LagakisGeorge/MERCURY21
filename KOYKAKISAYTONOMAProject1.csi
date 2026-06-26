@@ -1,5 +1,5 @@
 [History]
-1=#P0#=mb	#P1#=cmdKOYKAKH	#P2#=Project1/Form1/cmdKOYKAKH	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20260625094957	#P7#=0	#P8#=159	.
-2=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20260625093944	#P7#=0	#P8#=4	.
-3=#P0#=mb	#P1#=cmdCommand1_Click	#P2#=Project1/Form1/cmdCommand1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20260625104159	#P7#=0	#P8#=-1	.
+1=#P0#=mb	#P1#=cmdCommand1_Click	#P2#=Project1/Form1/cmdCommand1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20260625184236	#P7#=0	#P8#=-1	.
+2=#P0#=mb	#P1#=cmdKOYKAKH	#P2#=Project1/Form1/cmdKOYKAKH	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20260625184608	#P7#=0	#P8#=14	.
+3=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20260625093944	#P7#=0	#P8#=4	.
 4=#P0#=mb	#P1#=nNull	#P2#=Project1/Form1/nNull	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20260625092856	#P7#=0	#P8#=8	.
