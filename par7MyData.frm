@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   88932353
+      Format          =   153419777
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   88932353
+      Format          =   153419777
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7621,6 +7622,10 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                        
 472                     If isDiakin >= 1 Then   'tda=1  ‰ÂÎ.·ÔÛÙ=2
                               If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
+                                'receivingNotePurpose
+                                 'DEMO ONLY WORKS  NEXT LINE
+                                 ' Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
+                       
                               
                               Else
 
@@ -7766,6 +7771,17 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                             Set elem2Field = docStock.createElement("otherMovePurposeTitle"): elem2Field.Text = SQLDT("OTHERMOVEPURPOSETITLE"): elemField.appendChild elem2Field
                             
                         End If
+                        
+                        
+                                  'toWeigh   DEMO ONLY WORKS
+                              '   If Split(ctypos, ";")(0) = "9.1" Or Split(ctypos, ";")(0) = "9.2" Or Split(ctypos, ";")(0) = "9.3" Then
+                               '       Set elem2Field = docStock.createElement("toWeigh"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                               '  End If
+                        
+                        
+                        
+                        
+                        
                                                        
                         '------------- ¡’‘œ‘…ÃœÀœ√«”« --------------------<selfPricing>true</selfPricing>
 514                     If IsAytotim = 1 Then
