@@ -29,7 +29,7 @@ Begin VB.Form Form1
       _ExtentX        =   4048
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   154271745
+      Format          =   80543745
       CurrentDate     =   46198
    End
    Begin MSComCtl2.DTPicker apo 
@@ -41,7 +41,7 @@ Begin VB.Form Form1
       _ExtentX        =   4048
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   154271745
+      Format          =   80609281
       CurrentDate     =   46198
    End
    Begin VB.CommandButton cmdCommand1 
@@ -105,7 +105,7 @@ gdb.Open Trim(gConnect)
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<'" + Format(eos.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -207,18 +207,18 @@ gdb.Open Trim(gConnect)
     With Reqpos
         .Open "POST", uripos, async:=False
       
-        .setRequestHeader "accept", "application/json"
-        .setRequestHeader "X-Client-Code", "ANTHOPOULOS"     ', "Bearer " + gf_Bearer
-        .setRequestHeader "X-Client-Password", "Y7uaGuNqjWkGcQH5R2f5"
-        .setRequestHeader "Content-Type", "application/json"
+        .SetRequestHeader "accept", "application/json"
+        .SetRequestHeader "X-Client-Code", "ANTHOPOULOS"     ', "Bearer " + gf_Bearer
+        .SetRequestHeader "X-Client-Password", "Y7uaGuNqjWkGcQH5R2f5"
+        .SetRequestHeader "Content-Type", "application/json"
         ' qpos = " {  ""Bearer"":""" + gf_Bearer + """, " & ResultJSONpos & ",     ""externalSystemId"": """ + LTrim(str(SQLDT("ID_NUM"))) + """ }"
-        .send (Q)
+        .Send (Q)
                         
-        Me.Caption = "áðáíôçóç : " + Chr(13) + Reqpos.responseText
+        Me.Caption = "áðáíôçóç : " + Chr(13) + Reqpos.ResponseText
                          
     End With
                         
-    Dim posjson As String: posjson = Reqpos.responseText
+    Dim posjson As String: posjson = Reqpos.ResponseText
     
          Open "C:\MERCVB\KOYKAKIS.TXT" For Append As #3
         Print #3, Format(apo.Value, "dd/MM/yyyy") + Chr(13)
@@ -267,8 +267,8 @@ End Function
 
 
 Private Sub Form_Load()
-     apo = Now
-     eos = Now + 1
+     apo = Now - 1
+     eos = Now
      cmdKOYKAKH
      End
 End Sub
