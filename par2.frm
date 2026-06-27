@@ -1,24 +1,33 @@
 VERSION 5.00
 Object = "{CCA214C0-DFEB-4C91-9F0D-2665F77F6E23}#1.2#0"; "IDAutomationLinear.dll"
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Begin VB.Form par2 
    BackColor       =   &H00FF0000&
    Caption         =   "≈ÙÙÈÍ›ÙÂÚ-ƒÈ·„.–·Ò·ÛÙ."
-   ClientHeight    =   11052
+   ClientHeight    =   11055
    ClientLeft      =   60
-   ClientTop       =   348
-   ClientWidth     =   12228
+   ClientTop       =   345
+   ClientWidth     =   12225
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   11052
-   ScaleWidth      =   12228
+   ScaleHeight     =   11055
+   ScaleWidth      =   12225
    WindowState     =   2  'Maximized
+   Begin Crystal.CrystalReport CrystalReport1 
+      Left            =   6960
+      Top             =   9960
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   262150
+      Destination     =   1
+   End
    Begin VB.CheckBox kostologhsh 
       Caption         =   " ÔÛÙÔÎ¸„ÁÛÁ"
       Height          =   255
@@ -34,8 +43,8 @@ Begin VB.Form par2
       Left            =   3000
       Top             =   9000
       Width           =   1935
-      _ExtentX        =   3408
-      _ExtentY        =   656
+      _ExtentX        =   3413
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -66,7 +75,7 @@ Begin VB.Form par2
       Caption         =   "EID"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -115,13 +124,13 @@ Begin VB.Form par2
       Width           =   2415
    End
    Begin MSComctlLib.ImageCombo Combo2 
-      Height          =   300
-      Left            =   72
+      Height          =   330
+      Left            =   75
       TabIndex        =   24
-      Top             =   108
-      Width           =   4368
-      _ExtentX        =   7705
-      _ExtentY        =   529
+      Top             =   105
+      Width           =   4365
+      _ExtentX        =   7699
+      _ExtentY        =   582
       _Version        =   393216
       ForeColor       =   -2147483640
       BackColor       =   -2147483643
@@ -153,7 +162,7 @@ Begin VB.Form par2
       Top             =   1695
       Width           =   12000
       _ExtentX        =   21167
-      _ExtentY        =   2773
+      _ExtentY        =   2778
       _Version        =   393216
       Rows            =   8
       FixedRows       =   7
@@ -192,9 +201,9 @@ Begin VB.Form par2
       AutoSize        =   -1  'True
       Height          =   2370
       Left            =   8010
-      ScaleHeight     =   116.4
+      ScaleHeight     =   115.5
       ScaleMode       =   2  'Point
-      ScaleWidth      =   154.2
+      ScaleWidth      =   153.75
       TabIndex        =   17
       Top             =   8595
       Visible         =   0   'False
@@ -231,8 +240,8 @@ Begin VB.Form par2
       Top             =   9660
       Visible         =   0   'False
       Width           =   2055
-      _ExtentX        =   3620
-      _ExtentY        =   656
+      _ExtentX        =   3625
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -263,7 +272,7 @@ Begin VB.Form par2
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -279,15 +288,15 @@ Begin VB.Form par2
       TabIndex        =   8
       Top             =   165
       Width           =   7515
-      _ExtentX        =   13250
-      _ExtentY        =   2731
+      _ExtentX        =   13256
+      _ExtentY        =   2725
       _Version        =   393216
       AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -296,7 +305,7 @@ Begin VB.Form par2
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -345,8 +354,8 @@ Begin VB.Form par2
       TabIndex        =   7
       Top             =   3300
       Width           =   12015
-      _ExtentX        =   21188
-      _ExtentY        =   6371
+      _ExtentX        =   21193
+      _ExtentY        =   6376
       _Version        =   393216
       BackColor       =   16761024
       Cols            =   10
@@ -361,8 +370,8 @@ Begin VB.Form par2
       Top             =   9630
       Visible         =   0   'False
       Width           =   2055
-      _ExtentX        =   3620
-      _ExtentY        =   656
+      _ExtentX        =   3625
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -393,7 +402,7 @@ Begin VB.Form par2
       Caption         =   "tim"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -458,12 +467,12 @@ Begin VB.Form par2
       TabIndex        =   14
       Top             =   450
       Width           =   1605
-      _ExtentX        =   2836
-      _ExtentY        =   614
+      _ExtentX        =   2831
+      _ExtentY        =   609
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   340197377
+      Format          =   146276353
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -472,19 +481,19 @@ Begin VB.Form par2
       TabIndex        =   15
       Top             =   825
       Width           =   1605
-      _ExtentX        =   2836
+      _ExtentX        =   2831
       _ExtentY        =   529
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   340197377
+      Format          =   146276353
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   6975
       Top             =   8115
-      _ExtentX        =   995
-      _ExtentY        =   995
+      _ExtentX        =   1005
+      _ExtentY        =   1005
       BackColor       =   -2147483643
       ImageWidth      =   16
       ImageHeight     =   16
@@ -571,7 +580,7 @@ Begin VB.Form par2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -583,7 +592,7 @@ Begin VB.Form par2
       DataToEncode    =   "123456789012"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -593,8 +602,8 @@ Begin VB.Form par2
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin VB.Shape Shape1 
@@ -626,7 +635,7 @@ Begin VB.Form par2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial Black"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   0
          Weight          =   900
          Underline       =   0   'False
@@ -638,7 +647,7 @@ Begin VB.Form par2
       DataToEncode    =   "0940"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -648,8 +657,8 @@ Begin VB.Form par2
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin ATLCONTROLLibCtl.BarCode BarCode2 
@@ -665,7 +674,7 @@ Begin VB.Form par2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -677,7 +686,7 @@ Begin VB.Form par2
       DataToEncode    =   "123456789012"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -687,8 +696,8 @@ Begin VB.Form par2
       ShowText        =   0
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin VB.Label Label9 
@@ -696,7 +705,7 @@ Begin VB.Form par2
       Caption         =   "≈˘ÌıÏﬂ·"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -715,7 +724,7 @@ Begin VB.Form par2
       Caption         =   "≈˘Ú"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -734,7 +743,7 @@ Begin VB.Form par2
       Caption         =   "¡¸"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -753,7 +762,7 @@ Begin VB.Form par2
       Caption         =   "¡Ò.–·Ò/ÍÔ˝"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -860,7 +869,7 @@ End If
         On Error GoTo cmdKOSTOLOGHSH_Click_Err
 
         '</EhHeader>
-        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         Dim DB As Database, DUM, rec As New ADODB.Recordset
 
@@ -874,16 +883,16 @@ End If
 
 
         'eggtim.DatabaseName = gDir
-        On Error GoTo LATOS
+        On Error GoTo latos
 
-140     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-150     d2 = DateAdd("d", 1, d1)
+140     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+150     d2 = DateAdd("d", 1, D1)
 
 160     TIM.ConnectionString = gConnect
 
 170     EGGTIM.ConnectionString = gConnect
 
-180     EGGTIM.RecordSource = "select KODE,EID.ONO,POSO,TIMM,EKPT,EKPT2,FPA,STR(round(EID.LTI5,2),10,2) as [À…¡Õ.‘…Ã],STR(ROUND(EID.LTI,2),10,2) AS [XON.TIM],STR(EID.XTI,10,2) AS [TIM.¡√],EID.ERG,EID.CH4,PROELEYSH,KOLA,MON,EID.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
+180     EGGTIM.RecordSource = "select KODE,EID.ONO,POSO,TIMM,EKPT,EKPT2,FPA,STR(round(EID.LTI5,2),10,2) as [À…¡Õ.‘…Ã],STR(ROUND(EID.LTI,2),10,2) AS [XON.TIM],STR(EID.XTI,10,2) AS [TIM.¡√],EID.ERG,EID.CH4,PROELEYSH,KOLA,MON,EID.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
 
 190     EGGTIM.Refresh
         'Label5.Caption = TIM.Recordset("epo")
@@ -1069,7 +1078,7 @@ FIND_N_NUMBER:
 1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
 1130    Return
 
-LATOS:
+latos:
 
         '<EhFooter>
 Resume Next
@@ -1155,11 +1164,11 @@ End Sub
         On Error GoTo Command1_Click_Err
 
         '</EhHeader>
-        Dim d1 As Date, d2 As Date, synt As String
+        Dim D1 As Date, d2 As Date, synt As String
 
         'eggtim.DatabaseName = gDir---
 
-100     d1 = DTPicker1.Value
+100     D1 = DTPicker1.Value
 
 110     d2 = DateAdd("d", 1, DTPicker2.Value)
 
@@ -1202,9 +1211,9 @@ End Sub
         On Error GoTo Command1_Click_Err
 
 240     If Combo3.Text = Combo3.List(1) Then
-250         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,SXETIKO,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by PEL.EPO,HME;"
+250         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,SXETIKO,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by PEL.EPO,HME;"
         Else
-260         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by HME,PEL.EPO;"
+260         XX = "select '-'+PEL.EPO,ATIM,HME as shme,AJI as ajia,PEL.EPA,PEL.DIE,PEL.AFM,PEL.KOD,PEL.EIDOS,TRP,SKOPOS,FORTOSH,ART,PROOR,PARAT,ART,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,ID_NUM,ENTITYMARK,ORA   " & " from TIM LEFT join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "' order by HME,PEL.EPO;"
         End If
 
 270     TIM.RecordSource = XX
@@ -1233,7 +1242,7 @@ Private Sub Command2_Click()
         On Error GoTo Command2_Click_Err
 
         '</EhHeader>
-        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -1241,7 +1250,7 @@ Private Sub Command2_Click()
 
         Dim X As String
 
-        On Error GoTo LATOS
+        On Error GoTo latos
         
         
         Dim MAPOT As Integer
@@ -1253,11 +1262,11 @@ Private Sub Command2_Click()
         
         
 
-100     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-110     d2 = DateAdd("d", 1, d1)
+100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+110     d2 = DateAdd("d", 1, D1)
 
 120     X = "select KODE,ATIM,left(ONOMA,35) as [–ÂÒÈ„Ò·ˆﬁ],POSO as [–ÔÛ¸ÙÁÙ·],TIMM as [TÈÏ_ÃÔÌ]," & " EKPT as [≈ÍÙ˘ÛÁ],str(KAU_AJIA,10,2) as [K_¡Óﬂ·],FPA AS [ ·Ù.÷–¡],str(MIK_AJIA,10,2) as [Ã≈÷–¡_¡Óﬂ·],PROELEYSH AS [Ã≈√] from EGGTIM where" & " left(ATIM," + str(f_psifia_atim + 1) + ")='" + Left(TIM.Recordset("ATIM"), f_psifia_atim + 1) + "'"
-130     X = X + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'"
+130     X = X + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'"
 
 140     X = X + " AND APOT=" + Format(MAPOT, "0") + " order by PROOD_AJ;"
 
@@ -1275,8 +1284,8 @@ Private Sub Command2_Click()
 
         On Error Resume Next
 
-170     d1 = d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-180     d2 = DateAdd("d", 1, d1)
+170     D1 = D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+180     d2 = DateAdd("d", 1, D1)
 
 190     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
@@ -1291,7 +1300,7 @@ Private Sub Command2_Click()
         'db.Execute "drop table eggtim"
 
 230     sql = "select fpa,atim,format(hme,'dd/mm/yy') as [«ÏÂÒÔÏ],kode as [K˘‰_≈ﬂ‰],onoma as [–ÂÒÈ„Ò·ˆﬁ],poso as [–ÔÛ¸ÙÁÙ·],timm as [TÈÏ_ÃÔÌ],timm*poso as [¡Óﬂ·]  into eggtim in 'c:\mercvb\reports\reports.mdb' "
-240     sql = sql + " from eggtim where left(atim,7)='" + TIM.Recordset("atim") + "' and hme>=#" + Format(d1, "mm/dd/yyyy") + "# and hme<#" + Format(d2, "mm/dd/yyyy") + "#;"
+240     sql = sql + " from eggtim where left(atim,7)='" + TIM.Recordset("atim") + "' and hme>=#" + Format(D1, "mm/dd/yyyy") + "# and hme<#" + Format(d2, "mm/dd/yyyy") + "#;"
 
 250     fDB.Execute sql
 
@@ -1300,7 +1309,7 @@ Private Sub Command2_Click()
 260     synt = " left(atim,7)='" + Left(EGGTIM.Recordset("atim"), 7) + "'"
 
 270     sql = "select pel.epo,atim,format(hme,'dd/mm/yy') as shme,aji as ajia,pel.epa,pel.die,pel.afm into tim in 'c:\mercvb\reports\reports.mdb' "
-280     sql = sql + "from tim inner join pel on tim.eidos+tim.kpe=pel.eidos+pel.kod where " + synt + " and hme>=#" + Format(d1, "mm/dd/yyyy") + "# and hme<#" + Format(d2, "mm/dd/yyyy") + "#  order by prood_aj;"
+280     sql = sql + "from tim inner join pel on tim.eidos+tim.kpe=pel.eidos+pel.kod where " + synt + " and hme>=#" + Format(D1, "mm/dd/yyyy") + "# and hme<#" + Format(d2, "mm/dd/yyyy") + "#  order by prood_aj;"
 
         On Error Resume Next
 
@@ -1312,7 +1321,7 @@ Private Sub Command2_Click()
 
         Exit Sub
 
-LATOS:
+latos:
 
         '<EhFooter>
         Exit Sub
@@ -1337,7 +1346,7 @@ Private Sub Command3_Click()
         On Error GoTo Command3_Click_Err
 
         '</EhHeader>
-        Dim d1     As Date, d2 As Date
+        Dim D1     As Date, d2 As Date
 
         Dim fDB    As Database
 
@@ -1347,10 +1356,10 @@ Private Sub Command3_Click()
 
         Dim ANS    As Integer, sql As String
 
-        On Error GoTo LATOS
+        On Error GoTo latos
 
-100     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-110     d2 = DateAdd("d", 1, d1)
+100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+110     d2 = DateAdd("d", 1, D1)
         id_num = TIM.Recordset("id_num")
         
         If id_num = 0 Then
@@ -1431,7 +1440,7 @@ Private Sub Command3_Click()
         
         If N = 0 Then  '–¡À…œ‘≈—« ≈ ƒœ”« ‘…ÃœÀœ√…œ’ –œ’ ƒ≈Õ ≈¬¡∆≈ ID_NUM STO EGGTIM
             sql = "delete  "
-            sql = sql + " from EGGTIM where  left(ATIM,7)='" + Left(MATIM, 7) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+            sql = sql + " from EGGTIM where  left(ATIM,7)='" + Left(MATIM, 7) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
             Gdb.Execute sql, N
         End If
 
@@ -1509,7 +1518,7 @@ Private Sub Command3_Click()
 
         Exit Sub
 
-LATOS:
+latos:
 
         '<EhFooter>
         Exit Sub
@@ -1571,9 +1580,9 @@ Private Sub Command5_Click()
         '========================etiketes ========================================================
         '<EhHeader>
         On Error GoTo Command5_Click_Err
-
+       Dim mPrinterName As String
         '</EhHeader>
-        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         Dim DB As Database, DUM, rec As New ADODB.Recordset
 
@@ -1586,10 +1595,10 @@ Private Sub Command5_Click()
 
 110     For Each X In Printers
 
-120         If InStr(X.DeviceName, f_printer) > 0 And InStr(X.DeviceName, "408") = 0 Then
+120         If InStr(X.DeviceName, f_printer) > 0 And InStr(X.DeviceName, "408") = 0 Then ' 408
                 ' Set printer as system default.
 130             Set Printer = X
-
+                 mPrinterName = X.DeviceName
                 ' Stop looking for a printer.
                 Exit For
 
@@ -1598,16 +1607,16 @@ Private Sub Command5_Click()
         Next
 
         'eggtim.DatabaseName = gDir
-        On Error GoTo LATOS
+        On Error GoTo latos
 
-140     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-150     d2 = DateAdd("d", 1, d1)
+140     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+150     d2 = DateAdd("d", 1, D1)
 
 160     TIM.ConnectionString = gConnect
 
 170     EGGTIM.ConnectionString = gConnect
 
-180     EGGTIM.RecordSource = "select KODE,POSO,TIMM,EID.ONO,ROUND(ISNULL(EID.LTI5,0),2) AS LTI5,ROUND(EID.LTI,2) AS LTI,ROUND(EID.XTI,2) AS XTI,EID.ERG,EID.CH4,PROELEYSH,KOLA,ISNULL(MON,'') AS MON,EGGTIM.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
+180     EGGTIM.RecordSource = "select KODE,POSO,TIMM,EID.ONO,ROUND(ISNULL(EID.LTI5,0),2) AS LTI5,ROUND(EID.LTI,2) AS LTI,ROUND(EID.XTI,2) AS XTI,EID.ERG,EID.CH4,PROELEYSH,KOLA,ISNULL(MON,'') AS MON,EGGTIM.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
 
 190     EGGTIM.Refresh
         'Label5.Caption = TIM.Recordset("epo")
@@ -1634,6 +1643,20 @@ Private Sub Command5_Click()
 230     EGGTIM.Recordset.MoveFirst
 
         Dim mlabel, MPER, mtimes, TIMM, timologio
+        
+        
+           If Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
+            
+               Dim r7 As DAO.Recordset
+               Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
+               DB.Execute "DELETE * FROM DOK1"
+               Set r7 = DB.OpenRecordset("DOK1")
+               
+            End If
+        
+        
+        
+        
 
 240     Do While Not EGGTIM.Recordset.EOF
 
@@ -1670,6 +1693,13 @@ Private Sub Command5_Click()
             Dim EPIPLEON As Long
 
 370         EPIPLEON = 0
+
+
+
+         
+
+
+
 
 380         For k = 1 To Val(mtimes)
                  
@@ -1731,7 +1761,34 @@ Private Sub Command5_Click()
 
 590                 Printer.EndDoc
 
-600             ElseIf Len(Dir("C:\MERCVB\MELIS.TXT", vbNormal)) > 0 Then
+600             ElseIf Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
+
+                    r7.AddNew
+                    r7("EPO") = MPER
+                    r7("THL") = mlabel
+                    r7("DIE") = timologio
+                    r7("TYP") = gVal(TIMM) '+ " Ä  /"
+                    r7.Update
+                    r7.Close
+                    
+                    'CrystalReport1.ReportFileName = "C:\MERCVB\reports\ETIK_TIM.RPT"
+                    'CrystalReport1.Action = 1
+                    
+                    'CrystalReport1.ReportFileName = "C:\Mercvb\reports\timol1.rpt"
+                     Ucr9print.printingCR9 mPrinterName, "C:\MERCVB\reports\ETIK_TIM.RPT"  'CrystalReport1.ReportFileName
+
+                     DB.Execute "DELETE * FROM DOK1"
+
+
+
+
+
+
+
+
+
+
+                ElseIf Len(Dir("C:\MERCVB\MELIS.TXT", vbNormal)) > 0 Then
 
 610                 Printer.FontSize = 9
 620                 Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
@@ -1858,6 +1915,15 @@ Private Sub Command5_Click()
 
         Loop
 
+
+If Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
+
+                    r7.Close
+                    
+
+End If
+
+
         Exit Sub
 
 FIND_N_NUMBER:
@@ -1877,7 +1943,7 @@ FIND_N_NUMBER:
 1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
 1130    Return
 
-LATOS:
+latos:
 
         '<EhFooter>
         Exit Sub
@@ -1980,7 +2046,7 @@ Private Sub Command7_Click()
         On Error GoTo Command7_Click_Err
 
         '</EhHeader>
-        Dim d1    As Date, d2 As Date
+        Dim D1    As Date, d2 As Date
 
         Dim fDB   As Database
 
@@ -1988,10 +2054,10 @@ Private Sub Command7_Click()
 
         Dim ANS   As Integer, sql As String
 
-        On Error GoTo LATOS
+        On Error GoTo latos
 
-100     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-110     d2 = DateAdd("d", 1, d1)
+100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+110     d2 = DateAdd("d", 1, D1)
 
         Dim g_hme, g_atim, DUM
 
@@ -2001,7 +2067,7 @@ Private Sub Command7_Click()
 
 140     MATIM = TIM.Recordset("atim")
 
-150     sql = "UPDATE TIM SET ART='1' where left(ATIM," + Format(f_psifia_atim + 1, "0") + ")='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+150     sql = "UPDATE TIM SET ART='1' where left(ATIM," + Format(f_psifia_atim + 1, "0") + ")='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
         Dim k As Integer
 
@@ -2019,7 +2085,7 @@ Private Sub Command7_Click()
 
         Exit Sub
 
-LATOS:
+latos:
 
         '<EhFooter>
         Exit Sub
@@ -2045,7 +2111,7 @@ Private Sub Command8_Click()
         '</EhHeader>
 
         '----------------------epanafero se ekkremothta ---------------
-        Dim d1    As Date, d2 As Date
+        Dim D1    As Date, d2 As Date
 
         Dim fDB   As Database
 
@@ -2053,10 +2119,10 @@ Private Sub Command8_Click()
 
         Dim ANS   As Integer, sql As String
 
-        On Error GoTo LATOS
+        On Error GoTo latos
 
-100     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
-110     d2 = DateAdd("d", 1, d1)
+100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
+110     d2 = DateAdd("d", 1, D1)
 
         Dim g_hme, g_atim, DUM
 
@@ -2066,7 +2132,7 @@ Private Sub Command8_Click()
 
 140     MATIM = TIM.Recordset("atim")
 
-150     sql = "UPDATE TIM SET ART=NULL where left(ATIM," + Format(f_psifia_atim + 1, "0") + ")='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+150     sql = "UPDATE TIM SET ART=NULL where left(ATIM," + Format(f_psifia_atim + 1, "0") + ")='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
         Dim k As Integer
 
@@ -2084,7 +2150,7 @@ Private Sub Command8_Click()
 
         Exit Sub
 
-LATOS:
+latos:
 
         '<EhFooter>
         Exit Sub
@@ -2139,13 +2205,13 @@ Sub SHOW_TIMOL()
         On Error GoTo DBGrid1_RowColChange_Err
 
         '</EhHeader>
-        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         On Error Resume Next
 
         'eggtim.DatabaseName = gDir
-100     d1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))  ' DTPicker1.Value
-110     d2 = DateAdd("d", 1, d1)
+100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))  ' DTPicker1.Value
+110     d2 = DateAdd("d", 1, D1)
         'TIM.DatabaseName = gDir
 120     TIM.ConnectionString = gConnect
 130     EGGTIM.ConnectionString = gConnect
@@ -2266,7 +2332,7 @@ Sub synola()
         '</EhHeader>
         Dim S2
 
-        Dim d1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
+        Dim D1 As Date, d2 As Date, R As Integer, c As Integer, k As Integer, s As Single
 
         'On Error Resume Next
 100     MSFlexGrid1.TextMatrix(0, 1) = "¡Ò.‘ÈÏ"
@@ -2416,7 +2482,7 @@ Private Sub Form_Activate()
 180     L = 0
 190     FirstTime = False
 
-200     Set o = Combo2.ComboItems.ADD(1, "", "œÀ¡ ‘¡ –¡—¡”‘¡‘… ¡     *")
+200     Set o = Combo2.ComboItems.Add(1, "", "œÀ¡ ‘¡ –¡—¡”‘¡‘… ¡     *")
         ' Combo2.ComboItems(K).Image = 2
 
 210     R.MoveFirst
@@ -2431,14 +2497,14 @@ Private Sub Form_Activate()
                     ' Combo2.AddItem Format(K, "##") + "---" + " " + R("TITLOS") + Space(1) + R("eidos")
                     ' Combo2.ItemBackColor(K) = vbRed
 
-270                 Set o = Combo2.ComboItems.ADD(k + 1, "", Format(k, "##") + "---" + " " + R("TITLOS") + Space(1) + R("eidos"))
+270                 Set o = Combo2.ComboItems.Add(k + 1, "", Format(k, "##") + "---" + " " + R("TITLOS") + Space(1) + R("eidos"))
 280                 Combo2.ComboItems(k).Image = 2
                     ' Combo2. vbRed
                 Else
 
                     ' Combo2.AddItem Format(K, "##") + " " + R("TITLOS") + Space(1) + R("eidos")
 
-290                 Set o = Combo2.ComboItems.ADD(k + 1, "", Format(k, "##") + "---" + " " + R("TITLOS") + Space(1) + R("eidos"))
+290                 Set o = Combo2.ComboItems.Add(k + 1, "", Format(k, "##") + "---" + " " + R("TITLOS") + Space(1) + R("eidos"))
 300                 Combo2.ComboItems(k + 1).Image = 3
 
                 End If
