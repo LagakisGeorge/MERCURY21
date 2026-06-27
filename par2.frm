@@ -472,7 +472,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   146276353
+      Format          =   153616385
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -486,7 +486,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   146276353
+      Format          =   153616385
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -883,7 +883,7 @@ End If
 
 
         'eggtim.DatabaseName = gDir
-        On Error GoTo latos
+        On Error GoTo LATOS
 
 140     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
 150     d2 = DateAdd("d", 1, D1)
@@ -1078,7 +1078,7 @@ FIND_N_NUMBER:
 1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
 1130    Return
 
-latos:
+LATOS:
 
         '<EhFooter>
 Resume Next
@@ -1250,7 +1250,7 @@ Private Sub Command2_Click()
 
         Dim X As String
 
-        On Error GoTo latos
+        On Error GoTo LATOS
         
         
         Dim MAPOT As Integer
@@ -1321,7 +1321,7 @@ Private Sub Command2_Click()
 
         Exit Sub
 
-latos:
+LATOS:
 
         '<EhFooter>
         Exit Sub
@@ -1356,7 +1356,7 @@ Private Sub Command3_Click()
 
         Dim ANS    As Integer, sql As String
 
-        On Error GoTo latos
+        On Error GoTo LATOS
 
 100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
 110     d2 = DateAdd("d", 1, D1)
@@ -1518,7 +1518,7 @@ Private Sub Command3_Click()
 
         Exit Sub
 
-latos:
+LATOS:
 
         '<EhFooter>
         Exit Sub
@@ -1607,7 +1607,7 @@ Private Sub Command5_Click()
         Next
 
         'eggtim.DatabaseName = gDir
-        On Error GoTo latos
+        On Error GoTo LATOS
 
 140     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
 150     d2 = DateAdd("d", 1, D1)
@@ -1777,9 +1777,14 @@ Private Sub Command5_Click()
                     'CrystalReport1.ReportFileName = "C:\Mercvb\reports\timol1.rpt"
                      Ucr9print.printingCR9 mPrinterName, "C:\MERCVB\reports\ETIK_TIM.RPT"  'CrystalReport1.ReportFileName
 
-                     DB.Execute "DELETE * FROM DOK1"
+                    ' DB.Execute "DELETE * FROM DOK1"
 
 
+
+                       MHNYMA2.Timer1.Interval = 1000
+                       MHNYMA2.Label2.Caption = "ετικέττα"
+
+                       MHNYMA2.SHOW 1
 
 
 
@@ -1943,7 +1948,7 @@ FIND_N_NUMBER:
 1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
 1130    Return
 
-latos:
+LATOS:
 
         '<EhFooter>
         Exit Sub
@@ -2054,7 +2059,7 @@ Private Sub Command7_Click()
 
         Dim ANS   As Integer, sql As String
 
-        On Error GoTo latos
+        On Error GoTo LATOS
 
 100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
 110     d2 = DateAdd("d", 1, D1)
@@ -2085,7 +2090,7 @@ Private Sub Command7_Click()
 
         Exit Sub
 
-latos:
+LATOS:
 
         '<EhFooter>
         Exit Sub
@@ -2119,7 +2124,7 @@ Private Sub Command8_Click()
 
         Dim ANS   As Integer, sql As String
 
-        On Error GoTo latos
+        On Error GoTo LATOS
 
 100     D1 = CDate(Format(TIM.Recordset("shme"), "dd/mm/yyyy"))
 110     d2 = DateAdd("d", 1, D1)
@@ -2150,7 +2155,7 @@ Private Sub Command8_Click()
 
         Exit Sub
 
-latos:
+LATOS:
 
         '<EhFooter>
         Exit Sub
