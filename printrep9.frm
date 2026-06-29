@@ -65,16 +65,28 @@ End If
 
 Set crxRpt = crxApp.OpenReport(mfile, 1)
 
+crxRpt.DiscardSavedData   'ReadRecords  ' NEO TO EBALA GIA REFRESH
+
 'Set crxRpt = crxApp.OpenReport("C:\mercvb\reports\timsql.rpt")
 If Left(ektypoths, 2) = ".." Then
 Else
    crxRpt.SelectPrinter "", ektypoths, ""
 End If
-
+On Error GoTo OUT
 crxRpt.PrintOut False, 1 ' NoCopies
 Exit Sub
 
+OUT:
 
+
+                       MHNYMA2.Timer1.Interval = 1000
+                       MHNYMA2.Label2.Caption = Err.Description
+
+                       MHNYMA2.SHOW 1
+
+
+
+Resume Next
 
 ''Declare a Connection Info Object
 'Dim ConnectionInfo As CRAXdDRT.ConnectionProperties

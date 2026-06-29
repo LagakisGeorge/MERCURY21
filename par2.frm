@@ -472,7 +472,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309460993
+      Format          =   155254785
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -486,7 +486,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309460993
+      Format          =   155254785
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -890,11 +890,11 @@ End If
 
 160     TIM.ConnectionString = gConnect
 
-170     EGGTIM.ConnectionString = gConnect
+170     eggtim.ConnectionString = gConnect
 
-180     EGGTIM.RecordSource = "select KODE,EID.ONO,POSO,TIMM,EKPT,EKPT2,FPA,STR(round(EID.LTI5,2),10,2) as [ΛΙΑΝ.ΤΙΜ],STR(ROUND(EID.LTI,2),10,2) AS [XON.TIM],STR(EID.XTI,10,2) AS [TIM.ΑΓ],EID.ERG,EID.CH4,PROELEYSH,KOLA,MON,EID.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
+180     eggtim.RecordSource = "select KODE,EID.ONO,POSO,TIMM,EKPT,EKPT2,FPA,STR(round(EID.LTI5,2),10,2) as [ΛΙΑΝ.ΤΙΜ],STR(ROUND(EID.LTI,2),10,2) AS [XON.TIM],STR(EID.XTI,10,2) AS [TIM.ΑΓ],EID.ERG,EID.CH4,PROELEYSH,KOLA,MON,EID.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
 
-190     EGGTIM.Refresh
+190     eggtim.Refresh
         'Label5.Caption = TIM.Recordset("epo")
         'Label2.Caption = TIM.Recordset("die")
         'Label3.Caption = TIM.Recordset("epa")
@@ -907,7 +907,7 @@ End If
 
 200     rec.Open "select * FROM MEM", Gdb, adOpenKeyset, adLockOptimistic
 
-210     If EGGTIM.Recordset.EOF Then
+210     If eggtim.Recordset.EOF Then
 220         MsgBox "ΔΕΝ ΕΥΡΕΘΗΣΑΝ ΕΓΓΡΑΦΕΣ "
 
             Exit Sub
@@ -916,32 +916,32 @@ End If
 
         Dim nkod
 
-230     EGGTIM.Recordset.MoveFirst
+230     eggtim.Recordset.MoveFirst
 
         Dim mlabel, MPER, mtimes, TIMM, timologio
         
                 kostologhsh.Value = vbChecked
                 
 
-240     Do While Not EGGTIM.Recordset.EOF
+240     Do While Not eggtim.Recordset.EOF
 
 
-                 EID.RecordSource = "SELECT *FROM EID WHERE KOD='" + EGGTIM.Recordset("kode") + "'"    ' , DB, adOpenKeyset, adLockOptimistic
+                 EID.RecordSource = "SELECT *FROM EID WHERE KOD='" + eggtim.Recordset("kode") + "'"    ' , DB, adOpenKeyset, adLockOptimistic
                  EID.Refresh
 
 
                             PAR112.Label10 = EID.Recordset("XTI")
 500
                               
-                            PAR112.FPAEID.Caption = EGGTIM.Recordset!FPA
-                            PAR112.ltiproekptosis = EGGTIM.Recordset("timm") * (100 - EGGTIM.Recordset("EKPT")) * (100 - EGGTIM.Recordset("EKPT2")) / 100 / 100 '************** Grid1.TextMatrix(k, F_T)
+                            PAR112.FPAEID.Caption = eggtim.Recordset!FPA
+                            PAR112.ltiproekptosis = eggtim.Recordset("timm") * (100 - eggtim.Recordset("EKPT")) * (100 - eggtim.Recordset("EKPT2")) / 100 / 100 '************** Grid1.TextMatrix(k, F_T)
                             PAR112.label11 = PAR112.ltiproekptosis ' ************* NeaTim
 
 510                         '**********If Val(Synolo.Caption) <> 0 Then
 520                          '***************   par112.Label4 = 100 * Val(metaf) / Val(Synolo)
                            ' *********  End If
 
-530                         PAR112.POSO.Caption = EGGTIM.Recordset("poso") ' "0" '************* p
+530                         PAR112.POSO.Caption = eggtim.Recordset("poso") ' "0" '************* p
 540                         PAR112.Text1(2) = Round(EID.Recordset("POS_KERD"), 3)
 
 550                         If IsNull(EID.Recordset("LTI5")) Then
@@ -1002,32 +1002,32 @@ End If
 '                                End If
                             
                             
-                                Dim m_dat As String: m_dat = Format(EGGTIM.Recordset("HME"), "mm/dd/yyyy")
+                                Dim m_dat As String: m_dat = Format(eggtim.Recordset("HME"), "mm/dd/yyyy")
                                 
                                 If IsNull(EID.Recordset("lastupd")) Then
                                      
-                                     Gdb.Execute "update EID SET LASTUPD='" + m_dat + "' WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                                     Gdb.Execute "update EID SET LASTUPD='" + m_dat + "' WHERE KOD='" + eggtim.Recordset("kode") + "'"
                                 Else
-                                   If EID.Recordset("lastupd") < EGGTIM.Recordset("HME") Then
-                                         Gdb.Execute "update EID SET LASTUPD='" + m_dat + "' WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                                   If EID.Recordset("lastupd") < eggtim.Recordset("HME") Then
+                                         Gdb.Execute "update EID SET LASTUPD='" + m_dat + "' WHERE KOD='" + eggtim.Recordset("kode") + "'"
                                    End If
                                 
                                 End If
                             
                             
                                
-                               Gdb.Execute "update EID SET XTI=" + Replace(PAR112.ltiproekptosis, ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
-                                 Gdb.Execute "update EID SET LTI5=" + Replace(PAR112.Text1(4), ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
-                                   Gdb.Execute "update EID SET LTI=" + Replace(PAR112.Text1(7), ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                               Gdb.Execute "update EID SET XTI=" + Replace(PAR112.ltiproekptosis, ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
+                                 Gdb.Execute "update EID SET LTI5=" + Replace(PAR112.Text1(4), ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
+                                   Gdb.Execute "update EID SET LTI=" + Replace(PAR112.Text1(7), ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
                                 Dim POSK As Double
                                 POSK = (100 * gVal(PAR112.Text1(4))) / ((100 + g_Fpa(EID.Recordset("FPA"))) / 100 * gVal(PAR112.ltiproekptosis)) - 100
-                                   Gdb.Execute "update EID SET POS_KERD=" + Replace(str(POSK), ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                                   Gdb.Execute "update EID SET POS_KERD=" + Replace(str(POSK), ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
         
                                    POSK = (100 * gVal(PAR112.Text1(7))) / gVal(PAR112.ltiproekptosis) - 100               '  EID.Recordset("XTI") - 100
-                                    Gdb.Execute "update EID SET POS_KERD2=" + Replace(str(POSK), ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                                    Gdb.Execute "update EID SET POS_KERD2=" + Replace(str(POSK), ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
         
-                                   Gdb.Execute "update EID SET LTI2=" + Replace(PAR112.LTI2.Text, ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
-                                       Gdb.Execute "update EID SET LTI3=" + Replace(PAR112.LTI3.Text, ",", ".") + " WHERE KOD='" + EGGTIM.Recordset("kode") + "'"
+                                   Gdb.Execute "update EID SET LTI2=" + Replace(PAR112.LTI2.Text, ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
+                                       Gdb.Execute "update EID SET LTI3=" + Replace(PAR112.LTI3.Text, ",", ".") + " WHERE KOD='" + eggtim.Recordset("kode") + "'"
         
                             
 700                             'EID.Recordset("XTI") = Replace(PAR112.ltiproekptosis, ",", ".") '   ************NeaTim
@@ -1052,7 +1052,7 @@ End If
                         If PAR2.EXODOS.Caption = "1" Then
                            Exit Do
                         End If
-1040        EGGTIM.Recordset.MoveNext
+1040        eggtim.Recordset.MoveNext
 
         Loop
 
@@ -1075,7 +1075,7 @@ FIND_N_NUMBER:
 
 1100    rec.Update
 1110    mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
+1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + eggtim.Recordset("KODE") + "'"
 1130    Return
 
 LATOS:
@@ -1306,7 +1306,7 @@ Private Sub Command2_Click()
 
         On Error GoTo Command2_Click_Err
 
-260     synt = " left(atim,7)='" + Left(EGGTIM.Recordset("atim"), 7) + "'"
+260     synt = " left(atim,7)='" + Left(eggtim.Recordset("atim"), 7) + "'"
 
 270     sql = "select pel.epo,atim,format(hme,'dd/mm/yy') as shme,aji as ajia,pel.epa,pel.die,pel.afm into tim in 'c:\mercvb\reports\reports.mdb' "
 280     sql = sql + "from tim inner join pel on tim.eidos+tim.kpe=pel.eidos+pel.kod where " + synt + " and hme>=#" + Format(D1, "mm/dd/yyyy") + "# and hme<#" + Format(d2, "mm/dd/yyyy") + "#  order by prood_aj;"
@@ -1614,11 +1614,11 @@ Private Sub Command5_Click()
 
 160     TIM.ConnectionString = gConnect
 
-170     EGGTIM.ConnectionString = gConnect
+170     eggtim.ConnectionString = gConnect
 
-180     EGGTIM.RecordSource = "select KODE,POSO,TIMM,EID.ONO,ROUND(ISNULL(EID.LTI5,0),2) AS LTI5,ROUND(EID.LTI,2) AS LTI,ROUND(EID.XTI,2) AS XTI,EID.ERG,EID.CH4,PROELEYSH,KOLA,ISNULL(MON,'') AS MON,EGGTIM.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
+180     eggtim.RecordSource = "select KODE,POSO,TIMM,EID.ONO,ROUND(ISNULL(EID.LTI5,0),2) AS LTI5,ROUND(EID.LTI,2) AS LTI,ROUND(EID.XTI,2) AS XTI,EID.ERG,EID.CH4,PROELEYSH,KOLA,ISNULL(MON,'') AS MON,EGGTIM.FPA,PELKOD,ATIM,HME from EGGTIM inner join EID on EGGTIM.KODE=EID.KOD where left(ATIM," + str(1 + f_psifia_atim) + ")='" + Left(TIM.Recordset("atim"), 1 + f_psifia_atim) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'  order by PROOD_AJ ;"
 
-190     EGGTIM.Refresh
+190     eggtim.Refresh
         'Label5.Caption = TIM.Recordset("epo")
         'Label2.Caption = TIM.Recordset("die")
         'Label3.Caption = TIM.Recordset("epa")
@@ -1631,7 +1631,7 @@ Private Sub Command5_Click()
 
 200     rec.Open "select * FROM MEM", Gdb, adOpenKeyset, adLockOptimistic
 
-210     If EGGTIM.Recordset.EOF Then
+210     If eggtim.Recordset.EOF Then
 220         MsgBox "ΔΕΝ ΕΥΡΕΘΗΣΑΝ ΕΓΓΡΑΦΕΣ "
 
             Exit Sub
@@ -1640,55 +1640,73 @@ Private Sub Command5_Click()
 
         Dim nkod
 
-230     EGGTIM.Recordset.MoveFirst
+230     eggtim.Recordset.MoveFirst
 
         Dim mlabel, MPER, mtimes, TIMM, timologio
         
         
-           If Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
+'           If Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
+'
+'               Dim r7 As DAO.Recordset
+'               Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
+'               ' DB.Execute "DELETE * FROM DOK1"
+'               Set r7 = DB.OpenRecordset("DOK1")
+'
+'            End If
+        
+        
+        
+         Dim r7 As DAO.Recordset
+
+240     Do While Not eggtim.Recordset.EOF
+
+
+            If Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
             
-               Dim r7 As DAO.Recordset
+              
                Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
                ' DB.Execute "DELETE * FROM DOK1"
                Set r7 = DB.OpenRecordset("DOK1")
                
             End If
-        
-        
-        
-        
 
-240     Do While Not EGGTIM.Recordset.EOF
 
-250         If IsNull(EGGTIM.Recordset("ERG")) Then
+
+
+
+
+
+
+
+250         If IsNull(eggtim.Recordset("ERG")) Then
 260             GoSub FIND_N_NUMBER
             Else
 
-270             If Val(EGGTIM.Recordset("ERG")) = 0 Then
+270             If Val(eggtim.Recordset("ERG")) = 0 Then
 280                 GoSub FIND_N_NUMBER
                 Else
-290                 mlabel = EGGTIM.Recordset("erg")
+290                 mlabel = eggtim.Recordset("erg")
                 End If
             End If
 
-300         MPER = EGGTIM.Recordset("ono")
-310         nkod = EGGTIM.Recordset("kode")
+300         MPER = eggtim.Recordset("ono")
+310         nkod = eggtim.Recordset("kode")
 
 320         If noask.Value = vbChecked Then
-330             mtimes = EGGTIM.Recordset("poso")
+330             mtimes = eggtim.Recordset("poso")
             Else
             
                 If Len(Dir("C:\MERCVB\MELIS.TXT", vbNormal)) = 0 Then
-                   mtimes = InputBox("Πόσες ετικέτες;", MPER, EGGTIM.Recordset("poso"))
+                   mtimes = InputBox("Πόσες ετικέτες;", MPER, eggtim.Recordset("poso"))
                 Else
-                      mtimes = InputBox("Πόσες ετικέτες;", MPER, EGGTIM.Recordset("KOLA"))
+                      mtimes = InputBox("Πόσες ετικέτες;", MPER, eggtim.Recordset("KOLA"))
                 End If
             
 '340             mtimes = InputBox("Πόσες ετικέτες;", MPER, EGGTIM.Recordset("poso"))
             End If
 
-350         TIMM = Format(EGGTIM.Recordset("LTI5"), "####0.00")
-360         timologio = EGGTIM.Recordset("kode") + Left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + mID(Format(EGGTIM.Recordset("hme"), "yyyyMMDD"), 3, 6) + "-" + Format(EGGTIM.Recordset("POSO"), "##0")
+350         TIMM = Format(eggtim.Recordset("LTI5"), "####0.00")
+360         timologio = eggtim.Recordset("kode") + Left(TIM.Recordset("atim"), 6) + "=" + eggtim.Recordset("pelkod") + Format(eggtim.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + mID(Format(eggtim.Recordset("hme"), "yyyyMMDD"), 3, 6) + "-" + Format(eggtim.Recordset("POSO"), "##0")
 
             Dim EPIPLEON As Long
 
@@ -1757,7 +1775,7 @@ Private Sub Command5_Click()
 550                 Printer.Print Tab(ar_per + EPIPLEON); timologio
 560                 Printer.FontSize = 16
 570                 Printer.FontBold = True
-580                 Printer.Print Tab(ar_per); Trim(LTrim(TIMM)) + " €  /" + EGGTIM.Recordset("MON")
+580                 Printer.Print Tab(ar_per); Trim(LTrim(TIMM)) + " €  /" + eggtim.Recordset("MON")
 
 590                 Printer.EndDoc
 
@@ -1779,8 +1797,9 @@ Private Sub Command5_Click()
                     'CrystalReport1.Action = 1
                     
                     'CrystalReport1.ReportFileName = "C:\Mercvb\reports\timol1.rpt"
-                     Ucr9print.printingCR9 mPrinterName, "C:\MERCVB\reports\ETIK_TIM.RPT"  'CrystalReport1.ReportFileName
-
+                     Ucr9print.printingCR9 "..", "C:\MERCVB\reports\ETIK_TIM.RPT"  'CrystalReport1.ReportFileName
+'  Ucr9print.printingCR9 F_EKTYPOTHS, CrystalReport1.ReportFileName
+                
                     ' DB.Execute "DELETE * FROM DOK1"
 
 
@@ -1808,9 +1827,9 @@ Private Sub Command5_Click()
                     Printer.Print Tab(1); "ΤΗΛ.2521031987"
 650                 Printer.Print Tab(1); "ΕΙΔΟΣ: " + MPER
                     Printer.Print Tab(1); "ΠΡΟΕΛΕΥΣΗ    ΠΑΡΤIΔA :"
-                    Printer.Print Tab(1); EGGTIM.Recordset("PROELEYSH")
+                    Printer.Print Tab(1); eggtim.Recordset("PROELEYSH")
                     Printer.Print Tab(1); "ΠΟΙΟΤΗΤΑ: Ι "
-                    Printer.Print Tab(1); "GR " + EGGTIM.Recordset("CH4")
+                    Printer.Print Tab(1); "GR " + eggtim.Recordset("CH4")
                  '   Printer.Print Tab(0); "GR" + EGGTIM.Recordset("CH4")
 
 '660                 BarCode1.ShowText = NO
@@ -1856,7 +1875,7 @@ Private Sub Command5_Click()
 5500                 Printer.Print Tab(ar_per + EPIPLEON); timologio
 5600                 Printer.FontSize = 16
 5700                 Printer.FontBold = True
-5800                 Printer.Print Tab(ar_per); Trim(LTrim(TIMM)) + " €  /" + EGGTIM.Recordset("MON")
+5800                 Printer.Print Tab(ar_per); Trim(LTrim(TIMM)) + " €  /" + eggtim.Recordset("MON")
 5900                 Printer.EndDoc
 
 760             ElseIf Len(Dir("C:\LAGEURO\LOISIR.TXT")) Then
@@ -1876,7 +1895,7 @@ Private Sub Command5_Click()
 840                 Printer.FontSize = 6    ' 10000020
 
 850                 Printer.CurrentY = 400    '546  ΠΑΝΟ ΣΤΗΝ ΕΤΙΚΕΤΑ   '
-860                 Printer.Print Tab(7); EGGTIM.Recordset("kode")
+860                 Printer.Print Tab(7); eggtim.Recordset("kode")
 
 870                 Printer.FontSize = 7
 880                 Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
@@ -1908,7 +1927,7 @@ Private Sub Command5_Click()
 930                 Printer.Print Tab(30); mlabel
 940                 Printer.FontName = "ean13"    ' "128"
 950                 Printer.FontSize = 6
-960                 Printer.Print Tab(18); EGGTIM.Recordset("kode")    ' mlabel
+960                 Printer.Print Tab(18); eggtim.Recordset("kode")    ' mlabel
 970                 Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
 980                 Printer.FontSize = 8
 990                 Printer.Print
@@ -1920,7 +1939,7 @@ Private Sub Command5_Click()
 
             Next
 
-1040        EGGTIM.Recordset.MoveNext
+1040        eggtim.Recordset.MoveNext
 
         Loop
 
@@ -1949,7 +1968,7 @@ FIND_N_NUMBER:
 
 1100    rec.Update
 1110    mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + EGGTIM.Recordset("KODE") + "'"
+1120    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + eggtim.Recordset("KODE") + "'"
 1130    Return
 
 LATOS:
@@ -1977,7 +1996,7 @@ Private Sub Command6_Click()
 
         '</EhHeader>
 
-100     EGGTIM.Recordset.MoveFirst
+100     eggtim.Recordset.MoveFirst
 
         Dim a, B
 
@@ -1997,7 +2016,7 @@ Private Sub Command6_Click()
 
         Dim ANS, F
 
-130     Do While Not EGGTIM.Recordset.EOF
+130     Do While Not eggtim.Recordset.EOF
 
 140         PI = a + "\" + Format(B, "0000") + ".jpg"
 
@@ -2005,22 +2024,22 @@ Private Sub Command6_Click()
 160             Picture1.Picture = LoadPicture(PI)
             Else
 
-170             Me.Caption = "Αναζήτηση φωτογραφίας του είδους :" + EGGTIM.Recordset(3) + EGGTIM.Recordset(0)
+170             Me.Caption = "Αναζήτηση φωτογραφίας του είδους :" + eggtim.Recordset(3) + eggtim.Recordset(0)
 180             cd1.InitDir = a
 190             cd1.ShowSave
 200             Picture1.Picture = LoadPicture(cd1.FILENAME)
 210             PI = cd1.FILENAME
             End If
 
-220         ANS = MsgBox(Left(EGGTIM.Recordset(3), 25) + Chr(13) + mID$(EGGTIM.Recordset(3), 26, 15), vbYesNo, "Να αποθηκευτεί η φωτογραφία")
+220         ANS = MsgBox(Left(eggtim.Recordset(3), 25) + Chr(13) + mID$(eggtim.Recordset(3), 26, 15), vbYesNo, "Να αποθηκευτεί η φωτογραφία")
 
-230         If Len(Dir("C:\MERCVB\IMAGES\" + EGGTIM.Recordset("kode"))) > 0 Then
-240             Kill "C:\MERCVB\IMAGES\" + EGGTIM.Recordset("kode")
+230         If Len(Dir("C:\MERCVB\IMAGES\" + eggtim.Recordset("kode"))) > 0 Then
+240             Kill "C:\MERCVB\IMAGES\" + eggtim.Recordset("kode")
             End If
 
 250         If ANS = vbYes Then
                 ' A + "\" + Format(B, "0000") + ".jpg"
-260             Name PI As "C:\MERCVB\IMAGES\" + EGGTIM.Recordset("kode")
+260             Name PI As "C:\MERCVB\IMAGES\" + eggtim.Recordset("kode")
 
             Else
 270             cd1.InitDir = a
@@ -2029,7 +2048,7 @@ Private Sub Command6_Click()
             End If
 
 290         B = B + 1
-300         EGGTIM.Recordset.MoveNext
+300         eggtim.Recordset.MoveNext
         Loop
 
         '<EhFooter>
@@ -2223,7 +2242,7 @@ Sub SHOW_TIMOL()
 110     d2 = DateAdd("d", 1, D1)
         'TIM.DatabaseName = gDir
 120     TIM.ConnectionString = gConnect
-130     EGGTIM.ConnectionString = gConnect
+130     eggtim.ConnectionString = gConnect
 
         On Error GoTo DBGrid1_RowColChange_Err
 
@@ -2244,8 +2263,8 @@ Sub SHOW_TIMOL()
 200         sql = sql + "  AND APOT=" + Format(TIM.Recordset("B_N1"), "0") + "  order by PROOD_AJ;"
         End If
 
-210     EGGTIM.RecordSource = sql
-220     EGGTIM.Refresh
+210     eggtim.RecordSource = sql
+220     eggtim.Refresh
 
 
 'Exit Sub
