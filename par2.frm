@@ -472,7 +472,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   153616385
+      Format          =   309460993
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -486,7 +486,7 @@ Begin VB.Form par2
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   153616385
+      Format          =   309460993
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1649,7 +1649,7 @@ Private Sub Command5_Click()
             
                Dim r7 As DAO.Recordset
                Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
-               DB.Execute "DELETE * FROM DOK1"
+               ' DB.Execute "DELETE * FROM DOK1"
                Set r7 = DB.OpenRecordset("DOK1")
                
             End If
@@ -1763,13 +1763,17 @@ Private Sub Command5_Click()
 
 600             ElseIf Len(Dir("C:\MERCVB\ETIKREP.TXT", vbNormal)) > 0 Then
 
-                    r7.AddNew
+                    If r7.RecordCount = 0 Then
+                        r7.AddNew
+                        r7.Update
+                    End If
+                    r7.Edit
                     r7("EPO") = MPER
                     r7("THL") = mlabel
-                    r7("DIE") = timologio
+                    r7("DIE") = Left(timologio, 25)
                     r7("TYP") = gVal(TIMM) '+ " €  /"
                     r7.Update
-                    r7.Close
+                   ' r7.Close
                     
                     'CrystalReport1.ReportFileName = "C:\MERCVB\reports\ETIK_TIM.RPT"
                     'CrystalReport1.Action = 1
