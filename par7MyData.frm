@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   153419777
+      Format          =   442105857
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   153419777
+      Format          =   442105857
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7978,7 +7977,8 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                                 'f_SDA = FINDPARAMETROI(1, "PAR1", "F_SDA", "Ÿ;V", "◊¡—¡ ‘«—.√—¡ÃÃ¡ ”ƒ¡ ≈Õ¡—Œ«”  ¡… ≈–…”‘—œ÷«” –.◊. ÷;ÿ") '
                                 ' EAN EINAI SYGK.DELTIO EPISTROFHS
                                 If isDiakin = 2 Then ' DA ”’√ ≈Õ‘—Ÿ‘… œ  À–    'And Split(f_SDA, ";")(1) = Left(sqlDt("ATIM"), 1) Then
-                                    Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso") - EGGTIM("MIKTAKILA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+                                    Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+                                    ' Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(eggtim("poso") - eggtim("MIKTAKILA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                 Else
 622                                 Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                 End If
