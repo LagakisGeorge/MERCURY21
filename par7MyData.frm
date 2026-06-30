@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
@@ -423,7 +423,7 @@ Begin VB.Form Par7MyData
    Begin VB.CommandButton cmddiagdokimi 
       Caption         =   "ΔΙΑΓΡΑΦΗ ΔΟΚΙΜΑΣΤΙΚΩΝ"
       Height          =   360
-      Left            =   7800
+      Left            =   7320
       TabIndex        =   28
       Top             =   4680
       Width           =   2172
@@ -742,11 +742,11 @@ Begin VB.Form Par7MyData
    End
    Begin VB.CommandButton Command4 
       Caption         =   "δικα μας παραστατικά που εχουν ανεβει στο MYDATA"
-      Height          =   495
-      Left            =   6600
+      Height          =   375
+      Left            =   9600
       TabIndex        =   9
-      Top             =   9000
-      Width           =   5292
+      Top             =   4680
+      Width           =   3975
    End
    Begin VB.CommandButton UPLOAD 
       Caption         =   "UPLOAD INV"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   442105857
+      Format          =   308281345
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   442105857
+      Format          =   308281345
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1699,7 +1700,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1713,8 +1714,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.ΜΕΤΡ' WHERE TRP LIKE 'ΜΕ%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.ΠΙΣΤ' WHERE TRP LIKE 'ΠΙ%' "
 
-118     apo.SetFocus
-120     eos.SetFocus
+118     APO.SetFocus
+120     EOS.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -1766,12 +1767,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     data1.RecordSource = arxeio
-110     data1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = data1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -4329,7 +4330,7 @@ Private Sub Command12_Click()
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4809,7 +4810,7 @@ cmdKOYKAKH.Enabled = False
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ΚΟΥΚΑ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ΚΟΥΚΑ%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -6867,7 +6868,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(apo) < 2021 Then
+102     If Year(APO) < 2021 Then
 104         MsgBox "ΛΑΘΟΣ ΗΜΕΡΟΜΗΝΙΑ"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6908,7 +6909,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -6976,10 +6977,12 @@ FIND_QUERY_Err:
 
 End Function
 
-Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As Integer ' 1=no messbog
+Public Function ToXMLsub(ByVal noask As Integer, _
+                         ByRef markReal As String) As Integer ' 1=no messbog
      
-   Dim m_is_benzinadiko As Integer
-     m_is_benzinadiko = Val(FINDPARAMETROI(1, "PAR1", "f_is_benzinadiko", "0", "Γ.34.EINAI BENZINAΔIKO=1 ΟΧΙ=0"))  'αγορ=1 πωλ=2 παντου=3 ΟΧΙ=0"))
+        Dim m_is_benzinadiko As Integer
+
+        m_is_benzinadiko = Val(FINDPARAMETROI(1, "PAR1", "f_is_benzinadiko", "0", "Γ.34.EINAI BENZINAΔIKO=1 ΟΧΙ=0"))  'αγορ=1 πωλ=2 παντου=3 ΟΧΙ=0"))
 
         '<EhHeader>
         On Error GoTo ToXMLsub_Err
@@ -7171,20 +7174,20 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 
         Dim elemField As MSXML2.IXMLDOMElement
         
-        
-          ' ΑΝ ΤΟ ΒΕΝΖΙΝΑΔΙΚΟ ΚΟΒΕΙ ΤΙΜ ΓΙΑ ΛΑΔΙΑ ΝΑ ΓΥΡΙΖΕΙ ΒΕΝΖΙΝΑΔΙΚΟ=0
+        ' ΑΝ ΤΟ ΒΕΝΖΙΝΑΔΙΚΟ ΚΟΒΕΙ ΤΙΜ ΓΙΑ ΛΑΔΙΑ ΝΑ ΓΥΡΙΖΕΙ ΒΕΝΖΙΝΑΔΙΚΟ=0
 
-                                 If m_is_benzinadiko = 1 Then
-                                    Dim mm_code As String
+        If m_is_benzinadiko = 1 Then
+
+            Dim mm_code As String
                                    
-                                     mm_code = GGET_CVALUE("select KODE FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM")))
-                                     If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(mm_code)) > 0 Then      'μονο στου βενζιναδικου να βγαζει fuelcode
-                                         m_is_benzinadiko = 1
-                                    Else
-                                         m_is_benzinadiko = 0
-                                    End If
-                                 End If
-        
+            mm_code = GGET_CVALUE("select KODE FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM")))
+
+            If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(mm_code)) > 0 Then      'μονο στου βενζιναδικου να βγαζει fuelcode
+                m_is_benzinadiko = 1
+            Else
+                m_is_benzinadiko = 0
+            End If
+        End If
     
         '<InvoicesDoc   xmlns="http://www.aade.gr/myDATA/invoice/v1.0"
         ' xsi:schemaLocation="http://www.aade.gr/myDATA/invoice/v1.0 schema.xsd"
@@ -7283,8 +7286,11 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 266                 SUM_MIK2 = 0
 
                     Dim SUMESFPASEIRON As Single
+
                     Dim PROTO          As Long: PROTO = 0 ' ΤΟ ΠΡΟΤΟ ΕΓΓΤΙΜ ΓΙΑ ΝΑ PAREI THN DIAFORA STO KAU_AJIA
+
 268                 Do While Not EGGTIM.EOF
+
                         If PROTO = 0 Then PROTO = EGGTIM!ID
 270                     suma_kathg = suma_kathg + EGGTIM!kau_ajia
 272                     SUM_MIK2 = SUM_MIK2 + EGGTIM!MIK_AJIA
@@ -7341,6 +7347,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                     End If
                     
                     Dim TESTSUMES As Double
+
                     TESTSUMES = GGET_NVALUE("SELECT SUM(ROUND(MIK_AJIA,2) -ROUND(KAU_AJIA,2)) FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM")))
                     
                     Dim KL1 As Integer, SUMFPASEIRON As Single
@@ -7348,10 +7355,13 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                     'ΕΧΩ ΔΙΑΦΟΡΑ ΣΤΟ TIM.FPA1+TIM.FPA2.. ME TO SUM(ROUND(MIK_AJIA,2) -ROUND(KAU_AJIA,2))
                     ' KAI PREPEI NA RIZV THN DIAFORA STO PROTO RECORD TOY EGGTIM
                     If Abs(SumFpa - SUMESFPASEIRON) > 0.005 And Abs(SumFpa - Round(SUMESFPASEIRON, 2)) < 0.1 Then
+
                         Dim DIAFORA_APO_TIM As Double
+
                         DIAFORA_APO_TIM = SumFpa - Round(TESTSUMES, 2)
                     
                         DIAFORA_APO_TIM = Round(DIAFORA_APO_TIM, 2)
+
                         If DIAFORA_APO_TIM > 0 Then
                             Gdb.Execute "UPDATE EGGTIM SET MIK_AJIA=MIK_AJIA+" + LTrim(str(Abs(DIAFORA_APO_TIM))) + "  WHERE ID=" + str(PROTO)
                         Else
@@ -7393,7 +7403,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                         'isDiakin = 2
 
 330                     List1.AddItem SQLDT("ATIM") + " " + Format(SQLDT("hme"), "dd/MM/yyyy")
-332                    ' Set elemField = docStock.createElement("uid"): elemField.Text = str(i + 1): INVOICE.appendChild elemField
+332                     ' Set elemField = docStock.createElement("uid"): elemField.Text = str(i + 1): INVOICE.appendChild elemField
                       
                         Dim IssuerAFM, IssuerCountry, iss
                       
@@ -7480,8 +7490,6 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 400                         If issuer_country <> "GR" Or isDiakin >= 1 Then
                             
 402                             Set elem2Field = docStock.createElement("name"): elem2Field.Text = f_pelono: elemField.appendChild elem2Field
-                               
-                                        
                                         
 404                             Set elem2Field = docStock.createElement("address") ' δημιουργω εσοχ'
 406                             Set elem3Field = docStock.createElement("street"): elem3Field.Text = f_peldie: elem2Field.appendChild elem3Field
@@ -7504,6 +7512,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 424                             Set elem2Field = docStock.createElement("country"): elem2Field.Text = SQLDT("COUNTRY"): elemField.appendChild elem2Field
 
                                 Dim pelst2 As String: pelst2 = Trim(SQLDT("PELBRANCH"))
+
                                 If Len(pelst2) = 0 Then
                                     pelst2 = "0"
                                 End If
@@ -7515,19 +7524,21 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 430                                 Set elem2Field = docStock.createElement("name"): elem2Field.Text = SQLDT("epo"): elemField.appendChild elem2Field
                                 End If
                                 
-                               ' If m_is_benzinadiko = 1 Then  'PEL.CH1 AS DEH
-                                     'supplyAccountNo  deh
-                               '      Set elem2Field = docStock.createElement("supplyAccountNo"): elem2Field.Text = CNull(sqlDt("DEH")): elemField.appendChild elem2Field
-                              '  End If
-                                
+                                ' If m_is_benzinadiko = 1 Then  'PEL.CH1 AS DEH
+                                'supplyAccountNo  deh
+                                '      Set elem2Field = docStock.createElement("supplyAccountNo"): elem2Field.Text = CNull(sqlDt("DEH")): elemField.appendChild elem2Field
+                                '  End If
                         
 432                             Set elem2Field = docStock.createElement("address") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
                                 
 434                             Set elem3Field = docStock.createElement("street"): elem3Field.Text = CNull(SQLDT("DIE")): elem2Field.appendChild elem3Field
+
                                 Dim pelst As String: pelst = Trim(SQLDT("PELSTREETNUMBER"))
+
                                 If Len(pelst) = 0 Then
                                     pelst = "0"
                                 End If
+
 436                             Set elem3Field = docStock.createElement("number"): elem3Field.Text = pelst: elem2Field.appendChild elem3Field
                                 
 438                             Set elem3Field = docStock.createElement("postalCode"): elem3Field.Text = CNull(SQLDT("TK")): elem2Field.appendChild elem3Field
@@ -7569,12 +7580,11 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 
 470                     Set elem2Field = docStock.createElement("exchangeRate"): elem2Field.Text = isot: elemField.appendChild elem2Field
 
-                         If Split(ctypos, ";")(0) = "10.1" Then
+                        If Split(ctypos, ";")(0) = "10.1" Then
                          
-                               Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
+                            Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
                                       
-                         End If
-
+                        End If
                  
 524                     If Split(ctypos, ";")(0) = "5.1" Or Split(ctypos, ";")(0) = "9.1" Then  ' -------- συσχετιζομενο
 526                         CR8 = "": CR8B = ""
@@ -7610,42 +7620,34 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                                 End If
                            
                             End If
-                        
                                                  
                         End If
-
-                       
-                       
-                       
-                       
                        
 472                     If isDiakin >= 1 Then   'tda=1  δελ.αποστ=2
-                              If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
+                            If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                                 'receivingNotePurpose
-                                 'DEMO ONLY WORKS  NEXT LINE
-                                 ' Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
-                       
+                                'DEMO ONLY WORKS  NEXT LINE
+                                ' Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
                               
-                              Else
+                            Else
 
 474                             Set elem2Field = docStock.createElement("dispatchDate"): elem2Field.Text = Format(SQLDT("HMEPARAD"), "yyyy-MM-dd"): elemField.appendChild elem2Field
 476                             Set elem2Field = docStock.createElement("dispatchTime"): elem2Field.Text = Trim(SQLDT("ORAPARAD")) + ":00.0000000Z": elemField.appendChild elem2Field
 478                             Set elem2Field = docStock.createElement("vehicleNumber"): elem2Field.Text = SQLDT("AYTOK"): elemField.appendChild elem2Field
 480                             Set elem2Field = docStock.createElement("movePurpose"): elem2Field.Text = Left(SQLDT("SKOPOS"), 2): elemField.appendChild elem2Field
-                             End If
+                            End If
 
+                            If m_is_benzinadiko = 1 Then
 
-                      If m_is_benzinadiko = 1 Then
-                        Dim CODE_MLADIA As String
-                        CODE_MLADIA = GGET_CVALUE("SELECT KODE FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM"))) 'ΠΑΙΡΝΩ ΤΟΝ ΚΩΔΙΚΟ ΠΟΥ ΠΟΥΛΗΘΗΚΕ
+                                Dim CODE_MLADIA As String
+
+                                CODE_MLADIA = GGET_CVALUE("SELECT KODE FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM"))) 'ΠΑΙΡΝΩ ΤΟΝ ΚΩΔΙΚΟ ΠΟΥ ΠΟΥΛΗΘΗΚΕ
                         
-                        'ΜΟΝΟ ΟΤΑΝ ΕΙΝΑΙ ΚΑΥΣΙΜΑ
-                        If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", CODE_MLADIA) > 0 Then   'μονο στου βενζιναδικου να βαζει fuelInvoice
-                            Set elem2Field = docStock.createElement("fuelInvoice"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                        End If
-                     End If
-
-
+                                'ΜΟΝΟ ΟΤΑΝ ΕΙΝΑΙ ΚΑΥΣΙΜΑ
+                                If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", CODE_MLADIA) > 0 Then   'μονο στου βενζιναδικου να βαζει fuelInvoice
+                                    Set elem2Field = docStock.createElement("fuelInvoice"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                                End If
+                            End If
 
                             'Δ.Α. για λογαριασμο τριτων
                             If isDiakin = 2 And Val(Left(SQLDT("SKOPOS"), 2)) = 2 Then
@@ -7664,63 +7666,92 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                                 '      </address>
                                 ' </entityData>
                                 '</otherCorrelatedEntities>
-                                Dim otherCorrelatedEntities As MSXML2.IXMLDOMElement
-                                Set otherCorrelatedEntities = docStock.createElement("otherCorrelatedEntities") ' δημιουργω εσοχ'
-                                Set elem3Field = docStock.createElement("type"): elem3Field.Text = "6": otherCorrelatedEntities.appendChild elem3Field
-                             
-                                '------------------------------------------------
-                                Set elem2Field = docStock.createElement("entityData") ' δημιουργω εσοχ'
-                                Set elem3Field = docStock.createElement("vatNumber"): elem3Field.Text = "000000000": elem2Field.appendChild elem3Field
-                                Set elem3Field = docStock.createElement("country"): elem3Field.Text = "GR": elem2Field.appendChild elem3Field
-                                Set elem3Field = docStock.createElement("branch"): elem3Field.Text = "0": elem2Field.appendChild elem3Field
-                                Set elem3Field = docStock.createElement("name"): elem3Field.Text = "TEST": elem2Field.appendChild elem3Field
-                              
-                                Set elem3Field = docStock.createElement("address") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
                                 
-                                Set elem33Field = docStock.createElement("street"): elem33Field.Text = "street---": elem3Field.appendChild elem33Field
-                                Set elem33Field = docStock.createElement("number"): elem33Field.Text = "00": elem3Field.appendChild elem33Field
-                                Set elem33Field = docStock.createElement("postalCode"): elem33Field.Text = "66100": elem3Field.appendChild elem33Field
-                                Set elem33Field = docStock.createElement("city"): elem33Field.Text = "drama": elem3Field.appendChild elem33Field
-                                elem2Field.appendChild elem3Field  'address
+                                Dim M_AFMGRAND As String
+
+                                Dim M_OLASTOIX As String
+
+                                M_AFMGRAND = GGET_CVALUE("SELECT ISNULL(AFMGRANDPEL,'0') FROM PARASTAT WHERE EIDOS='" + Left(SQLDT("ATIM"), 1) + "'")
+                                
+                                M_AFMGRAND = Trim(M_AFMGRAND)
+                                
+                                If Len(M_AFMGRAND) > 8 Then
+                                    
+                                    Dim M_STOIXGRAND As String
+
+                                    M_OLASTOIX = " ISNULL(EPO,' ') + ';' + ISNULL(DIE,' ') + ';' +  ISNULL(STREETNUMBER,' ') + ';' +  ISNULL(XRVMA,' ')  + ';' +  ISNULL(POL,' ') "
+                                    
+                                    M_STOIXGRAND = GGET_CVALUE("SELECT " + M_OLASTOIX + " FROM PEL WHERE AFM='" + M_AFMGRAND + "'") + ";;;;;;"
+
+                                    If Len(M_STOIXGRAND) < 10 Then
+                                        MsgBox "ΔΗΛΩΣΤΕ ΤΟ ΑΦΜ ΓΙΑ ΛΟΓΑΡΙΑΣΜΟ ΤΟΥ ΟΠΟΙΟΥ ΤΙΜΟΛΟΓΕΙΤΑΙ"
+                                           
+                                    Else
+
+                                        Dim otherCorrelatedEntities As MSXML2.IXMLDOMElement
+
+                                        Set otherCorrelatedEntities = docStock.createElement("otherCorrelatedEntities") ' δημιουργω εσοχ'
+                                        Set elem3Field = docStock.createElement("type"): elem3Field.Text = "4": otherCorrelatedEntities.appendChild elem3Field
+                             
+                                        '------------------------------------------------
+                                        Set elem2Field = docStock.createElement("entityData") ' δημιουργω εσοχ'
+                                        Set elem3Field = docStock.createElement("vatNumber"): elem3Field.Text = M_AFMGRAND: elem2Field.appendChild elem3Field
+                                        Set elem3Field = docStock.createElement("country"): elem3Field.Text = "GR": elem2Field.appendChild elem3Field
+                                        Set elem3Field = docStock.createElement("branch"): elem3Field.Text = "0": elem2Field.appendChild elem3Field
+                                        Set elem3Field = docStock.createElement("name"): elem3Field.Text = Split(M_STOIXGRAND, ";")(0): elem2Field.appendChild elem3Field
+                              
+                                        Set elem3Field = docStock.createElement("address") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
+                                
+                                        Set elem33Field = docStock.createElement("street"): elem33Field.Text = Split(M_STOIXGRAND, ";")(1): elem3Field.appendChild elem33Field
+                                        Set elem33Field = docStock.createElement("number"): elem33Field.Text = Split(M_STOIXGRAND, ";")(2): elem3Field.appendChild elem33Field
+                                        Set elem33Field = docStock.createElement("postalCode"): elem33Field.Text = Split(M_STOIXGRAND, ";")(3): elem3Field.appendChild elem33Field
+                                        Set elem33Field = docStock.createElement("city"): elem33Field.Text = Split(M_STOIXGRAND, ";")(4): elem3Field.appendChild elem33Field
+                                        elem2Field.appendChild elem3Field  'address
                          
-                                otherCorrelatedEntities.appendChild elem2Field ' entityData
-                                '------------------------------------------------
-                                elemField.appendChild otherCorrelatedEntities '  otherCorrelatedEntities
+                                        otherCorrelatedEntities.appendChild elem2Field ' entityData
+                                        '------------------------------------------------
+                                        elemField.appendChild otherCorrelatedEntities '  otherCorrelatedEntities
+                                    End If
+                                End If
                             End If
 
                             Dim otherDeli As MSXML2.IXMLDOMElement
-                         If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
+
+                            If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                               
-                         Else
-482                         Set otherDeli = docStock.createElement("otherDeliveryNoteHeader") ' δημιουργω εσοχ'
-484                         Set elem2Field = docStock.createElement("loadingAddress") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
-                                     Dim ADDRESS1(10) As String, FORT As String
-                                     FORT = SQLDT("FORTOSH")
-                                     ADDRESS1(0) = f_peldie
-                                     ADDRESS1(1) = IIf(Len(f_pelarit) = 0, "0", f_pelarit)
-                                     ADDRESS1(2) = f_pelpol
-                                     ADDRESS1(3) = f_peltk
-                                   If InStr(FORT, ";") > 0 Then ' (Split(ctypos, ";")(0)
-                                        ADDRESS1(0) = Split(FORT, ";")(0)
-                                        ADDRESS1(1) = Split(FORT, ";")(1)
-                                        ADDRESS1(2) = Split(FORT, ";")(2)
-                                        ADDRESS1(3) = Split(FORT, ";")(3)
-                                   End If
-486                         Set elem3Field = docStock.createElement("street"): elem3Field.Text = ADDRESS1(0): elem2Field.appendChild elem3Field
-488                         Set elem3Field = docStock.createElement("number"): elem3Field.Text = ADDRESS1(1): elem2Field.appendChild elem3Field
-490                         Set elem3Field = docStock.createElement("postalCode"): elem3Field.Text = ADDRESS1(3): elem2Field.appendChild elem3Field
-492                         Set elem3Field = docStock.createElement("city"): elem3Field.Text = ADDRESS1(2): elem2Field.appendChild elem3Field
-494                         otherDeli.appendChild elem2Field
+                            Else
+482                             Set otherDeli = docStock.createElement("otherDeliveryNoteHeader") ' δημιουργω εσοχ'
+484                             Set elem2Field = docStock.createElement("loadingAddress") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
 
-496                         Set elem2Field = docStock.createElement("deliveryAddress") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
-498                         Set elem3Field = docStock.createElement("street"): elem3Field.Text = CNull(SQLDT("STREET")): elem2Field.appendChild elem3Field
-500                         Set elem3Field = docStock.createElement("number"): elem3Field.Text = CNull(SQLDT("STREETNUMBER")): elem2Field.appendChild elem3Field
-502                         Set elem3Field = docStock.createElement("postalCode"): elem3Field.Text = CNull(SQLDT("POSTALCODE")): elem2Field.appendChild elem3Field
-504                         Set elem3Field = docStock.createElement("city"): elem3Field.Text = CNull(SQLDT("CITY")): elem2Field.appendChild elem3Field
-506                         otherDeli.appendChild elem2Field
-508                         elemField.appendChild otherDeli
-                         End If
+                                Dim ADDRESS1(10) As String, FORT As String
 
+                                FORT = SQLDT("FORTOSH")
+                                ADDRESS1(0) = f_peldie
+                                ADDRESS1(1) = IIf(Len(f_pelarit) = 0, "0", f_pelarit)
+                                ADDRESS1(2) = f_pelpol
+                                ADDRESS1(3) = f_peltk
+
+                                If InStr(FORT, ";") > 0 Then ' (Split(ctypos, ";")(0)
+                                    ADDRESS1(0) = Split(FORT, ";")(0)
+                                    ADDRESS1(1) = Split(FORT, ";")(1)
+                                    ADDRESS1(2) = Split(FORT, ";")(2)
+                                    ADDRESS1(3) = Split(FORT, ";")(3)
+                                End If
+
+486                             Set elem3Field = docStock.createElement("street"): elem3Field.Text = ADDRESS1(0): elem2Field.appendChild elem3Field
+488                             Set elem3Field = docStock.createElement("number"): elem3Field.Text = ADDRESS1(1): elem2Field.appendChild elem3Field
+490                             Set elem3Field = docStock.createElement("postalCode"): elem3Field.Text = ADDRESS1(3): elem2Field.appendChild elem3Field
+492                             Set elem3Field = docStock.createElement("city"): elem3Field.Text = ADDRESS1(2): elem2Field.appendChild elem3Field
+494                             otherDeli.appendChild elem2Field
+
+496                             Set elem2Field = docStock.createElement("deliveryAddress") ' δημιουργω εσοχ' δημιουργω εσοχ  sqlDT(i)("XRVMA")= TK
+498                             Set elem3Field = docStock.createElement("street"): elem3Field.Text = CNull(SQLDT("STREET")): elem2Field.appendChild elem3Field
+500                             Set elem3Field = docStock.createElement("number"): elem3Field.Text = CNull(SQLDT("STREETNUMBER")): elem2Field.appendChild elem3Field
+502                             Set elem3Field = docStock.createElement("postalCode"): elem3Field.Text = CNull(SQLDT("POSTALCODE")): elem2Field.appendChild elem3Field
+504                             Set elem3Field = docStock.createElement("city"): elem3Field.Text = CNull(SQLDT("CITY")): elem2Field.appendChild elem3Field
+506                             otherDeli.appendChild elem2Field
+508                             elemField.appendChild otherDeli
+                            End If
 
                             'If IsAytotim = 1 Then   'tda
                             '     Set elem2Field = docStock.createElement("isDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
@@ -7730,21 +7761,12 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 512                             Set elem2Field = docStock.createElement("isDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
                             End If
                              
-                             
-                              ' αν ειναι στα παραστατικα που ειναι αναποδα
-                         If InStr(F_ANAPODO, Left(SQLDT("ATIM"), 1)) > 0 Then
-                               Set elem2Field = docStock.createElement("reverseDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                               Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = "2": elemField.appendChild elem2Field
+                            ' αν ειναι στα παραστατικα που ειναι αναποδα
+                            If InStr(F_ANAPODO, Left(SQLDT("ATIM"), 1)) > 0 Then
+                                Set elem2Field = docStock.createElement("reverseDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = "2": elemField.appendChild elem2Field
                          
-                         
-                         
-                         End If
-                         
-                                 
-                             
-                             
-                             
-                             
+                            End If
                              
                         Else
                             '2800                            Dim NSXETMARKS As Integer, RR2() As String
@@ -7771,16 +7793,10 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                             
                         End If
                         
-                        
-                                  'toWeigh   DEMO ONLY WORKS
-                              '   If Split(ctypos, ";")(0) = "9.1" Or Split(ctypos, ";")(0) = "9.2" Or Split(ctypos, ";")(0) = "9.3" Then
-                               '       Set elem2Field = docStock.createElement("toWeigh"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                               '  End If
-                        
-                        
-                        
-                        
-                        
+                        'toWeigh   DEMO ONLY WORKS
+                        '   If Split(ctypos, ";")(0) = "9.1" Or Split(ctypos, ";")(0) = "9.2" Or Split(ctypos, ";")(0) = "9.3" Then
+                        '       Set elem2Field = docStock.createElement("toWeigh"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                        '  End If
                                                        
                         '------------- ΑΥΤΟΤΙΜΟΛΟΓΗΣΗ --------------------<selfPricing>true</selfPricing>
 514                     If IsAytotim = 1 Then
@@ -7797,60 +7813,60 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
                             End If
                         End If
                                                        
-'524                     If Split(ctypos, ";")(0) = "5.1" Then  ' -------- συσχετιζομενο
-'526                         CR8 = "": CR8B = ""
-'
-'528                         If IsNull(SQLDT("SXETMARK")) Then
-'
-'                            Else
-'                                ' If Len(sqlDt("SXETMARK")) > 10 Then
-'                                '    CR8 = Split(sqlDt("SXETMARK"), " ")(1)
-'                                '    CR8B = Split(sqlDt("SXETMARK"), " ")(2)
-'                                ' End If
-'
-'530                             If Len(SQLDT("SXETMARK")) > 10 Then
-'532                                 CR8 = Split(SQLDT("SXETMARK"), "*")(0)
-'                                    ' CR8B = Split(sqlDt("SXETMARK"), " ")(2)
-'                                    '  Else
-'
-'                                    Dim NSX As Integer
-'
-'534                                 For NSX = 0 To 10
-'
-'536                                     If Len(Split(SQLDT("SXETMARK"), ";")(NSX)) > 0 Then
-'538                                         CR8 = Split(SQLDT("SXETMARK"), ";")(NSX)
-'540                                         Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = CR8: elemField.appendChild elem2Field
-'                                        Else
-'
-'                                            Exit For
-'
-'                                        End If
-'
-'                                    Next
-'
-'                                End If
-'
-'                            End If
-'
-'                            ' CR8B = Split(sqlDt("SXETMARK"), " ")(3)
-'
-'                            '288                         R8.Open "SELECT ENTITYMARK FROM TIM WHERE ATIM='" + CR8 + "' AND CONVERT(CHAR(10),HME,103)='" + CR8B + "'", Gdb, adOpenDynamic, adLockOptimistic
-'                            '290                         CR8 = ""
-'                            '292                         If IsNull(R8(0)) Then
-'                            '294                             CR8 = ""
-'                            '                            Else
-'                            '
-'                            '296                             If R8.EOF Then
-'                            '                                Else
-'                            '298                               CR8 = correlatedInvoice
-'                            '                                End If
-'                            '                            End If
-'                            '300                         R8.Close
-'                            'CorrelatedInvoices
-'
-'                            ' Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = CR8: elemField.appendChild elem2Field
-'
-'                        End If
+                        '524                     If Split(ctypos, ";")(0) = "5.1" Then  ' -------- συσχετιζομενο
+                        '526                         CR8 = "": CR8B = ""
+                        '
+                        '528                         If IsNull(SQLDT("SXETMARK")) Then
+                        '
+                        '                            Else
+                        '                                ' If Len(sqlDt("SXETMARK")) > 10 Then
+                        '                                '    CR8 = Split(sqlDt("SXETMARK"), " ")(1)
+                        '                                '    CR8B = Split(sqlDt("SXETMARK"), " ")(2)
+                        '                                ' End If
+                        '
+                        '530                             If Len(SQLDT("SXETMARK")) > 10 Then
+                        '532                                 CR8 = Split(SQLDT("SXETMARK"), "*")(0)
+                        '                                    ' CR8B = Split(sqlDt("SXETMARK"), " ")(2)
+                        '                                    '  Else
+                        '
+                        '                                    Dim NSX As Integer
+                        '
+                        '534                                 For NSX = 0 To 10
+                        '
+                        '536                                     If Len(Split(SQLDT("SXETMARK"), ";")(NSX)) > 0 Then
+                        '538                                         CR8 = Split(SQLDT("SXETMARK"), ";")(NSX)
+                        '540                                         Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = CR8: elemField.appendChild elem2Field
+                        '                                        Else
+                        '
+                        '                                            Exit For
+                        '
+                        '                                        End If
+                        '
+                        '                                    Next
+                        '
+                        '                                End If
+                        '
+                        '                            End If
+                        '
+                        '                            ' CR8B = Split(sqlDt("SXETMARK"), " ")(3)
+                        '
+                        '                            '288                         R8.Open "SELECT ENTITYMARK FROM TIM WHERE ATIM='" + CR8 + "' AND CONVERT(CHAR(10),HME,103)='" + CR8B + "'", Gdb, adOpenDynamic, adLockOptimistic
+                        '                            '290                         CR8 = ""
+                        '                            '292                         If IsNull(R8(0)) Then
+                        '                            '294                             CR8 = ""
+                        '                            '                            Else
+                        '                            '
+                        '                            '296                             If R8.EOF Then
+                        '                            '                                Else
+                        '                            '298                               CR8 = correlatedInvoice
+                        '                            '                                End If
+                        '                            '                            End If
+                        '                            '300                         R8.Close
+                        '                            'CorrelatedInvoices
+                        '
+                        '                            ' Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = CR8: elemField.appendChild elem2Field
+                        '
+                        '                        End If
 
 542                     .appendChild elemField
                         
@@ -7963,16 +7979,13 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 618                             Set elem2Field = docStock.createElement("itemCode"): elem2Field.Text = EGGTIM("kode"): elemField.appendChild elem2Field
 620                             Set elem2Field = docStock.createElement("itemDescr"): elem2Field.Text = EGGTIM("onoma"): elemField.appendChild elem2Field
 
-
-                                 If m_is_benzinadiko = 1 Then
-                                   If isDiakin = 1 Then
-                                     If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(EGGTIM("kode"))) > 0 Then   'μονο στου βενζιναδικου να βγαζει fuelcode
-                                        Set elem2Field = docStock.createElement("fuelCode"): elem2Field.Text = Trim(EGGTIM("kode")): elemField.appendChild elem2Field
-                                     End If
-                                   End If
-                                 End If
-
-
+                                If m_is_benzinadiko = 1 Then
+                                    If isDiakin = 1 Then
+                                        If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(EGGTIM("kode"))) > 0 Then   'μονο στου βενζιναδικου να βγαζει fuelcode
+                                            Set elem2Field = docStock.createElement("fuelCode"): elem2Field.Text = Trim(EGGTIM("kode")): elemField.appendChild elem2Field
+                                        End If
+                                    End If
+                                End If
 
                                 'f_SDA = FINDPARAMETROI(1, "PAR1", "F_SDA", "Ω;V", "ΧΑΡΑΚΤΗΡ.ΓΡΑΜΜΑ ΣΔΑ ΕΝΑΡΞΗΣ ΚΑΙ ΕΠΙΣΤΡΟΦΗΣ Π.Χ. Φ;Ψ") '
                                 ' EAN EINAI SYGK.DELTIO EPISTROFHS
@@ -7985,9 +7998,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 
 624                             Set elem2Field = docStock.createElement("measurementUnit"): elem2Field.Text = str(monada): elemField.appendChild elem2Field
                                 
-                             End If   'isDiakin >= 1 Then
-
-                           
+                            End If   'isDiakin >= 1 Then
 
                             Dim mVat As String
 
@@ -8000,14 +8011,16 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 632                         Set elem2Field = docStock.createElement("netValue"): elem2Field.Text = chDec(Format(AJ, "######0.##")): elemField.appendChild elem2Field
 634                         Set elem2Field = docStock.createElement("vatCategory"): elem2Field.Text = mVat: elemField.appendChild elem2Field
 636                         Set elem2Field = docStock.createElement("vatAmount"): elem2Field.Text = chDec(Format(fpaRow, "######0.##")): elemField.appendChild elem2Field
+
                             If IsNull(EGGTIM("DISCOUNTOPTION")) Then
                             
                             Else
-                               If nNull(EGGTIM("DISCOUNTOPTION")) = 0 Then
+
+                                If nNull(EGGTIM("DISCOUNTOPTION")) = 0 Then
                                     Set elem2Field = docStock.createElement("discountOption"): elem2Field.Text = "false": elemField.appendChild elem2Field
-                               Else
+                                Else
                                     Set elem2Field = docStock.createElement("discountOption"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                               End If
+                                End If
                             
                             End If
                             
@@ -8150,9 +8163,11 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
 734                         If gVal(RR(1)) > 0 Then
 736                             Set elem3Field = docStock.createElement("taxCategory"): elem3Field.Text = RR(1): elem2Field.appendChild elem3Field
                             End If
+
                             If SYN_KAU > 0 Then
 738                             Set elem3Field = docStock.createElement("underlyingValue"): elem3Field.Text = chDec(Format(SYN_KAU, "######0.##")): elem2Field.appendChild elem3Field
                             End If
+
 740                         Set elem3Field = docStock.createElement("taxAmount"): elem3Field.Text = chDec(Format(Round(SQLDT("PARAKRAT"), 2), "####0.00")): elem2Field.appendChild elem3Field
 742                         elemField.appendChild elem2Field  ' taxes
                             ' .appendChild elemField  '.appendChild elemField
@@ -8354,7 +8369,7 @@ Public Function ToXMLsub(ByVal noask As Integer, ByRef markReal As String) As In
         End With
 
         ' List1.AddItem "Δημιουργήθηκαν " + " απεσταλη"
-       ' Dim markReal As String: markReal = ""
+        ' Dim markReal As String: markReal = ""
 920     MAKE_request docStock.XML, 0, noask, "0", markReal
     
 922     If Len(where.Caption) > 0 Then  ' ONLINE ΔΕΝ ΕΧΡΕΙΑΖΕΤΑΙ GRID
@@ -10784,8 +10799,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Ν
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "ΛΑΘΟΣ ΣΤΙΣ ΑΝΤΙΣΤΟΙΧΗΣΕΙΣ ΦΠΑ"
-230             apo.Enabled = False
-232             eos.Enabled = False
+230             APO.Enabled = False
+232             EOS.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10795,8 +10810,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Ν
  
 240     R.Close
   
-242     apo.Value = Now
-244     eos.Value = Now
+242     APO.Value = Now
+244     EOS.Value = Now
 
         Dim sql As String
 
@@ -10804,8 +10819,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Ν
 
 248     If sql = "0" Then
 
-250         apo.Enabled = False
-252         eos.Enabled = False
+250         APO.Enabled = False
+252         EOS.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -11434,7 +11449,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11445,7 +11460,7 @@ Private Sub monoApestalmena_Click()
 146    sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [ΣΥΝ.ΚΑΘ],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [ΣΥΝ.ΦΠΑ],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148    sql = sql + "   FROM TIM  "
-150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 152    sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154    sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11836,7 +11851,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [ΠΑΡΑΣΤ],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ΚΑΘ.ΑΞΙΑ], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11848,7 +11863,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Ξ') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Ξ') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -12712,12 +12727,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     data1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = data1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
