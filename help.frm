@@ -40,6 +40,7 @@ Begin VB.Form help1
       _ExtentY        =   17383
       _Version        =   393217
       BackColor       =   16777215
+      Enabled         =   -1  'True
       TextRTF         =   $"help.frx":000C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -229,6 +230,11 @@ Form_KeyPress_Err:
 End Sub
 
 Private Sub Form_Load()
+
+
+List1.AddItem "ста да циа коц/сло тяитым цуяифеи се сйопос=2.циа коц.тяитым-CORR.ENTIT 30/6/2026"
+
+
 List1.AddItem "да амаподо & дектио паяакабгс сусв & лг 16/6/2026"
 List1.AddItem "EMAIL OUTLOOK OK. ьгжIAKO MHдENIZEI TO пакIO ажл ма лгм паеи стом еполемо 21/5/2026"
 List1.AddItem "пЯОСТщХГЙЕ ТО email СТО ДЕНъ ЙКИЙ se EЙТЩПЫСГ/pdf/email ЛЕ Outllok 9/5/2026"
