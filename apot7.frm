@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   311230465
+      Format          =   466747393
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   311230465
+      Format          =   466747393
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -2232,14 +2232,19 @@ Dim DUM
    
    If weeks = 1 Then
       sql = sql + " and  DATEPART(week, HME)= DATEPART(week, GETDATE())-1  "
+      mfile2 = mpath + "PyxidaData" + Format(DatePart("ww", Now), "00") + Format(Now, "yyyy") + ".CSV"
+      
+      
+       
    Else
-      sql = sql + " AND HME>='" + Format(apo, "MM/dd/yyyy") + "' AND HME<='" + Format(eos, "MM/dd/yyyy") + "'"
+       sql = sql + " AND HME>='" + Format(apo, "MM/dd/yyyy") + "' AND HME<='" + Format(eos, "MM/dd/yyyy") + "'"
+       mfile2 = mpath + Format(Now, "yyyyMMdd") + ".CSV"
    End If
    
    
-   mfile2 = mpath + Format(Now, "yyyyMMdd") + ".CSV"
+  ' mfile2 = mpath + Format(Now, "yyyyMMdd") + ".CSV"
 
-
+'PyxidaData252026 για την εβδομάδα 25 του 2026.
 
 
     PRINT_CSV sql, "0000000000000", "", 0, 0, mfile2
