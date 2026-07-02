@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   280494081
+         Format          =   383582209
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   280494082
+         Format          =   383582210
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1227,14 +1227,14 @@ Begin VB.Form par1
       _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
-      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bold=0,.fontsize=960,.italic=0"
+      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bold=0,.fontsize=975,.italic=0"
       _StyleDefs(7)   =   ":id=1,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=960,.italic=0"
+      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=975,.italic=0"
       _StyleDefs(11)  =   ":id=2,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(12)  =   ":id=2,.fontname=MS Sans Serif"
-      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=960,.italic=0"
+      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=975,.italic=0"
       _StyleDefs(14)  =   ":id=3,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(15)  =   ":id=3,.fontname=MS Sans Serif"
       _StyleDefs(16)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   280625153
+      Format          =   382009345
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3149,6 +3149,8 @@ Dim F_EKTYPOTHS           As String '= FINDPARAMETROI(1, "PAR1", "F_EKTYPOTHS", 
 
 Dim f_SHOWALLAPOT As Integer
 
+Dim RSClone As Recordset
+
 
 Dim f_pelono, f_peldie, f_pelarit, f_pelpol, f_peltk As String
 
@@ -3677,10 +3679,10 @@ Private Sub ar_paraggt_LostFocus()
         End If
   
 116     If Len(ar_paraggt.Text) > 0 Then
-118         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,MARKPLHR FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + IIf(Len(querpol) < 2, "", querpol + "and ") + " ATIM LIKE '%" + ar_paraggt.Text + "%' ORDER BY ID_NUM DESC"
+118         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,AKYROMENO,MARKPLHR FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + IIf(Len(querpol) < 2, "", querpol + "and ") + " ATIM LIKE '%" + ar_paraggt.Text + "%' ORDER BY ID_NUM DESC"
         Else
 120         If Len(querpol) > 2 Then querpol = " where " + Left$(querpol, 85)
-122         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,MARKPLHR  FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
+122         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,,AKYROMENO,MARKPLHR  FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
         End If
 
 124    On Error Resume Next
@@ -3764,7 +3766,7 @@ Private Sub b_akyr_Click()
 138         Text2(1).Text = ""    'Â˘ÌıÏÈ·
 140         Text2(2).Text = ""    '·ˆÏ
 142         parat.Text = ""    '–¡—¡‘«—«”≈…”
-144         timText3.Top = 18000
+144         timtext3.Top = 18000
 146         F_DIOR = 0    ' ƒ…œ—»Ÿ”«
 148         metasxhmatismos.Enabled = True
 150         f_loadpar1 = Val(FINDPARAMETROI(1, "PAR1", "F_LOADPAR1", "1", "÷œ—‘ŸÕŸ  ¡»≈ ÷œ—¡ ‘«Õ ÷œ—Ã¡ –¡—¡”‘¡‘… ŸÕ=1"))
@@ -3943,13 +3945,13 @@ Private Sub SaveParastat(ByVal isAkyrotiko As Boolean)
 122         If Len(Trim(Grid1.TextMatrix(k, f_k))) > 0 And (Val(Grid1.TextMatrix(k, f_f)) > 9 Or Val(Grid1.TextMatrix(k, f_f)) <= 0) Then
 124             MsgBox "À‹ËÔÚ ÷–¡ ÛÙÁÌ " + str(k) + " ÛÂÈÒ‹"
 126             Grid1.row = k: Grid1.Col = f_f
-128             timText3.Top = Grid1.Top + Grid1.CellTop
-130             timText3.Left = Grid1.Left + Grid1.CellLeft
-132             timText3.Width = Grid1.CellWidth - 15
-134             timText3.Height = Grid1.CellHeight - 25
-136             timText3.Visible = True
-138             timText3.Text = Grid1.TextMatrix(k, f_f)
-140             timText3.SetFocus
+128             timtext3.Top = Grid1.Top + Grid1.CellTop
+130             timtext3.Left = Grid1.Left + Grid1.CellLeft
+132             timtext3.Width = Grid1.CellWidth - 15
+134             timtext3.Height = Grid1.CellHeight - 25
+136             timtext3.Visible = True
+138             timtext3.Text = Grid1.TextMatrix(k, f_f)
+140             timtext3.SetFocus
 
                 Exit Sub
 
@@ -5948,7 +5950,7 @@ Sub MIDENIZO_GRID()
 140     parat.Text = ""    '–¡—¡‘«—«”≈…”
 
         'On Error GoTo 0
-142     timText3.Top = 18000
+142     timtext3.Top = 18000
 144     APOTH2.Enabled = True
 146     Text5.Text = "" '√≈Õ… « ≈ –‘Ÿ”«
 148     tel_pliroteo.Text = ""
@@ -10201,7 +10203,7 @@ Sub SOKRATIS_import()
 
         Dim CH1, CH2, CH3
 
-        Dim XTI, LTI
+        Dim XTI, lti
 
         Dim s As String
 
@@ -10230,7 +10232,7 @@ Sub SOKRATIS_import()
 116         CH2 = xlsheet.cells(k + 1, 3)    ' XEIMONIATIKO
 118         CH3 = xlsheet.cells(k + 1, 6)    'PROM
 120         XTI = xlsheet.cells(k + 1, 4)    ' , ",", ".")
-122         LTI = xlsheet.cells(k + 1, 5)    ', ",", ".")
+122         lti = xlsheet.cells(k + 1, 5)    ', ",", ".")
 
 124         rSQL.Open "SELECT * FROM EID WHERE KOD='" + Trim(kod) + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
@@ -10239,13 +10241,13 @@ Sub SOKRATIS_import()
 
                 On Error GoTo SOKRATIS_import_Err
 
-130             s = s + "'" + kod + "','" + str(CH1) + "','" + str(CH2) + "','" + str(CH3) + "'," + str(XTI) + "," + str(LTI) + ",1,2)"
+130             s = s + "'" + kod + "','" + str(CH1) + "','" + str(CH2) + "','" + str(CH3) + "'," + str(XTI) + "," + str(lti) + ",1,2)"
 
 132             Gdb.Execute s, nn
 
             Else
 
-134             s = "UPDATE  EID  SET XTI=" + str(XTI) + ",LTI5=" + str(LTI) + "  WHERE KOD='" + Trim(kod) + "'"
+134             s = "UPDATE  EID  SET XTI=" + str(XTI) + ",LTI5=" + str(lti) + "  WHERE KOD='" + Trim(kod) + "'"
 
 136             Gdb.Execute s, nn
 
@@ -10352,7 +10354,7 @@ Me.Caption = "28028"
 
         Dim CH1, CH2, CH3
 
-        Dim XTI, LTI
+        Dim XTI, lti
 
         Dim s As String
 
@@ -10557,7 +10559,7 @@ Sub EXCEL_IMPORT()
 
         Dim CH1, CH2, CH3
 
-        Dim XTI, LTI
+        Dim XTI, lti
 
         Dim s As String
 
@@ -10954,7 +10956,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.DATA1.ConnectionString = gConnect
+116     fpelat4.data1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -11092,7 +11094,7 @@ Private Sub Command4_Click()
         Else
 178         k = 1
 180         Grid1.TextMatrix(k, f_k) = "223344"
-182         timText3 = "223344"
+182         timtext3 = "223344"
 184         Grid1.TextMatrix(k, f_p) = 1
 186         Grid1.TextMatrix(k, f_o) = "≈–…” ≈’«"
 188         Grid1.TextMatrix(k, F_T) = Round(Val(ajia) / (1 + g_Fpa(2) / 100), 2)
@@ -12423,13 +12425,13 @@ Label33.Left = 0
     'ResizeFormFor Me
     'Label16.Left = k
     
-    timText3.Height = Grid1.RowHeight(1)
+    timtext3.Height = Grid1.RowHeight(1)
     '  timText3.FontSize = Grid1.Font.Size
    
-    If timText3.Height = Grid1.RowHeight(1) Then  'OK –—œ”¡—Ãœ”‘« ≈
+    If timtext3.Height = Grid1.RowHeight(1) Then  'OK –—œ”¡—Ãœ”‘« ≈
     Else
         For k = 0 To Grid1.rows - 1
-            Grid1.RowHeight(k) = timText3.Height  ' Grid1.RowHeight(k) * Me.height / 10830
+            Grid1.RowHeight(k) = timtext3.Height  ' Grid1.RowHeight(k) * Me.height / 10830
             '  Grid1.Font.Size = timText3.FontSize
         Next
     End If
@@ -12458,7 +12460,7 @@ Private Sub Grid1_DblClick()
         Dim F33 As New apot21
 100     F33.WindowState = 2
 
-102     timText3.Visible = True
+102     timtext3.Visible = True
         ' kartella
 104     F33.Text1.Text = Grid1.TextMatrix(Grid1.row, 1)
 
@@ -12536,7 +12538,7 @@ Private Sub Grid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As
 126         For s = 1 To Grid1.ColS - 1
 128             Grid1.TextMatrix(N, s) = ""
             Next
-130         timText3.Text = ""
+130         timtext3.Text = ""
 
         End If
 
@@ -12563,7 +12565,7 @@ Private Sub Grid1_Scroll()
 
         '</EhHeader>
 
-100     timText3.Visible = False
+100     timtext3.Visible = False
 
         '<EhFooter>
         Exit Sub
@@ -13038,7 +13040,7 @@ Private Sub MONTE_CRISTO_Click()
 110     Text5.Text = "*" + Right(MONTE_CRISTO.Caption, 6)
 112     Text5_LostFocus
    
-114     timText3.SetFocus
+114     timtext3.SetFocus
 End Sub
 
 Private Sub MSFlexGrid1_Click()
@@ -13049,8 +13051,8 @@ Private Sub MSFlexGrid1_Click()
         '</EhHeader>
 100     If Left(f_pelMERC, 3) = "SOK" Then
 102         MSFlexGrid1.Col = 1
-104         timText3.Text = MSFlexGrid1.Text
-106         timText3.SetFocus
+104         timtext3.Text = MSFlexGrid1.Text
+106         timtext3.SetFocus
 
         End If
 
@@ -14576,12 +14578,12 @@ Private Sub take_eidos()
      
                 End If
 
-230             If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timText3.Text, 2) Then
+230             If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timtext3.Text, 2) Then
             
 232                 If mID(F_2CHFIA_ZYGIZOMENA, 3, 1) = "b" Then
-234                     Grid1.Text = Val(mID(timText3.Text, 8, 5)) / 1000
+234                     Grid1.Text = Val(mID(timtext3.Text, 8, 5)) / 1000
                     Else
-236                     Grid1.Text = Round(Val(mID(timText3.Text, 8, 5)) / EID.Recordset("lti5") / 100, 3)
+236                     Grid1.Text = Round(Val(mID(timtext3.Text, 8, 5)) / EID.Recordset("lti5") / 100, 3)
                     End If
                
                 End If
@@ -14814,16 +14816,16 @@ Private Sub take_eidos()
      
             End If
 
-440         timText3.Text = Grid1.Text
-442         timText3.Visible = False
+440         timtext3.Text = Grid1.Text
+442         timtext3.Visible = False
 
             ' ‘œ ‘≈◊‘3 –¡—¡À¡Ã¬¡Õ≈… ‘I” ƒ…¡”‘¡”≈…” ¡–œ ‘œ GRID
-444         timText3.Top = Grid1.Top + Grid1.CellTop
-446         timText3.Left = Grid1.Left + Grid1.CellLeft
-448         timText3.Width = Grid1.CellWidth - 15
-450         timText3.Height = Grid1.CellHeight - 25
-452         timText3.Visible = True
-454         timText3.SetFocus
+444         timtext3.Top = Grid1.Top + Grid1.CellTop
+446         timtext3.Left = Grid1.Left + Grid1.CellLeft
+448         timtext3.Width = Grid1.CellWidth - 15
+450         timtext3.Height = Grid1.CellHeight - 25
+452         timtext3.Visible = True
+454         timtext3.SetFocus
         End If  ' =CHR(13)
 
         Dim PI, pi2
@@ -15187,10 +15189,10 @@ Private Sub mmGridPelaton_DblClick(ByVal ask As Integer, _
 
         '‘œ–œ»≈‘≈… ”‘œ –—Ÿ‘œ  ≈À… ‘œ  œ’‘¡ … –œ’ ◊—«”…Ãœ–œ…Ÿ √…¡ √—¡ÿ…Ãœ ”‘œ ‘…ÃœÀœ√…œ
 206     Grid1.Col = 1
-208     timText3.Top = Grid1.Top + Grid1.CellTop
-210     timText3.Left = Grid1.Left + Grid1.CellLeft
-212     timText3.Width = Grid1.CellWidth - 15
-214     timText3.Height = Grid1.CellHeight - 25
+208     timtext3.Top = Grid1.Top + Grid1.CellTop
+210     timtext3.Left = Grid1.Left + Grid1.CellLeft
+212     timtext3.Width = Grid1.CellWidth - 15
+214     timtext3.Height = Grid1.CellHeight - 25
 
         '- --------------- ƒ…œ—»Ÿ”« ‘…ÃœÀœ√…œ’ ----------------------------------
         Dim re   As New ADODB.Recordset, ANS As Integer
@@ -15308,7 +15310,7 @@ Private Sub mmGridPelaton_DblClick(ByVal ask As Integer, _
 318                 Grid1.row = k
 
 320                 If k > 1 Then
-322                     timText3.Text = Grid1.TextMatrix(k + 1, f_k)
+322                     timtext3.Text = Grid1.TextMatrix(k + 1, f_k)
                     End If
 
 324                 Grid1.Col = f_k  ' „È· Ì· ÏÁÌ ÊÁÙ‹ÂÈ Ì· ·ÌÔÈÓÂÈ Ì›· Í·ÒÙ›ÎÎ·
@@ -15641,7 +15643,7 @@ ORAPARAD.Value = re("ORAPARAD")
             End If
 
 574         If k > 1 Then
-576             timText3.Text = Grid1.TextMatrix(k + 1, f_k)
+576             timtext3.Text = Grid1.TextMatrix(k + 1, f_k)
             End If
 
 578         F_DIOR = 1
@@ -15682,8 +15684,8 @@ ORAPARAD.Value = re("ORAPARAD")
 
         Else
 
-586         timText3.Text = Grid1.Text
-588         timText3.SetFocus
+586         timtext3.Text = Grid1.Text
+588         timtext3.SetFocus
 
         End If
 
@@ -16010,12 +16012,12 @@ Private Sub metasxhmatismos_Click()
 282     Text2(2).Enabled = False
 
 284     Grid1.Col = 1
-286     timText3.Top = Grid1.Top + Grid1.CellTop
-288     timText3.Left = Grid1.Left + Grid1.CellLeft
-290     timText3.Width = Grid1.CellWidth - 15
-292     timText3.Height = Grid1.CellHeight - 25
-294     timText3.Text = Grid1.Text
-296     timText3.SetFocus
+286     timtext3.Top = Grid1.Top + Grid1.CellTop
+288     timtext3.Left = Grid1.Left + Grid1.CellLeft
+290     timtext3.Width = Grid1.CellWidth - 15
+292     timtext3.Height = Grid1.CellHeight - 25
+294     timtext3.Text = Grid1.Text
+296     timtext3.SetFocus
 298     GridPelaton.Visible = False
 300     FlxGridDeltion.Visible = False
 302     GridEidon.Visible = True
@@ -16598,6 +16600,36 @@ Frame2(0).Height = F_YCOS_FORM_METAF
 450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
+
+
+' Select Case index
+'
+'    Case 0
+'
+'        ButtonFlag = 0
+'
+       TDBGrid1.FetchRowStyle = True
+'
+'    Case 1
+'
+'        ButtonFlag = 1
+'
+'        TDBGrid1.FetchRowStyle = True
+'
+'    Case 2
+'
+'        TDBGrid1.FetchRowStyle = False
+'
+'    End Select
+'
+'
+
+    TDBGrid1.Refresh
+
+
+
+
+
 
 
 Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
@@ -17583,8 +17615,14 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
          
         End If
 
-1256    LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM+' '+(SELECT top 1 LEFT(TITLOS,15) FROM PARASTAT WHERE ASCII(PARASTAT.EIDOS)=ASCII(LEFT(ATIM,1))) AS [–¡—/ œ],AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,INCMARK AS [MARK ¡ ’—Ÿ”«”] FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
+1256    LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM+' '+(SELECT top 1 LEFT(TITLOS,15) FROM PARASTAT WHERE ASCII(PARASTAT.EIDOS)=ASCII(LEFT(ATIM,1))) AS [–¡—/ œ],AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,IIF(ISNULL(AKYROMENO,0)=1,'¡ÍıÒ˘Ï›ÌÔ','≈„ÍıÒÔ') AS [≈„Í/¡ÍıÒ],INCMARK AS [MARK ¡ ’—Ÿ”«”] FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
 1258    LASTTIMOL.Refresh
+
+Set RSClone = LASTTIMOL.Recordset.Clone()
+
+
+
+
 1260    TDBGrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
 1262    TDBGrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
 1264    TDBGrid1.Splits(0).ExtendRightColumn = True
@@ -18213,18 +18251,22 @@ Private Sub tamiaki_Click()
  '  tamiaki2 "12", "", ""
 End Sub
 
-Private Sub TDBGrid1_FetchRowStyle(ByVal Split As Integer, _
+'Private Sub TTTTTDBGrid1_FetchRowStyle(ByVal Split As Integer, _
                                    Bookmark As Variant, _
                                    ByVal RowStyle As TrueOleDBGrid80.StyleDisp)
-        ' RSClone.Bookmark = Bookmark
         
-        '    If ButtonFlag = 0 And RSClone("CustType").Value = 1 Then
-        '     RowStyle = Prospective
-        '    End If
-        
-        '   If ButtonFlag = 1 And RSClone("CustType").Value = 4 Then
-100     RowStyle = Distributors
-        '  End If
+'End Sub
+
+Private Sub TDBGrid1_FetchRowStyle(ByVal Split As Integer, Bookmark As Variant, ByVal RowStyle As TrueOleDBGrid80.StyleDisp)
+''Set RSClone.Bookmark = Bookmark
+'        'ButtonFlag = 0 And  ButtonFlag = 1 And
+'            If RSClone("AKYROMENO").Value = 1 Then
+'             RowStyle = Prospective
+'            End If
+'
+'           If RSClone("EIDOS").Value = "r" Then
+'100           RowStyle = Distributors
+'          End If
 End Sub
 
 Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
@@ -18481,18 +18523,18 @@ Private Sub Grid1_EnterCell()
 102         Grid1.row = f_SeiresTimologioy
         End If
 
-104     timText3.Text = Grid1.Text
-106     timText3.Visible = False
-108     timText3.Top = Grid1.Top + Grid1.CellTop
-110     timText3.Left = Grid1.Left + Grid1.CellLeft
-112     timText3.Width = Grid1.CellWidth - 15
-114     timText3.Height = Grid1.CellHeight - 25
+104     timtext3.Text = Grid1.Text
+106     timtext3.Visible = False
+108     timtext3.Top = Grid1.Top + Grid1.CellTop
+110     timtext3.Left = Grid1.Left + Grid1.CellLeft
+112     timtext3.Width = Grid1.CellWidth - 15
+114     timtext3.Height = Grid1.CellHeight - 25
 
-116     timText3.SelStart = 0
-118     timText3.SelLength = Len(timText3.Text)
+116     timtext3.SelStart = 0
+118     timtext3.SelLength = Len(timtext3.Text)
 
-120     timText3.Visible = True
-122     timText3.SetFocus
+120     timtext3.Visible = True
+122     timtext3.SetFocus
 
         Exit Sub
 
@@ -18522,18 +18564,18 @@ Private Sub Grid1_LeaveCell()
     
     
     
-            If Grid1.Text <> timText3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
+            If Grid1.Text <> timtext3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
                
                
 370             If Grid1.Col = f_k Then  ' -AN ¡ÀÀ¡Œ≈ ‘œÕ  Ÿƒ… œ ƒ≈Õ ‘œÕ ¡–œ»« ≈’≈… ”‘œ GRID
                    
                 Else
-372                 Grid1.Text = timText3.Text    '- ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+372                 Grid1.Text = timtext3.Text    '- ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
                 End If
                
                 'Exit Sub
             Else
-374             Grid1.Text = timText3.Text    ' -ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+374             Grid1.Text = timtext3.Text    ' -ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
             End If
 
             '  Grid1.Text = TIMText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
@@ -19068,7 +19110,7 @@ Private Sub Textm_LostFocus(index As Integer)
 '            End If
             
              
-             timText3.SetFocus
+             timtext3.SetFocus
              
          End If
 End Sub
@@ -19105,9 +19147,9 @@ Private Sub TIMText3_GotFocus()
 
         '</EhHeader>
 
-100     timText3.BackColor = vbYellow
-102     timText3.SelStart = 0
-104     timText3.SelLength = Len(timText3.Text)
+100     timtext3.BackColor = vbYellow
+102     timtext3.SelStart = 0
+104     timtext3.SelLength = Len(timtext3.Text)
 
         '<EhFooter>
         Exit Sub
@@ -19249,7 +19291,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
         ' On Error GoTo MHNYMA
 
-108     timText3.Text = Replace(timText3.Text, "'", "~")
+108     timtext3.Text = Replace(timtext3.Text, "'", "~")
 
 110     If KeyCode = 46 And Grid1.Col = f_k Then    ' DELETE ”¬«ÕŸ ‘«Õ ”≈…—¡
 112         Grid1.TextMatrix(Grid1.row, f_k) = ""
@@ -19281,7 +19323,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
  
             Dim F34 As New apot21
 146         F34.filtroPEL.Caption = "  PELKOD='" + Text2(0).Text + "' AND "
-148         timText3.Visible = True
+148         timtext3.Visible = True
             ' kartella
 150         F34.Text1.Text = Trim(Grid1.TextMatrix(Grid1.row, f_k))
 
@@ -19402,7 +19444,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 246         UGridEdit.Grid1.rows = rows + 1
 248         UGridEdit.Grid1.ColS = ColS + 1
 
-250         UGridEdit.LTI.Caption = EID.Recordset("LTI")
+250         UGridEdit.lti.Caption = EID.Recordset("LTI")
 252         UGridEdit.XTI.Caption = EID.Recordset("XTI")
 254         UGridEdit.lti5.Caption = EID.Recordset("LTI5")
 256         UGridEdit.kod.Caption = EID.Recordset("KOD")
@@ -19439,7 +19481,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
             Next
 
 286         If Grid1.Col = f_p Then    'AN PATOYSE PANV STHN POSOTHTA
-288             timText3.Text = SUMA_XROMATA
+288             timtext3.Text = SUMA_XROMATA
             Else
 290             Grid1.TextMatrix(Grid1.row, f_p) = SUMA_XROMATA
             End If
@@ -19493,11 +19535,11 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 332             Grid1.TextMatrix(Grid1.row, f_e) = Format(r0(1), "###0.00")
 
 334             If Grid1.Col = F_T Then
-336                 timText3.Text = Grid1.TextMatrix(Grid1.row, F_T)
+336                 timtext3.Text = Grid1.TextMatrix(Grid1.row, F_T)
                 End If
 
 338             If Grid1.Col = f_e Then
-340                 timText3.Text = Grid1.TextMatrix(Grid1.row, f_e)
+340                 timtext3.Text = Grid1.TextMatrix(Grid1.row, f_e)
                 End If
                 
             Else
@@ -19515,11 +19557,11 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 354                 Grid1.TextMatrix(Grid1.row, f_e) = Format(R22(1), "###0.00")
 
 356                 If Grid1.Col = F_T Then
-358                     timText3.Text = Grid1.TextMatrix(Grid1.row, F_T)
+358                     timtext3.Text = Grid1.TextMatrix(Grid1.row, F_T)
                     End If
 
 360                 If Grid1.Col = f_e Then
-362                     timText3.Text = Grid1.TextMatrix(Grid1.row, f_e)
+362                     timtext3.Text = Grid1.TextMatrix(Grid1.row, f_e)
                     End If
                 End If
 364             cnconn.Close
@@ -19529,17 +19571,17 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
 366     If KeyCode = 38 Then   ' –¡ÕŸ ¬≈Àœ”
 
-368         If Grid1.Text <> timText3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
+368         If Grid1.Text <> timtext3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
                
 370             If Grid1.Col = f_k Then  ' AN ¡ÀÀ¡Œ≈ ‘œÕ  Ÿƒ… œ ƒ≈Õ ‘œÕ ¡–œ»« ≈’≈… ”‘œ GRID
                    
                 Else
-372                 Grid1.Text = timText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+372                 Grid1.Text = timtext3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
                 End If
                
                 'Exit Sub
             Else
-374             Grid1.Text = timText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+374             Grid1.Text = timtext3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
             End If
 
             '  Grid1.Text = TIMText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
@@ -19623,18 +19665,18 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
         End If
 
 446     If KeyCode = 40 Then   ' KATŸ ¬≈Àœ”
-448         If Grid1.Text <> timText3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
+448         If Grid1.Text <> timtext3.Text Then  ' –—œ”œ◊« ¡ÀÀ¡Œ≈” ‘œ  ≈À… ¡—¡ ≈Õ‘≈—
                
 450             If Grid1.Col = f_k Then  ' AN ¡ÀÀ¡Œ≈ ‘œÕ  Ÿƒ… œ ƒ≈Õ ‘œÕ ¡–œ»« ≈’≈… ”‘œ GRID
                     ' timtex3_enter
                     'MsgBox "√È· ·ÎÎ·„ﬁ Í˘‰ÈÍÔ˝,·ÙﬁÛÙÂ Enter ÏÂÙ‹ ÙÁÌ ·ÎÎ·„ﬁ"
                 Else
-452                 Grid1.Text = timText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+452                 Grid1.Text = timtext3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
                 End If
                
                 'Exit Sub
             Else
-454             Grid1.Text = timText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+454             Grid1.Text = timtext3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
             End If
            
 456         If Grid1.Col = F_T Or Grid1.Col = f_p Or Grid1.Col = f_e Then
@@ -19736,8 +19778,8 @@ Sub timtex3_enter()
 
         'CSBmk_CS <If Len(Trim(TIMText3.Text)) = 0>
 
-104     If Len(Trim(timText3.Text)) = 0 Then   ' enter me keno koytaki  ***************
-106         Grid1.Text = timText3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
+104     If Len(Trim(timtext3.Text)) = 0 Then   ' enter me keno koytaki  ***************
+106         Grid1.Text = timtext3.Text    ' ÍÒ·Ù‹ÂÈ ÙÔ grid ÙÔ ÍÂﬂÏÂÌÔ
 
             ' ÏÈ‹ ÛÂÈÒ‹ ·Ò·Í‹Ù˘
 
@@ -19775,16 +19817,16 @@ Sub timtex3_enter()
 
         'CSBmk_CS <If f_AFHNO_IDIA_SEIRA = 1>
 116     If f_AFHNO_IDIA_SEIRA = 1 Then
-118         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < f_p And (Grid1.Text <> timText3.Text Or (Val(Grid1.TextMatrix(Grid1.row, f_p))) = 0)
+118         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < f_p And (Grid1.Text <> timtext3.Text Or (Val(Grid1.TextMatrix(Grid1.row, f_p))) = 0)
             'CSBmk_CS <Else>
         Else
-120         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < f_p And (Grid1.Text <> timText3.Text Or (gVal(Grid1.TextMatrix(Grid1.row, F_T)) = 0 And gVal(Grid1.TextMatrix(Grid1.row, f_p)) = 0))
+120         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < f_p And (Grid1.Text <> timtext3.Text Or (gVal(Grid1.TextMatrix(Grid1.row, F_T)) = 0 And gVal(Grid1.TextMatrix(Grid1.row, f_p)) = 0))
             'CSBmk_CS <End If>
         End If
 
         'CSBmk_CS <If F_KOLA_MIKTA = 1>
 122     If F_KOLA_MIKTA = 1 Then '  œÀ¡ Ã… ‘¡
-124         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < F_PROEL And (Grid1.Text <> timText3.Text Or (gVal(Grid1.TextMatrix(Grid1.row, F_T)) = 0 And gVal(Grid1.TextMatrix(Grid1.row, f_p)) = 0))
+124         M_f_AFHNO_IDIA_SEIRA = Grid1.Col < F_PROEL And (Grid1.Text <> timtext3.Text Or (gVal(Grid1.TextMatrix(Grid1.row, F_T)) = 0 And gVal(Grid1.TextMatrix(Grid1.row, f_p)) = 0))
             'CSBmk_CS <End If>
         End If
 
@@ -19794,14 +19836,14 @@ Sub timtex3_enter()
             ' ¯·˜ÌÂÈ Í·Ù‹ Í˘‰ÈÍ¸   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             'CSBmk_CS <    If Grid1.Col = f_k>
 128         If Grid1.Col = f_k Then
-130             timText3.Text = Trim(Left(timText3.Text, 16))
+130             timtext3.Text = Trim(Left(timtext3.Text, 16))
 
                 'CSBmk_CS <        If Left(TIMText3.Text, 1) = ".">
-132             If Left(timText3.Text, 1) = "." Then    ' $$$$$$$
+132             If Left(timtext3.Text, 1) = "." Then    ' $$$$$$$
                     'EID.RecordSource = "select SUM(XRE)-SUM(PIS) AS [’–œÀ],EID.ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD WHERE ERG  LIKE '" + Trim(Mid(timtext3.Text, 2, 14)) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) ;"
 
                     ' ¯·˜ÌÂÈ Í·Ù‹ BOHUHTIKO Í˘‰ÈÍ¸  ERG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-134                 EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND ERG  LIKE '" + SameLetters(Trim(mID(timText3.Text, 2, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,CH6,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 "
+134                 EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND ERG  LIKE '" + SameLetters(Trim(mID(timtext3.Text, 2, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,CH6,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 "
 
                     'CSBmk_CS <            If F_MONOMEYPOLOIPO = 1 And f_pol = 1>
 136                 If F_MONOMEYPOLOIPO = 1 And f_pol = 1 Then
@@ -19814,14 +19856,14 @@ Sub timtex3_enter()
                     '¡Õ ƒ≈Õ ≈◊≈…  …Õ«»≈…  ¡»œÀœ’ Õ¡ Ã–œ—≈… Õ¡ ƒ≈…Œ≈…
                     'CSBmk_CS <            If EID.Recordset.EOF>
 142                 If EID.Recordset.EOF Then
-144                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  ERG  LIKE '" + SameLetters(Trim(mID(timText3.Text, 2, 14))) + "%'  "
+144                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  ERG  LIKE '" + SameLetters(Trim(mID(timtext3.Text, 2, 14))) + "%'  "
                         'CSBmk_CS <            End If>
                     End If
 
                     ' & " WHERE EGGTIM.APOT=" + left(APOTH1.Text, 1) + " AND ERG  LIKE '" + SameLetters(Trim(Mid(TIMText3.Text, 2, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) ;"
 
                     'ÂÈ‰Á Ôı ·„ÔÒ·ÊÂÈ Ô ÂÎ·ÙÁÚ
-146             ElseIf Left(timText3.Text, 1) = "=" Then         ' ' POLAGOR.ListIndex = 0 =>agores  $$$$$$$
+146             ElseIf Left(timtext3.Text, 1) = "=" Then         ' ' POLAGOR.ListIndex = 0 =>agores  $$$$$$$
                     'EID.RecordSource = "select SUM(XRE)-SUM(PIS) AS [’–œÀ],EID.ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD WHERE ERG  LIKE '" + Trim(Mid(timtext3.Text, 2, 14)) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) ;"
 
 148                 EID.RecordSource = "select KOD AS [ Ÿƒ], EID.ONO,ROUND(XTI,2) AS XTI ,LTI, " & "(SELECT TOP 1 TIMM*(100-EKPT)/100 FROM EGGTIM WHERE EIDOS='" + fbuff + "' AND PELKOD='" + Text2(0).Text + "' AND KODE=EID.KOD  ORDER BY HME DESC  ) AS LTI5, " & " EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID WHERE KOD IN (SELECT KODE FROM EGGTIM " & " WHERE EIDOS='" + fbuff + "' AND PELKOD='" + Text2(0).Text + "') ORDER BY ONO "
@@ -19830,7 +19872,7 @@ Sub timtex3_enter()
 
                     ' ¯·˜ÌÂÈ Í·Ù‹  Ÿƒ… œ’” ÃœÕœ ¡’‘œ’ ‘œ’ –—œÃ«»≈’‘« %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     'CSBmk_CS <        ElseIf Left(TIMText3.Text, 1) = "$" And >
-152             ElseIf Left(timText3.Text, 1) = "$" And POLAGOR.ListIndex = 0 Then        ' ' POLAGOR.ListIndex = 0 =>agores  $$$$$$$
+152             ElseIf Left(timtext3.Text, 1) = "$" And POLAGOR.ListIndex = 0 Then        ' ' POLAGOR.ListIndex = 0 =>agores  $$$$$$$
                     'EID.RecordSource = "select SUM(XRE)-SUM(PIS) AS [’–œÀ],EID.ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD WHERE ERG  LIKE '" + Trim(Mid(timtext3.Text, 2, 14)) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) ;"
 
 154                 EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND LEFT(PROM,6) = '" + Trim(Left(Text2(1).Text, 6)) + "' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 ORDER BY KOD;"
@@ -19847,17 +19889,17 @@ Sub timtex3_enter()
 
                     ' ¯·˜ÌÂÈ Í·Ù‹ Í˘‰ÈÍ¸  ≈Ò„ÔÛÙ·ÛﬂÔı  KODERG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     'CSBmk_CS <        ElseIf Left(TIMText3.Text, 1) = "+">
-162             ElseIf Left(timText3.Text, 1) = "+" Then    ' $$$$$$$
+162             ElseIf Left(timtext3.Text, 1) = "+" Then    ' $$$$$$$
                     'EID.RecordSource = "select SUM(XRE)-SUM(PIS) AS [’–œÀ],EID.ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD WHERE ERG  LIKE '" + Trim(Mid(timtext3.Text, 2, 14)) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) ;"
 
-164                 EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND KODERG = '" + Trim(mID(timText3.Text, 2, 14)) + "' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 ;"
+164                 EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND KODERG = '" + Trim(mID(timtext3.Text, 2, 14)) + "' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 ;"
 
 166                 EID.Refresh
 
                     '¡Õ ƒ≈Õ ≈◊≈…  …Õ«»≈…  ¡»œÀœ’ Õ¡ Ã–œ—≈… Õ¡ ƒ≈…Œ≈…
                     'CSBmk_CS <            If EID.Recordset.EOF>
 168                 If EID.Recordset.EOF Then
-170                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  KODERG = '" + Trim(mID(timText3.Text, 2, 14)) + "'  ;"
+170                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  KODERG = '" + Trim(mID(timtext3.Text, 2, 14)) + "'  ;"
                         'CSBmk_CS <            End If>
                     End If
 
@@ -19865,8 +19907,8 @@ Sub timtex3_enter()
 
                     '----------------kata kodiko otan einai gyrismeno sta barcode ---------------------------------
                     'CSBmk_CS <        ElseIf f_barcode = 1 And Left(TIMText3.T>
-172             ElseIf f_barcode = 1 And Left(timText3.Text, 1) = "/" Then    ' $$$$$$  KATA BARCODE
-174                 EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND   KOD  LIKE '" + SameLetters(Trim(mID(timText3.Text, 2, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2;"
+172             ElseIf f_barcode = 1 And Left(timtext3.Text, 1) = "/" Then    ' $$$$$$  KATA BARCODE
+174                 EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND   KOD  LIKE '" + SameLetters(Trim(mID(timtext3.Text, 2, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2;"
 
 176                 EID.Refresh
 
@@ -19936,12 +19978,12 @@ Sub timtex3_enter()
                     '¡Õ ƒ≈Õ ≈◊≈…  …Õ«»≈…  ¡»œÀœ’ Õ¡ Ã–œ—≈… Õ¡ ƒ≈…Œ≈…
                     'CSBmk_CS <            If EID.Recordset.EOF>
 178                 If EID.Recordset.EOF Then
-180                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  KOD  LIKE '" + SameLetters(Trim(mID(timText3.Text, 2, 14))) + "%' ;"
+180                     EID.RecordSource = "SELECT KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID " & " WHERE  KOD  LIKE '" + SameLetters(Trim(mID(timtext3.Text, 2, 14))) + "%' ;"
                         'CSBmk_CS <            End If>
                     End If
 
                     'CSBmk_CS <        ElseIf f_barcode = 1 And Left(TIMText3.T>
-182             ElseIf f_barcode = 1 And Left(timText3.Text, 1) = "%" Then    ' $$$$$$  KATA BARCODE
+182             ElseIf f_barcode = 1 And Left(timtext3.Text, 1) = "%" Then    ' $$$$$$  KATA BARCODE
 
                     'CSBmk_CS <            If fbuff = "r">
 184                 If fbuff = "r" Then    '------------------------
@@ -19983,7 +20025,7 @@ Sub timtex3_enter()
 192                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 194                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 196                         r0.Close
-198                         APOT1.FLAG.Caption = "1"
+198                         APOT1.flag.Caption = "1"
 200                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 202                         gApoMenu = False
 204                         APOT1.SHOW 1
@@ -20017,12 +20059,12 @@ Sub timtex3_enter()
 220                     If Val(Left(APOTH1.Text, 1)) = 4 Then MPOSOTHTA2 = "EID.POS04"
 
                         'CSBmk_CS <                If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 An>
-222                     If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timText3.Text, 2) Then
-224                         EID.RecordSource = "select " + MPOSOTHTA2 + " AS [’–œÀ],EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + SameLetters(Trim(mID(timText3.Text, 3, 5))) + "%';"
+222                     If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timtext3.Text, 2) Then
+224                         EID.RecordSource = "select " + MPOSOTHTA2 + " AS [’–œÀ],EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + SameLetters(Trim(mID(timtext3.Text, 3, 5))) + "%';"
                             'CSBmk_CS <                Else>
                         Else
 
-226                         EID.RecordSource = "select " + MPOSOTHTA2 + " AS [’–œÀ],EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + Trim(SameLetters(Trim(mID(timText3.Text, 1, 15)))) + "%';"
+226                         EID.RecordSource = "select " + MPOSOTHTA2 + " AS [’–œÀ],EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + Trim(SameLetters(Trim(mID(timtext3.Text, 1, 15)))) + "%';"
                             'CSBmk_CS <                End If>
                         End If
 
@@ -20032,7 +20074,7 @@ Sub timtex3_enter()
                         'CSBmk_CS <                If EID.Recordset.EOF>
 230                     If EID.Recordset.EOF Then
                             ' ¯·˜ÌÂÈ Í·Ù‹ BOHUHTIKO Í˘‰ÈÍ¸  ERG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-232                         EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE  EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND ERG LIKE '" + SameLetters(Trim(mID(timText3.Text, 1, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 "
+232                         EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE  EGGTIM.APOT=" + Left(APOTH1.Text, 1) + " AND ERG LIKE '" + SameLetters(Trim(mID(timtext3.Text, 1, 14))) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2 "
 234                         EID.Refresh
 
                             'CSBmk_CS <                    If F_MONOMEYPOLOIPO = 1 And f_pol = 1>
@@ -20048,7 +20090,7 @@ Sub timtex3_enter()
 
                         On Error GoTo timtex3_enter_Err
 
-240                     EID.RecordSource = "select top 10 EID.KOD,EID.ONO,LTI5,FPA,MON,XTI,LTI,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX,PROELEYSH,KATHGORIA,CH1,NUM2 from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + Trim(SameLetters(Trim(mID(timText3.Text, 1, 15)))) + "%';"
+240                     EID.RecordSource = "select top 10 EID.KOD,EID.ONO,LTI5,FPA,MON,XTI,LTI,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX,PROELEYSH,KATHGORIA,CH1,NUM2 from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + Trim(SameLetters(Trim(mID(timtext3.Text, 1, 15)))) + "%';"
 
                         ' ¯·˜ÌÂÈ Í·Ù‹ BOHUHTIKO Í˘‰ÈÍ¸  ERG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         '       EID.RecordSource = "select SUM(CASE WHEN XRE IS NULL THEN 0 ELSE XRE END)" _
@@ -20128,21 +20170,21 @@ Sub timtex3_enter()
 
                     '----------------kata  barcode  ÔÙ·Ì ÂﬂÌ·È „ıÒÈÛÏ›ÌÔ Í·Ù· Í˘‰ÈÍ¸ ---------------------------------
                     'CSBmk_CS <        ElseIf Left(TIMText3.Text, 1) = "/">
-292             ElseIf Left(timText3.Text, 1) = "/" Then    ' $$$$$$  KATA BARCODE
+292             ElseIf Left(timtext3.Text, 1) = "/" Then    ' $$$$$$  KATA BARCODE
 
                     Dim MBB As String
                     ' Õ¡ ¡√Õœ≈… ‘œ 0 Ã–—œ”‘¡
-294                 If Left(timText3.Text, 1) = "0" Then
-296                     MBB = Trim(mID(timText3.Text, 3, 14))
+294                 If Left(timtext3.Text, 1) = "0" Then
+296                     MBB = Trim(mID(timtext3.Text, 3, 14))
                     Else
-298                     MBB = Trim(mID(timText3.Text, 2, 14))
+298                     MBB = Trim(mID(timtext3.Text, 2, 14))
                     End If
 
 300                 EID.RecordSource = "select EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX,EID.KATHGORIA,CH1,NUM2 from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + SameLetters(MBB) + "%';"
 
                     '-------------------√≈ÕÕ«‘—…¡  Ÿƒ… ŸÕ -------------------------------------------------
                     'CSBmk_CS <        ElseIf Left(TIMText3.Text, 1) = "%">
-302             ElseIf Left(timText3.Text, 1) = "%" Then   '$$$$$$$
+302             ElseIf Left(timtext3.Text, 1) = "%" Then   '$$$$$$$
 
                     'CSBmk_CS <            If fbuff = "r">
 304                 If fbuff = "r" Then    '------------------------
@@ -20155,7 +20197,7 @@ Sub timtex3_enter()
 310                         r0.Open "select max(ERG) FROM EID WHERE ERG LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 312                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 314                         r0.Close
-316                         APOT1.FLAG.Caption = "1"
+316                         APOT1.flag.Caption = "1"
 318                         APOT1.Text1(4).Text = XX + ChDigEAN13(XX)    'timtext3.Text
                               
 320                         gApoMenu = False
@@ -20175,7 +20217,7 @@ Sub timtex3_enter()
 326                         r0.Open "select max(KOD) FROM EID WHERE KOD LIKE '" + GEN2 + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 328                         XX = Format(1 + Val(Left(r0(0), 12)), "000000000000")
 330                         r0.Close
-332                         APOT1.FLAG.Caption = "1"
+332                         APOT1.flag.Caption = "1"
 334                         APOT1.Text1(0).Text = XX + ChDigEAN13(XX)    'timtext3.Text
 336                         gApoMenu = False
 338                         APOT1.SHOW 1
@@ -20185,7 +20227,7 @@ Sub timtex3_enter()
 
                         '1390                      gApoMenu = False
                         '1400                      APOT1.SHOW 1
-340                     timText3.SetFocus
+340                     timtext3.SetFocus
 342                     EID.RecordSource = "select KOD,ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,ERG,CH6 from EID WHERE KOD LIKE '" + XX + "%';"
                         'CSBmk_CS <            End If>
                     End If              '------------------------
@@ -20225,15 +20267,15 @@ Sub timtex3_enter()
                     End If
 
                     'CSBmk_CS <            If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 An>
-350                 If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timText3.Text, 2) Then
+350                 If Len(Trim(F_2CHFIA_ZYGIZOMENA)) > 1 And Left(F_2CHFIA_ZYGIZOMENA, 2) = Left(timtext3.Text, 2) Then
                         'EID.RecordSource = "select EID.KOD,EID.ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,EID.ERG,EID.SYSKMAX from BARCODES INNER JOIN EID ON BARCODES.KOD=EID.KOD WHERE BARCODES.ERG LIKE '" + SameLetters(Trim(mID(TIMText3.Text, 3, 5))) + "%';"
-352                     EID.RecordSource = "select KOD,ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,ERG,SYSKMAX,LTI2,LTI3,CH6 from EID WHERE ENERGO=1 AND LEFT(KOD,7)='" + mID(timText3.Text, 1, 7) + "';"
+352                     EID.RecordSource = "select KOD,ONO,XTI,LTI,LTI5,FPA,MON,MEMO,POS_KERD,ERG,SYSKMAX,LTI2,LTI3,CH6 from EID WHERE ENERGO=1 AND LEFT(KOD,7)='" + mID(timtext3.Text, 1, 7) + "';"
                         'CSBmk_CS <            Else>
                     Else
 354                     If f_AKRIBOS_TON_KODIKO = 1 Then
-356                         EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],EID.ONO,KOD AS [ Ÿƒ],XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE " + Synt5 + " ENERGO=1 AND  KOD  ='" + SameLetters(timText3.Text) + "' GROUP BY ONO,KOD,XTI,LTI,LTI5,CH6,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES ORDER BY KOD ;"
+356                         EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ],EID.ONO,KOD AS [ Ÿƒ],XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE " + Synt5 + " ENERGO=1 AND  KOD  ='" + SameLetters(timtext3.Text) + "' GROUP BY ONO,KOD,XTI,LTI,LTI5,CH6,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES ORDER BY KOD ;"
                         Else
-358                         EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ], EID.ONO,KOD AS [ Ÿƒ],XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE " + Synt5 + " ENERGO=1 AND  KOD  LIKE '" + SameLetters(timText3.Text) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES ORDER BY KOD ;"
+358                         EID.RecordSource = "select SUM(CASE WHEN APOT<>" + Left(APOTH1.Text, 1) + " OR  XRE IS NULL THEN 0 ELSE XRE END)" & "-SUM(CASE WHEN  APOT<>" + Left(APOTH1.Text, 1) + " OR  PIS IS NULL THEN 0 ELSE PIS END) AS [’–œÀ], EID.ONO,KOD AS [ Ÿƒ],XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID LEFT JOIN EGGTIM  ON EID.KOD=EGGTIM.KODE" & " WHERE " + Synt5 + " ENERGO=1 AND  KOD  LIKE '" + SameLetters(timtext3.Text) + "%' GROUP BY ONO,KOD,XTI,LTI,LTI5,EID.FPA,CH6,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14),SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES ORDER BY KOD ;"
                         End If
                         'CSBmk_CS <            End If>
                     End If
@@ -20243,10 +20285,10 @@ Sub timtex3_enter()
 
                     'CSBmk_CS <            If EID.Recordset.EOF>
 362                 If EID.Recordset.EOF Then
-364                     EID.RecordSource = "select KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE ENERGO=1 AND  KOD  LIKE '" + SameLetters(timText3.Text) + "%' ;"
+364                     EID.RecordSource = "select KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE ENERGO=1 AND  KOD  LIKE '" + SameLetters(timtext3.Text) + "%' ;"
 366                     If EID.Recordset.EOF Then
                         
-368                         EID.RecordSource = "select KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE ENERGO=1 AND ( ERG='" + SameLetters(timText3.Text) + "' OR KOD IN (SELECT TOP 1 KOD FROM BARCODES WHERE ERG='" + timText3.Text + "')) ;"
+368                         EID.RecordSource = "select KOD AS [ Ÿƒ]," & " EID.ONO,XTI,LTI,LTI5,EID.FPA,MON,KOD,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,KATHGORIA,CH1,NUM2,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE ENERGO=1 AND ( ERG='" + SameLetters(timtext3.Text) + "' OR KOD IN (SELECT TOP 1 KOD FROM BARCODES WHERE ERG='" + timtext3.Text + "')) ;"
 
                         End If
 
@@ -20293,7 +20335,7 @@ Sub timtex3_enter()
                 '                End If
                 '
 386             If Left(Grid1.TextMatrix(Grid1.row, f_k), 1) = "*" Then    ' ----------
-388                 Grid1.Text = timText3.Text
+388                 Grid1.Text = timtext3.Text
 
                     ' ÏÈ‹ ÍÔÎÔÌ· ·Ò·Í‹Ù˘
                     'CSBmk_CS <            If Grid1.Col < Grid1.ColS - 3>
@@ -20320,7 +20362,7 @@ Sub timtex3_enter()
                     Dim mpos
 
                     'SYNDYASMENH ANAZHTHSH ME $  DHLADH   ” …¡$99 œÀ≈” ‘…” "” …≈”" Ã≈  Ÿƒ… œ –œ’ ¡—◊…∆≈… ¡–œ "99"
-396                 ONOM = timText3.Text
+396                 ONOM = timtext3.Text
 
 398                 DOL = InStr(1, ONOM, "$")
 400                 KODI = ""
@@ -20406,7 +20448,7 @@ Sub timtex3_enter()
                     'CSBmk_CS <            If EID.Recordset.EOF>
 432                 If EID.Recordset.EOF Then
                         '--------------- //////////////////
-434                     EID.RecordSource = "select EID.ONO,KOD,POS AS [”’Õ.’–œÀ], XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE EID.ENERGO=1 AND   EID.ONO  LIKE '" + SameLetters(timText3.Text) + "%' ORDER BY ONO ;"
+434                     EID.RecordSource = "select EID.ONO,KOD,POS AS [”’Õ.’–œÀ], XTI,LTI,LTI5,EID.FPA,MON,POS_KERD,ERG,SUBSTRING(MEMO,1,14) AS MMEMO,SYSKMAX,LTI2,LTI3,UES,CH6 " & " from EID " & " WHERE EID.ENERGO=1 AND   EID.ONO  LIKE '" + SameLetters(timtext3.Text) + "%' ORDER BY ONO ;"
 436                     EID.Refresh
 
                         'CSBmk_CS <            End If>
@@ -20450,7 +20492,7 @@ Sub timtex3_enter()
 
                         'CSBmk_CS <                If ANSR = vbYes>
 454                     If ANSR = vbYes Then
-456                         Grid1.TextMatrix(Grid1.row, f_k) = timText3.Text
+456                         Grid1.TextMatrix(Grid1.row, f_k) = timtext3.Text
                             'apot2ROULIS.kod = TIMText3.Text
                             'apot2ROULIS.SHOW
                             'apot2ROULIS.NEO_EIDOS
@@ -20463,20 +20505,20 @@ Sub timtex3_enter()
                         'CSBmk_CS <            Else>
                     Else
                     
-458                     If GGET_NVALUE("SELECT COUNT(*) FROM EID WHERE KOD='" + timText3.Text + "' AND ISNULL(ENERGO,0)=0 ") > 0 Then
+458                     If GGET_NVALUE("SELECT COUNT(*) FROM EID WHERE KOD='" + timtext3.Text + "' AND ISNULL(ENERGO,0)=0 ") > 0 Then
 460                         If MsgBox("’‹Ò˜ÂÈ ÙÔ Âﬂ‰ÔÚ Û·Ì ·ÌÂÌÂÒ„¸." + Chr(13) + "Õ· „ﬂÌÂÈ ÂÌÂÒ„¸;", vbYesNo) = vbYes Then
-462                             Gdb.Execute "update EID set ENERGO=1 WHERE KOD='" + timText3.Text + "'"
+462                             Gdb.Execute "update EID set ENERGO=1 WHERE KOD='" + timtext3.Text + "'"
                             Else
-464                             timText3.Text = ""
+464                             timtext3.Text = ""
                             End If
                         
                         Else
                     
-466                         APOT1.Text1(0).Text = timText3.Text
-468                         APOT1.FLAG.Caption = "1"
+466                         APOT1.Text1(0).Text = timtext3.Text
+468                         APOT1.flag.Caption = "1"
 470                         APOT1.SHOW 1
                         End If
-472                     timText3.SetFocus
+472                     timtext3.SetFocus
                         'CSBmk_CS <            End If>
                     End If
                   
@@ -20559,9 +20601,9 @@ Sub timtex3_enter()
 518                 Dim m_arxiki_timi As Double: m_arxiki_timi = gVal(Grid1.TextMatrix(Grid1.row, F_T))
 
                     ' Â·Ì Á ·Ò˜ÈÍﬁ (ıÔÎ¸„ÈÊ¸ÏÂÌÁ ·Óﬂ·) - ÙÁÌ ·ÓÈ· Ôı Â˜˘ ÎÁÍÙÒÔÎÔ„ﬁÛÂÈ(Â·Ì Ùı˜¸Ì ÎÁÍÙÒÔÎ¸„ÁÛ·) ÂÈÌ·È > 0.005 ÙÔÙÂ Ó·Ì·ıÔÎÔ„ﬂÊ˘ ÙÈÏÁ
-520                 If Abs(Round(gVal(Grid1.TextMatrix(Grid1.row, f_p) * M_EKP1 * M_EKP2) * gVal(Grid1.TextMatrix(Grid1.row, F_T)), 2) - gVal(timText3.Text)) > 0.009 Then
+520                 If Abs(Round(gVal(Grid1.TextMatrix(Grid1.row, f_p) * M_EKP1 * M_EKP2) * gVal(Grid1.TextMatrix(Grid1.row, F_T)), 2) - gVal(timtext3.Text)) > 0.009 Then
                         ' '''''If Abs(m_arxiki_timi - (gVal(TIMText3.Text) / (gVal(Grid1.TextMatrix(Grid1.row, f_p)) * M_EKP1 * M_EKP2))) > 0.005 Then
-522                     Grid1.TextMatrix(Grid1.row, F_T) = Format(gVal(timText3.Text) / (gVal(Grid1.TextMatrix(Grid1.row, f_p)) * M_EKP1 * M_EKP2), "###0.00000")
+522                     Grid1.TextMatrix(Grid1.row, F_T) = Format(gVal(timtext3.Text) / (gVal(Grid1.TextMatrix(Grid1.row, f_p)) * M_EKP1 * M_EKP2), "###0.00000")
                     End If
 
 524                 FindSynolo
@@ -20576,9 +20618,9 @@ Sub timtex3_enter()
             'CSBmk_CS <    If Grid1.Col = f_f>
 526         If Grid1.Col = f_f Then   'ˆ· ÂÎÂ„˜ÔÚ „È· Ì· ÏÁÌ ‚·ÊÂÈ ·Û˜ÂÙÂÚ ÙÈÏÂÚ
                 'CSBmk_CS <        If Val(TIMText3.Text) <= 0 Or Val(TIMTex>
-528             If Val(timText3.Text) <= 0 Or Val(timText3.Text) > 9 Then
+528             If Val(timtext3.Text) <= 0 Or Val(timtext3.Text) > 9 Then
 530                 MsgBox "À·ËÔÚ ÷–¡ . –Ò›ÂÈ Ì· ÂﬂÌ·È ·Ô 1-9"
-532                 timText3.Text = Grid1.TextMatrix(Grid1.row, f_f)
+532                 timtext3.Text = Grid1.TextMatrix(Grid1.row, f_f)
                     'CSBmk_CS <        End If>
                 End If
                 'CSBmk_CS <    End If>
@@ -20602,7 +20644,7 @@ Sub timtex3_enter()
                 
                     'CSBmk_CS <            If EID.Recordset("SYSKMAX") > 0 And SYSK>
 542                 If EID.Recordset("SYSKMAX") > 0 And SYSKEYASIA.Value = vbChecked Then
-544                     timText3.Text = timText3.Text * EID.Recordset("SYSKMAX")
+544                     timtext3.Text = timtext3.Text * EID.Recordset("SYSKMAX")
                         'CSBmk_CS <            End If>
                     End If
                     'CSBmk_CS <        End If>
@@ -20686,17 +20728,17 @@ Sub timtex3_enter()
 
                             'Dim ans As Integer
 594                         MsgBox "ƒ≈Õ ≈  —≈Ã≈… ‘≈‘œ…œ ≈…ƒœ” ”‘œÕ –≈À¡‘«"
-596                         timText3.Text = 0
+596                         timtext3.Text = 0
                             'CSBmk_CS <                End If>
                         End If
 
                         'CSBmk_CS <                If HDH_FORTOMENA + Val(TIMText3.Text) > >
-598                     If HDH_FORTOMENA + Val(timText3.Text) > R(0) Then
+598                     If HDH_FORTOMENA + Val(timtext3.Text) > R(0) Then
 600                         MHNYMA2.Timer1.Interval = 50
 602                         MHNYMA2.SHOW 1
 
-604                         MsgBox "« ·Ò·„„ÂÎËÂﬂÛ· ÔÛ¸ÙÁÙ· ÂﬂÌ·È " + str(R(0)) + Chr(13) + "Í·È ›˜ÂÙÂ ﬁ‰Á ÙÈÏÔÎÔ„ﬁÛÂÈ " + Format(HDH_FORTOMENA + Val(timText3.Text), "#####.00")
-606                         timText3.Text = 0
+604                         MsgBox "« ·Ò·„„ÂÎËÂﬂÛ· ÔÛ¸ÙÁÙ· ÂﬂÌ·È " + str(R(0)) + Chr(13) + "Í·È ›˜ÂÙÂ ﬁ‰Á ÙÈÏÔÎÔ„ﬁÛÂÈ " + Format(HDH_FORTOMENA + Val(timtext3.Text), "#####.00")
+606                         timtext3.Text = 0
                             'CSBmk_CS <                End If>
                         End If
 
@@ -20704,7 +20746,7 @@ Sub timtex3_enter()
                     End If
 
                     'CSBmk_CS <            If Val(TIMText3.Text) > (mXre - mPis) - >
-608                 If Val(timText3.Text) > (mXre - mPis) - mDesmia Then
+608                 If Val(timtext3.Text) > (mXre - mPis) - mDesmia Then
 610                     MHNYMA2.Timer1.Interval = 50
 612                     MHNYMA2.SHOW 1
 
@@ -20712,7 +20754,7 @@ Sub timtex3_enter()
 
                         'CSBmk_CS <                If f_checkYpol = 2>
 616                     If f_checkYpol = 2 Then
-618                         timText3.Text = 0
+618                         timtext3.Text = 0
                             'CSBmk_CS <                End If>
                         End If
                         'CSBmk_CS <            End If>
@@ -20741,7 +20783,7 @@ Sub timtex3_enter()
 
                     'CSBmk_CS <            If SUMA9 = 0>
 630                 If SUMA9 = 0 Then
-632                     XROMATA(Grid1.row, 1, 1) = timText3.Text
+632                     XROMATA(Grid1.row, 1, 1) = timtext3.Text
                         'CSBmk_CS <            End If>
                     End If
                     'CSBmk_CS <        End If>
@@ -20753,7 +20795,7 @@ Sub timtex3_enter()
                     Dim jj As Integer
                      
 636                 jj = InStrRev(Grid1.TextMatrix(Grid1.row, f_o), "-")
-638                 Grid1.TextMatrix(Grid1.row, f_o) = Left(Grid1.TextMatrix(Grid1.row, f_o), jj + 1) + str(Val(mID(Grid1.TextMatrix(Grid1.row, f_o), jj - 8, 8)) + gVal(timText3.Text) - 1)
+638                 Grid1.TextMatrix(Grid1.row, f_o) = Left(Grid1.TextMatrix(Grid1.row, f_o), jj + 1) + str(Val(mID(Grid1.TextMatrix(Grid1.row, f_o), jj - 8, 8)) + gVal(timtext3.Text) - 1)
                     'CSBmk_CS <        End If>
                 End If
 
@@ -20764,7 +20806,7 @@ Sub timtex3_enter()
 
                     Dim TAKE As Single
 
-642                 SYNOLO_POS = gVal(timText3.Text)   ' Grid1.TextMatrix(Grid1.row, f_p))
+642                 SYNOLO_POS = gVal(timtext3.Text)   ' Grid1.TextMatrix(Grid1.row, f_p))
 
                     Dim rpart As New ADODB.Recordset, MTAKE As Single
                    
@@ -20841,7 +20883,7 @@ Sub timtex3_enter()
                 'CSBmk_CS <    End If>
             End If     'If Grid1.Col = f_p Then  ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-702         MTEXT = timText3.Text
+702         MTEXT = timtext3.Text
             'CSBmk_CS <    If KOMA > 0>
 704         KOMA = InStr(MTEXT, ","): If KOMA > 0 Then Mid$(MTEXT, KOMA, 1) = "."
             ' ÏÂÙ·ÍﬂÌÁÛÁ ÛÂ grid
