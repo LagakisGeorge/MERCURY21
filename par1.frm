@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "ΗΜΕΡ/ΩΡΑ ΠΡΔ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblΗΜΕΡΩΡΑ"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblΗΜΕΡΩΡΑ"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   81264641
+         Format          =   280494081
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   81264642
+         Format          =   280494082
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   81788929
+      Format          =   280625153
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -18524,15 +18524,16 @@ Private Sub Grid1_LeaveCell()
     
             If Grid1.Text <> timText3.Text Then  ' ΠΡΟΣΟΧΗ ΑΛΛΑΞΕΣ ΤΟ ΚΕΛΙ ΑΡΑ ΕΝΤΕΡ
                
-370             If Grid1.Col = f_k Then  ' AN ΑΛΛΑΞΕ ΤΟΝ ΚΩΔΙΚΟ ΔΕΝ ΤΟΝ ΑΠΟΘΗΚΕΥΕΙ ΣΤΟ GRID
+               
+370             If Grid1.Col = f_k Then  ' -AN ΑΛΛΑΞΕ ΤΟΝ ΚΩΔΙΚΟ ΔΕΝ ΤΟΝ ΑΠΟΘΗΚΕΥΕΙ ΣΤΟ GRID
                    
                 Else
-372                 Grid1.Text = timText3.Text    ' κρατάει το grid το κείμενο
+372                 Grid1.Text = timText3.Text    '- κρατάει το grid το κείμενο
                 End If
                
                 'Exit Sub
             Else
-374             Grid1.Text = timText3.Text    ' κρατάει το grid το κείμενο
+374             Grid1.Text = timText3.Text    ' -κρατάει το grid το κείμενο
             End If
 
             '  Grid1.Text = TIMText3.Text    ' κρατάει το grid το κείμενο
