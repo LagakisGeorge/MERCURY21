@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   239730689
+      Format          =   309460993
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   239730689
+      Format          =   309460993
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -14192,7 +14193,7 @@ Public Function ToJason(ByVal noask As Integer, _
 650                     L = 0
 652                     SJ = SJ + Chr(13) + ",""invoiceDetails"":[" 'arxizoyn oi seires=======================================================================
 
-                        Dim M_onoma As String
+                        Dim m_onoma As String
 
                         '====================================================================================================================
 654                     Do While Not EGGTIM.EOF
@@ -14258,9 +14259,9 @@ Public Function ToJason(ByVal noask As Integer, _
 702                         SJ = SJ + Chr(13) + ",""recType"":0"
 704                         SJ = SJ + Chr(13) + ",""quantity"":" + Replace(Format(Round(EGGTIM("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
 
-                            M_onoma = Replace(EGGTIM("onoma"), """", "`")
-                            M_onoma = Replace(M_onoma, "\", "/")
-706                         SJ = SJ + Chr(13) + ",""entityName"":""" + M_onoma + """"
+                            m_onoma = Replace(EGGTIM("onoma"), """", "`")
+                            m_onoma = Replace(m_onoma, "\", "/")
+706                         SJ = SJ + Chr(13) + ",""entityName"":""" + m_onoma + """"
                            
 708                         SJ = SJ + Chr(13) + ",""netValue"":" + Replace(Format(Round(AJ, 2), "#####0.00"), ",", ".")
 710                         SJ = SJ + Chr(13) + ",""vatCategory"":" + Replace(str(VAT), ",", ".")
@@ -15392,16 +15393,31 @@ Function to_pos(ByVal TID As String, _
     
     
     
- ' Gdb.Execute "INSERT INTO REQPAYMENTS (EXTERNALSYSTEMID) VALUES('" + mID_NUM + "')"
+  Gdb.Execute "INSERT INTO REQPAYMENTS (EXTERNALSYSTEMID) VALUES('" + mID_NUM + "')"
   
-   'Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+   Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
   
   
   'Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
   
- ' Gdb.Execute "update  REQPAYMENTS set SIGNATURE='" + F_PAROX_SIGNATURE + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+ 'invoiceAA"":""" + mID(SQLDTATIM, 2, 6)   afmCompany
+  
+  Gdb.Execute "update  REQPAYMENTS set INVOICEAA='" + mID(SQLDTATIM, 2, 6) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
   
   
+  
+   Gdb.Execute "update  REQPAYMENTS set NETVALUE='" + Replace(Format(MKAU, "#####0.00"), ",", ".") + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+  
+  Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+  
+  Gdb.Execute "update  REQPAYMENTS set SIGNATURE='" + F_PAROX_SIGNATURE + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+  
+  
+  Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + posTimestamp + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+  
+  
+  
+  Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + Left(posTimestamp, 20) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
   
   
   Open "C:\TXTFILES\answREQUEST2222APOPAROXO" + extID + ".TXT" For Output As #1
