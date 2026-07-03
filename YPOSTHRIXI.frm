@@ -538,17 +538,23 @@ Private Sub TDBGrid_BeforeColEdit(ByVal ColIndex As Integer, ByVal KeyAscii As I
 End Sub
 
 Private Sub TDBGrid_Click()
-TDBGrid.Refresh
-
+Dim MCOL As Integer
+'
+MCOL = TDBGrid.Col
+'
+'TDBGrid.Refresh
+'
 TDBGrid.Col = 0
     Dim MT As String
     MT = TDBGrid.Text
-    
+'
      AdodcSX.RecordSource = "SELECT TOP 100 HME,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA where THL='" + Trim(MT) + "' AND DATEDIFF(DAY,HME,GETDATE())<=30 ORDER BY ID DESC" ' Text2.Text
-         
+'
     AdodcSX.ConnectionString = gConnect '
     AdodcSX.Refresh
      TDBGrid1.columns(0).Width = 2500 'гле
+TDBGrid.Col = MCOL
+'TDBGrid.SetFocus
 
 
 
@@ -874,8 +880,32 @@ TDBGrid_FilterChange_Err:
 End Sub
 
 Private Sub TDBGrid_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    TDBGrid1.Col = 1
-    Dim MT As String
-    MT = TDBGrid1.Text
+   ' TDBGrid1.Col = 1
+   ' Dim MT As String
+    'MT = TDBGrid1.Text
    
+End Sub
+
+Private Sub TDBGrid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+'
+'Dim MCOL As Integer
+'MCOL = tdbgrid1.Col
+'
+'TDBGrid.Refresh
+'
+'TDBGrid.Col = 0
+'    Dim MT As String
+'    MT = TDBGrid.Text
+'
+'     AdodcSX.RecordSource = "SELECT TOP 100 HME,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA where THL='" + Trim(MT) + "' AND DATEDIFF(DAY,HME,GETDATE())<=30 ORDER BY ID DESC" ' Text2.Text
+'
+'    AdodcSX.ConnectionString = gConnect '
+'    AdodcSX.Refresh
+'    If MCOL < 4 Then
+'          TDBGrid.Col = 4 'MCOL
+'    Else
+'         tdbgrid1.Col = MCOL
+'
+'    End If
+    
 End Sub
