@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -13,11 +13,11 @@ Begin VB.Form Par7MyData
    ClientHeight    =   12525
    ClientLeft      =   60
    ClientTop       =   405
-   ClientWidth     =   21405
+   ClientWidth     =   16080
    LinkTopic       =   "Form2"
    MDIChild        =   -1  'True
    ScaleHeight     =   12525
-   ScaleWidth      =   21405
+   ScaleWidth      =   16080
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.CommandButton PL8_4 
@@ -226,8 +226,8 @@ Begin VB.Form Par7MyData
       Left            =   0
       TabIndex        =   45
       Top             =   0
-      Width           =   21405
-      _ExtentX        =   37756
+      Width           =   16080
+      _ExtentX        =   28363
       _ExtentY        =   1799
       ButtonWidth     =   3016
       ButtonHeight    =   1640
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308281345
+      Format          =   91029505
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308281345
+      Format          =   91029505
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1700,7 +1699,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1714,8 +1713,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.Ã≈‘—' WHERE TRP LIKE 'Ã≈%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.–…”‘' WHERE TRP LIKE '–…%' "
 
-118     APO.SetFocus
-120     EOS.SetFocus
+118     apo.SetFocus
+120     eos.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -3107,7 +3106,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -4330,7 +4329,7 @@ Private Sub Command12_Click()
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4810,7 +4809,7 @@ cmdKOYKAKH.Enabled = False
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '% œ’ ¡%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '% œ’ ¡%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -6868,7 +6867,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(APO) < 2021 Then
+102     If Year(apo) < 2021 Then
 104         MsgBox "À¡»œ” «Ã≈—œÃ«Õ…¡"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6909,7 +6908,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -6945,7 +6944,7 @@ Function FIND_QUERY()
 166     sql = sql + "ISNULL(FPA1,0) AS FPA1,ISNULL(FPA2,0) AS FPA2,ISNULL(FPA3,0) AS FPA3,ISNULL(FPA4,0) AS FPA4 ,ISNULL(FPA6,0) AS FPA6,ISNULL(FPA7,0) AS FPA7,"
 168     sql = sql + "AJI,PEL.EPA,ISNULL(PEL.POL,'.') AS POL,PEL.COUNTRY,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,"
 170     sql = sql + "ISNULL(PEL.XRVMA,'') AS TK,SXETMARK,ISNULL(PARAKRATISI,0) AS PARAKRAT,ISNULL(B_C2,'') AS TYPOSPARAKRAT,isnull(EXCHANGERATE,1) AS EXCHANGERATE,isnull(CURRENCY,'EUR') AS CURRENCY ,ISNULL(ELGA,0) AS ELGA,isnull(KR1,0) AS KR1,ISNULL(KR2,0) AS KR2,PEL.EIDOS AS EIDOS,isnull(ANASTOLHFPA,0) as ANASTOLHFPA ,OTHERMOVEPURPOSETITLE, ORA,AYTOK,ISNULL(SXETMARKS,',') AS SXETMARKS,SKOPOS,AKYROMENO,isnull(JWT,'') AS JWT, "
-        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,PARAT "
+        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,ISNULL(PARAT,'') AS PARAT "
 172     sql = sql + "   FROM TIM LEFT JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
 174     sql = sql + fSynt ' " WHERE (ENTITYMARK IS NULL OR LEFT(ENTITYMARK,3)='ERR' ) AND    LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'  "
         'sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
@@ -10714,7 +10713,7 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Õ
 156             P_KEY = "534044b048f4023151f37c2a44282200"  ' "555bc57c80634243958f62b629316aaa" ' CNull(R!MYDATAPASW)
                  
 158             PAROX_USER = "glagakis@gmail.com"
-160             PAROX_PASS = "Lagakis123!@#" ' y39213921!!Y"
+160             PAROX_PASS = "Lagakis123!@#$" ' y39213921!!Y"
 162             PAROX_KEY = "32657FD7929B483AABBD1C633401E945"
 
 
@@ -10799,8 +10798,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Õ
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "À¡»œ” ”‘…” ¡Õ‘…”‘œ…◊«”≈…” ÷–¡"
-230             APO.Enabled = False
-232             EOS.Enabled = False
+230             apo.Enabled = False
+232             eos.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10810,8 +10809,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Õ
  
 240     R.Close
   
-242     APO.Value = Now
-244     EOS.Value = Now
+242     apo.Value = Now
+244     eos.Value = Now
 
         Dim sql As String
 
@@ -10819,8 +10818,8 @@ f_Stelno_daiakin = FINDPARAMETROI(1, "PAR7MYDATA", "f_Stelno_daiakin", "0", "1=Õ
 
 248     If sql = "0" Then
 
-250         APO.Enabled = False
-252         EOS.Enabled = False
+250         apo.Enabled = False
+252         eos.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -11449,7 +11448,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11460,7 +11459,7 @@ Private Sub monoApestalmena_Click()
 146    sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [”’Õ. ¡»],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [”’Õ.÷–¡],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148    sql = sql + "   FROM TIM  "
-150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+150    sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 152    sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154    sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11624,10 +11623,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -11761,7 +11760,7 @@ End Sub
 
 Private Sub Toolbar1_ButtonDropDown(ByVal Button As MSComctlLib.Button)
 
-100     If Button.index = 3 Then
+100     If Button.Index = 3 Then
             ' remove existing buttons
             '  Button.ButtonMenus.Clear
 
@@ -11816,7 +11815,7 @@ Private Sub Toolbar1_ButtonMenuClick(ByVal ButtonMenu As MSComctlLib.ButtonMenu)
   
         Dim N As Integer
 
-100     N = ButtonMenu.index
+100     N = ButtonMenu.Index
 
 102     Select Case ButtonMenu.key
 
@@ -11851,7 +11850,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [–¡—¡”‘],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ ¡».¡Œ…¡], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11863,7 +11862,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Œ') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Œ') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -12914,10 +12913,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -13175,7 +13174,7 @@ Public Function ToJason(ByVal noask As Integer, _
 196     Set docStock = New MSXML2.DOMDocument
 
 198     With docStock
-200        ' .appendChild .createProcessingInstruction("xml", "version=""1.0"" encoding=""utf-8""")
+200         ' .appendChild .createProcessingInstruction("xml", "version=""1.0"" encoding=""utf-8""")
 202         Set elemRoot = .createElement("InvoicesDoc")
 
 204         With elemRoot '/////////////////////////////////////////////////////////////////////////////////////////
@@ -13397,7 +13396,7 @@ Public Function ToJason(ByVal noask As Integer, _
 344                         ' Set elem3Field = docStock.createElement("city"):'elem3Field.Text = CNull(SQLDT("POL")): ' elem2Field.appendChild elem3Field
 346                         ' ' elemField.appendChild elem2Field
                           
-348                        ' .appendChild elemField
+348                         ' .appendChild elemField
                                 
                             '------------ COUNTER PART ------------------------
 350                         If mID(Split(ctypos, ";")(0), 1, 2) = "11" Then
@@ -13423,7 +13422,7 @@ Public Function ToJason(ByVal noask As Integer, _
                                 ' Set elem2Field = docStock.createElement("branch"):'elem2Field.Text = m_ypok:
 368                             ' ' elemField.appendChild elem2Field
   
-370                            ' .appendChild elemField
+370                             ' .appendChild elemField
                  
                             End If
                       
@@ -13446,7 +13445,7 @@ Public Function ToJason(ByVal noask As Integer, _
                             'f_YPOK
                             ' ' Set elem2Field = docStock.createElement("branch"):'elem2Field.Text = "0": ' ' elemField.appendChild elem2Field
 388                         ' Set elem2Field = docStock.createElement("branch"):'elem2Field.Text = m_ypok: ' ' elemField.appendChild elem2Field
-390                        ' .appendChild elemField
+390                         ' .appendChild elemField
                             
 392                         SJ = SJ + Chr(13) + " ""issuer"":{ "
 
@@ -13491,7 +13490,7 @@ Public Function ToJason(ByVal noask As Integer, _
 426                             ' Set elem3Field = docStock.createElement("postalCode"):'elem3Field.Text = CNull(SQLDT("TK")): ' elem2Field.appendChild elem3Field
 428                             ' Set elem3Field = docStock.createElement("city"):'elem3Field.Text = CNull(SQLDT("POL")): ' elem2Field.appendChild elem3Field
 430                             ' ' elemField.appendChild elem2Field
-432                            ' .appendChild elemField
+432                             ' .appendChild elemField
                                 
 434                             SJ = SJ + Chr(13) + " ""counterpart"":{ "
 436                             SJ = SJ + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
@@ -13502,8 +13501,9 @@ Public Function ToJason(ByVal noask As Integer, _
 446                             SJ = SJ + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
 448                             SJ = SJ + Chr(13) + ",""city"":""" + Trim(SQLDT("pol")) + """"
 450                             SJ = SJ + Chr(13) + ",""country"":""" + Trim(SQLDT("COUNTRY")) + """"
+
                                 If m_is_benzinadiko = 1 Then
-                                     SJ = SJ + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
+                                    SJ = SJ + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
                                 End If
 
 452                             If is_B2G = 1 Then
@@ -13555,7 +13555,10 @@ Public Function ToJason(ByVal noask As Integer, _
                         If isDiakin = 2 Then
                         Else
 498                         SJ = SJ + Chr(13) + ",""currency"":""" + "EUR" + """"
+
                         End If
+
+                        SJ = SJ + Chr(13) + ",""invoiceNote"":""" + SQLDT("PARAT") + """"
                         
                         '                           he.movePurpose = Val(SQLDT.rows(klm)("SKOPOS").toString.Substring(0, 2))
                         '                        If he.movePurpose = 19 Then
@@ -13568,8 +13571,6 @@ Public Function ToJason(ByVal noask As Integer, _
                             SJ = SJ + Chr(13) + ",""otherMovePurposeTitle"":""" + SQLDT("OTHERMOVEPURPOSETITLE") + """"
                         
                         End If
-
-           
 
 502
 
@@ -13584,9 +13585,7 @@ Public Function ToJason(ByVal noask As Integer, _
 508                         SJ = SJ + Chr(13) + ",""paymentTerms"":""" + mID(SQLDT("TRP"), 3, 7) + """"
                         End If
                         
-                        
-                        
-                                     '------------- ¡’‘œ‘…ÃœÀœ√«”« --------------------<selfPricing>true</selfPricing>
+                        '------------- ¡’‘œ‘…ÃœÀœ√«”« --------------------<selfPricing>true</selfPricing>
                         If IsAytotim = 1 Then
 
                             ' ¡’‘œ‘…ÃœÀœ√«”« Ã«À…œ’
@@ -13602,17 +13601,10 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If
                             
                         End If
-                        
-                        
 
-'510                     If IsAytotim = 1 Then
-'512                         Sj = Sj + Chr(13) + ",""selfPricing"":true"
-'                        End If
-                        
-                        
-                        
-                        
-                        
+                        '510                     If IsAytotim = 1 Then
+                        '512                         Sj = Sj + Chr(13) + ",""selfPricing"":true"
+                        '                        End If
                         
 602                     SJ = SJ + Chr(13) + ",""vatPaymentSuspension"":false "
 604                     SJ = SJ + Chr(13) + ",""vehicleNumber"":""" + SQLDT("AYTOK") + """  "
@@ -13664,7 +13656,7 @@ Public Function ToJason(ByVal noask As Integer, _
                             SJ = SJ + Chr(13) + " , ""branch"":0 "
                             SJ = SJ + Chr(13) + ",""Name"":""" + Trim(SQLDT("EPO")) + """"
                                                            
-                      '      Sj = Sj + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
+                            '      Sj = Sj + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
                             SJ = SJ + Chr(13) + ",""address"":{ "
                             SJ = SJ + Chr(13) + " ""country"":""GR"" "
                             SJ = SJ + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
@@ -13840,7 +13832,7 @@ Public Function ToJason(ByVal noask As Integer, _
                                                        
                         End If
 
-570                    ' .appendChild elemField
+570                     ' .appendChild elemField
                         
                         Dim IS_POS As Integer: IS_POS = 0
 
@@ -13862,8 +13854,6 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  AYJON=" + mID(mTRP, 1, 1)) ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
                             TID = Trim(TID) '.TrimEnd()
-                           
-                            
                             
                             MFPA = SQLDT("FPA1") + SQLDT("FPA2") + SQLDT("FPA3") + SQLDT("FPA4") + SQLDT("FPA6") + SQLDT("FPA7")
                             MKAU = SQLDT("AJ1") + SQLDT("AJ2") + SQLDT("AJ3") + SQLDT("AJ4") + SQLDT("AJ5") + SQLDT("AJ6") + SQLDT("AJ7")
@@ -13873,7 +13863,9 @@ Public Function ToJason(ByVal noask As Integer, _
                             Else
                                 MsgBox "‰ÂÌ Â˜ÂÈ ‰ÁÎ˘ËÂÈ TID POS  (C1 PINAKES TYPOS 12)"
                                 ToJason = 0
+
                                 Exit Function
+
                             End If
                             
                             If POSTransactionId = "error" Then
@@ -14118,7 +14110,7 @@ Public Function ToJason(ByVal noask As Integer, _
 586                             ' Set elem3Field = docStock.createElement("type"):'elem3Field.Text = cTrp: ' elem2Field.appendChild elem3Field
 588                             ' Set elem3Field = docStock.createElement("amount"):'elem3Field.Text = chDec(Format(SUMNET + SumFpa, "######0.##")): ' elem2Field.appendChild elem3Field
 590                             ' ' elemField.appendChild elem2Field
-592                            ' .appendChild elemField
+592                             ' .appendChild elemField
 
                                 '594                             Sj = Sj + Chr(13) + ",""paymentMethods"":[{ ""type"":" + cTrp ' """"
                                 '596                             Sj = Sj + Chr(13) + ",""amount"":" + chDec(Format(Round(SUMNET + SumFpa, 2), "####0.00"))
@@ -14199,7 +14191,9 @@ Public Function ToJason(ByVal noask As Integer, _
                      
 650                     L = 0
 652                     SJ = SJ + Chr(13) + ",""invoiceDetails"":[" 'arxizoyn oi seires=======================================================================
+
                         Dim M_onoma As String
+
                         '====================================================================================================================
 654                     Do While Not EGGTIM.EOF
                             'For n = 1 To 3 ' SEIRES TIMOLOGIOY
@@ -14263,7 +14257,6 @@ Public Function ToJason(ByVal noask As Integer, _
                            
 702                         SJ = SJ + Chr(13) + ",""recType"":0"
 704                         SJ = SJ + Chr(13) + ",""quantity"":" + Replace(Format(Round(EGGTIM("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
-
 
                             M_onoma = Replace(EGGTIM("onoma"), """", "`")
                             M_onoma = Replace(M_onoma, "\", "/")
@@ -14475,7 +14468,7 @@ Public Function ToJason(ByVal noask As Integer, _
 850                             ' ' elemField.appendChild elem2Field
                             End If
                       
-852                        ' .appendChild elemField
+852                         ' .appendChild elemField
 854                         SJ = SJ + Chr(13) + "}" ' Â‰˘ ÍÎÂÈÌÂÈ Á ÛÂÈÒ·=============================================
 856                         EGGTIM.MoveNext
                             'Next
@@ -14623,11 +14616,11 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             Dim CATUBL As String: CATUBL = " "
 
-'                            If RR(0) = 1 Then ' –¡—¡ —¡‘«”« ÷œ—œ’
-'                                CATUBL = "104"
-'                            ElseIf RR(0) = 4 Then
-'                                CATUBL = "SAE"
-'                            End If
+                            '                            If RR(0) = 1 Then ' –¡—¡ —¡‘«”« ÷œ—œ’
+                            '                                CATUBL = "104"
+                            '                            ElseIf RR(0) = 4 Then
+                            '                                CATUBL = "SAE"
+                            '                            End If
                             
                             If RR(0) = 1 Then ' –¡—¡ —¡‘«”« ÷œ—œ’
                             
@@ -14667,14 +14660,14 @@ Public Function ToJason(ByVal noask As Integer, _
                                     SJ = SJ + Chr(13) + ",""taxType"":3 "
                                     SJ = SJ + Chr(13) + ",""taxCategoryUbl"":""AEF"" "
                                 End If
-                             ElseIf RR(0) = 4 Then 'psifiako telos
+
+                            ElseIf RR(0) = 4 Then 'psifiako telos
                             
-                               If gVal(RR(1)) > 0 Then  '
+                                If gVal(RR(1)) > 0 Then  '
                                     SJ = SJ + Chr(13) + "  ""taxCategory"":" + RR(1)
                                     SJ = SJ + Chr(13) + ",""taxType"":4 "
                                     SJ = SJ + Chr(13) + ",""taxCategoryUbl"":""SAE"" "
                                 End If
-                            
                             
                             End If
 
@@ -14873,11 +14866,11 @@ Public Function ToJason(ByVal noask As Integer, _
                                 
                                             ' –¡…—Õ≈… ‘«Õ  ¡‘«√œ—…¡ ¡–œ ‘«Õ  ¡‘«√œ—…¡ ≈…ƒœ’”
 1072                                        ' Set elem3Field = docStock.createElement("n1:classificationCategory")
-1074                                       'elem3Field.Text = fKatEsod(K90)
+1074                                        'elem3Field.Text = fKatEsod(K90)
 1076                                        ' elem2Field.appendChild elem3Field
                              
 1078                                        ' Set elem3Field = docStock.createElement("n1:amount")
-1080                                       'elem3Field.Text = chDec(Format(SumEsodExod(K90), "######0.##"))
+1080                                        'elem3Field.Text = chDec(Format(SumEsodExod(K90), "######0.##"))
 1082                                        ' elem2Field.appendChild elem3Field
                              
 1084                                        ' ' elemField.appendChild elem2Field
@@ -14893,11 +14886,11 @@ Public Function ToJason(ByVal noask As Integer, _
 1090                                        ' Set elem2Field = docStock.createElement("expensesClassification") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜
 1092                                        ' Set elem3Field = docStock.createElement("ecls:classificationType"):'elem3Field.Text = Split(cTyposExod, ";")(0): ' elem2Field.appendChild elem3Field
 1094                                        ' Set elem3Field = docStock.createElement("ecls:classificationCategory")
-1096                                       'elem3Field.Text = fKatEXod(K90)
+1096                                        'elem3Field.Text = fKatEXod(K90)
 1098                                        ' elem2Field.appendChild elem3Field
                              
 1100                                        ' Set elem3Field = docStock.createElement("ecls:amount")
-1102                                       'elem3Field.Text = chDec(Format(SumEsodExod(K90), "######0.##"))
+1102                                        'elem3Field.Text = chDec(Format(SumEsodExod(K90), "######0.##"))
 1104                                        ' elem2Field.appendChild elem3Field
                              
 1106                                        ' ' elemField.appendChild elem2Field
@@ -14917,11 +14910,11 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If ' mydatafromEID
                         End If 'isdiakin=2
                             
-1118                   ' .appendChild elemField
+1118                    ' .appendChild elemField
                     
                     End With  '--------------------------------------
 
-1120               ' .appendChild invoice
+1120                ' .appendChild invoice
                 
 1122                EGGTIM.Close
 
