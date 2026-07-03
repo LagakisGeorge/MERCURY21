@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   383582209
+         Format          =   309854209
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   383582210
+         Format          =   309919746
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   382009345
+      Format          =   309854209
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3652,27 +3652,31 @@ Private Sub ar_paraggt_LostFocus()
     
         Dim querpol As String
         
+        Dim ALLAPOT As String
+        
+        
+        
         If f_SHOWALLAPOT = 1 Then
-             querpol = ""
+             ALLAPOT = " B_N1 LIKE '%' "
         Else
-            querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+            ALLAPOT = "  B_N1 LIKE '%" + Left(APOTH1.Text, 1) + "'"
         End If
         
         
         
 102     If chkPOL.Value = vbChecked Then
 104         If chkAgor.Value = vbChecked Then
-106            ' querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+106             querpol = ALLAPOT  '    "  B_N1=" + Left(APOTH1.Text, 1)
             Else
-108             querpol = querpol + IIf(Len(querpol) > 1, " AND ", "") + " TIM.EIDOS='e'  "
+108             querpol = ALLAPOT + " AND  TIM.EIDOS='e'  "
            
             End If
         Else
 110         If chkAgor.Value = vbChecked Then
-                querpol = querpol + IIf(Len(querpol) > 1, " AND ", "") + " TIM.EIDOS='r'  "
+                querpol = ALLAPOT + " AND " + " TIM.EIDOS='r'  "
 112             'querpol = "  B_N1=" + Left(APOTH1.Text, 1) + " AND TIM.EIDOS='r'  "
             Else
-114            ' querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+114             querpol = ALLAPOT   ' "  B_N1=" + Left(APOTH1.Text, 1)
            
             End If
          
@@ -3682,7 +3686,7 @@ Private Sub ar_paraggt_LostFocus()
 118         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,AKYROMENO,MARKPLHR FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + IIf(Len(querpol) < 2, "", querpol + "and ") + " ATIM LIKE '%" + ar_paraggt.Text + "%' ORDER BY ID_NUM DESC"
         Else
 120         If Len(querpol) > 2 Then querpol = " where " + Left$(querpol, 85)
-122         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,,AKYROMENO,MARKPLHR  FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
+122         LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM,AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,AKYROMENO,MARKPLHR  FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
         End If
 
 124    On Error Resume Next
@@ -3841,7 +3845,7 @@ If HMERPARAD.Value < DTPicker1.Value Then
 End If
 
 
-fortosh.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
+FORTOSH.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
 
 
 
@@ -6488,7 +6492,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
         'On Error GoTo enhm_eggtim_Err
 244     If Len(parat.Text) > mLenPARAT Then parat.Text = Left(parat.Text, mLenPARAT)
 246     If Len(SKOPOS.Text) > mLenSKOPOS Then parat.Text = Left(SKOPOS.Text, mLenSKOPOS)
-248     If Len(fortosh.Text) > mLenFORTOSH Then fortosh.Text = Left(fortosh.Text, mLenFORTOSH)
+248     If Len(FORTOSH.Text) > mLenFORTOSH Then FORTOSH.Text = Left(FORTOSH.Text, mLenFORTOSH)
 250     If Len(PROORISMOS.Text) > mLenPROORISMOS Then PROORISMOS.Text = Left(PROORISMOS.Text, mLenPROORISMOS)
 252     If Len(AYTOKINHTO.Text) > mLenAYTOKINHTO Then AYTOKINHTO.Text = Left(AYTOKINHTO.Text, mLenAYTOKINHTO)
 
@@ -6496,7 +6500,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
 256     SQLTIM = SQLTIM + str(Val(Replace(metaf.Text, ",", "."))) + ","    ' METAF
 258     SQLTIM = SQLTIM + "'" + Replace(SKOPOS.Text, "'", "`") + "',"    ' SKOPOS
 260     SQLTIM = SQLTIM + "'" + Replace(PROORISMOS.Text, "'", "`") + "',"    ' PROORISMOS
-262     SQLTIM = SQLTIM + "'" + Replace(fortosh.Text, "'", "`") + "',"    ' FORTOSH
+262     SQLTIM = SQLTIM + "'" + Replace(FORTOSH.Text, "'", "`") + "',"    ' FORTOSH
 264     SQLTIM = SQLTIM + "'" + Replace(AYTOKINHTO.Text, "'", "`") + "',"    ' AYTOKINHTO
 266     SQLTIM = SQLTIM + str(get_kerdos) + ","  ' KERDOS
 
@@ -7427,7 +7431,7 @@ Sub enhm_apot()
 120     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 122     fSCR.language = "vbscript"
 124     fSCR.addObject "eid", EID
-126     fSCR.addObject "mactext", mactext
+126     fSCR.addObject "mactext", MACtEXT
 
         Dim M_DOROKARTA As Single
 
@@ -12409,8 +12413,8 @@ label11(0).Left = Text2(2).Left
   label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
  
-Label30.Left = 0
-Label31.Left = 0
+LABEL30.Left = 0
+LABEL31.Left = 0
 Label33.Left = 0
 'sda_epistrofis.Top = apallagesFPA.Top - 600
 
@@ -12906,7 +12910,7 @@ Private Sub Label20_Click()
 
         '</EhHeader>
 
-100     UPDATE_PINAKES 8, Label20, fortosh
+100     UPDATE_PINAKES 8, Label20, FORTOSH
 
         '<EhFooter>
         Exit Sub
@@ -15383,12 +15387,12 @@ ORAPARAD.Value = re("ORAPARAD")
              POSTALCODE.Text = re("postalcode")
              CITY.Text = re("city")
              
-372         fortosh.Text = re("FORTOSH")
-            If InStr(fortosh.Text, ";") > 0 Then
-               FORTDIE.Text = Split(fortosh.Text, ";")(0)
-               fortARit.Text = Split(fortosh.Text, ";")(1)
-               FORTPOL.Text = Split(fortosh.Text, ";")(2)
-               FORTTK.Text = Split(fortosh.Text, ";")(3)
+372         FORTOSH.Text = re("FORTOSH")
+            If InStr(FORTOSH.Text, ";") > 0 Then
+               FORTDIE.Text = Split(FORTOSH.Text, ";")(0)
+               fortARit.Text = Split(FORTOSH.Text, ";")(1)
+               FORTPOL.Text = Split(FORTOSH.Text, ";")(2)
+               FORTTK.Text = Split(FORTOSH.Text, ";")(3)
             End If
             
             
@@ -16162,41 +16166,46 @@ Private Sub Form_Load()
         '==============================
         '<EhHeader>
         On Error GoTo Form_Load_Err
-Dim TT As Long: TT = GetCurrentTime()
 
-SSTab1.Tab = 0
+        Dim TT As Long: TT = GetCurrentTime()
 
-Const F_ARR_TYPOS = 0
-Const F_ARR_ID = 1
-Const F_ARR_AYJON = 2
-Const F_ARR_TIMH = 3
-Const F_ARR_PERIGRAFH = 4
-Const F_ARR_C1 = 5
-'
-Dim f_Arr_PIN(600, 5)
-Dim R_arr As New ADODB.Recordset
- R_arr.Open "SELECT TYPOS,ID,AYJON,TIMH,PERIGRAFH,C1 FROM PINAKES WHERE TYPOS in (4,7,8,9,10,44) ORDER BY TYPOS,AYJON", Gdb, adOpenDynamic, adLockOptimistic
-     Dim k_ARR As Long: k_ARR = 0
-     Do While Not R_arr.EOF
-           k_ARR = k_ARR + 1
-           f_Arr_PIN(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-           f_Arr_PIN(k_ARR, F_ARR_ID) = R_arr!ID
+        SSTab1.Tab = 0
 
-           f_Arr_PIN(k_ARR, F_ARR_AYJON) = R_arr!AYJON
-           f_Arr_PIN(k_ARR, F_ARR_TIMH) = R_arr!TIMH
-           f_Arr_PIN(k_ARR, F_ARR_PERIGRAFH) = R_arr!PERIGRAFH
-           f_Arr_PIN(k_ARR, F_ARR_C1) = R_arr!C1
+        Const F_ARR_TYPOS = 0
 
+        Const F_ARR_ID = 1
 
+        Const F_ARR_AYJON = 2
 
+        Const F_ARR_TIMH = 3
 
-           R_arr.MoveNext
+        Const F_ARR_PERIGRAFH = 4
+
+        Const F_ARR_C1 = 5
+
+        '
+        Dim f_Arr_PIN(600, 5)
+
+        Dim R_arr As New ADODB.Recordset
+
+        R_arr.Open "SELECT TYPOS,ID,AYJON,TIMH,PERIGRAFH,C1 FROM PINAKES WHERE TYPOS in (4,7,8,9,10,44) ORDER BY TYPOS,AYJON", Gdb, adOpenDynamic, adLockOptimistic
+
+        Dim k_ARR As Long: k_ARR = 0
+
+        Do While Not R_arr.EOF
+            k_ARR = k_ARR + 1
+            f_Arr_PIN(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
+            f_Arr_PIN(k_ARR, F_ARR_ID) = R_arr!ID
+
+            f_Arr_PIN(k_ARR, F_ARR_AYJON) = R_arr!AYJON
+            f_Arr_PIN(k_ARR, F_ARR_TIMH) = R_arr!TIMH
+            f_Arr_PIN(k_ARR, F_ARR_PERIGRAFH) = R_arr!PERIGRAFH
+            f_Arr_PIN(k_ARR, F_ARR_C1) = R_arr!C1
+
+            R_arr.MoveNext
         Loop
-R_arr.Close
 
-
-
-
+        R_arr.Close
 
         '</EhHeader>
 
@@ -16214,7 +16223,7 @@ R_arr.Close
         F_ELAIO_DIK = gVal(FINDPARAMETROI(1, "PAR1", "F_ELAIO_DIK", "0", "–œ”œ‘œ % ƒ… ¡…ŸÃ¡‘œ” √…¡ ≈À¡…œ‘—…¬≈…œ–.◊. 17.5  œ◊…=0")) '
 
         F_CUSTOMER_SCREEN = Val(FINDPARAMETROI(1, "PAR1", "F_CUSTOMER_SCREEN", "0", "1= œ»œÕ« –≈À¡‘« œ◊…=0")) '
-       F_CUSTOMER_SCR_LEFT = Val(FINDPARAMETROI(1, "PAR1", "F_CUSTOMER_SCR_LEFT", "20000", "LEFT(¡—◊«) œ»œÕ«” –≈À¡‘«")) '
+        F_CUSTOMER_SCR_LEFT = Val(FINDPARAMETROI(1, "PAR1", "F_CUSTOMER_SCR_LEFT", "20000", "LEFT(¡—◊«) œ»œÕ«” –≈À¡‘«")) '
         
         If F_CUSTOMER_SCREEN = 1 Then
             PAR1CUSTOMER.Left = F_CUSTOMER_SCR_LEFT
@@ -16237,12 +16246,9 @@ R_arr.Close
 
 116     F_IS_BYTIO = Val(FINDPARAMETROI(1, "PAR1", "F_IS_BYTIO", "0", "‚ıÙÈÔ=1 ‰ÈÍ.ÂÈÏ=2 ‚ıÙÈÔ+ÏÂÙ·ˆ=3 4=ÂÎ·ÈÔÙÒÈ‚ÂÈÔ  œ◊…=0")) '
 118     F_PARAS_3SYNAL = FINDPARAMETROI(1, "PAR1", "F_PARAS_3SYNAL", ";", "◊¡—¡ ‘«—.√—¡ÃÃ¡ Ã≈‘¡÷.¡–œ”-–¡—¡À-≈Õ‘œÀ –.◊. Q") '
- 
 
 120     f_SDA = FINDPARAMETROI(1, "PAR1", "F_SDA", "Ÿ;V", "◊¡—¡ ‘«—.√—¡ÃÃ¡ ”ƒ¡ ≈Õ¡—Œ«”  ¡… ≈–…”‘—œ÷«” –.◊. ÷;ÿ") '
-  FKODPELSYGK = FINDPARAMETROI(1, "PAR1", "FKODPELSYGK", "0", "KŸƒ… œ” –≈À¡‘« ”’” ≈Õ‘—Ÿ‘… œ’") '
- 
- 
+        FKODPELSYGK = FINDPARAMETROI(1, "PAR1", "FKODPELSYGK", "0", "KŸƒ… œ” –≈À¡‘« ”’” ≈Õ‘—Ÿ‘… œ’") '
  
 122     If F_METAFORIKES = 2 Then
  
@@ -16258,8 +16264,10 @@ R_arr.Close
 134         GridPelaton.Top = 2820 '2520
 136         GridPelaton.Height = 2000 '  2295  '2295
 138         Frame2(0).Visible = True
+
 140         DoEvents
 142         PAR1.Refresh
+
 144         DoEvents
 146         PAR1.Refresh
 148         Frame2(0).Top = 1320
@@ -16275,10 +16283,13 @@ R_arr.Close
 160             Textm(20).Height = Frame2(1).Height - Textm(20).Top
        
 162             If F_IS_BYTIO = 2 Then  ' dikastikos ÍÎÁÙÁÒ·Ú
+
                     Dim j As Integer
+
 164                 For j = 1 To 7
 166                     Textm(20 + j).Visible = False
                     Next
+
 168                 Label24.Visible = False
 170                 Label25.Visible = False
 172                 MTF11(1).Visible = False
@@ -16288,22 +16299,20 @@ R_arr.Close
 180                 MTF21(1).Visible = False
              
                 End If
+
                 If F_IS_BYTIO = 4 Then ' ÂÎ·ÈÙÒÈ‚ÂÈÔ
                    
-                   Textm(23).Visible = False
-                   Textm(25).Visible = False
-                   'Textm(26).Visible = False
-                  ' Textm(27).Visible = False
+                    Textm(23).Visible = False
+                    Textm(25).Visible = False
+                    'Textm(26).Visible = False
+                    ' Textm(27).Visible = False
                    
-                   ' Label24.Visible = False
-                   ' Label25.Visible = False
+                    ' Label24.Visible = False
+                    ' Label25.Visible = False
                     MTF13(1).Visible = False
                     MTF21(1).Visible = False
                 
-                
-                
                 End If
-                
        
             End If
      
@@ -16345,6 +16354,7 @@ R_arr.Close
 
                 'labels
                 Dim pmet As Long
+
 214             pmet = 160
 
 216             Labf(0).Visible = True
@@ -16378,6 +16388,7 @@ R_arr.Close
          
                 '2->3  4->0
                 Dim met As Long ' metatopish pro aristera olon ton pedion
+
 234             met = 1200
                 '  Textm(2).Left = Textm(2).Left - met
 236             Textm(3).Left = Textm(3).Left - met
@@ -16414,7 +16425,7 @@ R_arr.Close
         End If
 
 276     mForm_Load PAR1, fh, fw, ft, fl
-F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESIZE H FORMA 0=OXI Ÿ” ≈◊≈… ")) '
+        F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESIZE H FORMA 0=OXI Ÿ” ≈◊≈… ")) '
 278     f_strogg = 0 ' ”‘—œ√√’À≈Ã¡ ÷–¡/‘…ÃœÀœ√…œ’
 
 280     f_akyr_neo = Val(FINDPARAMETROI(1, "PAR1", "f_akyr_neo", "0", "√.49.Õ≈œ ¡ ’—Ÿ‘… œ ¡Õ‘…»≈‘œ ◊Ÿ—…” ƒ…¡√—¡÷«=1 œ◊…=0"))
@@ -16465,9 +16476,7 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
  
         'f_METASX_KAI_HMER
  
- 
- 
- F_meIFESTO = Val(FINDPARAMETROI(3, "PAR1", "F_meIFESTO", "1", "1=ME «÷¡…”‘œ 2=÷œ—œÀ.◊Ÿ—…” «÷¡…”‘œ(BAZEI DEH+AFM)"))
+        F_meIFESTO = Val(FINDPARAMETROI(3, "PAR1", "F_meIFESTO", "1", "1=ME «÷¡…”‘œ 2=÷œ—œÀ.◊Ÿ—…” «÷¡…”‘œ(BAZEI DEH+AFM)"))
  
 322     f_METASX_KAI_HMER = Val(FINDPARAMETROI(3, "PAR1", "f_METASX_KAI_HMER", "1", "√.48.”Ù· Û˜ÂÙ.‰ÂÎÙ.Ì· Â˜ÂÈ Í·È ·ÒÈËÏÔ+ÁÏÂÒÔÏ=1 ÏÔÌÔ ·ÒÈËÏ¸=0"))  '·„ÔÒ=1 ˘Î=2 ·ÌÙÔı=3 œ◊…=0"))
  
@@ -16490,11 +16499,9 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
 344     f_CAPTION_MTF14 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_MTF14", "ÃÈÍÙ¸ ¬‹ÒÔÚ", "‘ﬂÙÎÔÚ (ÃÈÍÙ¸ ¬‹ÒÔÚ)")
 346     f_CAPTION_MTF21 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_MTF21", "–ÂÒÈ„Ò·ˆﬁ", "‘ﬂÙÎÔÚ (–ÂÒÈ„Ò·ˆﬁ)")
   
+        f_CAPTION_label24 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_label24", "Diesel »ÂÒÏ", "¬’‘…œ-≈À¡…œ‘— 6Ô ‘≈◊‘¬œ◊")
   
-  f_CAPTION_label24 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_label24", "Diesel »ÂÒÏ", "¬’‘…œ-≈À¡…œ‘— 6Ô ‘≈◊‘¬œ◊")
-  
-  f_CAPTION_label25 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_label25", "AME EGTL", "¬’‘…œ-≈À¡…œ‘— 7Ô ‘≈◊‘¬œ◊")
-  
+        f_CAPTION_label25 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_label25", "AME EGTL", "¬’‘…œ-≈À¡…œ‘— 7Ô ‘≈◊‘¬œ◊")
   
 348     f_CAPTION_labf0 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_labf0", "ÏÔÌ", "‘ﬂÙÎÔÚ (ÏÔÌ) ÏÂÙ·ˆÔÒÈÍ›Ú")
 350     f_CAPTION_labf1 = FINDPARAMETROI(3, "PAR1", "f_CAPTION_labf1", "ÔÛ¸ÙÁÙ·", "‘ﬂÙÎÔÚ (ÔÛ¸ÙÁÙ·) ÏÂÙ·ˆÔÒÈÍ›Ú")
@@ -16526,10 +16533,9 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
         f_parking_auto = Val(FINDPARAMETROI(3, "PAR1", "f_parking_auto", "0", "ÂÈÌ·È parking ÏÂ ·ıÙ¸Ï·ÙÔ ¯ÁˆÈ·ÍÔ ÂÎ·ÙÔÎ¸„ÈÔ=1 /Ô˜È=0"))
         
         F_ANAPODO = FINDPARAMETROI(3, "PAR1", "F_ANAPODO", "Ÿÿ", " ˘‰ÈÍÔﬂ ·Ò/Í˘Ì ÏÂ ·Ì‹Ô‰Ô ÷œ—‘Ÿ”«/–—œœ—…”Ãœ ;")
-        
   
 382     'f_elga_typoi_krat = FINDPARAMETROI(3, "PAR1", "f_elga_typoi_krat", "1;2;4;3;", "‘˝ÔÈ ÍÒ·ÙﬁÛÂ˘Ì ≈À√¡ „È· MyData .˜.  1;2;4;3;")
-         f_elga_typoi_krat = FINDPARAMETROI(3, "PAR1", "f_elga_typoi_krat", "1;2;", "‘˝ÔÈ ÍÒ·ÙﬁÛÂ˘Ì ≈À√¡ „È· MyData .˜.  1;2;4;3;")
+        f_elga_typoi_krat = FINDPARAMETROI(3, "PAR1", "f_elga_typoi_krat", "1;2;", "‘˝ÔÈ ÍÒ·ÙﬁÛÂ˘Ì ≈À√¡ „È· MyData .˜.  1;2;4;3;")
 384     f_TIMES_METASX_DA = Val(FINDPARAMETROI(3, "PAR1", "f_CAPTION_METASX_DA", "0", "TO META”◊.(DA) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
 386     f_TIMES_METASX_TIM = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_TIM", "0", "TO META”◊.(TIM) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
 388     f_TIMES_METASX_LIAN = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO META”◊.(LIAN) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
@@ -16582,12 +16588,13 @@ F_VB6RESIZEFORM = Val(FINDPARAMETROI(1, "PAR1", "F_VB6RESIZEFORM ", "1", "0=RESI
         
 436     F_YCOS_FORMAS = FINDPARAMETROI(1, "PAR1", "F_YCOS_FORMAS", "10830", "’¯ÔÚ ˆ¸ÒÏ·Ú")
 
-F_YCOS_FORM_METAF = FINDPARAMETROI(1, "PAR1", "F_YCOS_FORM_METAF", "1600", "’¯ÔÚ ˆ¸ÒÏ·Ú ÒÔÂ.1600 ")
+        F_YCOS_FORM_METAF = FINDPARAMETROI(1, "PAR1", "F_YCOS_FORM_METAF", "1600", "’¯ÔÚ ˆ¸ÒÏ·Ú ÒÔÂ.1600 ")
 
-Frame2(0).Height = F_YCOS_FORM_METAF
+        Frame2(0).Height = F_YCOS_FORM_METAF
 
 438     F_SET_EIDON = 0
 440     F_METASX_PAR = 0  ' As Integer  ' ≈…Õ¡… Ã≈‘¡”◊«Ã¡‘…”Ãœ” –¡—¡”‘¡‘… œ’ = 1
+
         Dim k, L As Integer, X As String, DB
 
         Dim R As New ADODB.Recordset
@@ -16601,38 +16608,31 @@ Frame2(0).Height = F_YCOS_FORM_METAF
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
+        ' Select Case index
+        '
+        '    Case 0
+        '
+        '        ButtonFlag = 0
+        '
+        TDBGrid1.FetchRowStyle = True
+        '
+        '    Case 1
+        '
+        '        ButtonFlag = 1
+        '
+        '        TDBGrid1.FetchRowStyle = True
+        '
+        '    Case 2
+        '
+        '        TDBGrid1.FetchRowStyle = False
+        '
+        '    End Select
+        '
+        '
 
-' Select Case index
-'
-'    Case 0
-'
-'        ButtonFlag = 0
-'
-       TDBGrid1.FetchRowStyle = True
-'
-'    Case 1
-'
-'        ButtonFlag = 1
-'
-'        TDBGrid1.FetchRowStyle = True
-'
-'    Case 2
-'
-'        TDBGrid1.FetchRowStyle = False
-'
-'    End Select
-'
-'
+        TDBGrid1.Refresh
 
-    TDBGrid1.Refresh
-
-
-
-
-
-
-
-Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
+        Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 
         'Const f_k = 1
         'Const f_o = 2
@@ -16653,6 +16653,7 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 460     f_f = 6 ''ALLAZEI STO FORM_LOAD AN EXO 2PLH EKPTOSI
 462     F_EKPT2 = 11  'ALLAZEI STO FORM_LOAD AN EXO 2PLH EKPTOSI  069   458
 464     F_2EKPTOSEIS = Val(FINDPARAMETROI(7, "PAR1", "F_2EKPTOSEIS", "0", "√.32.≈˜˘ 2Á ›ÍÙ˘ÛÁ ·Ì‹ Âﬂ‰ÔÚ =1 Ô˜È=0")) '·„ÔÒ=1 ˘Î=2 ·ÌÙÔı=3 œ◊…=0"))
+
 466     If F_2EKPTOSEIS = 1 Then  ' And f_FORM_EKTY > 0 Then ' Or F_2EKPTOSEIS = 3 Then
             ' f_f = 11       '  6  ''ALLAZEI STO FORM_LOAD AN EXO 2PLH EKPTOSI
             ' F_EKPT2 = 6    '  11   'ALLAZEI STO FORM_LOAD AN EXO 2PLH EKPTOSI
@@ -16710,7 +16711,7 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
      
 488     F_PAROCHOS = Val(FINDPARAMETROI(1, "PAR7MYDATA", "f_parochos", "0", "0=MyData 1=–·ÒÔ˜ÔÚ"))
          
-         MDIForm1.StatusBar1.Panels(6).Text = IIf(F_PAROCHOS = 1, "–¡—œ◊œ”", "myData")
+        MDIForm1.StatusBar1.Panels(6).Text = IIf(F_PAROCHOS = 1, "–¡—œ◊œ”", "myData")
 490     f_pelMERC = FINDPARAMETROI(5, "PAR1", "F_PELMERC", "..", "◊ÒﬁÛÙÁÚ MERCURY „È· custom")
  
 492     F_PDFFOLDER = Trim(FINDPARAMETROI(4, "PAR1", "F_PDFFOLDER", "\\user-5rwk428ge6\C\PDF", "÷‹ÍÂÎÔÚ ÏÂ Ù· PDF"))
@@ -16844,7 +16845,8 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
         End If
 
 606     R.Close
- Me.Caption = Me.Caption + "--t2b--" + str(GetCurrentTime() - TT)
+        Me.Caption = Me.Caption + "--t2b--" + str(GetCurrentTime() - TT)
+
 608     If F_STOPDELTIA = 1 Then
 
 610         sql = "SELECT convert(CHAR(10),HME,3) AS [«Ã≈—/Õ…¡],ATIM,SKOPOS,EPO" & " FROM TIM INNER JOIN PEL ON PEL.EIDOS=TIM.EIDOS AND PEL.KOD=TIM.KPE" & " WHERE ART IS NULL AND LEFT(ATIM,1)='A' and SKOPOS LIKE '%ŸÀ%' AND" & " HME<'" + Format(DateAdd("D", -27, Now), "MM/DD/YYYY") + "' and HME>'" + Format(DateAdd("D", -31, Now), "MM/DD/YYYY") + "' ORDER BY HME"
@@ -16898,13 +16900,19 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 
 656         R.MoveNext
         Loop
+
 658     If k < 7 Then
 660         If GGET_NVALUE("select count(*) from PINAKES WHERE TYPOS=12 AND N1=6") = 0 Then
+
 662             Dim NNW As Integer: NNW = GGET_NVALUE("select MAX(AYJON) from PINAKES WHERE TYPOS=12 ")
+
 664             Gdb.Execute "INSERT INTO PINAKES (TYPOS,PERIGRAFH,TIMH,N1,AYJON) VALUES(12,'WEB BANKING',1,6," + str(NNW + 1) + ")"
             End If
+
 666         If GGET_NVALUE("select count(*) from PINAKES WHERE TYPOS=12 AND N1=7") = 0 Then
+
 668             Dim NNW2 As Integer: NNW2 = GGET_NVALUE("select MAX(AYJON) from PINAKES WHERE TYPOS=12 ")
+
 670             Gdb.Execute "INSERT INTO PINAKES (TYPOS,PERIGRAFH,TIMH,N1,AYJON) VALUES(12,'POS/e-POS',1,7," + str(NNW2 + 1) + ")"
             End If
         End If
@@ -16915,27 +16923,24 @@ Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 676     F_DIOR = 0
 
         '÷œ—‘ŸÃ¡ ¡–œ»« ŸÕ
-'678     R.Open "SELECT *FROM PINAKES WHERE TYPOS=4 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-'
-'680     Do While Not R.EOF
-'682         APOTH1.AddItem LTrim(str(R("AYJON"))) + "." + R("PERIGRAFH")
-'684         APOTH2.AddItem LTrim(str(R("AYJON"))) + "." + R("PERIGRAFH")
-'686         R.MoveNext
-'        Loop
-'
-'688     R.Close
+        '678     R.Open "SELECT *FROM PINAKES WHERE TYPOS=4 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        '
+        '680     Do While Not R.EOF
+        '682         APOTH1.AddItem LTrim(str(R("AYJON"))) + "." + R("PERIGRAFH")
+        '684         APOTH2.AddItem LTrim(str(R("AYJON"))) + "." + R("PERIGRAFH")
+        '686         R.MoveNext
+        '        Loop
+        '
+        '688     R.Close
 
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
 
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 4 Then
-        APOTH1.AddItem LTrim(str(f_Arr_PIN(k, F_ARR_AYJON))) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
-        APOTH2.AddItem LTrim(str(f_Arr_PIN(k, F_ARR_AYJON))) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
-  End If
-Next
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 4 Then
+                APOTH1.AddItem LTrim(str(f_Arr_PIN(k, F_ARR_AYJON))) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                APOTH2.AddItem LTrim(str(f_Arr_PIN(k, F_ARR_AYJON))) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
+            End If
 
-
-
-
+        Next
 
 690     APOTH1.ListIndex = 0
 
@@ -17026,13 +17031,17 @@ Next
     
 778     If F_PIN_PROELEYS = 1 Then
 780         R.Open "SELECT *FROM PINAKES WHERE TYPOS=22 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+
             Dim nProel
+
 782         nProel = 1
+
 784         Do While Not R.EOF
 786             F_PINAKAS_PROEL(nProel) = R("PERIGRAFH")
 788             R.MoveNext
 790             nProel = nProel + 1
             Loop
+
 792         R.Close
         End If
         
@@ -17043,27 +17052,22 @@ Next
         'PROOR = Val(FindParametroi(1,"PAR1", "PROOR", "1", "≈ƒ—¡ –≈À¡‘«,√.∆≈—¬œ’ 35"))
         'APOSTOLH = Val(FindParametroi(1,"PAR1", "APOSTOLH", "1", "≈ƒ—¡ Ã¡”, .–¡À¡…œÀœ√œ’ 21"))
 
-'        '÷œ—‘ŸÃ¡ ” œ–ŸÕ
-'794     R.Open "SELECT *FROM PINAKES WHERE TYPOS=7 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-'
-'796     Do While Not R.EOF
-'798         SKOPOS.AddItem Right(" " + Format(R!AYJON, "##"), 2) + "." + R("PERIGRAFH")
-'800         R.MoveNext
-'        Loop
-'        R.Close
+        '        '÷œ—‘ŸÃ¡ ” œ–ŸÕ
+        '794     R.Open "SELECT *FROM PINAKES WHERE TYPOS=7 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        '
+        '796     Do While Not R.EOF
+        '798         SKOPOS.AddItem Right(" " + Format(R!AYJON, "##"), 2) + "." + R("PERIGRAFH")
+        '800         R.MoveNext
+        '        Loop
+        '        R.Close
         
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 7 Then
-        SKOPOS.AddItem Right(" " + Format(f_Arr_PIN(k, F_ARR_AYJON), "##"), 2) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
-  End If
-Next
-        
-        
-        
-        
-        
-        
-        
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
+
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 7 Then
+                SKOPOS.AddItem Right(" " + Format(f_Arr_PIN(k, F_ARR_AYJON), "##"), 2) + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
+            End If
+
+        Next
         
 802     If SKOPOS.ListCount < 20 Or InStr(SKOPOS.List(5), "---") = 0 Then
 
@@ -17089,7 +17093,7 @@ Next
 838         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (17,' ¡‘¡—√«»« ≈--- ·Ù·ÛÙÒÔˆﬁ ‹˜ÒÁÛÙÔı ıÎÈÍÔ˝',7)"
 840         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (18,' ¡‘¡—√«»« ≈---ƒÈ·ÍﬂÌÁÛÁ –·„ﬂ˘Ì ',7)"
 842         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (19,'ÀÔÈ›Ú ƒÈ·ÍÈÌﬁÛÂÈÚ',7)"
-             Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (20,'ÃÂÙ·ˆÔÒ›Ú - ‘·˜ıÏÂÙ·ˆÔÒ›Ú',7)"
+            Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (20,'ÃÂÙ·ˆÔÒ›Ú - ‘·˜ıÏÂÙ·ˆÔÒ›Ú',7)"
 
             '1–˛ÎÁÛÁ 2 –˛ÎÁÛÁ „È· ÀÔ„·ÒÈ·ÛÏ¸ ‘ÒﬂÙ˘Ì 3 ƒÂÈ„Ï·ÙÈÛÏ¸Ú 4 ∏ÍËÂÛÁ 5 ≈ÈÛÙÒÔˆﬁ 6 ÷˝Î·ÓÁ
             '7 ≈ÂÓÂÒ„·Ûﬂ· ”ıÌ·ÒÏÔÎ¸„ÁÛÁ 8 ÃÂÙ·Ó˝ ≈„Í·Ù·ÛÙ‹ÛÂ˘Ì œÌÙ¸ÙÁÙ·Ú 9 ¡„ÔÒ‹ 10 ≈ˆÔ‰È·ÛÏ¸Ú ÎÔﬂ˘Ì Í·È ·ÂÒÔÛÍ·ˆ˛Ì
@@ -17100,138 +17104,116 @@ Next
         End If
 
 844
- Me.Caption = Me.Caption + "--t2bB--" + str(GetCurrentTime() - TT)
+        Me.Caption = Me.Caption + "--t2bB--" + str(GetCurrentTime() - TT)
         '÷œ—‘ŸÃ¡ FORTOSHS
-'846     R.Open "SELECT *FROM PINAKES WHERE TYPOS=8 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-'848     Do While Not R.EOF
-'850         FORTOSH.AddItem R("PERIGRAFH")
-'852         R.MoveNext
-'        Loop
-'854     If FORTOSH.ListCount = 0 Then
-'856         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ Ã¡”',8)"
-'        End If
-'
-'858     R.Close
+        '846     R.Open "SELECT *FROM PINAKES WHERE TYPOS=8 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        '848     Do While Not R.EOF
+        '850         FORTOSH.AddItem R("PERIGRAFH")
+        '852         R.MoveNext
+        '        Loop
+        '854     If FORTOSH.ListCount = 0 Then
+        '856         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ Ã¡”',8)"
+        '        End If
+        '
+        '858     R.Close
 
-Dim mok As Integer
-mok = 0
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 8 Then
-        fortosh.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
-        mok = 1
-  End If
-Next
-If mok = 0 Then
-   Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ Ã¡”',8)"
-End If
+        Dim mok As Integer
 
+        mok = 0
 
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
+
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 8 Then
+
+                FORTOSH.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                mok = 1
+            End If
+
+        Next
+
+        If mok = 0 Then
+            Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ Ã¡”',8)"
+        End If
 
         '÷œ—‘ŸÃ¡ –—œœ—…”Ãœ’
-'860     R.Open "SELECT *FROM PINAKES WHERE TYPOS=9 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-'
-'        ' If Not R.EOF Then R.MoveFirst
-'
-'862     Do While Not R.EOF
-'864         PROORISMOS.AddItem R("PERIGRAFH")
-'866         R.MoveNext
-'        Loop
-'
-'868     If PROORISMOS.ListCount = 0 Then
-'870         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ –≈À¡‘«',9)"
-'        End If
-'
-'872     R.Close
-mok = 0
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 9 Then
-        PROORISMOS.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
-        mok = 1
-  End If
-Next
-If mok = 0 Then
-   Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ –≈À¡‘«',9)"
-End If
+        '860     R.Open "SELECT *FROM PINAKES WHERE TYPOS=9 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        '
+        '        ' If Not R.EOF Then R.MoveFirst
+        '
+        '862     Do While Not R.EOF
+        '864         PROORISMOS.AddItem R("PERIGRAFH")
+        '866         R.MoveNext
+        '        Loop
+        '
+        '868     If PROORISMOS.ListCount = 0 Then
+        '870         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ –≈À¡‘«',9)"
+        '        End If
+        '
+        '872     R.Close
+        mok = 0
 
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
 
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 9 Then
+                PROORISMOS.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                mok = 1
+            End If
 
+        Next
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        If mok = 0 Then
+            Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'≈ƒ—¡ –≈À¡‘«',9)"
+        End If
 
         '÷œ—‘ŸÃ¡ AYTOKINHTVN
-'874     R.Open "SELECT *FROM PINAKES WHERE TYPOS=10 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-'
-'876     Do While Not R.EOF
-'878         AYTOKINHTO.AddItem R("PERIGRAFH")
-'880         R.MoveNext
-'        Loop
-'882     If AYTOKINHTO.ListCount = 0 Then
-'884         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'   ',10)"
-'        End If
-'886     R.Close
+        '874     R.Open "SELECT *FROM PINAKES WHERE TYPOS=10 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        '
+        '876     Do While Not R.EOF
+        '878         AYTOKINHTO.AddItem R("PERIGRAFH")
+        '880         R.MoveNext
+        '        Loop
+        '882     If AYTOKINHTO.ListCount = 0 Then
+        '884         Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'   ',10)"
+        '        End If
+        '886     R.Close
 
-mok = 0
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 10 Then
-        AYTOKINHTO.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
-        mok = 1
-  End If
-Next
-If mok = 0 Then
-   Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'   ',10)"
-End If
+        mok = 0
 
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
 
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 10 Then
+                AYTOKINHTO.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                mok = 1
+            End If
 
+        Next
 
-
-
-
-
-
-
+        If mok = 0 Then
+            Gdb.Execute "INSERT INTO PINAKES (AYJON,PERIGRAFH,TYPOS) VALUES (1,'   ',10)"
+        End If
 
         '÷œ—‘ŸÃ¡ ¡–¡ÀÀ¡√ŸÕ ÷–¡
-'888     R.Open "SELECT *FROM PINAKES WHERE TYPOS=44 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-    apallagesFPA.Clear
-'
-'892     Do While Not R.EOF
-'894         apallagesFPA.AddItem Format(R("AYJON"), "#0") + " " + R("PERIGRAFH")
-'896         R.MoveNext
-'        Loop
-'        R.Close
+        '888     R.Open "SELECT *FROM PINAKES WHERE TYPOS=44 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+        apallagesFPA.Clear
+        '
+        '892     Do While Not R.EOF
+        '894         apallagesFPA.AddItem Format(R("AYJON"), "#0") + " " + R("PERIGRAFH")
+        '896         R.MoveNext
+        '        Loop
+        '        R.Close
         
-mok = 0
-For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
-  If f_Arr_PIN(k, F_ARR_TYPOS) = 44 Then
-        apallagesFPA.AddItem Format(f_Arr_PIN(k, F_ARR_AYJON), "#0") + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
-        mok = 1
-  End If
-Next
+        mok = 0
+
+        For k = 0 To UBound(f_Arr_PIN) '(k_ARR, F_ARR_TYPOS) = R_arr!TYPOS
+
+            If f_Arr_PIN(k, F_ARR_TYPOS) = 44 Then
+                apallagesFPA.AddItem Format(f_Arr_PIN(k, F_ARR_AYJON), "#0") + "." + f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                mok = 1
+            End If
+
+        Next
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-'Me.Caption = Me.Caption + "--t2bc--" + str(GetCurrentTime() - TT)
+        'Me.Caption = Me.Caption + "--t2bc--" + str(GetCurrentTime() - TT)
 
 898     If apallagesFPA.ListCount < 32 Or InStr(apallagesFPA.List(13), ".28)") = 0 Then '·Ì Â˜ÂÈ ·ÎÎ·ÓÂÈ ÙÔ ·ÒËÒÔ 28  14.◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 33 ÙÔı  ˛‰ÈÍ· ÷–¡(.28)
 900         Gdb.Execute "DELETE FROM PINAKES  WHERE TYPOS=44"
@@ -17247,12 +17229,8 @@ Next
 914         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,7,'◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 27 ÙÔı  ˛‰ÈÍ· ÷–¡(Ò.22)','VATEX-EU-132')"
 916         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,8,'◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 29 ÙÔı  ˛‰ÈÍ· ÷–¡(Ò.24)','VATEX-EU-143-1B')"
 
-
 918         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,9,'◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 30 ÙÔı  ˛‰ÈÍ· ÷–¡(Ò.25)','VATEX-EU-143-1C')"
 920         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,10,'10 ◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 31 ÙÔı  ˛‰ÈÍ· ÷–¡','VATEX-EU-148')"
-
-
-
 
 922         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,11,'◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 32 ÙÔı  ˛‰ÈÍ· ÷–¡','VATEX-EU-148')"
 924         Gdb.Execute "INSERT INTO PINAKES (TYPOS,AYJON,PERIGRAFH,C2) VALUES(44,12,'◊˘ÒﬂÚ ÷–¡ - ‹ÒËÒÔ 32 - –ÎÔﬂ· ¡ÌÔÈÍÙﬁÚ »·Î‹ÛÛÁÚ ÙÔı  ˛‰ÈÍ· ÷–¡','VATEX-EU-148-A')"
@@ -17332,38 +17310,28 @@ Next
         End If
 
 1016    R.Close
-Me.Caption = Me.Caption + "--t2c--" + str(GetCurrentTime() - TT)
+        Me.Caption = Me.Caption + "--t2c--" + str(GetCurrentTime() - TT)
         'On Error Resume Next
 
 1018    SKOPOS.Text = SKOPOS.List(0)
 
-1020    fortosh.Text = fortosh.List(0)
-
+1020    FORTOSH.Text = FORTOSH.List(0)
 
         Dim R44 As New ADODB.Recordset
 
-     R44.Open "select * from MEM", Gdb, adOpenDynamic, adLockOptimistic
+        R44.Open "select * from MEM", Gdb, adOpenDynamic, adLockOptimistic
 
-     f_pelono = R44("pelono")
-     f_peldie = R44("peldie")
-    f_pelarit = R44("PELARIT")
-     f_pelpol = R44("PELPOL")
-     f_peltk = R44("PELTK")
-     R44.Close
+        f_pelono = R44("pelono")
+        f_peldie = R44("peldie")
+        f_pelarit = R44("PELARIT")
+        f_pelpol = R44("PELPOL")
+        f_peltk = R44("PELTK")
+        R44.Close
 
-
-
-FORTDIE.Text = f_peldie
-fortARit.Text = f_pelarit
-FORTTK.Text = f_peltk
-FORTPOL.Text = f_pelpol
-
-
-
-
-
-
-
+        FORTDIE.Text = f_peldie
+        fortARit.Text = f_pelarit
+        FORTTK.Text = f_peltk
+        FORTPOL.Text = f_pelpol
 
 1022    PROORISMOS.Text = PROORISMOS.List(0)
 
@@ -17454,12 +17422,10 @@ FORTPOL.Text = f_pelpol
 1102    F_GRID_WIDTH = Val(FINDPARAMETROI(6, "PAR1", "F_GRID_WIDTH", "10320", "–Î›„Ï· ‘ÈÏÔÎÔ„ÁÛÁÚ –Î‹ÙÔÚ 10320 KAN"))
 1104    F_KYBRAN = Val(FINDPARAMETROI(6, "PAR1", "F_KYBRAN", "0", "0=MONO TIMOKAT.KA—÷.TIMES(≈ – -1 √≈Õ) 1= ¡… ≈ –‘Ÿ”« ”‘œ NUM1"))
 
-f_polagor = Val(FINDPARAMETROI(6, "PAR1", "f_polagor", "1", "–ÒÔÂÈÎÔ„ﬁ 1=–˘ÎﬁÛÂÈÚ 0=¡„ÔÒ›Ú 2=¡ÔËÁÍÁ"))
-f_EkkremhDeltia = Val(FINDPARAMETROI(6, "PAR1", "f_EkkremhDeltia", "1", "–ÒÔÂÈÎÔ„ﬁ 1=ƒÂÈ˜ÌÂÈ ÂÍÍÒÂÏÁ ‰ÂÎÙﬂ· 0=‰ÂÌ ‰Âﬂ˜ÌÂÈ"))
+        f_polagor = Val(FINDPARAMETROI(6, "PAR1", "f_polagor", "1", "–ÒÔÂÈÎÔ„ﬁ 1=–˘ÎﬁÛÂÈÚ 0=¡„ÔÒ›Ú 2=¡ÔËÁÍÁ"))
+        f_EkkremhDeltia = Val(FINDPARAMETROI(6, "PAR1", "f_EkkremhDeltia", "1", "–ÒÔÂÈÎÔ„ﬁ 1=ƒÂÈ˜ÌÂÈ ÂÍÍÒÂÏÁ ‰ÂÎÙﬂ· 0=‰ÂÌ ‰Âﬂ˜ÌÂÈ"))
 
-f_SHOWALLAPOT = Val(FINDPARAMETROI(6, "PAR1", "f_SHOWALLAPOT", "1", "–ÒÔÂÈÎÔ„ﬁ 1=ƒÂÈ˜ÌÂÈ –¡—/ ¡ œÀŸÕ ‘ŸÕ ¡–œ»« ŸÕ 0=ÃœÕœ ‘—≈◊œ’”¡ ¡–œ»« «"))
-
-
+        f_SHOWALLAPOT = Val(FINDPARAMETROI(6, "PAR1", "f_SHOWALLAPOT", "1", "–ÒÔÂÈÎÔ„ﬁ 1=ƒÂÈ˜ÌÂÈ –¡—/ ¡ œÀŸÕ ‘ŸÕ ¡–œ»« ŸÕ 0=ÃœÕœ ‘—≈◊œ’”¡ ¡–œ»« «"))
 
 1106    F_GRID_FONT_SIZE = Val(FINDPARAMETROI(6, "PAR1", "F_GRID_FONT_SIZE", "8", "–Î›„Ï· ‘ÈÏÔÎÔ„ÁÛÁÚ FONTSIZE 8 KAN"))
 
@@ -17533,6 +17499,7 @@ f_SHOWALLAPOT = Val(FINDPARAMETROI(6, "PAR1", "f_SHOWALLAPOT", "1", "–ÒÔÂÈÎÔ„ﬁ 
             
 1208        Grid1.TextMatrix(0, F_T) = "‘…Ã«"
 1210        Grid1.TextMatrix(0, f_a) = "¡Œ…¡"
+
 1212        If F_KOLA_MIKTA_LABELS = 2 Then
 
 1214            Grid1.TextMatrix(0, F_COL_KOLA) = "–À¡‘œ”"
@@ -17580,7 +17547,7 @@ f_SHOWALLAPOT = Val(FINDPARAMETROI(6, "PAR1", "f_SHOWALLAPOT", "1", "–ÒÔÂÈÎÔ„ﬁ 
         'TIMEDIT.DatabaseName = gDir
         ' TIMEDIT.RecordSource = "SELECT *FROM TIMEDIT"
         ' TIMEDIT.ConnectionString = gConnect
-Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
+        Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
         'EID.DatabaseName = gDir
 1224    EID.RecordSource = "SELECT TOP 1 *FROM EID"
 1226    EID.ConnectionString = gConnect
@@ -17589,8 +17556,8 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
 1228    PEL.RecordSource = "SELECT top 1 *FROM PEL"
 1230    PEL.ConnectionString = gConnect
 
-1232    eggtim.ConnectionString = gConnect
-1234    eggtim.RecordSource = "SELECT top 10 * FROM EGGTIM"
+1232    EGGTIM.ConnectionString = gConnect
+1234    EGGTIM.RecordSource = "SELECT top 10 * FROM EGGTIM"
 
 1236    DOK.ConnectionString = gConnect
 1238    DOK.RecordSource = "SELECT top 1 *FROM DOK"
@@ -17598,30 +17565,63 @@ Me.Caption = Me.Caption + "--t2d--" + str(GetCurrentTime() - TT)
 1240    LASTTIMOL.ConnectionString = gConnect
 
         Dim querpol As String
-1242    If chkPOL.Value = vbChecked Then
-1244        If chkAgor.Value = vbChecked Then
-1246            querpol = " WHERE B_N1=" + Left(APOTH1.Text, 1) '""
-            Else
-1248            querpol = " WHERE B_N1=" + Left(APOTH1.Text, 1) + " AND TIM.EIDOS='e' "
-           
-            End If
+        
+        '        If f_SHOWALLAPOT = 1 Then
+        '             querpol = ""
+        '        Else
+        '            querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+        '        End If
+        '
+        
+        '     If chkPOL.Value = vbChecked Then
+        '         If chkAgor.Value = vbChecked Then
+        '            ' querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+        '            Else
+        '            querpol = querpol + IIf(Len(querpol) > 1, " AND ", "") + " TIM.EIDOS='e'  "
+        '
+        '            End If
+        '        Else
+        '         If chkAgor.Value = vbChecked Then
+        '                querpol = querpol + IIf(Len(querpol) > 1, " AND ", "") + " TIM.EIDOS='r'  "
+        '             'querpol = "  B_N1=" + Left(APOTH1.Text, 1) + " AND TIM.EIDOS='r'  "
+        '            Else
+        '            ' querpol = "  B_N1=" + Left(APOTH1.Text, 1)
+        '
+        '            End If
+        '
+        '        End If
+        Dim ALLAPOT As String
+        
+        If f_SHOWALLAPOT = 1 Then
+            ALLAPOT = " '%' "
         Else
-1250        If chkAgor.Value = vbChecked Then
-1252            querpol = " WHERE B_N1=" + Left(APOTH1.Text, 1) + " AND  TIM.EIDOS='r' "
-            Else
-1254            querpol = " WHERE B_N1=" + Left(APOTH1.Text, 1) + " AND TIM.EIDOS='' "
-           
-            End If
-         
+            ALLAPOT = " '%" + Left(APOTH1.Text, 1) + "' "
         End If
+        
+1242        If chkPOL.Value = vbChecked Then
+1244            If chkAgor.Value = vbChecked Then
+1246                querpol = " WHERE B_N1 LIKE " + ALLAPOT  '                     + Left(APOTH1.Text, 1) '""
+                Else
+1248                querpol = " WHERE B_N1 LIKE " + ALLAPOT + " AND TIM.EIDOS='e' "
+
+                End If
+
+            Else
+
+1250            If chkAgor.Value = vbChecked Then
+1252                querpol = " WHERE B_N1 LIKE " + ALLAPOT + " AND  TIM.EIDOS='r' "
+                Else
+1254                querpol = " WHERE B_N1 LIKE " + ALLAPOT + " AND TIM.EIDOS='' "
+
+                End If
+
+            End If
+       
 
 1256    LASTTIMOL.RecordSource = "SELECT top 5000 HME,ATIM+' '+(SELECT top 1 LEFT(TITLOS,15) FROM PARASTAT WHERE ASCII(PARASTAT.EIDOS)=ASCII(LEFT(ATIM,1))) AS [–¡—/ œ],AJI AS [AŒ…¡],PEL.EPO AS [≈–ŸÕ’Ã…¡],PEL.KOD AS [ Ÿƒ… œ”],PARAT AS [”◊œÀ…¡],SXETIKO AS [”◊≈‘.–¡—],ID_NUM,ENTITYMARK,SXETMARK,IIF(ISNULL(AKYROMENO,0)=1,'¡ÍıÒ˘Ï›ÌÔ','≈„ÍıÒÔ') AS [≈„Í/¡ÍıÒ],INCMARK AS [MARK ¡ ’—Ÿ”«”] FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD " + querpol + " ORDER BY ID_NUM DESC"
 1258    LASTTIMOL.Refresh
 
-Set RSClone = LASTTIMOL.Recordset.Clone()
-
-
-
+        Set RSClone = LASTTIMOL.Recordset.Clone()
 
 1260    TDBGrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
 1262    TDBGrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
@@ -17632,10 +17632,13 @@ Set RSClone = LASTTIMOL.Recordset.Clone()
 1266    RR = Split(F_GRIDLISTASTIMOL, ";")
           
 1268    If UBound(RR) = 8 Then
+
             Dim LLC As Integer
+
 1270        For LLC = 0 To 8
 1272            TDBGrid1.columns(LLC).Width = RR(LLC)
             Next
+
         Else
 1274        TDBGrid1.columns(8).Width = 2500 'MARK
 1276        TDBGrid1.columns(7).Width = 0 'DI_NUM
@@ -17655,11 +17658,8 @@ Set RSClone = LASTTIMOL.Recordset.Clone()
 
 1296    DTPicker1.Value = Now
 
-
- HMERPARAD.Value = Now
- ORAPARAD.Value = Now
- 
-
+        HMERPARAD.Value = Now
+        ORAPARAD.Value = Now
 
 1298    PAR1.Picture = LoadPicture(gPicture)
 
@@ -17715,7 +17715,7 @@ Set RSClone = LASTTIMOL.Recordset.Clone()
         'DbGrid1.Columns(3).NumberFormat = gDek_ajia '‰ÂÍ·‰ÈÍ‹ ·Óﬂ·Ú
         'DbGrid1.Columns(6).NumberFormat = gDek_ajia '‰ÂÍ·‰ÈÍ‹ ·Óﬂ·Ú
 
-       ' PARAS.SetFocus
+        ' PARAS.SetFocus
         PARAS_LostFocus
         PARAS.Enabled = True
         PARAS.SetFocus
@@ -17729,11 +17729,11 @@ Set RSClone = LASTTIMOL.Recordset.Clone()
 1322        Text2(0) = f_apeyueias
 1324        SendKeys "{ENTER} {ENTER}{ENTER} {ENTER}"
         End If
-
         
-'Me.Caption = GetCurrentTime() - tt
+        'Me.Caption = GetCurrentTime() - tt
         Me.Caption = Me.Caption + "--t2--" + str(GetCurrentTime() - TT)
         Me.Caption = ""
+
         Exit Sub
 
 MHNYMA:
@@ -21577,7 +21577,7 @@ Function Gefyroma(g_hme, g_atim, g_eidoskpe, gfkod, gfaj, m_r, mgre)
 184     fSCR.addObject "abat2", abat2
 
         'fSCR.AddObject "cMEM", CMEM
-186     fSCR.addObject "mactext", mactext
+186     fSCR.addObject "mactext", MACtEXT
 
         Dim debug1
 
@@ -23360,7 +23360,7 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
 1150    DB.Execute "update MEM SET C2='" + SKOPOS.Text + "'"
         '  fmem("c2") = SKOPOS.Text    'skopos
 
-1152    DB.Execute "update MEM SET c3='" + fortosh.Text + "'"  'fortosi
+1152    DB.Execute "update MEM SET c3='" + FORTOSH.Text + "'"  'fortosi
 
 1154    DB.Execute "update MEM SET c4='" + PROORISMOS.Text + "'" 'paradosi
 
@@ -23849,7 +23849,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         'fmem.Edit
 168     fmem("c1") = Left(f_paras, Len(f_paras) - 1)    'parastatiko
 170     fmem("c2") = SKOPOS.Text    'skopos
-172     fmem("c3") = fortosh.Text    'fortosi
+172     fmem("c3") = FORTOSH.Text    'fortosi
 174     fmem("c4") = PROORISMOS.Text    'paradosi
 176     fmem("banks") = mID(Combo4.Text, 3, 30)  'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
 178     fmem("pict") = Left(Time$, 5)
@@ -23933,7 +23933,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -23966,7 +23966,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 116     fSCR.addObject "cTIM", CTIM
 118     fSCR.addObject "cEGGTIM", cEGGTIM
 120     fSCR.addObject "cMEM", CMEM
-122     fSCR.addObject "mactext", mactext
+122     fSCR.addObject "mactext", MACtEXT
 
         'Set db = OpenDatabase(gDir, False, False, gConnect)
         'fSCR.ExecuteStatement "CPEL.DATABASENAME=" + Chr$(34) + gDir + Chr$(34)
@@ -24617,7 +24617,7 @@ Function mac(ByVal s As String) As String
         Dim X
 
         'On Error GoTo mac_Err
-100     mactext.Text = "   "
+100     MACtEXT.Text = "   "
 
         On Error GoTo err2
 
@@ -24625,9 +24625,9 @@ Function mac(ByVal s As String) As String
 104     fSCR.ExecuteStatement X
 
 106     If F928 = 1 Then
-108         mac = mactext.Text
+108         mac = MACtEXT.Text
         Else
-110         mac = to437(mactext.Text)
+110         mac = to437(MACtEXT.Text)
         End If
 
         Exit Function
@@ -24930,7 +24930,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -24961,7 +24961,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 118     fSCR.addObject "cTIM", CTIM
 120     fSCR.addObject "DOK", DOK    'cEGGTIM
 122     fSCR.addObject "cMEM", CMEM
-124     fSCR.addObject "mactext", mactext
+124     fSCR.addObject "mactext", MACtEXT
 
 126     DOK.Recordset.MoveFirst
 
@@ -26053,7 +26053,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 168     SKOPOS.Text = CNull(r3!SKOPOS)
 170     PROORISMOS.Text = CNull(r3!PROOR)
-172     fortosh.Text = CNull(r3!fortosh)
+172     FORTOSH.Text = CNull(r3!FORTOSH)
 174     AYTOKINHTO.Text = CNull(r3!AYTOK)
 176     parat.Text = CNull(r3!parat)
 
@@ -26133,7 +26133,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 250     SKOPOS.Text = SKOPOS.List(0) ' ""   CNull(r3!SKOPOS)
 252     PROORISMOS.Text = PROORISMOS.List(0) ' CNull(r3!PROOR)
-254     fortosh.Text = fortosh.List(0) ' CNull(r3!FORTOSH)
+254     FORTOSH.Text = FORTOSH.List(0) ' CNull(r3!FORTOSH)
 256     AYTOKINHTO.Text = AYTOKINHTO.List(0) 'CNull(r3!AYTOK)
 258     parat.Text = "" ' CNull(r3!parat)
 
@@ -26293,7 +26293,7 @@ Dim ubl As String
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     fortosh.Text = CNull(r3!fortosh)
+194     FORTOSH.Text = CNull(r3!FORTOSH)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 
@@ -26560,7 +26560,7 @@ Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOS
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     fortosh.Text = CNull(r3!fortosh)
+194     FORTOSH.Text = CNull(r3!FORTOSH)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 

@@ -798,6 +798,82 @@ r2.Close
 
 
 
+'   QQ = "{""externalSystemId"":""" + mID_NUM + """ " + ","
+'    QQ = QQ + " ""issuerVatNumber"":""" + afmCompany + """" + ","
+'    QQ = QQ + " ""invoiceIssueDate"":""" + Format(SQLDThme, "yyyy-MM-dd") + ""","
+'
+'    QQ = QQ + " ""companyBranch"":""" + SQLDTBRANCH + ""","
+'    QQ = QQ + " ""invoiceType"":""" + Split(Mctypos, ";")(0) + ""","
+
+
+'    QQ = QQ + " ""invoiceSeries"":""" + C_SEIRA + ""","
+'    QQ = QQ + " ""invoiceAA"":""" + mID(SQLDTATIM, 2, 6) + ""","
+'    QQ = QQ + " ""netValue"":" + Replace(Format(MKAU, "#####0.00"), ",", ".") + ","
+'    QQ = QQ + " ""VatAmount"":" + Replace(Format(MFPA, "#####0.00"), ",", ".") + ","
+'    QQ = QQ + " ""totalValue"":" + Replace(Format(MFPA + MKAU, "#####0.00"), ",", ".") + ","
+'
+'    QQ = QQ + " ""paymentAmount"":" + Replace(Format(MFPA + MKAU, "#####0.00"), ",", ".") + ","
+'    QQ = QQ + " ""NspCode"":""2"" , "
+'    QQ = QQ + " ""terminalId"":""" + TID + """ }"     '"99999069"
+'
+'    Open "C:\TXTFILES\REQUES111TAPOPAROXO" + extID + ".TXT" For Output As #1
+'    Write #1, QQ
+'
+'    Close #1
+'
+'    ANSW = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
+'
+'    Dim ser As Object
+'
+'    Set ser = JSON.parse(ANSW)
+'
+'    F_PAROX_SIGNATURE = ser.Item("paymentToken")("signature")
+'    posTimestamp = ser.Item("paymentToken")("timestamp")
+'    posuid = ser.Item("uid")
+
+
+
+
+
+
+ sql = " CREATE TABLE [dbo].[REQPAYMENTS](" _
+       & "[EXTERNALSYSTEMID] [nchar](20) NULL," _
+       & "[ISSUERVATNUMBER] [nchar](10) NULL," _
+       & "[INVOICEISSUEDATE] DATE NULL," _
+       & "[COMPANYBRANCH] [nchar](2) NULL," _
+       & "[INVOICETYPE] [nchar](10) NULL," _
+       & "[INVOICESERIES] [nchar](10) NULL," _
+       & "[INVOICEAA] [nchar](10) NULL," _
+       & "[NETVALUE] FLOAT NULL," _
+       & "[VATAMOUNT] [float] NULL," _
+       & "[TOTALVALUE] [float] NULL," _
+       & "[PAYMENTATAMOUNT] [float] NULL," _
+       & "[NSPCODE] [NCHAR](10) NULL, " _
+       & "[TERMONALID] [nchar](10) NULL," _
+       & "[SIGNATURE] [nchar](180) NULL," _
+       & "[TIMESTAMP] [nchar](20) NULL," _
+       & "[UID] [nchar](50) NULL," _
+       & "[MARK] [nchar](20) NULL," _
+       & "[ID] [int] IDENTITY(1,1) NOT NULL" _
+    & ") ON [PRIMARY]"
+
+
+         
+       
+       
+       
+       
+       
+       
+       
+       R.Open "SELECT COUNT(*) AS N FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME  = 'REQPAYMENTS'", Gdb, adOpenDynamic, adLockOptimistic
+        'On Error Resume Next
+
+        If R(0) = 0 Then
+           Gdb.Execute sql
+        End If
+        
+
 
 
 
@@ -2408,7 +2484,7 @@ UPDATE_YPOLOIPA2_Err:
 End Sub
 
 
-Public Sub TelHmeAgoras(ByVal APO As Date, ByVal EOS As Date)
+Public Sub TelHmeAgoras(ByVal apo As Date, ByVal eos As Date)
 MDIForm1.Caption = " "
         '===================================================================================
         '<EhHeader>
@@ -2443,7 +2519,7 @@ MDIForm1.Caption = " "
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','á',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -2944,8 +3020,8 @@ MILSEC_Err:
 End Sub
 
 Function ypoloipa_pel(ByVal mBUFF As String, _
-                      ByVal APO As Date, _
-                      ByVal EOS As Date, ByVal ENERGOS As Integer) As Single
+                      ByVal apo As Date, _
+                      ByVal eos As Date, ByVal ENERGOS As Integer) As Single
 
         'ypologismos ypoloipon
         '<EhHeader>
@@ -4123,7 +4199,7 @@ R.Close
 End Sub
 
 
-Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker, EOS As DTPicker)
+Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker, eos As DTPicker)
         'into DOKEGGT1
         'B = "CREATE VIEW dbo.[EIDT3]" _
 
@@ -4178,7 +4254,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
         a = a + " SUM(CASE APOT  WHEN 3  THEN isnull(XRE,0) ELSE 0  END ) AS S3X," & " SUM(CASE APOT  WHEN 3  THEN isnull(PIS,0) ELSE 0  END ) AS S3P,"
         a = a + " SUM(CASE APOT  WHEN 4  THEN isnull(XRE,0) ELSE 0  END ) AS S4X," & " SUM(CASE APOT  WHEN 4  THEN isnull(PIS,0) ELSE 0  END ) AS S4P  "
 190     a = a + " INTO DOKEGGT1 FROM EGGTIM  "
-200     a = a + "where HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
+200     a = a + "where HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
 
         Dim TT As Long
 

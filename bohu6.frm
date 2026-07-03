@@ -205,6 +205,14 @@ Begin VB.Form bohu6
       TabIndex        =   15
       Top             =   5640
       Width           =   7215
+      Begin VB.CommandButton CmdupdateStructures 
+         Caption         =   "cmdupdateStructures"
+         Height          =   360
+         Left            =   5400
+         TabIndex        =   60
+         Top             =   2880
+         Width           =   990
+      End
       Begin VB.CommandButton cmd‘«À≈÷ 
          Caption         =   "‘«À≈÷"
          Height          =   360
@@ -259,7 +267,7 @@ Begin VB.Form bohu6
          Left            =   3720
          TabIndex        =   24
          Top             =   2880
-         Width           =   2880
+         Width           =   1440
       End
       Begin VB.CommandButton Command19 
          Caption         =   "ƒÁÏÈÔıÒ„ﬂ· Â„„Ò·ˆﬁÚ Calendar"
@@ -844,6 +852,10 @@ cmdClearFilter_Click_Err:
 
         '</EhFooter>
 
+End Sub
+
+Private Sub CmdupdateStructures_Click()
+Update_Structures
 End Sub
 
 Private Sub cmdWebservice_Click()
@@ -4765,7 +4777,7 @@ Function mac(ByVal s As String) As String
         On Error GoTo mac_Err
 
         '</EhHeader>
-        Dim x
+        Dim X
 
         On Error GoTo mac_Err
 
@@ -4773,8 +4785,8 @@ Function mac(ByVal s As String) As String
 
         On Error GoTo err2
 
-110     x = "MACtEXT.Text = " + s
-120     fSCR.ExecuteStatement x
+110     X = "MACtEXT.Text = " + s
+120     fSCR.ExecuteStatement X
 
 130     If F928 = 1 Then
 140         mac = MACtEXT.Text
@@ -4785,7 +4797,7 @@ Function mac(ByVal s As String) As String
         Exit Function
 
 err2:
-160     Me.Caption = x
+160     Me.Caption = X
 170     mac = "  "
 
 180     Resume Next
