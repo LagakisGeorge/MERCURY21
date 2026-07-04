@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   309460993
+      Format          =   282066945
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   309460993
+      Format          =   282066945
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1767,12 +1766,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     data1.RecordSource = arxeio
-110     data1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = data1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -1944,7 +1943,7 @@ End Sub
 
 
 
- Public Sub CancelDelivery(extID As String, MARK As String)
+ Public Sub CancelDelivery(extid As String, MARK As String)
         Dim Reqpos As WinHttp.WinHttpRequest
         Set Reqpos = New WinHttp.WinHttpRequest
 '        Dim cancel As New CancelDelivery
@@ -1954,7 +1953,7 @@ End Sub
         
         Dim Q As String
         Q = " { ""mark"":" + MARK + ","
-        Q = Q + " ""externalSystemId"":""" + extID + """ }"
+        Q = Q + " ""externalSystemId"":""" + extid + """ }"
         
         
             Dim uripos As String: uripos = gfURL1 + "api/Cancel"
@@ -1987,7 +1986,7 @@ End Sub
 '           ' Dim posser As String: 'JObject = JObject.parse(posjson)
            MILSEC 500
             
-            Gdb.Execute "update TIM SET INCMARK='" + LTrim(str(cmark)) + "' WHERE ID_NUM=" + str(extID)
+            Gdb.Execute "update TIM SET INCMARK='" + LTrim(str(cmark)) + "' WHERE ID_NUM=" + str(extid)
             
             
             
@@ -3107,7 +3106,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -3205,7 +3204,7 @@ POSO = InputBox("–œ”œ ; ", "–œ”œ –—œ≈…”–—¡Œ«”")
 
     Dim uripos As String: uripos = gfURL1 + "api/requestPayment"
 
-    Dim ANSW   As String
+    Dim answ   As String
  
     Dim QQ     As String
 
@@ -3238,11 +3237,11 @@ POSO = InputBox("–œ”œ ; ", "–œ”œ –—œ≈…”–—¡Œ«”")
          
     Close #1
 
-    ANSW = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
+    answ = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
 
     Dim ser As Object
  
-    Set ser = JSON.parse(ANSW)
+    Set ser = JSON.parse(answ)
         
   On Error Resume Next
   
@@ -3250,8 +3249,8 @@ POSO = InputBox("–œ”œ ; ", "–œ”œ –—œ≈…”–—¡Œ«”")
     posTimestamp = ser.Item("paymentToken")("timestamp")
     posuid = ser.Item("uid")
  
-    Open "C:\TXTFILES\answREQUEST2222APOPAROXO" + extID + ".TXT" For Output As #1
-    Write #1, ANSW
+    Open "C:\TXTFILES\answREQUEST2222APOPAROXO" + extid + ".TXT" For Output As #1
+    Write #1, answ
     Write #1, F_PAROX_SIGNATURE
     Close #1
  
@@ -3785,11 +3784,11 @@ cmdDOMDocumentUTF8_Click_Err:
 
 End Sub
 
- Function FERE_TRANSACTIONID(mID_NUM As String) As String 'result@transcactionid
+ Function FERE_TRANSACTIONID(mID_NUM As String, ByRef answ As String) As String 'result@transcactionid
 '---------------------------------------------------------------------
  Dim URI As String
 Dim Q As String
-Dim ANSW As String
+'Dim answ As String
 Dim ctoken As String
 
 
@@ -3843,10 +3842,10 @@ Dim Reqpos As WinHttp.WinHttpRequest
             MsgBox ("¡–¡Õ‘«”« ¡–œ –À«—ŸÃ«" + Chr(13) + Reqpos.responseText)
         End With
         MILSEC (1000)
-    ANSW = Reqpos.responseText
+    answ = Reqpos.responseText
         
         Dim ser As Object
- Set ser = JSON.parse(ANSW)
+ Set ser = JSON.parse(answ)
         'Set ser = JSON.parse(ANSW)
         
 F_posSignature = ser.Item(1)("TransactionId")   'ser.Item(0)("TransactionId") '("signature")
@@ -3878,7 +3877,7 @@ Private Sub cmdTEST2_Click()
 
 Dim URI As String
 Dim Q As String
-Dim ANSW As String
+Dim answ As String
 Dim ctoken As String
 
 
@@ -3968,9 +3967,9 @@ Dim Reqpos As WinHttp.WinHttpRequest
   MILSEC 500
   
   MsgBox Reqpos.responseText
-  ANSW = Reqpos.responseText
+  answ = Reqpos.responseText
   Dim ser As Object
- Set ser = JSON.parse(ANSW)
+ Set ser = JSON.parse(answ)
         
 F_posSignature = ser.Item("token") '("signature")
   
@@ -3993,8 +3992,8 @@ Exit Sub
   Q = "{  ""subscriptionKey"": """ & PAROX_KEY & """ , ""username"": """ & mEMAIL & """ ," & """password"":""" & PAROX_PASS & """," & """email"": """ & mEMAIL & """  " & "}"
  
 ' Dim uripos As String: uripos = gfURL1 + "api/requestPayment"
-ANSW = REQWINHTTP(Q, URI, id_num)
-MsgBox ANSW
+answ = REQWINHTTP(Q, URI, id_num)
+MsgBox answ
 
 
 
@@ -7809,7 +7808,10 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                 End If
 
                             Else
-522                             Set elem2Field = docStock.createElement("selfPricing"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                               If Left(mTypPar, 3) = "3.1" Then ' ‘…‘Àœ”  ‘«”«” (¡–œ –ŸÀ«”≈…”)
+                               Else
+522                                Set elem2Field = docStock.createElement("selfPricing"): elem2Field.Text = "true": elemField.appendChild elem2Field
+                               End If
                             End If
                         End If
                                                        
@@ -11624,10 +11626,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -12727,12 +12729,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     data1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = data1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -12914,10 +12916,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -14397,13 +14399,17 @@ Public Function ToJason(ByVal noask As Integer, _
                                 '------------------------ expenses CLASSIFICATION ------------------------
 794                             ' Set elem2Field = docStock.createElement("expensesClassification") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 796                             ' Set elem3Field = docStock.createElement("ecls:classificationType"):'elem3Field.Text = Split(cTyposExod, ";")(0): ' elem2Field.appendChild elem3Field
-
+                                    SJ = SJ + Chr(13) + ",""classificationType"":""" + Split(cTyposExod, ";")(0) + """"
 798                             If fMydataFromEID1 <> 1 Then ' Í·ÙÁ„ÔÒﬂ· ·¸ ÙÔ ·Ò·ÛÙ·ÙÈÍ¸
-
+                                     SJ = SJ + Chr(13) + ",""classificationCategory"":""" + Split(cTyposExod, ";")(1) + """"
 800                                 ' Set elem3Field = docStock.createElement("ecls:classificationCategory"):'elem3Field.Text = Split(cTyposExod, ";")(1): ' elem2Field.appendChild elem3Field
                                 Else
 802                                 ' Set elem3Field = docStock.createElement("ecls:classificationCategory"):'elem3Field.Text = fKatEXod(EGGTIM("kathgoria")): ' elem2Field.appendChild elem3Field
                                     ' fKatEsod(EGGTIM("kathgoria"))
+                                    
+                                    
+                                    
+                                    
                                 End If
 
 804                             ' Set elem3Field = docStock.createElement("ecls:amount"):'elem3Field.Text = chDec(Format(AJ, "######0.##")): ' elem2Field.appendChild elem3Field
@@ -15344,7 +15350,7 @@ Function to_pos(ByVal TID As String, _
 
     Dim uripos As String: uripos = gfURL1 + "api/requestPayment"
 
-    Dim ANSW   As String
+    Dim answ   As String
  
     Dim QQ     As String
 
@@ -15364,7 +15370,7 @@ Function to_pos(ByVal TID As String, _
     QQ = QQ + " ""NspCode"":""2"" , "
     QQ = QQ + " ""terminalId"":""" + TID + """ }"     '"99999069"
 
-    Open "C:\TXTFILES\REQUES111TAPOPAROXO" + extID + ".TXT" For Output As #1
+    Open "C:\TXTFILES\REQUES111TAPOPAROXO" + extid + ".TXT" For Output As #1
     Write #1, QQ
          
     Close #1
@@ -15375,11 +15381,11 @@ Function to_pos(ByVal TID As String, _
 
 
 
-    ANSW = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
+    answ = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
 
     Dim ser As Object
  
-    Set ser = JSON.parse(ANSW)
+    Set ser = JSON.parse(answ)
         
     F_PAROX_SIGNATURE = ser.Item("paymentToken")("signature")
     posTimestamp = ser.Item("paymentToken")("timestamp")
@@ -15392,38 +15398,21 @@ Function to_pos(ByVal TID As String, _
  
     
     
-    
-  Gdb.Execute "INSERT INTO REQPAYMENTS (EXTERNALSYSTEMID) VALUES('" + mID_NUM + "')"
-  
+   '-------------- ENHMERVSH REQPAYMENTS -----------------------------------------------------------
+   Gdb.Execute "INSERT INTO REQPAYMENTS (EXTERNALSYSTEMID) VALUES('" + mID_NUM + "')"
    Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  
-  'Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
- 'invoiceAA"":""" + mID(SQLDTATIM, 2, 6)   afmCompany
-  
-  Gdb.Execute "update  REQPAYMENTS set INVOICEAA='" + mID(SQLDTATIM, 2, 6) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  
-  
+   Gdb.Execute "update  REQPAYMENTS set INVOICEAA='" + mID(SQLDTATIM, 2, 6) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
    Gdb.Execute "update  REQPAYMENTS set NETVALUE='" + Replace(Format(MKAU, "#####0.00"), ",", ".") + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  Gdb.Execute "update  REQPAYMENTS set SIGNATURE='" + F_PAROX_SIGNATURE + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  
-  Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + posTimestamp + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+   Gdb.Execute "update  REQPAYMENTS set UID='" + posuid + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+   Gdb.Execute "update  REQPAYMENTS set SIGNATURE='" + F_PAROX_SIGNATURE + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+   Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + posTimestamp + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
+   Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + Left(posTimestamp, 20) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
   
   
-  
-  Gdb.Execute "update  REQPAYMENTS set TIMESTAMP='" + Left(posTimestamp, 20) + "' where EXTERNALSYSTEMID='" + LTrim(str(mID_NUM)) + "'"
-  
-  
-  Open "C:\TXTFILES\answREQUEST2222APOPAROXO" + extID + ".TXT" For Output As #1
-    Write #1, ANSW
-    Write #1, F_PAROX_SIGNATURE
-    Close #1
+'  Open "C:\TXTFILES\answREQUEST2222APOPAROXO" + extID + ".TXT" For Output As #1
+'    Write #1, ANSW
+'    Write #1, F_PAROX_SIGNATURE
+'    Close #1
  
     If Len(F_PAROX_SIGNATURE) < 5 Then
         to_pos = "error"
@@ -15452,7 +15441,7 @@ Function to_pos(ByVal TID As String, _
     userpos = GGET_CVALUE("SELECT ISNULL(USERPOS,'') AS U FROM MEM")
     PWDPOS = GGET_CVALUE("SELECT ISNULL(PWDPOS,'') AS U FROM MEM")
 
-    Dim paris1 As String: paris1 = request_pliromis(userpos, PWDPOS) ' username password prepei na mpoyn san parametroi
+    Dim Token_From_Paris As String: Token_From_Paris = request_pliromis(userpos, PWDPOS) ' username password prepei na mpoyn san parametroi
 
     '==================================333333333333333333333333===============================================
   
@@ -15472,17 +15461,16 @@ Function to_pos(ByVal TID As String, _
  
     offlineJSONpos = QQ
  
-    Open "C:\TXTFILES\paris1qq333APOPAROXO" + extID + ".TXT" For Output As #1
+    Open "C:\TXTFILES\Token_From_Parisqq333APOPAROXO" + extid + ".TXT" For Output As #1
     Write #1, QQ
          
     Close #1
     MsgBox "–¡‘«”‘≈ ‘œ  œ’Ã–… √…¡ √≈÷’—¡"
-    req2 = request2_pliromis(paris1, offlineJSONpos)
+    req2 = request2_pliromis(Token_From_Paris, offlineJSONpos)
  
-    Open "C:\TXTFILES\requ2apopliromi5555POPAROXO" + extID + ".TXT" For Output As #1
-    Write #1, req2
-         
-    Close #1
+ Dim EXTIDDD As String
+' mID_NUM
+    answerToFile extid, req2
   
     Dim mRes As String: mRes = Split(req2, "@")(0)
 
@@ -15492,16 +15480,19 @@ Function to_pos(ByVal TID As String, _
     If mRes <> "1" Then
 
         Dim HH As Integer
-
+        Dim Answer As String: Answer = ""
         For HH = 1 To 5
             MILSEC 4000 '5sec
-            req2 = FERE_TRANSACTIONID(mID_NUM)
+                req2 = FERE_TRANSACTIONID(mID_NUM, Answer)
+                answerToFile extid, req2
+                
+                
                  If req2 = "error" Then
                     
                     ToJasonSub = 0
-                    ' CancelPosPayment mID_NUM, F_PAROX_SIGNATURE
+                    
                      CancelPosPayment mID_NUM, F_PAROX_SIGNATURE
-                    ' CancelPosPayment mID_NUM, F_PAROX_SIGNATURE
+                      answerToFile mID_NUM, "CANCEL----" + F_posSignature
                      Exit Function
                  End If
                  
@@ -15523,8 +15514,8 @@ Function to_pos(ByVal TID As String, _
             ANSPOS = MsgBox("≈„ÈÌÂ Á ÛıÌ·ÎÎ·„ﬁ;", vbYesNo)
                            
             If ANSPOS = vbYes Then
-                req2 = FERE_TRANSACTIONID(mID_NUM) ' 1;123......"
-
+                req2 = FERE_TRANSACTIONID(mID_NUM, Answer) ' 1;123......"
+                answerToFile extid, req2
                 If Len(req2) > 5 Then
                     POSTransactionId = req2 ' Split(req2, "@")(1)
                     to_pos = POSTransactionId
@@ -15540,7 +15531,8 @@ Function to_pos(ByVal TID As String, _
                 If gVal(mRes) = 2 Or gVal(mRes) = 3 Then ' ap????f???e, a???????e
                                     
                           ToJasonSub = 0
- CancelPosPayment mID_NUM, F_posSignature
+                          CancelPosPayment mID_NUM, F_posSignature
+                          answerToFile mID_NUM, "CANCEL----" + F_posSignature
                     Exit Function
 
                 End If
@@ -15563,6 +15555,23 @@ to_posERROR:
     Resume Next
 
 End Function
+
+ Sub answerToFile(ByVal extid As String, ByVal req2 As String)
+
+                Open "C:\TXTFILES\reqPARIS" + extid + ".TXT" For Append As #1
+                  Write #1, req2
+                  Write #1, Format(Now, "dd/MM/yy hh:mm:ss")
+                Close #1
+
+
+
+ End Sub
+
+
+
+
+
+
   Function request2_pliromis(token, offline) As String
  ' apo dotnet     {""terminal_id"":""01843721"",""paymentAmount"":2.0,""netValue"":1.61,
  '""vatAmount"":0.3899999999999999,""totalValue"":2.0,""externalSystemId"":""40479"",
@@ -15676,7 +15685,7 @@ End Function
 
 
 
- Public Function POS_submitpayment(ByVal MARK As String, ByVal extID As String, ByVal signatureParochos As String, ByVal TID As String, ByVal AMOUNT As String, ByVal TransactionId As String) As String
+ Public Function POS_submitpayment(ByVal MARK As String, ByVal extid As String, ByVal signatureParochos As String, ByVal TID As String, ByVal AMOUNT As String, ByVal TransactionId As String) As String
 
       
 
@@ -15731,7 +15740,7 @@ On Error Resume Next
         Dim SJ As String: SJ = ""
        ' bearer = REQPAROCHOS()
        ' AMOUNT = "1.5"
-         SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + Trim(LTrim(extID)) + ""","
+         SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + Trim(LTrim(extid)) + ""","
         SJ = SJ + Chr(13) + "     ""mark"":" + MARK + ","
        
         SJ = SJ + Chr(13) + "     ""paymentInfo"":[{"
@@ -15746,13 +15755,13 @@ On Error Resume Next
         
        ' Exit Function
         
-        Open "C:\TXTFILES\SUBM" + extID + ".TXT" For Output As #1
+        Open "C:\TXTFILES\SUBM" + extid + ".TXT" For Output As #1
           Write #1, SJ
         Close #1
         
 MILSEC 1000
 
-  Open "C:\TXTFILES\REQUESTAPOPAROXO" + extID + ".TXT" For Input As #1
+  Open "C:\TXTFILES\REQUESTAPOPAROXO" + extid + ".TXT" For Input As #1
           Input #1, SJ
           'Write #1, F_PAROX_SIGNATURE
   Close #1
@@ -15777,7 +15786,7 @@ MILSEC 1000
          
             
            ' MsgBox Reqpos.responseText
-            Open "C:\TXTFILES\SUBMANSW" + extID + ".TXT" For Output As #1
+            Open "C:\TXTFILES\SUBMANSW" + extid + ".TXT" For Output As #1
           Write #1, SJ
         Close #1
             
@@ -15809,7 +15818,7 @@ MILSEC 1000
      cmark = posser.Item("paymentMark")   ' ("signature")
       ERRMES = posser.Item("errorMessage")
      If Len(cmark) > 10 Then
-                Gdb.Execute "UPDATE TIM SET MARKPLHR='" + cmark + "' WHERE ID_NUM=" + extID
+                Gdb.Execute "UPDATE TIM SET MARKPLHR='" + cmark + "' WHERE ID_NUM=" + extid
                 MsgBox "OK " + cmark
     Else
            ' MsgBox errorMessage
@@ -15849,14 +15858,14 @@ POS_submitpayment = "ok"
 
 
  ' Response Examp
-    Sub CancelPosPayment(ByVal extID As String, ByVal signature As String)
+    Sub CancelPosPayment(ByVal extid As String, ByVal signature As String)
         Dim Reqpos As WinHttp.WinHttpRequest
         Set Reqpos = New WinHttp.WinHttpRequest
 
 
         Dim SJ As String
         SJ = ""
-        SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + extID + ""","
+        SJ = SJ + Chr(13) + "   {  ""externalSystemId"":""" + extid + ""","
         SJ = SJ + Chr(13) + "     ""signature"":""" + signature + """ } "
 
 
