@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   282066945
+      Format          =   308674561
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   282066945
+      Format          =   308674561
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -15470,7 +15470,7 @@ Function to_pos(ByVal TID As String, _
  
  Dim EXTIDDD As String
 ' mID_NUM
-    answerToFile extid, req2
+    answerToFile LTrim(Trim(mID_NUM)), req2
   
     Dim mRes As String: mRes = Split(req2, "@")(0)
 
@@ -15480,11 +15480,11 @@ Function to_pos(ByVal TID As String, _
     If mRes <> "1" Then
 
         Dim HH As Integer
-        Dim Answer As String: Answer = ""
+        Dim answer As String: answer = ""
         For HH = 1 To 5
             MILSEC 4000 '5sec
-                req2 = FERE_TRANSACTIONID(mID_NUM, Answer)
-                answerToFile extid, req2
+                req2 = FERE_TRANSACTIONID(mID_NUM, answer)
+                answerToFile LTrim(Trim(mID_NUM)), req2
                 
                 
                  If req2 = "error" Then
@@ -15492,7 +15492,7 @@ Function to_pos(ByVal TID As String, _
                     ToJasonSub = 0
                     
                      CancelPosPayment mID_NUM, F_PAROX_SIGNATURE
-                      answerToFile mID_NUM, "CANCEL----" + F_posSignature
+                      answerToFile LTrim(Trim(mID_NUM)), "CANCEL----" + F_posSignature
                      Exit Function
                  End If
                  
@@ -15514,8 +15514,8 @@ Function to_pos(ByVal TID As String, _
             ANSPOS = MsgBox("Εγινε η συναλλαγή;", vbYesNo)
                            
             If ANSPOS = vbYes Then
-                req2 = FERE_TRANSACTIONID(mID_NUM, Answer) ' 1;123......"
-                answerToFile extid, req2
+                req2 = FERE_TRANSACTIONID(mID_NUM, answer) ' 1;123......"
+                answerToFile LTrim(Trim(mID_NUM)), req2
                 If Len(req2) > 5 Then
                     POSTransactionId = req2 ' Split(req2, "@")(1)
                     to_pos = POSTransactionId
@@ -15532,7 +15532,7 @@ Function to_pos(ByVal TID As String, _
                                     
                           ToJasonSub = 0
                           CancelPosPayment mID_NUM, F_posSignature
-                          answerToFile mID_NUM, "CANCEL----" + F_posSignature
+                          answerToFile LTrim(Trim(mID_NUM)), "CANCEL----" + F_posSignature
                     Exit Function
 
                 End If
@@ -15815,17 +15815,18 @@ MILSEC 1000
     Set posser = JSON.parse(posjson)
     
     
-     cmark = posser.Item("paymentMark")   ' ("signature")
+     cmark = posser.Item("paymentMark")   ' ("signature")   'TRANSACTIONSID NVARCHAR(40)
       ERRMES = posser.Item("errorMessage")
      If Len(cmark) > 10 Then
                 Gdb.Execute "UPDATE TIM SET MARKPLHR='" + cmark + "' WHERE ID_NUM=" + extid
+                Gdb.Execute "update  REQPAYMENTS set MARK='" + cmark + "' where EXTERNALSYSTEMID='" + LTrim(str(extid)) + "'"
                 MsgBox "OK " + cmark
     Else
            ' MsgBox errorMessage
           MsgBox ERRMES
     
     End If
-            
+     Gdb.Execute "update  REQPAYMENTS set TRANSACTIONID='" + TransactionId + "' where EXTERNALSYSTEMID='" + LTrim(str(extid)) + "'"
       
             
             
@@ -15849,7 +15850,11 @@ MILSEC 1000
             '            ' posTimestamp = posser.SelectToken("paymentToken")("timestamp").ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
             '            F_posSignature = posser.SelectToken("paymentToken")("signature").ToString  '------------------------
 
-            Threading.Thread.Sleep (500)
+             
+             
+            
+             
+             Threading.Thread.Sleep (500)
       '  Next
 
 POS_submitpayment = "ok"

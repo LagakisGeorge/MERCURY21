@@ -873,7 +873,9 @@ r2.Close
            Gdb.Execute sql
         End If
         
-
+        
+ dum2 = ADD_FIELD("REQPAYMENTS", "TRANSACTIONID", "NVARCHAR(40) NULL ")  'TransactionId NVARCHAR(40)
+       
 
 
 
@@ -904,6 +906,7 @@ r2.Close
         If R(0) = 0 Then
            Gdb.Execute sql
         End If
+        
         
   
    dum2 = ADD_FIELD("APESTALMENA", "CLASSTYPE11", "[nchar](10) NULL")
