@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSAdoDc.ocx"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form epit3 
    BackColor       =   &H00FF0000&
@@ -194,7 +194,7 @@ Begin VB.Form epit3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   176160769
+      Format          =   308936705
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker d2 
@@ -208,7 +208,7 @@ Begin VB.Form epit3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   120913921
+      Format          =   308936705
       CurrentDate     =   38814
    End
    Begin TrueOleDBGrid80.TDBGrid MSFlexGrid1 
@@ -854,9 +854,12 @@ Private Sub Command1_Click()
 760         If Left(Combo3.Text, 1) = "2" Then    ' .«Ã.≈…”¡√Ÿ√«”
 770             sql = "select HMEL as [«Ï_ÀﬁÓÁÚ],EPO as [E˘ÌıÏﬂ·]," & "str(POS,10,2) as [¡Óﬂ·],PAR AS [A— ≈–…‘],HMEE AS [«Ã.≈…”],(SELECT PERIGRAFH FROM PINAKES WHERE TYPOS=6 AND AYJON=KOD_BANK) AS [‘—¡–≈∆¡] ,PINAKIO AS [–…Õ¡ …œ],ONO+'  ' AS [Ã≈‘¡¬…¬],ID from GRA where HMEE>='" + Format(d1, "Mm/dd/yy") + "' and HMEE<'" + Format(DateAdd("D", 1, d2), "mm/dd/yy") + "' and ARX=" + DD
 
+                
+
             Else
 
-780             sql = "select HMEL as [«Ï_ÀﬁÓÁÚ],EPO as [E˘ÌıÏﬂ·]," & "str(POS,10,2) as [¡Óﬂ·],PAR AS [A— ≈–…‘],HMEE AS [«Ã.≈…”],(SELECT PERIGRAFH FROM PINAKES WHERE TYPOS=6 AND AYJON=KOD_BANK) AS [‘—¡–≈∆¡] ,PINAKIO AS [–…Õ¡ …œ],ONO+'  ' AS [Ã≈‘¡¬…¬],ID from GRA where HMEL>='" + Format(d1, "Mm/dd/yy") + "' and HMEL<='" + Format(DateAdd("D", 1, d2), "mm/dd/yy") + "' and ARX=" + DD
+780             sql = "select HMEL as [«Ï_ÀﬁÓÁÚ],EPO as [E˘ÌıÏﬂ·]," & "str(POS,10,2) as [¡Óﬂ·],PAR AS [A— ≈–…‘],HMEE AS [«Ã.≈…”],(SELECT ISNULL(PERIGRAFH,' - ') AS PERIGRAFH FROM PINAKES WHERE TYPOS=6 AND AYJON=KOD_BANK) AS [‘—¡–≈∆¡] ,PINAKIO AS [–…Õ¡ …œ],ONO+'  ' AS [Ã≈‘¡¬…¬],ID from GRA  where HMEL>='" + Format(d1, "Mm/dd/yy") + "' and HMEL<='" + Format(DateAdd("D", 1, d2), "mm/dd/yy") + "' and ARX=" + DD
+               ' sql = "select HMEL as [«Ï_ÀﬁÓÁÚ],EPO as [E˘ÌıÏﬂ·]," & "str(POS,10,2) as [¡Óﬂ·],PAR AS [A— ≈–…‘],HMEE AS [«Ã.≈…”],KOD_BANK AS [‘—¡–≈∆¡] ,PINAKIO AS [–…Õ¡ …œ],ONO+'  ' AS [Ã≈‘¡¬…¬],ID from GRA where HMEL>='" + Format(d1, "Mm/dd/yy") + "' and HMEL<='" + Format(DateAdd("D", 1, d2), "mm/dd/yy") + "' and ARX=" + DD
             End If
 
 790         If Len(Text1.Text) > 0 Then
@@ -901,7 +904,11 @@ Private Sub Command1_Click()
 940         Gdb.Execute "UPDATE GRA SET KOD_BANK='0' WHERE LEFT(KOD_BANK,1) NOT IN ('0','1','2','3','4','5','6','7','8','9')", nn
 
             On Error Resume Next
-
+        
+            'Data1.Refresh
+        
+        
+        
 950         Data1.RecordSource = sql
 
             'MSFlexGrid1.ColAlignment(2) = 7
@@ -939,12 +946,19 @@ Private Sub Command1_Click()
 990         SS1 = 0
 1000        SS2 = 0
 1010        Data1.Recordset.MoveFirst
-
+            'On Error GoTo 0
 1020        Do While Not Data1.Recordset.EOF
 1030            SS1 = SS1 + Val(Data1.Recordset(2))
                 ' SS2 = S2 + DATA1.Recordset(4)
+                SS2 = Data1.Recordset("ID")
 1040            Data1.Recordset.MoveNext
+                'If SS1 > 1000000 Then Exit Sub
+                'SS2 = SS2 + 1
+                If SS2 = Data1.Recordset("ID") Then Exit Do
+                If SS2 > 100 Then Exit Do
             Loop
+
+SS2 = 0
 
 1050        MSFlexGrid1.Splits(0).columns(2).FooterText = Format(SS1, "######0.00")
             'MSFlexGrid1.Splits(0).Columns(4).FooterText = Format(SS2, "######0.00")
@@ -1025,7 +1039,7 @@ Sub sygk()
 
         Dim platos, k
 
-        Dim dB  As Database, db2 As Database
+        Dim DB  As Database, DB2 As Database
 
         Dim X   As Single
 
@@ -1049,7 +1063,7 @@ Sub sygk()
 
             'Set db = OpenDatabase(gDir, False, False, gConnect)
 
-160         Set db2 = OpenDatabase("c:\mercvb\reports\reports.mdb", False, False)
+160         Set DB2 = OpenDatabase("c:\mercvb\reports\reports.mdb", False, False)
 
             On Error Resume Next
 
@@ -1265,7 +1279,7 @@ End Sub
 'End Sub
 
 
-Sub epit312_Click(Index As Integer)
+Sub epit312_Click(index As Integer)
        
        
        Dim a   As String, mc As Integer
@@ -1361,7 +1375,7 @@ End Sub
 
 
 
-Sub epit311_Click(Index As Integer)
+Sub epit311_Click(index As Integer)
 
         '<EhHeader>
         On Error GoTo epit311_Click_Err
@@ -1455,7 +1469,7 @@ Sub epit311_Click(Index As Integer)
         
         
     
-160     If MDIForm1.epit311(Index).Caption = FN_APO Then    ' FN_APO = "¡–œ”‘œÀ« ”≈ –—œÃ«»≈’‘«"
+160     If MDIForm1.epit311(index).Caption = FN_APO Then    ' FN_APO = "¡–œ”‘œÀ« ”≈ –—œÃ«»≈’‘«"
 170         epit3200.SHOW 1
 180         k = MsgBox("Õ· ÏÂÙ·ˆÂÒËÂﬂ Á ÂÈÙ·„ﬁ " + Chr(13) + B + Chr(13) + a + Chr(13) + Label9.Caption, vbYesNo)
 
@@ -1498,7 +1512,7 @@ Sub epit311_Click(Index As Integer)
             End If
         End If
 
-380     If MDIForm1.epit311(Index).Caption = FN_PLI Or MDIForm1.epit311(Index).Caption = "≈…”–—¡Œ«" Then      ' FN_PLI = "–À«—ŸÃ«"
+380     If MDIForm1.epit311(index).Caption = FN_PLI Or MDIForm1.epit311(index).Caption = "≈…”–—¡Œ«" Then      ' FN_PLI = "–À«—ŸÃ«"
 
 390         k = MsgBox("Õ· –À«—Ÿ»≈… Á ÂÈÙ·„ﬁ " + Chr(13) + B + Chr(13) + a, vbYesNo)
 400         Me.Caption = MSFlexGrid1.Text ' .TextMatrix(MSFlexGrid1.row, 1)
@@ -1581,7 +1595,7 @@ Sub epit311_Click(Index As Integer)
 
         End If
 
-830     If MDIForm1.epit311(Index).Caption = FN_PLA Then     ' FN_PLa = "PLAFON"
+830     If MDIForm1.epit311(index).Caption = FN_PLA Then     ' FN_PLa = "PLAFON"
             'If Index = 1 Then
             ' On Error GoTo epit311_Click_Err
 840         F_PINAKIO = 1
@@ -1633,7 +1647,7 @@ Sub epit311_Click(Index As Integer)
 
         End If
 
-1080    If MDIForm1.epit311(Index).Caption = FN_DIA Then     ' FN_DIA = "ƒ…¡√—¡÷« ≈–…‘¡√«”
+1080    If MDIForm1.epit311(index).Caption = FN_DIA Then     ' FN_DIA = "ƒ…¡√—¡÷« ≈–…‘¡√«”
 
             'If Index = 2 Then    ' ++++++++++++++
 1090        If Len(Dir("C:\KAGI.TXT")) > 0 Then    ' ********************************
@@ -1704,7 +1718,7 @@ Sub epit311_Click(Index As Integer)
 
         End If    ' ++++++++++++++ ƒ…¡√—¡÷« ≈–…‘¡√«”
 
-1340    If MDIForm1.epit311(Index).Caption = FN_DIO Then     ' FN_DIO = "ƒ…œ—»Ÿ”«"
+1340    If MDIForm1.epit311(index).Caption = FN_DIO Then     ' FN_DIO = "ƒ…œ—»Ÿ”«"
             ' If Index = 5 Then
         
 1350        If Combo1.ListIndex < 3 Then    ' –—œÃ«»≈’‘«Ú / PELATHS
@@ -1779,7 +1793,7 @@ Sub epit311_Click(Index As Integer)
 
         End If    ' ++++++++++++++ DIORUVSH ≈–…‘¡√«”
     
-1610    If MDIForm1.epit311(Index).Caption = FN_EPI Then     ' FN_EPI =  +++EPISTROFH EPITAGHS (APLHROTH)
+1610    If MDIForm1.epit311(index).Caption = FN_EPI Then     ' FN_EPI =  +++EPISTROFH EPITAGHS (APLHROTH)
             ' If Index = 6 Then    '
 
             On Error GoTo epit311_Click_Err

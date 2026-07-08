@@ -1,9 +1,9 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "mschrt20.ocx"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCHRT20.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form par4 
    BackColor       =   &H00FFFF00&
@@ -50,7 +50,7 @@ Begin VB.Form par4
       Height          =   315
       ItemData        =   "par4.frx":0000
       Left            =   4800
-      List            =   "par4.frx":001C
+      List            =   "par4.frx":001F
       Style           =   2  'Dropdown List
       TabIndex        =   36
       Top             =   3960
@@ -66,7 +66,7 @@ Begin VB.Form par4
       Width           =   1935
    End
    Begin TrueOleDBGrid80.TDBGrid DBGrid1 
-      Bindings        =   "par4.frx":007E
+      Bindings        =   "par4.frx":008D
       Height          =   3874
       Left            =   117
       TabIndex        =   12
@@ -240,7 +240,7 @@ Begin VB.Form par4
       Width           =   1680
    End
    Begin MSHierarchicalFlexGridLib.MSHFlexGrid MSFLEXGRID2 
-      Bindings        =   "par4.frx":0092
+      Bindings        =   "par4.frx":00A1
       Height          =   3692
       Left            =   0
       TabIndex        =   11
@@ -335,9 +335,9 @@ Begin VB.Form par4
    End
    Begin VB.ComboBox Combo2 
       Height          =   288
-      ItemData        =   "par4.frx":00A6
+      ItemData        =   "par4.frx":00B5
       Left            =   8040
-      List            =   "par4.frx":00B0
+      List            =   "par4.frx":00BF
       TabIndex        =   9
       Top             =   3960
       Width           =   2895
@@ -345,7 +345,7 @@ Begin VB.Form par4
    Begin MSChart20Lib.MSChart G 
       Height          =   3885
       Left            =   120
-      OleObjectBlob   =   "par4.frx":00DD
+      OleObjectBlob   =   "par4.frx":00EC
       TabIndex        =   10
       Top             =   4320
       Width           =   12855
@@ -417,7 +417,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   200540161
+      Format          =   292093953
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -432,7 +432,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   200540161
+      Format          =   292093953
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -448,51 +448,51 @@ Begin VB.Form par4
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   12
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":30B8
+            Picture         =   "par4.frx":30C7
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":360A
+            Picture         =   "par4.frx":3619
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":3B4C
+            Picture         =   "par4.frx":3B5B
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":408E
+            Picture         =   "par4.frx":409D
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":4920
+            Picture         =   "par4.frx":492F
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":4E72
+            Picture         =   "par4.frx":4E81
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":4F84
+            Picture         =   "par4.frx":4F93
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":54D6
+            Picture         =   "par4.frx":54E5
             Key             =   ""
          EndProperty
          BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":5A28
+            Picture         =   "par4.frx":5A37
             Key             =   ""
          EndProperty
          BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":5F7A
+            Picture         =   "par4.frx":5F89
             Key             =   ""
          EndProperty
          BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":650C
+            Picture         =   "par4.frx":651B
             Key             =   ""
          EndProperty
          BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "par4.frx":6A9E
+            Picture         =   "par4.frx":6AAD
             Key             =   ""
          EndProperty
       EndProperty
@@ -534,9 +534,9 @@ Begin VB.Form par4
    End
    Begin VB.ComboBox APOT 
       Height          =   273
-      ItemData        =   "par4.frx":6FF0
+      ItemData        =   "par4.frx":6FFF
       Left            =   8340
-      List            =   "par4.frx":6FF2
+      List            =   "par4.frx":7001
       TabIndex        =   5
       Text            =   "APOT"
       Top             =   2970
@@ -621,9 +621,9 @@ Begin VB.Form par4
    End
    Begin VB.ComboBox Combo8 
       Height          =   315
-      ItemData        =   "par4.frx":6FF4
+      ItemData        =   "par4.frx":7003
       Left            =   11400
-      List            =   "par4.frx":6FF6
+      List            =   "par4.frx":7005
       TabIndex        =   23
       Text            =   "APOT"
       Top             =   2760
@@ -1665,7 +1665,7 @@ Function Get_PY()
 
         Dim DB As Database
 
-        Dim R  As New ADODB.Recordset, x As String
+        Dim R  As New ADODB.Recordset, X As String
 
         'If gConnect = "Access" Then
         '   Set db = OpenDatabase(gDir, False, False)
@@ -2424,7 +2424,7 @@ Dim a As Integer
 '5 Προηγ.Μήνας
 '6  Προηγ.3Μήνας
 '7 τρεχ ετος
-
+'8 ΠΡΟΗΓ ΕΤΟΣ
 
  a = DATES.ListIndex
  Dim d1 As DTPicker, d2 As DTPicker
@@ -2506,10 +2506,18 @@ Dim a As Integer
      
           
              DTPicker1 = Format(DateSerial(Year(gWorkDay), 1, 1), "dd/MM/yyyy")
+             DTPicker2 = Format(DateSerial(Year(gWorkDay), 12, 31), "dd/MM/yyyy")
           
-             DTPicker2 = gWorkDay 'Format(gWorkDay, "dd/MM/yyyy")
+             'DTPicker2 = gWorkDay 'Format(gWorkDay, "dd/MM/yyyy")
         
+      Case 8 ' 7Τρέχ.Ετος
+          
      
+          
+             DTPicker1 = Format(DateSerial(Year(gWorkDay) - 1, 1, 1), "dd/MM/yyyy")
+             DTPicker2 = Format(DateSerial(Year(gWorkDay) - 1, 12, 31), "dd/MM/yyyy")
+          
+             'DTPicker2 = gWorkDay 'Format(gWorkDay, "dd/MM/yyyy")
      
      
  
@@ -3548,7 +3556,7 @@ Function mac(ByVal s As String) As String
         On Error GoTo mac_Err
 
         '</EhHeader>
-        Dim x
+        Dim X
 
         On Error GoTo mac_Err
 
@@ -3556,8 +3564,8 @@ Function mac(ByVal s As String) As String
 
         On Error GoTo err2
 
-110     x = "MACtEXT.Text = " + s
-120     fSCR.ExecuteStatement x
+110     X = "MACtEXT.Text = " + s
+120     fSCR.ExecuteStatement X
 
 130     If F928 = 1 Then
 140         mac = MACtEXT.Text
@@ -3568,7 +3576,7 @@ Function mac(ByVal s As String) As String
         Exit Function
 
 err2:
-160     Me.Caption = x
+160     Me.Caption = X
 170     mac = "  "
 
 180     Resume Next

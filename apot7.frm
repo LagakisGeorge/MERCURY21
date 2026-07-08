@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   466747393
+      Format          =   290979841
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   466747393
+      Format          =   290979841
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -4024,9 +4024,9 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         data2.Connect = "ODBC;" + gConnect
-130         data2.RecordSource = PutDates(Text2.Text)
-140         data2.Refresh
+120         Data2.Connect = "ODBC;" + gConnect
+130         Data2.RecordSource = PutDates(Text2.Text)
+140         Data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
@@ -4043,7 +4043,7 @@ Public Sub CMDPROVOLI_Click()
 
 180         Adodc2.Recordset.MoveFirst
 
-            On Error Resume Next
+           ' On Error Resume Next
 
             On Error GoTo ektos
              Dim KL As Long
@@ -4207,7 +4207,7 @@ EXO:
 
 330     Me.MousePointer = vbNormal
 
-340     Resume Next
+340     'Resume Next
 
         Exit Sub
 
@@ -4484,7 +4484,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     Adodc2.Recordset.Sort = strSort
+160     Adodc2.Recordset.sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4541,10 +4541,10 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
