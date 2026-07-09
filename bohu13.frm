@@ -85,7 +85,7 @@ Begin VB.Form BOHU13
       _ExtentX        =   2566
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   315490305
+      Format          =   310247425
       CurrentDate     =   40200
    End
    Begin MSComCtl2.DTPicker DTPicker1 
@@ -97,7 +97,7 @@ Begin VB.Form BOHU13
       _ExtentX        =   2778
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   315490305
+      Format          =   310247425
       CurrentDate     =   40200
    End
    Begin VB.Shape Shape1 
@@ -318,6 +318,12 @@ Command1_Click_Err:
 End Sub
 
 Private Sub Command2_Click()
+
+
+     MsgBox "дем упостгяифетаи"
+     Exit Sub
+     
+
 
         '<EhHeader>
         On Error GoTo Command2_Click_Err

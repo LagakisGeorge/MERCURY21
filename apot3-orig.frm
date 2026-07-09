@@ -687,7 +687,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   278396929
+      Format          =   309592065
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -701,7 +701,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   278396929
+      Format          =   309592065
       CurrentDate     =   38814
    End
    Begin VB.CommandButton Command4 
@@ -1176,9 +1176,12 @@ R.Close
 
 Dim Q As String
 Dim anal As Integer
-anal = MsgBox("με αναλυση ανα τιμολογιο;", vbYesNo)
-If anal = vbYes Then
+anal = InputBox("1.με αναλυση ανα τιμολογιο;2.kATA MHNA 3.KANONIKA", , "")
+If anal = 1 Then
     Q = "select  G.ATIM,KODE,D.ONO ,"
+ElseIf anal = 2 Then
+    Q = "select  MONTH(G.HME),KODE,D.ONO ,"
+    
 Else
     Q = "select  KODE,D.ONO ,"
 End If
@@ -1218,8 +1221,11 @@ Q = Q + "WHERE T.AKYROMENO=0 AND charindex(  LEFT(G.ATIM,1) ,'λ," + Replace(PosA
       Period = " and G.HME>='" + Format(apo.Value, "MM/DD/YYYY") + "' AND G.HME<='" + Format(eos.Value, "MM/DD/YYYY") + "'"
 Q = Q + Period '                 "  AND G.HME>=@x1 and G.HME<@x2"
 
-If anal = vbYes Then
+If anal = 1 Then
    Q = Q + "GROUP BY   G.ATIM,KODE,D.ONO"
+ElseIf anal = 2 Then
+   Q = Q + "GROUP BY   MONTH(G.HME),KODE,D.ONO"
+    'MONTH(G.HME)
 Else
 
    Q = Q + "GROUP BY   KODE,D.ONO"
