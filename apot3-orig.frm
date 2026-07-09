@@ -687,7 +687,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309592065
+      Format          =   308019201
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -701,7 +701,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   309592065
+      Format          =   308019201
       CurrentDate     =   38814
    End
    Begin VB.CommandButton Command4 
@@ -1176,12 +1176,13 @@ R.Close
 
 Dim Q As String
 Dim anal As Integer
-anal = InputBox("1.με αναλυση ανα τιμολογιο;2.kATA MHNA 3.KANONIKA", , "")
+anal = gVal(InputBox("0=KANONIKA 1.με αναλυση ανα τιμολογιο;2.kATA MHNA 3.KATA HMEPA", , ""))
 If anal = 1 Then
     Q = "select  G.ATIM,KODE,D.ONO ,"
 ElseIf anal = 2 Then
     Q = "select  MONTH(G.HME),KODE,D.ONO ,"
-    
+ElseIf anal = 3 Then
+    Q = "select  DAY(G.HME),KODE,D.ONO ,"
 Else
     Q = "select  KODE,D.ONO ,"
 End If
@@ -1225,6 +1226,8 @@ If anal = 1 Then
    Q = Q + "GROUP BY   G.ATIM,KODE,D.ONO"
 ElseIf anal = 2 Then
    Q = Q + "GROUP BY   MONTH(G.HME),KODE,D.ONO"
+ElseIf anal = 3 Then
+   Q = Q + "GROUP BY   DAY(G.HME),KODE,D.ONO"
     'MONTH(G.HME)
 Else
 
