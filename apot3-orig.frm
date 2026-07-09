@@ -687,7 +687,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   290652161
+      Format          =   278396929
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -701,7 +701,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   290652161
+      Format          =   278396929
       CurrentDate     =   38814
    End
    Begin VB.CommandButton Command4 
@@ -1096,17 +1096,17 @@ PROHG = " and HME>='" + Format(gEnarjh, "MM/DD/YYYY") + "' AND HME<'" + Format(a
 Dim Period As String
 
 
- On Error GoTo exo
+ On Error GoTo EXO
 
 
-Dim NC As Long, Nid As Long, NNID As Long, KK As Integer
-NC = GGET_NVALUE("SELECT COUNT(*) FROM EGGTIM WHERE LEFT(ATIM,1)='К'")
-If NC > 0 Then
+Dim nc As Long, Nid As Long, NNID As Long, KK As Integer
+nc = GGET_NVALUE("SELECT COUNT(*) FROM EGGTIM WHERE LEFT(ATIM,1)='К'")
+If nc > 0 Then
    Nid = GGET_NVALUE("SELECT COUNT(*) FROM EGGTIM WHERE LEFT(ATIM,1)='К' and isnull(ID_NUM,0)>0")
-   If Nid < NC Then ' дем евеи г апоцяажг амтистоиво RECORD STO TIM
+   If Nid < nc Then ' дем евеи г апоцяажг амтистоиво RECORD STO TIM
       On Error Resume Next
        Gdb.Execute ("INSERT INTO TIM (KLEIDI,ATIM,HME ) SELECT top 1 ATIM AS KL,ATIM,HME FROM EGGTIM WHERE LEFT(ATIM,1)='К' and isnull(ID_NUM,0)=0"), KK
-         On Error GoTo exo
+         On Error GoTo EXO
         'If KK > 0 Then
              NNID = GGET_NVALUE("SELECT MAX(ID_NUM)  FROM TIM WHERE LEFT(ATIM,1)='К'")
              Gdb.Execute "UPDATE EGGTIM SET ID_NUM=" + str(NNID) + " WHERE LEFT(ATIM,1)='К' and  isnull(ID_NUM,0)=0"
@@ -1175,18 +1175,23 @@ PosAg = Left(PosAg, Len(PosAg) - 1)
 R.Close
 
 Dim Q As String
-
-Q = "select  KODE,D.ONO ,"
+Dim anal As Integer
+anal = MsgBox("ЛЕ АМАКУСГ АМА ТИЛОКОЦИО;", vbYesNo)
+If anal = vbYes Then
+    Q = "select  G.ATIM,KODE,D.ONO ,"
+Else
+    Q = "select  KODE,D.ONO ,"
+End If
 Q = Q + "sum(IIF(LEFT(G.ATIM,1)='К' ,POSO,0) )                      AS [пос.апоц] ,"
 Q = Q + "SUM(IIF(LEFT(G.ATIM,1)='К' ,(XRE-PIS)*TIMM,0) )          AS [аниа апоц] ,"
 
 'ацояес посотгта & аниа
-Q = Q + "sum(IIF(LEFT(G.ATIM,1) in (" + PosAg + ") , IIF(LEFT(G.ATIM,1) IN (" + PosAgEp + ")  ,-POSO,POSO),0) )            AS [пос.ацоя] ,"
-Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ," + Replace(AjAg, "','", "") + ")>0  ,IIF(LEFT(G.ATIM,1) in (" + AjAgEp + ")" + ",-1,1)*(POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [аниа Aцоя], "
+Q = Q + "sum(IIF(LEFT(G.ATIM,1) in (" + PosAg + "," + PosAgEp + ") , IIF(LEFT(G.ATIM,1) IN (" + PosAgEp + ")  ,-POSO,POSO),0) )            AS [пос.ацоя] ,"
+Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjAg + AjAgEp, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) in (" + AjAgEp + ")" + ",-1,1)*(POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [аниа Aцоя], "
 
 ''пыкгсеис посотгта & аниа
-Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(PosPol, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) IN (" + PosPolEp + ")  ,-POSO,POSO) ,0 ) ) AS [пыкгх.пос],"
-Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjPol, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) IN (" + AjPolEp + ")  ,-POSO,POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [ан.пык],"
+Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(PosPol + PosPolEp, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) IN (" + PosPolEp + ")  ,-POSO,POSO) ,0 ) ) AS [пыкгх.пос],"
+Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjPol + AjPolEp, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) IN (" + AjPolEp + ")  ,-POSO,POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [ан.пык],"
 'упокоипо
 Q = Q + "sum(IIF(LEFT(G.ATIM,1)='К' ,XRE-PIS,0) ) + sum(IIF(LEFT(G.ATIM,1) in (" + PosAg + ") , XRE-PIS,0) )"
 Q = Q + "-SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(PosPol, "'", "") + "')>0  ,IIF(LEFT(G.ATIM,1) IN (" + PosPolEp + ")  ,-POSO,POSO) ,0 ) )  AS [упок.пос]"
@@ -1212,13 +1217,20 @@ Q = Q + "WHERE T.AKYROMENO=0 AND charindex(  LEFT(G.ATIM,1) ,'К," + Replace(PosA
 
       Period = " and G.HME>='" + Format(apo.Value, "MM/DD/YYYY") + "' AND G.HME<='" + Format(eos.Value, "MM/DD/YYYY") + "'"
 Q = Q + Period '                 "  AND G.HME>=@x1 and G.HME<@x2"
-Q = Q + "GROUP BY   KODE,D.ONO"
+
+If anal = vbYes Then
+   Q = Q + "GROUP BY   G.ATIM,KODE,D.ONO"
+Else
+
+   Q = Q + "GROUP BY   KODE,D.ONO"
+End If
+
 
 
 
 530     Data1.ConnectionString = gConnect
 540     Data1.RecordSource = Q
-550  On Error GoTo exo
+550  On Error GoTo EXO
 Data1.Refresh
 
 Dim sumes(39)
@@ -1269,7 +1281,7 @@ sum_str = "0011111111111111111"
 
 
 Exit Sub
-exo:
+EXO:
 MsgBox Err.Description
 
 End Sub
@@ -5414,21 +5426,21 @@ Private Sub List1_DblClick()
 
     '</EhHeader>
     ''        Dim k As Integer
-    Dim NC As Integer
+    Dim nc As Integer
 
     Dim k  As Integer
         
-    NC = 0
+    nc = 0
 
 80  For k = 0 To List1.ListCount - 1
 
 90      If List1.Selected(k) = True Then
-            NC = NC + 1
+            nc = nc + 1
         End If
 
     Next
 
-    If NC >= List1.ListCount - 1 Then
+    If nc >= List1.ListCount - 1 Then
 
         For k = 0 To List1.ListCount - 1
             List1.Selected(k) = False
