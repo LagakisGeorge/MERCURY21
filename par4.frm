@@ -417,7 +417,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   292093953
+      Format          =   308936705
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -432,7 +432,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   292093953
+      Format          =   308936705
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1800,7 +1800,212 @@ Command4_Click_Err:
 
 End Sub
 
+Private Sub NEW_ANA_PARASTATIKO()
+  '-------------  ana parastatiko  ---------------
+        '<EhHeader>
+        On Error GoTo Command5_Click_Err
+
+        '</EhHeader>
+
+        Dim D As String
+
+        Dim MSYNT As String
+
+        Dim SA As Single
+
+        Dim SP As Single
+
+        Dim k As Long
+
+        Dim mPOL As String
+
+        Dim mAGO As String
+
+        Dim R As New ADODB.Recordset
+
+        Dim SP2 As Single
+
+        Dim a
+
+        Dim AGOEPIS As String
+
+        Dim polepis As String, pol As String, ago As String, APIS
+
+100     pol = ""
+110     a = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS)
+
+120     mPOL = pol
+130     mAGO = ago
+
+        'mPOL = mPOL + "''"
+        'mAGO = mAGO + "''"
+    
+        Dim poliseis As Integer
+
+140     poliseis = MsgBox("ΠΩΛΗΣΕΙΣ=ΝΑΙ  ΟΧΙ=ΑΓΟΡΕΣ", vbYesNo)
+    
+150     If poliseis = vbNo Then
+160         pol = ago
+170         polepis = AGOEPIS
+        End If
+        If Len(polepis) = 0 Then polepis = "0"  ' ΓΙΑ ΝΑ ΜΗΝ ΚΟΛΛΑΕΙ
+180     DBGrid1.Visible = True
+190     MSFlexGrid1.Visible = False
+
+        On Error Resume Next
+
+200     Me.MousePointer = vbHourglass
+
+210     If apot.ListIndex = -1 Then
+220         MSYNT = "AKYROMENO<>1 AND ascii(LEFT(ATIM,1)) IN (" + pol + "," + polepis + ") AND "
+        Else
+230         MSYNT = "AKYROMENO<>1 AND  ascii(LEFT(ATIM,1)) IN (" + pol + "," + polepis + ") AND  APOT=" + str(apot.ListIndex) + " AND "
+        End If
+
+        Dim sql As String
+
+
+Dim r3 As New ADODB.Recordset
+
+r3.Open "SELECT COUNT(*), ASCII(EIDOS) FROM PARASTAT GROUP BY ASCII(EIDOS) HAVING COUNT(*)>1 ", Gdb, adOpenDynamic, adLockOptimistic
+If Not r3.EOF Then
+   If r3(0) > 1 Then
+      MsgBox "Προσοχή υπάρχει δύο φορές το παραστατικό " + Chr(r3(1))
+      MsgBox "διορθώστε το στις παραμέτρους παραστατικών"
+     ' Exit Sub
+   End If
+  
+   
+   
+End If
+r3.Close
+
+
+Gdb.Execute "UPDATE TIM SET AJ6=0 WHERE AJ6 IS NULL"
+
+
+Gdb.Execute "SELECT ATIM INTO DOKTIMATIM  from TIM  WHERE " _
+           + MSYNT + "  HME>='" + Format(DTPicker1.Value, "mm/dd/yyyy") + "' and HME<'" + Format(DTPicker2.Value + 1, "mm/dd/yyyy") + "' ORDER BY ATIM "
+
+
+             ''left(PARASTAT.EIDOS+' '+PARASTAT.TITLOS+'                     ',25) AS [Παραστατικό],"
+240     sql = "SELECT LEFT(ATIM,1) AS [ΚΩΔ.ΠΑΡΑΣΤ] " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ2 ELSE -(AJ2)  END )) AS [" + Format(g_Fpa(2), "##") + "%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ3 ELSE -(AJ3)  END )) AS [" + Format(g_Fpa(3), "##") + "%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ4 ELSE -(AJ4)  END )) AS [" + Format(g_Fpa(4), "##") + "%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ1 ELSE -(AJ1)  END )) AS [" + Format(g_Fpa(1), "##") + "%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ5 ELSE -(AJ5)  END )) AS [0%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ6 ELSE -(AJ6)  END )) AS [" + Format(g_Fpa(6), "##") + "%], " _
+           & " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ7 ELSE -(AJ7)  END )) AS [" + Format(g_Fpa(7), "##") + "%], "
+           
+           
+           sql = sql + " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7 ELSE -(AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7)  END )) AS [ΣΥΝΟΛΟ], "
+           If poliseis = vbYes Then
+             ' sql = sql + " (SELECT substring(min(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS [ΑΠΟ ΠΑΡ.], (SELECT substring(MAX(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS [ΤΕΛ.ΠΑΡ],"
+           End If
+           
+           'INNER JOIN PARASTAT ON ascii(LEFT(ATIM,1))=ascii(PARASTAT.EIDOS) WHERE "
+          sql = sql + " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN KERDOS ELSE 0  END )) AS [ΚΕΡΔΟΣ] " _
+           & " from TIM WHERE " _
+           + MSYNT + "  HME>='" + Format(DTPicker1.Value, "mm/dd/yyyy") + "' and HME<'" + Format(DTPicker2.Value + 1, "mm/dd/yyyy") + "' " _
+           & "  GROUP BY LEFT(ATIM,1)"
+           'PARASTAT.EIDOS,PARASTAT.TITLOS " '  collate Greek_CS_AS"
+           
+           
+           
+250     Data1.RecordSource = sql
+260     Data1.Refresh
+
+
+
+
+
+
+
+270     If ekt Then
+            'typos2
+280         print3_xar sql, "0111111111111", "Από " + Format(DTPicker1.Value, "mm/dd/yyyy") + " έως " + Format(DTPicker2.Value, "mm/dd/yyyy"), 0
+
+        End If
+        
+  Gdb.Execute "DROP TABLE DOKTIMATIM "
+        
+
+290     DBGrid1.Visible = False
+300     MSFlexGrid1.Visible = False
+310     MSFlexGrid2.Visible = True
+
+320     MSFlexGrid2.AddItem " " & Chr(9)
+330     MSFlexGrid2.ColAlignment(1) = 6    'RIGHT
+340     SA = 0
+350     SP = 0
+360     k = 0
+370     SP2 = 0
+
+        Dim SEP
+       Dim SUMA(30) As Single
+       Dim KOL As Integer
+       
+380     SEP = 0
+
+390     MSFlexGrid2.ColWidth(0) = 4000
+
+
+
+For KOL = 1 To MSFlexGrid2.ColS - 1
+        SUMA(KOL) = 0
+        For k = 1 To MSFlexGrid2.rows - 2
+          'SA = SA + gVal(MSFlexGrid2.TextMatrix(k, KOL))
+            'SP = SP + Val(MSFLEXGRID2.TextMatrix(K, 3))
+            SUMA(KOL) = SUMA(KOL) + gVal(MSFlexGrid2.TextMatrix(k, KOL))
+        Next
+        If KOL = 10 Or KOL = 9 Then  ' να μην κανει σουμα το πρωτο και τελειταιο παραστατικο"
+        Else
+            MSFlexGrid2.TextMatrix(k, KOL) = Format(SUMA(KOL), "###,###,##0.00")
+        End If
+        
+        MSFlexGrid2.ColWidth(KOL) = 1200
+        MSFlexGrid2.ColAlignment(KOL) = 6
+Next
+
+
+
+420     ' MSFlexGrid2.TextMatrix(k, 1) = SA
+        'MSFLEXGRID2.TextMatrix(K, 3) = SP
+        'MSFLEXGRID2.TextMatrix(K, 4) = SP2
+        'MSFLEXGRID2.TextMatrix(K, 5) = SEP
+430     MSFlexGrid2.TopRow = MSFlexGrid2.rows - 10
+
+440     Me.MousePointer = vbNormal
+
+        '<EhFooter>
+        Exit Sub
+
+Command5_Click_Err:
+        'MsgBox Err.Description & vbCrLf & _
+         "in ADOMERCNEW.par4.Command5_Click " & _
+         "at line " & Erl, _
+         vbExclamation + vbOKOnly, "Application Error"
+        SAVE_ERROR Err.Description & " in ADOMERCNEW.par4.Command5_Click " & "at line " & Erl
+
+        Resume Next
+
+        '</EhFooter>
+
+End Sub
+
+
+
+
+
 Private Sub Command5_Click()
+
+ NEW_ANA_PARASTATIKO
+ Exit Sub
+ 
+ 
+
+
 
         '-------------  ana parastatiko  ---------------
         '<EhHeader>

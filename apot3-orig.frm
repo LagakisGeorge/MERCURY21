@@ -687,7 +687,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299630593
+      Format          =   465305601
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -701,7 +701,7 @@ Begin VB.Form apot3
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299630593
+      Format          =   465305601
       CurrentDate     =   38814
    End
    Begin VB.CommandButton Command4 
@@ -1017,9 +1017,9 @@ Private Sub aritmos_pelaton_Click()
 220     X = X + " HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'"
 230     X = X + " GROUP BY PARASTAT.TITLOS"
 
-240     DATA1.ConnectionString = gConnect
-250     DATA1.RecordSource = X
-260     DATA1.Refresh
+240     Data1.ConnectionString = gConnect
+250     Data1.RecordSource = X
+260     Data1.Refresh
 
 270     If Check1 Then
 
@@ -1199,6 +1199,8 @@ Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjAg + AjAgEp, "'", "
 Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(PosPol + PosPolEp, "'", "") + "')>0   AND G.HME<'" + Format(apo.Value, "MM/DD/YYYY") + "' ,IIF(LEFT(G.ATIM,1) IN (" + PosPolEp + ")  ,-POSO,POSO) ,0 ) ) AS [пяогц.пыкгх.пос],"
 Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjPol + AjPolEp, "'", "") + "')>0  AND G.HME<'" + Format(apo.Value, "MM/DD/YYYY") + "' ,IIF(LEFT(G.ATIM,1) IN (" + AjPolEp + ")  ,-POSO,POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [пяогц.ан.пык],"
 
+
+
 ''ацояес посотгта & аниа PERIODOY
 Q = Q + "sum(IIF(LEFT(G.ATIM,1) in (" + PosAg + "," + PosAgEp + ")  AND G.HME>='" + Format(apo.Value, "MM/DD/YYYY") + "' , IIF(LEFT(G.ATIM,1) IN (" + PosAgEp + ")  ,-POSO,POSO),0) )            AS [пос.ацоя пеяиод] ,"
 Q = Q + "SUM(IIF (charindex(  LEFT(G.ATIM,1) ,'" + Replace(AjAg + AjAgEp, "'", "") + "' )>0  AND G.HME>='" + Format(apo.Value, "MM/DD/YYYY") + "' ,IIF(LEFT(G.ATIM,1) in (" + AjAgEp + ")" + ",-1,1)*(POSO)*TIMM*(100-G.EKPT)*(100-G.EKPT2)/10000,0 ) ) AS [аниа Aцоя пеяиод], "
@@ -1247,7 +1249,7 @@ Q = Q + "WHERE T.AKYROMENO=0 AND charindex(  LEFT(G.ATIM,1) ,'К," + Replace(PosA
 
       ALLTIME = " and G.HME>='" + Format(gEnarjh, "MM/DD/YYYY") + "' AND G.HME<='" + Format(gLhjh, "MM/DD/YYYY") + "'"
       Period = " and G.HME>='" + Format(apo.Value, "MM/DD/YYYY") + "' AND G.HME<='" + Format(eos.Value, "MM/DD/YYYY") + "'"
-Q = Q + ALLTIME ' Period '                 "  AND G.HME>=@x1 and G.HME<@x2"
+Q = Q + " AND G.HME<='" + Format(eos.Value, "MM/DD/YYYY") + "'"     '   Period  '                 "  AND G.HME>=@x1 and G.HME<@x2"
 
 If anal = 1 Then
    Q = Q + " GROUP BY   G.ATIM,KODE,D.ONO"
@@ -1264,28 +1266,28 @@ End If
 
 
 
-530     DATA1.ConnectionString = gConnect
-540     DATA1.RecordSource = Q
+530     Data1.ConnectionString = gConnect
+540     Data1.RecordSource = Q
 550  On Error GoTo EXO
-DATA1.Refresh
+Data1.Refresh
 
 Dim sumes(39)
 Dim k As Integer
 
 
-         Do While Not DATA1.Recordset.EOF
+         Do While Not Data1.Recordset.EOF
               
-              For k = 0 To DATA1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(DATA1.Recordset.FIELDS(k).Value) And DATA1.Recordset.FIELDS(k).Type <> 202 Then
-                     sumes(k) = sumes(k) + DATA1.Recordset.FIELDS(k).Value
+              For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
+                     sumes(k) = sumes(k) + Data1.Recordset.FIELDS(k).Value
                  End If
               Next
-              DATA1.Recordset.MoveNext
+              Data1.Recordset.MoveNext
          Loop
 
 Dim sum_str
 sum_str = "0011111111111111111"
-         For k = 1 To DATA1.Recordset.FIELDS.Count - 1
+         For k = 1 To Data1.Recordset.FIELDS.Count - 1
 
              If mID(sum_str, k, 1) = "1" Then
                  GR2.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
@@ -1415,7 +1417,7 @@ Private Sub YPOLOGISMOS_Click()
            
 
 
-180     DATA1.ConnectionString = gConnect
+180     Data1.ConnectionString = gConnect
 
 
 
@@ -1661,11 +1663,11 @@ On Error Resume Next
 790         Text4.Text = X
         End If
 
-800     DATA1.RecordSource = X
+800     Data1.RecordSource = X
 
         On Error GoTo lathos
 
-810     DATA1.Refresh
+810     Data1.Refresh
 
         On Error Resume Next
 
@@ -1735,8 +1737,8 @@ On Error Resume Next
 
         Next
         Dim nT As Long
-        For k = 2 To DATA1.Recordset.FIELDS.Count - 1
-          nT = DATA1.Recordset(k).Type
+        For k = 2 To Data1.Recordset.FIELDS.Count - 1
+          nT = Data1.Recordset(k).Type
           If nT = 7 Or nT = 5 Or nT = 3 Or nT = 131 Then
              GR2.columns(k).NumberFormat = "######0.00"
           End If
@@ -1769,23 +1771,23 @@ On Error Resume Next
 Dim SUMES2(0 To 50)
 
 If synola.Value = vbChecked Then
-         Do While Not DATA1.Recordset.EOF
+         Do While Not Data1.Recordset.EOF
 
-             For k = 0 To DATA1.Recordset.FIELDS.Count - 1
+             For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
-                 If IsNumeric(DATA1.Recordset.FIELDS(k).Value) And DATA1.Recordset.FIELDS(k).Type <> 202 Then
-                     SUMES2(k) = SUMES2(k) + DATA1.Recordset.FIELDS(k).Value
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
+                     SUMES2(k) = SUMES2(k) + Data1.Recordset.FIELDS(k).Value
                     End If
 
                 Next
                ' DoEvents
 
-                DATA1.Recordset.MoveNext
+                Data1.Recordset.MoveNext
 
                 '  Exit Do
             Loop
 
-         For k = 0 To DATA1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
              If SUMES2(k) > 0 Then
                  GR2.Splits(0).columns(k).FooterText = Format(SUMES2(k), "######0.00")
@@ -2562,27 +2564,27 @@ Dim ANS2 As Integer, X As String
 
 
 
-530     DATA1.ConnectionString = gConnect
-540     DATA1.RecordSource = X
-550     DATA1.Refresh
+530     Data1.ConnectionString = gConnect
+540     Data1.RecordSource = X
+550     Data1.Refresh
 
 Dim sumes(39)
 Dim k As Integer
 
 
-         Do While Not DATA1.Recordset.EOF
+         Do While Not Data1.Recordset.EOF
               
-              For k = 0 To DATA1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(DATA1.Recordset.FIELDS(k).Value) And DATA1.Recordset.FIELDS(k).Type <> 202 Then
-                     sumes(k) = sumes(k) + DATA1.Recordset.FIELDS(k).Value
+              For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
+                     sumes(k) = sumes(k) + Data1.Recordset.FIELDS(k).Value
                  End If
               Next
-              DATA1.Recordset.MoveNext
+              Data1.Recordset.MoveNext
          Loop
 
 Dim sum_str
 sum_str = "0011111111111111111"
-         For k = 1 To DATA1.Recordset.FIELDS.Count - 1
+         For k = 1 To Data1.Recordset.FIELDS.Count - 1
 
              If mID(sum_str, k, 1) = "1" Then
                  GR2.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
@@ -2673,17 +2675,17 @@ Private Sub GR2_HeadClick(ByVal ColIndex As Integer)
         Dim sumes(100) As String
 Dim k As Integer
 
-100     For k = 0 To DATA1.Recordset.FIELDS.Count - 1
+100     For k = 0 To Data1.Recordset.FIELDS.Count - 1
 110         sumes(k) = GR2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If DATA1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         DATA1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         DATA1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Data1.Recordset.sort = "[" & GR2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To DATA1.Recordset.FIELDS.Count - 1
+150     For k = 0 To Data1.Recordset.FIELDS.Count - 1
 160         GR2.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
@@ -2875,9 +2877,9 @@ Exit Sub
 510         X = "SELECT * FROM DOKEGGT3 " + synt + " ORDER BY [оийоц],[упо-оий]"
         End If
 
-520     DATA1.ConnectionString = gConnect
-530     DATA1.RecordSource = X
-540     DATA1.Refresh
+520     Data1.ConnectionString = gConnect
+530     Data1.RecordSource = X
+540     Data1.Refresh
 
 550     If Check1 Then
 
@@ -3762,9 +3764,9 @@ Private Sub Command8_Click()
 520         X = "SELECT * FROM DOKEGGT3"
         End If
 
-530     DATA1.ConnectionString = gConnect
-540     DATA1.RecordSource = X
-550     DATA1.Refresh
+530     Data1.ConnectionString = gConnect
+540     Data1.RecordSource = X
+550     Data1.Refresh
 
 
 
@@ -4529,9 +4531,9 @@ Private Sub Command9_Click()
 530         X = "SELECT * FROM DOKEGGT3"
         End If
 
-540     DATA1.ConnectionString = gConnect
-550     DATA1.RecordSource = X
-560     DATA1.Refresh
+540     Data1.ConnectionString = gConnect
+550     Data1.RecordSource = X
+560     Data1.Refresh
 
 570     If Check1 Then
 
@@ -5152,7 +5154,7 @@ Private Function getFilter() As String
 140                 tmp = tmp & " AND "
                 End If
 
-150             If DATA1.Recordset(F_COL.ColIndex).Type = 5 Then    '
+150             If Data1.Recordset(F_COL.ColIndex).Type = 5 Then    '
 160                 If InStr(">< >= <=  = ", Left(F_COL.FILTERTEXT, 1)) > 0 And Len(F_COL.FILTERTEXT) > 1 And IsNumeric(Right(F_COL.FILTERTEXT, 1)) Then
 170                     tmp = tmp & F_COL.DataField & F_COL.FILTERTEXT
                     Else
@@ -5249,7 +5251,7 @@ Private Sub GR2_FilterChange()
 
 120     GR2.HoldFields
 
-130     DATA1.Recordset.Filter = getFilter()
+130     Data1.Recordset.Filter = getFilter()
 
 140     GR2.Col = c
 
@@ -5312,7 +5314,7 @@ Private Sub GR2_GroupColMove(ByVal Position As Integer, _
 
 150     GR2.HoldFields
 
-160     DATA1.Recordset.sort = strSort
+160     Data1.Recordset.sort = strSort
 
         '<EhFooter>
         Exit Sub
