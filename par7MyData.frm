@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   227213313
+      Format          =   178454529
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   227213313
+      Format          =   178454529
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7583,9 +7582,14 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                         
                         
                         'προσοχη το cεμφανιζεται και παρακατω λινε 542 με SQLDT("SXETMARKS") SYGKENTROTIKA DELTIA
-                        If Split(ctypos, ";")(0) = "10.1" And Left(SQLDT("PARAT"), 3) = "400" Then
-                         
-                            Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
+                        If Split(ctypos, ";")(0) = "10.1" Then
+                              If Left(SQLDT("PARAT"), 3) = "400" Then
+                                   Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
+                              Else
+                                 If Len(SQLDT("SXETMARKS")) > 10 Then
+                                    Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                                 End If
+                              End If
                                       
                         End If
                  
@@ -7636,7 +7640,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                                 'receivingNotePurpose
                                 'DEMO ONLY WORKS  NEXT LINE
-                                ' Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
+                                 Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
                               
                             Else
 
@@ -7894,7 +7898,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                          If Len(SQLDT("SXETMARKS")) > 0 Then
                             If Split(ctypos, ";")(0) = "10.1" Then
                                 'προσοχη το cεμφανιζεται και παραπανω λινε 470 SQLDT("PARAT") (DA. AGROTON)
-                               Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                              ' Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
                                    '<correlatedInvoices>400012475169746</correlatedInvoices>
                             Else
                                 Set elem2Field = docStock.createElement("multipleConnectedMarks"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
@@ -11794,7 +11798,7 @@ End Sub
 
 Private Sub Toolbar1_ButtonDropDown(ByVal Button As MSComctlLib.Button)
 
-100     If Button.Index = 3 Then
+100     If Button.index = 3 Then
             ' remove existing buttons
             '  Button.ButtonMenus.Clear
 
@@ -11849,7 +11853,7 @@ Private Sub Toolbar1_ButtonMenuClick(ByVal ButtonMenu As MSComctlLib.ButtonMenu)
   
         Dim N As Integer
 
-100     N = ButtonMenu.Index
+100     N = ButtonMenu.index
 
 102     Select Case ButtonMenu.key
 

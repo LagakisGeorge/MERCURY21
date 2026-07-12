@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   227082241
+         Format          =   179699713
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   227082242
+         Format          =   179699714
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   226951169
+      Format          =   142409729
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -6382,7 +6382,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
      '·Ì ÙÔ ·Ò·ÛÙ·ÙÈÍ¸ ÂﬂÌ·È Ï›Û· ÛÙ· ·Ò/Í· Ôı ÍÔ‚ÔÌÙ·È ÂÈ ·ıÙÔÍÈÌÁÙÔı f_par_aytok π ≈…Õ¡… ”’√ .≈–…”‘—(ƒ≈À‘…œ –¡—¡À¡¬«”)
      ' ÙÔÙÂ ·ÒÂ ÙÔ Ï·ÒÍ ÙÔı ÙÂÎÂıÙ·ﬂÔı Ûı„ÍÂÌÙÒ˘ÙÈÍÔ˝
        Dim mark_Sygkentr As String
-       If InStr(F_PAR_AYTOK, Left(f_matim, 1)) > 0 Or InStr(F_PAR_AYTOK, Split(f_SDA, ";")(1)) > 0 Then  ' in f_paraytok then
+       If InStr(F_PAR_AYTOK, Left(f_matim, 1)) > 0 Or InStr(f_SDA, Left(f_matim, 1)) > 0 Then  ' in f_paraytok then
             ' a=get mark teleytaioy sygkentrotikoy mh ekauarismenoy          'Split(RR!TRP, ";")(1)
             
             '’–¡—◊≈… œ  …Õƒ’ÕœÚ Õ¡ ≈…Õ¡…  À≈…”‘œ ‘œ ”ƒ¡   ¡… Õ¡ ◊—«”…Ãœ–œ…«”Ÿ ‘œ Ã¡—  ‘œ’
@@ -18648,23 +18648,23 @@ Text1_LostFocus_Err:
 
 End Sub
 
-Private Sub Text2_GotFocus(Index As Integer)
+Private Sub Text2_GotFocus(index As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_GotFocus_Err
 
         '</EhHeader>
-100     If Index = 3 Then
-102         Text2(Index).BackColor = vbYellow
+100     If index = 3 Then
+102         Text2(index).BackColor = vbYellow
 104         SendKeys ""
             ' MILSEC 1000   '500
 106         Text2(3).SetFocus
         End If
 
-108     Text2(Index).BackColor = vbYellow
+108     Text2(index).BackColor = vbYellow
 
-110     Text2(Index).SelStart = 0
-112     Text2(Index).SelLength = Len(Text2(Index).Text)
+110     Text2(index).SelStart = 0
+112     Text2(index).SelLength = Len(Text2(index).Text)
 
         '<EhFooter>
         Exit Sub
@@ -18682,7 +18682,7 @@ Text2_GotFocus_Err:
 
 End Sub
 
-Private Sub Text2_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+Private Sub Text2_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
 
     '  On Error GoTo MHNYMA
     '
@@ -18738,7 +18738,7 @@ Private Sub Text2_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer
 
 End Sub
 
-Private Sub Text2_KeyPress(Index As Integer, KeyAscii As Integer)
+Private Sub Text2_KeyPress(index As Integer, KeyAscii As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_KeyPress_Err
@@ -18765,7 +18765,7 @@ Text2_KeyPress_Err:
 
 End Sub
 
-Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
+Private Sub Text2_KeyUp(index As Integer, KeyCode As Integer, Shift As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_KeyUp_Err
@@ -18778,7 +18778,7 @@ Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
 
 102         KeyCode = 0
 
-104         If Index = 0 Then
+104         If index = 0 Then
 
 106             If Len(Trim(Text2(0).Text)) = 0 Then
 108                 Text2(1).SetFocus    ' ‰˛ÛÂ ¸ÌÔÏ·
@@ -18791,7 +18791,7 @@ Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
 
             End If    'index=0
 
-118         If Index = 1 Then
+118         If index = 1 Then
 
 120             If Len(Trim(Text2(1).Text)) = 0 Then
 
@@ -18812,14 +18812,14 @@ Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
 
             End If    'index=0
 
-136         If Index = 2 Then
+136         If index = 2 Then
 138             GridPelaton.Visible = True
 140             GridPelaton.ZOrder 0
 142             GridPelaton.SetFocus    '‰È·ÎÂÓÂ ÂÎ‹ÙÁ
 
             End If    'index=0
 
-144         If Index = 3 Then 'dieyuynsh
+144         If index = 3 Then 'dieyuynsh
 
 146             GetNextPel
           
@@ -18926,7 +18926,7 @@ GetNextPel_Err:
 
 End Sub
 
-Private Sub Text2_LostFocus(Index As Integer)
+Private Sub Text2_LostFocus(index As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_LostFocus_Err
@@ -18937,9 +18937,9 @@ Private Sub Text2_LostFocus(Index As Integer)
 
         On Error GoTo MHNYMA
 
-100     Text2(Index).BackColor = vbWhite
+100     Text2(index).BackColor = vbWhite
 
-102     If Len(Trim(Text2(Index))) = 0 Then Exit Sub
+102     If Len(Trim(Text2(index))) = 0 Then Exit Sub
 104     If fbuff = "l" Then fbuff = "r"
 
 106     X = fbuff    'If Option1(1) Then x = "e" Else x = "r"
@@ -18969,7 +18969,7 @@ Private Sub Text2_LostFocus(Index As Integer)
             End If
         End If
 
-130     If Index = 3 Then  ' ‰ÈÂıËıÌÛÁ
+130     If index = 3 Then  ' ‰ÈÂıËıÌÛÁ
 132         If f_AmesosPelatisLian = 1 Then
                 'ÔÙ·Ì ÂÒÌ·ÂÈ ÙÔÌ ÂÎ·ÙÁ ÎÈ·ÌÈÍÁÚ Ì· ÏÁÌ ‰Â˜ÂÙ·È ¡÷Ã √…¡‘…  œÀÀ¡≈…
 134             If Len(Text2(3).Text) > 0 Then
@@ -18989,7 +18989,7 @@ Private Sub Text2_LostFocus(Index As Integer)
          
         End If
 
-148     If Index = 1 Then  'eponumo
+148     If index = 1 Then  'eponumo
             Dim CW4 As String
 150         If F_MONOENERGOS = 1 Then CW4 = " AND ISNULL(ENERGOS,1)=1 " Else CW4 = ""
 152         If gCapitals = 1 Then
@@ -18999,11 +18999,11 @@ Private Sub Text2_LostFocus(Index As Integer)
             End If
         End If
 
-158     If Index = 0 Then    'kodikos
+158     If index = 0 Then    'kodikos
 160         PEL.RecordSource = "select  LEFT(left(EPO+'-'+ISNULL(DIE,'')+'-',56)+KOD,60) as xx,ISNULL(DIE,'') AS DIE,ISNULL(THL,'') AS THL,KOD,ISNULL(EMAIL,'') AS EMAIL,XRVMA AS TK  from PEL where " + MSYNT + " EIDOS='" + X + "' and KOD like '" + SameLetters(Text2(0).Text) + "%' order by KOD;"
         End If
 
-162     If Index = 2 Then    'afm
+162     If index = 2 Then    'afm
 164         PEL.RecordSource = "select  LEFT(left(EPO+'-'+ISNULL(DIE,'')+'-',56)+KOD,60) AS XX,ISNULL(DIE,'') AS DIE,ISNULL(THL,'') AS THL,KOD,ISNULL(EMAIL,'') AS EMAIL,XRVMA AS TK  from PEL where " + MSYNT + " EIDOS='" + X + "' and (AFM like '%" + Text2(2).Text + "%' OR " + f_pedioAFM + " like '%" + Text2(2).Text + "%' ) order by AFM;"
         End If
 
@@ -19015,7 +19015,7 @@ Private Sub Text2_LostFocus(Index As Integer)
 174     GridPelaton.Visible = True
 176     GridPelaton.SetFocus
 
-178     If PEL.Recordset.RecordCount = 0 And Index = 2 Then 'me afm alla den brika
+178     If PEL.Recordset.RecordCount = 0 And index = 2 Then 'me afm alla den brika
 180         Dim u As String, p As String, formatpel As String: formatpel = FINDPARAMETROI(1, "PELAT1", "F_FORMAT_PEL_KOD", "0000", "ÿ«÷…¡  Ÿƒ… œ’ –≈À¡‘ŸÕ")
 182         u = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_USER", "LAGAKIS23041960", "◊—«”‘«” ≈’—≈”«” ¡÷Ã")
 184         p = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_PWD", "d389833921", " Ÿƒ… œ” ≈’—≈”«” ¡÷Ã")
@@ -19074,7 +19074,7 @@ Private Sub Text5_KeyUp(KeyCode As Integer, Shift As Integer)
 
 End Sub
 
-Private Sub Textm_Change(Index As Integer)
+Private Sub Textm_Change(index As Integer)
         
          
 
@@ -19083,10 +19083,10 @@ Private Sub Textm_Change(Index As Integer)
 100     If F_METAF3SYNAL = 1 Then
             Dim mEpo, MDIE, MAFM
             '2->3  4->0
-102         If Index = 5 Or Index = 4 Then
+102         If index = 5 Or index = 4 Then
                 Dim mmID As Long
           
-104             mmID = GET_NVALUE("SELECT ID FROM PEL WHERE ( AFM LIKE '%" + Textm(Index) + "%' OR  EPO LIKE '%" + Textm(Index).Text + "%' ) AND EIDOS='e'")
+104             mmID = GET_NVALUE("SELECT ID FROM PEL WHERE ( AFM LIKE '%" + Textm(index) + "%' OR  EPO LIKE '%" + Textm(index).Text + "%' ) AND EIDOS='e'")
                 ' mEpo = GET_CVALUE("SELECT TOP 1 ISNULL(EPO,'') AS MEPO FROM PEL WHERE ( AFM LIKE '%" + Textm(Index) + "%' OR  EPO LIKE '%" + Textm(Index) + "%' ) AND EIDOS='e'")
                 'MDIE = GET_CVALUE("SELECT TOP 1 ISNULL(DIE,'') AS MEPO FROM PEL WHERE EPO LIKE '%" + Textm(Index) + "%' AND EIDOS='e'")
                 'MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE EPO LIKE '%" + Textm(Index) + "%' AND EIDOS='e'")
@@ -19096,10 +19096,10 @@ Private Sub Textm_Change(Index As Integer)
 110                 MDIE = GET_CVALUE("SELECT TOP 1 ISNULL(DIE,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
 112                 MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
             
-114                 Textm(IIf(Index = 5, 3, 0)) = "≈–ŸÕ’Ã…¡:" + mEpo + Chr(13) + "ƒ…≈’»’Õ”«:" + MDIE + Chr(13) + "¡÷Ã:" + MAFM
-116                 Me.Caption = Textm(IIf(Index = 5, 3, 0))
+114                 Textm(IIf(index = 5, 3, 0)) = "≈–ŸÕ’Ã…¡:" + mEpo + Chr(13) + "ƒ…≈’»’Õ”«:" + MDIE + Chr(13) + "¡÷Ã:" + MAFM
+116                 Me.Caption = Textm(IIf(index = 5, 3, 0))
                 Else
-118                 Textm(IIf(Index = 5, 3, 0)) = ""
+118                 Textm(IIf(index = 5, 3, 0)) = ""
 120                 Me.Caption = ""
                 End If
        
@@ -19109,13 +19109,13 @@ Private Sub Textm_Change(Index As Integer)
 
 End Sub
 
-Private Sub Textm_KeyPress(Index As Integer, KeyAscii As Integer)
+Private Sub Textm_KeyPress(index As Integer, KeyAscii As Integer)
     enter_to_tab KeyAscii
 End Sub
 
-Private Sub Textm_LostFocus(Index As Integer)
+Private Sub Textm_LostFocus(index As Integer)
            'Dim F_ELAIO_DIK   As Single ' % ƒ… ¡…ŸÃ¡ ≈À¡…œ‘—…¬≈…œ’ √…¡  œ”‘œ” ≈À¡…œ»À…ÿ«”
-         If Index = 21 And F_ELAIO_DIK > 0 Then
+         If index = 21 And F_ELAIO_DIK > 0 Then
              Grid1.TextMatrix(1, f_p) = F_ELAIO_DIK / 100 * gVal(Textm(21).Text)
            '  Grid1.row = 1: Grid1.Col = f_p
                
