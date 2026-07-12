@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308674561
+      Format          =   227213313
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308674561
+      Format          =   227213313
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7579,7 +7580,10 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 
 470                     Set elem2Field = docStock.createElement("exchangeRate"): elem2Field.Text = isot: elemField.appendChild elem2Field
 
-                        If Split(ctypos, ";")(0) = "10.1" Then
+                        
+                        
+                        'προσοχη το cεμφανιζεται και παρακατω λινε 542 με SQLDT("SXETMARKS") SYGKENTROTIKA DELTIA
+                        If Split(ctypos, ";")(0) = "10.1" And Left(SQLDT("PARAT"), 3) = "400" Then
                          
                             Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = Left(SQLDT("PARAT"), 15): elemField.appendChild elem2Field
                                       
@@ -7621,6 +7625,12 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             End If
                                                  
                         End If
+                        
+                        
+                        
+                        
+                        
+                        
                        
 472                     If isDiakin >= 1 Then   'tda=1  δελ.αποστ=2
                             If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
@@ -7768,6 +7778,15 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             End If
                              
                         Else
+                        
+                        
+                        '    If Len(SQLDT("SXETMARKS")) > 0 Then
+                         '      Set elem2Field = docStock.createElement("multipleConnectedMarks"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                        '    End If
+                        
+                        
+                        
+                        
                             '2800                            Dim NSXETMARKS As Integer, RR2() As String
                             '                            RR2 = Split(sqlDt("SXETMARKS"), ",")
                             '2810                            If Len(sqlDt("SXETMARKS")) > 2 Then ' ΓΙΑΤΙ ΤΟ  NULL ="," ΟΠΟΤΕ ΘΑ ΕΧΕΙ ΚΟΜΑ ΠΑΝΤΑ
@@ -7871,6 +7890,18 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                         '                        End If
 
 542                     .appendChild elemField
+
+                         If Len(SQLDT("SXETMARKS")) > 0 Then
+                            If Split(ctypos, ";")(0) = "10.1" Then
+                                'προσοχη το cεμφανιζεται και παραπανω λινε 470 SQLDT("PARAT") (DA. AGROTON)
+                               Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                                   '<correlatedInvoices>400012475169746</correlatedInvoices>
+                            Else
+                                Set elem2Field = docStock.createElement("multipleConnectedMarks"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                            End If
+                         
+                         End If
+
                         
                         '----------------------- PAYMENT ---------------------------------
                         
@@ -11763,7 +11794,7 @@ End Sub
 
 Private Sub Toolbar1_ButtonDropDown(ByVal Button As MSComctlLib.Button)
 
-100     If Button.index = 3 Then
+100     If Button.Index = 3 Then
             ' remove existing buttons
             '  Button.ButtonMenus.Clear
 
@@ -11818,7 +11849,7 @@ Private Sub Toolbar1_ButtonMenuClick(ByVal ButtonMenu As MSComctlLib.ButtonMenu)
   
         Dim N As Integer
 
-100     N = ButtonMenu.index
+100     N = ButtonMenu.Index
 
 102     Select Case ButtonMenu.key
 
