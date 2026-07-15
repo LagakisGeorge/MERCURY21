@@ -21,6 +21,38 @@ Begin VB.Form YPOSTHRIXI
    ScaleWidth      =   21885
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
+   Begin VB.ComboBox XRONIKA 
+      Height          =   315
+      ItemData        =   "YPOSTHRIXI.frx":0000
+      Left            =   11400
+      List            =   "YPOSTHRIXI.frx":000D
+      Style           =   2  'Dropdown List
+      TabIndex        =   12
+      Top             =   7320
+      Width           =   1815
+   End
+   Begin VB.CommandButton cmdEYRESHPEL 
+      Caption         =   "EYRESHPEL"
+      Height          =   360
+      Left            =   19320
+      TabIndex        =   11
+      Top             =   7320
+      Width           =   990
+   End
+   Begin VB.ListBox LISTPEL 
+      Height          =   1620
+      Left            =   14760
+      TabIndex        =   10
+      Top             =   7920
+      Width           =   4935
+   End
+   Begin VB.TextBox MEPO 
+      Height          =   375
+      Left            =   16440
+      TabIndex        =   8
+      Top             =   7320
+      Width           =   2775
+   End
    Begin VB.CommandButton cmdDiort 
       Caption         =   "diort"
       Height          =   360
@@ -30,7 +62,7 @@ Begin VB.Form YPOSTHRIXI
       Width           =   1695
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid 
-      Bindings        =   "YPOSTHRIXI.frx":0000
+      Bindings        =   "YPOSTHRIXI.frx":0038
       Height          =   6855
       Left            =   0
       TabIndex        =   5
@@ -164,9 +196,9 @@ Begin VB.Form YPOSTHRIXI
    End
    Begin VB.ComboBox Com 
       Height          =   315
-      ItemData        =   "YPOSTHRIXI.frx":0015
+      ItemData        =   "YPOSTHRIXI.frx":004D
       Left            =   6360
-      List            =   "YPOSTHRIXI.frx":0028
+      List            =   "YPOSTHRIXI.frx":0060
       Style           =   2  'Dropdown List
       TabIndex        =   1
       Top             =   7320
@@ -227,7 +259,7 @@ Begin VB.Form YPOSTHRIXI
       _Version        =   393216
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid1 
-      Bindings        =   "YPOSTHRIXI.frx":0059
+      Bindings        =   "YPOSTHRIXI.frx":0091
       Height          =   3615
       Left            =   960
       TabIndex        =   6
@@ -395,6 +427,16 @@ Begin VB.Form YPOSTHRIXI
       EndProperty
       _Version        =   393216
    End
+   Begin VB.Label lbl–≈À¡‘«” 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "–≈À¡‘«”"
+      Height          =   195
+      Left            =   14640
+      TabIndex        =   9
+      Top             =   7440
+      Width           =   690
+   End
    Begin VB.Label lblÃMERCURY_ 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
@@ -493,13 +535,32 @@ Private Sub cmdDiort_Click()
 
 End Sub
 
+Private Sub cmdEYRESHPEL_Click()
+Dim R As New ADODB.Recordset
+   R.Open "SELECT KOD,EPO FROM PEL WHERE KOD LIKE '%" + Trim$(MEPO.Text) + "%' OR EPO LIKE '%" + Trim(MEPO.Text) + "%' ", Gdb, adOpenDynamic, adLockOptimistic
+   Dim I As Integer: I = 0
+   Do While Not R.EOF
+       LISTPEL.AddItem R!kod + ";" + R!EPO
+       R.MoveNext
+       I = I + 1
+       If I > 300 Then Exit Do
+   Loop
+   R.Close
+   
+   
+   
+   
+   
+   
+End Sub
+
 Private Sub cmd¡Õ¡Õ≈Ÿ”«_Click()
   'Adodc2.Refresh
   GRIDREFRESH
 End Sub
 
 Private Sub Form_Load()
-        
+        XRONIKA.Text = XRONIKA.List(0)
         TDBGrid.FilterBar = True
         TDBGrid.Splits(0).AlternatingRowStyle = True
         TDBGrid.Splits(0).ExtendRightColumn = True
@@ -509,15 +570,24 @@ Private Sub Form_Load()
         
         
               Adodc2.ConnectionString = gConnect
-           '   Adodc2.RecordSource = "SELECT TOP 100 * FROM THLEFONA where DATEDIFF(HOUR,HME,GETDATE())<=14 ORDER BY ID DESC" ' Text2.Text
-              Adodc2.RecordSource = "SELECT TOP 100 THL,HME,KOD,EPO,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA where DATEDIFF(HOUR,HME,GETDATE())<=14 ORDER BY ID DESC" ' Text2.Text
+              'Adodc2.RecordSource = "SELECT TOP 100 THL,HME,KOD,EPO,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA where DATEDIFF(HOUR,HME,GETDATE())<=14 ORDER BY ID DESC" ' Text2.Text
               GRIDREFRESH
 End Sub
 
 Sub GRIDREFRESH()
 
-              
-              
+synt = " where DATEDIFF(HOUR,HME,GETDATE())<=14 "
+If Val(Left(XRONIKA.Text, 1)) = 1 Then
+      synt = " where DATEDIFF(HOUR,HME,GETDATE())<=14 AND DAY(HME)=DAY(GETDATE()) "
+ElseIf Val(Left(XRONIKA.Text, 1)) = 2 Then
+        synt = " where DATEDIFF(DAY,HME,GETDATE())=1 "
+Else
+      synt = ""
+End If
+
+
+              Adodc2.RecordSource = "SELECT TOP 100 THL,HME,KOD,EPO,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA " + synt + " ORDER BY ID DESC" ' Text2.Text
+        
               Adodc2.Refresh
               
                TDBGrid.columns(0).Width = 1300  '‘«À
@@ -530,6 +600,14 @@ Sub GRIDREFRESH()
               
               
 End Sub
+
+
+
+
+
+
+
+
 
 Private Sub TDBGrid_BeforeColEdit(ByVal ColIndex As Integer, ByVal KeyAscii As Integer, Cancel As Integer)
     If ColIndex = 0 Then
@@ -601,10 +679,10 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -908,4 +986,12 @@ Private Sub TDBGrid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 '
 '    End If
     
+End Sub
+
+Private Sub XRONIKA_Change()
+    GRIDREFRESH
+End Sub
+
+Private Sub XRONIKA_Click()
+ GRIDREFRESH
 End Sub
