@@ -169,7 +169,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   469368833
+      Format          =   278069249
       CurrentDate     =   44346
    End
    Begin MSComCtl2.DTPicker apo 
@@ -181,7 +181,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   469368833
+      Format          =   278069249
       CurrentDate     =   44346
    End
    Begin VB.CommandButton cmdYPOL 
@@ -422,9 +422,26 @@ Private Sub cmdPBSGEFYRA_Click()
  For L = 1 To 100
     If Len(arr_log(L)) = 0 Then Exit For
     List2.AddItem arr_log(L) + " => " + Format(arr_posa(L), "#####0.00")
-   
+    If Left$(arr_log(L), 1) = "7" Then
+       POL = POL + arr_posa(L)
+    End If
+    
+   If Left$(arr_log(L), 1) = "2" Then
+       AGO = AGO + arr_posa(L)
+    End If
+    If Left$(arr_log(L), 1) = "6" Then
+       EXO = EXO + arr_posa(L)
+    End If
+    
+    
  Next
  
+ 
+    List2.AddItem " ====== "
+    List2.AddItem "7 => " + Format(POL, "#####0.00")
+       List2.AddItem arr_log(L) + "2 => " + Format(AGO, "#####0.00")
+          List2.AddItem arr_log(L) + "6 => " + Format(EXO, "#####0.00")
+          
  
 End Sub
 
@@ -465,7 +482,7 @@ Private Sub cmdG_Click()
 Dim R As New ADODB.Recordset
 
          Dim synt As String
-         synt = " and HME>='" + Format(apo, "mm/dd/yyyy") + "'  AND HME<='" + Format(eos, "mm/dd/yyyy") + "'  "
+         synt = " and HME>='" + Format(APO, "mm/dd/yyyy") + "'  AND HME<='" + Format(EOS, "mm/dd/yyyy") + "'  "
             If chkEPAN.Value = vbChecked Then
                 
 
@@ -503,15 +520,15 @@ Dim R As New ADODB.Recordset
 
 
 
-        Dim pol As String: pol = " "
+        Dim POL As String: POL = " "
         Dim polepis As String: polepis = " "
-        Dim ago As String: ago = " "
+        Dim AGO As String: AGO = " "
         Dim AGOEPIS As String: AGOEPIS = " "
-        Get_AJ_ASCII pol, polepis, ago, AGOEPIS
+        Get_AJ_ASCII POL, polepis, AGO, AGOEPIS
         
         par = ""
         If chkPOL.Value = vbChecked Then
-            par = pol + "," + polepis
+            par = POL + "," + polepis
         End If
             
         
@@ -520,7 +537,7 @@ Dim R As New ADODB.Recordset
              par = par + ","
            End If
            
-              par = par + ago + "," + AGOEPIS
+              par = par + AGO + "," + AGOEPIS
         End If
         
         
@@ -983,6 +1000,11 @@ Private Sub CMDSTOP_Click()
 End Sub
 
 Private Sub cmdYPOL_Click()
+Dim POL As Double, AGO As Double, EXO As Double
+ POL = 0: AGO = 0: EXO = 0
+
+
+
  Dim L As Integer
  For L = 1 To 100
     arr_log(L) = ""
@@ -995,9 +1017,27 @@ Private Sub cmdYPOL_Click()
     If Len(arr_log(L)) = 0 Then Exit For
     List2.AddItem arr_log(L) + " => " + Format(arr_posa(L), "#####0.00")
    
+   If Left$(arr_log(L), 1) = "7" Then
+       POL = POL + arr_posa(L)
+    End If
+    
+   If Left$(arr_log(L), 1) = "2" Then
+       AGO = AGO + arr_posa(L)
+    End If
+    If Left$(arr_log(L), 1) = "6" Then
+       EXO = EXO + arr_posa(L)
+    End If
+   
+   
+   
+   
  Next
  
- 
+   List2.AddItem " ====== "
+    List2.AddItem "7 => " + Format(POL, "#####0.00")
+       List2.AddItem arr_log(L) + "2 => " + Format(AGO, "#####0.00")
+          List2.AddItem arr_log(L) + "6 => " + Format(EXO, "#####0.00")
+          
 
 End Sub
 
@@ -1011,7 +1051,7 @@ Dim R As New ADODB.Recordset
          'Dim synt As String
          
           Dim synt As String
-         synt = " AND HME>='" + Format(apo, "mm/dd/yyyy") + "'  AND HME<='" + Format(eos, "mm/dd/yyyy") + "'  "
+         synt = " AND HME>='" + Format(APO, "mm/dd/yyyy") + "'  AND HME<='" + Format(EOS, "mm/dd/yyyy") + "'  "
          
          
             If chkEPAN.Value = vbChecked Then
@@ -1024,17 +1064,17 @@ Dim R As New ADODB.Recordset
             ' ExecuteSQLQuery("update TIM SET AJ7=0 WHERE AJ7 IS NULL")
 
 
-        Dim pol As String: pol = " "
+        Dim POL As String: POL = " "
         Dim polepis As String: polepis = " "
-        Dim ago As String: ago = " "
+        Dim AGO As String: AGO = " "
         Dim AGOEPIS As String: AGOEPIS = " "
-        Get_AJ_ASCII pol, polepis, ago, AGOEPIS
+        Get_AJ_ASCII POL, polepis, AGO, AGOEPIS
 
 
 
         par = ""
         If chkPOL.Value = vbChecked Then
-            par = pol + "," + polepis
+            par = POL + "," + polepis
         End If
             
         
@@ -1043,7 +1083,7 @@ Dim R As New ADODB.Recordset
              par = par + ","
            End If
            
-              par = par + ago + "," + AGOEPIS
+              par = par + AGO + "," + AGOEPIS
         End If
         
         
@@ -1139,7 +1179,7 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
           Dim elemCUSTOMER As MSXML2.IXMLDOMElement
           
         Dim elemField As MSXML2.IXMLDOMElement
-        Dim i As Integer
+        Dim I As Integer
     
 
 102     Set docStock = New MSXML2.DOMDocument
@@ -1157,8 +1197,8 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
                           Set elemField = docStock.createElement("MTYPE"): elemField.Text = "SOFT1": elemDETAILS.appendChild elemField
                           Set elemField = docStock.createElement("Version"):  elemDETAILS.appendChild elemField
                           Set elemField = docStock.createElement("CreationDate"): elemField.Text = Format(Now, "dd/MM/yyyy"): elemDETAILS.appendChild elemField
-                          Set elemField = docStock.createElement("DataFromDate"): elemField.Text = Format(apo, "dd/MM/yyyy"): elemDETAILS.appendChild elemField
-                          Set elemField = docStock.createElement("DataToDate"): elemField.Text = Format(eos, "dd/MM/yyyy"): elemDETAILS.appendChild elemField
+                          Set elemField = docStock.createElement("DataFromDate"): elemField.Text = Format(APO, "dd/MM/yyyy"): elemDETAILS.appendChild elemField
+                          Set elemField = docStock.createElement("DataToDate"): elemField.Text = Format(EOS, "dd/MM/yyyy"): elemDETAILS.appendChild elemField
                        Set elemField = docStock.createElement("TIN"): elemField.Text = "142205729": elemDETAILS.appendChild elemField
                        Set elemField = docStock.createElement("SerialNumber"): elemField.Text = "10502558420321": elemDETAILS.appendChild elemField
                        Set elemField = docStock.createElement("SXRecCount"): elemField.Text = "71": elemDETAILS.appendChild elemField
@@ -1474,11 +1514,11 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
 
            ' cd1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
            ' cd1.ShowSave
-            cd1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
-            cd1.ShowSave
+            CD1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
+            CD1.ShowSave
             
         ' .save cd1.FILENAME '"C:\created.xml"
-         .save cd1.FILENAME '"C:\created.xml"
+         .save CD1.FILENAME '"C:\created.xml"
 
         End With
     
@@ -1548,7 +1588,7 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
           Dim elemCUSTOMER As MSXML2.IXMLDOMElement
           
         Dim elemField As MSXML2.IXMLDOMElement
-        Dim i As Integer
+        Dim I As Integer
     
 
 102     Set docStock = New MSXML2.DOMDocument
@@ -1794,11 +1834,11 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
 
            ' cd1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
            ' cd1.ShowSave
-            cd1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
-            cd1.ShowSave
+            CD1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
+            CD1.ShowSave
             
         ' .save cd1.FILENAME '"C:\created.xml"
-         .save cd1.FILENAME '"C:\created.xml"
+         .save CD1.FILENAME '"C:\created.xml"
 
 
             
@@ -1904,7 +1944,7 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
           Dim elemCUSTOMER As MSXML2.IXMLDOMElement
           
         Dim elemField As MSXML2.IXMLDOMElement
-        Dim i As Integer
+        Dim I As Integer
     
 
 102     Set docStock = New MSXML2.DOMDocument
@@ -2136,11 +2176,11 @@ mpela = InputBox("Κωδ.Προμηθευτη ", "", "50-00-00-0000")
 
            ' cd1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
            ' cd1.ShowSave
-            cd1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
-            cd1.ShowSave
+            CD1.FILENAME = "GEFB_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
+            CD1.ShowSave
             
         ' .save cd1.FILENAME '"C:\created.xml"
-         .save cd1.FILENAME '"C:\created.xml"
+         .save CD1.FILENAME '"C:\created.xml"
 
        
 
@@ -2260,7 +2300,7 @@ DoEvents
           Dim elemCUSTOMER As MSXML2.IXMLDOMElement
           
         Dim elemField As MSXML2.IXMLDOMElement
-        Dim i As Integer
+        Dim I As Integer
     
 
 102     Set docStock = New MSXML2.DOMDocument
@@ -2853,11 +2893,11 @@ DoEvents
 
            ' cd1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
            ' cd1.ShowSave
-530         cd1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
-532         cd1.ShowSave
+530         CD1.FILENAME = "GEF_" + Format(Now, "yyyy-MM-dd HH-mm") + ".xml"
+532         CD1.ShowSave
             
         ' .save cd1.FILENAME '"C:\created.xml"
-534      .save cd1.FILENAME '"C:\created.xml"
+534      .save CD1.FILENAME '"C:\created.xml"
 
 
 
@@ -3092,9 +3132,9 @@ Dim R As New ADODB.Recordset
             ' ExecuteSQLQuery("update TIM SET AJ7=0 WHERE AJ7 IS NULL")
 
 
-        Dim pol As String: pol = " "
+        Dim POL As String: POL = " "
         Dim polepis As String: polepis = " "
-        Dim ago As String: ago = " "
+        Dim AGO As String: AGO = " "
         Dim AGOEPIS As String: AGOEPIS = " "
         
         Dim sql As String, sqlwh As String
@@ -3105,7 +3145,7 @@ Dim R As New ADODB.Recordset
             sql = sql + " (CASE WHEN XREOSI>0 THEN 1 ELSE -1 END ) AS MSIGN,ISNULL(KODGAL,'1') AS KODGAL "
             sqlwh = "   FROM EGG INNER JOIN PEL ON EGG.EIDOS=PEL.EIDOS AND EGG.KOD=PEL.KOD  LEFT JOIN  XREOPIS  ON EGG.EIDXPI=XREOPIS.EIDOS "
           '  sqlwh = sqlwh + " WHERE  (IDTIM IS NULL)    and HME>='" + Format(apo, "mm/dd/yyyy") + "'  AND HME<='" + Format(eos, "mm/dd/yyyy") + "'  "
-            sqlwh = sqlwh + " WHERE  (IDTIM IS NULL) and EGG.KOD<>'9990'   and HME>='" + Format(apo, "mm/dd/yyyy") + "'  AND HME<='" + Format(eos, "mm/dd/yyyy") + "'  "
+            sqlwh = sqlwh + " WHERE  (IDTIM IS NULL) and EGG.KOD<>'9990'   and HME>='" + Format(APO, "mm/dd/yyyy") + "'  AND HME<='" + Format(EOS, "mm/dd/yyyy") + "'  "
             sqlwh = sqlwh + "  AND ABS(EGG.XREOSI)+ABS(EGG.PISTOSI)>0  " + synt
             
             
@@ -3161,8 +3201,8 @@ F_PEL_KOD = Val(FINDPARAMETROI(1, "BOHU10", "F_PEL_KOD", "0", "1=ME **** ΒΑΖΕΙ Τ
 f_kod_tameio = FINDPARAMETROI(1, "BOHU10", "f_kod_tameio", "38-00-00-0000", "ΚΩΔΙΚΟΣ ΤΑΜΕΙΟ ΧΡΕΟΠΙΣΤΩΣΕΩΝ")
 'apo.Value = Now()
 'eos.Value = Now()
-apo.Value = Now()
-eos.Value = Now()
+APO.Value = Now()
+EOS.Value = Now()
 
 
 

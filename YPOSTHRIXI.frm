@@ -128,10 +128,10 @@ Begin VB.Form YPOSTHRIXI
       _StyleDefs(7)   =   ":id=1,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(8)   =   ":id=1,.fontname=Tahoma"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=1125,.italic=0"
       _StyleDefs(11)  =   ":id=2,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(12)  =   ":id=2,.fontname=Tahoma"
-      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=825,.italic=0"
+      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=1125,.italic=0"
       _StyleDefs(14)  =   ":id=3,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(15)  =   ":id=3,.fontname=Tahoma"
       _StyleDefs(16)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
@@ -584,7 +584,7 @@ ElseIf Val(Left(XRONIKA.Text, 1)) = 2 Then
 Else
       synt = ""
 End If
-
+             Adodc2.ConnectionString = gConnect
 
               Adodc2.RecordSource = "SELECT TOP 100 THL,HME,KOD,EPO,SXOLIA,APOK,XRHSTHS,TYPOS,ID  FROM THLEFONA " + synt + " ORDER BY ID DESC" ' Text2.Text
         
@@ -597,7 +597,14 @@ End If
            TDBGrid.Splits(0).columns(5).Width = 5100 '¡–œ 
             TDBGrid.Splits(0).columns(7).Width = 2000
               
-              
+    
+    AdodcSX.ConnectionString = gConnect
+    AdodcSX.RecordSource = "SELECT  DATEPART(HOUR, HME) AS [Ÿ—¡] , COUNT(*) AS [¡—…».‘«À≈÷] FROM THLEFONA  " + synt + "  GROUP BY DATEPART(HOUR, HME) ORDER BY DATEPART(HOUR, HME) "
+             
+     AdodcSX.Refresh
+             
+             
+             
               
 End Sub
 

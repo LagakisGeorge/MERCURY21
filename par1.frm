@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "глея/ыяа пяд"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblглеяыяа"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblглеяыяа"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   179699713
+         Format          =   278134785
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   179699714
+         Format          =   278134786
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   142409729
+      Format          =   278462465
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3738,7 +3738,7 @@ Private Sub b_akyr_Click()
              MDIForm1.StatusBar1.Panels(5).Text = ""
 
             '--------------------  initialization ----------------------------
-108         synolo.Caption = ""
+108         Synolo.Caption = ""
 110         sfpa.Caption = ""
 112         SynoloG.Caption = ""
 
@@ -4319,7 +4319,7 @@ Private Sub SaveParastat(ByVal isAkyrotiko As Boolean)
             End If
             
         Else
-338         If Val(synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
+338         If Val(Synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
                                     'm500 =╗
                  
                
@@ -5912,7 +5912,7 @@ Sub MIDENIZO_GRID()
 
         Dim L As Long
 
-100     synolo.Caption = ""
+100     Synolo.Caption = ""
 102     sfpa.Caption = ""
 104     SynoloG.Caption = ""
 
@@ -7533,13 +7533,13 @@ Sub enhm_apot()
                         
 190                     If kostologhsh And F_STADIO = 4 Then  ' ' 1=пяосж 2=паяацц 3=да 4=тил.пок 5=емдодиайимиси
 192                         PAR11.Label10 = EID.Recordset("XTI")
-194                         PAR11.label11 = NeaTim
+194                         PAR11.Label11 = NeaTim
 
 196                         PAR11.ltiproekptosis = Grid1.TextMatrix(k, F_T)
 198                         PAR11.UES = EID.Recordset("UES")
 
-200                         If Val(synolo.Caption) <> 0 Then
-202                             PAR11.Label4 = 100 * Val(metaf) / Val(synolo)
+200                         If Val(Synolo.Caption) <> 0 Then
+202                             PAR11.Label4 = 100 * Val(metaf) / Val(Synolo)
                             End If
 
 204                         PAR11.POSO.Caption = p
@@ -7580,8 +7580,8 @@ Sub enhm_apot()
 
 238                         If kostologhsh Then  ' ЛГМ ТУВОМ ЙАИ АЙУЯЫСЕ ТГМ ЙОСТОКОЦГСГ ЕМ ТЫ ЛЕТАНЩ
 
-240                             If Val(synolo.Caption) <> 0 Then
-242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(synolo)
+240                             If Val(Synolo.Caption) <> 0 Then
+242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(Synolo)
                                 End If
 
 244                             If IsNull(EID.Recordset("lastupd")) Then
@@ -8369,7 +8369,7 @@ Private Sub calcula_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(ComboPARAKRATISI.Text, 2), ".", ""))
 
-118     parakratisiT.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     parakratisiT.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -8751,7 +8751,7 @@ Private Sub cmdypolo_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(Combo2OnomaParak.Text, 2), ".", ""))
 
-118     AJIA2PARAKR.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     AJIA2PARAKR.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -10970,8 +10970,8 @@ Private Sub Command3_Click()
         Else
         
 108         If f_KENTRA_ADYNATISMATOS = 1 Then
-110             If kentroAdyn.ListIndex = 1 Then
-112                 fpelat4.kentroAdyn.ListIndex = 1
+110             If KentroAdyn.ListIndex = 1 Then
+112                 fpelat4.KentroAdyn.ListIndex = 1
                 End If
             End If
         
@@ -11837,8 +11837,8 @@ Private Sub Command6_Click()
         Else
 
 106         If f_KENTRA_ADYNATISMATOS = 1 Then
-108             If kentroAdyn.ListIndex = 1 Then
-110                 fff.kentroAdyn.ListIndex = 1
+108             If KentroAdyn.ListIndex = 1 Then
+110                 fff.KentroAdyn.ListIndex = 1
                 End If
             Else
 112             fff.PELPROM.Text = "e"  'PELPROM.Text
@@ -12427,9 +12427,9 @@ Private Sub Form_Resize()
 'SSTab1.Tab = IIf(f_tab > SSTab1.Tabs - 1 Or f_tab < 0, SSTab1.Tabs - 1, f_tab)
 
 Label1(0).Left = Text2(1).Left
-label11(0).Left = Text2(2).Left
+Label11(0).Left = Text2(2).Left
  Label1(0).Top = Label3(0).Top
-  label11(0).Top = Label3(0).Top
+  Label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
  
 LABEL30.Left = 0
@@ -16448,6 +16448,7 @@ Private Sub Form_Load()
 278     f_strogg = 0 ' стяоццукела жпа/тилокоциоу
 
 280     f_akyr_neo = Val(FINDPARAMETROI(1, "PAR1", "f_akyr_neo", "0", "ц.49.мео айуяытийо амтихето выяис диацяажг=1 ови=0"))
+        f_akyr_neo = 1 ' NA STAMATHSEI O PALIOW TROPOS
 282     f_akyr_idia_mera = Val(FINDPARAMETROI(1, "PAR1", "f_akyr_idia_mera", "1", "ц.40.айуяытийо ломо тгм идиа леяа=1 ови=0"))
 
         ' F_EIDFOROSKAT  F_ARPART_IN_EID
@@ -16564,7 +16565,7 @@ Private Sub Form_Load()
         'Dim f_TIMES_METASX_LIAN As String
  
 390     f_LabAFM = FINDPARAMETROI(1, "PELAT2", "f_LabAFM", "ажл /ЙЕИЛ1", "TъТКОР ЕТИЙщТАР ажл")
-392     label11(0).Caption = f_LabAFM
+392     Label11(0).Caption = f_LabAFM
  
 394     Label18.Caption = "пКГЯ"
 396     Label9.Caption = "сВЭКИА"
@@ -16821,8 +16822,8 @@ Private Sub Form_Load()
 576     f_IS_PARTIDES = Val(FINDPARAMETROI(1, "APOT2", "f_IS_PARTIDES", "0", "аМ вЯГСИЛОПОИЧ ПАЯТъДЕР=1"))
 
 578     If f_KENTRA_ADYNATISMATOS = 1 Then
-580         kentroAdyn.Visible = True
-582         kentroAdyn.ListIndex = 0 ' Combo3.List(0)
+580         KentroAdyn.Visible = True
+582         KentroAdyn.ListIndex = 0 ' Combo3.List(0)
         End If
 
         '  'SkinFramework1.LoadSkin "c:\mercvb\Styles\Office2007.cjstyles", ""
@@ -17543,7 +17544,7 @@ Private Sub Form_Load()
         '  Set fDB = OpenDatabase(gDir, False, False, gConnect)
         'End If
 
-1222    synolo = " "    ' циа ма лгм бцафеи NULL
+1222    Synolo = " "    ' циа ма лгм бцафеи NULL
 
         '
         'If gConnect = "Access" Then
@@ -18873,9 +18874,9 @@ Sub GetNextPel()
 
         Dim m    As String
 
-        Dim mEpo As String, MDIE As String
+        Dim MEPO As String, MDIE As String
 
-100     mEpo = Replace(Text2(1).Text, "'", """")
+100     MEPO = Replace(Text2(1).Text, "'", """")
 102     MDIE = Replace(Text2(3).Text, "'", """")
 
         Dim k As Long
@@ -18906,7 +18907,7 @@ Sub GetNextPel()
 
         End If
    
-128     Gdb.Execute "INSERT INTO PEL (EIDOS,KOD,EPO,DIE) VALUES ('e','" + m + "','" + mEpo + "','" + MDIE + "')", k
+128     Gdb.Execute "INSERT INTO PEL (EIDOS,KOD,EPO,DIE) VALUES ('e','" + m + "','" + MEPO + "','" + MDIE + "')", k
 130     Text2(0) = m
         ' Text2(0).SetFocus
 
@@ -18950,7 +18951,7 @@ Private Sub Text2_LostFocus(index As Integer)
 
 110     If f_KENTRA_ADYNATISMATOS = 1 Then
 112         If X = "e" Then
-114             If kentroAdyn.List(0) = kentroAdyn.Text Then
+114             If KentroAdyn.List(0) = KentroAdyn.Text Then
 116                 MSYNT = "NUM3=0 AND "
 118                 Grid1.BackColor = &HFF8080     ' mple
                     'Grid1.BackColor = &H80FF80 ' prasino
@@ -19019,16 +19020,16 @@ Private Sub Text2_LostFocus(index As Integer)
 180         Dim u As String, p As String, formatpel As String: formatpel = FINDPARAMETROI(1, "PELAT1", "F_FORMAT_PEL_KOD", "0000", "ьгжиа йыдийоу пекатым")
 182         u = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_USER", "LAGAKIS23041960", "вягстгс еуяесгс ажл")
 184         p = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_PWD", "d389833921", "йыдийос еуяесгс ажл")
-            Dim newKod As String, EPO As String, DIE As String, EPA As String, pol As String, tk As String, doy As String, c As String, ENERGOS As Integer
+            Dim newKod As String, EPO As String, DIE As String, EPA As String, POL As String, tk As String, doy As String, c As String, ENERGOS As Integer
 186         c = Text2(2).Text: ENERGOS = 1
-188         Par7MyData.requestafm2 u, p, c, EPO, DIE, EPA, pol, tk, doy, ENERGOS
+188         Par7MyData.requestafm2 u, p, c, EPO, DIE, EPA, POL, tk, doy, ENERGOS
              
 190         Dim ANS As Integer: ANS = MsgBox("мА АМОИВТЕъ ЙЫДИЙЭР ЦИА ТОМ " + EPO, vbYesNo)
 192         If ANS = vbYes Then
                
 194             newKod = pelat1.get_next_pel(X, 0, formatpel)
 196             Dim sql As String: sql = "insert into PEL(XRVMA,ENERGOS,EIDOS,KOD,EPO,DIE,POL,EPA,AFM,DOY) VALUES "
-198             sql = sql + "('" + tk + "',1,'" + X + "','" + Format(newKod, formatpel) + "','" + EPO + "','" + DIE + "','" + pol + "','" + EPA + "','" + c + "','" + doy + "')"
+198             sql = sql + "('" + tk + "',1,'" + X + "','" + Format(newKod, formatpel) + "','" + EPO + "','" + DIE + "','" + POL + "','" + EPA + "','" + c + "','" + doy + "')"
 200             Gdb.Execute sql
 202             If X = "r" Then
 204                 Gdb.Execute "update MEM SET RPEL=" + str(newKod)
@@ -19081,7 +19082,7 @@ Private Sub Textm_Change(index As Integer)
 
 
 100     If F_METAF3SYNAL = 1 Then
-            Dim mEpo, MDIE, MAFM
+            Dim MEPO, MDIE, MAFM
             '2->3  4->0
 102         If index = 5 Or index = 4 Then
                 Dim mmID As Long
@@ -19092,11 +19093,11 @@ Private Sub Textm_Change(index As Integer)
                 'MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE EPO LIKE '%" + Textm(Index) + "%' AND EIDOS='e'")
           
 106             If mmID > 0 Then
-108                 mEpo = GET_CVALUE("SELECT TOP 1 ISNULL(EPO,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
+108                 MEPO = GET_CVALUE("SELECT TOP 1 ISNULL(EPO,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
 110                 MDIE = GET_CVALUE("SELECT TOP 1 ISNULL(DIE,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
 112                 MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
             
-114                 Textm(IIf(index = 5, 3, 0)) = "епымулиа:" + mEpo + Chr(13) + "диеухумсг:" + MDIE + Chr(13) + "ажл:" + MAFM
+114                 Textm(IIf(index = 5, 3, 0)) = "епымулиа:" + MEPO + Chr(13) + "диеухумсг:" + MDIE + Chr(13) + "ажл:" + MAFM
 116                 Me.Caption = Textm(IIf(index = 5, 3, 0))
                 Else
 118                 Textm(IIf(index = 5, 3, 0)) = ""
@@ -19135,7 +19136,7 @@ Private Sub Textm_LostFocus(index As Integer)
 End Sub
 
 Private Sub TextOnEntolea_Change()
-        Dim mEpo, MDIE, MAFM
+        Dim MEPO, MDIE, MAFM
         '2->3  4->0
         'If Index = 5 Or Index = 4 Then
         Dim mmID As Long
@@ -19146,11 +19147,11 @@ Private Sub TextOnEntolea_Change()
         'MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE EPO LIKE '%" + Textm(Index) + "%' AND EIDOS='e'")
           
 102     If mmID > 0 Then
-104         mEpo = GET_CVALUE("SELECT TOP 1 ISNULL(EPO,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
+104         MEPO = GET_CVALUE("SELECT TOP 1 ISNULL(EPO,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
 106         MDIE = GET_CVALUE("SELECT TOP 1 ISNULL(DIE,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
 108         MAFM = GET_CVALUE("SELECT TOP 1 ISNULL(AFM,'') AS MEPO FROM PEL WHERE ID=" + str(mmID))
             
-110         TextEntoleas = "епымулиа:" + mEpo + Chr(13) + "диеухумсг:" + MDIE + Chr(13) + "ажл:" + MAFM
+110         TextEntoleas = "епымулиа:" + MEPO + Chr(13) + "диеухумсг:" + MDIE + Chr(13) + "ажл:" + MAFM
 112         Me.Caption = TextEntoleas
         Else
 114         TextEntoleas = ""
@@ -19413,7 +19414,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
 200     If KeyCode = 118 And Shift = 0 And F_PosostaOTA Then    ' --------------  F7 ------ 4% ota
 
-202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(synolo.Caption, ",", ".")) * F_PosostaOTA / 100
+202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(Synolo.Caption, ",", ".")) * F_PosostaOTA / 100
               
         End If
 
@@ -21205,7 +21206,7 @@ Private Static Sub FindSynolo()
 
 164     s = Round(0.00001 + s, f_psifiaAjias)
 
-166     synolo.Caption = Format(s, "####0.00")
+166     Synolo.Caption = Format(s, "####0.00")
 168     F = 0
         
 170     f_strogg_FPA = 0
@@ -21260,7 +21261,7 @@ Private Static Sub FindSynolo()
 
         If F_CUSTOMER_SCREEN = 1 Then
            
-            PAR1CUSTOMER.synolo.Caption = SynoloG.Caption
+            PAR1CUSTOMER.Synolo.Caption = SynoloG.Caption
         End If
 
 
@@ -21358,7 +21359,7 @@ Private Static Sub Find_Lian_Synolo() ' ypologismos lianikhs
 
 160     s = Round(0.00001 + s, f_psifiaAjias)
 
-162     synolo.Caption = Format(s, "####0.00")
+162     Synolo.Caption = Format(s, "####0.00")
 164     F = 0: For k = 1 To 9: F = F + SumFpa(k) * g_Fpa(k) / 100: Next
 
 166     F = Round(0.00001 + F, f_psifiaAjias)
@@ -23935,7 +23936,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -24035,9 +24036,9 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         'Me.Caption = "load_forma=OK"
 
-136     For i = 1 To 250
+136     For I = 1 To 250
 
-138         If Left$(gm_str(i), 10) = "**********" Then
+138         If Left$(gm_str(I), 10) = "**********" Then
 
                 Exit For
 
@@ -24046,16 +24047,16 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
         Next
 
         '* сумокийес сеияес
-140     m_No_of_seir = Val(gm_str(i + 1))
+140     m_No_of_seir = Val(gm_str(I + 1))
 
         '* сеияа поу аявифоум та еидг
-142     m_seir_eid = Val(gm_str(i + 2))
+142     m_seir_eid = Val(gm_str(I + 2))
 
         '* сеияа поу аявифоум та сумока
-144     m_seir_synol = Val(gm_str(i + 3))
+144     m_seir_synol = Val(gm_str(I + 3))
 
         '* entolh gia ton ЕЙТУПЫТч
-146     m_entol_ektyp = gm_str(i + 4)
+146     m_entol_ektyp = gm_str(I + 4)
 
         '**************
         ' PRINTER.
@@ -24155,7 +24156,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 210         MM = ePict(k)
 
             'For i = 1 To eProw(K): Printer.Print: Next
-212         For i = 1 To eProw(k)
+212         For I = 1 To eProw(k)
 
 214             If k = 1 And m_No_of_seir = 1000 Then
                     ' лгм бафеис йемг сеияа стгм аявг
@@ -24266,7 +24267,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
 296         MM = mac(Trim(gm_f(m + e + k + 2)))
 
-298         For i = 1 To sProw(k): Print #1,: Next
+298         For I = 1 To sProw(k): Print #1,: Next
             'Printer.Print Format(gvar, gpic(M + e + K + 2));
 300         Print #1, Tab(sPcol(k)); GFORMAT(MM, gpic(m + e + k + 2));
         Next
@@ -24485,7 +24486,7 @@ TYPOSE_HEADER:
 484     For k = 1 To e
 486         MM = ePict(k)
 
-488         For i = 1 To eProw(k)
+488         For I = 1 To eProw(k)
 
 490             If k = 1 And m_No_of_seir = 1000 Then
                     ' лгм бафеис йемг сеияа стгм аявг
@@ -24932,7 +24933,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -25311,20 +25312,20 @@ Function Get_meKomma(ByVal X As String) As String
 
         '</EhHeader>
 
-        Dim pol As String
+        Dim POL As String
 
-100     pol = ""
+100     POL = ""
 
         Dim k As Integer
 
 102     For k = 1 To Len(X)
-104         pol = pol + "'" + mID$(X, k, 1) + "',"
+104         POL = POL + "'" + mID$(X, k, 1) + "',"
         Next
 
-106     pol = Left(pol, Len(pol) - 2)
-108     pol = mID$(pol, 2, Len(pol) - 1)
+106     POL = Left(POL, Len(POL) - 2)
+108     POL = mID$(POL, 2, Len(POL) - 1)
 
-110     Get_meKomma = pol
+110     Get_meKomma = POL
 
         '<EhFooter>
         Exit Function
@@ -26409,7 +26410,7 @@ ROLL:
 
 End Sub
 
-Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOSNEO As String, mEpo As String) '1111
+Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOSNEO As String, MEPO As String) '1111
         'forosDiamonis
         
         'f_EID_AKYR_APOD  бяисйы ле поио айуяытийо айуяыметаи п.в. "Й"
@@ -26436,7 +26437,7 @@ Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOS
         Dim nc As Integer
 104     nc = GET_NVALUE("select count(*) from PEL WHERE KOD='" + mPELKOD + "' AND EIDOS='" + EIDOSNEO + "'")
 106     If nc = 0 Then
-108         Gdb.Execute "insert into PEL (KOD,EIDOS,EPO,AFM) VALUES ('" + mPELKOD + "','" + EIDOSNEO + "','" + mEpo + "','000000000') "
+108         Gdb.Execute "insert into PEL (KOD,EIDOS,EPO,AFM) VALUES ('" + mPELKOD + "','" + EIDOSNEO + "','" + MEPO + "','000000000') "
         End If
 
         'бяисйы апо поиом аяхлгтгяа тяабаеи ТО АЙУЯЫТИЙО  П.В. 2
