@@ -1,11 +1,11 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "msdatgrd.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
-Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
+Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form pelat2 
    BackColor       =   &H00FF0000&
    Caption         =   "дИЭЯХЫСГ"
@@ -2699,7 +2699,7 @@ Private m_FormHgt As Single
 Private Sub ResizeControls()
 ' Arrange the controls for the new size.
 
-Dim i As Integer
+Dim I As Integer
 Dim Ctl As Control
 Dim X_Scale As Single
 Dim Y_Scale As Single
@@ -2712,9 +2712,9 @@ X_Scale = ScaleWidth / m_FormWid
 Y_Scale = ScaleHeight / m_FormHgt
 
 ' Position the controls.
-i = 1
+I = 1
 For Each Ctl In Controls
-    With m_ControlPositions(i)
+    With m_ControlPositions(I)
         If TypeOf Ctl Is LINE Then
             Ctl.X1 = X_Scale * .Left
             Ctl.Y1 = Y_Scale * .Top
@@ -2733,7 +2733,7 @@ For Each Ctl In Controls
             On Error GoTo 0
         End If
     End With
-    i = i + 1
+    I = I + 1
 Next
 
 End Sub
@@ -2745,7 +2745,7 @@ End Sub
 Private Sub SaveSizes()
 ' Save the form's and controls' dimensions.
 
-Dim i As Integer
+Dim I As Integer
 Dim Ctl As Control
 
 
@@ -2755,9 +2755,9 @@ m_FormHgt = ScaleHeight
 
 ' Save the controls' positions and sizes.
 ReDim m_ControlPositions(1 To Controls.Count)
-i = 1
+I = 1
 For Each Ctl In Controls
-    With m_ControlPositions(i)
+    With m_ControlPositions(I)
         If TypeOf Ctl Is LINE Then
             .Left = Ctl.X1
             .Top = Ctl.Y1
@@ -2773,7 +2773,7 @@ For Each Ctl In Controls
             On Error GoTo 0
         End If
     End With
-    i = i + 1
+    I = I + 1
 Next
 
 ' Save the form's size.
@@ -2804,7 +2804,7 @@ Private Sub CmdAllaghKodikou_Click()
 
 
         '<EhHeader>
-        On Error GoTo Command4_Click_Err
+        On Error Resume Next 'GoTo Command4_Click_Err
 
         '</EhHeader>
         Dim neos As String, RECS As Integer
@@ -2815,11 +2815,19 @@ Private Sub CmdAllaghKodikou_Click()
         'BUFF = IIf(PELPROM.ListIndex = 0, "e", "r")
 110     neos = InputBox("дЧСЕ ТОМ МщО ЙЫДИЙЭ ")
 
+        If Len(Trim(neos)) = 0 Then
+        
+            MsgBox "дем упаявеи меос йыдийос. диайопг диадийасиас"
+            Exit Sub
+        End If
+        
+
+
         Dim R As New ADODB.Recordset
 
 120     R.Open "select count(*),EPO from PEL WHERE KOD='" + neos + "' and EIDOS='" + buff + "'  GROUP BY EPO", Gdb, adOpenForwardOnly, adLockReadOnly
 
-        Dim ans As Integer, OKSYGX As Integer
+        Dim ANS As Integer, OKSYGX As Integer
 
 130     OKSYGX = 0
 
@@ -2829,7 +2837,7 @@ Private Sub CmdAllaghKodikou_Click()
         
         
         If F_CAN_SYGXONEYSI = 0 Then
-           ans = MsgBox("упаявеи гдг O йыдийос " + neos + " " + R(1))
+           ANS = MsgBox("упаявеи гдг O йыдийос " + neos + " " + R(1))
            Exit Sub
         End If
         
@@ -2837,9 +2845,9 @@ Private Sub CmdAllaghKodikou_Click()
         
 
 140         If R(0) = 1 Then    ' бяехгйе йаи аккос
-150             ans = MsgBox("упаявеи гдг O " + R(1) + " ма суцвымеухоум; ", vbYesNo)
+150             ANS = MsgBox("упаявеи гдг O " + R(1) + " ма суцвымеухоум; ", vbYesNo)
 
-160             If ans = vbYes Then
+160             If ANS = vbYes Then
 170                 OKSYGX = 1
                 Else
 180                 OKSYGX = 0
@@ -2852,8 +2860,13 @@ Private Sub CmdAllaghKodikou_Click()
 190             OKSYGX = 0
             End If
         End If
+        
+         On Error GoTo Command4_Click_Err
+        ' Gdb.BeginTrans
+200      Gdb.BeginTrans
 
-200     If OKSYGX = 0 Then
+On Error GoTo CloseT
+If OKSYGX = 0 Then
 210         Gdb.Execute "UPDATE PEL SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
 220         MsgBox "аявеио пекатым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
         Else
@@ -2863,7 +2876,7 @@ Private Sub CmdAllaghKodikou_Click()
 250             MsgBox "окес ои йимгсеис евоум летажеяхеи стом йыдийо " + neos
             Else
 260             MsgBox "г диадийасиа диейопг"
-
+                Gdb.RollbackTrans
                 Exit Sub
 
             End If
@@ -2871,7 +2884,8 @@ Private Sub CmdAllaghKodikou_Click()
 
 270     Gdb.Execute "UPDATE EGG SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
 280     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-
+Dim dum As Integer
+'dum = "a"
         'Gdb.Execute "UPDATE TIM SET PELKOD='" + neos + "' WHERE EIDOS='" + BUFF + "' AND PELKOD='" + Text1(0).Text + "'", RECS
 290     MsgBox "аявеио TIMOкоциым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
 
@@ -2882,19 +2896,36 @@ Private Sub CmdAllaghKodikou_Click()
 320     Gdb.Execute "UPDATE EGGTIM SET PELKOD='" + neos + "' WHERE EIDOS='" + buff + "' AND PELKOD='" + Text1(0).Text + "'", RECS
 330     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
 
+        Gdb.CommitTrans
+        
+
+
         ' Else
         '   MsgBox "уПэЯВЕИ О ЙЫДИЙЭР " + neos
         'End If
         '<EhFooter>
         Exit Sub
+        
+CloseT:
+        Gdb.RollbackTrans
+        
+        Exit Sub
+        
+        
+        
 
 Command4_Click_Err:
+         ' дем лпояеи ма нейимгсеи то тяамсаьтиом
+         
         'MsgBox Err.Description & vbCrLf & _
          "in ADOMERCNEW.pelat2.Command4_Click " & _
          "at line " & Erl, _
          vbExclamation + vbOKOnly, "Application Error"
         SAVE_ERROR Err.Description & " in ADOMERCNEW.pelat2.Command4_Click " & "at line " & Erl
 
+         Gdb.Close
+         Gdb.Open gConnect
+         Gdb.BeginTrans
         Resume Next
 
         '</EhFooter>
@@ -2940,9 +2971,9 @@ On Error Resume Next
     f_EYRESHAFM_PWD = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_PWD", "d389833921", "йыдийос еуяесгс ажл")
     f_EYRESHAFM_AFM = FINDPARAMETROI(1, "PELAT1", "f_EYRESHAFM_AFM", "028783755", "ажл епивеиягсг")
        
-    Dim ans As Integer
-    ans = MsgBox("мА АМТИЙАТАСТАХОЩМ ТА СТОИВЕъА АПЭ ТГМ цЕМИЙч цЯАЛЛАТЕъА пКГЯОЖ.сУСТГЛэТЫМ;", vbYesNo)
-    If ans = vbNo Then
+    Dim ANS As Integer
+    ANS = MsgBox("мА АМТИЙАТАСТАХОЩМ ТА СТОИВЕъА АПЭ ТГМ цЕМИЙч цЯАЛЛАТЕъА пКГЯОЖ.сУСТГЛэТЫМ;", vbYesNo)
+    If ANS = vbNo Then
        Exit Sub
     End If
       
@@ -3190,7 +3221,7 @@ Private Sub cmdDelete_Click()
 
         '</EhHeader>
 
-        Dim ans  As Integer
+        Dim ANS  As Integer
 
         Dim neos As String, RECS As Integer
 
@@ -3213,9 +3244,9 @@ Private Sub cmdDelete_Click()
 
         On Error Resume Next
 
-150     ans = MsgBox("пЯОСОВч ХА ДИАЦЯАЖЕъ О КОЦАЯИАСЛЭР " + Data1.Recordset("epo"), vbYesNo)
+150     ANS = MsgBox("пЯОСОВч ХА ДИАЦЯАЖЕъ О КОЦАЯИАСЛЭР " + Data1.Recordset("epo"), vbYesNo)
 
-160     If ans = vbYes Then
+160     If ANS = vbYes Then
 170         Data1.Recordset.delete
 
 180         MHNYMA2.Timer1.Interval = 2000
@@ -3530,105 +3561,105 @@ cmdDiortosi_Click_Err:
 
 End Sub
 
-Private Sub cmdChange_Click()
+'Private Sub cmdChange_Click()----ОКД
 
-        '<EhHeader>
-        On Error GoTo cmdChange_Click_Err
+'        '<EhHeader>
+'        On Error GoTo cmdChange_Click_Err
+'
+'        '</EhHeader>
+'        Dim neos As String, RECS As Integer
+'
+'        Dim buff As String
+'
+'100     buff = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
+'        'BUFF = IIf(PELPROM.ListIndex = 0, "e", "r")
+'110     neos = InputBox("дЧСЕ ТОМ МщО ЙЫДИЙЭ ")
+'
+'        Dim R As New ADODB.Recordset
+'
+'120     R.Open "select count(*),EPO from PEL WHERE KOD='" + neos + "' and EIDOS='" + buff + "'  GROUP BY EPO", Gdb, adOpenForwardOnly, adLockReadOnly
+'
+'        Dim ANS As Integer, OKSYGX As Integer
+'
+'130     OKSYGX = 0
+'
+'        If R.EOF Then
+'            OKSYGX = 0
+'        Else
+'
+'
+'        If F_CAN_SYGXONEYSI = 0 Then
+'           ANS = MsgBox("упаявеи гдг O йыдийос " + neos + " " + R(1))
+'           Exit Sub
+'        End If
+'
+'
+'
+'
+'140         If R(0) = 1 Then    ' бяехгйе йаи аккос
+'150             ANS = MsgBox("упаявеи гдг O " + R(1) + " ма суцвымеухоум; ", vbYesNo)
+'
+'160             If ANS = vbYes Then
+'170                 OKSYGX = 1
+'                Else
+'180                 OKSYGX = 0
+'
+'                    Exit Sub
+'
+'                End If
+'
+'            Else
+'190             OKSYGX = 0
+'            End If
+'        End If
+'
+'200     If OKSYGX = 0 Then
+'210         Gdb.Execute "UPDATE PEL SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
+'220         MsgBox "аявеио пекатым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
+'        Else
+'230         Gdb.Execute "delete from  PEL  WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
+'
+'240         If RECS > 0 Then
+'250             MsgBox "окес ои йимгсеис евоум летажеяхеи стом йыдийо " + neos
+'            Else
+'260             MsgBox "г диадийасиа диейопг"
+'
+'                Exit Sub
+'
+'            End If
+'        End If
+'
+'270     Gdb.Execute "UPDATE EGG SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
+'280     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
+'
+'        'Gdb.Execute "UPDATE TIM SET PELKOD='" + neos + "' WHERE EIDOS='" + BUFF + "' AND PELKOD='" + Text1(0).Text + "'", RECS
+'290     MsgBox "аявеио TIMOкоциым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
+'
+'300     Gdb.Execute "UPDATE TIM SET KPE='" + neos + "' WHERE EIDOS='" + buff + "' AND KPE='" + Text1(0).Text + "'", RECS
+'
+'310     MsgBox "аявеио TIMOкоциым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
+'
+'320     Gdb.Execute "UPDATE EGGTIM SET PELKOD='" + neos + "' WHERE EIDOS='" + buff + "' AND PELKOD='" + Text1(0).Text + "'", RECS
+'330     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
+'
+'        ' Else
+'        '   MsgBox "уПэЯВЕИ О ЙЫДИЙЭР " + neos
+'        'End If
+'        '<EhFooter>
+'        Exit Sub
+'
+'cmdChange_Click_Err:
+'        'MsgBox Err.Description & vbCrLf & _
+'         "in ADOMERCNEW.pelat2.Command4_Click " & _
+'         "at line " & Erl, _
+'         vbExclamation + vbOKOnly, "Application Error"
+'        SAVE_ERROR Err.Description & " in ADOMERCNEW.pelat2.Command4_Click " & "at line " & Erl
+'
+'        Resume Next
+'
+'        '</EhFooter>
 
-        '</EhHeader>
-        Dim neos As String, RECS As Integer
-
-        Dim buff As String
-
-100     buff = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
-        'BUFF = IIf(PELPROM.ListIndex = 0, "e", "r")
-110     neos = InputBox("дЧСЕ ТОМ МщО ЙЫДИЙЭ ")
-
-        Dim R As New ADODB.Recordset
-
-120     R.Open "select count(*),EPO from PEL WHERE KOD='" + neos + "' and EIDOS='" + buff + "'  GROUP BY EPO", Gdb, adOpenForwardOnly, adLockReadOnly
-
-        Dim ans As Integer, OKSYGX As Integer
-
-130     OKSYGX = 0
-
-        If R.EOF Then
-            OKSYGX = 0
-        Else
-        
-        
-        If F_CAN_SYGXONEYSI = 0 Then
-           ans = MsgBox("упаявеи гдг O йыдийос " + neos + " " + R(1))
-           Exit Sub
-        End If
-        
-        
-        
-
-140         If R(0) = 1 Then    ' бяехгйе йаи аккос
-150             ans = MsgBox("упаявеи гдг O " + R(1) + " ма суцвымеухоум; ", vbYesNo)
-
-160             If ans = vbYes Then
-170                 OKSYGX = 1
-                Else
-180                 OKSYGX = 0
-
-                    Exit Sub
-
-                End If
-
-            Else
-190             OKSYGX = 0
-            End If
-        End If
-
-200     If OKSYGX = 0 Then
-210         Gdb.Execute "UPDATE PEL SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
-220         MsgBox "аявеио пекатым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-        Else
-230         Gdb.Execute "delete from  PEL  WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
-
-240         If RECS > 0 Then
-250             MsgBox "окес ои йимгсеис евоум летажеяхеи стом йыдийо " + neos
-            Else
-260             MsgBox "г диадийасиа диейопг"
-
-                Exit Sub
-
-            End If
-        End If
-
-270     Gdb.Execute "UPDATE EGG SET KOD='" + neos + "' WHERE EIDOS='" + buff + "' AND KOD='" + Text1(0).Text + "'", RECS
-280     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-
-        'Gdb.Execute "UPDATE TIM SET PELKOD='" + neos + "' WHERE EIDOS='" + BUFF + "' AND PELKOD='" + Text1(0).Text + "'", RECS
-290     MsgBox "аявеио TIMOкоциым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-
-300     Gdb.Execute "UPDATE TIM SET KPE='" + neos + "' WHERE EIDOS='" + buff + "' AND KPE='" + Text1(0).Text + "'", RECS
-
-310     MsgBox "аявеио TIMOкоциым " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-
-320     Gdb.Execute "UPDATE EGGTIM SET PELKOD='" + neos + "' WHERE EIDOS='" + buff + "' AND PELKOD='" + Text1(0).Text + "'", RECS
-330     MsgBox "аявеио йимгсеым апохгйгс " + Chr(13) + "емглея©хгйам   " + Format(RECS, "#####")
-
-        ' Else
-        '   MsgBox "уПэЯВЕИ О ЙЫДИЙЭР " + neos
-        'End If
-        '<EhFooter>
-        Exit Sub
-
-cmdChange_Click_Err:
-        'MsgBox Err.Description & vbCrLf & _
-         "in ADOMERCNEW.pelat2.Command4_Click " & _
-         "at line " & Erl, _
-         vbExclamation + vbOKOnly, "Application Error"
-        SAVE_ERROR Err.Description & " in ADOMERCNEW.pelat2.Command4_Click " & "at line " & Erl
-
-        Resume Next
-
-        '</EhFooter>
-
-End Sub
+'End Sub
 
 Private Sub cmdKartela_Click()
 
@@ -3802,7 +3833,7 @@ Exit Sub
 
         Dim fores  As Long, k As Integer
 
-        Dim x      As Printer
+        Dim X      As Printer
 
         Dim barc(200)
 
@@ -3821,12 +3852,12 @@ Exit Sub
 
         On Error Resume Next
 
-140     For Each x In Printers
+140     For Each X In Printers
 
-150         If InStr(x.DeviceName, f_printer) > 0 Then
+150         If InStr(X.DeviceName, f_printer) > 0 Then
 
                 ' Set printer as system default.
-160             Set Printer = x
+160             Set Printer = X
                 ' Stop looking for a printer  5200016000239
 
                 Exit For
@@ -4862,18 +4893,18 @@ F_MONOENERGOS = Val(FINDPARAMETROI(1, "PAR1", "F_MONOENERGOS", "0", "деивмеи лом
         ' f_tabAP = Val(FindParametroi(1,"PELAT2", "F_TABAP", "3", "пЯОЕПИКЕЦЛщМО TAB "))
         ' SSTab1.Tab = IIf(f_tabAP > SSTab1.Tabs - 1 Or f_tabAP < 0, SSTab1.Tabs - 1, f_tabAP)
 
-        Dim DUM
+        Dim dum
 
-170     DUM = FINDPARAMETROI(1, "PELAT2", "F_KODPROM", "DELETE", "")
-180     DUM = FINDPARAMETROI(1, "PELAT2", "F_RAFI", "DELETE", "")
-190     DUM = FINDPARAMETROI(1, "PELAT2", "F_OIKO", "DELETE", "")
-200     DUM = FINDPARAMETROI(1, "PELAT2", "F_YPOOIK", "DELETE", "")
-210     DUM = FINDPARAMETROI(1, "PELAT2", "F_XTI", "DELETE", "")
+170     dum = FINDPARAMETROI(1, "PELAT2", "F_KODPROM", "DELETE", "")
+180     dum = FINDPARAMETROI(1, "PELAT2", "F_RAFI", "DELETE", "")
+190     dum = FINDPARAMETROI(1, "PELAT2", "F_OIKO", "DELETE", "")
+200     dum = FINDPARAMETROI(1, "PELAT2", "F_YPOOIK", "DELETE", "")
+210     dum = FINDPARAMETROI(1, "PELAT2", "F_XTI", "DELETE", "")
 
-220     DUM = FINDPARAMETROI(1, "PELAT2", "F_BOHU", "DELETE", "")
-230     DUM = FINDPARAMETROI(1, "PELAT2", "F_LTI", "DELETE", "")
-240     DUM = FINDPARAMETROI(1, "PELAT2", "F_PROM", "DELETE", "")
-250     DUM = FINDPARAMETROI(1, "PELAT2", "F_STOK", "DELETE", "")
+220     dum = FINDPARAMETROI(1, "PELAT2", "F_BOHU", "DELETE", "")
+230     dum = FINDPARAMETROI(1, "PELAT2", "F_LTI", "DELETE", "")
+240     dum = FINDPARAMETROI(1, "PELAT2", "F_PROM", "DELETE", "")
+250     dum = FINDPARAMETROI(1, "PELAT2", "F_STOK", "DELETE", "")
 
 260     F_DIGpel = Val(FINDPARAMETROI(1, "PELAT2", "F_DIGPEL", "4", "ая.ьгжиым йыдийоу пекатым/пяолгхеутым"))
 
@@ -5545,7 +5576,7 @@ Private Sub SSTab1_DblClick()
   'DrawFormGradient Me, vbBlue, vbCyan, 0 ' "-1=Vertical  0=horizontal"  ' cmbStyle.ListIndex    frmGradient
 End Sub
 
-Private Sub SSTab1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub SSTab1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
   ' DrawFormGradient Me, vbBlue, vbCyan, 0 ' "-1=Vertical  0=horizontal"  ' cmbStyle.ListIndex    frmGradient
 End Sub
 
@@ -5696,18 +5727,18 @@ Public Sub Text2_LostFocus(index As Integer)
 
         '</EhHeader>
 
-        Dim x As String
+        Dim X As String
 
 100     Text2(index).BackColor = vbWhite
 
 110     If Len(Trim(Text2(index))) = 0 Then Exit Sub
         'If Option1(1) Then X = "e" Else X = "r"
 
-120     x = "e"
+120     X = "e"
 
         On Error Resume Next
 
-130     x = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
+130     X = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
 140     Data1.ConnectionString = gConnect
      
         'If gUserId = 2 Then  ' TAMIAS KAGIOYDIS
@@ -5729,7 +5760,7 @@ Public Sub Text2_LostFocus(index As Integer)
         MSYNT = ""
 
         If f_KENTRA_ADYNATISMATOS = 1 Then
-            If x = "e" Then
+            If X = "e" Then
                 If kentroAdyn.List(0) = kentroAdyn.Text Then
                     MSYNT = "NUM3=0 AND "
                 Else
@@ -5763,26 +5794,26 @@ Public Sub Text2_LostFocus(index As Integer)
 250             FF = (SameLetters(Text2(1).Text))
             'End If
             If F_MONOENERGOS = 0 Then '  Val(FINDPARAMETROI(1, "PAR1", "F_MONOENERGOS", "0", "деивмеи ломо тоус емеяцоус=1 окоус=0")) '
-                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "'  and EPO like '" + FF + "%';"
+                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "'  and EPO like '" + FF + "%';"
             Else
               If chkANENERGOS.Value = vbChecked Then
-                 Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "'  and EPO like '" + FF + "%';"
+                 Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "'  and EPO like '" + FF + "%';"
               Else
-260              Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "' AND ISNULL(ENERGOS,1)=1 and EPO like '" + FF + "%';"
+260              Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "' AND ISNULL(ENERGOS,1)=1 and EPO like '" + FF + "%';"
               End If
             End If
         End If
 
 270     If index = 0 Then    'kodikos
-280         Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "' and KOD like '" + (SameLetters(Text2(0).Text)) + "%';"
+280         Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "' and KOD like '" + (SameLetters(Text2(0).Text)) + "%';"
         End If
 
 290     If index = 2 Then    'afm
            
            If Len(Trim(f_pedioAFM)) = 0 Then
-                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "' and AFM like '" + Text2(2).Text + "%';"
+                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "' and AFM like '" + Text2(2).Text + "%';"
            Else
-                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + x + "' and   ( AFM like '%" + Text2(2).Text + "%' or " + Trim(f_pedioAFM) + " like '%" + Text2(2).Text + "%') "
+                Data1.RecordSource = "select *from PEL where " + MSYNT + " EIDOS='" + X + "' and   ( AFM like '%" + Text2(2).Text + "%' or " + Trim(f_pedioAFM) + " like '%" + Text2(2).Text + "%') "
            
            End If
            
@@ -6145,8 +6176,8 @@ Select Case Button.key
         cmdEtiketta_Click
      
     Case "cmdChange"
-       cmdChange_Click
-       
+      ' cmdChange_Click
+       CmdAllaghKodikou_Click
        
        
 End Select
