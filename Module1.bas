@@ -1191,7 +1191,7 @@ Function load_forma(arxeio As String, spacing)
         'Dim gm_str(1 To 250) As String
         Dim ar_ped(1 To 250) As Integer
 
-        Dim k                As Integer, i As Integer, lastseir As Integer
+        Dim k                As Integer, I As Integer, lastseir As Integer
 
         Dim npic             As Integer, m_npic As Integer, L1 As Integer, N As Integer
 
@@ -1220,11 +1220,11 @@ Function load_forma(arxeio As String, spacing)
 170         ar_ped(k) = 0
         Next
 
-180     i = 1
+180     I = 1
 
 190     Do While Not EOF(1)
-200         Line Input #1, gm_str(i)
-210         i = i + 1
+200         Line Input #1, gm_str(I)
+210         I = I + 1
         Loop
 
 220     Close #1
@@ -1278,25 +1278,25 @@ Function load_forma(arxeio As String, spacing)
 
                 'ΣΕ ΑΥΤΗΝ ΤΗΝ ΣΕΙΡΑ ΒΡΕΘΗΚΑΝ U-1 ΠΕΔΙΑ
 
-430             For i = 1 To u - 1
+430             For I = 1 To u - 1
 440                 npic = npic + 1  'ΑΥΞΑΝΕΙ Ο ΑΡΙΘΜΟΣ ΤΩΝ ΠΕΔΙΩΝ
 
 450                 If spacing = 1 Then  ' bgazei +1  (λανθασμένο κρατείται για συμβατότητα)
-460                     X1 = a(i) + 1  '&&  if ( i=1,1,a(i))
-470                     X2 = IIf(a(i + 1) = 0, (mhk_seir - 1) - X1 + 1, a(i + 1) - 1 - X1)
+460                     X1 = a(I) + 1  '&&  if ( i=1,1,a(i))
+470                     X2 = IIf(a(I + 1) = 0, (mhk_seir - 1) - X1 + 1, a(I + 1) - 1 - X1)
                     Else
-480                     X1 = a(i) + 1    '&&  if ( i=1,1,a(i))
-490                     X2 = IIf(a(i + 1) = 0, (mhk_seir - 1) - X1 + 1, a(i + 1) - X1)
+480                     X1 = a(I) + 1    '&&  if ( i=1,1,a(i))
+490                     X2 = IIf(a(I + 1) = 0, (mhk_seir - 1) - X1 + 1, a(I + 1) - X1)
                     End If
 
                     'το PICTURE του πεδίου
 500                 gpic(npic) = mID$(gm_str(k), X1, X2)
 
                     'η σειρά του πεδίου
-510                 gm_r(npic) = IIf(i = 1, k - lastseir, 0)    'αφου είναι στην ίδια σειρά να μην προσθέτει σειρές
+510                 gm_r(npic) = IIf(I = 1, k - lastseir, 0)    'αφου είναι στην ίδια σειρά να μην προσθέτει σειρές
 
                     'η στήλη του πεδίου
-520                 gm_c(npic) = a(i)
+520                 gm_c(npic) = a(I)
                 Next
 
 530             lastseir = k
@@ -1340,10 +1340,10 @@ Function load_forma(arxeio As String, spacing)
 
                 'ΣΕ ΑΥΤΗΝ ΤΗΝ ΣΕΙΡΑ ΒΡΕΘΗΚΑΝ U-1 ΠΕΔΙΑ
 
-690             For i = 1 To u - 1
+690             For I = 1 To u - 1
 700                 npic = npic + 1  'ΑΥΞΑΝΕΙ Ο ΑΡΙΘΜΟΣ ΤΩΝ ΠΕΔΙΩΝ
-710                 X1 = xa(i) + 1  '&&  if ( i=1,1,a(i))
-720                 X2 = IIf(xa(i + 1) = 0, (mhk_seir) - X1 + 1, xa(i + 1) - 1 - X1)
+710                 X1 = xa(I) + 1  '&&  if ( i=1,1,a(i))
+720                 X2 = IIf(xa(I + 1) = 0, (mhk_seir) - X1 + 1, xa(I + 1) - 1 - X1)
 
                     '* o titlow του πεδίου
 730                 gm_f(npic) = mID$(gm_str(k), X1, X2)
@@ -1384,7 +1384,7 @@ End Function
 'End Function
 Function Get_AJ(ByRef pol As String, _
                 polepis As String, _
-                ago As String, _
+                AGO As String, _
                 AGOEPIS As String) As Boolean
 
         '<EhHeader>
@@ -1419,7 +1419,7 @@ Function Get_AJ(ByRef pol As String, _
                 End If
 
 190             If R("pol") = "2" And R("ajia_apou") = "1" Then
-200                 ago = ago + "'" + R("eidos") + "',"
+200                 AGO = AGO + "'" + R("eidos") + "',"
                 End If
 
 210             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -1440,7 +1440,7 @@ Function Get_AJ(ByRef pol As String, _
         End If
 
 280     AGOEPIS = Left(AGOEPIS, Len(AGOEPIS) - 1)
-290     ago = Left(ago, Len(ago) - 1)
+290     AGO = Left(AGO, Len(AGO) - 1)
 300     Get_AJ = True
 
         '<EhFooter>
@@ -1461,7 +1461,7 @@ End Function
 
 Function Get_AJ_ASCII(ByRef pol As String, _
                       polepis As String, _
-                      ago As String, _
+                      AGO As String, _
                       AGOEPIS As String) As Boolean
 
         '<EhHeader>
@@ -1496,7 +1496,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
                 End If
 
 190             If R("pol") = "2" And R("ajia_apou") = "1" Then
-200                 ago = ago + "" + str(Asc(R("eidos"))) + ","
+200                 AGO = AGO + "" + str(Asc(R("eidos"))) + ","
                 End If
 
 210             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -1517,7 +1517,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
         End If
 
 280
-290     ago = Left(ago, Len(ago) - 1)
+290     AGO = Left(AGO, Len(AGO) - 1)
 300     Get_AJ_ASCII = True
 
 350     If Len(AGOEPIS) > 0 Then
@@ -2017,7 +2017,7 @@ FF = 0
       
       'ΟΤΑΝ ΑΛΛΑΖΩ ΤΟ PARAMETROI KAI TO ΞΑΝΑΔΙΑΒΑΖΩ (ΑΥΤ.ΑΡΙΘΜΗΣΗ ΕΙΔΩΝ) ΔΕΝ ΑΝΑΝΕΩΝΕΤΑΙ
       ' ΓΙΑΥΤΟ ΤΟ ΕΚΑΝΑ ΡΕΜ (ΝΕΧΤ 20 ΛΙΝΕΣ)
-  If FORMA = "PAR1" Then
+  If FORMA = "PAR1" And KATEG > 0 Then
       For nn = 1 To UBound(gParam)
        If gParam(nn, 0) = FORMA And gParam(nn, 1) = parametros Then
         FINDPARAMETROI = gParam(nn, 2)
@@ -2058,6 +2058,7 @@ End If
 
 130     If DEFAULT = "UPDATE" Then
 140         Gdb.Execute "UPDATE PARAMETROI SET VAR='" + parametros + "' WHERE  FORMA='" + FORMA + "' AND VAR='" + parametros + "'"
+            'Gdb.Execute "UPDATE PARAMETROI SET SXOLIA='" + SXOLIA + "' WHERE  FORMA='" + FORMA + "' AND VAR='" + parametros + "'"
 150         FINDPARAMETROI = 0
 
             Exit Function
@@ -2111,10 +2112,17 @@ End If
         End If
 
 
+
+If KATEG = -1 Then
+       If Trim(R("SXOLIA")) <> Trim(SXOLIA) Then
+          Gdb.Execute "UPDATE PARAMETROI SET SXOLIA='" + Replace(SXOLIA, "'", "`") + "' WHERE  FORMA='" + FORMA + "' AND VAR='" + parametros + "'"
+       End If
+Else
+
         If KATEG <> R("KATEG") Then
             Gdb.Execute "UPDATE PARAMETROI SET KATEG=" + str(KATEG) + " WHERE  FORMA='" + FORMA + "' AND VAR='" + parametros + "'", N
         End If
-
+End If
         
 
 
@@ -2513,16 +2521,16 @@ MDIForm1.Caption = " "
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, ago As String, APIS
+        Dim polepis As String, pol As String, AGO As String, APIS
 
         Dim a
 
-110     a = Get2_AJ(polhs, polepis, ago, AGOEPIS, PolXParoxh, Paroxh)
+110     a = Get2_AJ(polhs, polepis, AGO, AGOEPIS, PolXParoxh, Paroxh)
 
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','α',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','α','λ'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','α','λ'," + AGO + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -2602,7 +2610,7 @@ End Sub
 
 Public Function Get2_AJ(ByRef pol As String, _
                  polepis As String, _
-                 ago As String, _
+                 AGO As String, _
                  AGOEPIS As String, _
                  ByRef PolXParoxh As String, _
                  Paroxh As String) As Boolean
@@ -2655,7 +2663,7 @@ Public Function Get2_AJ(ByRef pol As String, _
                 End If
 
 270             If R("pol") = "2" And R("ajia_apou") = "1" Then
-280                 ago = ago + "'" + R("eidos") + "',"
+280                 AGO = AGO + "'" + R("eidos") + "',"
                 End If
 
 290             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -2680,7 +2688,7 @@ Public Function Get2_AJ(ByRef pol As String, _
         End If
 
 380     AGOEPIS = Left(AGOEPIS, Len(AGOEPIS) - 1)
-390     ago = Left(ago, Len(ago) - 1)
+390     AGO = Left(AGO, Len(AGO) - 1)
 400     Get2_AJ = True
 
         '<EhFooter>
