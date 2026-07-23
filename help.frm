@@ -40,7 +40,6 @@ Begin VB.Form help1
       _ExtentY        =   17383
       _Version        =   393217
       BackColor       =   16777215
-      Enabled         =   -1  'True
       TextRTF         =   $"help.frx":000C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -231,10 +230,9 @@ End Sub
 
 Private Sub Form_Load()
 
-
+List1.AddItem "σδα φορτ=>τιμολογια=>σδα επιστροφης με 9.2-μαρκ σχετ.μαρκ και 10.1 σδα επιστρ 23/7/2026"
+List1.AddItem "Στον μετασχηματισμό δίνω κωδ.παρ/κου METASX_DA π.χ. A 23/7/26"
 List1.AddItem "ΣΤΑ ΔΑ ΓΙΑ ΛΟΓ/ΣΜΟ ΤΡΙΤΩΝ ΓΥΡΙΖΕΙ ΣΕ ΣΚΟΠΟΣ=2.ΓΙΑ ΛΟΓ.ΤΡΙΤΩΝ-CORR.ENTIT 30/6/2026"
-
-
 List1.AddItem "ΔΑ ΑΝΑΠΟΔΟ & ΔΕΛΤΙΟ ΠΑΡΑΛΑΒΗΣ ΣΥΣΧ & ΜΗ 16/6/2026"
 List1.AddItem "EMAIL OUTLOOK OK. ΨΗΦIAKO MHΔENIZEI TO ΠΑΛIO ΑΦΜ ΝΑ ΜΗΝ ΠΑΕΙ ΣΤΟΝ ΕΠΟΜΕΝΟ 21/5/2026"
 List1.AddItem "Προστέθηκε το email στο δεξί κλικ se Eκτύπωση/pdf/email με Outllok 9/5/2026"
@@ -317,3 +315,6 @@ Frame1_Click_Err:
 
 End Sub
 
+Private Sub List1_Click()
+
+End Sub
