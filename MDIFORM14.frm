@@ -3136,6 +3136,16 @@ If f_proeid_mydata = 1 Then
   If NV > 0 Then
      MsgBox "Υπάρχουν τις τελευταίες 30 ημέρες  " + str(NV) + " εγγραφες που δεν εστάλησαν στο Mydata" + Chr(13) + " Πάτε :" + Chr(13) + "Παραστατικά=> 7.Μydata και πατηστε" + Chr(13) + "<Aποστολη Παραστατικών στο Mydata>"
   End If
+  
+  
+  Dim NNMY As Integer
+  NNMY = GGET_NVALUE("SELECT COUNT(*) FROM PARASTAT WHERE POL=1 AND MYEID='1.1' AND ISMYDATA=1 AND ISDIAKIN<>1 and POS_APOU>0 ")
+  
+  If NNMY > 0 Then
+      MsgBox "ΠΡΟΣΟΧΗ ΜΕ ΤΑ ΤΙΜ.ΔΑ & ΗΛΕΚΤΡΟΝΙΚΑ ΔΕΛΤΙΑ." + Chr(13) + " ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΜΕ ΥΠΟΣΤΗΡΙΞΗ"
+  End If
+  
+  
 End If
 
 
@@ -3412,7 +3422,6 @@ Dim CC As Integer
         mc = FINDPARAMETROI(-1, "PAR1", "METASX_DA", "3", "δωσε κωδ.παρ/κου METASX_DA π.χ. A")
         
         m = gVal(mc)
-        
         If m = 0 Then
            'ΠΑΩ ΝΑ ΠΙΑΣΩ ΤΟ ΠΑΡΑΣΤΑΤΙΚΟ ΣΤΟ COMBOBOX ME TO GRAMMA TOY KAI NA PARV TON ARIUMO
            Dim k As Integer
@@ -3421,14 +3430,7 @@ Dim CC As Integer
                  m = k
                  Exit For
               End If
-           
-           
            Next
-        
-        
-        
-        
-        
         End If
         
         

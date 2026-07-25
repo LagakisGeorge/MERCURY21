@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   249233409
+      Format          =   488308737
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   249233409
+      Format          =   488308737
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1770,12 +1771,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     DATA1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     DATA1.RecordSource = arxeio
-110     DATA1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = DATA1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -5093,9 +5094,9 @@ Private Sub Command8_Click()
 124     r0.Close
 
         sql = "select  P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
 
         '<EhFooter>
         Exit Sub
@@ -5435,9 +5436,9 @@ Private Sub eisagTIM_Click()
 
     Dim m As String
 
-    m = ADODC2.Recordset("AA")
+    m = Adodc2.Recordset("AA")
     m = Trim(m)
-    MAFM = Trim(ADODC2.Recordset("AFM"))
+    MAFM = Trim(Adodc2.Recordset("AFM"))
     MKOD = GGET_CVALUE("SELECT KOD FROM PEL WHERE EIDOS='r' AND AFM='" + MAFM + "'")
     
     On Error GoTo OUTDOOR
@@ -5560,9 +5561,9 @@ Private Sub hkoLD_Click()
         '
 
         sql = "select ISANTIST, P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
 
         '        '<EhHeader>
         '        On Error GoTo hkoLD_Click_Err
@@ -7517,9 +7518,18 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             End If
                              
                             ' ·Ì ÂÈÌ·È ÛÙ· ·Ò·ÛÙ·ÙÈÍ· Ôı ÂÈÌ·È ·Ì·Ô‰·
+                            
+                           ' 8.21 ¡ÈÙﬂ· ∏Í‰ÔÛÁÚ ¡ÌÙﬂÛÙÒÔˆÁÚ ƒÈ·ÍﬂÌÁÛÁÚ  ˘‰ÈÍ¸Ú –ÂÒÈ„Ò·ˆﬁ
+                                   '1 Ã« ’–œ◊—≈œ” ≈ ƒœ”«”
+                                   '2 ¡—Õ«”« ≈ ƒœ”«”/≈  –¡—¡ƒ—œÃ«” Ã« ≈ ƒœ”«
+                                   '3 ≈Õƒœ œ…Õœ‘… « ¡–œ ‘«”«
+                                   '4 ¡–œ ‘«”« ‘—…‘« ◊Ÿ—¡ 5 ¡Õ‘…”‘—œ÷« ’–œ◊—≈Ÿ”«”
+                            
+                            
+                            
                             If InStr(F_ANAPODO, Left(SQLDT("ATIM"), 1)) > 0 Then
                                 Set elem2Field = docStock.createElement("reverseDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = "2": elemField.appendChild elem2Field
+                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
                          
                             End If
                              
@@ -9563,9 +9573,9 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         'Dim sql As String
 190     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],(SELECT TOP 1 ISNULL(EPO,'')  FROM PEL WHERE AFM=APESTALMENA2.AFM) AS [≈–ŸÕ’Ã…¡],* from APESTALMENA2 ORDER BY ID DESC"
 
-192     ADODC2.ConnectionString = gConnect
-194     ADODC2.RecordSource = sql
-196     ADODC2.Refresh
+192     Adodc2.ConnectionString = gConnect
+194     Adodc2.RecordSource = sql
+196     Adodc2.Refresh
     
         '<EhFooter>
         Exit Sub
@@ -9850,9 +9860,9 @@ Sub REQUEST_DIKAMAS()
         'Dim sql As String
 188     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],(SELECT TOP 1 EPO FROM PEL WHERE PEL.AFM=APESTALMENA2.AFM) AS [–≈À],* from APESTALMENA2 ORDER BY ID DESC"
 
-190     ADODC2.ConnectionString = gConnect
-192     ADODC2.RecordSource = sql
-194     ADODC2.Refresh
+190     Adodc2.ConnectionString = gConnect
+192     Adodc2.RecordSource = sql
+194     Adodc2.Refresh
 
         Dim m_ID_NUM As Long
 
@@ -9860,23 +9870,23 @@ Sub REQUEST_DIKAMAS()
 
         Dim M_KOD    As String
 
-        Do While Not ADODC2.Recordset.EOF
+        Do While Not Adodc2.Recordset.EOF
 
-            If GGET_NVALUE("select COUNT(*) from TIM WHERE ENTITYMARK='" + ADODC2.Recordset("MARK") + "'") >= 1 Then
+            If GGET_NVALUE("select COUNT(*) from TIM WHERE ENTITYMARK='" + Adodc2.Recordset("MARK") + "'") >= 1 Then
                 'OK
             Else
-                m_ID_NUM = GGET_NVALUE("select ID_NUM from TIM WHERE LEFT(ISNULL(ENTITYMARK,' '),1)<>'4' AND HME='" + Format(ADODC2.Recordset("ISSUEDATE"), "MM/dd/yyyy") + "' and AJ1+AJ2+AJ3+AJ4+AJ5+AJ6=" + Replace(Format(ADODC2.Recordset("totalNETValue"), "#####0.00"), ",", "."))
+                m_ID_NUM = GGET_NVALUE("select ID_NUM from TIM WHERE LEFT(ISNULL(ENTITYMARK,' '),1)<>'4' AND HME='" + Format(Adodc2.Recordset("ISSUEDATE"), "MM/dd/yyyy") + "' and AJ1+AJ2+AJ3+AJ4+AJ5+AJ6=" + Replace(Format(Adodc2.Recordset("totalNETValue"), "#####0.00"), ",", "."))
                 M_AFM = GGET_CVALUE("select KPE from TIM WHERE ID_NUM=" + str(m_ID_NUM))
                 M_AFM = GGET_CVALUE("SELECT AFM FROM PEL WHERE EIDOS='e' and KOD='" + M_AFM + "'")
       
-                If M_AFM = Trim(ADODC2.Recordset("AFM")) Then
-                    Gdb.Execute ("UPDATE TIM SET QRURL='" + f_qrCodeUrl + "',ENTITYMARK='" + Trim(ADODC2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
+                If M_AFM = Trim(Adodc2.Recordset("AFM")) Then
+                    Gdb.Execute ("UPDATE TIM SET QRURL='" + f_qrCodeUrl + "',ENTITYMARK='" + Trim(Adodc2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
                     MsgBox "OK ENHME—Ÿ»« ≈ TO MARK –œ’ ≈À≈…–≈"
                 End If
       
             End If
 
-            ADODC2.Recordset.MoveNext
+            Adodc2.Recordset.MoveNext
         Loop
     
         '<EhFooter>
@@ -10270,9 +10280,9 @@ Sub REQUEST_PROMITH()
         'Dim sql As String
 214     '  sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],ATIM,* from APESTALMENA WHERE YEAR(ISSUEDATE)=" + str(Year(gLhjh)) + "    ORDER BY ID DESC"
         sql = "select ISANTIST,P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
     
         '<EhFooter>
         Exit Sub
@@ -11625,9 +11635,9 @@ Private Sub MydataAney()
 102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
-104     ADODC2.ConnectionString = gConnect
-106     ADODC2.RecordSource = sql
-108     ADODC2.Refresh
+104     Adodc2.ConnectionString = gConnect
+106     Adodc2.RecordSource = sql
+108     Adodc2.Refresh
 
 End Sub
 
@@ -11637,9 +11647,9 @@ Private Sub EmporAney()
 102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Œ') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
-104     ADODC2.ConnectionString = gConnect
-106     ADODC2.RecordSource = sql
-108     ADODC2.Refresh
+104     Adodc2.ConnectionString = gConnect
+106     Adodc2.RecordSource = sql
+108     Adodc2.Refresh
 
 End Sub
 
@@ -12365,7 +12375,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 
         '166         With elemRoot
 
-100     Dim ctyp       As String: ctyp = FIND2_EXODTYPOS(Left$(ADODC2.Recordset("ATIM"), 1))
+100     Dim ctyp       As String: ctyp = FIND2_EXODTYPOS(Left$(Adodc2.Recordset("ATIM"), 1))
 
 102     Set docStock = New MSXML2.DOMDocument
 
@@ -12397,7 +12407,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 
 122             With elemField
         
-124                 Set elem2Field = docStock.createElement("invoiceMark"): elem2Field.Text = ADODC2.Recordset("MARK"): elemField.appendChild elem2Field
+124                 Set elem2Field = docStock.createElement("invoiceMark"): elem2Field.Text = Adodc2.Recordset("MARK"): elemField.appendChild elem2Field
         
 126                 Set elem0Field = docStock.createElement("invoicesExpensesClassificationDetails") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 
@@ -12409,7 +12419,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 132                     Set elem10Field = docStock.createElement("expensesClassificationDetailData") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 134                     Set elem2Field = docStock.createElement("classificationType"): elem2Field.Text = Split(ctyp, ";")(0): elem10Field.appendChild elem2Field
 136                     Set elem2Field = docStock.createElement("classificationCategory"): elem2Field.Text = Split(ctyp, ";")(1): elem10Field.appendChild elem2Field
-138                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(ADODC2.Recordset("TOTALNETVALUE")), ",", "."): elem10Field.appendChild elem2Field
+138                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(Adodc2.Recordset("TOTALNETVALUE")), ",", "."): elem10Field.appendChild elem2Field
 140                     Set elem2Field = docStock.createElement("id"): elem2Field.Text = "1": elem10Field.appendChild elem2Field
 142                     elem0Field.appendChild elem10Field
     
@@ -12417,7 +12427,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 144                     Set elem10Field = docStock.createElement("expensesClassificationDetailData") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 146                     Set elem2Field = docStock.createElement("classificationType"): elem2Field.Text = "VAT_361": elem10Field.appendChild elem2Field
 148                     Set elem2Field = docStock.createElement("classificationCategory"): elem2Field.Text = Split(ctyp, ";")(1): elem10Field.appendChild elem2Field
-150                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(ADODC2.Recordset("TOTALVATAMOUNT")), ",", "."): elem10Field.appendChild elem2Field
+150                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(Adodc2.Recordset("TOTALVATAMOUNT")), ",", "."): elem10Field.appendChild elem2Field
 152                     Set elem2Field = docStock.createElement("id"): elem2Field.Text = "2": elem10Field.appendChild elem2Field
 154                     elem0Field.appendChild elem10Field
     
@@ -12495,12 +12505,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     DATA1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     DATA1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     DATA1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = DATA1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -12678,17 +12688,17 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
         '--------------------------------------------------------------------------------------=
         Dim sumes(100) As String
 
-100     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-110     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 112         TDBGrid2.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
