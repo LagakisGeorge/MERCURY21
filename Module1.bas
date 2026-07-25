@@ -460,7 +460,9 @@ dum2 = ADD_FIELD("PARASTAT", "AFMGRANDPEL", "CHAR(15)")
         dum2 = ADD_FIELD("EGGTIM", "OTHERMEASUREMENTUNITTITLE", "NVARCHAR(30)")
         
         dum2 = ADD_FIELD("EGGTIM", "DISCOUNTOPTION", "INT")
-        
+      '  classificationCategory
+        dum2 = ADD_FIELD("EGGTIM", "CLASSIFICATIONCATEGORY", "NVARCHAR(15)")
+        dum2 = ADD_FIELD("EGGTIM", "CLASSIFICATIONTYPE", "NVARCHAR(15)")
         ' KOLA , MIKTAKILA
         
         

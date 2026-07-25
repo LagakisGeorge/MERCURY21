@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   488308737
+      Format          =   153944065
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   488308737
+      Format          =   153944065
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7698,6 +7697,8 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                      
 574                     L = 0
 
+
+                        Dim MclassificationCategory, MclassificationType As String
                         '====================================================================================================================
 576                     Do While Not EGGTIM.EOF
                             'For n = 1 To 3 ' SEIRES TIMOLOGIOY
@@ -7833,17 +7834,24 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                 End If
                             End If
                            
+                           
+                           
+                         ' Dim MclassificationCategory, MclassificationType As String
                             '------------- ΑΥΤΟΤΙΜΟΛΟΓΗΣΗ --------------------<selfPricing>true</selfPricing>
 652                         If IsAytotim = 1 Then
                                 '------------------------ expenses CLASSIFICATION ------------------------
 654                             Set elem2Field = docStock.createElement("expensesClassification") ' δημιουργω εσοχη
-656                             Set elem3Field = docStock.createElement("ecls:classificationType"): elem3Field.Text = Split(cTyposExod, ";")(0): elem2Field.appendChild elem3Field
-
+                                MclassificationType = Split(cTyposExod, ";")(0)
+656                             Set elem3Field = docStock.createElement("ecls:classificationType"): elem3Field.Text = MclassificationType: elem2Field.appendChild elem3Field
+                                  
+                                  
+                                  
 658                             If fMydataFromEID1 <> 1 Then ' κατηγορία από το παραστατικό
-
-660                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = Split(cTyposExod, ";")(1): elem2Field.appendChild elem3Field
+                                    MclassificationCategory = Split(cTyposExod, ";")(1)
+660                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                 Else
-662                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = fKatEXod(EGGTIM("kathgoria")): elem2Field.appendChild elem3Field
+                                    MclassificationCategory = fKatEXod(EGGTIM("kathgoria"))
+662                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                     ' fKatEsod(EGGTIM("kathgoria"))
                                 End If
 
@@ -7855,7 +7863,8 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 668                             If Left(mTypPar, 3) = "3.1" Then ' TITLOS KTHSHS
                                 Else
 670                                 Set elem2Field = docStock.createElement("expensesClassification") ' δημιουργω εσοχη
-672                                 Set elem3Field = docStock.createElement("ecls:classificationType"): elem3Field.Text = "VAT_361": elem2Field.appendChild elem3Field
+                                    MclassificationType = "VAT_361"
+672                                 Set elem3Field = docStock.createElement("ecls:classificationType"): elem3Field.Text = MclassificationType: elem2Field.appendChild elem3Field
 674                                 Set elem3Field = docStock.createElement("ecls:amount"): elem3Field.Text = chDec(Format(AJ, "######0.##")): elem2Field.appendChild elem3Field
 676                                 elemField.appendChild elem2Field
                                 End If
@@ -7869,10 +7878,13 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 
 682                                 If Len(Trim(Split(ctypos, ";")(1))) = 0 Or isDiakin = 2 Then ' δεν εχει Ε3 π.χ. 1_95 ή ειναι δελτιο αποστολης
                                     Else '-------------------------------  ΠΑΙΡΝΕΙ ΑΠΟ ΠΑΡΑΣΤΑΤΤΙΚΟ
-684                                     Set elem3Field = docStock.createElement("n1:classificationType"): elem3Field.Text = Split(ctypos, ";")(1): elem2Field.appendChild elem3Field
+                                    
+                                        MclassificationType = Split(ctypos, ";")(1)
+684                                     Set elem3Field = docStock.createElement("n1:classificationType"): elem3Field.Text = MclassificationType: elem2Field.appendChild elem3Field
                                     End If
 
-686                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2)): elem2Field.appendChild elem3Field
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2))
+686                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                 Else
                             
 688                                 If EGGTIM("kathgoria") = 8 Or Len(Trim(Split(ctypos, ";")(1))) = 0 Or fKatEsod(EGGTIM("kathgoria")) = "category1_95" Then ' εγγυοδοσια Ή ΕΧΕΙ ΚΕΝΟ Ε3 Π.Χ. 1_95 CATEGORY
@@ -7881,11 +7893,14 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                         Dim E3type As String
 
 690                                     If F_E3_APOKATHG_EID = 1 Then E3type = FkatE3Esod(EGGTIM("kathgoria")) Else E3type = Split(ctypos, ";")(1)
-692                                     Set elem3Field = docStock.createElement("n1:classificationType"): elem3Field.Text = E3type: elem2Field.appendChild elem3Field
+
+                                           MclassificationType = E3type
+692                                     Set elem3Field = docStock.createElement("n1:classificationType"): elem3Field.Text = MclassificationType: elem2Field.appendChild elem3Field
                                     End If
 
                                     ' κατηγορια απο το "Κατηγορία έιδους"
-694                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria"))): elem2Field.appendChild elem3Field
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria")))
+694                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
 
                                 End If
 
@@ -7894,6 +7909,10 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             End If
                       
 700                         .appendChild elemField
+
+                            '25-7
+                            Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(EGGTIM("ID"))
+
                         
 702                         EGGTIM.MoveNext
                             'Next

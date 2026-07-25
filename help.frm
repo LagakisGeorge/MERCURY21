@@ -40,6 +40,7 @@ Begin VB.Form help1
       _ExtentY        =   17383
       _Version        =   393217
       BackColor       =   16777215
+      Enabled         =   -1  'True
       TextRTF         =   $"help.frx":000C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -315,6 +316,3 @@ Frame1_Click_Err:
 
 End Sub
 
-Private Sub List1_Click()
-
-End Sub
