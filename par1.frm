@@ -170,21 +170,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "ΗΜΕΡ/ΩΡΑ ΠΡΔ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblΗΜΕΡΩΡΑ"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblΗΜΕΡΩΡΑ"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.TextBox other 
          Height          =   375
@@ -282,7 +282,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   253624321
+         Format          =   308346881
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -296,7 +296,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   253624322
+         Format          =   308346882
          CurrentDate     =   38294
       End
       Begin VB.Label Label33 
@@ -1967,7 +1967,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   251789313
+      Format          =   308477953
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -15111,6 +15111,46 @@ Private Sub mmGridPelaton_DblClick(ByVal ask As Integer, _
 134     Text2(1).Text = PEL.Recordset("EPO")
 
        
+           
+           
+         If F_PAROCHOS = 1 Then
+            Dim IS_B2G As Integer
+            IS_B2G = 0
+            IS_B2G = GGET_NVALUE("SELECT ISNULL(B2G,0) AS DIMOSIO FROM PARASTAT WHERE EIDOS='" & Right(PARAS.Text, 1) & "'")
+
+            If Len(PEL.Recordset("DHMOSIO")) > 0 Then ' O PELATHS EINAI GIA DHMOSIO
+                If IS_B2G = 0 Then 'TO PAR/KO DEN EINAI GIA DHMOSIO
+                    MsgBox ("Προσοχη το παραστατικό δεν ειναι για Δημόσιο")
+                End If
+            Else ' O PELATHS DEN EINAI GIA DHMOSIO
+                If IS_B2G = 1 Then 'TO PAR/KO DEN EINAI GIA DHMOSIO
+                    MsgBox ("Προσοχη το παραστατικό  ειναι ΜΟΝΟ για Δημόσιο")
+                End If
+            End If
+
+        End If
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
            
 
 

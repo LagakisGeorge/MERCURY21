@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   153944065
+      Format          =   309329921
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   153944065
+      Format          =   309329921
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7382,7 +7383,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             If Split(ctypos, ";")(0) = "10.2" Or Split(ctypos, ";")(0) = "10.1" Then
                                 'receivingNotePurpose
                                 'DEMO ONLY WORKS  NEXT LINE
-                                Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
+                              '  Set elem2Field = docStock.createElement("receivingNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
                               
                             Else
 
