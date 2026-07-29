@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   309329921
+      Format          =   293076993
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   309329921
+      Format          =   293076993
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -13047,7 +13046,7 @@ Public Function ToJason(ByVal noask As Integer, _
                     End If
                   
                     'ΜΟΝΟ ΓΙΑ ΠΑΡΟΧΟ  (ΔΕΝ ΚΑΝΕΙ ΔΙΑΧΩΡΙΣΜΟ ΑΠΟ ΕΙΔΗ/ΠΑΡΑΣΤΑΤΙΚΟ !!!!!!!!!!!!!!!
-234                 C56 = "SELECT  KODE,ONOMA,POSO,CONVERT(INTEGER,ISNULL(KATHGORIA,'1') ) AS KATHGORIA, CONVERT(INTEGER,G.FPA) AS FPA,ROUND((ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND((ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL,ISNULL(D.CPV,'') AS CPV,ISNULL(G.ONOMA,'') AS ONOMA,ISNULL(G.MONA,'???') AS MONA "
+234                 C56 = "SELECT  KODE,ONOMA,POSO,CONVERT(INTEGER,ISNULL(KATHGORIA,'1') ) AS KATHGORIA, CONVERT(INTEGER,G.FPA) AS FPA,ROUND((ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND((ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL,ISNULL(D.CPV,'') AS CPV,ISNULL(G.ONOMA,'') AS ONOMA,ISNULL(G.MONA,'ΤΕΜ') AS MONA,G.ID AS ID "
 236                 C56 = C56 & " FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD "
 238                 C56 = C56 & " WHERE POSO<>0  " + exei_axia + "  and ID_NUM=" & str(SQLDT("ID_NUM"))
 240                 EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
@@ -13158,9 +13157,9 @@ Public Function ToJason(ByVal noask As Integer, _
                         'Exit Function
                     End If
                 
-                    Dim is_B2G As Integer, ubl As String
+                    Dim IS_B2G As Integer, ubl As String
                  
-312                 is_B2G = GGET_NVALUE("SELECT ISNULL(B2G,0) AS DIMOSIO FROM PARASTAT WHERE EIDOS='" & Left(SQLDT("ATIM"), 1) & "'")
+312                 IS_B2G = GGET_NVALUE("SELECT ISNULL(B2G,0) AS DIMOSIO FROM PARASTAT WHERE EIDOS='" & Left(SQLDT("ATIM"), 1) & "'")
 314                 ubl = GGET_CVALUE("SELECT ISNULL(UBL,'') AS UBL2 FROM PARASTAT WHERE EIDOS='" & Left(SQLDT("ATIM"), 1) & "'")
             
 316                 SJ = " {""invoice"":{"   ' arxh invoice  ----------------------------------------------------------------
@@ -13305,7 +13304,7 @@ Public Function ToJason(ByVal noask As Integer, _
                                     SJ = SJ + Chr(13) + ",""supplyAccountNo"":""" + Trim(SQLDT("DEH")) + """"
                                 End If
 
-452                             If is_B2G = 1 Then
+452                             If IS_B2G = 1 Then
 454                                 SJ = SJ + Chr(13) + ",""municipality"":""" + Trim(SQLDT("POL")) + """"
                                 End If
 
@@ -13380,7 +13379,7 @@ Public Function ToJason(ByVal noask As Integer, _
                             SJ = SJ + Chr(13) + ",""fuelInvoice"":true"
                         End If
 
-506                     If is_B2G = 1 Then
+506                     If IS_B2G = 1 Then
 508                         SJ = SJ + Chr(13) + ",""paymentTerms"":""" + mID(SQLDT("TRP"), 3, 7) + """"
                         End If
                         
@@ -13508,7 +13507,7 @@ Public Function ToJason(ByVal noask As Integer, _
                               
 514                     SJ = SJ + Chr(13) + "} " 'telos invoiceHeader
                           
-516                     If is_B2G = 1 Then
+516                     If IS_B2G = 1 Then
                           
 518                         SJ = SJ + Chr(13) + " , ""publishType"":2"
 
@@ -13992,7 +13991,7 @@ Public Function ToJason(ByVal noask As Integer, _
 652                     SJ = SJ + Chr(13) + ",""invoiceDetails"":[" 'arxizoyn oi seires=======================================================================
 
                         Dim m_onoma As String
-
+                        Dim MclassificationCategory, MclassificationType As String
                         '====================================================================================================================
 654                     Do While Not EGGTIM.EOF
                             'For n = 1 To 3 ' SEIRES TIMOLOGIOY
@@ -14143,7 +14142,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             '-------------------------------------------------------------------------------
 758                         If Len(EGGTIM("CPV")) = 0 Then
-760                             If is_B2G = 1 Then
+760                             If IS_B2G = 1 Then
 762                                 MsgBox ("9405.ΔΕΝ ΕΧΩ CPV ΣΤΟ  " + EGGTIM("ONOMA"))
 764                                 ToJasonSub = 0
 
@@ -14195,10 +14194,13 @@ Public Function ToJason(ByVal noask As Integer, _
                                 '------------------------ expenses CLASSIFICATION ------------------------
 794                             ' Set elem2Field = docStock.createElement("expensesClassification") ' δημιουργω εσοχη
 796                             ' Set elem3Field = docStock.createElement("ecls:classificationType"):'elem3Field.Text = Split(cTyposExod, ";")(0): ' elem2Field.appendChild elem3Field
-                                SJ = SJ + Chr(13) + ",""classificationType"":""" + Split(cTyposExod, ";")(0) + """"
+                                
+                                MclassificationType = Split(cTyposExod, ";")(0)
+                                SJ = SJ + Chr(13) + ",""classificationType"":""" + MclassificationType + """"
 
 798                             If fMydataFromEID1 <> 1 Then ' κατηγορία από το παραστατικό
-                                    SJ = SJ + Chr(13) + ",""classificationCategory"":""" + Split(cTyposExod, ";")(1) + """"
+                                    MclassificationCategory = Split(cTyposExod, ";")(1)
+                                    SJ = SJ + Chr(13) + ",""classificationCategory"":""" + MclassificationCategory + """"
 800                                 ' Set elem3Field = docStock.createElement("ecls:classificationCategory"):'elem3Field.Text = Split(cTyposExod, ";")(1): ' elem2Field.appendChild elem3Field
                                 Else
 802                                 ' Set elem3Field = docStock.createElement("ecls:classificationCategory"):'elem3Field.Text = fKatEXod(EGGTIM("kathgoria")): ' elem2Field.appendChild elem3Field
@@ -14228,7 +14230,9 @@ Public Function ToJason(ByVal noask As Integer, _
 822                                 If Len(Trim(Split(ctypos, ";")(1))) = 0 Or isDiakin = 2 Then   ' δεν εχει Ε3 π.χ. 1_95  ή ειναι δελτιο αποστολης
                                     Else '-------------------------------  ΠΑΙΡΝΕΙ ΑΠΟ ΠΑΡΑΣΤΑΤΤΙΚΟ
 824                                     '' Set elem3Field = docStock.createElement("n1:classificationType"):'elem3Field.Text = Split(ctypos, ";")(1): ' elem2Field.appendChild elem3Field
-                                        SJ = SJ + Chr(13) + ",""classificationType"":""" + Split(ctypos, ";")(1) + """"
+                                        
+                                        MclassificationType = Split(ctypos, ";")(1)
+                                        SJ = SJ + Chr(13) + ",""classificationType"":""" + MclassificationType + """"
 
                                     End If
 
@@ -14236,7 +14240,8 @@ Public Function ToJason(ByVal noask As Integer, _
 
                                     '  newitem(NEGG).classificationCategory = Split(ctypos, ";")(2) ' "category1_1"
                                     '  newitem(NEGG).classificationType = Split(ctypos, ";")(1) '"E3_561_001"
-828                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2)) + """"
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", Split(ctypos, ";")(2))
+828                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + MclassificationCategory + """"
 830
 
                                 Else
@@ -14251,17 +14256,19 @@ Public Function ToJason(ByVal noask As Integer, _
                                         Else
 838                                         E3type = Split(ctypos, ";")(1)
                                         End If
-                                             
+                                        MclassificationType = E3type
 840                                     '' Set elem3Field = docStock.createElement("n1:classificationType"):'elem3Field.Text = E3type: ' elem2Field.appendChild elem3Field
                                         ' newitem(NEGG).classificationType = E3type ' Split(ctypos, ";")(1) '"E3_561_001"
-842                                     SJ = SJ + Chr(13) + ",""classificationType"":""" + E3type + """"
+842                                     SJ = SJ + Chr(13) + ",""classificationType"":""" + MclassificationType + """"
                                     End If
 
                                     ' κατηγορια απο το "Κατηγορία έιδους"
 844                                 '' Set elem3Field = docStock.createElement("n1:classificationCategory"):'elem3Field.Text = fKatEsod(EGGTIM("kathgoria")): ' elem2Field.appendChild elem3Field
 
                                     'newitem(NEGG).classificationCategory = fKatEsod(EGGTIM.Rows(NEGG)("kathgoria"))
-846                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria"))) + """"
+                                    
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria")))
+846                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + MclassificationCategory + """"
 
                                 End If
 
@@ -14271,6 +14278,9 @@ Public Function ToJason(ByVal noask As Integer, _
                       
 852                         ' .appendChild elemField
 854                         SJ = SJ + Chr(13) + "}" ' εδω κλεινει η σειρα=============================================
+
+                             Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(EGGTIM("ID"))
+
 856                         EGGTIM.MoveNext
                             'Next
                         Loop
