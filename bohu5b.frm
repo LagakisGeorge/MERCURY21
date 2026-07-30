@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   175177729
+         Format          =   498466817
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -854,7 +854,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -4395,7 +4395,7 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -4609,6 +4609,7 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
+'**************************************  PROSOXH AYTO TREXEI APO TON SAERVER *******************************
 Dim d1, d2 As String
 Dim LATOS As String
 On Error GoTo OUT
@@ -4671,6 +4672,25 @@ Loop
 
 
 MsgBox "OK " + str(eis)
+
+Dim ANS As Integer
+ANS = MsgBox("ма емглеяыхеи то апол.теялатийо ле тоус меоус пекатес?", vbYesNo)
+If ANS = vbYes Then
+    Gdb.Execute "INSERT INTO " + F_LINKEDSERVER + ".dbo.PEL (KOD,EPO,EIDOS,AFM,DIE,EPA,DOY,XRVMA,POL,THL,STREETNUMBER) SELECT KOD,EPO,EIDOS,AFM,DIE,EPA,DOY,XRVMA,POL,THL,STREETNUMBER FROM PEL WHERE EIDOS='e' and KOD not in (select KOD FROM " + F_LINKEDSERVER + ".dbo.PEL WHERE EIDOS='e') "
+
+
+End If
+
+
+
+
+
+
+
+
+
+
+
 
 Exit Sub
 OUT:
