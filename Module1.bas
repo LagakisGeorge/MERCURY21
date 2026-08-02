@@ -308,7 +308,7 @@ Public Sub Update_Structures()
         dum2 = ADD_FIELD("PINAKES", "N1", "INT")
         dum2 = ADD_FIELD("PINAKES", "C1", "CHAR(20)")
 160     dum2 = ADD_FIELD("PARASTAT", "ID", "INT IDENTITY(1,1)")
-        
+        dum2 = ADD_FIELD("PARASTAT", "DEFSKOPOS", "INT DEFAULT(1)")
         
         dum2 = ADD_FIELD("PINAKES", "N2", "INT")
         dum2 = ADD_FIELD("PINAKES", "C2", "CHAR(20)")
@@ -1386,7 +1386,7 @@ End Function
 'End Function
 Function Get_AJ(ByRef pol As String, _
                 polepis As String, _
-                AGO As String, _
+                ago As String, _
                 AGOEPIS As String) As Boolean
 
         '<EhHeader>
@@ -1421,7 +1421,7 @@ Function Get_AJ(ByRef pol As String, _
                 End If
 
 190             If R("pol") = "2" And R("ajia_apou") = "1" Then
-200                 AGO = AGO + "'" + R("eidos") + "',"
+200                 ago = ago + "'" + R("eidos") + "',"
                 End If
 
 210             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -1442,7 +1442,7 @@ Function Get_AJ(ByRef pol As String, _
         End If
 
 280     AGOEPIS = Left(AGOEPIS, Len(AGOEPIS) - 1)
-290     AGO = Left(AGO, Len(AGO) - 1)
+290     ago = Left(ago, Len(ago) - 1)
 300     Get_AJ = True
 
         '<EhFooter>
@@ -1463,7 +1463,7 @@ End Function
 
 Function Get_AJ_ASCII(ByRef pol As String, _
                       polepis As String, _
-                      AGO As String, _
+                      ago As String, _
                       AGOEPIS As String) As Boolean
 
         '<EhHeader>
@@ -1498,7 +1498,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
                 End If
 
 190             If R("pol") = "2" And R("ajia_apou") = "1" Then
-200                 AGO = AGO + "" + str(Asc(R("eidos"))) + ","
+200                 ago = ago + "" + str(Asc(R("eidos"))) + ","
                 End If
 
 210             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -1519,7 +1519,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
         End If
 
 280
-290     AGO = Left(AGO, Len(AGO) - 1)
+290     ago = Left(ago, Len(ago) - 1)
 300     Get_AJ_ASCII = True
 
 350     If Len(AGOEPIS) > 0 Then
@@ -2497,7 +2497,7 @@ UPDATE_YPOLOIPA2_Err:
 End Sub
 
 
-Public Sub TelHmeAgoras(ByVal APO As Date, ByVal EOS As Date)
+Public Sub TelHmeAgoras(ByVal apo As Date, ByVal eos As Date)
 MDIForm1.Caption = " "
         '===================================================================================
         '<EhHeader>
@@ -2523,16 +2523,16 @@ MDIForm1.Caption = " "
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, AGO As String, APIS
+        Dim polepis As String, pol As String, ago As String, APIS
 
         Dim a
 
-110     a = Get2_AJ(polhs, polepis, AGO, AGOEPIS, PolXParoxh, Paroxh)
+110     a = Get2_AJ(polhs, polepis, ago, AGOEPIS, PolXParoxh, Paroxh)
 
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','á',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + AGO + ") AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -2612,7 +2612,7 @@ End Sub
 
 Public Function Get2_AJ(ByRef pol As String, _
                  polepis As String, _
-                 AGO As String, _
+                 ago As String, _
                  AGOEPIS As String, _
                  ByRef PolXParoxh As String, _
                  Paroxh As String) As Boolean
@@ -2665,7 +2665,7 @@ Public Function Get2_AJ(ByRef pol As String, _
                 End If
 
 270             If R("pol") = "2" And R("ajia_apou") = "1" Then
-280                 AGO = AGO + "'" + R("eidos") + "',"
+280                 ago = ago + "'" + R("eidos") + "',"
                 End If
 
 290             If R("pol") = "2" And R("ajia_apou") = "2" Then
@@ -2690,7 +2690,7 @@ Public Function Get2_AJ(ByRef pol As String, _
         End If
 
 380     AGOEPIS = Left(AGOEPIS, Len(AGOEPIS) - 1)
-390     AGO = Left(AGO, Len(AGO) - 1)
+390     ago = Left(ago, Len(ago) - 1)
 400     Get2_AJ = True
 
         '<EhFooter>
@@ -3033,8 +3033,8 @@ MILSEC_Err:
 End Sub
 
 Function ypoloipa_pel(ByVal mBUFF As String, _
-                      ByVal APO As Date, _
-                      ByVal EOS As Date, ByVal ENERGOS As Integer) As Single
+                      ByVal apo As Date, _
+                      ByVal eos As Date, ByVal ENERGOS As Integer) As Single
 
         'ypologismos ypoloipon
         '<EhHeader>
@@ -4212,7 +4212,7 @@ R.Close
 End Sub
 
 
-Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker, EOS As DTPicker)
+Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker, eos As DTPicker)
         'into DOKEGGT1
         'B = "CREATE VIEW dbo.[EIDT3]" _
 
@@ -4267,7 +4267,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker
         a = a + " SUM(CASE APOT  WHEN 3  THEN isnull(XRE,0) ELSE 0  END ) AS S3X," & " SUM(CASE APOT  WHEN 3  THEN isnull(PIS,0) ELSE 0  END ) AS S3P,"
         a = a + " SUM(CASE APOT  WHEN 4  THEN isnull(XRE,0) ELSE 0  END ) AS S4X," & " SUM(CASE APOT  WHEN 4  THEN isnull(PIS,0) ELSE 0  END ) AS S4P  "
 190     a = a + " INTO DOKEGGT1 FROM EGGTIM  "
-200     a = a + "where HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
+200     a = a + "where HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
 
         Dim TT As Long
 

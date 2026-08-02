@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Begin VB.Form bohu3 
    BackColor       =   &H00FF0000&
    Caption         =   "Ðáñáì.Ðáñáóôáôéêþí"
@@ -11,7 +11,6 @@ Begin VB.Form bohu3
    ClientTop       =   450
    ClientWidth     =   22335
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    ScaleHeight     =   12540
    ScaleWidth      =   22335
@@ -23,13 +22,13 @@ Begin VB.Form bohu3
       Top             =   2160
       Width           =   15615
       Begin TabDlg.SSTab SSTab1 
-         Height          =   5352
+         Height          =   5595
          Left            =   120
          TabIndex        =   22
-         Top             =   360
-         Width           =   13176
-         _ExtentX        =   23230
-         _ExtentY        =   9446
+         Top             =   240
+         Width           =   14970
+         _ExtentX        =   26405
+         _ExtentY        =   9869
          _Version        =   393216
          Tabs            =   6
          Tab             =   5
@@ -177,33 +176,46 @@ Begin VB.Form bohu3
          Tab(5).Control(5).Enabled=   0   'False
          Tab(5).Control(6)=   "GRANDPEL"
          Tab(5).Control(6).Enabled=   0   'False
-         Tab(5).Control(7)=   "AYTOKINHTO"
+         Tab(5).Control(7)=   "Label15"
          Tab(5).Control(7).Enabled=   0   'False
-         Tab(5).Control(8)=   "YP1"
+         Tab(5).Control(8)=   "AYTOKINHTO"
          Tab(5).Control(8).Enabled=   0   'False
-         Tab(5).Control(9)=   "yp2"
+         Tab(5).Control(9)=   "YP1"
          Tab(5).Control(9).Enabled=   0   'False
-         Tab(5).Control(10)=   "yp3"
+         Tab(5).Control(10)=   "yp2"
          Tab(5).Control(10).Enabled=   0   'False
-         Tab(5).Control(11)=   "POLITES"
+         Tab(5).Control(11)=   "yp3"
          Tab(5).Control(11).Enabled=   0   'False
-         Tab(5).Control(12)=   "Parakratisi"
+         Tab(5).Control(12)=   "POLITES"
          Tab(5).Control(12).Enabled=   0   'False
-         Tab(5).Control(13)=   "yp4"
+         Tab(5).Control(13)=   "Parakratisi"
          Tab(5).Control(13).Enabled=   0   'False
-         Tab(5).Control(14)=   "log1(8)"
+         Tab(5).Control(14)=   "yp4"
          Tab(5).Control(14).Enabled=   0   'False
-         Tab(5).Control(15)=   "foros"
+         Tab(5).Control(15)=   "log1(8)"
          Tab(5).Control(15).Enabled=   0   'False
-         Tab(5).Control(16)=   "katforou"
+         Tab(5).Control(16)=   "foros"
          Tab(5).Control(16).Enabled=   0   'False
-         Tab(5).Control(17)=   "proepilFPA"
+         Tab(5).Control(17)=   "katforou"
          Tab(5).Control(17).Enabled=   0   'False
-         Tab(5).Control(18)=   "AFMGRANDPEL"
+         Tab(5).Control(18)=   "proepilFPA"
          Tab(5).Control(18).Enabled=   0   'False
-         Tab(5).Control(19)=   "cmdÅËÅÃ×ÏÓ"
+         Tab(5).Control(19)=   "AFMGRANDPEL"
          Tab(5).Control(19).Enabled=   0   'False
-         Tab(5).ControlCount=   20
+         Tab(5).Control(20)=   "cmdÅËÅÃ×ÏÓ"
+         Tab(5).Control(20).Enabled=   0   'False
+         Tab(5).Control(21)=   "CDEFSKOPOS"
+         Tab(5).Control(21).Enabled=   0   'False
+         Tab(5).ControlCount=   22
+         Begin VB.ComboBox CDEFSKOPOS 
+            ForeColor       =   &H00FF0000&
+            Height          =   315
+            Left            =   4440
+            Style           =   2  'Dropdown List
+            TabIndex        =   161
+            Top             =   3480
+            Width           =   1575
+         End
          Begin VB.CommandButton cmdÅËÅÃ×ÏÓ 
             Caption         =   "ÅËÅÃ×ÏÓ"
             Height          =   360
@@ -321,7 +333,7 @@ Begin VB.Form bohu3
             Width           =   3375
          End
          Begin VB.ComboBox combometasx 
-            Height          =   288
+            Height          =   315
             Left            =   -70080
             Style           =   2  'Dropdown List
             TabIndex        =   134
@@ -329,7 +341,7 @@ Begin VB.Form bohu3
             Width           =   5175
          End
          Begin VB.ComboBox ComboAKYR 
-            Height          =   288
+            Height          =   315
             Left            =   -70080
             Style           =   2  'Dropdown List
             TabIndex        =   133
@@ -342,9 +354,9 @@ Begin VB.Form bohu3
             DataSource      =   "adodc1"
             Height          =   375
             Index           =   8
-            Left            =   4440
+            Left            =   6960
             TabIndex        =   131
-            Top             =   3960
+            Top             =   2280
             Width           =   1692
          End
          Begin VB.CheckBox ISMYDATA 
@@ -649,7 +661,7 @@ Begin VB.Form bohu3
             Width           =   1692
          End
          Begin VB.ComboBox PEL 
-            Height          =   288
+            Height          =   315
             ItemData        =   "bohu3.frx":16B8
             Left            =   -72360
             List            =   "bohu3.frx":16CE
@@ -659,7 +671,7 @@ Begin VB.Form bohu3
             Width           =   3375
          End
          Begin VB.ComboBox POS_APOU 
-            Height          =   288
+            Height          =   315
             ItemData        =   "bohu3.frx":1738
             Left            =   -72360
             List            =   "bohu3.frx":174B
@@ -669,7 +681,7 @@ Begin VB.Form bohu3
             Width           =   3375
          End
          Begin VB.ComboBox AJIA_APOU 
-            Height          =   288
+            Height          =   315
             ItemData        =   "bohu3.frx":17A3
             Left            =   -72360
             List            =   "bohu3.frx":17B6
@@ -688,7 +700,7 @@ Begin VB.Form bohu3
             Width           =   3375
          End
          Begin VB.ComboBox STADIO 
-            Height          =   288
+            Height          =   315
             ItemData        =   "bohu3.frx":180E
             Left            =   -70920
             List            =   "bohu3.frx":1827
@@ -814,9 +826,9 @@ Begin VB.Form bohu3
          Begin VB.TextBox Parakratisi 
             ForeColor       =   &H00FF0000&
             Height          =   285
-            Left            =   4440
+            Left            =   10200
             TabIndex        =   42
-            Top             =   3564
+            Top             =   1560
             Width           =   1692
          End
          Begin VB.TextBox POLITES 
@@ -1014,6 +1026,17 @@ Begin VB.Form bohu3
                Width           =   1632
             End
          End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "Ðñïåðéëåãìåíïò óêïðïò"
+            ForeColor       =   &H00FF0000&
+            Height          =   195
+            Left            =   1080
+            TabIndex        =   162
+            Top             =   3480
+            Width           =   1800
+         End
          Begin VB.Label GRANDPEL 
             AutoSize        =   -1  'True
             BackStyle       =   0  'Transparent
@@ -1109,21 +1132,21 @@ Begin VB.Form bohu3
             BackStyle       =   0  'Transparent
             Caption         =   "Ðñïåðéë.Êáôçã êáé Ôýðïò Öüñïõ ð.÷. 3;6 Ãéá ëïéðïß öüñïé(3) êáé îåíïäï÷.1-2 áóôÝñéá(6)"
             ForeColor       =   &H00FF0000&
-            Height          =   384
-            Left            =   960
+            Height          =   390
+            Left            =   6960
             TabIndex        =   132
-            Top             =   3960
-            Width           =   3372
+            Top             =   1920
+            Width           =   3375
             WordWrap        =   -1  'True
          End
          Begin VB.Label Label2 
             Caption         =   "Äýï öüñïé=3 Åíá Öüñïò=1  Êáèüëïõ=0"
             ForeColor       =   &H00FF0000&
-            Height          =   252
-            Left            =   960
+            Height          =   255
+            Left            =   6960
             TabIndex        =   130
-            Top             =   3600
-            Width           =   3132
+            Top             =   1560
+            Width           =   3135
          End
          Begin VB.Label lblLabels 
             AutoSize        =   -1  'True
@@ -2207,7 +2230,12 @@ Private Sub Combo2_Click()
       End If
     Next
     
-    
+     CDEFSKOPOS.ListIndex = -1
+    For k = 0 To CDEFSKOPOS.ListCount - 1
+      If Split(CDEFSKOPOS.List(k), " ")(0) = CNull(Adodc1.Recordset("DEFSKOPOS")) Then
+         CDEFSKOPOS.ListIndex = k
+      End If
+    Next
     
     
     
@@ -2950,15 +2978,15 @@ fmeArxWidt = Me.Width
 
        'ÖÏÑÔÙÌÁ ELINES
 160     R.Open "SELECT * FROM PINAKES WHERE TYPOS=42 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-        Dim i As Integer
-        i = 0
+        Dim I As Integer
+        I = 0
 170     Do While Not R.EOF
-            i = i + 1
-180         ELINES.AddItem str(R!AYJON) + ";" + R!PERIGRAFH
+            I = I + 1
+180         ELINES.AddItem str(R!Ayjon) + ";" + R!PERIGRAFH
             
 190         R.MoveNext
         Loop
-        If i = 0 Then
+        If I = 0 Then
            Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (42,215,'ÅÉÄÉÊÏ ÁÊÕÑÙÔÉÊÏ ÓÔÏÉ×ÅÉÏ',-1 )"
          Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (42,221,'ÄÅËÔÉÏ ÁÐÏÓÔÏË.ÔÉÌÏËÏÃÉÏ',1)"
           Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (42,222,'Ä. ÁðïóôïëÞò - Ôéìïëüãéï',1)"
@@ -3040,18 +3068,25 @@ fmeArxWidt = Me.Width
     
         R.Open "SELECT * FROM PINAKES WHERE TYPOS=44 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
         'Dim i As Integer
-        i = 0
+        I = 0
         Do While Not R.EOF
-            i = i + 1
-            ApallFpa.AddItem Format(i, "00") + ";" + str(R!AYJON) + ";" + R!PERIGRAFH
+            I = I + 1
+            ApallFpa.AddItem Format(I, "00") + ";" + str(R!Ayjon) + ";" + R!PERIGRAFH
             
             R.MoveNext
         Loop
        R.Close
        
     
+     R.Open "SELECT *FROM PINAKES WHERE TYPOS=7 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+
+     Do While Not R.EOF
+         CDEFSKOPOS.AddItem Format(R!Ayjon, "#0") + " " + R("PERIGRAFH")
+         R.MoveNext
+        Loop
+     R.Close
     
-    
+   
     
     
 
@@ -3633,11 +3668,14 @@ Gdb.Execute "UPDATE PARASTAT SET ISDIAKIN=" + Left(isDiakin.Text, 1) + " where I
        CV1 = Split(MYEID.Text, " ")(0)
     End If
 
-
-
-
-
-
+'CDEFSKOPOS
+   Dim mDEFSKOPOS As String
+    If Len(CDEFSKOPOS.Text) = 0 Then
+       mDEFSKOPOS = "1"
+    Else
+       mDEFSKOPOS = Split(CDEFSKOPOS.Text, " ")(0)
+    End If
+   Gdb.Execute "UPDATE PARASTAT SET DEFSKOPOS=" + mDEFSKOPOS + " where ID='" + B + "'"
 
 
     If Len(myTypEsod.Text) = 0 Then
@@ -3935,15 +3973,15 @@ If N > 0 And N < 5 Then
     If N = 2 Then n2 = 54
     If N = 3 Then n2 = 55
     If N = 4 Then n2 = 56
-Dim i As Integer
+Dim I As Integer
 
     Dim R As New ADODB.Recordset
         R.Open "SELECT * FROM PINAKES WHERE TYPOS=" + str(n2) + " ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
         'Dim i As Integer
-        i = 0
+        I = 0
         Do While Not R.EOF
-            i = i + 1
-            katforou.AddItem Format(i, "00") + ";" + str(R!AYJON) + ";" + R!PERIGRAFH
+            I = I + 1
+            katforou.AddItem Format(I, "00") + ";" + str(R!Ayjon) + ";" + R!PERIGRAFH
             
             R.MoveNext
         Loop
