@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   456982529
+      Format          =   481492993
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   456982529
+      Format          =   481492993
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1055,8 +1055,8 @@ Function PutDates(ByVal X As String)
 
         Dim X1 As String, X2 As String
 
-100     X1 = "'" + Format(APO, "MM/DD/YYYY") + "'"
-110     X2 = "'" + Format(DateAdd("H", 23.99, EOS), "MM/DD/YYYY") + "'"
+100     X1 = "'" + Format(apo, "MM/DD/YYYY") + "'"
+110     X2 = "'" + Format(DateAdd("H", 23.99, eos), "MM/DD/YYYY") + "'"
 
         Dim SQL2 As String
 
@@ -1131,8 +1131,8 @@ Dim FF As New apot3param
  FF.Label_titlos = "Υπόλοιπα Ειδών"
 
 FF.load_sthles_EIDON
-FF.APO = APO.Value
-FF.EOS = EOS.Value
+FF.apo = apo.Value
+FF.eos = eos.Value
 
 'FF.LOAD_KINHSEIS_EIDON
 FF.Rep_Fields.Text = "select KOD as [Κωδικός],LEFT(ONO,35) as [Περιγραφή],POS AS [Υπόλοιπο]"
@@ -2101,20 +2101,20 @@ Private Sub Unilever_Click()
   
  'csv_send Now, Now, 0, filesql, filecsv
   
-  Dim APO, EOS As Date
-APO = Now
-EOS = Now
+  Dim apo, eos As Date
+apo = Now
+eos = Now
 
-    csv_send APO, EOS, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
-    csv_send APO, EOS, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send APO, EOS, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send APO, EOS, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
 
   
   
 End Sub
 
-Public Sub csv_send(ByVal APO As Date, ByVal EOS As Date, weeks As Integer, filesql As String, filecsv As String)
+Public Sub csv_send(ByVal apo As Date, ByVal eos As Date, weeks As Integer, filesql As String, filecsv As String)
 
 'NCFTPPUT -u GFK004998 -p 15KLS.wZYaRQ2OYgrrZ1 gimftp.gfk.com /  c:\mercvb\mercpath.txt
 Dim DUM
@@ -2185,7 +2185,7 @@ FileCopy "c:\print", mfile2
 
 End Sub
 
-Public Sub gfk_send(APO As Date, EOS As Date, weeks As Integer)
+Public Sub gfk_send(apo As Date, eos As Date, weeks As Integer)
 
 'NCFTPPUT -u GFK004998 -p 15KLS.wZYaRQ2OYgrrZ1 gimftp.gfk.com /  c:\mercvb\mercpath.txt
 Dim DUM
@@ -2232,12 +2232,12 @@ Dim DUM
    
    If weeks = 1 Then
       sql = sql + " and  DATEPART(week, HME)= DATEPART(week, GETDATE())-1  "
-      mfile2 = mpath + "PyxidaData" + Format(DatePart("ww", Now), "00") + Format(Now, "yyyy") + ".CSV"
+      mfile2 = mpath + "PyxidaData" + Format(DatePart("ww", Now) - 1, "00") + Format(Now, "yyyy") + ".CSV"
       
       
        
    Else
-       sql = sql + " AND HME>='" + Format(APO, "MM/dd/yyyy") + "' AND HME<='" + Format(EOS, "MM/dd/yyyy") + "'"
+       sql = sql + " AND HME>='" + Format(apo, "MM/dd/yyyy") + "' AND HME<='" + Format(eos, "MM/dd/yyyy") + "'"
        mfile2 = mpath + Format(Now, "yyyyMMdd") + ".CSV"
    End If
    
@@ -3320,7 +3320,7 @@ Dim DUM
 
     Close #1
    
-   sql = sql + " AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME<='" + Format(EOS, "MM/DD/YYYY") + "'"
+   sql = sql + " AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME<='" + Format(eos, "MM/DD/YYYY") + "'"
    
    
    
@@ -3344,7 +3344,7 @@ Text2.Text = Text2.Text + mfile2 + Chr(13)
 
    Close #1
    
-    sql = sql + " AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME<='" + Format(EOS, "MM/DD/YYYY") + "'"
+    sql = sql + " AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME<='" + Format(eos, "MM/DD/YYYY") + "'"
    
    
    
@@ -4426,8 +4426,8 @@ End If
 250     DoEvents
 
 260     File1.Refresh
-270     APO = Now
-280     EOS = Now
+270     apo = Now
+280     eos = Now
 
 290     TDBGrid.Splits(0).ExtendRightColumn = True
 300     TDBGrid.ColumnFooters = True
@@ -4595,10 +4595,10 @@ Private Sub TDBGrid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
             End If
 
 200         If Len(Dir(PI)) > 0 Then
-210             PICTURE1.Picture = LoadPicture(PI)
-220             Picture2.PaintPicture PICTURE1.Picture, 0, 0, Picture2.Width, Picture2.Height, 0, 0, PICTURE1.Width, PICTURE1.Height
+210             Picture1.Picture = LoadPicture(PI)
+220             Picture2.PaintPicture Picture1.Picture, 0, 0, Picture2.Width, Picture2.Height, 0, 0, Picture1.Width, Picture1.Height
             Else
-230             PICTURE1.Picture = LoadPicture()
+230             Picture1.Picture = LoadPicture()
 240             Picture2.Picture = LoadPicture()
             End If
 
