@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   293076993
+      Format          =   310640641
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   293076993
+      Format          =   310640641
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7649,7 +7650,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                 ' Set elem2Field = docStock.createElement("correlatedInvoices"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
                                 '<correlatedInvoices>400012475169746</correlatedInvoices>
                             Else
-                                Set elem2Field = docStock.createElement("multipleConnectedMarks"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
+                               ' Set elem2Field = docStock.createElement("multipleConnectedMarks"): elem2Field.Text = SQLDT("SXETMARKS"): elemField.appendChild elem2Field
                             End If
                          
                         End If
