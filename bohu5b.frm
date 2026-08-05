@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSAdoDc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   340721665
+         Format          =   310902785
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -879,7 +879,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim ejodos
 
-        Dim e, MM, S
+        Dim e, MM, s
 
         Dim ektypoths
 
@@ -887,7 +887,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim CDOK
 
-        Dim H$
+        Dim h$
 
         ' spacing=1 klassiko poy ta ypologizei me +1 thn stili toy pedioy (x1)
         'spacing=0 kanonika
@@ -934,17 +934,17 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
 190     Do While Not EOF(1)
 
-200         Line Input #1, H$
+200         Line Input #1, h$
 210         S2 = ""
-220         H$ = to928(H$)
+220         h$ = to928(h$)
 
 230         For k = 1 To 30
 
 240             If Trim(UCase(Trim(gm_f(k)))) = "KOD" Then    '  Then
 250                 If Combo1.Text = "PEL" Then
-260                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(H$, gm_c(k), Len(gpic(k)))) + "' and EIDOS='" + meidos + "'"
+260                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "' and EIDOS='" + meidos + "'"
                     Else
-270                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(H$, gm_c(k), Len(gpic(k)))) + "'"
+270                     Adodc2.RecordSource = "SELECT * FROM " + Combo1.Text + " WHERE KOD='" + Trim(mID$(h$, gm_c(k), Len(gpic(k)))) + "'"
                     End If
 
 280                 Adodc2.Refresh
@@ -968,13 +968,13 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 340             If Len(gm_f(k)) > 0 Then
 
 350                 If Adodc2.Recordset(Trim(gm_f(k))).Type = adVarChar Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
-360                     Adodc2.Recordset(Trim(gm_f(k))) = mID$(H$, gm_c(k), Len(Trim(gpic(k))))
+360                     Adodc2.Recordset(Trim(gm_f(k))) = mID$(h$, gm_c(k), Len(Trim(gpic(k))))
                     End If
 
                     'adDouble
 
 370                 If Adodc2.Recordset(Trim(gm_f(k))).Type = adDouble Then    ' adLongVarBinary Then 'adLongVarChar Then 'adLongVarWChar  Then '  adChar Then
-380                     Adodc2.Recordset(Trim(gm_f(k))) = Val(mID$(H$, gm_c(k), Len(gpic(k))))
+380                     Adodc2.Recordset(Trim(gm_f(k))) = Val(mID$(h$, gm_c(k), Len(gpic(k))))
                     End If
 
                 End If
@@ -982,7 +982,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
             Next
 
 390         DoEvents
-400         Me.Caption = H$
+400         Me.Caption = h$
 410         Adodc2.Recordset.Update
 
             '   Print #1, S2
@@ -1051,9 +1051,9 @@ Private Sub Command10_Click()
         On Error GoTo Command10_Click_Err
 
         '</EhHeader>
-        Dim r     As New ADODB.Recordset
+        Dim R     As New ADODB.Recordset
 
-        Dim S     As String
+        Dim s     As String
 
         Dim r2    As New ADODB.Recordset
 
@@ -1068,33 +1068,33 @@ Private Sub Command10_Click()
 150     Gdb.Execute "UPDATE EGGTIM SET KAU_AJIA=POSO*TIMM*(100-EKPT)/100,MIK_AJIA= POSO*TIMM*(100-EKPT)/100*" + str((100 - g_Fpa(4)) / 100) + " where FPA=4 AND LEFT(ATIM,1) IN ('" + EIDOS + "')  "
 160     Gdb.Execute "UPDATE EGGTIM SET KAU_AJIA=POSO*TIMM*(100-EKPT)/100,MIK_AJIA= POSO*TIMM*(100-EKPT)/100*" + str((100 - g_Fpa(5)) / 100) + " where FPA=5 AND LEFT(ATIM,1) IN ('" + EIDOS + "')  "
 
-170     S = "select sum(CASE WHEN FPA=1 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S1,"
-180     S = S + " sum(CASE WHEN FPA=2 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S2,"
-190     S = S + " sum(CASE WHEN FPA=3 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S3,"
-200     S = S + " sum(CASE WHEN FPA=4 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S4,"
-210     S = S + " sum(CASE WHEN FPA=5 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S5, "
-220     S = S + "ATIM,HME FROM EGGTIM where LEFT(ATIM,1) IN ('" + EIDOS + "') GROUP BY ATIM,HME "
+170     s = "select sum(CASE WHEN FPA=1 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S1,"
+180     s = s + " sum(CASE WHEN FPA=2 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S2,"
+190     s = s + " sum(CASE WHEN FPA=3 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S3,"
+200     s = s + " sum(CASE WHEN FPA=4 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S4,"
+210     s = s + " sum(CASE WHEN FPA=5 THEN POSO*TIMM*(100-EKPT)/100 ELSE 0 END ) AS S5, "
+220     s = s + "ATIM,HME FROM EGGTIM where LEFT(ATIM,1) IN ('" + EIDOS + "') GROUP BY ATIM,HME "
 
-230     r.Open S, Gdb, adOpenDynamic, adLockOptimistic
+230     R.Open s, Gdb, adOpenDynamic, adLockOptimistic
 
         Dim Z As Single
 
-240     r.MoveFirst
+240     R.MoveFirst
 
-250     Do While Not r.EOF
-260         Z = r("S1") * (100 + g_Fpa(1)) / 100
-270         Z = Z + r("S2") * (100 + g_Fpa(2)) / 100
-280         Z = Z + r("S3") * (100 + g_Fpa(3)) / 100
-290         Z = Z + r("S4") * (100 + g_Fpa(4)) / 100
-300         Z = Z + r("S5") * (100 + g_Fpa(5)) / 100
+250     Do While Not R.EOF
+260         Z = R("S1") * (100 + g_Fpa(1)) / 100
+270         Z = Z + R("S2") * (100 + g_Fpa(2)) / 100
+280         Z = Z + R("S3") * (100 + g_Fpa(3)) / 100
+290         Z = Z + R("S4") * (100 + g_Fpa(4)) / 100
+300         Z = Z + R("S5") * (100 + g_Fpa(5)) / 100
 
-310         S = "UPDATE TIM SET AJ1=" + str(r("S1")) + ","
-320         S = S + " AJ2=" + str(r("S2")) + ","
-330         S = S + " AJ3=" + str(r("S3")) + ","
-340         S = S + " AJ4=" + str(r("S4")) + ","
-350         S = S + " AJ5=" + str(r("S5")) + ","
-360         S = S + "AJI=" + str(Z) + " WHERE ATIM='" + r("ATIM") + "' AND HME='" + Format(r("HME"), "MM/DD/YYYY") + "'"
-370         Gdb.Execute S
+310         s = "UPDATE TIM SET AJ1=" + str(R("S1")) + ","
+320         s = s + " AJ2=" + str(R("S2")) + ","
+330         s = s + " AJ3=" + str(R("S3")) + ","
+340         s = s + " AJ4=" + str(R("S4")) + ","
+350         s = s + " AJ5=" + str(R("S5")) + ","
+360         s = s + "AJI=" + str(Z) + " WHERE ATIM='" + R("ATIM") + "' AND HME='" + Format(R("HME"), "MM/DD/YYYY") + "'"
+370         Gdb.Execute s
 
             'R2.Open "SELECT * FROM EGG  WHERE ATIM='" + R("ATIM") + "' AND HME='" + Format(R("HME"), "MM/DD/YYYY") + "'"", Gdb, adOpenDynamic, adLockOptimistic"
 
@@ -1102,10 +1102,10 @@ Private Sub Command10_Click()
             '  S = "UPDATE EGG SET PISTOSI=" + Str(Z) + " WHERE ATIM='" + R("ATIM") + "' AND HME='" + Format(R("HME"), "MM/DD/YYYY") + "'"
             '  Gdb.Execute S
 
-380         r.MoveNext
+380         R.MoveNext
         Loop
 
-390     r.Close
+390     R.Close
 
         '<EhFooter>
         Exit Sub
@@ -1230,13 +1230,13 @@ End Sub
 Private Sub Command12_Click()
 
     '”’√ . ¡Õ¡◊Ÿ—«”«”
-    Dim r    As New ADODB.Recordset
+    Dim R    As New ADODB.Recordset
 
     Dim REID As New ADODB.Recordset
 
     REID.Open "select * FROM EID WHERE POS>0", Gdb, adOpenDynamic, adLockOptimistic
 
-    r.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
 
     Dim MDAY As String
 
@@ -1272,26 +1272,26 @@ Private Sub Command12_Click()
 
     Do While Not REID.EOF
     
-        r.AddNew
-        r!ATIM = "F" + CAR_SYGK
-        r!hme = MDATE
-        r!KODE = REID!KOD
-        r!ONOMA = REID("ONO")
-        r!POSO = REID!POS
-        r!PIS = 0
-        r!XRE = 0
-        r!TIMM = 0
-        r!FPA = REID!FPA
-        r!apot = 1
-        r!EIDOS = "e"
-        r.Update
+        R.AddNew
+        R!ATIM = "F" + CAR_SYGK
+        R!hme = MDATE
+        R!KODE = REID!kod
+        R!ONOMA = REID("ONO")
+        R!POSO = REID!POS
+        R!PIS = 0
+        R!XRE = 0
+        R!TIMM = 0
+        R!FPA = REID!FPA
+        R!apot = 1
+        R!EIDOS = "e"
+        R.Update
         
         REID.MoveNext
     Loop
 
     REID.Close
         
-    r.Close
+    R.Close
     
     Dim r3 As New ADODB.Recordset
 
@@ -1397,9 +1397,9 @@ Dim id_num(500) As Long ' ‘¡ ID_NUM ‘ŸÕ ‘…ÃœÀœ√…ŸÕ –œ’ –—œ”‘…»≈Õ‘¡…
    
     Dim a          As String
 
-    Dim ATIM       As String, POSO As String, TIMM As String, ONOMA As String, KOD As String
+    Dim ATIM       As String, POSO As String, TIMM As String, ONOMA As String, kod As String
 
-    Dim r          As New ADODB.Recordset
+    Dim R          As New ADODB.Recordset
 
     Dim r2         As New ADODB.Recordset
 
@@ -1419,19 +1419,19 @@ Dim id_num(500) As Long ' ‘¡ ID_NUM ‘ŸÕ ‘…ÃœÀœ√…ŸÕ –œ’ –—œ”‘…»≈Õ‘¡…
 
     Dim MAX_ID     As Long
    
-    r.Open "SELECT TOP 1 * FROM EGGTIM ORDER BY ID DESC ", Gdb, adOpenDynamic, adLockOptimistic
-    MAX_ID = r("ID")
-    r.Close
+    R.Open "SELECT TOP 1 * FROM EGGTIM ORDER BY ID DESC ", Gdb, adOpenDynamic, adLockOptimistic
+    MAX_ID = R("ID")
+    R.Close
    
-    r.Open "SELECT TOP 1 * FROM TIM ORDER BY ID_NUM DESC ", Gdb, adOpenDynamic, adLockOptimistic
-    MAX_ID_NUM = r("ID_NUM")
-    r.Close
+    R.Open "SELECT TOP 1 * FROM TIM ORDER BY ID_NUM DESC ", Gdb, adOpenDynamic, adLockOptimistic
+    MAX_ID_NUM = R("ID_NUM")
+    R.Close
    
     On Error GoTo 0
 
     Open "C:\VanSales\Mobile1\From\kin1.asc" For Input As #1
     
-    r.Open "SELECT TOP 1 * FROM TIM", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT TOP 1 * FROM TIM", Gdb, adOpenDynamic, adLockOptimistic
     r2.Open "SELECT TOP 1 * FROM EGG", Gdb, adOpenDynamic, adLockOptimistic
     
 Dim j As Integer
@@ -1453,8 +1453,8 @@ Dim R6 As New ADODB.Recordset
         
         pistotiko = 0
         
-        r.AddNew
-        r("HME") = CDate(mID(a, 17, 10))
+        R.AddNew
+        R("HME") = CDate(mID(a, 17, 10))
 
         If mID(a, 37, 2) = "‘…" Then
             mLet = "T"
@@ -1482,19 +1482,19 @@ Dim R6 As New ADODB.Recordset
             GoTo rollover
         End If
         
-        r!ATIM = mLet + Format(Val(mID(a, 1, 6)), "000000")
+        R!ATIM = mLet + Format(Val(mID(a, 1, 6)), "000000")
         
-        r!B_N1 = 1
+        R!B_N1 = 1
         
         If mID(a, 68, 1) = "1" Then
-            r!trp = "1.Ã≈"
+            R!trp = "1.Ã≈"
         Else
-            r!trp = "2.–…"
+            R!trp = "2.–…"
         End If
 
-        r!EIDOS = "e"
+        R!EIDOS = "e"
         
-        r!KPE = Trim(mID(a, 47, 7))
+        R!KPE = Trim(mID(a, 47, 7))
         
         'R2.Open "select * from EID WHERE KOD='" + Trim(mID(a, 27, 5)) + "'", Gdb, adOpenDynamic, adLockOptimistic
         'If R2.EOF Then
@@ -1505,34 +1505,34 @@ Dim R6 As New ADODB.Recordset
         'R2.Close
         
      
-        r!EKPT1 = Val(mID(a, 152, 8))
-          r!aj1 = Val(mID(a, 104, 8))
-        r!FPA1 = Val(mID(a, 120, 7))
+        R!EKPT1 = Val(mID(a, 152, 8))
+          R!aj1 = Val(mID(a, 104, 8))
+        R!FPA1 = Val(mID(a, 120, 7))
         
         
-        r!aji = Val(mID(a, 168, 8))
+        R!aji = Val(mID(a, 168, 8))
         
         If da = 1 Then
-            r!aj6 = 0 ' Val(mID(a, 104, 8))
-            r!FPA6 = 0 '  Val(mID(a, 120, 7))
-            r!EKPT1 = 0 ' Val(mID(a, 152, 8))
-            r!aji = 0 ' Val(mID(a, 168, 8))
+            R!aj6 = 0 ' Val(mID(a, 104, 8))
+            R!FPA6 = 0 '  Val(mID(a, 120, 7))
+            R!EKPT1 = 0 ' Val(mID(a, 152, 8))
+            R!aji = 0 ' Val(mID(a, 168, 8))
         End If
         
         If akyr = 1 Then
-            r!aj1 = -Val(mID(a, 104, 8))
-            r!FPA1 = -Val(mID(a, 120, 7))
-            r!EKPT1 = -Val(mID(a, 152, 8))
-            r!aji = -Val(mID(a, 168, 8))
+            R!aj1 = -Val(mID(a, 104, 8))
+            R!FPA1 = -Val(mID(a, 120, 7))
+            R!EKPT1 = -Val(mID(a, 152, 8))
+            R!aji = -Val(mID(a, 168, 8))
         End If
         
-        r!aj2 = 0: r!aj3 = 0: r!aj4 = 0: r!aj5 = 0: r!aj6 = 0
-        r!fpa2 = 0: r!fpa3 = 0: r!FPA4 = 0: r!FPA6 = 0
+        R!aj2 = 0: R!aj3 = 0: R!aj4 = 0: R!aj5 = 0: R!aj6 = 0
+        R!fpa2 = 0: R!fpa3 = 0: R!FPA4 = 0: R!FPA6 = 0
         
         
         
         
-        r.Update
+        R.Update
         
         
         
@@ -1546,7 +1546,7 @@ Dim R6 As New ADODB.Recordset
         
         ' egg xreosi
         r2.AddNew
-        r2!KOD = Trim(mID(a, 47, 7))
+        r2!kod = Trim(mID(a, 47, 7))
         r2!EIDOS = "e"
         r2!hme = CDate(mID(a, 17, 10))
          
@@ -1578,7 +1578,7 @@ Dim R6 As New ADODB.Recordset
         
             ' egg xreosi
             r2.AddNew
-            r2!KOD = Trim(mID(a, 47, 7))
+            r2!kod = Trim(mID(a, 47, 7))
             r2!EIDOS = "e"
             r2!hme = CDate(mID(a, 17, 10))
           
@@ -1608,7 +1608,7 @@ Dim R6 As New ADODB.Recordset
         
     Loop
 
-    r.Close
+    R.Close
     r2.Close
     
     Close #1
@@ -1619,7 +1619,7 @@ Dim R6 As New ADODB.Recordset
    
     Open "C:\VanSales\Mobile1\From\kin2.asc" For Input As #1
     
-    r.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
     
      Dim KN As Integer
     
@@ -1630,7 +1630,7 @@ Dim R6 As New ADODB.Recordset
         
         Input #1, a
              
-        r.AddNew
+        R.AddNew
         
         If mID(a, 17, 2) = "‘…" Then
             mLet = "T"
@@ -1661,7 +1661,7 @@ Dim R6 As New ADODB.Recordset
             
         End If
         
-        r!ATIM = mLet + Format(Val(mID(a, 1, 6)), "000000")
+        R!ATIM = mLet + Format(Val(mID(a, 1, 6)), "000000")
         
         ' r2.Close
         
@@ -1682,53 +1682,53 @@ Dim R6 As New ADODB.Recordset
 
 
         If r2.EOF Then
-            r("HME") = CDate(Format(Now, "MM/DD/YYYY"))
+            R("HME") = CDate(Format(Now, "MM/DD/YYYY"))
         Else
-            r("HME") = r2!hme
+            R("HME") = r2!hme
         End If
 
         r2.Close
         
-        r!KODE = Trim(mID(a, 27, 5))
+        R!KODE = Trim(mID(a, 27, 5))
         r2.Open "select * from EID WHERE KOD='" + Trim(mID(a, 27, 5)) + "'", Gdb, adOpenDynamic, adLockOptimistic
 
         If r2.EOF Then
-            r!ONOMA = ""
-            r!FPA = 1
+            R!ONOMA = ""
+            R!FPA = 1
         Else
-            r!ONOMA = r2("ONO")
-            r!FPA = r2!FPA
+            R!ONOMA = r2("ONO")
+            R!FPA = r2!FPA
         End If
         
         r2.Close
         
-        r!POSO = Val(mID(a, 138, 4))
-        r!PIS = Val(mID(a, 138, 4))
+        R!POSO = Val(mID(a, 138, 4))
+        R!PIS = Val(mID(a, 138, 4))
         
         If akyr = 1 Then
-            r!POSO = -Val(mID(a, 138, 4))
-            r!PIS = -Val(mID(a, 138, 4))
+            R!POSO = -Val(mID(a, 138, 4))
+            R!PIS = -Val(mID(a, 138, 4))
         End If
         
-        r!XRE = 0
+        R!XRE = 0
         
-        r!TIMM = Val(mID(a, 64, 6))
+        R!TIMM = Val(mID(a, 64, 6))
         
-        r!EKPT = Val(mID(a, 79, 6))
-        r!kau_ajia = r!TIMM * r!POSO * (100 - r!EKPT) / 100
-        r!MIK_AJIA = r!kau_ajia * (100 + GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND AYJON=" + str(r!FPA))) / 100
-        r!apot = 1
+        R!EKPT = Val(mID(a, 79, 6))
+        R!kau_ajia = R!TIMM * R!POSO * (100 - R!EKPT) / 100
+        R!MIK_AJIA = R!kau_ajia * (100 + GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND AYJON=" + str(R!FPA))) / 100
+        R!apot = 1
         
-        r!id_num = knok ' TO ID_NUM TOY TIMOLOGIOY
+        R!id_num = knok ' TO ID_NUM TOY TIMOLOGIOY
         
-        r!EIDOS = "e"
-        r.Update
+        R!EIDOS = "e"
+        R.Update
         
         ' Gdb.Execute "INSERT INTO EGGTIM (ATIM,KODE,POSO,TIMM,ONOMA,"
          
     Loop
     
-    r.Close
+    R.Close
     
     Close #1
     
@@ -1998,9 +1998,9 @@ Sub APOKARAM(ByVal FORT As Integer)
    
         Dim a          As String
 
-        Dim ATIM       As String, POSO As String, TIMM As String, ONOMA As String, KOD As String
+        Dim ATIM       As String, POSO As String, TIMM As String, ONOMA As String, kod As String
 
-        Dim r          As New ADODB.Recordset
+        Dim R          As New ADODB.Recordset
 
         Dim r2         As New ADODB.Recordset
 
@@ -2014,9 +2014,9 @@ Sub APOKARAM(ByVal FORT As Integer)
      '   MAX_ID = R("ID")
       '  R.Close
    
-114     r.Open "SELECT TOP 1 *  FROM TIM ORDER BY ID_NUM DESC ", Gdb, adOpenDynamic, adLockOptimistic
+114     R.Open "SELECT TOP 1 *  FROM TIM ORDER BY ID_NUM DESC ", Gdb, adOpenDynamic, adLockOptimistic
        ' MAX_ID_NUM = R("ID_NUM")
-116     r.Close
+116     R.Close
    
         On Error GoTo APOKARAM_Err
 
@@ -2027,7 +2027,7 @@ Sub APOKARAM(ByVal FORT As Integer)
     'where papercode<>'12'
 118     RDB.Open "SELECT * FROM Papers  ", cnn, adOpenDynamic, adLockOptimistic  ' where canceled=false and papercode<>12
     
-120     r.Open "SELECT TOP 1 * FROM TIM", Gdb, adOpenDynamic, adLockOptimistic
+120     R.Open "SELECT TOP 1 * FROM TIM", Gdb, adOpenDynamic, adLockOptimistic
 122     r2.Open "SELECT TOP 1 * FROM EGG", Gdb, adOpenDynamic, adLockOptimistic
     
         Dim j         As Integer
@@ -2089,7 +2089,7 @@ Sub APOKARAM(ByVal FORT As Integer)
         
               ' egg xreosi
 166             r2.AddNew
-168             r2!KOD = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
+168             r2!kod = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
 170             r2!EIDOS = "e"
 172             r2!hme = RDB!PaperDate ' CDate(mID(a, 17, 10))
           
@@ -2173,7 +2173,7 @@ Sub APOKARAM(ByVal FORT As Integer)
         
             ' egg xreosi
 236         r2.AddNew
-238         r2!KOD = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
+238         r2!kod = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
 240         r2!EIDOS = "e"
 242         r2!hme = RDB!PaperDate ' CDate(mID(a, 17, 10))
          
@@ -2205,7 +2205,7 @@ Sub APOKARAM(ByVal FORT As Integer)
         
                 ' egg xreosi
 276             r2.AddNew
-278             r2!KOD = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
+278             r2!kod = RDB!CustomerCodeWhoIsCharged  ' Trim(mID(a, 47, 7))
 280             r2!EIDOS = "e"
 282             r2!hme = RDB!PaperDate ' CDate(mID(a, 17, 10))
           
@@ -2239,7 +2239,7 @@ parakato:
     
 314     RDB.Close
 
-316     r.Close
+316     R.Close
 318     r2.Close
     
          'Gdb.CommitTrans
@@ -2250,7 +2250,7 @@ parakato:
     
 320     RDB.Open "select * from PaperProducts     ", cnn, adOpenDynamic, adLockOptimistic ' where canceled=false and papercode<>12 ORDER BY PaperAA
      
-322     r.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
+322     R.Open "SELECT TOP 1 * FROM EGGTIM", Gdb, adOpenDynamic, adLockOptimistic
     
         Dim KN As Integer
     
@@ -2267,7 +2267,7 @@ parakato:
         
             '  Input #1, a
              
-332         r.AddNew
+332         R.AddNew
         
 334         If RDB!paperCode = 0 Then
                ' mLet = "T"
@@ -2312,7 +2312,7 @@ parakato:
 366             GoTo rollover
             End If
         
-368         r!ATIM = mLet + Format(RDB!paperaa, "000000")
+368         R!ATIM = mLet + Format(RDB!paperaa, "000000")
         
 370         r2.Open "select * from TIM WHERE ATIM='" + mLet + Format(RDB!paperaa, "000000") + "'", Gdb, adOpenDynamic, adLockOptimistic
 372         knok = 0
@@ -2327,59 +2327,59 @@ parakato:
             Next
         
 380         If knok = 0 Then
-382             MsgBox "Î·ËÔÚ ÛÙÁÌ ‰ÔÏﬁ Ù˘Ì ÂÈÛÂÒ˜ÔÏ›Ì˘Ì. ƒÂÌ ‚Ò›ËÁÍÂ ÙÔ master ÙÔı  " + r!ATIM
+382             MsgBox "Î·ËÔÚ ÛÙÁÌ ‰ÔÏﬁ Ù˘Ì ÂÈÛÂÒ˜ÔÏ›Ì˘Ì. ƒÂÌ ‚Ò›ËÁÍÂ ÙÔ master ÙÔı  " + R!ATIM
 384             GoTo rollover
             End If
 
 386         If r2.EOF Then
-388             r("HME") = CDate(Format(Now, "MM/DD/YYYY"))
+388             R("HME") = CDate(Format(Now, "MM/DD/YYYY"))
             Else
-390             r("HME") = r2!hme
+390             R("HME") = r2!hme
             End If
 
 392         r2.Close
         
-394         r!KODE = RDB!ProductCode ' Trim(mID(a, 27, 5))
+394         R!KODE = RDB!ProductCode ' Trim(mID(a, 27, 5))
 396         r2.Open "select * from EID WHERE KOD='" + RDB!ProductCode + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 398         If r2.EOF Then
-400             r!ONOMA = ""
-402             r!FPA = 1
+400             R!ONOMA = ""
+402             R!FPA = 1
             Else
-404             r!ONOMA = r2("ONO")
-406             r!FPA = r2!FPA
+404             R!ONOMA = r2("ONO")
+406             R!FPA = r2!FPA
             End If
         
 408         r2.Close
         
-410         r!POSO = Val(RDB!ProductQuantity) ' Val(mID(a, 138, 4))
-412         r!PIS = Val(RDB!ProductQuantity)   ' Val(mID(a, 138, 4))
+410         R!POSO = Val(RDB!ProductQuantity) ' Val(mID(a, 138, 4))
+412         R!PIS = Val(RDB!ProductQuantity)   ' Val(mID(a, 138, 4))
         
 414         If akyr = 1 Then
-416             r!POSO = -Val(RDB!ProductQuantity)  'Val(mID(a, 138, 4))
-418             r!PIS = -Val(RDB!ProductQuantity)  'Val(mID(a, 138, 4))
+416             R!POSO = -Val(RDB!ProductQuantity)  'Val(mID(a, 138, 4))
+418             R!PIS = -Val(RDB!ProductQuantity)  'Val(mID(a, 138, 4))
             End If
         
-420         r!XRE = 0
+420         R!XRE = 0
         
-422         r!TIMM = Val(RDB!ProductPrice) ' Val(mID(a, 64, 6))
+422         R!TIMM = Val(RDB!ProductPrice) ' Val(mID(a, 64, 6))
         
-424         r!EKPT = Val(RDB!ProductDiscount) ' Val(mID(a, 79, 6))
-426         r!kau_ajia = r!TIMM * r!POSO * (100 - r!EKPT) / 100
-428         r!MIK_AJIA = r!kau_ajia * (100 + g_Fpa(r!FPA) / 100) ' GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND AYJON=" + str(R!FPA))) / 100
-430         r!apot = 1
+424         R!EKPT = Val(RDB!ProductDiscount) ' Val(mID(a, 79, 6))
+426         R!kau_ajia = R!TIMM * R!POSO * (100 - R!EKPT) / 100
+428         R!MIK_AJIA = R!kau_ajia * (100 + g_Fpa(R!FPA) / 100) ' GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND AYJON=" + str(R!FPA))) / 100
+430         R!apot = 1
         
-432         r!id_num = knok ' TO ID_NUM TOY TIMOLOGIOY
+432         R!id_num = knok ' TO ID_NUM TOY TIMOLOGIOY
         
-434         r!EIDOS = "e"
-436         r.Update
+434         R!EIDOS = "e"
+436         R.Update
         
 438         RDB.MoveNext
             ' Gdb.Execute "INSERT INTO EGGTIM (ATIM,KODE,POSO,TIMM,ONOMA,"
          
         Loop
     
-440     r.Close
+440     R.Close
     
 442     RDB.Close
     
@@ -2636,7 +2636,7 @@ Private Sub IMPORTSERV_Click()
  ' GDBDRAMA.Open "DSN=doytsios;uid=sa;pwd=p@ssw0rd"
  F_DOUTSIOSREM = Trim(F_DOUTSIOSREM)
  
- If InStr(UCase(F_DOUTSIOSREM), "DOUTSIOS") = 0 Then
+ If InStr(UCase(F_DOUTSIOSREM), "49705") = 0 Then  'PORTA DOYTSIOY
      
      MsgBox "À¡»œ”  254"
      Exit Sub
@@ -2650,8 +2650,8 @@ Private Sub IMPORTSERV_Click()
  
  ' F_DOUTSIOSPARAS = Trim(F_DOUTSIOSPARAS)
  On Error GoTo SFALMA1
-  Dim r As New ADODB.Recordset
-  r.Open "select top " + ARPAR.Text + " ATIM,HME,ID_NUM  from " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM WHERE LEFT(ATIM,1)='" + F_LINKED_PARAST + "' order by ID_NUM DESC", Gdb, adOpenDynamic, adLockOptimistic
+  Dim R As New ADODB.Recordset
+  R.Open "select top " + ARPAR.Text + " ATIM,HME,ID_NUM  from " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM WHERE LEFT(ATIM,1)='" + F_LINKED_PARAST + "' order by ID_NUM DESC", Gdb, adOpenDynamic, adLockOptimistic
   Me.Caption = "OK OPEN " + F_DOUTSIOSREM + ".DOUTSIOSQ.dbo.TIM"
   
   Dim COLTIM As String
@@ -2671,11 +2671,11 @@ Private Sub IMPORTSERV_Click()
   Dim TEL_ID_NUM As Long
   
   Dim CTR As String
-  CTR = InputBox("‘—œ–œ” À«ÿ«” ¡—◊≈…œ’ 2= À¡””… º” 1=DOKEIDD 3=¡Õ¡À(¡—√œ”)", "", "2")
+  'CTR = InputBox("‘—œ–œ” À«ÿ«” ¡—◊≈…œ’ 2= À¡””… º” 1=DOKEIDD 3=¡Õ¡À(¡—√œ”)", "", "2")
    Dim TROPOS As Integer
-  TROPOS = Val(CTR)
+  TROPOS = 2 ' Val(CTR)
   
-  Do While Not r.EOF
+  Do While Not R.EOF
   
    
    If PROTO = 0 Then
@@ -2722,8 +2722,8 @@ Private Sub IMPORTSERV_Click()
    End If
    
   
-    MATIM = r!ATIM
-    mID_NUM = r!id_num  ' TO ID_NUM TOY SERVER
+    MATIM = R!ATIM
+    mID_NUM = R!id_num  ' TO ID_NUM TOY SERVER
     PROTO = PROTO + 1
     
     '‰ÂÌ ı·Ò˜ÂÈ ÙÔ ·Ò·ÛÙ·ÙÈÍÔ Â‰˘ ·Ò· ÙÔ ˆÔÒÙ˘Ì˘
@@ -2741,9 +2741,9 @@ Private Sub IMPORTSERV_Click()
   
     End If
     
-    r.MoveNext
+    R.MoveNext
   Loop
-r.Close
+R.Close
 'GDBDRAMA.Close
 
 MsgBox "OK " + str(eis)
@@ -2780,7 +2780,7 @@ End Sub
 Private Sub EXP_SMARTWARE_Click()
 
     '  a = toascii("C:\MERCVB\FPERP.TXT", "C:\TEMP\PEL.TXT")
-    Dim r As New ADODB.Recordset
+    Dim R As New ADODB.Recordset
 
     Dim PIN(100, 2)
 
@@ -2789,16 +2789,16 @@ Private Sub EXP_SMARTWARE_Click()
 
     Dim COUNTER As Long: COUNTER = 0
 
-    r.Open "SELECT *FROM PINAKES WHERE TYPOS=101 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM PINAKES WHERE TYPOS=101 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         COUNTER = COUNTER + 1
-        PIN(COUNTER, 1) = r("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
-        PIN(COUNTER, 2) = r("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
-        r.MoveNext
+        PIN(COUNTER, 1) = R("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
+        PIN(COUNTER, 2) = R("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     Dim a As String, k As Integer
 
@@ -2806,9 +2806,9 @@ Private Sub EXP_SMARTWARE_Click()
 
     F = FreeFile
     Open "C:\TEMP\PEL.ASC" For Output As #F
-    r.Open "SELECT *FROM PEL WHERE EIDOS='e' order by EPO", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM PEL WHERE EIDOS='e' order by EPO", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         a = ""
 
         For k = 1 To COUNTER
@@ -2817,11 +2817,11 @@ Private Sub EXP_SMARTWARE_Click()
                 If Len(PIN(k, 1)) > 0 Then
 
                     ' ·ÒÈËÏÁÙÈÍÔ
-                    If r(PIN(k, 1)).Type = 7 Or r(PIN(k, 1)).Type = 5 Or r(PIN(k, 1)).Type = 131 Then     'IsNumeric(
-                        a = a + Right(Space(100) + Format(IIf(IsNull(r(PIN(k, 1))), 0, r(PIN(k, 1))), String(PIN(k, 2), "#") + ".00"), PIN(k, 2))
+                    If R(PIN(k, 1)).Type = 7 Or R(PIN(k, 1)).Type = 5 Or R(PIN(k, 1)).Type = 131 Then     'IsNumeric(
+                        a = a + Right(Space(100) + Format(IIf(IsNull(R(PIN(k, 1))), 0, R(PIN(k, 1))), String(PIN(k, 2), "#") + ".00"), PIN(k, 2))
                     Else
                         ' string
-                        a = a + Left(IIf(IsNull(r(PIN(k, 1))), Space(100), r(PIN(k, 1))) + Space(100), PIN(k, 2))
+                        a = a + Left(IIf(IsNull(R(PIN(k, 1))), Space(100), R(PIN(k, 1))) + Space(100), PIN(k, 2))
                     End If
                 End If
 
@@ -2833,31 +2833,31 @@ Private Sub EXP_SMARTWARE_Click()
 
         Print #F, a
         'COUNTER = COUNTER + 1
-        r.MoveNext
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     Close #F
  
     'EIDH
     COUNTER = 0
-    r.Open "SELECT *FROM PINAKES WHERE TYPOS=102 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM PINAKES WHERE TYPOS=102 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         COUNTER = COUNTER + 1
-        PIN(COUNTER, 1) = r("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
-        PIN(COUNTER, 2) = r("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
-        r.MoveNext
+        PIN(COUNTER, 1) = R("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
+        PIN(COUNTER, 2) = R("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     F = FreeFile
     Open "C:\TEMP\APO.ASC" For Output As #F
-    r.Open "SELECT *FROM EID  order by ONO", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM EID  order by ONO", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         a = ""
 
         For k = 1 To COUNTER
@@ -2866,11 +2866,11 @@ Private Sub EXP_SMARTWARE_Click()
                 If Len(PIN(k, 1)) > 0 Then
 
                     ' ·ÒÈËÏÁÙÈÍÔ
-                    If r(PIN(k, 1)).Type = 7 Or r(PIN(k, 1)).Type = 5 Or r(PIN(k, 1)).Type = 131 Then     'IsNumeric(
-                        a = a + Right(Space(100) + Format(IIf(IsNull(r(PIN(k, 1))), 0, r(PIN(k, 1))), String(PIN(k, 2), "#") + ".0000"), PIN(k, 2))
+                    If R(PIN(k, 1)).Type = 7 Or R(PIN(k, 1)).Type = 5 Or R(PIN(k, 1)).Type = 131 Then     'IsNumeric(
+                        a = a + Right(Space(100) + Format(IIf(IsNull(R(PIN(k, 1))), 0, R(PIN(k, 1))), String(PIN(k, 2), "#") + ".0000"), PIN(k, 2))
                     Else
                         ' string
-                        a = a + Left(IIf(IsNull(r(PIN(k, 1))), Space(100), r(PIN(k, 1))) + Space(100), PIN(k, 2))
+                        a = a + Left(IIf(IsNull(R(PIN(k, 1))), Space(100), R(PIN(k, 1))) + Space(100), PIN(k, 2))
                     End If
                 End If
 
@@ -2882,31 +2882,31 @@ Private Sub EXP_SMARTWARE_Click()
 
         Print #F, a
         'COUNTER = COUNTER + 1
-        r.MoveNext
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     Close #F
  
     'TIMOKATALOGOS
     COUNTER = 0
-    r.Open "SELECT *FROM PINAKES WHERE TYPOS=103 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM PINAKES WHERE TYPOS=103 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         COUNTER = COUNTER + 1
-        PIN(COUNTER, 1) = r("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
-        PIN(COUNTER, 2) = r("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
-        r.MoveNext
+        PIN(COUNTER, 1) = R("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
+        PIN(COUNTER, 2) = R("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     F = FreeFile
     Open "C:\TEMP\TIMOK.ASC" For Output As #F
-    r.Open "SELECT *FROM TIMOKAT  order by ONO", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT *FROM TIMOKAT  order by ONO", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         a = ""
 
         For k = 1 To COUNTER
@@ -2915,11 +2915,11 @@ Private Sub EXP_SMARTWARE_Click()
                 If Len(PIN(k, 1)) > 0 Then
 
                     ' ·ÒÈËÏÁÙÈÍÔ
-                    If r(PIN(k, 1)).Type = 7 Or r(PIN(k, 1)).Type = 5 Or r(PIN(k, 1)).Type = 131 Then     'IsNumeric(
-                        a = a + Right(Space(100) + Format(IIf(IsNull(r(PIN(k, 1))), 0, r(PIN(k, 1))), String(PIN(k, 2), "#") + ".0000"), PIN(k, 2))
+                    If R(PIN(k, 1)).Type = 7 Or R(PIN(k, 1)).Type = 5 Or R(PIN(k, 1)).Type = 131 Then     'IsNumeric(
+                        a = a + Right(Space(100) + Format(IIf(IsNull(R(PIN(k, 1))), 0, R(PIN(k, 1))), String(PIN(k, 2), "#") + ".0000"), PIN(k, 2))
                     Else
                         ' string
-                        a = a + Left(IIf(IsNull(r(PIN(k, 1))), Space(100), r(PIN(k, 1))) + Space(100), PIN(k, 2))
+                        a = a + Left(IIf(IsNull(R(PIN(k, 1))), Space(100), R(PIN(k, 1))) + Space(100), PIN(k, 2))
                     End If
                 End If
 
@@ -2931,10 +2931,10 @@ Private Sub EXP_SMARTWARE_Click()
 
         Print #F, a
         'COUNTER = COUNTER + 1
-        r.MoveNext
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     Close #F
  
@@ -3007,7 +3007,7 @@ Private Sub Command3_Click()
 
         Dim DB As Database
 
-        Dim r  As New ADODB.Recordset
+        Dim R  As New ADODB.Recordset
 
         Dim c, D, e, F, G, n1, n2
 
@@ -3061,13 +3061,13 @@ Private Sub Command3_Click()
 310         List1.AddItem Format(nn, "####") + " " + a
 
 320         KODPEL = Left(a, 4)    'R("shm1") ' Í˘‰.ÂÎ·ÙÁ
-330         r.Open "select * from EID where KOD='" + Trim(mID(a, 5, 3)) + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+330         R.Open "select * from EID where KOD='" + Trim(mID(a, 5, 3)) + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
-340         gm_fpa = r("fpa")
-350         m_onoma = r("ono")
+340         gm_fpa = R("fpa")
+350         m_onoma = R("ono")
 
-360         KODEID = r("KOD")    ' Í˘‰.ÂÈ‰ÔıÚ
-370         r.Close
+360         KODEID = R("KOD")    ' Í˘‰.ÂÈ‰ÔıÚ
+370         R.Close
 
 380         n1 = InStr(1, a, "*")
 390         n2 = InStr(1, a, "=")
@@ -3257,7 +3257,7 @@ Private Sub Command4_Click()
 
         Dim DB As Database, re As New ADODB.Recordset, rt As New ADODB.Recordset
 
-        Dim r  As New ADODB.Recordset
+        Dim R  As New ADODB.Recordset
 
         Dim FEGG(10)
 
@@ -3339,28 +3339,28 @@ Private Sub Command4_Click()
 540     rt("B_N1") = 1
 550     rt.Update
 
-560     r.Open "SELECT  *FROM EGG", Gdb, adOpenDynamic, adLockOptimistic
-570     r.AddNew
-580     r("hme") = DTPicker1.Value
-590     r("apa") = Val(m_tim)
-600     r("atim") = "Œ" + m_tim
-610     r("ait") = "ÏÂÙ·ˆÔÒÈÍ·"
-620     r("XREOSI") = 0: r("PISTOSI") = Val(POSO.Text)    ' ¡–œ÷’√« ÕULL
-630     r("eidos") = "r"
-640     r("kod") = M_KOD
-650     r.Update
+560     R.Open "SELECT  *FROM EGG", Gdb, adOpenDynamic, adLockOptimistic
+570     R.AddNew
+580     R("hme") = DTPicker1.Value
+590     R("apa") = Val(m_tim)
+600     R("atim") = "Œ" + m_tim
+610     R("ait") = "ÏÂÙ·ˆÔÒÈÍ·"
+620     R("XREOSI") = 0: R("PISTOSI") = Val(POSO.Text)    ' ¡–œ÷’√« ÕULL
+630     R("eidos") = "r"
+640     R("kod") = M_KOD
+650     R.Update
 
-660     r.AddNew
-670     r("hme") = DTPicker1.Value
-680     r("apa") = Val(m_tim)
-690     r("atim") = "Œ" + m_tim
-700     r("ait") = "ÏÂÙÒÁÙ·"
-710     r("XREOSI") = Val(POSO.Text): r("PISTOSI") = 0    ' ¡–œ÷’√« ÕULL
-720     r("eidos") = "r"
-730     r("kod") = M_KOD
-740     r.Update
+660     R.AddNew
+670     R("hme") = DTPicker1.Value
+680     R("apa") = Val(m_tim)
+690     R("atim") = "Œ" + m_tim
+700     R("ait") = "ÏÂÙÒÁÙ·"
+710     R("XREOSI") = Val(POSO.Text): R("PISTOSI") = 0    ' ¡–œ÷’√« ÕULL
+720     R("eidos") = "r"
+730     R("kod") = M_KOD
+740     R.Update
 
-750     r.Close
+750     R.Close
 
 760     rt.Close
 770     re.Close
@@ -3414,7 +3414,7 @@ Dim m_ideggtim As Long
 
 
 
-        Dim r  As New ADODB.Recordset
+        Dim R  As New ADODB.Recordset
 
         Dim FEGG(10)
 
@@ -3843,7 +3843,7 @@ Private Sub Command9_Click()
 
         Dim DB As Database
 
-        Dim r  As New ADODB.Recordset
+        Dim R  As New ADODB.Recordset
 
         Dim c, D, e, F, G, n1, n2
 
@@ -3937,9 +3937,9 @@ Private Sub Command9_Click()
             ' KODPEL = LTrim(mID(A, Col(9, 1), Col(9, 2) + 1)) 'R("shm1") ' Í˘‰.ÂÎ·ÙÁ
 440         KODPEL = LTrim(mID(a, Col(9, 1), Col(9, 2) + 1))    'R("shm1") ' Í˘‰.ÂÎ·ÙÁ
 
-450         r.Open "select * from EID where KOD='" + Trim(LTrim(mID(a, Col(3, 1), Col(3, 2)))) + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+450         R.Open "select * from EID where KOD='" + Trim(LTrim(mID(a, Col(3, 1), Col(3, 2)))) + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
-460         If r.EOF Then
+460         If R.EOF Then
 470             MsgBox "ƒ≈Õ ¬—≈»« ≈ œ  Ÿƒ… œ” " + Trim(LTrim(mID(a, Col(3, 1), Col(3, 2))))
 480             Close #1
 490             Close #4
@@ -3948,11 +3948,11 @@ Private Sub Command9_Click()
 
             End If
 
-500         gm_fpa = r("fpa")
-510         m_onoma = r("ono")
+500         gm_fpa = R("fpa")
+510         m_onoma = R("ono")
 
-520         KODEID = r("KOD")    ' Í˘‰.ÂÈ‰ÔıÚ
-530         r.Close
+520         KODEID = R("KOD")    ' Í˘‰.ÂÈ‰ÔıÚ
+530         R.Close
 
 540         ATIM = mID(a, Col(1, 1), Col(1, 2))  ' mID(A, 4, 7) 'ariumos timologioy
 
@@ -4061,15 +4061,15 @@ Private Sub Command9_Click()
 
             'ÂÎÂ„˜ÔÚ ‰ÈÎÔÂ„„Ò·ˆﬁÚ
 
-860         r.Open "select COUNT(*) FROM TIM WHERE ATIM='" + ArTim + "' AND HME='" + Format(m_hme, "MM/DD/YYYY") + "'", Gdb, adOpenDynamic, adLockBatchOptimistic
+860         R.Open "select COUNT(*) FROM TIM WHERE ATIM='" + ArTim + "' AND HME='" + Format(m_hme, "MM/DD/YYYY") + "'", Gdb, adOpenDynamic, adLockBatchOptimistic
 
-870         If r(0) > 0 Then
+870         If R(0) > 0 Then
                 ' MsgBox "‘œ ‘…ÃœÀœ√…œ " + ArTim + " ≈…Õ¡… «ƒ«  ¡‘¡◊Ÿ—«Ã≈ÕO "
                 ' COMMA = MsgBox("NA ƒ…¡√—¡÷≈… ‘œ «ƒ« ’–¡—◊ŸÕ? " + ArTim, vbYesNo)
 880             COMMA = vbYes
 
 890             If COMMA = vbNo Then
-900                 r.Close
+900                 R.Close
 
                     Exit Sub
 
@@ -4080,7 +4080,7 @@ Private Sub Command9_Click()
                 End If
             End If
 
-940         r.Close
+940         R.Close
 
 950         G = "INSERT INTO EGGTIM " & "(EIDOS,APOT,KODE,HME,ATIM,PELKOD,POSO,TIMM,PIS,ONOMA)" & " VALUES ('e',1,'" + KODEID + "'," & "'" + hme + "'," & "'" + ATIM + "'," & "'" + KODPEL + "'," & Replace(Format(POS, "0000000.00"), ",", ".") + "," & Replace(Format(Round(TIMM, 2), "###0.00"), ",", ".") + "," & Replace(Format(POS, "0000000.00"), ",", ".") + ",'" + m_onoma + "');"
 960         Write #4, G
@@ -4239,19 +4239,19 @@ F_LINKED_PARAST = (FINDPARAMETROI(1, "BOHU5", "F_LINKED_PARAST", "AT", " Ÿƒ… œ… 
 
 
 
- If InStr(F_DOUTSIOSREM, "DOUTSIOS") = 0 Then
+ If InStr(F_DOUTSIOSREM, "49705") = 0 Then
     IMPORTSERV.Enabled = False
     
     
  End If
 
 
-Dim r As New ADODB.Recordset
+Dim R As New ADODB.Recordset
 
 
 On Error GoTo parakato
 
-1000    r.Open "SELECT AFM+';'+EPO AS PERIGRAFH2 FROM PEL WHERE EIDOS='r' AND KODGAL=" + str(F_KATHG_METAG) + " ORDER BY EPO", Gdb, adOpenDynamic, adLockOptimistic
+1000    R.Open "SELECT AFM+';'+EPO AS PERIGRAFH2 FROM PEL WHERE EIDOS='r' AND KODGAL=" + str(F_KATHG_METAG) + " ORDER BY EPO", Gdb, adOpenDynamic, adLockOptimistic
 
         
 
@@ -4259,17 +4259,17 @@ On Error GoTo parakato
 
         'FPA
         'R.Seek "=", 1, 1
-1010    Do While Not r.EOF
+1010    Do While Not R.EOF
 
 1020        'If R("typos") = 1 Then
-1030            AFM.AddItem r!PERIGRAFH2  ' str(R("AYJON")) + " -> " + str(R("TIMH"))
+1030            AFM.AddItem R!PERIGRAFH2  ' str(R("AYJON")) + " -> " + str(R("TIMH"))
             'End If
 
-1040        r.MoveNext
+1040        R.MoveNext
         Loop
 
         ' mon.metrhshs
-1050    r.Close
+1050    R.Close
 
 parakato:
 
@@ -4426,7 +4426,7 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 
         Dim ejodos
 
-        Dim e, MM, S
+        Dim e, MM, s
 
         Dim ektypoths
 
@@ -4434,7 +4434,7 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 
         Dim CDOK
 
-        Dim H$
+        Dim h$
 
 100     List1.Clear
 110     List1.AddItem "Ã«  ¡‘¡◊Ÿ—«»≈Õ‘¡  Ÿƒ/BARC"
@@ -4453,14 +4453,14 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 
 140     Open "C:\MODELO2.CSV" For Input As #1
 
-        Dim AR(8), ss$
+        Dim AR(8), SS$
 
-150     Input #1, ss$
+150     Input #1, SS$
 
 160     Do While Not EOF(1)    ' ELEM.EOF
-170         Input #1, ss$
+170         Input #1, SS$
 
-180         DUM = FETES_DELIM(ss$, ELEM)
+180         DUM = FETES_DELIM(SS$, ELEM)
 
 190         If IsNull(ELEM(6)) Then Exit Do
 
@@ -4515,7 +4515,7 @@ Function toascii3(ByVal arxeio As String, moutput As String)
 400         Gdb.Execute e
 
 410         DoEvents
-420         Me.Caption = H$
+420         Me.Caption = h$
 
             '   Print #1, S2
             '     ELEM.MoveNext
@@ -4616,22 +4616,22 @@ End Sub
 
 Private Sub IMPORT_MHLIOY_Click()
 '**************************************  PROSOXH AYTO TREXEI APO TON SAERVER *******************************
-Dim D1, d2 As String
+Dim d1, d2 As String
 Dim LATOS As String
 On Error GoTo OUT
 LATOS = "ÁÏÂÒÔÏÁÌﬂ·"
-D1 = "01/01/2026"
+d1 = "01/01/2026"
 d2 = "31/01/2026"
-D1 = InputBox("SERVER: " + F_LINKEDSERVER + " ¡—/ ¡:" + F_LINKED_PARAST + " ¡–œ ", "·¸", D1)
+d1 = InputBox("SERVER: " + F_LINKEDSERVER + " ¡—/ ¡:" + F_LINKED_PARAST + " ¡–œ ", "·¸", d1)
 
 d2 = InputBox("¡—/ ¡:" + F_LINKED_PARAST + " ≈Ÿ” ", "›˘Ú", d2)
 
-If Len(Trim(D1)) <> 10 Or Len(Trim(d2)) <> 10 Then
+If Len(Trim(d1)) <> 10 Or Len(Trim(d2)) <> 10 Then
     MsgBox " À¡»œ” «Ã≈—œÃ«Õ…¡"
     Exit Sub
 End If
 
-D1 = mID(D1, 4, 3) + Left(D1, 3) + Right(D1, 4)
+d1 = mID(d1, 4, 3) + Left(d1, 3) + Right(d1, 4)
 d2 = mID(d2, 4, 3) + Left(d2, 3) + Right(d2, 4)
 
 
@@ -4650,14 +4650,14 @@ LATOS = "ÛıÌ‰ÂÛÁ"
 'Dim F_LINKED_PARAST As String
 'INSERT INTO PEL (EIDOS,KOD,EPO) SELECT 'r',KOD,EPO
 ' FROM [LAGAKIS.DDNS.NET\SQLEXPRESS,49818].[EMP].[dbo].[PEL] WHERE EIDOS='r'
-Dim r As New ADODB.Recordset
+Dim R As New ADODB.Recordset
 F_LINKEDSERVER = Trim(F_LINKEDSERVER)
-r.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + D1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
+R.Open "SELECT * FROM " + F_LINKEDSERVER + ".dbo.TIM WHERE LEFT(ATIM,1) IN (" + F_LINKED_PARAST + ") AND  HME>='" + d1 + "' AND HME<='" + d2 + "'", Gdb, adOpenDynamic, adLockOptimistic
 Dim mmID As Long
 LATOS = "ÂÈÛ·„˘„ﬁ ·Ò/Í˘Ì"
-Do While Not r.EOF
-    mmID = r!id_num
-    If GGET_NVALUE("SELECT COUNT(*) FROM TIM WHERE ATIM='" + r!ATIM + "'") > 0 Then
+Do While Not R.EOF
+    mmID = R!id_num
+    If GGET_NVALUE("SELECT COUNT(*) FROM TIM WHERE ATIM='" + R!ATIM + "'") > 0 Then
     
     Else
         eis = eis + 1
@@ -4671,8 +4671,8 @@ Do While Not r.EOF
        End If
     End If
     DoEvents
-    Me.Caption = str(eis) + " " + r!ATIM
-    r.MoveNext
+    Me.Caption = str(eis) + " " + R!ATIM
+    R.MoveNext
     'Exit Do
 Loop
 
@@ -4715,7 +4715,7 @@ End Sub
 Private Sub KARAM_Click()
 Dim ROM As New ADODB.Recordset
  '  a = toascii("C:\MERCVB\FPERP.TXT", "C:\TEMP\PEL.TXT")
-    Dim r As New ADODB.Recordset
+    Dim R As New ADODB.Recordset
 
     Dim PIN(100, 2)
 
@@ -4760,10 +4760,10 @@ sql = "SELECT * FROM PEL WHERE EIDOS='e' "
 
 
 
-r.Open sql, Gdb, adOpenDynamic, adLockOptimistic
+R.Open sql, Gdb, adOpenDynamic, adLockOptimistic
 
 Open F_DIR_APOS_KARAM + "\CUST" For Output As #1
-Dim S As String
+Dim s As String
 
 Dim FPA As String
 ' If IS_MERC = 1 Then
@@ -4773,11 +4773,11 @@ Dim FPA As String
 ' End If
  
       
-Do While Not r.EOF
-   S = ""
-   S = S + Left(r!KOD + Space(15), 15) + " "
-   S = S + Left(to437(r!EPO) + Space(35), 31) + " "
-   S = S + Left(to437(CNull(r!EPA)) + Space(35), 22) + " "
+Do While Not R.EOF
+   s = ""
+   s = s + Left(R!kod + Space(15), 15) + " "
+   s = s + Left(to437(R!EPO) + Space(35), 31) + " "
+   s = s + Left(to437(CNull(R!EPA)) + Space(35), 22) + " "
    
    
 '   If IS_MERC = 1 Then
@@ -4813,48 +4813,48 @@ Do While Not r.EOF
    
    
    
-   S = S + Left(to437(CNull(r!DIE)) + Space(30), 22) + " "
-    S = S + Left(to437(CNull(r!DIE)) + Space(30), 22) + " "
+   s = s + Left(to437(CNull(R!DIE)) + Space(30), 22) + " "
+    s = s + Left(to437(CNull(R!DIE)) + Space(30), 22) + " "
     
-    S = S + Left(to437(CNull(r!pol)) + Space(30), 22) + " "
+    s = s + Left(to437(CNull(R!pol)) + Space(30), 22) + " "
     
     
    
-    S = S + Left(to437(CNull(r!AFM)) + Space(13), 11) + " "  'AFM
+    s = s + Left(to437(CNull(R!AFM)) + Space(13), 11) + " "  'AFM
     
-     S = S + Left(to437(CNull(r!doy)) + Space(30), 22) + " " 'DOY
+     s = s + Left(to437(CNull(R!doy)) + Space(30), 22) + " " 'DOY
     
-    S = S + Right(Space(35) + Format(r!TYP, "####0.00"), 13) + " "
+    s = s + Right(Space(35) + Format(R!TYP, "####0.00"), 13) + " "
     
-    S = S + Left("00.00", 5) + " "  ' EKPT
+    s = s + Left("00.00", 5) + " "  ' EKPT
     
-      S = S + Left("0000002000.00", 13) + " "  ' PLAFON
+      s = s + Left("0000002000.00", 13) + " "  ' PLAFON
     
-     S = S + Left(to437(CNull(r!THL)) + Space(25), 22) + " " 'THL
+     s = s + Left(to437(CNull(R!THL)) + Space(25), 22) + " " 'THL
      
-     S = S + Left(to437(CNull(r!ch4)) + Space(30), 22) + " " 'THL2
+     s = s + Left(to437(CNull(R!ch4)) + Space(30), 22) + " " 'THL2
      
      
      
   
-     S = S + Space(5) + " " 'KENA
-     S = S + Space(1) + " " 'KENA
+     s = s + Space(5) + " " 'KENA
+     s = s + Space(1) + " " 'KENA
      
      
      
      
-     S = S + "00000" 'ekpt
+     s = s + "00000" 'ekpt
      
    
    
   
-   Print #1, S
-   r.MoveNext
+   Print #1, s
+   R.MoveNext
 Loop
 
 
 Close #1
-r.Close
+R.Close
 
 
 MsgBox " –≈À¡‘≈” œ "
@@ -4979,7 +4979,7 @@ sql = sql + " FROM EID where LEN(ISNULL(CH3,''))>0 "
 'sql = sql + " inner join [HEVATCLASSES] v  on (I.[HEVTCLID] = v.[HEID])"
 
 
-   r.Open sql, Gdb, adOpenDynamic, adLockOptimistic
+   R.Open sql, Gdb, adOpenDynamic, adLockOptimistic
 
 'If IS_MERC = 1 Then
 '     Dim R2 As New ADODB.Recordset
@@ -4990,17 +4990,17 @@ Open F_DIR_APOS_KARAM + "\PROD" For Output As #1
 
 'Dim fpa As String
 
-Do While Not r.EOF
-   S = ""
-   S = S + Left(r!KOD + Space(15), 15) + " "
-   S = S + Left(to437(r!Name) + Space(35), 35) + " "
-   S = S + Left(r!KOD + Space(35), 15) + " "
+Do While Not R.EOF
+   s = ""
+   s = s + Left(R!kod + Space(15), 15) + " "
+   s = s + Left(to437(R!Name) + Space(35), 35) + " "
+   s = s + Left(R!kod + Space(35), 15) + " "
    
-   S = S + Left(to437(r!MON) + Space(3), 3) + " "
-    S = S + Left(to437(r!MON) + Space(3), 3) + " "
-     S = S + Right$("     " + Format(nNull(r!SYSKMAX), "#0"), 5) + " " 'METATR
+   s = s + Left(to437(R!MON) + Space(3), 3) + " "
+    s = s + Left(to437(R!MON) + Space(3), 3) + " "
+     s = s + Right$("     " + Format(nNull(R!SYSKMAX), "#0"), 5) + " " 'METATR
      
- S = S + Right(Space(35) + Format(r!Price, "####0.00"), 13) + " "
+ s = s + Right(Space(35) + Format(R!Price, "####0.00"), 13) + " "
  
  
  
@@ -5031,25 +5031,25 @@ Do While Not r.EOF
  
  
      FPA = "    7"
-     If r!VAT = 2 Then
+     If R!VAT = 2 Then
         FPA = "   24" ' 24%
 '        If IS_MERC = 1 Then
 '            GMERC.Execute "update EID set FPA=2  WHERE   KOD='" + R!kod + "'"
 '        End If
-     ElseIf r!VAT = 1 Then
+     ElseIf R!VAT = 1 Then
         FPA = "   13" '13%
 '        If IS_MERC = 1 Then
 '            GMERC.Execute "update EID set FPA=1  WHERE   KOD='" + R!kod + "'"
 '        End If
 '      ElseIf Val(mID(R!VAT, 2, 6)) = 3 Then
 '       fpa = "    6"
-      ElseIf r!VAT = 5 Then
+      ElseIf R!VAT = 5 Then
         FPA = "    0"
      End If
-     S = S + FPA + " "
-     S = S + Space(13) + " " 'ypol
-     S = S + Space(5) + " " 'ekpt
-     S = S + Space(4)
+     s = s + FPA + " "
+     s = s + Space(13) + " " 'ypol
+     s = s + Space(5) + " " 'ekpt
+     s = s + Space(4)
      
  
 '   S = S + Left(R!HENAME + Space(35), 35) + " "
@@ -5063,8 +5063,8 @@ Do While Not r.EOF
    
    
  '  "  " + R("HECODE")
-   Print #1, S
-   r.MoveNext
+   Print #1, s
+   R.MoveNext
 Loop
 
 
@@ -5085,29 +5085,29 @@ MsgBox "≈…ƒ« œ "
  
     'TIMOKATALOGOS
     COUNTER = 0
-  r.Close
-  r.Open "SELECT *FROM PINAKES WHERE TYPOS=103 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
+  R.Close
+  R.Open "SELECT *FROM PINAKES WHERE TYPOS=103 AND TIMH>0 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         COUNTER = COUNTER + 1
-        PIN(COUNTER, 1) = r("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
-        PIN(COUNTER, 2) = r("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
-        r.MoveNext
+        PIN(COUNTER, 1) = R("PERIGRAFH")    '–≈ƒ…œ ‘œ’  ’—…œ’ ¡—◊≈…œ’ (SQLSERVER)
+        PIN(COUNTER, 2) = R("TIMH")    ' ¡—…»Ãœ” ”‘«À«” ‘œ’ EXCEL
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  Dim F As Integer
  Dim a As String
     F = FreeFile
     Open F_DIR_APOS_KARAM + "\TIMOK.ASC" For Output As #F
-    r.Open "SELECT ISNULL(EKPT,0) AS EKPT,isnull(TIMOKEID,'') as TIMOKEID,isnull(TIMOKPEL,'') as TIMOKPEL FROM TIMOKAT WHERE NOT(EKPT IS NULL) order by TIMOKPEL", Gdb, adOpenDynamic, adLockOptimistic
+    R.Open "SELECT ISNULL(EKPT,0) AS EKPT,isnull(TIMOKEID,'') as TIMOKEID,isnull(TIMOKPEL,'') as TIMOKPEL FROM TIMOKAT WHERE NOT(EKPT IS NULL) order by TIMOKPEL", Gdb, adOpenDynamic, adLockOptimistic
 
-    Do While Not r.EOF
+    Do While Not R.EOF
         a = ""
-        ROM.Open "SELECT *FROM EID WHERE CH1='" + r!timokEID + "'  order by KOD", Gdb, adOpenDynamic, adLockOptimistic
+        ROM.Open "SELECT *FROM EID WHERE CH1='" + R!timokEID + "'  order by KOD", Gdb, adOpenDynamic, adLockOptimistic
         Do While Not ROM.EOF
-           If r!EKPT > 0 Then
-               Print #F, Left(r!timokPEL + "   ", 3) + Left(ROM!KOD + "                  ", 15) + Right(Space(10) + Format(ROM!lti, "##0.00"), 10) + Right$(Space$(10) + Format(r!EKPT, "#####0.00"), 10)
+           If R!EKPT > 0 Then
+               Print #F, Left(R!timokPEL + "   ", 3) + Left(ROM!kod + "                  ", 15) + Right(Space(10) + Format(ROM!lti, "##0.00"), 10) + Right$(Space$(10) + Format(R!EKPT, "#####0.00"), 10)
            End If
            
            ROM.MoveNext
@@ -5138,10 +5138,10 @@ MsgBox "≈…ƒ« œ "
 
         'Print #F, a
         'COUNTER = COUNTER + 1
-        r.MoveNext
+        R.MoveNext
     Loop
 
-    r.Close
+    R.Close
  
     Close #F
  
@@ -5161,7 +5161,7 @@ Private Sub Label10_Click()
 
         Dim F As New DataEntry2, DD
 
-        Dim r As New ADODB.Recordset
+        Dim R As New ADODB.Recordset
 
         'pinakas pedion
 100     UPDATE2_PINAKES 103, Label10  ', Combo3
@@ -5174,7 +5174,7 @@ Private Sub Label8_Click()
 
         Dim F As New DataEntry2, DD
 
-        Dim r As New ADODB.Recordset
+        Dim R As New ADODB.Recordset
 
         'pinakas pedion
 100     UPDATE2_PINAKES 101, Label8  ', Combo3
@@ -5187,7 +5187,7 @@ Private Sub Label9_Click()
 
     Dim F As New DataEntry2, DD
 
-    Dim r As New ADODB.Recordset
+    Dim R As New ADODB.Recordset
         
     'pinakas pedion
     UPDATE2_PINAKES 102, Label9
