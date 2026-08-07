@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   481492993
+      Format          =   154468353
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   481492993
+      Format          =   154468353
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -2105,10 +2105,10 @@ Private Sub Unilever_Click()
 apo = Now
 eos = Now
 
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040-066159748-" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040_066159748_" + Format(Now, "yyyyMMddhhmm") + "_998279212.csv"
 
   
   
@@ -2171,10 +2171,10 @@ Dim DUM
 
 
 
-    PRINT_CSV sql, "0000000000000", "1", 0, 0, mfile2
+    PRINT_CSV sql, "0000000000000", "1", 0, 3, mfile2
     
 On Error Resume Next
-FileCopy "c:\print", mfile2
+'FileCopy "c:\print", mfile2
     
     
     

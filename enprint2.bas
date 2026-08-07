@@ -19,11 +19,11 @@ Const SETTINGS_PROGID = "biopdf.PDFSettings"  'https://www.biopdf.com/download.p
 Const UTIL_PROGID = "biopdf.PDFUtil"
 
 Private Function PrinterIndex(ByVal printerName As String) As Integer  'https://www.biopdf.com/download.php
-    Dim i As Integer
+    Dim I As Integer
     
-    For i = 0 To Printers.Count - 1
-        If LCase(Printers(i).DeviceName) Like LCase(printerName) Then
-            PrinterIndex = i
+    For I = 0 To Printers.Count - 1
+        If LCase(Printers(I).DeviceName) Like LCase(printerName) Then
+            PrinterIndex = I
             Exit Function
         End If
     Next
@@ -157,7 +157,7 @@ Function print3_xar(ByVal sql As String, _
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -370,7 +370,7 @@ Function print_CALC(sql As String, _
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -891,8 +891,8 @@ oSM.createInstance ("com.sun.star.util.Ximportable")
     Set range = oSheet.getCellRangeByPosition(0, 0, 50, 50)
         Dim columns As Object
         Set columns = range.getColumns()
-        For i = 0 To 50 - 1
-            columns.getByIndex(i).optimalWidth = True
+        For I = 0 To 50 - 1
+            columns.getByIndex(I).optimalWidth = True
         Next
 
 
@@ -1053,6 +1053,15 @@ End Function
 
 '------------------------------------------------------------------------------------------------------
 Public Sub PRINT_CSV(sql, SUgm_str, EPIKEF, GROUPN, TITLOS_PEDION, mfile)
+' TITLOS_PEDION >=1 stelnei ЙАИ ТИР ЕПИЙЕЖАКИДЕР ТЫМ data
+' ЕЖОСОМ  F_TYPEHEADER=1      = Val(FINDPARAMETROI(1, "EKTYPOTES", "F_TYPEHEADER", "1", "1=тупымомтаи епийежакидес аявеио "))
+
+
+
+
+
+
+
         '<EhHeader>
         On Error GoTo PRINT_CSV_Err
         '</EhHeader>
@@ -1063,7 +1072,7 @@ Dim F_FILESAVE As String
 
 100     F_TYPEHEADER = Val(FINDPARAMETROI(1, "EKTYPOTES", "F_TYPEHEADER", "1", "1=тупымомтаи епийежакидес аявеио "))
 
-F_TYPEHEADER = 0
+'F_TYPEHEADER = 0
 ' F_TYPEHEADER = Val(FINDPARAMETROI(1, "EKTYPOTES", "F_TYPEHEADER", "1", "1=тупымомтаи епийежакидес аявеио "))
        ' F_FILESAVE = FINDPARAMETROI(1, "EKTYPOTES", "F_FILESAVE", "C:\MERCVB\PRINT.CSV", "аявеио ейтупысгс CSV аявеиоу ")
 
@@ -1081,7 +1090,7 @@ F_TYPEHEADER = 0
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -1175,7 +1184,7 @@ On Error GoTo PRINT_CSV_Err
         'R("
 
 
-154 If F_TYPEHEADER = 1 Then '  = Val(FindParametroi(1,"EKTYPOTES", "F_TYPEHEADER", "1", "1=тупымомтаи епийежакидес аявеио "))
+154 If F_TYPEHEADER = 1 Or F_TYPEHEADER = 3 Then '  = Val(FindParametroi(1,"EKTYPOTES", "F_TYPEHEADER", "1", "1=тупымомтаи епийежакидес аявеио "))
 
 156    ' Print #1, R("pelono")
 158    ' Print #1, R("pelepa")
@@ -1184,21 +1193,25 @@ On Error GoTo PRINT_CSV_Err
 162    ' Print #1, Tab(LSYN / 2 - Len(EPIKEF) / 2); EPIKEF
 
         '----------------------- епийежакида ----------------------------
-      If TITLOS_PEDION = 1 Then
+      If TITLOS_PEDION >= 1 Then
 164      For k = 0 To N - 1
 
 166         If f_tab(k) + F_T(k).DefinedSize > f_tab(k + 1) Then
-168             Print #1, Tab(f_tab(k)); Left(F_T(k).Name, f_tab(k + 1) - f_tab(k));
+168             'Print #1, Tab(f_tab(k)); Left(F_T(k).Name, f_tab(k + 1) - f_tab(k));
+                Print #1, Left(F_T(k).Name, f_tab(k + 1) - f_tab(k));
             Else
 
 170             If F_T(k).Type = 7 Or F_T(k).Type = 5 Or F_T(k).Type = 131 Then   'IsNumeric(f_t(K)) ПЯАЦЛАТИЙО
-172                 Print #1, Tab(f_tab(k)); RightAlign(F_T(k).Name, F_T(k).DefinedSize);    ' Left(F_T(k).Name, F_T(k).DefinedSize);
+172                 'Print #1, Tab(f_tab(k)); RightAlign(F_T(k).Name, F_T(k).DefinedSize);    ' Left(F_T(k).Name, F_T(k).DefinedSize);
+                    Print #1, RightAlign(F_T(k).Name, F_T(k).DefinedSize);    ' Left(F_T(k).Name, F_T(k).DefinedSize);
                 Else
-174                 Print #1, Tab(f_tab(k)); Left(F_T(k).Name, F_T(k).DefinedSize);
+174                ' Print #1, Tab(f_tab(k)); Left(F_T(k).Name, F_T(k).DefinedSize);
+                    Print #1, Left(F_T(k).Name, F_T(k).DefinedSize);
                 End If
             End If
 176         Print #1, ";";
         Next
+         Print #1,
       End If
 
         'ДЕУТЕЯГ СЕИЯА ЕПИЙЕЖАКъДАР
@@ -1220,9 +1233,9 @@ On Error GoTo PRINT_CSV_Err
 
 
 
-182     For i = 1 To N
-184         m_sumes(i) = 0
-186         SUMES0(i) = 0
+182     For I = 1 To N
+184         m_sumes(I) = 0
+186         SUMES0(I) = 0
         Next
 
         Dim LAST_TIMH
@@ -1502,7 +1515,7 @@ Sub PRINT_TEXT(sql, SUgm_str, EPIKEF, GROUPN)
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -1649,9 +1662,9 @@ Sub PRINT_TEXT(sql, SUgm_str, EPIKEF, GROUPN)
 
 
 
-180     For i = 1 To N
-182         m_sumes(i) = 0
-184         SUMES0(i) = 0
+180     For I = 1 To N
+182         m_sumes(I) = 0
+184         SUMES0(I) = 0
         Next
 
         Dim LAST_TIMH
@@ -1949,7 +1962,7 @@ Function print7_excel(sql As String, _
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -1983,7 +1996,7 @@ Function print7_excel(sql As String, _
 100     Set excel = CreateObject("excel.Application")
     
         ' Excel.Visible = True
-102     Set workbook = excel.Workbooks.Add
+102     Set workbook = excel.Workbooks.ADD
 
         On Error Resume Next
 
@@ -2469,7 +2482,7 @@ Function print7ADD_excel(sql As String, _
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -2503,7 +2516,7 @@ Function print7ADD_excel(sql As String, _
 100     Set excel = CreateObject("excel.Application")
     
         ' Excel.Visible = True
-102     Set workbook = excel.Workbooks.Add
+102     Set workbook = excel.Workbooks.ADD
 
         On Error Resume Next
 
@@ -3581,7 +3594,7 @@ Function print_WORD(sql As String, SUgm_str, ByVal EPIKEF As String, GROUPN As I
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -3610,14 +3623,14 @@ Function print_WORD(sql As String, SUgm_str, ByVal EPIKEF As String, GROUPN As I
 
         'Start a new document in Word
 100     Set mWordA = CreateObject("Word.Application")
-102     Set mobjWORD = mWordA.Documents.Add
+102     Set mobjWORD = mWordA.Documents.ADD
         'DOK1.Activate
 104     mWordA.Visible = True
 
         Dim oPara1 As Word.Paragraph
 
         'Insert a paragraph at the beginning of the document.
-106     Set oPara1 = mobjWORD.content.Paragraphs.Add
+106     Set oPara1 = mobjWORD.content.Paragraphs.ADD
 108     oPara1.range.Text = EPIKEF
 110     oPara1.range.Font.Bold = True
         ' mWordA.Selection.ParagraphFo
@@ -3676,7 +3689,7 @@ Function print_WORD(sql As String, SUgm_str, ByVal EPIKEF As String, GROUPN As I
 
         'Set MYRANGE = mobjWORD.Range(start:=0, End:=0)
 134     Set MYRANGE = mobjWORD.Paragraphs(3).range
-136     mobjWORD.Tables.Add range:=MYRANGE, NumRows:=3, NumColumns:=N
+136     mobjWORD.Tables.ADD range:=MYRANGE, NumRows:=3, NumColumns:=N
 
         'mobjWORD.TableInsertTable NumColumns:=N, _
         '   NumRows:=2, _
@@ -3744,7 +3757,7 @@ Function print_WORD(sql As String, SUgm_str, ByVal EPIKEF As String, GROUPN As I
 
 176     With mobjWORD
 178         .Tables(1).Select
-180         .Tables(1).rows.Add
+180         .Tables(1).rows.ADD
 
             On Error Resume Next
 
@@ -3788,7 +3801,7 @@ Function print_WORD(sql As String, SUgm_str, ByVal EPIKEF As String, GROUPN As I
         '--------------------------------------------------------
 194     Do While Not F_T.EOF
 196         AYJ = AYJ + 1
-198         mobjWORD.Tables(1).rows.Add
+198         mobjWORD.Tables(1).rows.ADD
 
             '----------------- тупысе ока та педиа ---------------------
 200         For k = 0 To N - 1
@@ -4038,7 +4051,7 @@ Function print4_pdf(sql As String, SUgm_str, EPIKEF As String, GROUPN As Integer
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -4182,9 +4195,9 @@ Function print4_pdf(sql As String, SUgm_str, EPIKEF As String, GROUPN As Integer
 192         Printer.Print Tab(m_sthl_ektyp(1)); String$(LSYN - 2, "-")
         End If
 
-194     For i = 1 To N
-196         m_sumes(i) = 0
-198         SUMES0(i) = 0
+194     For I = 1 To N
+196         m_sumes(I) = 0
+198         SUMES0(I) = 0
         Next
 
         Dim LAST_TIMH
@@ -4550,7 +4563,7 @@ Function print4_xar(sql As String, SUgm_str, EPIKEF As String, GROUPN As Integer
 
         Dim Sthles, kw, PPD, SELIS
 
-        Dim LSYN, AA, epik2, i As Integer
+        Dim LSYN, AA, epik2, I As Integer
 
         Dim AYJ, end_page, Typose, aaF, aaF2, mpal2, eject
 
@@ -4709,9 +4722,9 @@ Function print4_xar(sql As String, SUgm_str, EPIKEF As String, GROUPN As Integer
         
         
 
-194     For i = 1 To N
-196         m_sumes(i) = 0
-198         SUMES0(i) = 0
+194     For I = 1 To N
+196         m_sumes(I) = 0
+198         SUMES0(I) = 0
         Next
 
 
