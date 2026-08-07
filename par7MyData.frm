@@ -13,11 +13,11 @@ Begin VB.Form Par7MyData
    ClientHeight    =   12525
    ClientLeft      =   60
    ClientTop       =   405
-   ClientWidth     =   16080
+   ClientWidth     =   22350
    LinkTopic       =   "Form2"
    MDIChild        =   -1  'True
    ScaleHeight     =   12525
-   ScaleWidth      =   16080
+   ScaleWidth      =   22350
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.CommandButton PL8_4 
@@ -173,7 +173,7 @@ Begin VB.Form Par7MyData
    Begin VB.CommandButton cmdEXPORTTOPDF 
       Caption         =   "EXPORTTOPDF"
       Height          =   360
-      Left            =   18480
+      Left            =   17520
       TabIndex        =   56
       Top             =   8640
       Width           =   1815
@@ -226,8 +226,8 @@ Begin VB.Form Par7MyData
       Left            =   0
       TabIndex        =   45
       Top             =   0
-      Width           =   16080
-      _ExtentX        =   28363
+      Width           =   22350
+      _ExtentX        =   39423
       _ExtentY        =   1799
       ButtonWidth     =   3016
       ButtonHeight    =   1640
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   310640641
+      Format          =   308740097
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   310640641
+      Format          =   308740097
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1704,7 +1703,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1718,8 +1717,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.ÌÅÔÑ' WHERE TRP LIKE 'ÌÅ%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.ÐÉÓÔ' WHERE TRP LIKE 'ÐÉ%' "
 
-118     apo.SetFocus
-120     eos.SetFocus
+118     APO.SetFocus
+120     EOS.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -4115,7 +4114,7 @@ Private Sub Command12_Click()
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4589,7 +4588,7 @@ Private Sub cmdKOYKAKH_Click()
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -6616,7 +6615,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(apo) < 2021 Then
+102     If Year(APO) < 2021 Then
 104         MsgBox "ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6657,7 +6656,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -10584,8 +10583,8 @@ Public Sub loadpar7()
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "ËÁÈÏÓ ÓÔÉÓ ÁÍÔÉÓÔÏÉ×ÇÓÅÉÓ ÖÐÁ"
-230             apo.Enabled = False
-232             eos.Enabled = False
+230             APO.Enabled = False
+232             EOS.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10595,8 +10594,8 @@ Public Sub loadpar7()
  
 240     R.Close
   
-242     apo.Value = Now
-244     eos.Value = Now
+242     APO.Value = Now
+244     EOS.Value = Now
 
         Dim sql As String
 
@@ -10604,8 +10603,8 @@ Public Sub loadpar7()
 
 248     If sql = "0" Then
 
-250         apo.Enabled = False
-252         eos.Enabled = False
+250         APO.Enabled = False
+252         EOS.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -11236,7 +11235,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11247,7 +11246,7 @@ Private Sub monoApestalmena_Click()
 146     sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [ÓÕÍ.ÊÁÈ],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [ÓÕÍ.ÖÐÁ],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148     sql = sql + "   FROM TIM  "
-150     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
+150     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
 152     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154     sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11652,7 +11651,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [ÐÁÑÁÓÔ],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ÊÁÈ.ÁÎÉÁ], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11664,7 +11663,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -14858,12 +14857,12 @@ Sub SendToParochos(SJ As String, _
 116         MkDir "c:\" + F_TXTFILES + "\sendinv"
         End If
 
-118     If Len(Dir("c:\" + F_TXTFILES + "\inv.xml", vbNormal)) = 0 Then
-120         MsgBox "äåí õðÜñ÷åé ôï áñ÷åßï ôùí ôéìïëïãéùí inv.xml"
+118    ' If Len(Dir("c:\" + F_TXTFILES + "\inv.xml", vbNormal)) = 0 Then
+120        ' MsgBox "äåí õðÜñ÷åé ôï áñ÷åßï ôùí ôéìïëïãéùí inv.xml"
 
-            Exit Sub
+         '   Exit Sub
 
-        End If
+       ' End If
 
         Dim todaydir As String
 
@@ -14872,7 +14871,7 @@ Sub SendToParochos(SJ As String, _
 124     If Len(Dir(todaydir, vbDirectory)) = 0 Then
 126         MkDir todaydir
         End If
-  
+    
 128     FileCopy mqq, todaydir + "\" + fnamejson + "-" + Format(Now, "yyyy-MM-dd-HH-mm")
         
         ' TO ANTIGRAFEI GIA NA BLEPV TO TELEYTAIO  JSON
@@ -15126,6 +15125,30 @@ Function to_pos(ByVal TID As String, _
     ' êáé åíá token ðïõ èá ðáñù áðï ôï lambdapi
 
     '----------- 11111111111111111111111111111111111
+    
+    
+           Dim todaydir As String
+
+116     todaydir = "c:\" + F_TXTFILES + "\sendinv\" + Format(Now, "yyyyMMdd")
+
+118     If Len(Dir(todaydir, vbDirectory)) = 0 Then
+120         MkDir todaydir
+        End If
+   
+122   '  FileCopy "c:\" + F_TXTFILES + "\inv.xml", todaydir + "\" + f_name_xml + "-" + Format(Now, "yyyy-MM-dd-HH-mm")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     Dim C_SEIRA As String
 
@@ -15158,12 +15181,19 @@ Function to_pos(ByVal TID As String, _
     QQ = QQ + " ""NspCode"":""2"" , "
     QQ = QQ + " ""terminalId"":""" + TID + """ }"     '"99999069"
 
-    Open "C:\TXTFILES\REQUES111TAPOPAROXO" + extid + ".TXT" For Output As #1
-    Write #1, QQ
-         
-    Close #1
+   Open todaydir + "\ASKREQPAROX" + mID_NUM + "-" + Format(Now, "yyyy-MM-dd-HH-mm") + ".TXT" For Output As #1
+      Write #1, QQ
+   Close #1
+
+
 
     answ = REQWINHTTP(QQ, uripos, LTrim(mID_NUM))
+    
+    Open todaydir + "\ANSWPAROX" + mID_NUM + "-" + Format(Now, "yyyy-MM-dd-HH-mm") + ".TXT" For Output As #1
+    Write #1, answ
+    Close #1
+    
+    
 
     Dim ser As Object
  
@@ -15219,6 +15249,7 @@ Function to_pos(ByVal TID As String, _
     PWDPOS = GGET_CVALUE("SELECT ISNULL(PWDPOS,'') AS U FROM MEM")
 
     Dim Token_From_Paris As String: Token_From_Paris = request_pliromis(userpos, PWDPOS) ' username password prepei na mpoyn san parametroi
+    
 
     '==================================333333333333333333333333===============================================
   
@@ -15236,13 +15267,25 @@ Function to_pos(ByVal TID As String, _
     QQ = QQ + " ""signature"":""" + F_PAROX_SIGNATURE + """ " + "}"
  
     offlineJSONpos = QQ
+    
+     Open todaydir + "\OFFLINEASKPARIS" + mID_NUM + "-" + Format(Now, "yyyy-MM-dd-HH-mm") + ".TXT" For Output As #1
+      Write #1, QQ
+      Write #1, "TOKEN FROM PARIS : " + Token_From_Paris
+     Close #1
+    
+    
  
-    Open "C:\TXTFILES\Token_From_Parisqq333APOPAROXO" + extid + ".TXT" For Output As #1
-    Write #1, QQ
-         
-    Close #1
+
     MsgBox "ÐÁÔÇÓÔÅ ÔÏ ÊÏÕÌÐÉ ÃÉÁ ÃÅÖÕÑÁ"
     req2 = request2_pliromis(Token_From_Paris, offlineJSONpos)
+ 
+ 
+   Open todaydir + "\APANTISIPLIRPARIS" + mID_NUM + "-" + Format(Now, "yyyy-MM-dd-HH-mm") + ".TXT" For Output As #1
+      Write #1, req2
+     Close #1
+ 
+ 
+ 
  
     Dim EXTIDDD As String
 
@@ -15341,10 +15384,10 @@ End Function
 
 Sub answerToFile(ByVal extid As String, ByVal req2 As String)
 
-    Open "C:\TXTFILES\reqPARIS" + extid + ".TXT" For Append As #1
-    Write #1, req2
-    Write #1, Format(Now, "dd/MM/yy hh:mm:ss")
-    Close #1
+  '  Open "C:\TXTFILES\reqPARIS" + extid + ".TXT" For Append As #1
+ '   Write #1, req2
+ '   Write #1, Format(Now, "dd/MM/yy hh:mm:ss")
+  '  Close #1
 
 End Sub
 
