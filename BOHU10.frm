@@ -23,6 +23,14 @@ Begin VB.Form bohu10
    ScaleWidth      =   18870
    ShowInTaskbar   =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdGeferror 
+      Caption         =   "geferror"
+      Height          =   360
+      Left            =   960
+      TabIndex        =   27
+      Top             =   8280
+      Width           =   990
+   End
    Begin VB.CommandButton CMDSTOP 
       Caption         =   "STOP"
       Height          =   360
@@ -169,7 +177,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   278069249
+      Format          =   291438593
       CurrentDate     =   44346
    End
    Begin MSComCtl2.DTPicker apo 
@@ -181,7 +189,7 @@ Begin VB.Form bohu10
       _ExtentX        =   3836
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   278069249
+      Format          =   291438593
       CurrentDate     =   44346
    End
    Begin VB.CommandButton cmdYPOL 
@@ -408,6 +416,12 @@ sqlwh = sql + sqlwh
 
 End Sub
 
+Private Sub cmdGeferror_Click()
+Dim dum, mfil As String
+mfil = "C:\MERCVB\LOGGEFYR.TXT"
+dum = Shell("notepad.exe " + mfil, vbMaximizedFocus)
+End Sub
+
 Private Sub cmdPBSGEFYRA_Click()
  
  
@@ -423,11 +437,11 @@ Private Sub cmdPBSGEFYRA_Click()
     If Len(arr_log(L)) = 0 Then Exit For
     List2.AddItem arr_log(L) + " => " + Format(arr_posa(L), "#####0.00")
     If Left$(arr_log(L), 1) = "7" Then
-       POL = POL + arr_posa(L)
+       pol = pol + arr_posa(L)
     End If
     
    If Left$(arr_log(L), 1) = "2" Then
-       AGO = AGO + arr_posa(L)
+       ago = ago + arr_posa(L)
     End If
     If Left$(arr_log(L), 1) = "6" Then
        EXO = EXO + arr_posa(L)
@@ -438,8 +452,8 @@ Private Sub cmdPBSGEFYRA_Click()
  
  
     List2.AddItem " ====== "
-    List2.AddItem "7 => " + Format(POL, "#####0.00")
-       List2.AddItem arr_log(L) + "2 => " + Format(AGO, "#####0.00")
+    List2.AddItem "7 => " + Format(pol, "#####0.00")
+       List2.AddItem arr_log(L) + "2 => " + Format(ago, "#####0.00")
           List2.AddItem arr_log(L) + "6 => " + Format(EXO, "#####0.00")
           
  
@@ -520,15 +534,15 @@ Dim R As New ADODB.Recordset
 
 
 
-        Dim POL As String: POL = " "
+        Dim pol As String: pol = " "
         Dim polepis As String: polepis = " "
-        Dim AGO As String: AGO = " "
+        Dim ago As String: ago = " "
         Dim AGOEPIS As String: AGOEPIS = " "
-        Get_AJ_ASCII POL, polepis, AGO, AGOEPIS
+        Get_AJ_ASCII pol, polepis, ago, AGOEPIS
         
         par = ""
         If chkPOL.Value = vbChecked Then
-            par = POL + "," + polepis
+            par = pol + "," + polepis
         End If
             
         
@@ -537,7 +551,7 @@ Dim R As New ADODB.Recordset
              par = par + ","
            End If
            
-              par = par + AGO + "," + AGOEPIS
+              par = par + ago + "," + AGOEPIS
         End If
         
         
@@ -1000,8 +1014,8 @@ Private Sub CMDSTOP_Click()
 End Sub
 
 Private Sub cmdYPOL_Click()
-Dim POL As Double, AGO As Double, EXO As Double
- POL = 0: AGO = 0: EXO = 0
+Dim pol As Double, ago As Double, EXO As Double
+ pol = 0: ago = 0: EXO = 0
 
 
 
@@ -1018,11 +1032,11 @@ Dim POL As Double, AGO As Double, EXO As Double
     List2.AddItem arr_log(L) + " => " + Format(arr_posa(L), "#####0.00")
    
    If Left$(arr_log(L), 1) = "7" Then
-       POL = POL + arr_posa(L)
+       pol = pol + arr_posa(L)
     End If
     
    If Left$(arr_log(L), 1) = "2" Then
-       AGO = AGO + arr_posa(L)
+       ago = ago + arr_posa(L)
     End If
     If Left$(arr_log(L), 1) = "6" Then
        EXO = EXO + arr_posa(L)
@@ -1034,8 +1048,8 @@ Dim POL As Double, AGO As Double, EXO As Double
  Next
  
    List2.AddItem " ====== "
-    List2.AddItem "7 => " + Format(POL, "#####0.00")
-       List2.AddItem arr_log(L) + "2 => " + Format(AGO, "#####0.00")
+    List2.AddItem "7 => " + Format(pol, "#####0.00")
+       List2.AddItem arr_log(L) + "2 => " + Format(ago, "#####0.00")
           List2.AddItem arr_log(L) + "6 => " + Format(EXO, "#####0.00")
           
 
@@ -1064,17 +1078,17 @@ Dim R As New ADODB.Recordset
             ' ExecuteSQLQuery("update TIM SET AJ7=0 WHERE AJ7 IS NULL")
 
 
-        Dim POL As String: POL = " "
+        Dim pol As String: pol = " "
         Dim polepis As String: polepis = " "
-        Dim AGO As String: AGO = " "
+        Dim ago As String: ago = " "
         Dim AGOEPIS As String: AGOEPIS = " "
-        Get_AJ_ASCII POL, polepis, AGO, AGOEPIS
+        Get_AJ_ASCII pol, polepis, ago, AGOEPIS
 
 
 
         par = ""
         If chkPOL.Value = vbChecked Then
-            par = POL + "," + polepis
+            par = pol + "," + polepis
         End If
             
         
@@ -1083,7 +1097,7 @@ Dim R As New ADODB.Recordset
              par = par + ","
            End If
            
-              par = par + AGO + "," + AGOEPIS
+              par = par + ago + "," + AGOEPIS
         End If
         
         
@@ -2268,12 +2282,15 @@ DoEvents
            
            
            
-           
-100        R.Open sql + sqlwh + " order by HME", Gdb, adOpenDynamic, adLockOptimistic
+           Dim Debugg As String
+           Debugg = "  " ' AND Left(ATIM, 7) = 'υ090570' "
+100        R.Open sql + sqlwh + Debugg + "  order by HME", Gdb, adOpenDynamic, adLockOptimistic
            
           ' Exit Sub
            Dim RRC2 As New ADODB.Recordset
            RRC2.Open "SELECT COUNT(*) " + sqlwh, Gdb, adOpenDynamic, adLockOptimistic
+          ' Exit Sub
+           
            If RRC2(0) = 0 Then
               MsgBox "ΔΕΝ ΒΡΕΘΗΚΑΝ ΕΓΓΡΑΦΕΣ"
               
@@ -2319,7 +2336,10 @@ DoEvents
 116                 Me.Caption = Format(R!hme, "dd/MM/yyyy") + str(iin)
                     Set elemARTICLE = docStock.createElement("ARTICLE"): elemARTICLE.Text = CStr(k):
 118                 With elemARTICLE
-                    
+'                      If Left(R!ATIM, 7) = "υ090544" Then
+'                        Dim DUMM As Integer
+'                        DUMM = 1
+'                      End If
                     
 120                   If ONLYXREOPIS = 1 Then
                            'apo thn kathgoria pelath
@@ -2575,7 +2595,7 @@ DoEvents
 274                    If withcateg = 1 Then  ' αν παει κατα κατηγορία
                           Dim sqlk As String
 
-276                        sqlk = "SELECT ISNULL(KATHGORIA,0) AS CAT,G.FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA,"
+276                        sqlk = "SELECT ISNULL(KATHGORIA,1) AS CAT,G.FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA,"
 278                       sqlk = sqlk + " ID_NUM FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD"
 280                       sqlk = sqlk + "  WHERE  ID_NUM=" + str(R!id_num) + " GROUP BY ID_NUM, G.FPA,KATHGORIA"
 
@@ -2584,8 +2604,13 @@ DoEvents
                          Dim rk As New ADODB.Recordset
 282                       rk.Open sqlk, Gdb, adOpenDynamic, adLockOptimistic
                           
+                          
+                          
+                          
                           Dim s1k As Single, s1m As Single, nnl As Integer
-284                       s1m = 0: s1k = 0: nnl = 0
+284
+                           'nnl = rk.RecordCount ' debug
+                           s1m = 0: s1k = 0: nnl = 0
 286                       Do While Not rk.EOF
 288                           nnl = nnl + 1
 290                           s1k = s1k + rk!kau_ajia
@@ -2608,6 +2633,7 @@ DoEvents
                                 End If
 
                                 s1m = 0: s1k = 0: nnl = 0
+                                rk.MoveFirst
                                 Do While Not rk.EOF
                                     nnl = nnl + 1
                                     s1k = s1k + rk!kau_ajia
@@ -2662,7 +2688,10 @@ DoEvents
                           Loop
                           
                           If Abs(SUMX - SUMP) > 0.005 Then
-                             List1.AddItem "ΑΝΙΣΟΣΚΕΛΙΣΤΟ " + R!ATIM + Format(SUMX - SUMP, "###0.00")
+                             List1.AddItem "ΑΝΙΣ/ΣΤΟ " + Format(R!hme, "dd/MM/yyyy") + " διαφ=" + R!ATIM + Format(SUMX - SUMP, "###0.00") + " Χ=" + R!ATIM + Format(SUMX, "###0.00") + " Π=" + R!ATIM + Format(SUMP, "###0.00") + " τιμ=" + Format(R!aji, "###0.00")
+                             If nnl = 0 Then
+                                List1.AddItem "προβλημα με κατηγ.ειδους " + sqlk
+                             End If
                           End If
                           
                           
@@ -2748,10 +2777,18 @@ DoEvents
 440                 elemARTICLES.appendChild elemARTICLE
 
                    If ONLYXREOPIS = 1 Then  'B_C1
-                   
-                         Gdb.Execute "UPDATE EGG SET B_C1='*' WHERE ID=" + str(R!EGGID)
+                       If Abs(SUMX - SUMP) > 0.005 Then
+                           Gdb.Execute "UPDATE EGG SET B_C1=' -' WHERE ID=" + str(R!EGGID)
+                       Else
+                            Gdb.Execute "UPDATE EGG SET B_C1='*' WHERE ID=" + str(R!EGGID)
+                       End If
                    Else
+                   
+                    If Abs(SUMX - SUMP) > 0.005 Then
+                        Gdb.Execute "UPDATE TIM SET B_C1=' -' WHERE ID_NUM=" + str(R!id_num)
+                    Else
                         Gdb.Execute "UPDATE TIM SET B_C1='*' WHERE ID_NUM=" + str(R!id_num)
+                    End If
                    End If
                    '
 
@@ -2773,7 +2810,7 @@ DoEvents
                     
 444             .appendChild elemARTICLES
                   
-              
+              'C:\Program Files\Power Dominus Programs\MenuNET65
               
               
               
@@ -2793,6 +2830,21 @@ DoEvents
               
                     
 446            R.Close
+
+
+If List1.ListCount > 0 Then
+   Open "C:\MERCVB\LOGGEFYR.TXT" For Output As #13
+        Dim KLI77 As Integer
+        For KLI77 = 0 To List1.ListCount - 1
+            Print #13, List1.List(KLI77)
+        Next
+
+
+
+    Close #13
+
+End If
+
 
 
 
@@ -2861,6 +2913,18 @@ DoEvents
                     DoEvents
                     iic = iic + 1
                     Me.Caption = "Συναλλασόμενοι :" + str(iic)
+                    
+                    
+                    
+                     If CMDSTOP.Enabled = False Then
+                       MsgBox "ΔΙΑΚΟΠΗ ΔΙΑΔΙΑΣΙΑΣ"
+                       CMDSTOP.Enabled = True
+                       Exit Sub
+                    End If
+                    
+                    
+                    
+                    
                    Loop
                   
 522             .appendChild elemCUSTOMERS
@@ -3132,9 +3196,9 @@ Dim R As New ADODB.Recordset
             ' ExecuteSQLQuery("update TIM SET AJ7=0 WHERE AJ7 IS NULL")
 
 
-        Dim POL As String: POL = " "
+        Dim pol As String: pol = " "
         Dim polepis As String: polepis = " "
-        Dim AGO As String: AGO = " "
+        Dim ago As String: ago = " "
         Dim AGOEPIS As String: AGOEPIS = " "
         
         Dim sql As String, sqlwh As String
