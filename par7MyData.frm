@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   307167233
+      Format          =   528220161
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   307167233
+      Format          =   528220161
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1622,7 +1621,7 @@ Dim afmCompany         As String
 
 Dim UrlAADE            As String
 
-Dim url2               As String
+Dim URL2               As String
 
 'Dim sqldt As New ADODB.Recordset
 Dim AFM                As String ' –≈À¡‘«” COUNTERPART
@@ -1771,12 +1770,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     DATA1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     DATA1.RecordSource = arxeio
-110     DATA1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = DATA1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -2068,9 +2067,9 @@ Private Sub cancelClient_Click()
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     url2 = url2 + MARKTIM
+146     URL2 = URL2 + MARKTIM
      
-148     url2 = "https://mydataapidev.aade.gr/DCL/CancelClient?dclID=" + "100000000007161"
+148     URL2 = "https://mydataapidev.aade.gr/DCL/CancelClient?dclID=" + "100000000007161"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -2081,7 +2080,7 @@ Private Sub cancelClient_Click()
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", url2, False
+160     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -2143,9 +2142,9 @@ Public Function OLDkillClient(ByVal park2garage3 As Integer, _
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     url2 = url2 + MARKTIM
+146     URL2 = URL2 + MARKTIM
      
-148     url2 = UrlAADE + "DCL/CancelClient?dclID=" + clientID ' "100000000007161"
+148     URL2 = UrlAADE + "DCL/CancelClient?dclID=" + clientID ' "100000000007161"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -2156,7 +2155,7 @@ Public Function OLDkillClient(ByVal park2garage3 As Integer, _
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", url2, False
+160     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -2478,19 +2477,19 @@ Public Function OLD_newclient(ByVal garaz3epark2 As Integer, _
 154         .save "C:\txtfiles\" + ARKYKL + ".xml"
         End With
   
-156     url2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
+156     URL2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-158     url2 = url2 + MARKTIM
+158     URL2 = URL2 + MARKTIM
      
         If F_demo = 1 Then
-160         url2 = "https://mydataapidev.aade.gr/DCL/SendClient"
+160         URL2 = "https://mydataapidev.aade.gr/DCL/SendClient"
         Else
       
-            url2 = "https://mydatapi.aade.gr/DCL/SendClient"
+            URL2 = "https://mydatapi.aade.gr/DCL/SendClient"
 
             ' url2 = UrlAADE + "DCL/SendClient"
             'initialize
@@ -2504,7 +2503,7 @@ Public Function OLD_newclient(ByVal garaz3epark2 As Integer, _
 168     XMLServer.Option(9) = 2048
 170     XMLServer.Option(6) = True
     
-172     XMLServer.Open "POST", url2, False
+172     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 174     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 176     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3293,10 +3292,10 @@ Public Function OLD_RELATECLIEND(ByVal MARK As String, _
         ' Dim MARK As String
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-136     url2 = url2 + MARKTIM
+136     URL2 = URL2 + MARKTIM
      
-138     url2 = UrlAADE + "DCL/ClientCorrelations"
-        url2 = UrlAADE + "DCL/ClientCorrelations"
+138     URL2 = UrlAADE + "DCL/ClientCorrelations"
+        URL2 = UrlAADE + "DCL/ClientCorrelations"
         'initialize
 140     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
 142     Set XMLReceive = CreateObject("Msxml2.DOMDocument.6.0")
@@ -3306,7 +3305,7 @@ Public Function OLD_RELATECLIEND(ByVal MARK As String, _
 146     XMLServer.Option(9) = 2048
 148     XMLServer.Option(6) = True
     
-150     XMLServer.Open "POST", url2, False
+150     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 152     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 154     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3601,9 +3600,9 @@ Private Sub Command10old_Click()
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     url2 = url2 + MARKTIM
+146     URL2 = URL2 + MARKTIM
      
-148     url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?" ' 100000000007664"
+148     URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?" ' 100000000007664"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -3614,7 +3613,7 @@ Private Sub Command10old_Click()
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", url2, False
+160     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3944,18 +3943,18 @@ Private Sub Command10_Click()
 
         '    MARK = InputBox("d?se to mark", "µa??")
      
-110     url2 = url2 + MARKTIM
+110     URL2 = URL2 + MARKTIM
      
-112     url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+112     URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
 
         If F_demo = 1 Then
             ' url2 = "https://mydataapidev.aade.gr/DCL/SendClient"
-            url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+            URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
 
         Else
       
             ' url2 = "https://mydatapi.aade.gr/DCL/SendClient"
-            url2 = "https://mydatapi.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+            URL2 = "https://mydatapi.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
         
         End If
 
@@ -3970,7 +3969,7 @@ Private Sub Command10_Click()
 120     XMLServer.Option(9) = 2048
 122     XMLServer.Option(6) = True
     
-124     XMLServer.Open "GET", url2, False
+124     XMLServer.Open "GET", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 126     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 128     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -4229,13 +4228,13 @@ Public Function GetDeliveryStatus(ByVal MARKTIM As String, TIMOL As String) As S
         '            Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     url2 = UrlAADE + "GetDeliveryNoteStatus?mark=" '/RequestDocs"
+104     URL2 = UrlAADE + "GetDeliveryNoteStatus?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-106     url2 = url2 + MARKTIM
+106     URL2 = URL2 + MARKTIM
 
         'initialize
 108     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -4247,7 +4246,7 @@ Public Function GetDeliveryStatus(ByVal MARKTIM As String, TIMOL As String) As S
 116     XMLServer.Option(6) = True
     
 118     'XMLServer.Open "POST", url2, False
-        XMLServer.Open "GET", url2, False
+        XMLServer.Open "GET", URL2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
 124     XMLServer.send 'TXML 'strData  '”‘≈ÀÕŸ ‘œ STRING TXML STO MYDATA  'XMLServer.send TXML '  ¡Õ »≈ÀŸ Õ¡ ‘œ ”‘≈…ÀŸ ¡–œ ¡—◊≈…œ ‘œ‘≈ ¬¡∆Ÿ strData
@@ -4315,6 +4314,82 @@ Private Sub CMDLIXIAPOSTOLIS_Click()
 
 End Sub
 
+
+Public Function SendConfirmREJECT(ByVal TXML As String, URL2 As String) As String
+        loadpar7
+
+        '<EhHeader>
+        On Error GoTo CANCEL_INVOICE_Err
+
+        '</EhHeader>
+100     If Len(Trim(TXML)) < 1 Then
+102         SendConfirmREJECT = ""
+
+            Exit Function
+
+        End If
+
+        '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
+
+        '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
+104     URL2 = UrlAADE + URL2 ' "ConfirmDeliveryOutcome"
+     
+       
+     
+106     ' url2 = url2 + MARKTIM
+
+        'initialize
+108     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
+110     Set XMLReceive = CreateObject("Msxml2.DOMDocument.6.0")
+112     XMLServer.setTimeouts 5000, 60000, 10000, 10000
+    
+        'force TLS 1.2
+114     XMLServer.Option(9) = 2048
+116     XMLServer.Option(6) = True
+    
+118     XMLServer.Open "POST", URL2, False
+        ' XMLServer.Open "GET", url2, False
+120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
+122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
+124     XMLServer.send TXML 'strData  '”‘≈ÀÕŸ ‘œ STRING TXML STO MYDATA  'XMLServer.send TXML '  ¡Õ »≈ÀŸ Õ¡ ‘œ ”‘≈…ÀŸ ¡–œ ¡—◊≈…œ ‘œ‘≈ ¬¡∆Ÿ strData
+126     Debug.Print XMLServer.Status
+        '  debugPrint XMLServer.responseText
+128     v = XMLServer.responseText
+        '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
+        MsgBox v
+   
+
+
+    
+        Dim MARK2 As String
+    
+144     READ_CANCEL v, MARK2
+
+  
+
+146     SendConfirmREJECT = MARK2
+
+        '<EhFooter>
+        Exit Function
+
+CANCEL_INVOICE_Err:
+        MsgBox Err.Description & vbCrLf & "in ADOMERCNEW.Par7MyData.CANCEL_INVOICE " & "at line " & Erl, vbExclamation + vbOKOnly, "Application Error"
+
+        Resume Next
+
+        '</EhFooter>
+
+End Function
+
+
+
+
+
+
+
+
+
+
 Public Function SendConfirm(ByVal TXML As String, TIMOL As String) As String
         loadpar7
 
@@ -4332,7 +4407,7 @@ Public Function SendConfirm(ByVal TXML As String, TIMOL As String) As String
         '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     url2 = UrlAADE + "ConfirmDeliveryOutcome"
+104     URL2 = UrlAADE + "ConfirmDeliveryOutcome"
      
         Dim MARK As String
 
@@ -4349,7 +4424,7 @@ Public Function SendConfirm(ByVal TXML As String, TIMOL As String) As String
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", url2, False
+118     XMLServer.Open "POST", URL2, False
         ' XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -4502,7 +4577,7 @@ Public Function ENARXIAPOS(ByVal TXML As String, TIMOL As String) As String
         '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     url2 = UrlAADE + "RegisterTransfer"
+104     URL2 = UrlAADE + "RegisterTransfer"
      
         Dim MARK As String
 
@@ -4519,7 +4594,7 @@ Public Function ENARXIAPOS(ByVal TXML As String, TIMOL As String) As String
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", url2, False
+118     XMLServer.Open "POST", URL2, False
         ' XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -5094,9 +5169,9 @@ Private Sub Command8_Click()
 124     r0.Close
 
         sql = "select  P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
 
         '<EhFooter>
         Exit Sub
@@ -5198,13 +5273,13 @@ Public Function CANCEL_INVOICE(ByVal MARKTIM As String, TIMOL As String) As Stri
         '            Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     url2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
+104     URL2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-106     url2 = url2 + MARKTIM
+106     URL2 = URL2 + MARKTIM
 
         'initialize
 108     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -5215,7 +5290,7 @@ Public Function CANCEL_INVOICE(ByVal MARKTIM As String, TIMOL As String) As Stri
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", url2, False
+118     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -5436,9 +5511,9 @@ Private Sub eisagTIM_Click()
 
     Dim m As String
 
-    m = ADODC2.Recordset("AA")
+    m = Adodc2.Recordset("AA")
     m = Trim(m)
-    MAFM = Trim(ADODC2.Recordset("AFM"))
+    MAFM = Trim(Adodc2.Recordset("AFM"))
     MKOD = GGET_CVALUE("SELECT KOD FROM PEL WHERE EIDOS='r' AND AFM='" + MAFM + "'")
     
     On Error GoTo OUTDOOR
@@ -5561,9 +5636,9 @@ Private Sub hkoLD_Click()
         '
 
         sql = "select ISANTIST, P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
 
         '        '<EhHeader>
         '        On Error GoTo hkoLD_Click_Err
@@ -6609,9 +6684,9 @@ Function FIND_QUERY()
         On Error GoTo FIND_QUERY_Err
 
         '</EhHeader>
-        Dim pol As String, polepis As String, AGO As String, AGOEPIS As String, PARASPAROXOY As String
+        Dim pol As String, polepis As String, ago As String, AGOEPIS As String, PARASPAROXOY As String
 
-100     pol = "": polepis = "": AGO = "": AGOEPIS = "": PARASPAROXOY = ""
+100     pol = "": polepis = "": ago = "": AGOEPIS = "": PARASPAROXOY = ""
 
         'If checkServer(0) Then
         ' MsgBox("OK")
@@ -6623,7 +6698,7 @@ Function FIND_QUERY()
            
         End If
 
-110     Dim DUM As Boolean: DUM = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS, PARASPAROXOY)
+110     Dim DUM As Boolean: DUM = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS, PARASPAROXOY)
 
         Dim par
 
@@ -6641,8 +6716,8 @@ Function FIND_QUERY()
 122         par = pol + "," + polepis 'pol + polepis
         End If
         
-124     If Len(AGO) > 0 Then
-126         par = par + "," + AGO
+124     If Len(ago) > 0 Then
+126         par = par + "," + ago
         End If
 
         Dim sql As String
@@ -9020,7 +9095,7 @@ End Sub
 
 Function Get_AJ_ASCII(ByRef pol As String, _
                       ByRef polepis As String, _
-                      ByRef AGO As String, _
+                      ByRef ago As String, _
                       ByRef AGOEPIS As String, _
                       ByRef PARASPAROXOY) As Boolean
 
@@ -9065,7 +9140,7 @@ Function Get_AJ_ASCII(ByRef pol As String, _
                 End If
 
 116             If sqlDT2("pol") = "2" And (sqlDT2("ajia_apou") = "1" Or Val(sqlDT2("POS_apou")) > 0) Then
-118                 AGO = AGO + "'" + sqlDT2("eidos") + "',"
+118                 ago = ago + "'" + sqlDT2("eidos") + "',"
                 End If
 
 120
@@ -9095,10 +9170,10 @@ Function Get_AJ_ASCII(ByRef pol As String, _
 138         polepis = ""  'ME KENO DHMIOYRGEI PROBLHMA
         End If
 
-140     If Len(AGO) > 0 Then
-142         AGO = mID(AGO, 1, Len(AGO) - 1)
+140     If Len(ago) > 0 Then
+142         ago = mID(ago, 1, Len(ago) - 1)
         Else
-144         AGO = ""
+144         ago = ""
         End If
 
 146     If Len(PARASPAROXOY) > 0 Then
@@ -9292,7 +9367,7 @@ Sub MAKE_request(TXML As String, _
         '-------------------------------------------------------------------------------------
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-142     url2 = UrlAADE + "SendInvoices" '/RequestDocs"
+142     URL2 = UrlAADE + "SendInvoices" '/RequestDocs"
 
         'initialize
 144     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9303,7 +9378,7 @@ Sub MAKE_request(TXML As String, _
 150     XMLServer.Option(9) = 2048
 152     XMLServer.Option(6) = True
     
-154     XMLServer.Open "POST", url2, False
+154     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 156     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 158     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -9464,7 +9539,7 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         ' url2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
         ' url2 = "https://mydata-dev.azure-api.net/RequestMyIncome"  ' ?dateFrom={dateFrom}&dateTo={dateTo}[&entityVatNumber][&counterVatNumber][&invType]"
         'initialize
-100     url2 = UrlAADE + IIf(PEL1 = 1, "RequestMyIncome", "RequestMyExpenses")
+100     URL2 = UrlAADE + IIf(PEL1 = 1, "RequestMyIncome", "RequestMyExpenses")
 
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
 104     Set XMLReceive = CreateObject("Msxml2.DOMDocument.6.0")
@@ -9509,7 +9584,7 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         '?mark={mark}
 124     mmark = "?dateFrom=" + mmark + "&dateTo=" + mmday + "&" + afmCompany + "&counterVatNumber=" + mmafm   ' 28/04/2022"  ' deixnei to 29/4/22
     
-126     XMLServer.Open "GET", url2 & "" + mmark, False
+126     XMLServer.Open "GET", URL2 & "" + mmark, False
 128     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 130     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 132     XMLServer.send ""
@@ -9593,9 +9668,9 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         'Dim sql As String
 190     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],(SELECT TOP 1 ISNULL(EPO,'')  FROM PEL WHERE AFM=APESTALMENA2.AFM) AS [≈–ŸÕ’Ã…¡],* from APESTALMENA2 ORDER BY ID DESC"
 
-192     ADODC2.ConnectionString = gConnect
-194     ADODC2.RecordSource = sql
-196     ADODC2.Refresh
+192     Adodc2.ConnectionString = gConnect
+194     Adodc2.RecordSource = sql
+196     Adodc2.Refresh
     
         '<EhFooter>
         Exit Sub
@@ -9626,7 +9701,7 @@ Public Sub requestafm2(Userafm As String, _
 
         '</EhHeader>
 
-100     url2 = "https://www1.gsis.gr:443/wsaade/RgWsPublic2/RgWsPublic2"  '  UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
+100     URL2 = "https://www1.gsis.gr:443/wsaade/RgWsPublic2/RgWsPublic2"  '  UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
 
         'initialize
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9657,7 +9732,7 @@ Public Sub requestafm2(Userafm As String, _
 116     mmark = mmark + "    <env:Body><ns2:rgWsPublic2AfmMethod><ns2:INPUT_REC><ns3:afm_called_by/><ns3:afm_called_for>" + askafm + "</ns3:afm_called_for> </ns2:INPUT_REC></ns2:rgWsPublic2AfmMethod>  </env:Body></env:Envelope>"
         ' mmark "?dateFrom=01/01/2022&dateTo=" + mmday   ' 28/04/2022"  ' deixnei to 29/4/22
     
-118     XMLServer.Open "POST", url2, False
+118     XMLServer.Open "POST", URL2, False
 120     XMLServer.setRequestHeader "Content-Type", "application/soap+xml"                       '"aade-user-id", P_USER '"glagakis2"
         ' XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 122     XMLServer.send mmark
@@ -9731,7 +9806,7 @@ Sub REQUEST_DIKAMAS()
 
         '</EhHeader>
 
-100     url2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
+100     URL2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
 
         'initialize
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9770,7 +9845,7 @@ Sub REQUEST_DIKAMAS()
         ' XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=19/03/2025"   ¬¡∆Ÿ ‘œ Ã¡—   ¡… «Ã≈—œÃ«Õ…¡  ¡… Ãœ’ ¬√¡∆≈… ‘«” «Ã≈—¡” ¡–œ ‘œ Ã¡—  -1   ¡… Ã≈‘¡
     
         '‘œ –¡— ¡‘Ÿ ƒœ’À≈’≈… œ  Ã≈ «Ã≈—œÃ«Õ…¡  ¡… –…¡Õ≈… œÀ« ‘«Õ «Ã≈—¡ ¡Õ ƒŸ”Ÿ ◊¡Ã«Àœ Ã¡— , ¡ÀÀœ…Ÿ” ¡Õ ¬¡ÀŸ Ã¡—  √…¡ ‘«Õ …ƒ…¡ Ã≈—¡ ¡–œ ‘œ Ã¡— (-1)  ¡… –≈—¡
-118     XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=" + mmday ' 19/03/2025"
+118     XMLServer.Open "GET", URL2 & "?mark=" + mmark + "&dateTo=" + mmday ' 19/03/2025"
 
         ' ‘≈”‘ √…¡ Ã≈√…”‘œ
         'XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=" + mmday + "&maxMark=2" '' 19/03/2025"
@@ -9880,9 +9955,9 @@ Sub REQUEST_DIKAMAS()
         'Dim sql As String
 188     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],(SELECT TOP 1 EPO FROM PEL WHERE PEL.AFM=APESTALMENA2.AFM) AS [–≈À],* from APESTALMENA2 ORDER BY ID DESC"
 
-190     ADODC2.ConnectionString = gConnect
-192     ADODC2.RecordSource = sql
-194     ADODC2.Refresh
+190     Adodc2.ConnectionString = gConnect
+192     Adodc2.RecordSource = sql
+194     Adodc2.Refresh
 
         Dim m_ID_NUM As Long
 
@@ -9890,23 +9965,23 @@ Sub REQUEST_DIKAMAS()
 
         Dim M_KOD    As String
 
-        Do While Not ADODC2.Recordset.EOF
+        Do While Not Adodc2.Recordset.EOF
 
-            If GGET_NVALUE("select COUNT(*) from TIM WHERE ENTITYMARK='" + ADODC2.Recordset("MARK") + "'") >= 1 Then
+            If GGET_NVALUE("select COUNT(*) from TIM WHERE ENTITYMARK='" + Adodc2.Recordset("MARK") + "'") >= 1 Then
                 'OK
             Else
-                m_ID_NUM = GGET_NVALUE("select ID_NUM from TIM WHERE LEFT(ISNULL(ENTITYMARK,' '),1)<>'4' AND HME='" + Format(ADODC2.Recordset("ISSUEDATE"), "MM/dd/yyyy") + "' and AJ1+AJ2+AJ3+AJ4+AJ5+AJ6=" + Replace(Format(ADODC2.Recordset("totalNETValue"), "#####0.00"), ",", "."))
+                m_ID_NUM = GGET_NVALUE("select ID_NUM from TIM WHERE LEFT(ISNULL(ENTITYMARK,' '),1)<>'4' AND HME='" + Format(Adodc2.Recordset("ISSUEDATE"), "MM/dd/yyyy") + "' and AJ1+AJ2+AJ3+AJ4+AJ5+AJ6=" + Replace(Format(Adodc2.Recordset("totalNETValue"), "#####0.00"), ",", "."))
                 M_AFM = GGET_CVALUE("select KPE from TIM WHERE ID_NUM=" + str(m_ID_NUM))
                 M_AFM = GGET_CVALUE("SELECT AFM FROM PEL WHERE EIDOS='e' and KOD='" + M_AFM + "'")
       
-                If M_AFM = Trim(ADODC2.Recordset("AFM")) Then
-                    Gdb.Execute ("UPDATE TIM SET QRURL='" + f_qrCodeUrl + "',ENTITYMARK='" + Trim(ADODC2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
+                If M_AFM = Trim(Adodc2.Recordset("AFM")) Then
+                    Gdb.Execute ("UPDATE TIM SET QRURL='" + f_qrCodeUrl + "',ENTITYMARK='" + Trim(Adodc2.Recordset("MARK")) + "' WHERE ID_NUM=" + str(m_ID_NUM))
                     MsgBox "OK ENHME—Ÿ»« ≈ TO MARK –œ’ ≈À≈…–≈"
                 End If
       
             End If
 
-            ADODC2.Recordset.MoveNext
+            Adodc2.Recordset.MoveNext
         Loop
     
         '<EhFooter>
@@ -10086,7 +10161,7 @@ Sub REQUEST_PROMITH()
 116         MkDir "c:\" + F_TXTFILES + "\GETREQ"
         End If
     
-118     url2 = UrlAADE + "RequestDocs" '/RequestDocs"
+118     URL2 = UrlAADE + "RequestDocs" '/RequestDocs"
 
         'initialize
 120     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -10097,7 +10172,7 @@ Sub REQUEST_PROMITH()
 126     XMLServer.Option(9) = 2048
 128     XMLServer.Option(6) = True
 
-130     XMLServer.Open "GET", url2 & "?mark=" + MARK2, False
+130     XMLServer.Open "GET", URL2 & "?mark=" + MARK2, False
 132     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 134     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 136     XMLServer.send ""
@@ -10300,9 +10375,9 @@ Sub REQUEST_PROMITH()
         'Dim sql As String
 214     '  sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE ETIK LIKE RTRIM(SUBSTRING(TYPOS,1,4))+'%') AS [–¡—¡”‘],ATIM,* from APESTALMENA WHERE YEAR(ISSUEDATE)=" + str(Year(gLhjh)) + "    ORDER BY ID DESC"
         sql = "select ISANTIST,P.EPO,A.* from APESTALMENA A inner JOIN PEL P ON P.EIDOS='r' and P.AFM=A.AFM   WHERE A.AA IN ( SELECT ATIM FROM APESTALMENADET WHERE LEN(KODE)>1 )"
-216     ADODC2.ConnectionString = gConnect
-218     ADODC2.RecordSource = sql
-220     ADODC2.Refresh
+216     Adodc2.ConnectionString = gConnect
+218     Adodc2.RecordSource = sql
+220     Adodc2.Refresh
     
         '<EhFooter>
         Exit Sub
@@ -11195,9 +11270,9 @@ Private Sub monoApestalmena_Click()
         '</EhHeader>
         Dim sql As String
 
-        Dim pol As String, polepis As String, AGO As String, AGOEPIS As String
+        Dim pol As String, polepis As String, ago As String, AGOEPIS As String
 
-100     pol = "": polepis = "": AGO = "": AGOEPIS = ""
+100     pol = "": polepis = "": ago = "": AGOEPIS = ""
 
         Dim PARASPAROX As String
 
@@ -11217,7 +11292,7 @@ Private Sub monoApestalmena_Click()
 
         End If
   
-114     DUM = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS, PARASPAROX)
+114     DUM = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS, PARASPAROX)
 
         Dim par, synt As String
         
@@ -11225,9 +11300,9 @@ Private Sub monoApestalmena_Click()
 
 118     par = pol + "," + polepis
 
-120     If Len(AGO) > 0 Then
+120     If Len(ago) > 0 Then
         
-122         par = par + "," + AGO
+122         par = par + "," + ago
         End If
 
 124     synt = ""
@@ -11655,9 +11730,9 @@ Private Sub MydataAney()
 102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
-104     ADODC2.ConnectionString = gConnect
-106     ADODC2.RecordSource = sql
-108     ADODC2.Refresh
+104     Adodc2.ConnectionString = gConnect
+106     Adodc2.RecordSource = sql
+108     Adodc2.Refresh
 
 End Sub
 
@@ -11667,9 +11742,9 @@ Private Sub EmporAney()
 102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Œ') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
-104     ADODC2.ConnectionString = gConnect
-106     ADODC2.RecordSource = sql
-108     ADODC2.Refresh
+104     Adodc2.ConnectionString = gConnect
+106     Adodc2.RecordSource = sql
+108     Adodc2.Refresh
 
 End Sub
 
@@ -11774,9 +11849,9 @@ Public Function OLD_fupdateclient(ByVal clientID As String, _
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-138     url2 = url2 + MARKTIM
+138     URL2 = URL2 + MARKTIM
      
-140     url2 = UrlAADE + "DCL/UpdateClient"
+140     URL2 = UrlAADE + "DCL/UpdateClient"
 
         'initialize
 142     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -11787,7 +11862,7 @@ Public Function OLD_fupdateclient(ByVal clientID As String, _
 148     XMLServer.Option(9) = 2048
 150     XMLServer.Option(6) = True
     
-152     XMLServer.Open "POST", url2, False
+152     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 154     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 156     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -12300,7 +12375,7 @@ Private Sub SEND_EXPENS_Click()
 120     Set objStream = Nothing
         '-------------------------------------------------------------------------------------
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-122     url2 = UrlAADE + "SendExpensesClassification" '/RequestDocs"
+122     URL2 = UrlAADE + "SendExpensesClassification" '/RequestDocs"
 
         'initialize
 124     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -12311,7 +12386,7 @@ Private Sub SEND_EXPENS_Click()
 130     XMLServer.Option(9) = 2048
 132     XMLServer.Option(6) = True
     
-134     XMLServer.Open "POST", url2, False
+134     XMLServer.Open "POST", URL2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 136     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 138     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -12395,7 +12470,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 
         '166         With elemRoot
 
-100     Dim ctyp       As String: ctyp = FIND2_EXODTYPOS(Left$(ADODC2.Recordset("ATIM"), 1))
+100     Dim ctyp       As String: ctyp = FIND2_EXODTYPOS(Left$(Adodc2.Recordset("ATIM"), 1))
 
 102     Set docStock = New MSXML2.DOMDocument
 
@@ -12427,7 +12502,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 
 122             With elemField
         
-124                 Set elem2Field = docStock.createElement("invoiceMark"): elem2Field.Text = ADODC2.Recordset("MARK"): elemField.appendChild elem2Field
+124                 Set elem2Field = docStock.createElement("invoiceMark"): elem2Field.Text = Adodc2.Recordset("MARK"): elemField.appendChild elem2Field
         
 126                 Set elem0Field = docStock.createElement("invoicesExpensesClassificationDetails") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 
@@ -12439,7 +12514,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 132                     Set elem10Field = docStock.createElement("expensesClassificationDetailData") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 134                     Set elem2Field = docStock.createElement("classificationType"): elem2Field.Text = Split(ctyp, ";")(0): elem10Field.appendChild elem2Field
 136                     Set elem2Field = docStock.createElement("classificationCategory"): elem2Field.Text = Split(ctyp, ";")(1): elem10Field.appendChild elem2Field
-138                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(ADODC2.Recordset("TOTALNETVALUE")), ",", "."): elem10Field.appendChild elem2Field
+138                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(Adodc2.Recordset("TOTALNETVALUE")), ",", "."): elem10Field.appendChild elem2Field
 140                     Set elem2Field = docStock.createElement("id"): elem2Field.Text = "1": elem10Field.appendChild elem2Field
 142                     elem0Field.appendChild elem10Field
     
@@ -12447,7 +12522,7 @@ Sub CREATE_EXP(ByRef TXML As String)  ' MSXML2.DOMDocument)
 144                     Set elem10Field = docStock.createElement("expensesClassificationDetailData") ' ‰ÁÏÈÔıÒ„˘ ÂÛÔ˜Á
 146                     Set elem2Field = docStock.createElement("classificationType"): elem2Field.Text = "VAT_361": elem10Field.appendChild elem2Field
 148                     Set elem2Field = docStock.createElement("classificationCategory"): elem2Field.Text = Split(ctyp, ";")(1): elem10Field.appendChild elem2Field
-150                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(ADODC2.Recordset("TOTALVATAMOUNT")), ",", "."): elem10Field.appendChild elem2Field
+150                     Set elem2Field = docStock.createElement("amount"): elem2Field.Text = Replace(str(Adodc2.Recordset("TOTALVATAMOUNT")), ",", "."): elem10Field.appendChild elem2Field
 152                     Set elem2Field = docStock.createElement("id"): elem2Field.Text = "2": elem10Field.appendChild elem2Field
 154                     elem0Field.appendChild elem10Field
     
@@ -12525,12 +12600,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     DATA1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     DATA1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     DATA1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = DATA1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -12708,17 +12783,17 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
         '--------------------------------------------------------------------------------------=
         Dim sumes(100) As String
 
-100     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         ADODC2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-110     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 112         TDBGrid2.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 

@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -23,6 +23,14 @@ Begin VB.Form par1
    ScaleHeight     =   12510
    ScaleWidth      =   19260
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton REJECT 
+      Caption         =   "REJECT"
+      Height          =   360
+      Left            =   13080
+      TabIndex        =   194
+      Top             =   240
+      Width           =   990
+   End
    Begin VB.CommandButton Command9 
       Caption         =   "–·Ò·Î·‚Á ‘ÈÏ/ƒ¡"
       Height          =   360
@@ -173,21 +181,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.ComboBox AnapodoAitia 
          Height          =   315
@@ -295,7 +303,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   336920577
+         Format          =   172228609
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -309,7 +317,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   336920578
+         Format          =   172228610
          CurrentDate     =   38294
       End
       Begin VB.Label lbl¡ÈÙﬂ·¡Ì‹Ô‰Ôı 
@@ -1991,7 +1999,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   335872001
+      Format          =   172425217
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -8413,6 +8421,41 @@ End Sub
 Private Sub cmdCAI_Click()
     PAR13.SHOW (1)
 
+End Sub
+
+Private Sub REJECT_Click()
+'RejectDeliveryNote
+
+Dim qrl As String ': qrl = "https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=vZGdPC4qtv61lfj3tMcBWCVzle6HNmunsN6JjmX4e9gLqhLIIIUNGzIx6YzWdXmeg0fsTOtxriHc%2bCRo3shXRfuFVdEayG8L9Xt9%2fSH8HaE%3d"
+
+qrl = InputBox("ÛÍ·Ì‹ÒÈÛÂ ÙÔ qrcode", " ")
+
+ Dim MARK As String
+
+            MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
+
+
+Dim TXML As String
+TXML = "<?xml version=""1.0"" encoding=""utf-8""?>"   'qrUrl,outcome"
+TXML = TXML + "<RejectDeliveryNoteRequest>"
+TXML = TXML + "<qrUrl>" + qrl + "</qrUrl>"
+TXML = TXML + "<invoiceMark>" + MARK + "</invoiceMark>"
+TXML = TXML + "</RejectDeliveryNoteRequest>"
+Dim URL2 As String
+URL2 = "RejectDeliveryNote"
+
+
+Dim DUM As String: DUM = Par7MyData.SendConfirmREJECT(TXML, URL2)
+    
+ '           Dim m_ID As Long
+'         PAR1.TDBGrid1.Col = 7
+'       m_ID = Val(PAR1.TDBGrid1.Text)
+
+'"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
+'https://mydataapidev.aade.gr/RegisterTransfer
+'qrl = GGET_CVALUE("select QRURL FROM TIM WHERE ID_NUM=" + str(m_ID))
+'https://mydatapi.aade.gr/myDATA/ConfirmDeliveryOutcome
+    
 End Sub
 
 Private Sub submitpayment_Click()
@@ -27045,7 +27088,7 @@ End Function
 
 
 
-Private Sub uploadAzurefile(url2 As String, FILENAME As String)
+Private Sub uploadAzurefile(URL2 As String, FILENAME As String)
 
         On Error GoTo lab777
 
@@ -27057,7 +27100,7 @@ Private Sub uploadAzurefile(url2 As String, FILENAME As String)
 
         Dim REQ As WinHttp.WinHttpRequest
         'REQ = New WinHttp.WinHttpRequest
-100     Dim URI As String: URI = url2 '+ " HTTP/1.1" ' "https://beta-srv.parochos.gr/api/uploadFileRequest"  '?Bearer=" + gf_Bearer /api/
+100     Dim URI As String: URI = URL2 '+ " HTTP/1.1" ' "https://beta-srv.parochos.gr/api/uploadFileRequest"  '?Bearer=" + gf_Bearer /api/
             
 102     Set REQ = New WinHttp.WinHttpRequest
         Dim Q          As String
