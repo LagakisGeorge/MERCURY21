@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   528220161
+      Format          =   167182337
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   528220161
+      Format          =   167182337
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1621,7 +1622,7 @@ Dim afmCompany         As String
 
 Dim UrlAADE            As String
 
-Dim URL2               As String
+Dim url2               As String
 
 'Dim sqldt As New ADODB.Recordset
 Dim AFM                As String ' –≈À¡‘«” COUNTERPART
@@ -2067,9 +2068,9 @@ Private Sub cancelClient_Click()
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     URL2 = URL2 + MARKTIM
+146     url2 = url2 + MARKTIM
      
-148     URL2 = "https://mydataapidev.aade.gr/DCL/CancelClient?dclID=" + "100000000007161"
+148     url2 = "https://mydataapidev.aade.gr/DCL/CancelClient?dclID=" + "100000000007161"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -2080,7 +2081,7 @@ Private Sub cancelClient_Click()
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", URL2, False
+160     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -2142,9 +2143,9 @@ Public Function OLDkillClient(ByVal park2garage3 As Integer, _
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     URL2 = URL2 + MARKTIM
+146     url2 = url2 + MARKTIM
      
-148     URL2 = UrlAADE + "DCL/CancelClient?dclID=" + clientID ' "100000000007161"
+148     url2 = UrlAADE + "DCL/CancelClient?dclID=" + clientID ' "100000000007161"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -2155,7 +2156,7 @@ Public Function OLDkillClient(ByVal park2garage3 As Integer, _
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", URL2, False
+160     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -2477,19 +2478,19 @@ Public Function OLD_newclient(ByVal garaz3epark2 As Integer, _
 154         .save "C:\txtfiles\" + ARKYKL + ".xml"
         End With
   
-156     URL2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
+156     url2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-158     URL2 = URL2 + MARKTIM
+158     url2 = url2 + MARKTIM
      
         If F_demo = 1 Then
-160         URL2 = "https://mydataapidev.aade.gr/DCL/SendClient"
+160         url2 = "https://mydataapidev.aade.gr/DCL/SendClient"
         Else
       
-            URL2 = "https://mydatapi.aade.gr/DCL/SendClient"
+            url2 = "https://mydatapi.aade.gr/DCL/SendClient"
 
             ' url2 = UrlAADE + "DCL/SendClient"
             'initialize
@@ -2503,7 +2504,7 @@ Public Function OLD_newclient(ByVal garaz3epark2 As Integer, _
 168     XMLServer.Option(9) = 2048
 170     XMLServer.Option(6) = True
     
-172     XMLServer.Open "POST", URL2, False
+172     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 174     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 176     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3292,10 +3293,10 @@ Public Function OLD_RELATECLIEND(ByVal MARK As String, _
         ' Dim MARK As String
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-136     URL2 = URL2 + MARKTIM
+136     url2 = url2 + MARKTIM
      
-138     URL2 = UrlAADE + "DCL/ClientCorrelations"
-        URL2 = UrlAADE + "DCL/ClientCorrelations"
+138     url2 = UrlAADE + "DCL/ClientCorrelations"
+        url2 = UrlAADE + "DCL/ClientCorrelations"
         'initialize
 140     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
 142     Set XMLReceive = CreateObject("Msxml2.DOMDocument.6.0")
@@ -3305,7 +3306,7 @@ Public Function OLD_RELATECLIEND(ByVal MARK As String, _
 146     XMLServer.Option(9) = 2048
 148     XMLServer.Option(6) = True
     
-150     XMLServer.Open "POST", URL2, False
+150     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 152     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 154     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3600,9 +3601,9 @@ Private Sub Command10old_Click()
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-146     URL2 = URL2 + MARKTIM
+146     url2 = url2 + MARKTIM
      
-148     URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?" ' 100000000007664"
+148     url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?" ' 100000000007664"
 
         'initialize
 150     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -3613,7 +3614,7 @@ Private Sub Command10old_Click()
 156     XMLServer.Option(9) = 2048
 158     XMLServer.Option(6) = True
     
-160     XMLServer.Open "POST", URL2, False
+160     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 162     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 164     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -3943,18 +3944,18 @@ Private Sub Command10_Click()
 
         '    MARK = InputBox("d?se to mark", "µa??")
      
-110     URL2 = URL2 + MARKTIM
+110     url2 = url2 + MARKTIM
      
-112     URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+112     url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
 
         If F_demo = 1 Then
             ' url2 = "https://mydataapidev.aade.gr/DCL/SendClient"
-            URL2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+            url2 = "https://mydataapidev.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
 
         Else
       
             ' url2 = "https://mydatapi.aade.gr/DCL/SendClient"
-            URL2 = "https://mydatapi.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
+            url2 = "https://mydatapi.aade.gr/DCL/RequestClients?DCLID=" + ARXID '100000000007663" ''''''100000000007739"
         
         End If
 
@@ -3969,7 +3970,7 @@ Private Sub Command10_Click()
 120     XMLServer.Option(9) = 2048
 122     XMLServer.Option(6) = True
     
-124     XMLServer.Open "GET", URL2, False
+124     XMLServer.Open "GET", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 126     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 128     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -4228,13 +4229,13 @@ Public Function GetDeliveryStatus(ByVal MARKTIM As String, TIMOL As String) As S
         '            Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     URL2 = UrlAADE + "GetDeliveryNoteStatus?mark=" '/RequestDocs"
+104     url2 = UrlAADE + "GetDeliveryNoteStatus?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-106     URL2 = URL2 + MARKTIM
+106     url2 = url2 + MARKTIM
 
         'initialize
 108     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -4246,7 +4247,7 @@ Public Function GetDeliveryStatus(ByVal MARKTIM As String, TIMOL As String) As S
 116     XMLServer.Option(6) = True
     
 118     'XMLServer.Open "POST", url2, False
-        XMLServer.Open "GET", URL2, False
+        XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
 124     XMLServer.send 'TXML 'strData  '”‘≈ÀÕŸ ‘œ STRING TXML STO MYDATA  'XMLServer.send TXML '  ¡Õ »≈ÀŸ Õ¡ ‘œ ”‘≈…ÀŸ ¡–œ ¡—◊≈…œ ‘œ‘≈ ¬¡∆Ÿ strData
@@ -4315,7 +4316,7 @@ Private Sub CMDLIXIAPOSTOLIS_Click()
 End Sub
 
 
-Public Function SendConfirmREJECT(ByVal TXML As String, URL2 As String) As String
+Public Function SendConfirmREJECT(ByVal TXML As String, url2 As String) As String
         loadpar7
 
         '<EhHeader>
@@ -4332,7 +4333,7 @@ Public Function SendConfirmREJECT(ByVal TXML As String, URL2 As String) As Strin
         '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     URL2 = UrlAADE + URL2 ' "ConfirmDeliveryOutcome"
+104     url2 = UrlAADE + url2 ' "ConfirmDeliveryOutcome"
      
        
      
@@ -4347,7 +4348,7 @@ Public Function SendConfirmREJECT(ByVal TXML As String, URL2 As String) As Strin
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", URL2, False
+118     XMLServer.Open "POST", url2, False
         ' XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -4407,7 +4408,7 @@ Public Function SendConfirm(ByVal TXML As String, TIMOL As String) As String
         '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     URL2 = UrlAADE + "ConfirmDeliveryOutcome"
+104     url2 = UrlAADE + "ConfirmDeliveryOutcome"
      
         Dim MARK As String
 
@@ -4424,7 +4425,7 @@ Public Function SendConfirm(ByVal TXML As String, TIMOL As String) As String
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", URL2, False
+118     XMLServer.Open "POST", url2, False
         ' XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -4577,7 +4578,7 @@ Public Function ENARXIAPOS(ByVal TXML As String, TIMOL As String) As String
         '           ' Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     URL2 = UrlAADE + "RegisterTransfer"
+104     url2 = UrlAADE + "RegisterTransfer"
      
         Dim MARK As String
 
@@ -4594,7 +4595,7 @@ Public Function ENARXIAPOS(ByVal TXML As String, TIMOL As String) As String
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", URL2, False
+118     XMLServer.Open "POST", url2, False
         ' XMLServer.Open "GET", url2, False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -5273,13 +5274,13 @@ Public Function CANCEL_INVOICE(ByVal MARKTIM As String, TIMOL As String) As Stri
         '            Dim uri As String: uri = "https://mydata-dev.azure-api.net/CancelInvoice?mark=400000020235194"
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-104     URL2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
+104     url2 = UrlAADE + "CancelInvoice?mark=" '/RequestDocs"
      
         Dim MARK As String
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-106     URL2 = URL2 + MARKTIM
+106     url2 = url2 + MARKTIM
 
         'initialize
 108     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -5290,7 +5291,7 @@ Public Function CANCEL_INVOICE(ByVal MARKTIM As String, TIMOL As String) As Stri
 114     XMLServer.Option(9) = 2048
 116     XMLServer.Option(6) = True
     
-118     XMLServer.Open "POST", URL2, False
+118     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 120     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 122     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -6769,7 +6770,7 @@ Function FIND_QUERY()
 166     sql = sql + "ISNULL(FPA1,0) AS FPA1,ISNULL(FPA2,0) AS FPA2,ISNULL(FPA3,0) AS FPA3,ISNULL(FPA4,0) AS FPA4 ,ISNULL(FPA6,0) AS FPA6,ISNULL(FPA7,0) AS FPA7,"
 168     sql = sql + "AJI,PEL.EPA,ISNULL(PEL.POL,'.') AS POL,PEL.COUNTRY,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,"
 170     sql = sql + "ISNULL(PEL.XRVMA,'') AS TK,SXETMARK,ISNULL(PARAKRATISI,0) AS PARAKRAT,ISNULL(B_C2,'') AS TYPOSPARAKRAT,isnull(EXCHANGERATE,1) AS EXCHANGERATE,isnull(CURRENCY,'EUR') AS CURRENCY ,ISNULL(ELGA,0) AS ELGA,isnull(KR1,0) AS KR1,ISNULL(KR2,0) AS KR2,PEL.EIDOS AS EIDOS,isnull(ANASTOLHFPA,0) as ANASTOLHFPA ,OTHERMOVEPURPOSETITLE, ORA,AYTOK,ISNULL(SXETMARKS,',') AS SXETMARKS,SKOPOS,AKYROMENO,isnull(JWT,'') AS JWT, "
-        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,ISNULL(PARAT,'') AS PARAT "
+        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,ISNULL(PARAT,'') AS PARAT,ISNULL(ISANAPODO,1) AS ISANAPODO "
 172     sql = sql + "   FROM TIM LEFT JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
 174     sql = sql + fSynt ' " WHERE (ENTITYMARK IS NULL OR LEFT(ENTITYMARK,3)='ERR' ) AND    LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'  "
         'sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
@@ -7604,7 +7605,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             
                             If InStr(F_ANAPODO, Left(SQLDT("ATIM"), 1)) > 0 Then
                                 Set elem2Field = docStock.createElement("reverseDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = "1": elemField.appendChild elem2Field
+                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = str(SQLDT("ISANAPODO")): elemField.appendChild elem2Field
                          
                             End If
                              
@@ -9367,7 +9368,7 @@ Sub MAKE_request(TXML As String, _
         '-------------------------------------------------------------------------------------
 
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-142     URL2 = UrlAADE + "SendInvoices" '/RequestDocs"
+142     url2 = UrlAADE + "SendInvoices" '/RequestDocs"
 
         'initialize
 144     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9378,7 +9379,7 @@ Sub MAKE_request(TXML As String, _
 150     XMLServer.Option(9) = 2048
 152     XMLServer.Option(6) = True
     
-154     XMLServer.Open "POST", URL2, False
+154     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 156     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 158     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -9539,7 +9540,7 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         ' url2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
         ' url2 = "https://mydata-dev.azure-api.net/RequestMyIncome"  ' ?dateFrom={dateFrom}&dateTo={dateTo}[&entityVatNumber][&counterVatNumber][&invType]"
         'initialize
-100     URL2 = UrlAADE + IIf(PEL1 = 1, "RequestMyIncome", "RequestMyExpenses")
+100     url2 = UrlAADE + IIf(PEL1 = 1, "RequestMyIncome", "RequestMyExpenses")
 
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
 104     Set XMLReceive = CreateObject("Msxml2.DOMDocument.6.0")
@@ -9584,7 +9585,7 @@ Private Sub KINPEL_CLICK(ByVal PEL1 As Integer)   'Sub KINPEL_CLICK()
         '?mark={mark}
 124     mmark = "?dateFrom=" + mmark + "&dateTo=" + mmday + "&" + afmCompany + "&counterVatNumber=" + mmafm   ' 28/04/2022"  ' deixnei to 29/4/22
     
-126     XMLServer.Open "GET", URL2 & "" + mmark, False
+126     XMLServer.Open "GET", url2 & "" + mmark, False
 128     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 130     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 132     XMLServer.send ""
@@ -9701,7 +9702,7 @@ Public Sub requestafm2(Userafm As String, _
 
         '</EhHeader>
 
-100     URL2 = "https://www1.gsis.gr:443/wsaade/RgWsPublic2/RgWsPublic2"  '  UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
+100     url2 = "https://www1.gsis.gr:443/wsaade/RgWsPublic2/RgWsPublic2"  '  UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
 
         'initialize
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9732,7 +9733,7 @@ Public Sub requestafm2(Userafm As String, _
 116     mmark = mmark + "    <env:Body><ns2:rgWsPublic2AfmMethod><ns2:INPUT_REC><ns3:afm_called_by/><ns3:afm_called_for>" + askafm + "</ns3:afm_called_for> </ns2:INPUT_REC></ns2:rgWsPublic2AfmMethod>  </env:Body></env:Envelope>"
         ' mmark "?dateFrom=01/01/2022&dateTo=" + mmday   ' 28/04/2022"  ' deixnei to 29/4/22
     
-118     XMLServer.Open "POST", URL2, False
+118     XMLServer.Open "POST", url2, False
 120     XMLServer.setRequestHeader "Content-Type", "application/soap+xml"                       '"aade-user-id", P_USER '"glagakis2"
         ' XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 122     XMLServer.send mmark
@@ -9806,7 +9807,7 @@ Sub REQUEST_DIKAMAS()
 
         '</EhHeader>
 
-100     URL2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
+100     url2 = UrlAADE + "RequestTransmittedDocs" '/RequestDocs"
 
         'initialize
 102     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -9845,7 +9846,7 @@ Sub REQUEST_DIKAMAS()
         ' XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=19/03/2025"   ¬¡∆Ÿ ‘œ Ã¡—   ¡… «Ã≈—œÃ«Õ…¡  ¡… Ãœ’ ¬√¡∆≈… ‘«” «Ã≈—¡” ¡–œ ‘œ Ã¡—  -1   ¡… Ã≈‘¡
     
         '‘œ –¡— ¡‘Ÿ ƒœ’À≈’≈… œ  Ã≈ «Ã≈—œÃ«Õ…¡  ¡… –…¡Õ≈… œÀ« ‘«Õ «Ã≈—¡ ¡Õ ƒŸ”Ÿ ◊¡Ã«Àœ Ã¡— , ¡ÀÀœ…Ÿ” ¡Õ ¬¡ÀŸ Ã¡—  √…¡ ‘«Õ …ƒ…¡ Ã≈—¡ ¡–œ ‘œ Ã¡— (-1)  ¡… –≈—¡
-118     XMLServer.Open "GET", URL2 & "?mark=" + mmark + "&dateTo=" + mmday ' 19/03/2025"
+118     XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=" + mmday ' 19/03/2025"
 
         ' ‘≈”‘ √…¡ Ã≈√…”‘œ
         'XMLServer.Open "GET", url2 & "?mark=" + mmark + "&dateTo=" + mmday + "&maxMark=2" '' 19/03/2025"
@@ -10161,7 +10162,7 @@ Sub REQUEST_PROMITH()
 116         MkDir "c:\" + F_TXTFILES + "\GETREQ"
         End If
     
-118     URL2 = UrlAADE + "RequestDocs" '/RequestDocs"
+118     url2 = UrlAADE + "RequestDocs" '/RequestDocs"
 
         'initialize
 120     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -10172,7 +10173,7 @@ Sub REQUEST_PROMITH()
 126     XMLServer.Option(9) = 2048
 128     XMLServer.Option(6) = True
 
-130     XMLServer.Open "GET", URL2 & "?mark=" + MARK2, False
+130     XMLServer.Open "GET", url2 & "?mark=" + MARK2, False
 132     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 134     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY ' "555bc57c80634243958f62b629316aaa"
 136     XMLServer.send ""
@@ -11849,9 +11850,9 @@ Public Function OLD_fupdateclient(ByVal clientID As String, _
 
         '    MARK = InputBox("‰˘ÛÂ Ùo mark", "Ï·ÒÍ")
      
-138     URL2 = URL2 + MARKTIM
+138     url2 = url2 + MARKTIM
      
-140     URL2 = UrlAADE + "DCL/UpdateClient"
+140     url2 = UrlAADE + "DCL/UpdateClient"
 
         'initialize
 142     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -11862,7 +11863,7 @@ Public Function OLD_fupdateclient(ByVal clientID As String, _
 148     XMLServer.Option(9) = 2048
 150     XMLServer.Option(6) = True
     
-152     XMLServer.Open "POST", URL2, False
+152     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 154     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 156     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"
@@ -12375,7 +12376,7 @@ Private Sub SEND_EXPENS_Click()
 120     Set objStream = Nothing
         '-------------------------------------------------------------------------------------
         '--------------- ¡–œ”‘œÀ« INVOICES -----------------------------------------------------
-122     URL2 = UrlAADE + "SendExpensesClassification" '/RequestDocs"
+122     url2 = UrlAADE + "SendExpensesClassification" '/RequestDocs"
 
         'initialize
 124     Set XMLServer = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -12386,7 +12387,7 @@ Private Sub SEND_EXPENS_Click()
 130     XMLServer.Option(9) = 2048
 132     XMLServer.Option(6) = True
     
-134     XMLServer.Open "POST", URL2, False
+134     XMLServer.Open "POST", url2, False
         'XMLServer.Open "GET", URL2 & "?mark=400000019698028", False
 136     XMLServer.setRequestHeader "aade-user-id", P_USER '"glagakis2"
 138     XMLServer.setRequestHeader "Ocp-Apim-Subscription-Key", P_KEY '  "555bc57c80634243958f62b629316aaa"

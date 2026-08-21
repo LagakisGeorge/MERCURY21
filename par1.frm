@@ -303,7 +303,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   170328065
+         Format          =   166789121
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -317,7 +317,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   170328066
+         Format          =   166789122
          CurrentDate     =   38294
       End
       Begin VB.Label lbl¡ÈÙﬂ·¡Ì‹Ô‰Ôı 
@@ -1999,7 +1999,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   170262529
+      Format          =   133890049
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -6429,7 +6429,10 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
 Dim mISANAPODO As String, mANAPODOAITIA As String
 mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
  If InStr(F_ANAPODO, Left$(f_matim, 1)) > 0 Then
-      mISANAPODO = "1"
+      mISANAPODO = Format(gVal(AnapodoAitia.Text), "0") '  ' "1"
+      If Val(mISANAPODO) = 0 Then
+          mISANAPODO = "1"
+      End If
  End If
  
 
@@ -12512,9 +12515,18 @@ Private Sub Form_Resize()
 
 Label1(0).Left = Text2(1).Left
 label11(0).Left = Text2(2).Left
+ 
+ 
+ Label3(0).Top = Text2(3).Top - Label3(0).Height - 1 'ƒ…≈’»’Õ”«
  Label1(0).Top = Label3(0).Top
   label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
+   
+   Label4.Left = PARAS.Left
+   Label12.Left = Text1.Left
+   
+   
+   
  
 Label30.Left = 0
 Label31.Left = 0
