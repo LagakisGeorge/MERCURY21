@@ -5,7 +5,7 @@ Begin VB.Form help1
    ClientHeight    =   13035
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   14790
+   ClientWidth     =   22890
    Icon            =   "help.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form2"
@@ -13,10 +13,10 @@ Begin VB.Form help1
    MDIChild        =   -1  'True
    MinButton       =   0   'False
    ScaleHeight     =   13035
-   ScaleWidth      =   14790
+   ScaleWidth      =   22890
    ShowInTaskbar   =   0   'False
    Begin VB.ListBox List1 
-      Height          =   9420
+      Height          =   10590
       Left            =   120
       TabIndex        =   8
       Top             =   1920
@@ -25,21 +25,23 @@ Begin VB.Form help1
    Begin VB.CommandButton cmdVERSIONS 
       Caption         =   "ейодосеис"
       Height          =   360
-      Left            =   240
+      Left            =   12000
       TabIndex        =   7
-      Top             =   12000
+      Top             =   120
       Width           =   990
    End
    Begin RichTextLib.RichTextBox RichTextBox1 
-      Height          =   9855
+      Height          =   10815
       Left            =   9000
       TabIndex        =   6
       Top             =   1920
-      Width           =   5775
-      _ExtentX        =   10186
-      _ExtentY        =   17383
+      Width           =   12975
+      _ExtentX        =   22886
+      _ExtentY        =   19076
       _Version        =   393217
       BackColor       =   16777215
+      Enabled         =   -1  'True
+      ScrollBars      =   3
       TextRTF         =   $"help.frx":000C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"

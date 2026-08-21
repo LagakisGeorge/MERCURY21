@@ -229,12 +229,10 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -249,28 +247,24 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
-            TextSave        =   ""
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
@@ -3148,7 +3142,9 @@ If f_proeid_mydata = 1 Then
   NNMY = GGET_NVALUE("SELECT COUNT(*) FROM PARASTAT WHERE POL=1 AND MYEID='1.1' AND ISMYDATA=1 AND ISDIAKIN<>1 and POS_APOU>0 ")
   
   If NNMY > 0 Then
-      MsgBox "пяосовг ле та тил.да & гкейтяомийа дектиа." + Chr(13) + " епийоимымгсте ле упостгяинг"
+      Dim TIT2 As String
+       TIT2 = GGET_CVALUE("SELECT TOP 1 TITLOS FROM PARASTAT WHERE POL=1 AND MYEID='1.1' AND ISMYDATA=1 AND ISDIAKIN<>1 and POS_APOU>0 ")
+      MsgBox "пяосовг ле та тил.да & гкейтяомийа дектиа." + Chr(13) + " епийоимымгсте ле упостгяинг " + TIT2
   End If
   
   
