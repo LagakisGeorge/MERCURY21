@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -303,7 +303,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   166789121
+         Format          =   311361537
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -317,7 +317,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   166789122
+         Format          =   311361538
          CurrentDate     =   38294
       End
       Begin VB.Label lbl¡ÈÙﬂ·¡Ì‹Ô‰Ôı 
@@ -1240,6 +1240,7 @@ Begin VB.Form par1
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
+      AllowUpdate     =   0   'False
       DefColWidth     =   0
       HeadLines       =   1
       FootLines       =   1
@@ -1999,7 +2000,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   133890049
+      Format          =   154337281
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -11066,7 +11067,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.Data1.ConnectionString = gConnect
+116     fpelat4.DATA1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -17768,8 +17769,8 @@ Private Sub Form_Load()
 1228    PEL.RecordSource = "SELECT top 1 *FROM PEL"
 1230    PEL.ConnectionString = gConnect
 
-1232    eggtim.ConnectionString = gConnect
-1234    eggtim.RecordSource = "SELECT top 10 * FROM EGGTIM"
+1232    EGGTIM.ConnectionString = gConnect
+1234    EGGTIM.RecordSource = "SELECT top 10 * FROM EGGTIM"
 
 1236    DOK.ConnectionString = gConnect
 1238    DOK.RecordSource = "SELECT top 1 *FROM DOK"
@@ -24147,7 +24148,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -25144,7 +25145,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
