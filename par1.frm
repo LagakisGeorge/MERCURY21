@@ -187,26 +187,26 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.CheckBox Zygish 
          Caption         =   "–ÒÔÚ ∆˝„ÈÛÁ"
          Height          =   255
-         Left            =   3120
+         Left            =   3000
          TabIndex        =   197
          Top             =   2040
          Width           =   1455
@@ -324,7 +324,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   444399617
+         Format          =   89194497
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -338,7 +338,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   444399618
+         Format          =   89194498
          CurrentDate     =   38294
       End
       Begin VB.Label lbl¡÷Ã‘—…‘œ’ 
@@ -2031,7 +2031,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   310378497
+      Format          =   87949313
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -22141,6 +22141,7 @@ Function printCrystal(MATIM, char_date)
         On Error GoTo MHNYMA
         
         Dim mf_paras As String
+
         mf_paras = GET_CVALUE(" SELECT TITLOS FROM PARASTAT WHERE EIDOS='" + Left(MATIM, 1) + "'") + " "
 
 102     printCrystal = 1    ' ·Ì ÂÈÌ·È dum < -900 ÙÔÙÂ ‰ÂÌ Ùı˘ÌÂÈ
@@ -22285,6 +22286,7 @@ Function printCrystal(MATIM, char_date)
 166         If F_METAF3SYNAL = 1 Then  ' ‘œ ƒ…¡÷œ—≈‘… œ ≈…Õ¡… ” œ–œ”2>ADT GIA NA PIASO TON ENTOLEA
 168             sql = "select  ISNULL(TOWEIGH,0) AS TOWEIGH,C5,C6,C7,OTHERMOVEPURPOSETITLE,ISNULL(ENTITYUID,'') AS ENTITYUID,ISNULL(AUTHENTICATIONCODE,'') AS AUTHENTICATIONCODE,   AJI,AJ1,AJ2,AJ3,FPA1,FPA2,FPA3,PEL.EPO,ATIM,HME as shme,AJI as ajia,TRP,PEL.EPA,PEL.DIE,PEL.AFM,PEL.TYP,PEL.DOY,PEL.KOD,AJ4,AJ5,FPA4,PEL.THL,PEL.POL,AJ6,FPA6,AJ7,FPA7,ISNULL(ELGA,0)+ISNULL(KR1,0) AS ELGA,PEL.CH1 AS DEH,SKOPOS2 AS ADT,EKPT5 AS PROHGYPOL,ID_NUM,LITRA,PARAKRATISI AS EFK,ORA,TIM.C1,TIM.C2,TIM.C3,TIM.C12,TIM.C13,TIM.NUM1,TIM.NUM2,TIM.NUM3,TIM.NUM11,ISNULL(ELINE,'') AS ELINE "
             Else
+
 170             If F_METAFORIKES = 2 Then  'CAI\
 172                 sql = "select  ISNULL(TOWEIGH,0) AS TOWEIGH,C5,C6,C7,OTHERMOVEPURPOSETITLE,ISNULL(ENTITYUID,'') AS ENTITYUID,ISNULL(AUTHENTICATIONCODE,'') AS AUTHENTICATIONCODE,AJI,AJ1,AJ2,AJ3,FPA1,FPA2,FPA3,PEL.EPO,ATIM,HME as shme,AJI as ajia,TRP,PEL.EPA,PEL.DIE,PEL.AFM,PEL.TYP,PEL.DOY,PEL.KOD,AJ4,AJ5,FPA4,PEL.THL,PEL.POL,AJ6,FPA6,AJ7,FPA7,ISNULL(ELGA,0)+ISNULL(KR1,0) AS ELGA,PEL.CH1 AS DEH,SKOPOS2 AS ADT,EKPT5 AS PROHGYPOL,ID_NUM,LITRA,PARAKRATISI AS EFK,ORA,TIM.C1,TIM.C2,TIM.C3,TIM.C12,TIM.C13,TIM.NUM1,TIM.NUM2,TIM.NUM3,TIM.NUM11,ISNULL(ELINE,'') AS ELINE "
                 Else
@@ -22620,6 +22622,7 @@ Function printCrystal(MATIM, char_date)
         'db.Execute "ALTER TABLE tim add column DEH CHAR(12) "
         '
         Dim ENTITYUID, authenticationCode
+
         Dim m_Aji As Single
 
 398     Rtim.MoveFirst
@@ -22794,208 +22797,212 @@ Function printCrystal(MATIM, char_date)
 542     If F_TYPFOROL = 11 Then diax = "/"
  
         Dim benz      As String ' Í˘‰ÈÍÔÛ & ÎÈÙÒ· Í·ıÛÈÏÔı
+
         Dim benz_atim As String
  
         Dim benz2     As String '
+
         Dim mparat2   As String
-      Dim mTher As String: mTher = ""
+
+        Dim mTher     As String: mTher = ""
+
         'algo
 544     If F_TYPFOROL = 1 Or F_TYPFOROL = 11 Or F_TYPFOROL = 21 Then '1=ALGOBOX  21=RBS  11=ALGOBOX ME "/" ANTI ";"
        
-'546         If f_is_benzinadiko = 1 Then
-'                If M_KODKAYSIMOY = "30" Or M_KODKAYSIMOY = "31" Then
-'                  If F_meIFESTO = 2 Then
-'                     mTher = "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))
-'                  Else
-'                      mTher = ""
-'                  End If
-'
-'                Else
-'                    mTher = ""
-'                End If
-'                'benz = "R?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
-'                '           If typos_par = 215 Then ' ¡ ’—Ÿ‘… œ
-'                '
-'                '                benz2 = "#" + PAR_GIA_AKYROSH + "#"   '  PAR1.PAR_GIA_AKYROSH.Caption = Trim(CNull(R!c1)) + "#" + mID(c, 2, 7)  ' 221#151   TYPOS ELINE+ARIUMOS
-'                '                benz_atim = mID(Rtim("ATIM"), 2, 6)
-'                '           Else
-'                '               benz2 = "0#173#100"
-'                '               benz_atim = parat.Text   '"672967"  ' ·ÒÈËÏÔÚ ·Ô‰ÂÈÓÁÚ
-'                '           End If
-'
-'                ' einai akyrotiko alla den xero poio akyronei
-'                ' ¡’‘œ ◊—≈…¡∆≈‘¡… ”‘«Õ ≈–¡Õ≈ ‘’–Ÿ”« –œ’ ƒ≈Õ Œ≈—≈… –œ…œ »¡ ¡ ’—Ÿ”≈…
-'548             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-'
-'550                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-'552                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
-'554                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
-'
-'                        ' e_pros = -1
-'556                     PAR_GIA_AKYROSH.Caption = GET_CVALUE("SELECT TRIM(C1) FROM PARASTAT WHERE EIDOS='" + Left(gia_akyr_tim, 1) + "'") + "#" + Trim(mID(gia_akyr_tim, 2, f_psifia_atim))
-'
-'                    End If
-'
-'                End If
-'
-'
-'
-'
-'
-'
-'558             If Len(Trim(PAR_GIA_AKYROSH)) > 1 Then      '¡ ’—Ÿ‘… œ=====================
-'560                 benz = ""
-'562                 benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
-'564                 benz_atim = mID(Rtim("ATIM"), 2, 6)
-'566                 typos_par = 215
-'568                 e_pros = -1
-'                Else
-'
-'570                 If typos_par = "175" Or typos_par = "169" Or typos_par = "173" Or typos_par = "159" Or typos_par = "317" Then
-'572                     benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") + mTher '+ "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH"))) ' 429.280" ' R?20!À…‘—¡
-'574                     benz2 = ""
-'                        '998481696;;DLD19004842;?20!6.949;202110050732;0005;0027867;0725;173;0;0114051;0.00;0.00;8.06;0.00;0.00;0.00;0.00;1.94;0.00;10.00;0;9CC6FF41D63BC8393C0819912054F562EB4165F6
-'576                 ElseIf F_THERM = 1 And F_THER_TIM_XORISAPOD = 1 Then
-'578                     benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "####0.000"), ",", ".") + mTher '+ "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))  ' 429.280" ' R?20!À…‘—¡
-'580                     benz2 = ""
-'                    Else
-'
-'                        Dim mParat As String
-'
-'582                     mParat = Trim(Left$(parat.Text, 10))
-'
-'584                     If Val(mParat) > 99999 Then
-'586                         benz2 = "#173#" + Right(Trim(mParat), 6)
-'                        Else
-'588                         benz2 = "#173#" + Right(Trim(mParat), 5)
-'                        End If
-'
-'590                     benz = "R?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
-'                    End If
-'
-'592                 benz_atim = mID(Rtim("ATIM"), 2, 6)   ' parat.Text   '"672
-'
-'                End If  'Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
-'
-'            Else   '               f_is_benzinadiko <> 1 Then
-'594             benz2 = " "
-'                '           If Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
-'                '                benz = ""
-'                '                benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
-'                '                benz_atim = mID(Rtim("ATIM"), 2, 6)
-'                '                typos_par = 215
-'                '                e_pros = -1
-'
-'596             If Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
-'598                 typos_par = 215
-'600                 e_pros = -1
-'602                 benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
-'                End If
-'
-'                ' PERIPTVSH DIORUVSHS
-'                ' einai akyrotiko alla den xero poio akyronei
-'604             If typos_par = 215 Then
-'
-'                    ' Dim gia_akyr_tim As String
-'606                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-'608                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
-'610                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
-'
-'612                     e_pros = -1
-'614                     PAR_GIA_AKYROSH.Caption = GET_CVALUE("SELECT TRIM(C1) FROM PARASTAT WHERE EIDOS='" + Left(gia_akyr_tim, 1) + "'") + "#" + Trim(mID(gia_akyr_tim, 2, f_psifia_atim))
-'616                     benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
-'
-'                    End If
-'
-'                End If
-'
-'618             benz = ""
-'620             benz_atim = mID(Rtim("ATIM"), 2, 6)
-'            End If  '  f_is_benzinadiko = 1 Then
-'
-'            '  benzinadiko [<]031051334//R?20!429.280/201811050643/221/0#173#100/672967/0.00/0.00/494.36/0.00/0.00/0.00/0.00/118.65/0.00/613.01/0[>]
-'            Dim eisf As Single
-'
-'622         If F_TYPFOROL = 21 Then 'RBS
-'624             If Len(Trim(benz2)) = 0 Then benz2 = "¡Õ≈’"
-'626             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz
-'628             eisf = e_pros * nNull(Rtim("EFK"))
-'            Else
-'
-'630             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
-'632             eisf = 0
-'            End If
-'
-'            '/                          221       /173#100/672967/0.00/0.00/
-'
-'634         e_line = e_line + diax + typos_par + diax + benz2 + diax + benz_atim + diax
-'636         E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5 + eisf) + diax
-'638         E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji + eisf)
-'
-'640         CCC4 = diax + "0[>]"
-'
-'642         e_line = e_line + E2 + CCC4
-'
-'644         If f_AKYR_benzinadiko = 1 Then
-'                ' ÂÎÈÌÂ timologioy
-'646             benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
-'648             benz2 = ""
-'
-'650             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
-'652             e_line = e_line + diax + typos_par + diax + benz2 + diax + benz_atim + diax
-'654             E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
-'656             E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
-'658             CCC4 = diax + "0[>]"
-'660             e_line = e_line + E2 + CCC4
-'                'A PERASMA  [<]998481696;028783755;?21!1.000;202406300000;222;;006968;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
-'                ' eline ·ÍıÒ˘ÙÈÍÔı
-'                ' benz = ""
-'
-'662             mparat2 = Trim(Left$(parat.Text, 10))
-'
-'664             If Val(mparat2) > 99999 Then
-'666                 benz2 = "#173#" + Right(Trim(mparat2), 6)
-'                Else
-'668                 benz2 = "#173#" + Right(Trim(mparat2), 5)
-'                End If
-'
-'670             benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(Abs(sum_posothta), "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
-'672             benz2 = "0#173#" + Right(Trim(mparat2), 6) '   "ariumow apodeixis"
-'674             benz_atim = Format(GET_NVALUE("SELECT ARITMISI WHERE ID=56"), "000000")   ' ARITMOS AKYROTIKOY
-'676             typos_par = 175 '  215
-'678             e_pros = -1
-'
-'680             E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
-'682             E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
-'684             CCC4 = diax + "0[>]"
-'
-'686             e_AkyrLine = "[<]" + AFMPEL + diax + "" + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
-'688             e_AkyrLine = e_AkyrLine + diax + typos_par + diax + benz2 + diax + benz_atim + diax
-'690             e_AkyrLine = e_AkyrLine + E2 + CCC4
-'
-'692             If MATIM <> f_matim And Left(f_matim, 1) = "T" Then ' dhladh tipono to akirotiko THW APODEIJIS POY SYNODEYEI TO TIMOLOGIO
-'694                 e_pros = 1 ' giati oi ajies einai hdh arnhtikes
-'696                 E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
-'698                 E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
-'700                 benz2 = "#173#" + ar_apod ' Right(Trim(mparat2), 6)
-'
-'702                 e_AkyrLine = "[<]" + AFMPEL + diax + "" + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
-'704                 e_AkyrLine = e_AkyrLine + diax + typos_par + diax + benz2 + diax + Right(MATIM, 6) + diax
-'706                 e_AkyrLine = e_AkyrLine + E2 + CCC4
-'
-'708                 e_line = e_AkyrLine
-'710                 parat.Text = ar_apod
-'                    'TELIKO PISTOTIKOY [<]998481696;;?21!1.000;202406300000;175;#173#123456;000768;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
-'                End If
-'                'TELIKO TIMOLOGIOY [<]998481696;028783755;?21!1.000;202406300000;222;;006968;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
-'
-'            End If
-'
-'712         If f_is_benzinadiko = 1 And M_KODKAYSIMOY = "****" Then
-'714             e_line = ""
-'716             MsgBox ("‘ÈÏÔÎ¸„ÈÔ ÀÈ·ÌÙÈÍ˛Ì")
-'718             e_AkyrLine = ""
-'            End If
+            '546         If f_is_benzinadiko = 1 Then
+            '                If M_KODKAYSIMOY = "30" Or M_KODKAYSIMOY = "31" Then
+            '                  If F_meIFESTO = 2 Then
+            '                     mTher = "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))
+            '                  Else
+            '                      mTher = ""
+            '                  End If
+            '
+            '                Else
+            '                    mTher = ""
+            '                End If
+            '                'benz = "R?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
+            '                '           If typos_par = 215 Then ' ¡ ’—Ÿ‘… œ
+            '                '
+            '                '                benz2 = "#" + PAR_GIA_AKYROSH + "#"   '  PAR1.PAR_GIA_AKYROSH.Caption = Trim(CNull(R!c1)) + "#" + mID(c, 2, 7)  ' 221#151   TYPOS ELINE+ARIUMOS
+            '                '                benz_atim = mID(Rtim("ATIM"), 2, 6)
+            '                '           Else
+            '                '               benz2 = "0#173#100"
+            '                '               benz_atim = parat.Text   '"672967"  ' ·ÒÈËÏÔÚ ·Ô‰ÂÈÓÁÚ
+            '                '           End If
+            '
+            '                ' einai akyrotiko alla den xero poio akyronei
+            '                ' ¡’‘œ ◊—≈…¡∆≈‘¡… ”‘«Õ ≈–¡Õ≈ ‘’–Ÿ”« –œ’ ƒ≈Õ Œ≈—≈… –œ…œ »¡ ¡ ’—Ÿ”≈…
+            '548             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
+            '
+            '550                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
+            '552                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+            '554                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
+            '
+            '                        ' e_pros = -1
+            '556                     PAR_GIA_AKYROSH.Caption = GET_CVALUE("SELECT TRIM(C1) FROM PARASTAT WHERE EIDOS='" + Left(gia_akyr_tim, 1) + "'") + "#" + Trim(mID(gia_akyr_tim, 2, f_psifia_atim))
+            '
+            '                    End If
+            '
+            '                End If
+            '
+            '
+            '
+            '
+            '
+            '
+            '558             If Len(Trim(PAR_GIA_AKYROSH)) > 1 Then      '¡ ’—Ÿ‘… œ=====================
+            '560                 benz = ""
+            '562                 benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
+            '564                 benz_atim = mID(Rtim("ATIM"), 2, 6)
+            '566                 typos_par = 215
+            '568                 e_pros = -1
+            '                Else
+            '
+            '570                 If typos_par = "175" Or typos_par = "169" Or typos_par = "173" Or typos_par = "159" Or typos_par = "317" Then
+            '572                     benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") + mTher '+ "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH"))) ' 429.280" ' R?20!À…‘—¡
+            '574                     benz2 = ""
+            '                        '998481696;;DLD19004842;?20!6.949;202110050732;0005;0027867;0725;173;0;0114051;0.00;0.00;8.06;0.00;0.00;0.00;0.00;1.94;0.00;10.00;0;9CC6FF41D63BC8393C0819912054F562EB4165F6
+            '576                 ElseIf F_THERM = 1 And F_THER_TIM_XORISAPOD = 1 Then
+            '578                     benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "####0.000"), ",", ".") + mTher '+ "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))  ' 429.280" ' R?20!À…‘—¡
+            '580                     benz2 = ""
+            '                    Else
+            '
+            '                        Dim mParat As String
+            '
+            '582                     mParat = Trim(Left$(parat.Text, 10))
+            '
+            '584                     If Val(mParat) > 99999 Then
+            '586                         benz2 = "#173#" + Right(Trim(mParat), 6)
+            '                        Else
+            '588                         benz2 = "#173#" + Right(Trim(mParat), 5)
+            '                        End If
+            '
+            '590                     benz = "R?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
+            '                    End If
+            '
+            '592                 benz_atim = mID(Rtim("ATIM"), 2, 6)   ' parat.Text   '"672
+            '
+            '                End If  'Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
+            '
+            '            Else   '               f_is_benzinadiko <> 1 Then
+            '594             benz2 = " "
+            '                '           If Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
+            '                '                benz = ""
+            '                '                benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
+            '                '                benz_atim = mID(Rtim("ATIM"), 2, 6)
+            '                '                typos_par = 215
+            '                '                e_pros = -1
+            '
+            '596             If Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
+            '598                 typos_par = 215
+            '600                 e_pros = -1
+            '602                 benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
+            '                End If
+            '
+            '                ' PERIPTVSH DIORUVSHS
+            '                ' einai akyrotiko alla den xero poio akyronei
+            '604             If typos_par = 215 Then
+            '
+            '                    ' Dim gia_akyr_tim As String
+            '606                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
+            '608                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+            '610                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
+            '
+            '612                     e_pros = -1
+            '614                     PAR_GIA_AKYROSH.Caption = GET_CVALUE("SELECT TRIM(C1) FROM PARASTAT WHERE EIDOS='" + Left(gia_akyr_tim, 1) + "'") + "#" + Trim(mID(gia_akyr_tim, 2, f_psifia_atim))
+            '616                     benz2 = "0#" + Trim(PAR_GIA_AKYROSH)
+            '
+            '                    End If
+            '
+            '                End If
+            '
+            '618             benz = ""
+            '620             benz_atim = mID(Rtim("ATIM"), 2, 6)
+            '            End If  '  f_is_benzinadiko = 1 Then
+            '
+            '            '  benzinadiko [<]031051334//R?20!429.280/201811050643/221/0#173#100/672967/0.00/0.00/494.36/0.00/0.00/0.00/0.00/118.65/0.00/613.01/0[>]
+            '            Dim eisf As Single
+            '
+            '622         If F_TYPFOROL = 21 Then 'RBS
+            '624             If Len(Trim(benz2)) = 0 Then benz2 = "¡Õ≈’"
+            '626             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz
+            '628             eisf = e_pros * nNull(Rtim("EFK"))
+            '            Else
+            '
+            '630             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
+            '632             eisf = 0
+            '            End If
+            '
+            '            '/                          221       /173#100/672967/0.00/0.00/
+            '
+            '634         e_line = e_line + diax + typos_par + diax + benz2 + diax + benz_atim + diax
+            '636         E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5 + eisf) + diax
+            '638         E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji + eisf)
+            '
+            '640         CCC4 = diax + "0[>]"
+            '
+            '642         e_line = e_line + E2 + CCC4
+            '
+            '644         If f_AKYR_benzinadiko = 1 Then
+            '                ' ÂÎÈÌÂ timologioy
+            '646             benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(sum_posothta, "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
+            '648             benz2 = ""
+            '
+            '650             e_line = "[<]" + AFMPEL + diax + Left(CNull(Rtim("AFM")), 9) + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
+            '652             e_line = e_line + diax + typos_par + diax + benz2 + diax + benz_atim + diax
+            '654             E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
+            '656             E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
+            '658             CCC4 = diax + "0[>]"
+            '660             e_line = e_line + E2 + CCC4
+            '                'A PERASMA  [<]998481696;028783755;?21!1.000;202406300000;222;;006968;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
+            '                ' eline ·ÍıÒ˘ÙÈÍÔı
+            '                ' benz = ""
+            '
+            '662             mparat2 = Trim(Left$(parat.Text, 10))
+            '
+            '664             If Val(mparat2) > 99999 Then
+            '666                 benz2 = "#173#" + Right(Trim(mparat2), 6)
+            '                Else
+            '668                 benz2 = "#173#" + Right(Trim(mparat2), 5)
+            '                End If
+            '
+            '670             benz = "?" + M_KODKAYSIMOY + "!" + Replace(Format(Abs(sum_posothta), "##0.000"), ",", ".") ' 429.280" ' R?20!À…‘—¡
+            '672             benz2 = "0#173#" + Right(Trim(mparat2), 6) '   "ariumow apodeixis"
+            '674             benz_atim = Format(GET_NVALUE("SELECT ARITMISI WHERE ID=56"), "000000")   ' ARITMOS AKYROTIKOY
+            '676             typos_par = 175 '  215
+            '678             e_pros = -1
+            '
+            '680             E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
+            '682             E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
+            '684             CCC4 = diax + "0[>]"
+            '
+            '686             e_AkyrLine = "[<]" + AFMPEL + diax + "" + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
+            '688             e_AkyrLine = e_AkyrLine + diax + typos_par + diax + benz2 + diax + benz_atim + diax
+            '690             e_AkyrLine = e_AkyrLine + E2 + CCC4
+            '
+            '692             If MATIM <> f_matim And Left(f_matim, 1) = "T" Then ' dhladh tipono to akirotiko THW APODEIJIS POY SYNODEYEI TO TIMOLOGIO
+            '694                 e_pros = 1 ' giati oi ajies einai hdh arnhtikes
+            '696                 E2 = tdot(e_pros * Rtim!aj4 + e_pros * Rtim!aj3) + diax + tdot(e_pros * Rtim!aj1 + e_pros * Rtim!AJ7) + diax + tdot(e_pros * Rtim!aj2 + e_pros * Rtim!aj6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aj5) + diax
+            '698                 E2 = E2 + tdot(e_pros * Rtim!FPA4 + e_pros * Rtim!fpa3) + diax + tdot(e_pros * Rtim!FPA1 + e_pros * Rtim!FPA7) + diax + tdot(e_pros * Rtim!fpa2 + e_pros * Rtim!FPA6) + diax + tdot(e_pros * 0) + diax + tdot(e_pros * Rtim!aji)
+            '700                 benz2 = "#173#" + ar_apod ' Right(Trim(mparat2), 6)
+            '
+            '702                 e_AkyrLine = "[<]" + AFMPEL + diax + "" + diax + benz + diax + Format(R("Shme"), "YYYYMMDDHHmm")
+            '704                 e_AkyrLine = e_AkyrLine + diax + typos_par + diax + benz2 + diax + Right(MATIM, 6) + diax
+            '706                 e_AkyrLine = e_AkyrLine + E2 + CCC4
+            '
+            '708                 e_line = e_AkyrLine
+            '710                 parat.Text = ar_apod
+            '                    'TELIKO PISTOTIKOY [<]998481696;;?21!1.000;202406300000;175;#173#123456;000768;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
+            '                End If
+            '                'TELIKO TIMOLOGIOY [<]998481696;028783755;?21!1.000;202406300000;222;;006968;0.00;0.00;10.00;0.00;0.00;0.00;0.00;2.40;0.00;12.40;0[>]
+            '
+            '            End If
+            '
+            '712         If f_is_benzinadiko = 1 And M_KODKAYSIMOY = "****" Then
+            '714             e_line = ""
+            '716             MsgBox ("‘ÈÏÔÎ¸„ÈÔ ÀÈ·ÌÙÈÍ˛Ì")
+            '718             e_AkyrLine = ""
+            '            End If
     
         Else  ' casio ======================  CASIO  PROLINE SIGNUP
 
@@ -23003,28 +23010,24 @@ Function printCrystal(MATIM, char_date)
             
 720         If f_is_benzinadiko = 1 Then
 
-
-
-
-'               If M_KODKAYSIMOY = "30" Or M_KODKAYSIMOY = "31" Then
-'                  If F_meIFESTO = 2 Then
-'                     mTher = "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))
-'                  Else
-'                      mTher = ""
-'                  End If
-'
-'                Else
-'                    mTher = ""
-'                End If
-
-
+                '               If M_KODKAYSIMOY = "30" Or M_KODKAYSIMOY = "31" Then
+                '                  If F_meIFESTO = 2 Then
+                '                     mTher = "#" + Trim(CNull(Rtim("AFM"))) + "*" + Trim(CNull(Rtim("DEH")))
+                '                  Else
+                '                      mTher = ""
+                '                  End If
+                '
+                '                Else
+                '                    mTher = ""
+                '                End If
 
                 If M_KODKAYSIMOY = "30" Or M_KODKAYSIMOY = "31" And (Rtim!aji) <> 0 Then
-                     If F_meIFESTO = 2 Then
+                    If F_meIFESTO = 2 Then
                         mTher = "#" + Trim(CNull(Rtim("AFM"))) + "*" + Left(Trim(CNull(Rtim("DEH"))), 9)
-                     Else
-                          mTher = ""
-                     End If
+                    Else
+                        mTher = ""
+                    End If
+
                 Else
                     mTher = ""
                 End If
@@ -23068,6 +23071,7 @@ Function printCrystal(MATIM, char_date)
           
             Else   '               f_is_benzinadiko <> 1 Then
 758             benz2 = " "
+
 760             If Len(Trim(PAR_GIA_AKYROSH)) > 3 Then      '¡ ’—Ÿ‘… œ=====================
 762                 typos_par = 215
 764                 e_pros = 1 ' √…¡‘… ≈◊≈…  «ƒ« ¡—Õ«‘… ≈” ¡Œ…≈”  ‘œ ¡ ’—Ÿ‘… œ -1
@@ -23151,16 +23155,21 @@ Function printCrystal(MATIM, char_date)
                 End If
        
             End If
+
             '====================================================================
            
             Dim ssFpa0 As Single
+
 816         ssFpa0 = Rtim!aj5
+
 818         If g_Fpa(6) = 0 Then
 820             ssFpa0 = ssFpa0 + Rtim!aj6
             End If
+
 822         If g_Fpa(7) = 0 Then
 824             ssFpa0 = ssFpa0 + Rtim!AJ7
             End If
+
 826         If g_Fpa(8) = 0 Then
 828             ssFpa0 = ssFpa0 + Rtim!aj8
             End If
@@ -23179,7 +23188,9 @@ Function printCrystal(MATIM, char_date)
 836         CCC4 = ";;>"
             
             Dim MYD_CAT   As String
+
             Dim bale_koma As Integer
+
 838         If F_TYPFOROL = 22 Then ' SIGNPRO Õ≈œ’ ‘’–œ’ ‘«≈Õ
 
                 ';EUR;1;113.08                                  ;;(6.00,10.50,1,0),(13.00,25.50,2,0),(24.00,36.80,3,0),(36.00,12.50,4,0),(0.00,10.50,5,18);;>
@@ -23250,6 +23261,7 @@ Function printCrystal(MATIM, char_date)
 902                 If InStr(Rtim!trp, "POS") = 0 Then
              
                     Else
+
 904                     If InStr(Rtim!trp, "≈‘≈") = 0 And InStr(Rtim!trp, "ETE") = 0 Then  'ƒ≈Õ ≈…Õ¡… ≈‘≈—œ◊—œÕ…”Ã≈Õ« ≈‘≈ ≈ÀÀ«Õ… ¡  ¡… ETE Œ≈Õ¡ ƒœ’À≈’œ’Õ  ¡… ‘¡ 2
 906                         If InStr(Rtim!trp, "POS2") > 0 Then
 908                             CCC4 = CCC4 + "  <%PS2;1;" + tdot(e_pros * Rtim!aji) + ">"
@@ -23258,6 +23270,7 @@ Function printCrystal(MATIM, char_date)
                             End If
                        
                         Else  'ÂÈÌ·È ÂÙÂÒÔ˜ÒÔÌÈÛÏÂÌÁ
+
 912                         If InStr(Rtim!trp, "POS2") > 0 Then
 914                             CCC4 = CCC4 + "  <%PS2;2;" + tdot(e_pros * Rtim!aji) + ">"
                             Else
@@ -23336,6 +23349,7 @@ Function printCrystal(MATIM, char_date)
                   
                 ' ÙÔ ÏÁ‰ÂÌÈÊ˘ „È·ÙÈ ·Ì ÂÈÌ·È ÏÂÙÒÁÙÔÈÚ Ë· ÍÒ·Ù·ÂÈ ÙÔ ÒÔÁ„ÔıÏÂÌÔ
 980             DB.Execute "update MEM SET par20=''"
+
 982             If typos_par = 215 Or typos_par = 175 Or typos_par = 169 Then 'ÈÛÙ˘ÙÈÍ· ·ÍıÒ˘ÙÈÍ· ·Ô‰.ÂÈÛÙÒ.ÎÈ·ÌÈÍÁ Ô˜È pos
                 Else
            
@@ -23344,6 +23358,7 @@ Function printCrystal(MATIM, char_date)
                     Else
                     
                         Dim PS1 As String
+
 986                     If InStr(Rtim!trp, "≈‘≈") = 0 And InStr(Rtim!trp, "ETE") = 0 Then  'ƒ≈Õ ≈…Õ¡… ≈‘≈—œ◊—œÕ…”Ã≈Õ« ≈‘≈ ≈ÀÀ«Õ… ¡  ¡… ETE Œ≈Õ¡ ƒœ’À≈’œ’Õ  ¡… ‘¡ 2
 988                         If InStr(Rtim!trp, "POS2") > 0 Then
 990                             PS1 = "<%PS2;1;" + tdot(e_pros * Rtim!aji) + ">"
@@ -23352,12 +23367,14 @@ Function printCrystal(MATIM, char_date)
                             End If
                        
                         Else  'ÂÈÌ·È ÂÙÂÒÔ˜ÒÔÌÈÛÏÂÌÁ
+
 994                         If InStr(Rtim!trp, "POS2") > 0 Then
 996                             PS1 = "<%PS2;2;" + tdot(e_pros * Rtim!aji) + ">"
                             Else
 998                             PS1 = "<%PS1;2;" + tdot(e_pros * Rtim!aji) + ">"
                             End If
                         End If
+
 1000                    DB.Execute "update MEM SET par20='" + PS1 + "'"
                      
                     End If
@@ -23422,6 +23439,7 @@ Function printCrystal(MATIM, char_date)
 1044                If InStr(Rtim!trp, "POS") = 0 Then
              
                     Else
+
 1046                    If InStr(Rtim!trp, "≈‘≈") = 0 And InStr(Rtim!trp, "ETE") = 0 Then
 1048                        CCC4 = CCC4 + "  <%PS1;1;" + tdot(e_pros * Rtim!aji) + ">"
                         Else  'ÂÈÌ·È ÂÙÂÒÔ˜ÒÔÌÈÛÏÂÌÁ
@@ -23504,9 +23522,11 @@ Function printCrystal(MATIM, char_date)
 
         On Error Resume Next
 
-Dim OTHERMOVEPURPOSETITLE As String
-OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
+        Dim OTHERMOVEPURPOSETITLE As String
 
+        OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
+        Dim mTOWEIGH As Integer
+        mTOWEIGH = Rtim("toweigh")
 
 1084    Rtim.Close
 
@@ -23613,8 +23633,7 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
 1148    DB.Execute "update MEM SET C1='" + Left(mf_paras, Len(mf_paras) - 1) + "'" ' PARASTATIKO
         '1210    fmem("c1") = Left(mf_paras, Len(mf_paras) - 1)    'parastatiko
 
-
-'If F_METAFORIKES <> 2 Then
+        'If F_METAFORIKES <> 2 Then
 
 1150    DB.Execute "update MEM SET C2='" + SKOPOS.Text + "'"
         '  fmem("c2") = SKOPOS.Text    'skopos
@@ -23627,11 +23646,7 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
         DB.Execute "update MEM SET FPO6='" + TC6.Text + "'" 'paradosi
         DB.Execute "update MEM SET FPO7='" + tc7.Text + "'" 'paradosi
 
-
-
-'End If
-
-
+        'End If
 
 1156    DB.Execute "update MEM SET banks='" + Trim(Combo4.Text) + "'" 'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
 1158    DB.Execute "update MEM SET pict='" + time$ + "'"
@@ -23659,16 +23674,12 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
 
 1184    DB.Execute "update MEM SET ELINE='" + e_line + "'"
 
+        DB.Execute "update MEM SET ONO1='" + Format(HMERPARAD.Value, "dd/MM/yyyy") + "'"
+        DB.Execute "update MEM SET ONO2='" + Format(ORAPARAD.Value, "hh:mm") + "'"
+        'OTHERMOVEPURPOSETITLE
+        DB.Execute "update MEM SET ONO3='" + CNull(OTHERMOVEPURPOSETITLE) + "'" 'Format(ORAPARAD.Value, "hh:mm") + "'"
 
-         DB.Execute "update MEM SET ONO1='" + Format(HMERPARAD.Value, "dd/MM/yyyy") + "'"
-         DB.Execute "update MEM SET ONO2='" + Format(ORAPARAD.Value, "hh:mm") + "'"
-'OTHERMOVEPURPOSETITLE
-         DB.Execute "update MEM SET ONO3='" + CNull(OTHERMOVEPURPOSETITLE) + "'" 'Format(ORAPARAD.Value, "hh:mm") + "'"
-
-        ' DB.Execute "update MEM SET POS1=" + nNull() + "'" 'Format(ORAPARAD.Value, "hh:mm") + "'"
-
-
-
+         DB.Execute "update MEM SET POS1=" + str(mTOWEIGH)
 
         'ENTITYUID, AUTHENTICATIONCODE
         DB.Execute "update MEM SET par9='" + Replace(CNull(PEL.Recordset("ENTITYUID")), ",", ".") + "'"
@@ -23693,30 +23704,23 @@ OTHERMOVEPURPOSETITLE = CNull(Rtim!OTHERMOVEPURPOSETITLE)
         
         End If
         
-        
 1204    If mAPOLIAsyndesis = 1 Then
-         If Len(cENTITYMARK) > 10 Then
-             DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
-         Else
-             DB.Execute "update MEM SET par17='??O???? ???S????S?S'"
-         End If
+            If Len(cENTITYMARK) > 10 Then
+                DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
+            Else
+                DB.Execute "update MEM SET par17='??O???? ???S????S?S'"
+            End If
          
 1206        'DB.Execute "update MEM SET par17='??O???? ???S????S?S'"
         Else
 1208        DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
         End If
         
-        
-        
-        
-        
-        
-        
-'1204    If mAPOLIAsyndesis = 1 Then
-'1206        DB.Execute "update MEM SET par17='¡–ŸÀ≈…¡ ƒ…¡”’Õƒ≈”«”'"
-'        Else
-'1208        DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
-'        End If
+        '1204    If mAPOLIAsyndesis = 1 Then
+        '1206        DB.Execute "update MEM SET par17='¡–ŸÀ≈…¡ ƒ…¡”’Õƒ≈”«”'"
+        '        Else
+        '1208        DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
+        '        End If
 
 1210    DB.Execute "update MEM SET EMAIL='" + Replace(CNull(PEL.Recordset("email")), ",", ".") + "'"
 
