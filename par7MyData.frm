@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308805633
+      Format          =   135462913
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   308805633
+      Format          =   135462913
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -6770,7 +6769,7 @@ Function FIND_QUERY()
 166     sql = sql + "ISNULL(FPA1,0) AS FPA1,ISNULL(FPA2,0) AS FPA2,ISNULL(FPA3,0) AS FPA3,ISNULL(FPA4,0) AS FPA4 ,ISNULL(FPA6,0) AS FPA6,ISNULL(FPA7,0) AS FPA7,"
 168     sql = sql + "AJI,PEL.EPA,ISNULL(PEL.POL,'.') AS POL,PEL.COUNTRY,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,"
 170     sql = sql + "ISNULL(PEL.XRVMA,'') AS TK,SXETMARK,ISNULL(PARAKRATISI,0) AS PARAKRAT,ISNULL(B_C2,'') AS TYPOSPARAKRAT,isnull(EXCHANGERATE,1) AS EXCHANGERATE,isnull(CURRENCY,'EUR') AS CURRENCY ,ISNULL(ELGA,0) AS ELGA,isnull(KR1,0) AS KR1,ISNULL(KR2,0) AS KR2,PEL.EIDOS AS EIDOS,isnull(ANASTOLHFPA,0) as ANASTOLHFPA ,OTHERMOVEPURPOSETITLE, ORA,AYTOK,ISNULL(SXETMARKS,',') AS SXETMARKS,SKOPOS,AKYROMENO,isnull(JWT,'') AS JWT, "
-        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,ISNULL(PARAT,'') AS PARAT,ISNULL(ISANAPODO,1) AS ISANAPODO,ISNULL(TOWEIGH,0) AS TOWEIGH "
+        sql = sql + "STREET,TIM.STREETNUMBER,POSTALCODE,CITY,ISNULL(TIM.BRANCH,'0') AS BRANCH,ISNULL(HMEPARAD,HME) AS HMEPARAD,ISNULL(ORAPARAD,'00:00') AS ORAPARAD,FORTOSH,ISNULL(PARAT,'') AS PARAT,ISNULL(ISANAPODO,1) AS ISANAPODO,ISNULL(TOWEIGH,0) AS TOWEIGH,ISNULL(ANAPODOAITIA,0) AS ANAPODOAITIA "
 
 
 172     sql = sql + "   FROM TIM LEFT JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
@@ -7607,7 +7606,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             
                             If InStr(F_ANAPODO, Left(SQLDT("ATIM"), 1)) > 0 Then
                                 Set elem2Field = docStock.createElement("reverseDeliveryNote"): elem2Field.Text = "true": elemField.appendChild elem2Field
-                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = str(SQLDT("ISANAPODO")): elemField.appendChild elem2Field
+                                Set elem2Field = docStock.createElement("reverseDeliveryNotePurpose"): elem2Field.Text = str(SQLDT("ANAPODOAITIA")): elemField.appendChild elem2Field
                          
                             End If
                             
