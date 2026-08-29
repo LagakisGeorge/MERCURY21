@@ -636,9 +636,9 @@ dum2 = ADD_FIELD("TIM", "C4", "nvarchar(45)")
 dum2 = ADD_FIELD("TIM", "C5", "nvarchar(45)")
 dum2 = ADD_FIELD("TIM", "C6", "nvarchar(45)")
 dum2 = ADD_FIELD("TIM", "C7", "nvarchar(45)")
+'toWeigh
 
-
-
+dum2 = ADD_FIELD("TIM", "TOWEIGH", "INT DEFAULT (0)")
 
 dum2 = ADD_FIELD("TIM", "OTHERMOVEPURPOSETITLE", "nvarchar(45)")
 
