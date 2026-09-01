@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -166,44 +166,56 @@ Begin VB.Form par1
       Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "lblÁÖÌÔÑÉÔÏÕ"
       Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).Control(9)=   "STREET"
+      Tab(0).Control(9)=   "EPOtritou"
       Tab(0).Control(9).Enabled=   0   'False
-      Tab(0).Control(10)=   "STREETNUMBER"
+      Tab(0).Control(10)=   "STREET"
       Tab(0).Control(10).Enabled=   0   'False
-      Tab(0).Control(11)=   "POSTALCODE"
+      Tab(0).Control(11)=   "STREETNUMBER"
       Tab(0).Control(11).Enabled=   0   'False
-      Tab(0).Control(12)=   "CITY"
+      Tab(0).Control(12)=   "POSTALCODE"
       Tab(0).Control(12).Enabled=   0   'False
-      Tab(0).Control(13)=   "BRANCH"
+      Tab(0).Control(13)=   "CITY"
       Tab(0).Control(13).Enabled=   0   'False
-      Tab(0).Control(14)=   "other"
+      Tab(0).Control(14)=   "BRANCH"
       Tab(0).Control(14).Enabled=   0   'False
-      Tab(0).Control(15)=   "AnapodoAitia"
+      Tab(0).Control(15)=   "other"
       Tab(0).Control(15).Enabled=   0   'False
-      Tab(0).Control(16)=   "afmtritou"
+      Tab(0).Control(16)=   "AnapodoAitia"
       Tab(0).Control(16).Enabled=   0   'False
-      Tab(0).Control(17)=   "Zygish"
+      Tab(0).Control(17)=   "afmtritou"
       Tab(0).Control(17).Enabled=   0   'False
-      Tab(0).ControlCount=   18
+      Tab(0).Control(18)=   "Zygish"
+      Tab(0).Control(18).Enabled=   0   'False
+      Tab(0).Control(19)=   "elegxosAFM"
+      Tab(0).Control(19).Enabled=   0   'False
+      Tab(0).ControlCount=   20
       TabCaption(1)   =   "ÇÌÅÑ/ÙÑÁ ÐÑÄ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lblÇÌÅÑÙÑÁ"
+      Tab(1).Control(0)=   "lblÇÌÅÑÙÑÁ"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
+      Begin VB.CommandButton elegxosAFM 
+         Caption         =   "Åëåã÷ïò"
+         Height          =   285
+         Left            =   2520
+         TabIndex        =   198
+         Top             =   2520
+         Width           =   855
+      End
       Begin VB.CheckBox Zygish 
          Caption         =   "Ðñïò Æýãéóç"
          Height          =   255
@@ -217,7 +229,7 @@ Begin VB.Form par1
          Left            =   1080
          TabIndex        =   195
          Top             =   2520
-         Width           =   2055
+         Width           =   1455
       End
       Begin VB.ComboBox AnapodoAitia 
          Height          =   315
@@ -325,7 +337,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   278724609
+         Format          =   195035137
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -339,8 +351,18 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   278396930
+         Format          =   195035138
          CurrentDate     =   38294
+      End
+      Begin VB.Label EPOtritou 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "...."
+         Height          =   195
+         Left            =   3360
+         TabIndex        =   199
+         Top             =   2520
+         Width           =   180
       End
       Begin VB.Label lblÁÖÌÔÑÉÔÏÕ 
          AutoSize        =   -1  'True
@@ -2032,7 +2054,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   278921217
+      Format          =   195231745
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -5725,7 +5747,7 @@ OLD145:
 1102    MIDENIZO_GRID
 1104    metasx.Value = vbUnchecked
 1106     Zygish.Value = vbUnchecked
-
+        afmtritou.Text = ""
 
 1108    LASTTIMOL.Refresh
 
@@ -6478,12 +6500,12 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 146     apallagesFPA.Text = ""
         Dim mAnastolhFPA As String
 148     mAnastolhFPA = IIf(AnastolhFPA.Value = True, "1", "0")
-150     SQLTIM = "Insert INTO TIM (ISANAPODO,ANAPODOAITIA,OTHERMOVEPURPOSETITLE,SXETMARKS,ANASTOLHFPA,INCMARK,B_C2,SXETMARK,APALAGIFPA,HME,ATIM,AJ1,AJ2,AJ3,AJ4,AJ5,AJ6,AJ7,AJ8,AJ9,"
+150     SQLTIM = "Insert INTO TIM (AFMTRITOU,ISANAPODO,ANAPODOAITIA,OTHERMOVEPURPOSETITLE,SXETMARKS,ANASTOLHFPA,INCMARK,B_C2,SXETMARK,APALAGIFPA,HME,ATIM,AJ1,AJ2,AJ3,AJ4,AJ5,AJ6,AJ7,AJ8,AJ9,"
 152     SQLTIM = SQLTIM + "FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,FPA8,FPA9,"
 154     SQLTIM = SQLTIM + "KPE,AJI,ELGA,EIDOS,TRP,EIDPAR,B_N1,B_N2,"
 156     SQLTIM = SQLTIM + "PARAT,METAF,SKOPOS,PROOR,FORTOSH,AYTOK,KERDOS,KLEIDI,PARAKRATISI,KR1,ORA,EXCHANGERATE,CURRENCY) VALUES "
 
-        SQLTIM = SQLTIM + "(" + mISANAPODO + "," + mANAPODOAITIA + ",'" + OTHERMOVEPURPOSETITLE + "','" + CXMLTEXT + "'," + mAnastolhFPA + ",'-','" + fS_Parakratisis + "','" + par11Value.Caption + "'," + M_APAL + ","
+        SQLTIM = SQLTIM + "('" + Left(afmtritou.Text, 15) + "'," + mISANAPODO + "," + mANAPODOAITIA + ",'" + OTHERMOVEPURPOSETITLE + "','" + CXMLTEXT + "'," + mAnastolhFPA + ",'-','" + fS_Parakratisis + "','" + par11Value.Caption + "'," + M_APAL + ","
 158     SQLTIM = SQLTIM + "'" + Format(f_dat, "MM/DD/YYYY") + "',"  ' HME
 160     SQLTIM = SQLTIM + "'" + Left(f_matim, f_psifia_atim + 2) + "',"    'ATIM
 162     f_suma = 0
@@ -8466,6 +8488,10 @@ End Sub
 Private Sub cmdCAI_Click()
     PAR13.SHOW (1)
 
+End Sub
+
+Private Sub elegxosAFM_Click()
+    EPOtritou.Caption = GGET_CVALUE("SELECT EPO FROM PEL WHERE AFM='" + afmtritou.Text + "'")
 End Sub
 
 Private Sub REJECT_Click()
@@ -13635,15 +13661,13 @@ Private Sub PARAS_LostFocus()
 142             F_TYPOS_PAR = CNull(R("C1")) ' ÔÕÐÏÓ ÐÁÑÁÓÔÁÔÉÊÏÕ ÃÉÁ Å_ËÉÍÅ ÖÏÑÏËÏÃÉÊÏÕ
                 F_PROEPILFPA = R("PROEPILFPA2")
                 
+                
+                 SKOPOS.Text = SKOPOS.List(IIf(nNull(R!DEFSKOPOS) > 0, nNull(R!DEFSKOPOS) - 1, 0))
                 'ðñïåðéëåãìåíïò óêïðïò
                 If Len(Trim(R("AFMGRANDPEL2"))) > 8 Then
-                
-                   SKOPOS.Text = SKOPOS.List(1)
-                   
-                Else
-                
-                  SKOPOS.Text = SKOPOS.List(IIf(nNull(R!DEFSKOPOS) > 0, nNull(R!DEFSKOPOS) - 1, 0))
-                
+                    afmtritou.Text = Trim(R("AFMGRANDPEL2"))
+                   ' na bazei ðùëçóç ãéá ëïãáñéáóìï ôñéôùí áí äåí åâáëå áëëï ðñïåðéëåãìåíï
+                    SKOPOS.Text = SKOPOS.List(IIf(nNull(R!DEFSKOPOS) > 0, nNull(R!DEFSKOPOS) - 1, 1))
                 End If
                 
 
