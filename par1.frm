@@ -325,7 +325,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   293273601
+         Format          =   278724609
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -339,7 +339,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   293273602
+         Format          =   278396930
          CurrentDate     =   38294
       End
       Begin VB.Label lblΑΦΜΤΡΙΤΟΥ 
@@ -2032,7 +2032,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   136773633
+      Format          =   278921217
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3803,7 +3803,7 @@ Private Sub b_akyr_Click()
              MDIForm1.StatusBar1.Panels(5).Text = ""
 
             '--------------------  initialization ----------------------------
-108         Synolo.Caption = ""
+108         synolo.Caption = ""
 110         sfpa.Caption = ""
 112         SynoloG.Caption = ""
 
@@ -4384,7 +4384,7 @@ Private Sub SaveParastat(ByVal isAkyrotiko As Boolean)
             End If
             
         Else
-338         If Val(Synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
+338         If Val(synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
                                     'm500 =¨
                  
                
@@ -5978,7 +5978,7 @@ Sub MIDENIZO_GRID()
 
         Dim L As Long
 
-100     Synolo.Caption = ""
+100     synolo.Caption = ""
 102     sfpa.Caption = ""
 104     SynoloG.Caption = ""
 
@@ -7615,13 +7615,13 @@ Sub enhm_apot()
                         
 190                     If kostologhsh And F_STADIO = 4 Then  ' ' 1=ΠΡΟΣΦ 2=ΠΑΡΑΓΓ 3=ΔΑ 4=ΤΙΜ.ΠΟΛ 5=ΕΝΔΟΔΙΑΚΙΝΙΣΙ
 192                         PAR11.Label10 = EID.Recordset("XTI")
-194                         PAR11.Label11 = NeaTim
+194                         PAR11.label11 = NeaTim
 
 196                         PAR11.ltiproekptosis = Grid1.TextMatrix(k, F_T)
 198                         PAR11.UES = EID.Recordset("UES")
 
-200                         If Val(Synolo.Caption) <> 0 Then
-202                             PAR11.Label4 = 100 * Val(metaf) / Val(Synolo)
+200                         If Val(synolo.Caption) <> 0 Then
+202                             PAR11.Label4 = 100 * Val(metaf) / Val(synolo)
                             End If
 
 204                         PAR11.POSO.Caption = p
@@ -7662,8 +7662,8 @@ Sub enhm_apot()
 
 238                         If kostologhsh Then  ' μην τυχον και ακυρωσε την κοστολογηση εν τω μεταξύ
 
-240                             If Val(Synolo.Caption) <> 0 Then
-242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(Synolo)
+240                             If Val(synolo.Caption) <> 0 Then
+242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(synolo)
                                 End If
 
 244                             If IsNull(EID.Recordset("lastupd")) Then
@@ -8451,7 +8451,7 @@ Private Sub calcula_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(ComboPARAKRATISI.Text, 2), ".", ""))
 
-118     parakratisiT.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
+118     parakratisiT.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -8518,7 +8518,7 @@ End Sub
 Private Sub SKOPOS_LostFocus()
 'οταν εχω 19 λοιπες διακινησεις δεν δεχεται το ζυγιση
         If gVal(Left(SKOPOS.Text, 2)) = 19 Then
-            Zygish.Checked = False
+            Zygish.Value = vbChecked
 
 
         End If
@@ -8889,7 +8889,7 @@ Private Sub cmdypolo_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(Combo2OnomaParak.Text, 2), ".", ""))
 
-118     AJIA2PARAKR.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
+118     AJIA2PARAKR.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -11108,8 +11108,8 @@ Private Sub Command3_Click()
         Else
         
 108         If f_KENTRA_ADYNATISMATOS = 1 Then
-110             If KentroAdyn.ListIndex = 1 Then
-112                 fpelat4.KentroAdyn.ListIndex = 1
+110             If kentroAdyn.ListIndex = 1 Then
+112                 fpelat4.kentroAdyn.ListIndex = 1
                 End If
             End If
         
@@ -11975,8 +11975,8 @@ Private Sub Command6_Click()
         Else
 
 106         If f_KENTRA_ADYNATISMATOS = 1 Then
-108             If KentroAdyn.ListIndex = 1 Then
-110                 fff.KentroAdyn.ListIndex = 1
+108             If kentroAdyn.ListIndex = 1 Then
+110                 fff.kentroAdyn.ListIndex = 1
                 End If
             Else
 112             fff.PELPROM.Text = "e"  'PELPROM.Text
@@ -12565,12 +12565,12 @@ Private Sub Form_Resize()
 'SSTab1.Tab = IIf(f_tab > SSTab1.Tabs - 1 Or f_tab < 0, SSTab1.Tabs - 1, f_tab)
 
 Label1(0).Left = Text2(1).Left
-Label11(0).Left = Text2(2).Left
+label11(0).Left = Text2(2).Left
  
  
  Label3(0).Top = Text2(3).Top - Label3(0).Height - 1 'ΔΙΕΥΘΥΝΣΗ
  Label1(0).Top = Label3(0).Top
-  Label11(0).Top = Label3(0).Top
+  label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
    
    Label4.Left = PARAS.Left
@@ -16802,7 +16802,7 @@ Private Sub Form_Load()
         'Dim f_TIMES_METASX_LIAN As String
  
 390     f_LabAFM = FINDPARAMETROI(1, "PELAT2", "f_LabAFM", "ΑΦΜ /κειμ1", "Tίτλος ετικέτας ΑΦΜ")
-392     Label11(0).Caption = f_LabAFM
+392     label11(0).Caption = f_LabAFM
  
 394     Label18.Caption = "Πληρ"
 396     Label9.Caption = "Σχόλια"
@@ -17059,8 +17059,8 @@ Private Sub Form_Load()
 576     f_IS_PARTIDES = Val(FINDPARAMETROI(1, "APOT2", "f_IS_PARTIDES", "0", "Αν Χρησιμοποιώ παρτίδες=1"))
 
 578     If f_KENTRA_ADYNATISMATOS = 1 Then
-580         KentroAdyn.Visible = True
-582         KentroAdyn.ListIndex = 0 ' Combo3.List(0)
+580         kentroAdyn.Visible = True
+582         kentroAdyn.ListIndex = 0 ' Combo3.List(0)
         End If
 
         '  'SkinFramework1.LoadSkin "c:\mercvb\Styles\Office2007.cjstyles", ""
@@ -17087,10 +17087,12 @@ Private Sub Form_Load()
 
 594         Do While Not R.EOF
 
-                ' If InStr(R("skopos"), "ΩΛ") > 0 Then
-596             DELT = DELT + R("atim") + " " + R(0) + " " + R("skopos") + " " + R("epo") + Chr(13)
-598             nDelt = nDelt + 1
-                ' End If
+                If InStr(R("skopos"), "13") > 0 Then 'εκτοσ το χρισιδανισμος
+                   nDelt = nDelt
+                Else
+596                DELT = DELT + R("atim") + " " + R(0) + " " + R("skopos") + " " + R("epo") + Chr(13)
+598                nDelt = nDelt + 1
+                End If
 
 600             R.MoveNext
             Loop
@@ -17791,7 +17793,7 @@ Private Sub Form_Load()
         '  Set fDB = OpenDatabase(gDir, False, False, gConnect)
         'End If
 
-1222    Synolo = " "    ' ΓΙΑ ΝΑ ΜΗΝ ΒΓΑΖΕΙ NULL
+1222    synolo = " "    ' ΓΙΑ ΝΑ ΜΗΝ ΒΓΑΖΕΙ NULL
 
         '
         'If gConnect = "Access" Then
@@ -19200,7 +19202,7 @@ Private Sub Text2_LostFocus(index As Integer)
 
 110     If f_KENTRA_ADYNATISMATOS = 1 Then
 112         If X = "e" Then
-114             If KentroAdyn.List(0) = KentroAdyn.Text Then
+114             If kentroAdyn.List(0) = kentroAdyn.Text Then
 116                 MSYNT = "NUM3=0 AND "
 118                 Grid1.BackColor = &HFF8080     ' mple
                     'Grid1.BackColor = &H80FF80 ' prasino
@@ -19663,7 +19665,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
 200     If KeyCode = 118 And Shift = 0 And F_PosostaOTA Then    ' --------------  F7 ------ 4% ota
 
-202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(Synolo.Caption, ",", ".")) * F_PosostaOTA / 100
+202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(synolo.Caption, ",", ".")) * F_PosostaOTA / 100
               
         End If
 
@@ -21455,7 +21457,7 @@ Private Static Sub FindSynolo()
 
 164     s = Round(0.00001 + s, f_psifiaAjias)
 
-166     Synolo.Caption = Format(s, "####0.00")
+166     synolo.Caption = Format(s, "####0.00")
 168     F = 0
         
 170     f_strogg_FPA = 0
@@ -21510,7 +21512,7 @@ Private Static Sub FindSynolo()
 
         If F_CUSTOMER_SCREEN = 1 Then
            
-            PAR1CUSTOMER.Synolo.Caption = SynoloG.Caption
+            PAR1CUSTOMER.synolo.Caption = SynoloG.Caption
         End If
 
 
@@ -21608,7 +21610,7 @@ Private Static Sub Find_Lian_Synolo() ' ypologismos lianikhs
 
 160     s = Round(0.00001 + s, f_psifiaAjias)
 
-162     Synolo.Caption = Format(s, "####0.00")
+162     synolo.Caption = Format(s, "####0.00")
 164     F = 0: For k = 1 To 9: F = F + SumFpa(k) * g_Fpa(k) / 100: Next
 
 166     F = Round(0.00001 + F, f_psifiaAjias)
