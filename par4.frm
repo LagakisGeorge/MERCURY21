@@ -132,14 +132,14 @@ Begin VB.Form par4
       _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
-      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bold=0,.fontsize=780,.italic=0"
+      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(7)   =   ":id=1,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
-      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=780,.italic=0"
+      _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(11)  =   ":id=2,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(12)  =   ":id=2,.fontname=MS Sans Serif"
-      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=780,.italic=0"
+      _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(14)  =   ":id=3,.underline=0,.strikethrough=0,.charset=161"
       _StyleDefs(15)  =   ":id=3,.fontname=MS Sans Serif"
       _StyleDefs(16)  =   "InactiveStyle:id=5,.parent=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
@@ -417,7 +417,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   154075137
+      Format          =   308674561
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -432,7 +432,7 @@ Begin VB.Form par4
       CalendarBackColor=   16777215
       CalendarTitleBackColor=   16777088
       CalendarTrailingForeColor=   16711680
-      Format          =   154075137
+      Format          =   308674561
       CurrentDate     =   38814
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -1008,18 +1008,18 @@ Function toascii(ByVal arxeio As String, moutput As String)
         'DOK.RecordSource = "select TIM.*,PEL.* from TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD   WHERE MONTH(HME)=1 "
         'DOK.Refresh
 
-        Dim pol As String, polepis As String, AGO As String, AGOEPIS As String
+        Dim pol As String, polepis As String, ago As String, AGOEPIS As String
 
         Dim xxx
 
-120     xxx = Get_AJ(pol, polepis, AGO, AGOEPIS)
+120     xxx = Get_AJ(pol, polepis, ago, AGOEPIS)
 
         Dim B
 
 130     B = InputBox("Ðùëçóåéò=1, ÁãïñÝò=2   Æõãéæïìåíá=3")
 
 140     If B = 1 Then s = pol + "," + polepis
-150     If B = 2 Then s = AGO + "," + AGOEPIS
+150     If B = 2 Then s = ago + "," + AGOEPIS
 
         'If b = 3 Then s = ago
         'If b = 4 Then s = agoepis
@@ -1113,7 +1113,7 @@ Private Sub Command2_Click()
 
         Dim polepis                As String
 
-        Dim AGO                    As String
+        Dim ago                    As String
 
         Dim AGOEPIS                As String
 
@@ -1300,11 +1300,11 @@ platos = 1100
         'PAIRNEI OLES TIS ÐÙËÇÓÅÉÓ ÁÐÏ ÔÏ ÐÁÑÁÓÔÁÔ
         '    a = Get_AJ(pol, polepis, ago, AGOEPIS)
 
-720     a = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS)
+720     a = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS)
 
         Dim mPOL, mPOLEPIS, mAGO, mAGOEPIS
 
-730     mPOL = pol: mPOLEPIS = polepis: mAGO = AGO: mAGOEPIS = AGOEPIS
+730     mPOL = pol: mPOLEPIS = polepis: mAGO = ago: mAGOEPIS = AGOEPIS
 
         '    'ÐÁÉÑÍÅÉ ÌÏÍÏ ÁÐÏ ÔÏ ÔÏ ËÉÓÔÂÏ× ÔÉÓ ÊÉÍÇÓÅÉÓ
         '    pol = ""
@@ -1398,7 +1398,7 @@ platos = 1100
         End If
 
         '---- AãïñÝò
-940     Var = AGO: s = 4 + addit2: GoSub findD
+940     Var = ago: s = 4 + addit2: GoSub findD
 
         '---- ÅðéóôñïöÝò áãïñþí
 950     Var = AGOEPIS: s = 5 + addit2: GoSub findD
@@ -1829,13 +1829,13 @@ Private Sub NEW_ANA_PARASTATIKO()
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, AGO As String, APIS
+        Dim polepis As String, pol As String, ago As String, APIS
 
 100     pol = ""
-110     a = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS)
+110     a = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS)
 
 120     mPOL = pol
-130     mAGO = AGO
+130     mAGO = ago
 
         'mPOL = mPOL + "''"
         'mAGO = mAGO + "''"
@@ -1845,7 +1845,7 @@ Private Sub NEW_ANA_PARASTATIKO()
 140     poliseis = MsgBox("ÐÙËÇÓÅÉÓ=ÍÁÉ  Ï×É=ÁÃÏÑÅÓ", vbYesNo)
     
 150     If poliseis = vbNo Then
-160         pol = AGO
+160         pol = ago
 170         polepis = AGOEPIS
         End If
         If Len(polepis) = 0 Then polepis = "0"  ' ÃÉÁ ÍÁ ÌÇÍ ÊÏËËÁÅÉ
@@ -1901,14 +1901,17 @@ Gdb.Execute "SELECT ATIM INTO DOKTIMATIM  from TIM  WHERE " _
            
          '  sql = sql + " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7 ELSE -(AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7)  END )) AS [ÓÕÍÏËÏ], "
            If poliseis = vbYes Then
-             ' sql = sql + " (SELECT substring(min(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS [ÁÐÏ ÐÁÑ.], (SELECT substring(MAX(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS [ÔÅË.ÐÁÑ],"
+              sql = sql + " (SELECT substring(min(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS [ÁÐÏ ÐÁÑ.],"
+             sql = sql + "(SELECT substring(MAX(ATIM),2,6) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS ) AS [ÔÅË.ÐÁÑ],"
+               sql = sql + "(SELECT STR(COUNT(ATIM)) FROM DOKTIMATIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS ) AS [ÐËÇÈÏÓ],"
+             
            End If
            
            'INNER JOIN PARASTAT ON ascii(LEFT(ATIM,1))=ascii(PARASTAT.EIDOS) WHERE "
           sql = sql + " CONVERT(DECIMAL(10,2),sum(CASE WHEN ascii(LEFT(ATIM,1)) IN (" + pol + ") THEN KERDOS ELSE 0  END )) AS [ÊÅÑÄÏÓ] " _
            & " from TIM INNER JOIN PARASTAT ON LEFT(ATIM,1)=LEFT(PARASTAT.EIDOS,1) WHERE " _
            + MSYNT + "  HME>='" + Format(DTPicker1.Value, "mm/dd/yyyy") + "' and HME<'" + Format(DTPicker2.Value + 1, "mm/dd/yyyy") + "' " _
-           & "  GROUP BY LEFT(ATIM,1),TITLOS"
+           & "  GROUP BY LEFT(ATIM,1),TITLOS,PARASTAT.EIDOS"
            'PARASTAT.EIDOS,PARASTAT.TITLOS " '  collate Greek_CS_AS"
            
            
@@ -1952,19 +1955,23 @@ Gdb.Execute "SELECT ATIM INTO DOKTIMATIM  from TIM  WHERE " _
 
 
 
-For KOL = 1 To MSFlexGrid2.ColS - 1
+For KOL = 1 To MSFlexGrid2.ColS
         SUMA(KOL) = 0
-        For k = 1 To MSFlexGrid2.rows - 2
+        For k = 1 To MSFlexGrid2.rows - 1
           'SA = SA + gVal(MSFlexGrid2.TextMatrix(k, KOL))
             'SP = SP + Val(MSFLEXGRID2.TextMatrix(K, 3))
             SUMA(KOL) = SUMA(KOL) + gVal(MSFlexGrid2.TextMatrix(k, KOL))
         Next
-        If KOL = 10 Or KOL = 9 Then  ' íá ìçí êáíåé óïõìá ôï ðñùôï êáé ôåëåéôáéï ðáñáóôáôéêï"
+        'If KOL = 10 Or KOL = 9 Then  ' íá ìçí êáíåé óïõìá ôï ðñùôï êáé ôåëåéôáéï ðáñáóôáôéêï"
+        'Else
+            MSFlexGrid2.TextMatrix(k - 1, KOL) = Format(SUMA(KOL), "###,###,##0.00")
+        'End If
+        If SUMA(KOL) = 0 Then
+            MSFlexGrid2.ColWidth(KOL) = 0
         Else
-            MSFlexGrid2.TextMatrix(k, KOL) = Format(SUMA(KOL), "###,###,##0.00")
+               MSFlexGrid2.ColWidth(KOL) = 1200
         End If
         
-        MSFlexGrid2.ColWidth(KOL) = 1200
         MSFlexGrid2.ColAlignment(KOL) = 6
 Next
 
@@ -2035,13 +2042,13 @@ Private Sub Command5_Click()
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, AGO As String, APIS
+        Dim polepis As String, pol As String, ago As String, APIS
 
 100     pol = ""
-110     a = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS)
+110     a = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS)
 
 120     mPOL = pol
-130     mAGO = AGO
+130     mAGO = ago
 
         'mPOL = mPOL + "''"
         'mAGO = mAGO + "''"
@@ -2051,7 +2058,7 @@ Private Sub Command5_Click()
 140     poliseis = MsgBox("ÐÙËÇÓÅÉÓ=ÍÁÉ  Ï×É=ÁÃÏÑÅÓ", vbYesNo)
     
 150     If poliseis = vbNo Then
-160         pol = AGO
+160         pol = ago
 170         polepis = AGOEPIS
         End If
         If Len(polepis) = 0 Then polepis = "0"  ' ÃÉÁ ÍÁ ÌÇÍ ÊÏËËÁÅÉ
@@ -2229,13 +2236,13 @@ Private Sub Command6_Click()
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, AGO As String, APIS
+        Dim polepis As String, pol As String, ago As String, APIS
 
 100     pol = ""
-110     a = Get_AJ(pol, polepis, AGO, AGOEPIS)
+110     a = Get_AJ(pol, polepis, ago, AGOEPIS)
 
 120     mPOL = pol
-130     mAGO = AGO
+130     mAGO = ago
 
 140     mPOL = mPOL + "''"
 150     mAGO = mAGO + "''"
@@ -3182,7 +3189,7 @@ Private Sub ShowPar_Click()
 
         Dim D As String, DB As Database
 
-        Dim R As New ADODB.Recordset, pol As String, AGO As String
+        Dim R As New ADODB.Recordset, pol As String, ago As String
 
         Dim mChoose, mSaji2
 
@@ -3192,7 +3199,7 @@ Private Sub ShowPar_Click()
 
         Dim D0 As String
 
-100     a = Get_AJ_ASCII(pol, polepis, AGO, AGOEPIS)
+100     a = Get_AJ_ASCII(pol, polepis, ago, AGOEPIS)
 
 110     DBGrid1.Visible = True
 120     MSFlexGrid1.Visible = False
@@ -3202,7 +3209,7 @@ Private Sub ShowPar_Click()
 130     If InStr(Combo1.Text, "Ð ù ë Þ ó å é ò") > 0 Then
 140         mChoose = pol + "," + polepis
 150     ElseIf InStr(Combo1.Text, "Á ã ï ñ Ý ò") > 0 Then  ' Á ã ï ñ Ý ò -------- è
-160         mChoose = AGO + "," + AGOEPIS
+160         mChoose = ago + "," + AGOEPIS
         Else
 170         mChoose = str(Asc(Right(Combo1.Text, 1)))
         End If
@@ -3627,13 +3634,13 @@ Private Sub SumHmeras_Click()
 
         Dim AGOEPIS As String
 
-        Dim polepis As String, pol As String, AGO As String, APIS
+        Dim polepis As String, pol As String, ago As String, APIS
 
 100     pol = ""
-110     a = Get_AJ(pol, polepis, AGO, AGOEPIS)
+110     a = Get_AJ(pol, polepis, ago, AGOEPIS)
 
 120     mPOL = pol
-130     mAGO = AGO
+130     mAGO = ago
 
         'R.Open "SELECT *FROM PARASTAT", Gdb, adOpenDynamic, adLockOptimistic
 
