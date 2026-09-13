@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form bohu6 
@@ -205,10 +205,18 @@ Begin VB.Form bohu6
       TabIndex        =   15
       Top             =   5640
       Width           =   7215
+      Begin VB.CommandButton CmdDiakinisi 
+         Caption         =   "diakinisi"
+         Height          =   360
+         Left            =   5760
+         TabIndex        =   61
+         Top             =   2880
+         Width           =   990
+      End
       Begin VB.CommandButton CmdupdateStructures 
          Caption         =   "cmdupdateStructures"
          Height          =   360
-         Left            =   5400
+         Left            =   4560
          TabIndex        =   60
          Top             =   2880
          Width           =   990
@@ -267,7 +275,7 @@ Begin VB.Form bohu6
          Left            =   3720
          TabIndex        =   24
          Top             =   2880
-         Width           =   1440
+         Width           =   840
       End
       Begin VB.CommandButton Command19 
          Caption         =   "Δημιουργία εγγραφής Calendar"
@@ -851,6 +859,19 @@ cmdClearFilter_Click_Err:
         Resume Next
 
         '</EhFooter>
+
+End Sub
+
+Private Sub CmdDiakinisi_Click()
+
+Dim sql As String
+sql = "UPDATE PARASTAT SET MYEID='9.3',MYCATEG='category1_95',MYTYPESOD='',ISMYDATA=1 ,ISDIAKIN=2 where EIDOS='e'"
+Gdb.Execute sql
+
+sql = "UPDATE PARASTAT SET MYEID='9.3',MYCATEG='category1_95',MYTYPESOD='',ISMYDATA=1 ,ISDIAKIN=2 where EIDOS='A'"
+Gdb.Execute sql
+
+
 
 End Sub
 
@@ -2237,7 +2258,7 @@ Function ToAsciiMultiLine(ByVal arxeio As String, moutput As String)
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -2335,7 +2356,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim sField(1 To 50), sPict(1 To 50), sProw(1 To 50), sPcol(1 To 50), sFonts(1 To 50)
 
-        Dim m_No_of_seir, i, k, m, c
+        Dim m_No_of_seir, I, k, m, c
 
         Dim m_seir_synol, m_seir_eid, sf
 
@@ -4840,7 +4861,7 @@ Function load2_forma(arxeio As String, spacing)
         'Dim gm_str(1 To 250) As String
         Dim ar_ped(1 To 250) As Integer
 
-        Dim k                As Integer, i As Integer, lastseir As Integer
+        Dim k                As Integer, I As Integer, lastseir As Integer
 
         Dim npic             As Integer, m_npic As Integer, L1 As Integer, N As Integer
 
@@ -4869,11 +4890,11 @@ Function load2_forma(arxeio As String, spacing)
 170         ar_ped(k) = 0
         Next
 
-180     i = 1
+180     I = 1
 
 190     Do While Not EOF(1)
-200         Line Input #1, gm_str(i)
-210         i = i + 1
+200         Line Input #1, gm_str(I)
+210         I = I + 1
         Loop
 
 220     Close #1
@@ -4927,25 +4948,25 @@ Function load2_forma(arxeio As String, spacing)
 
                 'ΣΕ ΑΥΤΗΝ ΤΗΝ ΣΕΙΡΑ ΒΡΕΘΗΚΑΝ U-1 ΠΕΔΙΑ
 
-430             For i = 1 To u - 1
+430             For I = 1 To u - 1
 440                 npic = npic + 1  'ΑΥΞΑΝΕΙ Ο ΑΡΙΘΜΟΣ ΤΩΝ ΠΕΔΙΩΝ
 
                     'If spacing = 1 Then  ' bgazei +1  (λανθασμένο κρατείται για συμβατότητα)
                     '    x1 = A(i) + 1  '&&  if ( i=1,1,a(i))
                     '    x2 = IIf(A(i + 1) = 0, (mhk_seir - 1) - x1 + 1, A(i + 1) - 1 - x1)
                     'Else
-450                 X1 = a(i)   '&&  if ( i=1,1,a(i))
-460                 X2 = IIf(a(i + 1) = 0, (mhk_seir - 1) - X1 + 1, a(i + 1) - X1)
+450                 X1 = a(I)   '&&  if ( i=1,1,a(i))
+460                 X2 = IIf(a(I + 1) = 0, (mhk_seir - 1) - X1 + 1, a(I + 1) - X1)
                     'End If
 
                     'το PICTURE του πεδίου
 470                 gpic(npic) = mID$(gm_str(k), X1, X2)
 
                     'η σειρά του πεδίου
-480                 gm_r(npic) = IIf(i = 1, k - lastseir, 0)    'αφου είναι στην ίδια σειρά να μην προσθέτει σειρές
+480                 gm_r(npic) = IIf(I = 1, k - lastseir, 0)    'αφου είναι στην ίδια σειρά να μην προσθέτει σειρές
 
                     'η στήλη του πεδίου
-490                 gm_c(npic) = a(i)
+490                 gm_c(npic) = a(I)
                 Next
 
 500             lastseir = k
@@ -4989,10 +5010,10 @@ Function load2_forma(arxeio As String, spacing)
 
                 'ΣΕ ΑΥΤΗΝ ΤΗΝ ΣΕΙΡΑ ΒΡΕΘΗΚΑΝ U-1 ΠΕΔΙΑ
 
-660             For i = 1 To u - 1
+660             For I = 1 To u - 1
 670                 npic = npic + 1  'ΑΥΞΑΝΕΙ Ο ΑΡΙΘΜΟΣ ΤΩΝ ΠΕΔΙΩΝ
-680                 X1 = xa(i) + 1  '&&  if ( i=1,1,a(i))
-690                 X2 = IIf(xa(i + 1) = 0, (mhk_seir) - X1 + 1, xa(i + 1) - 1 - X1)
+680                 X1 = xa(I) + 1  '&&  if ( i=1,1,a(i))
+690                 X2 = IIf(xa(I + 1) = 0, (mhk_seir) - X1 + 1, xa(I + 1) - 1 - X1)
 
                     '* o titlow του πεδίου
 700                 gm_f(npic) = mID$(gm_str(k), X1, X2)
