@@ -192,21 +192,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "ÇÌÅÑ/ÙÑÁ ÐÑÄ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblÇÌÅÑÙÑÁ"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblÇÌÅÑÙÑÁ"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.CommandButton elegxosAFM 
          Caption         =   "Åëåã÷ïò"
@@ -337,7 +337,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   525533185
+         Format          =   465567745
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -351,7 +351,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   525533186
+         Format          =   465567746
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2054,7 +2054,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   284688385
+      Format          =   293732353
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -6693,6 +6693,9 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
         'toWeigh
         If Zygish.Value = vbChecked Then
              Gdb.Execute "UPDATE TIM SET TOWEIGH=1 WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
+              Gdb.Execute "UPDATE TIM SET C2='ÐÑÏÓ ÆÕÃÉÓÇ' WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
+        Else
+              Gdb.Execute "UPDATE TIM SET c2='',TOWEIGH=0 WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
         End If
         
        ' End If
@@ -6711,13 +6714,13 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
         If Len(afmtritou.Text) > 7 Then
              Dim MAFMTRITOU As String
               MAFMTRITOU = GGET_CVALUE("SELECT EPO+' ÁÖÌ:'+ISNULL(AFM,'')+' '+ISNULL(DIE,'') FROM PEL WHERE AFM='" + afmtritou.Text + "'")
-              Gdb.Execute "UPDATE TIM SET C2='" + Replace(Trim(Left(MAFMTRITOU, 120)), "'", "`") + "' WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
+              Gdb.Execute "UPDATE TIM SET C3='" + Replace(Trim(Left(MAFMTRITOU, 120)), "'", "`") + "' WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
               
         End If
-        If Zygish.Value = vbChecked Then
-             Gdb.Execute "UPDATE TIM SET C3='ÐÑÏÓ ÆÕÃÉÓÇ' WHERE ID_NUM=" + str(m_ID_NUM) 'SYSK  'monada
+        'If Zygish.Value = vbChecked Then
+            
         
-        End If
+        'End If
         
 326     If F_METAFORIKES >= 1 Then
             
@@ -22340,7 +22343,7 @@ Function printCrystal(MATIM, char_date)
             End If
 
         Else
-176         sql = "select  ISNULL(TOWEIGH,0) AS TOWEIGH,OTHERMOVEPURPOSETITLE,ISNULL(ENTITYUID,'') AS ENTITYUID,ISNULL(AUTHENTICATIONCODE,'') AS AUTHENTICATIONCODE,AJI,AJ1,AJ2,AJ3,FPA1,FPA2,FPA3,PEL.EPO,ATIM,HME as shme,AJI as ajia,TRP,PEL.EPA,PEL.DIE,PEL.AFM,(SELECT SUM(ISNULL(XREOSI,0) ) - SUM(ISNULL(PISTOSI,0) ) FROM EGG WHERE KOD=PEL.KOD AND EIDOS=PEL.EIDOS AND HME<=TIM.HME)+ISNULL(PEL.AYP,0) AS TYP,PEL.DOY,PEL.KOD,AJ4,AJ5,FPA4,PEL.THL,PEL.POL,AJ6,FPA6,AJ7,FPA7,ISNULL(ELGA,0)+ISNULL(KR1,0) AS ELGA,PEL.CH1 AS DEH,ADT,EKPT5 AS PROHGYPOL,ID_NUM,LITRA,PARAKRATISI AS EFK,ORA,ISNULL(ELINE,'') AS ELINE "
+176         sql = "select TIM.C1,TIM.C2,TIM.C3,TIM.C12,TIM.C13,TIM.NUM1,TIM.NUM2,TIM.NUM3,TIM.NUM11 ,ISNULL(TOWEIGH,0) AS TOWEIGH,OTHERMOVEPURPOSETITLE,ISNULL(ENTITYUID,'') AS ENTITYUID,ISNULL(AUTHENTICATIONCODE,'') AS AUTHENTICATIONCODE,AJI,AJ1,AJ2,AJ3,FPA1,FPA2,FPA3,PEL.EPO,ATIM,HME as shme,AJI as ajia,TRP,PEL.EPA,PEL.DIE,PEL.AFM,(SELECT SUM(ISNULL(XREOSI,0) ) - SUM(ISNULL(PISTOSI,0) ) FROM EGG WHERE KOD=PEL.KOD AND EIDOS=PEL.EIDOS AND HME<=TIM.HME)+ISNULL(PEL.AYP,0) AS TYP,PEL.DOY,PEL.KOD,AJ4,AJ5,FPA4,PEL.THL,PEL.POL,AJ6,FPA6,AJ7,FPA7,ISNULL(ELGA,0)+ISNULL(KR1,0) AS ELGA,PEL.CH1 AS DEH,ADT,EKPT5 AS PROHGYPOL,ID_NUM,LITRA,PARAKRATISI AS EFK,ORA,ISNULL(ELINE,'') AS ELINE "
 
         End If
  
@@ -22719,10 +22722,15 @@ Function printCrystal(MATIM, char_date)
 
 456     R("ELGA") = Rtim("ELGA")
 
-458     If F_METAFORIKES >= 1 Then
- 
+
 460         R("C3") = Rtim("C3")
 462         R("C2") = Rtim("C2")
+
+
+463     If F_METAFORIKES >= 1 Then
+ 
+'460         R("C3") = Rtim("C3")
+'462         R("C2") = Rtim("C2")
 464         R("C1") = Rtim("C1")
           
 466         If Len(R!C1) = 0 Then
