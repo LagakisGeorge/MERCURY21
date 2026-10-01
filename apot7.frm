@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form apot7 
    BackColor       =   &H00FF0000&
@@ -783,7 +783,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   154468353
+      Format          =   421920769
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +798,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   154468353
+      Format          =   421920769
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -2101,14 +2101,14 @@ Private Sub Unilever_Click()
   
  'csv_send Now, Now, 0, filesql, filecsv
   
-  Dim apo, eos As Date
-apo = Now
-eos = Now
+  Dim mapo, meos As Date
+mapo = Now
+meos = Now
 
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
-    csv_send apo, eos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040_066159748_" + Format(Now, "yyyyMMddhhmm") + "_998279212.csv"
+    csv_send mapo, meos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS10", "c:\mercvb\UNILEVER\010_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv" 'TSIATSIARIMARIA@GMAIL.COM
+    csv_send mapo, meos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS20", "c:\mercvb\UNILEVER\020_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send mapo, meos, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS30", "c:\mercvb\UNILEVER\030_066159748_" + Format(Now, "yyyyMMddhhmm") + ".csv"
+    csv_send apo.Value, eos.Value, 0, "C:\MERCVB\UNILEVER\SQL\ELAIS40", "c:\mercvb\UNILEVER\040_066159748_" + Format(Now, "yyyyMMddhhmm") + "_998279212.csv"
 
   
   
@@ -2152,7 +2152,13 @@ Dim DUM
         sql = "" ' " select KODE,ONOMA,POSO,TIMM,MONA,CONVERT(CHAR(10),HME,103),ATIM AS HMEPOM from EGGTIM WHERE LEFT(ATIM,1) IN ('T','L','Y')"
      End If
      
-       
+     If mfile = "C:\MERCVB\UNILEVER\SQL\ELAIS40" Then
+     
+       sql = Replace$(sql, "apo", Format(apo, "MM/dd/yyyy"))
+       sql = Replace$(sql, "eos", Format(eos, "MM/dd/yyyy"))
+       MsgBox sql
+     
+     End If
        
        
     
@@ -4024,9 +4030,9 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         DATA2.Connect = "ODBC;" + gConnect
-130         DATA2.RecordSource = PutDates(Text2.Text)
-140         DATA2.Refresh
+120         data2.Connect = "ODBC;" + gConnect
+130         data2.RecordSource = PutDates(Text2.Text)
+140         data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
@@ -4484,7 +4490,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     Adodc2.Recordset.sort = strSort
+160     Adodc2.Recordset.Sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4541,10 +4547,10 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
