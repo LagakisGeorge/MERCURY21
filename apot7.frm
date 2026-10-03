@@ -10,20 +10,36 @@ Begin VB.Form apot7
    ClientHeight    =   9900
    ClientLeft      =   225
    ClientTop       =   765
-   ClientWidth     =   19110
+   ClientWidth     =   21360
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    ScaleHeight     =   9900
-   ScaleWidth      =   19110
+   ScaleWidth      =   21360
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.ListBox List1 
+      Height          =   1620
+      Left            =   13680
+      TabIndex        =   44
+      Top             =   3000
+      Width           =   5055
+   End
+   Begin VB.CommandButton KOSTOS 
+      Caption         =   "TIME”  œ”‘œ’”  "
+      Height          =   360
+      Left            =   13680
+      TabIndex        =   43
+      Top             =   2640
+      Width           =   1695
+   End
    Begin VB.CommandButton cmd≈…ƒ«¡Õ¡ 
       Caption         =   "≈…ƒ« ¡Õ¡ –≈À¡‘«"
       Height          =   360
-      Left            =   13800
+      Left            =   13680
       TabIndex        =   42
       Top             =   2160
-      Width           =   1935
+      Width           =   1695
    End
    Begin VB.CommandButton cmdREPORT 
       Caption         =   "REPORT"
@@ -39,7 +55,7 @@ Begin VB.Form apot7
       Left            =   13680
       TabIndex        =   40
       Top             =   1560
-      Width           =   2052
+      Width           =   1695
    End
    Begin VB.CommandButton Command1 
       Caption         =   "Command1"
@@ -132,7 +148,7 @@ Begin VB.Form apot7
       TabIndex        =   25
       Top             =   720
       Visible         =   0   'False
-      Width           =   2676
+      Width           =   1695
    End
    Begin VB.CommandButton Command6 
       Caption         =   "OLD NOT USED √≈÷’—¡ ”≈ EPSILON"
@@ -157,14 +173,14 @@ Begin VB.Form apot7
       Width           =   855
    End
    Begin VB.PictureBox Picture2 
-      Height          =   3855
-      Left            =   13800
-      ScaleHeight     =   3795
-      ScaleWidth      =   5055
+      Height          =   3375
+      Left            =   13680
+      ScaleHeight     =   3315
+      ScaleWidth      =   4995
       TabIndex        =   22
       Top             =   4680
       Visible         =   0   'False
-      Width           =   5115
+      Width           =   5055
    End
    Begin VB.CommandButton Command5 
       Caption         =   "ÃÂÙ·ˆÔÒ‹ ˆ˘ÙÔ„Ò·ˆÈ˛Ì ÛÂ c:\par"
@@ -173,7 +189,7 @@ Begin VB.Form apot7
       TabIndex        =   21
       Top             =   1080
       Visible         =   0   'False
-      Width           =   2070
+      Width           =   1695
    End
    Begin VB.CommandButton Command4 
       Caption         =   "≈ÍÙ˝˘ÛÁ ‘ﬂÙÎÔı"
@@ -290,8 +306,8 @@ Begin VB.Form apot7
       Left            =   0
       TabIndex        =   2
       Top             =   4680
-      Width           =   13755
-      _ExtentX        =   24262
+      Width           =   13635
+      _ExtentX        =   24051
       _ExtentY        =   8202
       _LayoutType     =   0
       _RowHeight      =   -2147483647
@@ -783,7 +799,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   421920769
+      Format          =   297861121
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -798,7 +814,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   421920769
+      Format          =   297861121
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -2093,6 +2109,48 @@ a = a + "insert [dbo].[MONADES] ([Code value], [Name], [Description]) VALUES (N'
 'apot7.Text2.Text = a
 
 Gdb.Execute a
+
+
+End Sub
+
+Private Sub KOSTOS_Click()
+     Dim Q As String
+     Q = "Update EGGTIM  SET LITRA="
+     Q = Q + "(SELECT TOP 1 ISNULL(E.TIMM*(100-E.EKPT)/100,0)  FROM EGGTIM E  "
+     Q = Q + " WHERE E.KODE=EGGTIM.KODE AND  E.HME<=EGGTIM.HME and  LEFT(E.ATIM,1) IN ('Î','G','g') order by E.HME DESC )  "
+     Q = Q + " WHERE HME>='" + Format(apo, "MM/dd/yyyy") + "'  and HME<='" + Format(eos, "MM/dd/yyyy") + "'  and left(ATIM,1) IN ('ı','u','t','T') "
+    ' Q=PUTDATES(
+    Dim N As Long
+     Gdb.Execute Q, N
+     MsgBox " OK " + str(N)
+Exit Sub
+
+
+
+'   If Len(TEXT2.Text) < 5 Then
+'       MsgBox "ƒ…¡À≈Œ‘≈ ‘œ SCRIPT / QUERY"
+'       Exit Sub
+'   End If
+'   List1.Clear
+'   List1.AddItem "ƒ≈Õ ¬—≈»« ¡Õ ‘…Ã≈”  œ”‘œ’” √…¡ :"
+'   'text2=" select * from EGGTIM WHERE ..."
+'   'Adodc2.RecordSource = PutDates(TEXT2.Text)
+'   'Adodc2.Refresh
+'   Dim R As New ADODB.Recordset
+'   R.Open PutDates(TEXT2.Text), Gdb, adOpenDynamic, adLockOptimistic
+'   Do While Not R.EOF
+'     Dim KOS As Double
+'
+'     KOS = GGET_NVALUE("SELECT TOP 1 TIMM FROM EGGTIM WHERE KODE='" + R!KODE + "' AND  HME<='" + Format(R!hme, "MM/dd/yyyy") + "' and  LEFT(ATIM,1) IN ('Î','G','g') order by HME DESC ")
+'
+'     If KOS = 0 Then
+'        List1.AddItem R!KODE + " " + R!ATIM
+'     Else
+'        Gdb.Execute "UPDATE EGGTIM SET LITRA =" + Replace(Format(KOS, "###0.000"), ",", ".") + " where KODE='" + R!KODE + "'"
+'     End If
+'     Me.Caption = R!ATIM + " " + Format(R!hme, "MM/dd/yyyy")
+'     R.MoveNext
+'   Loop
 
 
 End Sub
