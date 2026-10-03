@@ -1399,6 +1399,8 @@ Function Get_AJ(ByRef pol As String, _
                 ago As String, _
                 AGOEPIS As String) As Boolean
 
+
+'EPISTREFEI P.X  POL= 'T','t','L'
         '<EhHeader>
         On Error GoTo Get_AJ_Err
 
