@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form apot7 
    BackColor       =   &H00FF0000&
@@ -799,7 +799,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   308412417
+      Format          =   299106305
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -814,7 +814,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   308412417
+      Format          =   299106305
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1123,7 +1123,7 @@ Private Sub cmdClearFilter_Click()
 
 120     Next Col
 
-130     ADODC2.Recordset.Filter = adFilterNone
+130     Adodc2.Recordset.Filter = adFilterNone
 
         '<EhFooter>
         Exit Sub
@@ -1195,13 +1195,13 @@ Private Sub CMDAPOTHIKEYSI_Click()
 
         '</EhHeader>
 
-100     CD1.InitDir = File1.Path
+100     cd1.InitDir = File1.Path
 
-110     CD1.ShowSave
+110     cd1.ShowSave
 
         Dim F
 
-120     F = CD1.FILENAME
+120     F = cd1.FILENAME
 
 130     Open F For Output As #5
 140     Print #5, Text2.Text
@@ -2146,19 +2146,19 @@ ANS = MsgBox("ÃÂ ÙÁÌ „ÒﬁÒÔÒÁ ÏÂËÔ‰Ô;", vbYesNo)
      
 Else
 
-
-
-   If Len(Text2.Text) < 5 Then
-       MsgBox "ƒ…¡À≈Œ‘≈ ‘œ SCRIPT / QUERY"
-       Exit Sub
-   End If
+Dim Q2 As String
+Q2 = "Select * From EGGTIM Where HME >=@x1 And HME<=@x2 and left(ATIM,1) IN (" + pol + ") "
+'   If Len(Text2.Text) < 5 Then
+'       MsgBox "ƒ…¡À≈Œ‘≈ ‘œ SCRIPT / QUERY"
+'       Exit Sub
+'   End If
    List1.Clear
    List1.AddItem "ƒ≈Õ ¬—≈»« ¡Õ ‘…Ã≈”  œ”‘œ’” √…¡ :"
    'text2=" select * from EGGTIM WHERE ..."
    'Adodc2.RecordSource = PutDates(TEXT2.Text)
    'Adodc2.Refresh
    Dim R As New ADODB.Recordset
-   R.Open PutDates(Text2.Text), Gdb, adOpenDynamic, adLockOptimistic
+   R.Open PutDates(Q2), Gdb, adOpenDynamic, adLockOptimistic
    Do While Not R.EOF
      Dim KOS As Double
 
@@ -2404,24 +2404,24 @@ Private Sub Command2_Click()
 
         '</EhHeader>
 
-100     ADODC2.Recordset.MoveFirst
+100     Adodc2.Recordset.MoveFirst
 
         Dim par As String
 
-110     Do While Not ADODC2.Recordset.EOF
+110     Do While Not Adodc2.Recordset.EOF
 
-120         If Left(ADODC2.Recordset("ATIM"), 1) = "A" Then
-130             par = "ƒ¡" + mID(ADODC2.Recordset("ATIM"), 2, 6) + "¬"
-140         ElseIf Left(ADODC2.Recordset("ATIM"), 1) = "L" Then
-150             par = "ƒ¡" + mID(ADODC2.Recordset("ATIM"), 2, 6) + "√"
+120         If Left(Adodc2.Recordset("ATIM"), 1) = "A" Then
+130             par = "ƒ¡" + mID(Adodc2.Recordset("ATIM"), 2, 6) + "¬"
+140         ElseIf Left(Adodc2.Recordset("ATIM"), 1) = "L" Then
+150             par = "ƒ¡" + mID(Adodc2.Recordset("ATIM"), 2, 6) + "√"
 
-160         ElseIf Left(ADODC2.Recordset("ATIM"), 1) = "E" Then
-170             par = "ƒ≈" + mID(ADODC2.Recordset("ATIM"), 2, 6)
+160         ElseIf Left(Adodc2.Recordset("ATIM"), 1) = "E" Then
+170             par = "ƒ≈" + mID(Adodc2.Recordset("ATIM"), 2, 6)
             Else
-180             par = ADODC2.Recordset("ATIM")
+180             par = Adodc2.Recordset("ATIM")
             End If
 
-190         STR_EKT = Format(ADODC2.Recordset("HME"), "DD/MM/YYYY") + " " + Left(par + Space(10), 10) + " " + Left(ADODC2.Recordset("KODE") + Space(10), 10) + " " + Left(ADODC2.Recordset("ONOMA") + Space(25), 25) + " " + " …¬" + " " + Left(Format(ADODC2.Recordset("TIMM"), "###") + Space(4), 4) + " TEM " + " " + Right("        " + Format(ADODC2.Recordset("XRE"), "###0"), 6) + " " + Right("       " + Format(ADODC2.Recordset("PIS"), "###0"), 6)
+190         STR_EKT = Format(Adodc2.Recordset("HME"), "DD/MM/YYYY") + " " + Left(par + Space(10), 10) + " " + Left(Adodc2.Recordset("KODE") + Space(10), 10) + " " + Left(Adodc2.Recordset("ONOMA") + Space(25), 25) + " " + " …¬" + " " + Left(Format(Adodc2.Recordset("TIMM"), "###") + Space(4), 4) + " TEM " + " " + Right("        " + Format(Adodc2.Recordset("XRE"), "###0"), 6) + " " + Right("       " + Format(Adodc2.Recordset("PIS"), "###0"), 6)
 
 200         MILSEC 100
 
@@ -2429,7 +2429,7 @@ Private Sub Command2_Click()
 220         Print #1, Chr(15) + to437(STR_EKT)
 230         Close 1
 
-240         ADODC2.Recordset.MoveNext
+240         Adodc2.Recordset.MoveNext
 
         Loop
 
@@ -4010,7 +4010,7 @@ Private Sub TDBGrid_FilterChange()
 
 120     TDBGrid.HoldFields
 
-130     ADODC2.Recordset.Filter = getFilter()
+130     Adodc2.Recordset.Filter = getFilter()
 
 140     TDBGrid.Col = c
 
@@ -4062,7 +4062,7 @@ Private Function getFilter() As String
 140                 tmp = tmp & " AND "
                 End If
 
-150             If ADODC2.Recordset(Col.ColIndex).Type = 5 Then    '
+150             If Adodc2.Recordset(Col.ColIndex).Type = 5 Then    '
 160                 If InStr(">< >= <=  = ", Left(Col.FILTERTEXT, 1)) > 0 And Len(Col.FILTERTEXT) > 1 And IsNumeric(Right(Col.FILTERTEXT, 1)) Then
 170                     tmp = tmp & Col.DataField & Col.FILTERTEXT
                     Else
@@ -4126,24 +4126,24 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         DATA2.Connect = "ODBC;" + gConnect
-130         DATA2.RecordSource = PutDates(Text2.Text)
-140         DATA2.Refresh
+120         data2.Connect = "ODBC;" + gConnect
+130         data2.RecordSource = PutDates(Text2.Text)
+140         data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
             If Len(FDSN) > 1 Then
                 'gdb2.Open FDSN
-                ADODC2.ConnectionString = FDSN
+                Adodc2.ConnectionString = FDSN
             Else
 170             'Gdb.Execute PutDates(TEXT2.Text), lo
-                ADODC2.ConnectionString = gConnect
+                Adodc2.ConnectionString = gConnect
             End If
 
-            ADODC2.RecordSource = PutDates(Text2.Text)
-            ADODC2.Refresh
+            Adodc2.RecordSource = PutDates(Text2.Text)
+            Adodc2.Refresh
 
-180         ADODC2.Recordset.MoveFirst
+180         Adodc2.Recordset.MoveFirst
 
            ' On Error Resume Next
 
@@ -4180,25 +4180,25 @@ Public Sub CMDPROVOLI_Click()
              
              
             
-190         Do While Not ADODC2.Recordset.EOF
+190         Do While Not Adodc2.Recordset.EOF
                  If FF.CancelButton.Enabled = False Then
                           FF.Hide
                           Set FF = Nothing
                           Exit Do
                  End If
 
-200             For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
-                  If ADODC2.Recordset.FIELDS(k).Type = 200 Then
+200             For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+                  If Adodc2.Recordset.FIELDS(k).Type = 200 Then
                   Else
-210                 If IsNumeric(ADODC2.Recordset.FIELDS(k).Value) And ADODC2.Recordset.FIELDS(k).Type <> 202 Then
-220                     sumes(k) = sumes(k) + nNull(ADODC2.Recordset.FIELDS(k).Value)
+210                 If IsNumeric(Adodc2.Recordset.FIELDS(k).Value) And Adodc2.Recordset.FIELDS(k).Type <> 202 Then
+220                     sumes(k) = sumes(k) + nNull(Adodc2.Recordset.FIELDS(k).Value)
                     End If
                   End If
                 Next
 
                 DoEvents
                 KL = KL + 1: Me.Caption = KL
-230             ADODC2.Recordset.MoveNext
+230             Adodc2.Recordset.MoveNext
 
                 '  Exit Do
             Loop
@@ -4209,7 +4209,7 @@ Public Sub CMDPROVOLI_Click()
 
 
 
-240         For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+240         For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 
 250             If sumes(k) > 0 Then
 260                 TDBGrid.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
@@ -4502,7 +4502,7 @@ End If
         Text2.ToolTipText = "·ÎÎ·Ê˘ ÙÔÌ ÙÈÙÎÔ –·Ò·ÏÂÙÒÔÚ 1,2,3 " + Chr(13) + " Í·È 4Á ÛÂÈÒ‹ ·ÎÎ·„ﬁ dsn " + Chr(13) + " .˜. 1Á ÛÂÈÒ· /*#BARCODE*/ ...4Á ÛÂÈÒ‹ /* #DSN=MERURY;... */  5Á ÛÂÈÒ‹ 00111 ·ËÒÔﬂÛÏ·Ù· ÛÙÁÎ˛Ì"
 
 140     If Left(f_pelMERC, 3) = "SOK" Then
-150         Command5.Visible = True
+150         COMMAND5.Visible = True
         End If
 
 160     F_EIKONA = Val(FINDPARAMETROI(1, "APOT2", "F_EIKONA", "1", "1=EIKONA=> Ÿƒ… œ” 2=>Ã≈ ¬œ«». À≈…ƒ… 11= VDIKOS.JPG 12=BOH.JPG 0=œ◊… ≈… œÕ≈”"))
@@ -4523,7 +4523,7 @@ End If
 
 230     File1.Refresh
 
-240     CD1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
+240     cd1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
 
 250     DoEvents
 
@@ -4586,7 +4586,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     ADODC2.Recordset.sort = strSort
+160     Adodc2.Recordset.Sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4639,17 +4639,17 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
         'TDBGrid.HoldFields
         Dim sumes(100) As String
 
-100     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         ADODC2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To ADODC2.Recordset.FIELDS.Count - 1
+150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 160         TDBGrid.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
