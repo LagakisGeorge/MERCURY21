@@ -337,7 +337,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   297861121
+         Format          =   299040769
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -351,7 +351,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   297861122
+         Format          =   299040770
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2054,7 +2054,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   298647553
+      Format          =   297861121
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -8972,45 +8972,70 @@ Private Sub cmdÃ¡∆_≈ ‘’_Click()
 124     R.MoveFirst
 126     Do While Not R.EOF
 
-            '        Dim m As Integer
-            '
-            '        Dim c As String
-            '
-            '        PAR1.TDBGrid1.Col = 2
-            '        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
-            '
-            '
-            '           Dim m_ID As Long
-            '         PAR1.TDBGrid1.Col = 7
-            '       m_ID = Val(PAR1.TDBGrid1.Text)
+
+
+
+
+
+'------------------------- √≈Ã…∆≈… ‘¡  œ’‘¡ …¡ √…¡‘… ‘¡ ‘—¡¬¡≈… « ≈ ‘’–Ÿ”« ------------------
+            If IsNull(R("HMEPARAD")) Then
+            
+            Else
+               HMERPARAD.Value = R("HMEPARAD")
+               ORAPARAD.Value = R("ORAPARAD")
+            End If
+            
+366         AYTOKINHTO.Text = CNull(R("aytok"))
+368         PROORISMOS.Text = R("PROOR")
+370         SKOPOS.Text = R("SKOPOS")
+            other.Text = CNull(R("OTHERMOVEPURPOSETITLE"))
+            STREET.Text = CNull(R("street"))
+            STREETNUMBER = CNull(R("streetnumber"))
+            POSTALCODE.Text = CNull(R("postalcode"))
+            CITY.Text = CNull(R("city"))
+            parat.Text = CNull(R("parat"))
+372         fortosh.Text = CNull(R("FORTOSH"))
+            If InStr(fortosh.Text, ";") > 0 Then
+               FORTDIE.Text = Split(fortosh.Text, ";")(0)
+               fortARit.Text = Split(fortosh.Text, ";")(1)
+               FORTPOL.Text = Split(fortosh.Text, ";")(2)
+               FORTTK.Text = Split(fortosh.Text, ";")(3)
+            End If
+             If nNull(R("TOWEIGH")) = 1 Then
+                Zygish.Value = vbChecked
+             Else
+                Zygish.Value = vbUnchecked
+             End If
+'------------------------- √≈Ã…∆≈… ‘¡  œ’‘¡ …¡ √…¡‘… ‘¡ ‘—¡¬¡≈… « ≈ ‘’–Ÿ”« ------------------
+            
+    
         
 128         c = str(Val(mID(R!ATIM, 2, 6))) ' Replace(str(R!aji), ",", ".")
 130         m_ID = R!id_num
 132         Text1.Text = c
             Dim DUM As String
-        
-            '  PAR1.METASX_SE_TIM 99, C, M_ID, False, 0
-            ' PAR1.METASX_SE_TIM 99, C, 0, False
-
-            ' 100     PAR1.diortosis
+            Dim plir As String
+            
 134         DoEvents
 136         f_matim = R!ATIM
 138         DTPicker1.Value = R!hme
 
+
+
+            plir = GGET_CVALUE("select PERIGRAFH from PINAKES WHERE TYPOS=12 AND AYJON=" + Left(R!trp, 1))
+            Combo4.Text = plir '  ) + "'" 'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
+
 140         f_same_eline = 0
 142         DUM = printCrystal(f_matim, CDate(R!hme))
 144         f_same_eline = 0
-            Dim plir As String
-            'plir = GGET_CVALUE("select PERIGRAFH from PINAKES WHERE TYPOS=12 AND AYJON=" + Left(R!trp, 1))
-                
-146         plir = GGET_CVALUE("select PERIGRAFH from PINAKES WHERE TYPOS=12 AND AYJON=" + Left(R!trp, 1))
+
 148         DB.Execute "update MEM SET banks='" + plir + "'"
-                 
+
 150         CrystalReport1.ReportFileName = mF '  "C:\MERCVB\REPORTS\TIMOL1.RPT" ' F_FORMA1
 152         Ucr9print.printingCR9 F_EKTYPOTHS, CrystalReport1.ReportFileName
 
             ' EPANEKTYPOSI (2) 'PDF1EKT2ASK0)
-        
+
 154         Text2(0).Text = ""
 156         Text2(1).Text = ""
         
@@ -22527,7 +22552,7 @@ Function printCrystal(MATIM, char_date)
 312         If False Then ' F_XONDR = 0 Then    'LIANIKH
             Else
                 'Round(Val(P) * Val(t) * (100 - Val(e)) / 100, f_psifiaAjias)
-314             R("¡Óﬂ·") = Round(0.00001 + R("–ÔÛ¸ÙÁÙ·") * R("TÈÏ_ÃÔÌ") * (100 - R("EKPT")) / 100 * (100 - R("EKPT2")) / 100, 2) ' f_psifiaAjias)
+314             R("¡Óﬂ·") = Round(0.00001 + R("–ÔÛ¸ÙÁÙ·") * R("TÈÏ_ÃÔÌ") * (100 - R("EKPT")) / 100 * (100 - nNull(R("EKPT2"))) / 100, 2) ' f_psifiaAjias)
                 'r("¡Óﬂ·") = r("–ÔÛ¸ÙÁÙ·") * r("TÈÏ_ÃÔÌ") * (100 - r("EKPT")) / 100
             End If
 
