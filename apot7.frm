@@ -12,12 +12,19 @@ Begin VB.Form apot7
    ClientTop       =   765
    ClientWidth     =   21360
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    ScaleHeight     =   9900
    ScaleWidth      =   21360
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton Command3 
+      Caption         =   "MAZ_METASX"
+      Height          =   360
+      Left            =   13680
+      TabIndex        =   45
+      Top             =   8160
+      Width           =   1815
+   End
    Begin VB.ListBox List1 
       Height          =   1620
       Left            =   13680
@@ -799,7 +806,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299106305
+      Format          =   299958273
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -814,7 +821,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299106305
+      Format          =   299958273
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1083,10 +1090,10 @@ Function PutDates(ByVal X As String)
 150     SQL2 = Replace(SQL2, "@x1", X1)
 160     SQL2 = Replace(SQL2, "@x2", X2)
 
-170     SQL2 = Replace(SQL2, "@c1", C1.Text)
+170     SQL2 = Replace(SQL2, "@c1", c1.Text)
 180     SQL2 = Replace(SQL2, "@c2", c2.Text)
 190     SQL2 = Replace(SQL2, "@c3", c3.Text)
-200     SQL2 = Replace(SQL2, "@C1", C1.Text)
+200     SQL2 = Replace(SQL2, "@C1", c1.Text)
 210     SQL2 = Replace(SQL2, "@C2", c2.Text)
 220     SQL2 = Replace(SQL2, "@C3", c3.Text)
 
@@ -1195,13 +1202,13 @@ Private Sub CMDAPOTHIKEYSI_Click()
 
         '</EhHeader>
 
-100     cd1.InitDir = File1.Path
+100     CD1.InitDir = File1.Path
 
-110     cd1.ShowSave
+110     CD1.ShowSave
 
         Dim F
 
-120     F = cd1.FILENAME
+120     F = CD1.FILENAME
 
 130     Open F For Output As #5
 140     Print #5, Text2.Text
@@ -2111,6 +2118,67 @@ a = a + "insert [dbo].[MONADES] ([Code value], [Name], [Description]) VALUES (N'
 Gdb.Execute a
 
 
+End Sub
+
+Private Sub Command3_Click()
+     
+     'TEXT2 = " select * from EGGTIM WHERE ..."
+   Adodc2.RecordSource = PutDates(Text2.Text)
+   Adodc2.Refresh
+      Dim m As Integer
+        Dim c As String
+        PAR1.TDBGrid1.Col = 2
+        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        'PAR1.Text5.Text = "*" + C
+        Dim mc As String
+        mc = "p"     ' (FINDPARAMETROI(-1, "PAR1", "METASX_TIM", "3", "δωσε κωδ.παρ/κου METASX_TIM π.χ. T"))
+        mc = InputBox("γραμμα μετασχηματισμου", "", mc)
+        m = gVal(mc)
+       ' Exit Sub
+        If m = 0 Then
+           'ΠΑΩ ΝΑ ΠΙΑΣΩ ΤΟ ΠΑΡΑΣΤΑΤΙΚΟ ΣΤΟ COMBOBOX ME TO GRAMMA TOY KAI NA PARV TON ARIUMO
+           Dim k As Integer
+           For k = 0 To PAR1.PARAS.ListCount - 1
+              If Right(PAR1.PARAS.List(k), 1) = Left(mc, 1) Then
+                 m = k
+                 Exit For
+              End If
+           Next
+        End If
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     PAR1.ektyp.Value = vbUnchecked
+     
+     
+     Adodc2.Recordset.MoveFirst
+     
+     
+     Do While Not Adodc2.Recordset.EOF
+         PAR1.METASX_SE_TIM m, Adodc2.Recordset("aji"), Adodc2.Recordset("id_num"), False, 0
+         PAR1.DTPicker1.Value = Now
+        PAR1.SaveParastat 0
+        MsgBox "OK"
+         Adodc2.Recordset.MoveNext
+     
+     Loop
+     
+     
+     
+     
+    
 End Sub
 
 Private Sub KOSTOS_Click()
@@ -4126,9 +4194,9 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         data2.Connect = "ODBC;" + gConnect
-130         data2.RecordSource = PutDates(Text2.Text)
-140         data2.Refresh
+120         Data2.Connect = "ODBC;" + gConnect
+130         Data2.RecordSource = PutDates(Text2.Text)
+140         Data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
@@ -4523,7 +4591,7 @@ End If
 
 230     File1.Refresh
 
-240     cd1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
+240     CD1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
 
 250     DoEvents
 
