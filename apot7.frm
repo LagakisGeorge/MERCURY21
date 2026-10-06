@@ -806,7 +806,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299958273
+      Format          =   172621825
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -821,7 +821,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   299958273
+      Format          =   172621825
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1090,10 +1090,10 @@ Function PutDates(ByVal X As String)
 150     SQL2 = Replace(SQL2, "@x1", X1)
 160     SQL2 = Replace(SQL2, "@x2", X2)
 
-170     SQL2 = Replace(SQL2, "@c1", c1.Text)
+170     SQL2 = Replace(SQL2, "@c1", C1.Text)
 180     SQL2 = Replace(SQL2, "@c2", c2.Text)
 190     SQL2 = Replace(SQL2, "@c3", c3.Text)
-200     SQL2 = Replace(SQL2, "@C1", c1.Text)
+200     SQL2 = Replace(SQL2, "@C1", C1.Text)
 210     SQL2 = Replace(SQL2, "@C2", c2.Text)
 220     SQL2 = Replace(SQL2, "@C3", c3.Text)
 
@@ -1202,13 +1202,13 @@ Private Sub CMDAPOTHIKEYSI_Click()
 
         '</EhHeader>
 
-100     CD1.InitDir = File1.Path
+100     cd1.InitDir = File1.Path
 
-110     CD1.ShowSave
+110     cd1.ShowSave
 
         Dim F
 
-120     F = CD1.FILENAME
+120     F = cd1.FILENAME
 
 130     Open F For Output As #5
 140     Print #5, Text2.Text
@@ -2121,9 +2121,17 @@ Gdb.Execute a
 End Sub
 
 Private Sub Command3_Click()
+     If Len(Text2.Text) = 0 Then
+         Exit Sub
+     End If
+     
+     
+     
+     
      
      'TEXT2 = " select * from EGGTIM WHERE ..."
    Adodc2.RecordSource = PutDates(Text2.Text)
+   On Error Resume Next
    Adodc2.Refresh
       Dim m As Integer
         Dim c As String
@@ -2137,10 +2145,10 @@ Private Sub Command3_Click()
        ' Exit Sub
         If m = 0 Then
            '–¡Ÿ Õ¡ –…¡”Ÿ ‘œ –¡—¡”‘¡‘… œ ”‘œ COMBOBOX ME TO GRAMMA TOY KAI NA PARV TON ARIUMO
-           Dim k As Integer
-           For k = 0 To PAR1.PARAS.ListCount - 1
-              If Right(PAR1.PARAS.List(k), 1) = Left(mc, 1) Then
-                 m = k
+           Dim K As Integer
+           For K = 0 To PAR1.PARAS.ListCount - 1
+              If Right(PAR1.PARAS.List(K), 1) = Left(mc, 1) Then
+                 m = K
                  Exit For
               End If
            Next
@@ -2167,10 +2175,24 @@ Private Sub Command3_Click()
      
      
      Do While Not Adodc2.Recordset.EOF
+        PAR1.ar_paraggt.Text = Adodc2.Recordset("ATIM")
+         PAR1.PARAS.SetFocus
+         ' PAR1.PARAS_LostFocus
+         PAR1.Text1.Text = PAR1.find_parastat(0, "p", 0)
+     
+         PAR1.ar_paraggt.SetFocus
+         PAR1.TDBGrid1.SetFocus
+         PAR1.DTPicker1.Value = Now
+         
          PAR1.METASX_SE_TIM m, Adodc2.Recordset("aji"), Adodc2.Recordset("id_num"), False, 0
          PAR1.DTPicker1.Value = Now
         PAR1.SaveParastat 0
+        PAR1.find_parastat 0, "p", 1
+        DoEvents
+        
+        
         MsgBox "OK"
+        Exit Do
          Adodc2.Recordset.MoveNext
      
      Loop
@@ -2567,7 +2589,7 @@ Private Sub Command5_Click()
 100     Set xlwbook = xl.Workbooks.Open("C:\EKTYP.XLS")
 110     Set xlsheet = xlwbook.Sheets.Item(1)
 
-        Dim k
+        Dim K
 
         Dim a$, B, X
 
@@ -2581,7 +2603,7 @@ Private Sub Command5_Click()
 
         Dim F As String, RECS As Integer
 
-120     k = 5
+120     K = 5
 
         Dim CH1, CH2, CH3
 
@@ -2595,13 +2617,13 @@ Private Sub Command5_Click()
 
 130     Do While True  ' Not xlsheet.cells(mRow, 1) = Null ' Not data1.Recordset.EOF
 
-140         If IsNull(xlsheet.cells(k, 1)) Then
+140         If IsNull(xlsheet.cells(K, 1)) Then
 
                 Exit Do
 
             End If
 
-150         If IsEmpty(xlsheet.cells(k, 1)) Then
+150         If IsEmpty(xlsheet.cells(K, 1)) Then
 
                 Exit Do
 
@@ -2609,13 +2631,13 @@ Private Sub Command5_Click()
 
             On Error Resume Next
 
-160         kod = LTrim(str(xlsheet.cells(k + 1, 3)))    '
+160         kod = LTrim(str(xlsheet.cells(K + 1, 3)))    '
 
-170         If UCase(LTrim(str(xlsheet.cells(k + 1, 1)))) = "P" Then
+170         If UCase(LTrim(str(xlsheet.cells(K + 1, 1)))) = "P" Then
 180             FileCopy "c:\mercvb\images\" + kod + ".JPG", "c:\par\" + kod + ".JPG"
             End If
 
-190         k = k + 1
+190         K = K + 1
         Loop
 
 200     Set xlsheet = Nothing
@@ -4194,9 +4216,9 @@ Public Sub CMDPROVOLI_Click()
 
 110     If ODBC.Value = vbChecked Then
             ' DBGrid1.Visible = True
-120         Data2.Connect = "ODBC;" + gConnect
-130         Data2.RecordSource = PutDates(Text2.Text)
-140         Data2.Refresh
+120         data2.Connect = "ODBC;" + gConnect
+130         data2.RecordSource = PutDates(Text2.Text)
+140         data2.Refresh
         Else
 
             ' DBGrid1.Visible = False
@@ -4255,11 +4277,11 @@ Public Sub CMDPROVOLI_Click()
                           Exit Do
                  End If
 
-200             For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
-                  If Adodc2.Recordset.FIELDS(k).Type = 200 Then
+200             For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
+                  If Adodc2.Recordset.FIELDS(K).Type = 200 Then
                   Else
-210                 If IsNumeric(Adodc2.Recordset.FIELDS(k).Value) And Adodc2.Recordset.FIELDS(k).Type <> 202 Then
-220                     sumes(k) = sumes(k) + nNull(Adodc2.Recordset.FIELDS(k).Value)
+210                 If IsNumeric(Adodc2.Recordset.FIELDS(K).Value) And Adodc2.Recordset.FIELDS(K).Type <> 202 Then
+220                     sumes(K) = sumes(K) + nNull(Adodc2.Recordset.FIELDS(K).Value)
                     End If
                   End If
                 Next
@@ -4277,16 +4299,16 @@ Public Sub CMDPROVOLI_Click()
 
 
 
-240         For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+240         For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
 
-250             If sumes(k) > 0 Then
-260                 TDBGrid.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
+250             If sumes(K) > 0 Then
+260                 TDBGrid.Splits(0).columns(K).FooterText = Format(sumes(K), "######0.00")
                     
 
                 End If
                 
-                If Plath_Grid(k) > 0 Then
-                    TDBGrid.Splits(0).columns(k).Width = Plath_Grid(k)
+                If Plath_Grid(K) > 0 Then
+                    TDBGrid.Splits(0).columns(K).Width = Plath_Grid(K)
                 End If
                 
                
@@ -4453,9 +4475,9 @@ Private Sub CMDEXECUTE_Click()
 
         Dim SEIRES(30)
 
-        Dim MLINE As String, k
+        Dim MLINE As String, K
 
-100     For k = 1 To 30: SEIRES(k) = "": Next
+100     For K = 1 To 30: SEIRES(K) = "": Next
 
 110     lo = 0
 120     Me.MousePointer = vbHourglass
@@ -4570,7 +4592,7 @@ End If
         Text2.ToolTipText = "·ÎÎ·Ê˘ ÙÔÌ ÙÈÙÎÔ –·Ò·ÏÂÙÒÔÚ 1,2,3 " + Chr(13) + " Í·È 4Á ÛÂÈÒ‹ ·ÎÎ·„ﬁ dsn " + Chr(13) + " .˜. 1Á ÛÂÈÒ· /*#BARCODE*/ ...4Á ÛÂÈÒ‹ /* #DSN=MERURY;... */  5Á ÛÂÈÒ‹ 00111 ·ËÒÔﬂÛÏ·Ù· ÛÙÁÎ˛Ì"
 
 140     If Left(f_pelMERC, 3) = "SOK" Then
-150         COMMAND5.Visible = True
+150         Command5.Visible = True
         End If
 
 160     F_EIKONA = Val(FINDPARAMETROI(1, "APOT2", "F_EIKONA", "1", "1=EIKONA=> Ÿƒ… œ” 2=>Ã≈ ¬œ«». À≈…ƒ… 11= VDIKOS.JPG 12=BOH.JPG 0=œ◊… ≈… œÕ≈”"))
@@ -4591,7 +4613,7 @@ End If
 
 230     File1.Refresh
 
-240     CD1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
+240     cd1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
 
 250     DoEvents
 
@@ -4707,8 +4729,8 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
         'TDBGrid.HoldFields
         Dim sumes(100) As String
 
-100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
-110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
+100     For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
+110         sumes(K) = TDBGrid.Splits(0).columns(K).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
 120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
@@ -4717,8 +4739,8 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
 140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
-160         TDBGrid.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
+150     For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
+160         TDBGrid.Splits(0).columns(K).FooterText = sumes(K)   '  = Format(SUMES(k), "######0.00")
         Next
 
         '    Adodc2.Recordset.Sort = "[" & TDBGrid.Columns(ColIndex).DataField & "] desc" ' strSort
