@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   256573441
+         Format          =   461242369
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   256573442
+         Format          =   461242370
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2062,7 +2062,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   256442369
+      Format          =   460390401
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -12805,7 +12805,8 @@ Label33.Left = 0
     Label18.Left = lblœƒœ”.Left
      Label19.Left = lblœƒœ”.Left
     
-    
+     Label15.Top = ApoParaggelia.Top
+     Label15.Left = lblœƒœ”.Left
     
 End Sub
 
