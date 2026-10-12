@@ -325,7 +325,10 @@ Public Sub Update_Structures()
         dum2 = ADD_FIELD("PINAKES", "C3", "CHAR(20)")
         dum2 = ADD_FIELD("PINAKES", "N4", "INT")
         dum2 = ADD_FIELD("PINAKES", "C4", "CHAR(20)")
-
+        If GGET_NVALUE("SELECT SUM(ISNULL(TIMH,0)) FROM PINAKES WHERE TYPOS=7") = 0 Then
+        
+          Gdb.Execute "UPDATE PINAKES SET TIMH=AYJON WHERE TYPOS=7"
+        End If
 
 
 dum2 = ADD_FIELD("PEL", "CONTRACTINGAUTHORITYID", "NVARCHAR(30)")
