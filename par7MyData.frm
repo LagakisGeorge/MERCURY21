@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   525533185
+      Format          =   472055809
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   525533185
+      Format          =   472055809
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -15418,13 +15418,16 @@ Function to_pos(ByVal TID As String, _
             answerToFile LTrim(Trim(mID_NUM)), req2
                 
             If req2 = "error" Then
-                    
+                Dim ANSPOS2 As Integer: ANSPOS2 = vbYes
+
+               ANSPOS2 = MsgBox("Αν ειναι σε εξελιξη η συναλλαγή ή τελείωσε πατηστε ΝΑΙ;", vbYesNo)
+                           
+               If ANSPOS2 = vbNo Then
                 ToJasonSub = 0
-                    
                 CancelPosPayment mID_NUM, F_PAROX_SIGNATURE
                 answerToFile LTrim(Trim(mID_NUM)), "CANCEL----" + F_posSignature
-
                 Exit Function
+              End If
 
             End If
             
