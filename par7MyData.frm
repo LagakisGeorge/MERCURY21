@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   135266305
+      Format          =   471728129
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   135331841
+      Format          =   471728129
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -7890,7 +7891,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 620                             Set elem2Field = docStock.createElement("itemDescr"): elem2Field.Text = EGGTIM("onoma"): elemField.appendChild elem2Field
 
                                 If m_is_benzinadiko = 1 Then
-                                    If isDiakin = 1 Then
+                                    If isDiakin >= 1 Then
                                         If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(EGGTIM("kode"))) > 0 Then   'μονο στου βενζιναδικου να βγαζει fuelcode
                                             Set elem2Field = docStock.createElement("fuelCode"): elem2Field.Text = Trim(EGGTIM("kode")): elemField.appendChild elem2Field
                                         End If

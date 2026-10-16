@@ -1,17 +1,17 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form BOHU2 
    BackColor       =   &H00FF0000&
    Caption         =   "Παραμ.Προγράμματος"
-   ClientHeight    =   8604
+   ClientHeight    =   8610
    ClientLeft      =   60
-   ClientTop       =   348
+   ClientTop       =   345
    ClientWidth     =   15720
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   8604
+   ScaleHeight     =   8610
    ScaleWidth      =   15720
    WindowState     =   2  'Maximized
    Begin VB.CommandButton Command1 
@@ -30,15 +30,16 @@ Begin VB.Form BOHU2
       TabIndex        =   0
       Top             =   120
       Width           =   13575
-      _ExtentX        =   23940
-      _ExtentY        =   14774
+      _ExtentX        =   23945
+      _ExtentY        =   14764
       _Version        =   393216
       Tabs            =   6
+      Tab             =   5
       TabHeight       =   529
       BackColor       =   16711680
       TabCaption(0)   =   "Γενικές Παράμετροι"
       TabPicture(0)   =   "bohu2.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label12(5)"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Label15"
@@ -129,70 +130,80 @@ Begin VB.Form BOHU2
       TabCaption(1)   =   "Παράμετροι Αποθήκης"
       TabPicture(1)   =   "bohu2.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "M_PROMHU"
+      Tab(1).Control(0)=   "mSyskeyasia"
       Tab(1).Control(1)=   "m__analysh"
-      Tab(1).Control(2)=   "mSyskeyasia"
+      Tab(1).Control(2)=   "M_PROMHU"
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Παράμετροι Τιμολόγησης"
       TabPicture(2)   =   "bohu2.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "metiketes"
-      Tab(2).Control(1)=   "yparxei_pos"
-      Tab(2).Control(2)=   "tel_pos"
-      Tab(2).Control(3)=   "eis_fpa"
-      Tab(2).Control(4)=   "epitr_seir"
-      Tab(2).Control(5)=   "lian_metr"
-      Tab(2).Control(6)=   "kostologhsh"
-      Tab(2).Control(7)=   "Timago_lt"
-      Tab(2).Control(8)=   "prefix"
-      Tab(2).Control(9)=   "eis_ekpt"
-      Tab(2).Control(10)=   "auto_ayj"
-      Tab(2).Control(11)=   "Label22"
-      Tab(2).Control(12)=   "Label19"
-      Tab(2).Control(13)=   "Label21"
-      Tab(2).Control(14)=   "Label20"
-      Tab(2).Control(15)=   "Label18"
-      Tab(2).Control(16)=   "Label17"
-      Tab(2).Control(17)=   "Label13"
-      Tab(2).Control(18)=   "Label9"
-      Tab(2).Control(19)=   "Label5"
-      Tab(2).Control(20)=   "Label6"
-      Tab(2).Control(21)=   "Label7"
+      Tab(2).Control(0)=   "Label7"
+      Tab(2).Control(1)=   "Label6"
+      Tab(2).Control(2)=   "Label5"
+      Tab(2).Control(3)=   "Label9"
+      Tab(2).Control(4)=   "Label13"
+      Tab(2).Control(5)=   "Label17"
+      Tab(2).Control(6)=   "Label18"
+      Tab(2).Control(7)=   "Label20"
+      Tab(2).Control(8)=   "Label21"
+      Tab(2).Control(9)=   "Label19"
+      Tab(2).Control(10)=   "Label22"
+      Tab(2).Control(11)=   "auto_ayj"
+      Tab(2).Control(12)=   "eis_ekpt"
+      Tab(2).Control(13)=   "prefix"
+      Tab(2).Control(14)=   "Timago_lt"
+      Tab(2).Control(15)=   "kostologhsh"
+      Tab(2).Control(16)=   "lian_metr"
+      Tab(2).Control(17)=   "epitr_seir"
+      Tab(2).Control(18)=   "eis_fpa"
+      Tab(2).Control(19)=   "tel_pos"
+      Tab(2).Control(20)=   "yparxei_pos"
+      Tab(2).Control(21)=   "metiketes"
       Tab(2).ControlCount=   22
       TabCaption(3)   =   "Παράμετροι Εκτυπώσεων"
       TabPicture(3)   =   "bohu2.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Check5"
+      Tab(3).Control(0)=   "Check2"
       Tab(3).Control(1)=   "Check3"
-      Tab(3).Control(2)=   "Check2"
+      Tab(3).Control(2)=   "Check5"
       Tab(3).ControlCount=   3
       TabCaption(4)   =   "Παράμετροι Λογιστικής"
       TabPicture(4)   =   "bohu2.frx":0070
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "mgconnect"
-      Tab(4).Control(1)=   "mgdir"
-      Tab(4).Control(2)=   "DIRLOG"
-      Tab(4).Control(3)=   "Label8"
-      Tab(4).Control(4)=   "Label16"
-      Tab(4).Control(5)=   "Label11"
+      Tab(4).Control(0)=   "Label11"
+      Tab(4).Control(1)=   "Label16"
+      Tab(4).Control(2)=   "Label8"
+      Tab(4).Control(3)=   "DIRLOG"
+      Tab(4).Control(4)=   "mgdir"
+      Tab(4).Control(5)=   "mgconnect"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "Παροχος"
       TabPicture(5)   =   "bohu2.frx":008C
-      Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "userpos"
-      Tab(5).Control(1)=   "pwpos"
-      Tab(5).Control(2)=   "PAROXKEY"
-      Tab(5).Control(3)=   "PAROXPASS"
-      Tab(5).Control(4)=   "PAROXUSER"
-      Tab(5).Control(5)=   "Label33"
-      Tab(5).Control(6)=   "Label32"
-      Tab(5).Control(7)=   "Label28"
-      Tab(5).Control(8)=   "Label27"
-      Tab(5).Control(9)=   "Label26"
+      Tab(5).ControlEnabled=   -1  'True
+      Tab(5).Control(0)=   "Label26"
+      Tab(5).Control(0).Enabled=   0   'False
+      Tab(5).Control(1)=   "Label27"
+      Tab(5).Control(1).Enabled=   0   'False
+      Tab(5).Control(2)=   "Label28"
+      Tab(5).Control(2).Enabled=   0   'False
+      Tab(5).Control(3)=   "Label32"
+      Tab(5).Control(3).Enabled=   0   'False
+      Tab(5).Control(4)=   "Label33"
+      Tab(5).Control(4).Enabled=   0   'False
+      Tab(5).Control(5)=   "PAROXUSER"
+      Tab(5).Control(5).Enabled=   0   'False
+      Tab(5).Control(6)=   "PAROXPASS"
+      Tab(5).Control(6).Enabled=   0   'False
+      Tab(5).Control(7)=   "PAROXKEY"
+      Tab(5).Control(7).Enabled=   0   'False
+      Tab(5).Control(8)=   "pwpos"
+      Tab(5).Control(8).Enabled=   0   'False
+      Tab(5).Control(9)=   "userpos"
+      Tab(5).Control(9).Enabled=   0   'False
       Tab(5).ControlCount=   10
       Begin VB.TextBox userpos 
          Height          =   375
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   85
          Text            =   " "
          Top             =   3720
@@ -200,7 +211,7 @@ Begin VB.Form BOHU2
       End
       Begin VB.TextBox pwpos 
          Height          =   375
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   83
          Text            =   " "
          Top             =   4440
@@ -209,28 +220,28 @@ Begin VB.Form BOHU2
       Begin VB.CommandButton GGPS 
          Caption         =   "ΓΓΠΣ"
          Height          =   495
-         Left            =   10320
+         Left            =   -64680
          TabIndex        =   82
          Top             =   2280
          Width           =   2415
       End
       Begin VB.TextBox PELTK 
          Height          =   360
-         Left            =   11160
+         Left            =   -63840
          TabIndex        =   78
          Top             =   1320
          Width           =   1335
       End
       Begin VB.TextBox PELPOL 
          Height          =   360
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   77
          Top             =   1320
          Width           =   1335
       End
       Begin VB.TextBox PELARIT 
          Height          =   360
-         Left            =   6600
+         Left            =   -68400
          TabIndex        =   76
          Top             =   1320
          Width           =   495
@@ -238,7 +249,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox PAROXKEY 
          BackColor       =   &H0080C0FF&
          Height          =   375
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   75
          Top             =   2640
          Width           =   3735
@@ -246,7 +257,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox PAROXPASS 
          BackColor       =   &H0080C0FF&
          Height          =   375
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   73
          Top             =   1920
          Width           =   3735
@@ -254,14 +265,14 @@ Begin VB.Form BOHU2
       Begin VB.TextBox PAROXUSER 
          BackColor       =   &H0080C0FF&
          Height          =   375
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   71
          Top             =   1200
          Width           =   3735
       End
       Begin VB.TextBox telpel 
          Height          =   375
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   69
          Top             =   1680
          Width           =   2925
@@ -269,7 +280,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox mplafon 
          Height          =   360
          Index           =   0
-         Left            =   8640
+         Left            =   -66360
          MaxLength       =   5
          TabIndex        =   68
          Top             =   3600
@@ -277,22 +288,22 @@ Begin VB.Form BOHU2
       End
       Begin VB.TextBox MYDATAUSER 
          Height          =   360
-         Left            =   2940
+         Left            =   -72060
          TabIndex        =   67
          Top             =   4080
          Width           =   1965
       End
       Begin VB.TextBox afm_doy 
          Height          =   360
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   65
          Top             =   825
          Width           =   3855
       End
       Begin VB.ComboBox myDataFromEID1 
-         Height          =   288
+         Height          =   315
          ItemData        =   "bohu2.frx":00A8
-         Left            =   3000
+         Left            =   -72000
          List            =   "bohu2.frx":00B2
          Style           =   2  'Dropdown List
          TabIndex        =   64
@@ -302,7 +313,7 @@ Begin VB.Form BOHU2
       Begin VB.CheckBox Check1 
          Caption         =   "Δοκιμαστικό Περιβαλλον"
          Height          =   250
-         Left            =   0
+         Left            =   -75000
          TabIndex        =   63
          Top             =   0
          Width           =   5290
@@ -310,21 +321,21 @@ Begin VB.Form BOHU2
       Begin VB.CheckBox mydataIsDemo 
          Caption         =   "Δοκιμαστικό Περιβαλλον"
          Height          =   250
-         Left            =   3000
+         Left            =   -72000
          TabIndex        =   62
          Top             =   5280
          Width           =   5290
       End
       Begin VB.TextBox MYDATAPASSW 
          Height          =   360
-         Left            =   2940
+         Left            =   -72060
          TabIndex        =   59
          Top             =   4680
          Width           =   5325
       End
       Begin VB.TextBox MAFM 
          Height          =   360
-         Left            =   2940
+         Left            =   -72060
          TabIndex        =   57
          Top             =   3600
          Width           =   1245
@@ -461,34 +472,34 @@ Begin VB.Form BOHU2
       End
       Begin MSComCtl2.DTPicker Lhxh 
          Height          =   375
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   31
          Top             =   2670
          Width           =   1695
-         _ExtentX        =   2985
-         _ExtentY        =   656
+         _ExtentX        =   2990
+         _ExtentY        =   661
          _Version        =   393216
          Enabled         =   0   'False
-         Format          =   186908673
+         Format          =   240189441
          CurrentDate     =   37735
       End
       Begin MSComCtl2.DTPicker enarxh 
          Height          =   375
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   30
          Top             =   2280
          Width           =   1695
-         _ExtentX        =   2985
-         _ExtentY        =   656
+         _ExtentX        =   2990
+         _ExtentY        =   661
          _Version        =   393216
-         Format          =   186908673
+         Format          =   240189441
          CurrentDate     =   37735
       End
       Begin VB.TextBox pel_epa 
          DataField       =   "MPANIO"
          DataSource      =   "Data1"
          Height          =   360
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   13
          Top             =   1695
          Width           =   3885
@@ -497,7 +508,7 @@ Begin VB.Form BOHU2
          DataField       =   "default_baros_panioy"
          DataSource      =   "Data1"
          Height          =   360
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   12
          Top             =   1290
          Width           =   2925
@@ -506,7 +517,7 @@ Begin VB.Form BOHU2
          DataField       =   "AXRHSIMOPOIHTES_ORES"
          DataSource      =   "Data1"
          Height          =   360
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   11
          Top             =   825
          Width           =   2925
@@ -563,7 +574,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox pict_ekpt 
          Height          =   360
          Index           =   0
-         Left            =   8640
+         Left            =   -66360
          MaxLength       =   12
          TabIndex        =   5
          Top             =   2295
@@ -572,7 +583,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox pict_posot 
          Height          =   360
          Index           =   0
-         Left            =   8640
+         Left            =   -66360
          MaxLength       =   12
          TabIndex        =   4
          Top             =   2685
@@ -581,7 +592,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox pict_timol 
          Height          =   360
          Index           =   0
-         Left            =   8640
+         Left            =   -66360
          MaxLength       =   12
          TabIndex        =   3
          Top             =   3090
@@ -589,7 +600,7 @@ Begin VB.Form BOHU2
       End
       Begin VB.TextBox epitr_fpa 
          Height          =   360
-         Left            =   2955
+         Left            =   -72045
          TabIndex        =   2
          Top             =   3090
          Width           =   1245
@@ -597,7 +608,7 @@ Begin VB.Form BOHU2
       Begin VB.TextBox Text12 
          Height          =   360
          Index           =   21
-         Left            =   8655
+         Left            =   -66345
          MaxLength       =   7
          TabIndex        =   1
          Top             =   4080
@@ -606,7 +617,7 @@ Begin VB.Form BOHU2
       Begin VB.Label Label33 
          Caption         =   "PASSWORD POS"
          Height          =   255
-         Left            =   -71760
+         Left            =   3240
          TabIndex        =   87
          Top             =   4560
          Width           =   1335
@@ -614,7 +625,7 @@ Begin VB.Form BOHU2
       Begin VB.Label Label32 
          Caption         =   "USERPOS"
          Height          =   255
-         Left            =   -71760
+         Left            =   3240
          TabIndex        =   86
          Top             =   3720
          Width           =   1095
@@ -624,7 +635,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "KΛΕΙΔΙ ΠΑΡΟΧΟΥ"
          Height          =   195
-         Left            =   -71760
+         Left            =   3240
          TabIndex        =   84
          Top             =   2760
          Width           =   1560
@@ -634,7 +645,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "ΤΚ"
          Height          =   195
-         Left            =   10440
+         Left            =   -64560
          TabIndex        =   81
          Top             =   1320
          Width           =   180
@@ -644,7 +655,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Πόλη"
          Height          =   195
-         Left            =   7320
+         Left            =   -67680
          TabIndex        =   80
          Top             =   1320
          Width           =   360
@@ -654,7 +665,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Αριθ."
          Height          =   195
-         Left            =   6000
+         Left            =   -69000
          TabIndex        =   79
          Top             =   1320
          Width           =   375
@@ -664,7 +675,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "USER PASSWORD"
          Height          =   195
-         Left            =   -71760
+         Left            =   3240
          TabIndex        =   74
          Top             =   2040
          Width           =   1560
@@ -674,7 +685,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "USER NAME"
          Height          =   195
-         Left            =   -71760
+         Left            =   3240
          TabIndex        =   72
          Top             =   1320
          Width           =   960
@@ -684,14 +695,14 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Τηλέφωνο Επιχείρησης"
          Height          =   195
-         Left            =   720
+         Left            =   -74280
          TabIndex        =   70
          Top             =   1680
          Width           =   1725
       End
       Begin VB.Shape Shape1 
          Height          =   1455
-         Left            =   360
+         Left            =   -74640
          Top             =   720
          Width           =   12375
       End
@@ -700,7 +711,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "ΑΦΜ -ΔΟΥ (σε φόρμα)"
          Height          =   195
-         Left            =   6720
+         Left            =   -68280
          TabIndex        =   66
          Top             =   810
          Width           =   1665
@@ -712,7 +723,7 @@ Begin VB.Form BOHU2
          Caption         =   "USER MYDATA"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -720,7 +731,7 @@ Begin VB.Form BOHU2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   885
+         Left            =   -74115
          TabIndex        =   61
          Top             =   4200
          Width           =   1365
@@ -732,7 +743,7 @@ Begin VB.Form BOHU2
          Caption         =   "ΚΩΔ.MYDATA"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -740,7 +751,7 @@ Begin VB.Form BOHU2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   945
+         Left            =   -74055
          TabIndex        =   60
          Top             =   4680
          Width           =   1215
@@ -751,7 +762,7 @@ Begin VB.Form BOHU2
          Caption         =   "ΑΦΜ ΕΠΙΧΕΙΡΗΣΗΣ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -759,7 +770,7 @@ Begin VB.Form BOHU2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   58
          Top             =   3660
          Width           =   2655
@@ -858,7 +869,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Επάγγελμα"
          Height          =   165
-         Left            =   6840
+         Left            =   -68160
          TabIndex        =   28
          Top             =   1800
          Width           =   1815
@@ -868,7 +879,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Επωνυμία Επιχείρησης"
          Height          =   435
-         Left            =   270
+         Left            =   -74730
          TabIndex        =   27
          Top             =   810
          Width           =   2655
@@ -878,7 +889,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Διεύθυνση Επιχείρησης"
          Height          =   285
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   26
          Top             =   1320
          Width           =   2655
@@ -908,7 +919,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Εναρξη έτους"
          Height          =   285
-         Left            =   210
+         Left            =   -74790
          TabIndex        =   23
          Top             =   2295
          Width           =   2655
@@ -938,7 +949,7 @@ Begin VB.Form BOHU2
          Caption         =   "Δεκαδικά έκπτωσης"
          Height          =   375
          Index           =   0
-         Left            =   5880
+         Left            =   -69120
          TabIndex        =   20
          Top             =   2280
          Width           =   2700
@@ -948,7 +959,7 @@ Begin VB.Form BOHU2
          Caption         =   "Δεκαδικά Ποσοτήτων"
          Height          =   375
          Index           =   1
-         Left            =   5880
+         Left            =   -69120
          TabIndex        =   19
          Top             =   2640
          Width           =   2700
@@ -958,7 +969,7 @@ Begin VB.Form BOHU2
          Caption         =   "Δεκαδικά στην τιμή μονάδας"
          Height          =   375
          Index           =   2
-         Left            =   5880
+         Left            =   -69120
          TabIndex        =   18
          Top             =   3075
          Width           =   2700
@@ -968,7 +979,7 @@ Begin VB.Form BOHU2
          Caption         =   "Πλαφόν σε πελάτες=1 "
          Height          =   375
          Index           =   3
-         Left            =   5880
+         Left            =   -69120
          TabIndex        =   17
          Top             =   3585
          Width           =   2700
@@ -978,7 +989,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Επιτρεπόμενα ΦΠΑ"
          Height          =   285
-         Left            =   255
+         Left            =   -74745
          TabIndex        =   16
          Top             =   3150
          Width           =   2655
@@ -988,7 +999,7 @@ Begin VB.Form BOHU2
          BackStyle       =   0  'Transparent
          Caption         =   "Λήξη έτους"
          Height          =   285
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   15
          Top             =   2730
          Width           =   2655
@@ -998,7 +1009,7 @@ Begin VB.Form BOHU2
          Caption         =   "....."
          Height          =   375
          Index           =   5
-         Left            =   5940
+         Left            =   -69060
          TabIndex        =   14
          Top             =   4065
          Width           =   2700
