@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   471728129
+      Format          =   299433985
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   471728129
+      Format          =   299433985
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -7103,15 +7103,15 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 244                 If fMydataFromEID1 = 1 Then  'емглеяысг апо йатгцояиа еидым
                         '  SELECT SUM(KAU_AJIA) AS AJIA,G.FPA,KATHGORIA  FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD
                         '  WHERE ATIM='T000592' GROUP BY G.FPA,KATHGORIA
-246                     C56 = "SELECT D.DISCOUNTOPTION,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,G.KODE,G.POSO,ISNULL(G.MIKTAKILA,0) AS MIKTAKILA,G.ONOMA,G.MONA,G.ID, CONVERT(INTEGER,KATHGORIA) AS KATHGORIA, CONVERT(INTEGER,G.FPA) AS FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL "
+246                     C56 = "SELECT D.DISCOUNTOPTION,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,G.KODE,G.POSO,ISNULL(G.MIKTAKILA,0) AS MIKTAKILA,G.ONOMA,G.MONA,G.ID, CONVERT(INTEGER,KATHGORIA) AS KATHGORIA, CONVERT(INTEGER,G.FPA) AS FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL,MIKTA  "
 248                     C56 = C56 + " FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD "
 250                     C56 = C56 + " WHERE  POSO<>0  " + exei_axia + "  and ID_NUM=" + str(SQLDT("ID_NUM"))
-252                     C56 = C56 + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA),CONVERT(INTEGER,KATHGORIA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO,MIKTAKILA,G.ONOMA,G.MONA,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION"   ' G.FPA,KATHGORIA,APALLFPA "
+252                     C56 = C56 + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA),CONVERT(INTEGER,KATHGORIA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO,MIKTAKILA,G.ONOMA,G.MONA,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION,MIKTA"   ' G.FPA,KATHGORIA,APALLFPA "
 254                     EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
                     Else   ' ломо апо паяастатийо
-256                     C56 = "SELECT D.DISCOUNTOPTION,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,G.KODE,G.POSO,ISNULL(G.MIKTAKILA,0) AS MIKTAKILA,G.ONOMA,G.MONA,G.ID,'1' AS KATHGORIA,CONVERT(INTEGER,G.FPA) AS FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),3) AS KAU_AJIA, "
+256                     C56 = "SELECT D.DISCOUNTOPTION,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,G.KODE,G.POSO,ISNULL(G.MIKTAKILA,0) AS MIKTAKILA,G.ONOMA,G.MONA,G.ID,'1' AS KATHGORIA,CONVERT(INTEGER,G.FPA) AS FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),3) AS KAU_AJIA,MIKTA, "
 258                     C56 = C56 + " ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL  "
-260                     C56 = C56 + " FROM EGGTIM  G  INNER JOIN EID D  ON G.KODE=D.KOD WHERE POSO<>0 " + exei_axia + " AND ID_NUM=" + str(SQLDT("ID_NUM")) + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO, MIKTAKILA,G.ONOMA,G.MONA ,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION " ' G.FPA,APALLFPA "
+260                     C56 = C56 + " FROM EGGTIM  G  INNER JOIN EID D  ON G.KODE=D.KOD WHERE POSO<>0 " + exei_axia + " AND ID_NUM=" + str(SQLDT("ID_NUM")) + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO, MIKTAKILA,G.ONOMA,G.MONA ,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION,MIKTA " ' G.FPA,APALLFPA "
 262                     EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
                     
                     End If
@@ -7902,7 +7902,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                 ' EAN EINAI SYGK.DELTIO EPISTROFHS
                                 If isDiakin = 2 Then ' DA суцйемтяытийо йкп    'And Split(f_SDA, ";")(1) = Left(sqlDt("ATIM"), 1) Then
                                     If Split(ctypos, ";")(0) = "10.1" Then
-                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso") - EGGTIM("MIKTAKILA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso") - EGGTIM("MIKTA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                     Else
                                         Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                     End If
