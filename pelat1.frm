@@ -70,9 +70,9 @@ Begin VB.Form pelat1
    End
    Begin VB.TextBox C1 
       Height          =   375
-      Left            =   1680
+      Left            =   4560
       TabIndex        =   52
-      Top             =   8280
+      Top             =   7800
       Width           =   2175
    End
    Begin VB.TextBox COUNTRY 
@@ -140,11 +140,11 @@ Begin VB.Form pelat1
    Begin VB.ComboBox Combo3 
       Height          =   315
       ItemData        =   "pelat1.frx":0024
-      Left            =   5760
+      Left            =   9120
       List            =   "pelat1.frx":002E
       Style           =   2  'Dropdown List
       TabIndex        =   42
-      Top             =   7920
+      Top             =   9120
       Visible         =   0   'False
       Width           =   1575
    End
@@ -579,9 +579,9 @@ Begin VB.Form pelat1
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   15
-      Left            =   120
+      Left            =   4080
       TabIndex        =   53
-      Top             =   8400
+      Top             =   7920
       Width           =   345
    End
    Begin VB.Label Label2 
@@ -1920,16 +1920,16 @@ Private Sub Command2_Click()
         '</EhHeader>
         Dim k As Integer, DUM As Long, DB As Database, R As New ADODB.Recordset
 
-        Dim x As String, ANS As Integer
+        Dim X As String, ANS As Integer
 
         '      If Option1(1) Then X = "e" Else X = "r"
-100     x = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
+100     X = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
 
 110     If Command2.Caption = "Νέα Εγγραφή" Then
             If kenoi.Value = vbChecked Then
-                DUM = get_next_pel(x, 1, F_FORMAT_PEL_KOD)
+                DUM = get_next_pel(X, 1, F_FORMAT_PEL_KOD)
             Else
-                 DUM = get_next_pel(x, 0, F_FORMAT_PEL_KOD)
+                 DUM = get_next_pel(X, 0, F_FORMAT_PEL_KOD)
             End If
 120
             
@@ -1965,7 +1965,7 @@ Private Sub Command2_Click()
         
         
         'αν στην τιμολόγηση φιλτραρει τους πελάτες, τότε πρέπει να βάλεις κατηγορία
-                If f_MONO_PELATES_KATHGORIAS = 1 And x = "e" Then
+                If f_MONO_PELATES_KATHGORIAS = 1 And X = "e" Then
                     If Val(Left(KATHGORIA.Text, 2)) = 0 Then
                          MsgBox "Πρέπει να βάλετε κατηγορία Χονδρικής/Λιανικής"
                          Exit Sub
@@ -1986,7 +1986,7 @@ Private Sub Command2_Click()
         
             'ελεγχος μην ξαναυπάρχει ο κωδικός
             'Set db = OpenDatabase(gDir, False, False, gConnect)
-210         R.Open "select count(*) as ar from PEL where EIDOS='" + x + "' and KOD='" + Text1(0).Text + "';", Gdb, adOpenDynamic, adLockOptimistic
+210         R.Open "select count(*) as ar from PEL where EIDOS='" + X + "' and KOD='" + Text1(0).Text + "';", Gdb, adOpenDynamic, adLockOptimistic
 
 220         If R("ar") > 0 Then
 230             MsgBox "Υπάρχει ο κωδικός"
@@ -1998,7 +1998,7 @@ Private Sub Command2_Click()
             End If
 
 240         R.Close
-250         R.Open "select count(*) as ar,KOD,EPO from PEL where EIDOS='" + x + "' and AFM='" + Text1(5).Text + "' group by KOD,EPO;", Gdb, adOpenDynamic, adLockOptimistic
+250         R.Open "select count(*) as ar,KOD,EPO from PEL where EIDOS='" + X + "' and AFM='" + Text1(5).Text + "' group by KOD,EPO;", Gdb, adOpenDynamic, adLockOptimistic
 
 260         If Not R.EOF And Len(Text1(5).Text) > 3 Then
 270             If R("ar") > 0 Then
@@ -2015,9 +2015,9 @@ Private Sub Command2_Click()
 
             ' ενημέρωση μετρητή
             If f_KENTRA_ADYNATISMATOS = 1 Then
-                DUM = Update_Next_Pel(x, Right(Text1(0), 4))
+                DUM = Update_Next_Pel(X, Right(Text1(0), 4))
             Else
-                DUM = Update_Next_Pel(x, Text1(0))
+                DUM = Update_Next_Pel(X, Text1(0))
             End If
             
 300
@@ -2030,7 +2030,7 @@ Private Sub Command2_Click()
   MKOD = Text1(0).Text
 310        ' data1.Recordset.AddNew
              
-            Gdb.Execute "insert into PEL (EIDOS,KOD) VALUES ('" + x + "','" + MKOD + "')"
+            Gdb.Execute "insert into PEL (EIDOS,KOD) VALUES ('" + X + "','" + MKOD + "')"
 
 320         'data1.Recordset("EIDOS") = X
 330         'data1.Recordset("kod") = Text1(0).Text   ' Format(Text1(0), "0000")
@@ -2045,7 +2045,7 @@ Private Sub Command2_Click()
 350         If Len(Text1(2).Text) = 0 Then
 360             MDIE = "-"
             Else
-370             MDIE = Left(Text1(2).Text, data1.Recordset("DIE").DefinedSize)
+370             MDIE = Left(Text1(2).Text, DATA1.Recordset("DIE").DefinedSize)
             End If
             
             
@@ -2056,25 +2056,25 @@ Private Sub Command2_Click()
         End If
             
             
-            Gdb.Execute "UPDATE PEL SET EPO='" + Left(Text1(1).Text, data1.Recordset("epo").DefinedSize) + "' WHERE EIDOS='" + x + "' AND KOD='" + MKOD + "'"
+            Gdb.Execute "UPDATE PEL SET EPO='" + Left(Text1(1).Text, DATA1.Recordset("epo").DefinedSize) + "' WHERE EIDOS='" + X + "' AND KOD='" + MKOD + "'"
 
  
- UPDATE_PEL "DIE", Left(Text1(2).Text, data1.Recordset("DIE").DefinedSize), 0, x, MKOD
- UPDATE_PEL "POL", Left(Text1(3).Text, data1.Recordset("POL").DefinedSize), 0, x, MKOD
- UPDATE_PEL "EPA", Left(Text1(4).Text, data1.Recordset("EPA").DefinedSize), 0, x, MKOD
- UPDATE_PEL "AFM", Left(Text1(5).Text, data1.Recordset("AFM").DefinedSize), 0, x, MKOD
- UPDATE_PEL "THL", Left(Text1(6).Text, data1.Recordset("THL").DefinedSize), 0, x, MKOD
+ UPDATE_PEL "DIE", Left(Text1(2).Text, DATA1.Recordset("DIE").DefinedSize), 0, X, MKOD
+ UPDATE_PEL "POL", Left(Text1(3).Text, DATA1.Recordset("POL").DefinedSize), 0, X, MKOD
+ UPDATE_PEL "EPA", Left(Text1(4).Text, DATA1.Recordset("EPA").DefinedSize), 0, X, MKOD
+ UPDATE_PEL "AFM", Left(Text1(5).Text, DATA1.Recordset("AFM").DefinedSize), 0, X, MKOD
+ UPDATE_PEL "THL", Left(Text1(6).Text, DATA1.Recordset("THL").DefinedSize), 0, X, MKOD
  
- UPDATE_PEL "CH1", Left(C1.Text, data1.Recordset("CH1").DefinedSize), 0, x, MKOD
+ UPDATE_PEL "CH1", Left(C1.Text, DATA1.Recordset("CH1").DefinedSize), 0, X, MKOD
  
  
 If F_ISCAR = 1 Then
    
    
-   UPDATE_PEL "ARKYKL", Left(ARKYKL.Text, data1.Recordset("ARKYKL").DefinedSize), 0, x, MKOD
-   UPDATE_PEL "VCAT", Left(VCAT.Text, data1.Recordset("VCAT").DefinedSize), 0, x, MKOD
-   UPDATE_PEL "VFACT", Left(VFACT.Text, data1.Recordset("VFACT").DefinedSize), 0, x, MKOD
-   UPDATE_PEL "VID", Left(lblvID.Caption, data1.Recordset("VID").DefinedSize), 0, x, MKOD
+   UPDATE_PEL "ARKYKL", Left(ARKYKL.Text, DATA1.Recordset("ARKYKL").DefinedSize), 0, X, MKOD
+   UPDATE_PEL "VCAT", Left(VCAT.Text, DATA1.Recordset("VCAT").DefinedSize), 0, X, MKOD
+   UPDATE_PEL "VFACT", Left(VFACT.Text, DATA1.Recordset("VFACT").DefinedSize), 0, X, MKOD
+   UPDATE_PEL "VID", Left(lblvID.Caption, DATA1.Recordset("VID").DefinedSize), 0, X, MKOD
    
    
  End If
@@ -2098,14 +2098,14 @@ If F_ISCAR = 1 Then
 '410         data1.Recordset("thl") = Left(Text1(6).Text, data1.Recordset("THL").DefinedSize)  ' Text1(6).Text
 
 
-UPDATE_PEL "COUNTRY", Left(COUNTRY.Text, 2), 0, x, MKOD
+UPDATE_PEL "COUNTRY", Left(COUNTRY.Text, 2), 0, X, MKOD
 
-UPDATE_PEL "DOY", Left(Text1(7).Text, data1.Recordset("DOY").DefinedSize), 0, x, MKOD
+UPDATE_PEL "DOY", Left(Text1(7).Text, DATA1.Recordset("DOY").DefinedSize), 0, X, MKOD
 
-UPDATE_PEL "ENERGOS", "1", 1, x, MKOD
-UPDATE_PEL "PEK", Left(Text1(8).Text, data1.Recordset("PEK").DefinedSize), 1, x, MKOD
+UPDATE_PEL "ENERGOS", "1", 1, X, MKOD
+UPDATE_PEL "PEK", Left(Text1(8).Text, DATA1.Recordset("PEK").DefinedSize), 1, X, MKOD
 
-UPDATE_PEL "PLAFON", Left(Text1(9).Text, data1.Recordset("PLAFON").DefinedSize), 1, x, MKOD
+UPDATE_PEL "PLAFON", Left(Text1(9).Text, DATA1.Recordset("PLAFON").DefinedSize), 1, X, MKOD
 
 '420         data1.Recordset("doy") = Left(Text1(7).Text + " ", data1.Recordset("DOY").DefinedSize)    ' Text1(7).Text
 '430         data1.Recordset("pek") = Val(Text1(8).Text)
@@ -2113,24 +2113,24 @@ UPDATE_PEL "PLAFON", Left(Text1(9).Text, data1.Recordset("PLAFON").DefinedSize),
 
 
 
-UPDATE_PEL "SHM2", Left(Text1(10).Text, data1.Recordset("SHM2").DefinedSize), 0, x, MKOD
+UPDATE_PEL "SHM2", Left(Text1(10).Text, DATA1.Recordset("SHM2").DefinedSize), 0, X, MKOD
 '450         data1.Recordset("shm2") = Left(Text1(10).Text + " ", data1.Recordset("SHM2").DefinedSize)    ' Text1(10).Text
 
 
 
-UPDATE_PEL "AYP", Left(Text1(11).Text, data1.Recordset("AYP").DefinedSize), 1, x, MKOD
-460         data1.Recordset("ayp") = Val(Text1(11).Text)
+UPDATE_PEL "AYP", Left(Text1(11).Text, DATA1.Recordset("AYP").DefinedSize), 1, X, MKOD
+460         DATA1.Recordset("ayp") = Val(Text1(11).Text)
 
 
 
-UPDATE_PEL "XRVMA", Left(Text1(12).Text, data1.Recordset("XRVMA").DefinedSize), 0, x, MKOD
+UPDATE_PEL "XRVMA", Left(Text1(12).Text, DATA1.Recordset("XRVMA").DefinedSize), 0, X, MKOD
 '470         data1.Recordset("xrvma") = Val(Text1(12).Text)
 
 
 
 
-UPDATE_PEL "BRANCH", BRANCH.Text, 0, x, MKOD
-UPDATE_PEL "STREETNUMBER", STREETNUMBER.Text, 0, x, MKOD
+UPDATE_PEL "BRANCH", BRANCH.Text, 0, X, MKOD
+UPDATE_PEL "STREETNUMBER", STREETNUMBER.Text, 0, X, MKOD
 
 
 
@@ -2138,25 +2138,25 @@ UPDATE_PEL "STREETNUMBER", STREETNUMBER.Text, 0, x, MKOD
 '480         data1.Recordset("typ") = Val(Text1(11).Text)
 
 
-UPDATE_PEL "KODGAL", Left(KATHGORIA.Text, 2), 1, x, MKOD
+UPDATE_PEL "KODGAL", Left(KATHGORIA.Text, 2), 1, X, MKOD
 '490         data1.Recordset("KODGAL") = Left(KATHGORIA.Text, 2)    'KATHGORIA
 
 
-UPDATE_PEL "PLAISIO", Left(Text1(13).Text, data1.Recordset("PLAISIO").DefinedSize), 0, x, MKOD
+UPDATE_PEL "PLAISIO", Left(Text1(13).Text, DATA1.Recordset("PLAISIO").DefinedSize), 0, X, MKOD
 
 '500         data1.Recordset("PLAISIO") = Text1(13).Text    'METAFORIKH
 
-UPDATE_PEL "TYPOS", Left(Combo1.Text, data1.Recordset("TYPOS").DefinedSize), 0, x, MKOD
+UPDATE_PEL "TYPOS", Left(Combo1.Text, DATA1.Recordset("TYPOS").DefinedSize), 0, X, MKOD
 
 '510         data1.Recordset("TYPOS") = Combo1.Text
 
 
-UPDATE_PEL "ARPARAG", Left(Combo2.Text, data1.Recordset("ARPARAG").DefinedSize), 0, x, MKOD
+UPDATE_PEL "ARPARAG", Left(Combo2.Text, DATA1.Recordset("ARPARAG").DefinedSize), 0, X, MKOD
 '520         data1.Recordset("ARPARAG") = Combo2.Text    'PLHROMI
 
 
 
-UPDATE_PEL "ADT", Left(Text1(14).Text, data1.Recordset("ADT").DefinedSize), 0, x, MKOD
+UPDATE_PEL "ADT", Left(Text1(14).Text, DATA1.Recordset("ADT").DefinedSize), 0, X, MKOD
 'UPDATE_PEL "CH1", Left(Text1(14).Text, DATA1.Recordset("CH1").DefinedSize), 0, X, mkod
 '530         data1.Recordset("CH1") = Text1(14).Text    'DEH
 
@@ -2166,8 +2166,8 @@ UPDATE_PEL "ADT", Left(Text1(14).Text, data1.Recordset("ADT").DefinedSize), 0, x
 
             'f_KENTRA_ADYNATISMATOS = Val(FindParametroi(1,"PELAT2", "f_KENTRA_ADYNATISMATOS", "0", "Αν είναι κέντρο αδυνατίσματος=1"))
             If f_KENTRA_ADYNATISMATOS = 1 Then
-                data1.Recordset("num3") = Combo3.ListIndex
-                UPDATE_PEL "NUM3", str(Combo3.ListIndex), 1, x, MKOD
+                DATA1.Recordset("num3") = Combo3.ListIndex
+                UPDATE_PEL "NUM3", str(Combo3.ListIndex), 1, X, MKOD
             End If
 
             '  Data1.Recordset("ayp") = 0
@@ -2223,9 +2223,9 @@ Private Sub Form_Activate()
 
 100     Me.Picture = LoadPicture(gPicture)
 
-110     data1.ConnectionString = gConnect
-120     data1.RecordSource = "select top 10 *from PEL"
-130     data1.Refresh
+110     DATA1.ConnectionString = gConnect
+120     DATA1.RecordSource = "select top 10 *from PEL"
+130     DATA1.Refresh
 
         '<EhFooter>
         Exit Sub
