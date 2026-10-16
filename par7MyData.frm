@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   472055809
+      Format          =   85786625
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   472055809
+      Format          =   85786625
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -2317,11 +2318,21 @@ Function REQPAROCHOS() As String
 
 End Function
 
-Private Sub CMDDEHTEST_Click()
- 
-        Dim ARPAROX As String
+Public Sub CMDDEHTEST_Click()
 
-        ARPAROX = InputBox("дысе аяихло паяовгс", "ая.апаяов", "824048676")
+  DEH_TEST ""
+End Sub
+ 
+Public Sub DEH_TEST(ARDEH As String)
+         Dim ARPAROX As String
+       If Len(ARDEH) < 3 Then
+         
+          ARPAROX = InputBox("дысе аяихло паяовгс", "ая.апаяов", "824048676")
+       Else
+          ARPAROX = ARDEH
+       End If
+       
+       
 
         Dim URI As String
 
@@ -2352,9 +2363,9 @@ Private Sub CMDDEHTEST_Click()
 
         '--------------- ???S???? INVOICES -----------------------------------------------------
         If UBound(Split(v, ":")) = 1 Then
-            MsgBox "FALSE " + v
+            MsgBox ARPAROX + Chr(13) + " дем упаявеи " + v
         Else
-            MsgBox Split(v, ":")(3) + "    " + v
+            MsgBox "OK " + ARPAROX + Chr(13) + Split(v, ":")(3) + "    " + v
         End If
       
 136     ' MsgBox v
