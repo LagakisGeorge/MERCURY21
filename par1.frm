@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   312213505
+         Format          =   134545409
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   312213506
+         Format          =   134545410
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   386334721
+      Format          =   134938625
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -8520,7 +8520,8 @@ End Sub
 
 Private Sub cmdDEITEST_Click()
 On Error Resume Next
-   Par7MyData.DEH_TEST CNull(PEL.Recordset("CH1"))
+Dim OK As Integer
+   OK = Par7MyData.DEH_TEST(CNull(PEL.Recordset("CH1")))
   ' check_afm (M_AFM)
 End Sub
 
@@ -15455,35 +15456,7 @@ Private Sub mmGridPelaton_DblClick(ByVal ask As Integer, _
 
         End If
         
-        If F_THERM = 1 Then
-            If Len(CNull(PEL.Recordset("CH1"))) < 2 Then
-               MsgBox "дем евеи дег "
-                b_Katax.Enabled = False
-            Else
-                Par7MyData.DEH_TEST CNull(PEL.Recordset("CH1"))
-                Dim CHECKAFM As Integer
-            
-                
-            End If
-            
-            
-            If Len(CNull(PEL.Recordset("AFM"))) < 2 Then
-            
-                MsgBox "дем евеи ажл "
-                 b_Katax.Enabled = False
-            Else
-               If check_afm(PEL.Recordset("AFM")) = 1 Then
-                  MsgBox "OK TO ажл " + PEL.Recordset("AFM")
-               Else
-                  MsgBox "кахос  ажл " + PEL.Recordset("AFM")
-                  b_Katax.Enabled = False
-               End If '=1
-                           
-            End If 'AFM
-            
-            
-            
-        End If ' F_THERM = 1 Then
+    
         
         
         
@@ -16170,6 +16143,54 @@ ORAPARAD.Value = re("ORAPARAD")
              If nNull(re("ANAPODOAITIA")) > 0 Then
                 AnapodoAitia = AnapodoAitia.List(re("ANAPODOAITIA") - 1)
             End If
+
+
+
+    If F_THERM = 1 Then
+            If Len(CNull(PEL.Recordset("CH1"))) < 2 Then
+               MsgBox "дем евеи дег "
+                b_Katax.Enabled = False
+            Else
+                
+                Dim CHECKAFM As Integer
+                 CHECKAFM = Par7MyData.DEH_TEST(CNull(PEL.Recordset("CH1")))
+                 If CHECKAFM = 0 Then
+                      b_Katax.Enabled = False
+                 End If
+                 
+                
+            End If
+            
+            
+            If Len(CNull(PEL.Recordset("AFM"))) < 2 Then
+            
+                MsgBox "дем евеи ажл "
+                 b_Katax.Enabled = False
+            Else
+               If check_afm(PEL.Recordset("AFM")) = 1 Then
+                  MsgBox "OK TO ажл " + PEL.Recordset("AFM")
+               Else
+                  MsgBox "кахос  ажл " + PEL.Recordset("AFM")
+                  b_Katax.Enabled = False
+               End If '=1
+                           
+            End If 'AFM
+            
+            
+            
+        End If ' F_THERM = 1 Then
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

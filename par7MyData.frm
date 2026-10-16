@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   85786625
+      Format          =   135266305
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   85786625
+      Format          =   135331841
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,7 +1193,6 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -2319,11 +2318,14 @@ Function REQPAROCHOS() As String
 End Function
 
 Public Sub CMDDEHTEST_Click()
-
-  DEH_TEST ""
+Dim OKK As Integer
+  OKK = DEH_TEST("")
 End Sub
  
-Public Sub DEH_TEST(ARDEH As String)
+Public Function DEH_TEST(ARDEH As String) As Integer
+
+
+       DEH_TEST = 1
          Dim ARPAROX As String
        If Len(ARDEH) < 3 Then
          
@@ -2363,13 +2365,15 @@ Public Sub DEH_TEST(ARDEH As String)
 
         '--------------- ???S???? INVOICES -----------------------------------------------------
         If UBound(Split(v, ":")) = 1 Then
-            MsgBox ARPAROX + Chr(13) + " дем упаявеи " + v
+            MsgBox "дег " + ARPAROX + Chr(13) + " дем упаявеи " + v
+            DEH_TEST = 0
         Else
             MsgBox "OK " + ARPAROX + Chr(13) + Split(v, ":")(3) + "    " + v
+            DEH_TEST = 1
         End If
       
 136     ' MsgBox v
-End Sub
+End Function
 
 Private Sub cmdDOMDocumentUTF8_Click()
 
