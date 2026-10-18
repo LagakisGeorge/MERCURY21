@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -200,21 +200,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.CommandButton elegxosAFM 
          Caption         =   "≈ÎÂ„˜ÔÚ"
@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   473038849
+         Format          =   177864705
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   473038850
+         Format          =   177864706
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   471859201
+      Format          =   176881665
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3402,6 +3402,9 @@ Dim f_EID_AKYR_APOD        As String  ' –œ…œ –¡—¡”‘¡‘‘… œ ¡ ’—ŸÕ≈… ‘«Õ ¡–œƒ≈…Œ« 
 Dim F_PAR_AYTOK            As String  '           'L','T'
 
 Dim F_THERM                As Integer  ' ≈…Õ¡… ÷œ—‘«√œ »≈—Ã¡Õ”«”
+
+Dim THERM_KaiPRATHRIO As Integer
+
 Dim f_SDA                  As String '  'H;J  H=÷œ—‘Ÿ”«Ú    J = ≈–…”‘—œ÷«”
 Dim F_THER_TIM_XORISAPOD   As Integer
 
@@ -16148,8 +16151,12 @@ ORAPARAD.Value = re("ORAPARAD")
 
     If F_THERM = 1 Then
             If Len(CNull(PEL.Recordset("CH1"))) < 2 Then
-               MsgBox "ƒ≈Õ ≈◊≈… ƒ≈« "
-                b_Katax.Enabled = False
+                 If THERM_KaiPRATHRIO = 1 And Left(f_matim, 1) = "T" Then ' kobei kai benzines
+                 Else
+                    b_Katax.Enabled = True
+                    MsgBox "ƒ≈Õ ≈◊≈… ƒ≈« "
+                     b_Katax.Enabled = False
+                 End If
             Else
                 
                 Dim CHECKAFM As Integer
@@ -16176,7 +16183,7 @@ ORAPARAD.Value = re("ORAPARAD")
                            
             End If 'AFM
             
-            
+           
             
         End If ' F_THERM = 1 Then
 
@@ -16760,6 +16767,8 @@ Private Sub Form_Load()
         'F_PARAS_3SYNAL
 
 112     F_THERM = Val(FINDPARAMETROI(1, "PAR1", "F_THERM", "0", "–Ò¸ÍÂÈÙ·È „È· »≈—Ã¡Õ”«=1 œ◊…=0")) '
+
+        THERM_KaiPRATHRIO = Val(FINDPARAMETROI(1, "PAR1", "THERM_KAIPRATHRIO", "0", "»≈—Ã¡Õ”« KAI PRATHRIO=1 MONO »ERMAN”H=0")) '
 
 114     F_THER_TIM_XORISAPOD = Val(FINDPARAMETROI(1, "PAR1", "F_THER_TIM_XORISAPOD", "0", "”‘«Õ »≈—Ã¡Õ”« ‘œ ‘…ÃœÀœ√…œ Õ¡ Ã«Õ ∆«‘¡≈… ¡–œƒ≈…Œ«=1 Õ¡ ∆«‘¡=0")) '
 

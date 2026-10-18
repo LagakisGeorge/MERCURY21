@@ -10,7 +10,7 @@ Begin VB.MDIForm MDIForm1
    ClientHeight    =   9540
    ClientLeft      =   165
    ClientTop       =   2205
-   ClientWidth     =   16890
+   ClientWidth     =   16080
    Icon            =   "MDIFORM14.frx":0000
    LinkTopic       =   "MDIForm1"
    WindowState     =   2  'Maximized
@@ -215,12 +215,12 @@ Begin VB.MDIForm MDIForm1
    End
    Begin ComctlLib.StatusBar StatusBar1 
       Align           =   2  'Align Bottom
-      Height          =   312
+      Height          =   315
       Left            =   0
       TabIndex        =   0
-      Top             =   9228
-      Width           =   16884
-      _ExtentX        =   29792
+      Top             =   9225
+      Width           =   16080
+      _ExtentX        =   28363
       _ExtentY        =   556
       SimpleText      =   ""
       _Version        =   327682
@@ -229,11 +229,9 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -241,31 +239,26 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   "GDIR"
             TextSave        =   "GDIR"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel8 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -274,12 +267,10 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   ".."
             TextSave        =   ".."
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel9 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Visible         =   0   'False
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -290,8 +281,8 @@ Begin VB.MDIForm MDIForm1
       Left            =   0
       TabIndex        =   1
       Top             =   0
-      Width           =   16890
-      _ExtentX        =   29792
+      Width           =   16080
+      _ExtentX        =   28363
       _ExtentY        =   741
       ButtonWidth     =   609
       ButtonHeight    =   582
@@ -3039,6 +3030,7 @@ Dim R99 As New ADODB.Recordset
          Dim r1 As New ADODB.Recordset, M_ENABLE As Boolean
            r1.Open "SELECT * FROM ACTIVE_MENUS WHERE USER_ID=" + str(gUserId), Gdb, adOpenDynamic, adLockOptimistic
           ' If R1.RecordCount > 0 Then
+          Dim i As Integer
            Do While Not r1.EOF
                 If r1("ENABLED") = 1 Then M_ENABLE = True Else M_ENABLE = False
                 MDIForm1.Controls(r1("MENU_ID")).Enabled = M_ENABLE
@@ -3053,6 +3045,11 @@ Dim R99 As New ADODB.Recordset
                     
                 End If
                 r1.MoveNext
+                i = i + 1
+                 If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
+
+                
+                
            Loop
           ' End If
            
@@ -4575,13 +4572,17 @@ If StatusBar1.Panels(1).Text = Panel Then
      mc = 0
      runt(0).Caption = R(0)
      ETAIR(0) = R(0)
-
+Dim i As Integer
+  i = 0
      Do While Not R.EOF
          mc = mc + 1
          Load runt(mc)
          runt(mc).Caption = R(0) + "*" + Format(R!hme, "HH:MM") + "*" + R!EPO
          ETAIR(mc) = Trim(R(0))
          R.MoveNext
+         i = i + 1
+          If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
+
      Loop
 
      PopupMenu RUNTIME(0)
@@ -4791,10 +4792,14 @@ End If
     DELT = "---- Yπενθύμιση --- " + Chr(13)
 
     ' Exit Sub
+    Dim i As Integer
+    i = 0
     Do While Not R.EOF
         ' + "Προθεσμία min:" + Format(r("DIFF"), "#####") + "/"
         DELT = DELT + R("Subject") + "/" + R("Location") + "/" + R("Body") + "/" + Format(R("StartDateTime"), "dd/mm/yyyy hh:mm") + Chr(13)
         R.MoveNext
+        i = i + 1
+        If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
     Loop
 
     MsgBox DELT
