@@ -200,21 +200,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "глея/ыяа пяд"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblглеяыяа"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblглеяыяа"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.CommandButton elegxosAFM 
          Caption         =   "еКЕЦВОР"
@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   178257921
+         Format          =   188219393
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   178257922
+         Format          =   188219394
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   178520065
+      Format          =   188350465
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -11325,7 +11325,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.DATA1.ConnectionString = gConnect
+116     fpelat4.Data1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -23998,19 +23998,19 @@ Function printCrystal(MATIM, char_date)
             If Len(cENTITYMARK) > 10 Then
                 DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
             Else
-                DB.Execute "update MEM SET par17='??O???? ???S????S?S'"
+                DB.Execute "update MEM SET par17='апыкеиа диасумдесгс'" ''??O???? ???S????S?S'"
             End If
          
-1206        'DB.Execute "update MEM SET par17='??O???? ???S????S?S'"
+1206        'DB.Execute "update MEM SET par17='апыкеиа диасумдесгс'" ''??O???? ???S????S?S'"
         Else
 1208        DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
         End If
         
-        '1204    If mAPOLIAsyndesis = 1 Then
-        '1206        DB.Execute "update MEM SET par17='апыкеиа диасумдесгс'"
-        '        Else
-        '1208        DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
-        '        End If
+'1204            If mAPOLIAsyndesis = 1 Then
+'1206                DB.Execute "update MEM SET par17='апыкеиа диасумдесгс'"
+'                Else
+'1208                DB.Execute "update MEM SET par17='" + cENTITYMARK + "'"
+'                End If
 
 1210    DB.Execute "update MEM SET EMAIL='" + Replace(CNull(PEL.Recordset("email")), ",", ".") + "'"
 
