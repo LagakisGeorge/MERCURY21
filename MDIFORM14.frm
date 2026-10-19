@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{E9C5BC0B-5CEA-42E0-805D-ACA6384FFB51}#1.0#0"; "jcMDITabs12.ocx"
 Begin VB.MDIForm MDIForm1 
@@ -229,9 +229,13 @@ Begin VB.MDIForm MDIForm1
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   2893
             MinWidth        =   2893
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -239,26 +243,35 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   "GDIR"
             TextSave        =   "GDIR"
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3175
             MinWidth        =   3175
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   5292
             MinWidth        =   5292
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3528
             MinWidth        =   3528
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel7 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Width           =   3492
             MinWidth        =   3492
+            TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel8 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -267,10 +280,12 @@ Begin VB.MDIForm MDIForm1
             MinWidth        =   3175
             Text            =   ".."
             TextSave        =   ".."
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel9 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Object.Visible         =   0   'False
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -1009,7 +1024,7 @@ Private Sub akyrotiko_Click()
             Dim mmark As String: mmark = PAR1.TDBGrid1.Text
           
             Dim MYEID As String: MYEID = GGET_CVALUE("SELECT MYEID FROM PARASTAT  WHERE EIDOS='" + mpar + "'")
-            If MYEID = "9.3" Then
+            If MYEID = "9.3" Or MYEID = "9.2" Or MYEID = "10.1" Or MYEID = "10.2" Then
                 PAR1.TDBGrid1.Col = 7
                 Dim mmID_NUM As String
                  mmID_NUM = PAR1.TDBGrid1.Text
@@ -1018,7 +1033,7 @@ Private Sub akyrotiko_Click()
                 Par7MyData.CancelDelivery mmID_NUM, mmark
                 Exit Sub
             Else
-                MsgBox ("?e p????? µ??? p?st?t???")
+                MsgBox ("ΜΕ ΠΑΡΟΧΟ ΟΧΙ ΑΚΥΡΩΤΙΚΑ")
                 Exit Sub
             End If
 
@@ -3030,7 +3045,7 @@ Dim R99 As New ADODB.Recordset
          Dim r1 As New ADODB.Recordset, M_ENABLE As Boolean
            r1.Open "SELECT * FROM ACTIVE_MENUS WHERE USER_ID=" + str(gUserId), Gdb, adOpenDynamic, adLockOptimistic
           ' If R1.RecordCount > 0 Then
-          Dim i As Integer
+          Dim I As Integer
            Do While Not r1.EOF
                 If r1("ENABLED") = 1 Then M_ENABLE = True Else M_ENABLE = False
                 MDIForm1.Controls(r1("MENU_ID")).Enabled = M_ENABLE
@@ -3045,8 +3060,8 @@ Dim R99 As New ADODB.Recordset
                     
                 End If
                 r1.MoveNext
-                i = i + 1
-                 If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
+                I = I + 1
+                 If I > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
 
                 
                 
@@ -4572,16 +4587,16 @@ If StatusBar1.Panels(1).Text = Panel Then
      mc = 0
      runt(0).Caption = R(0)
      ETAIR(0) = R(0)
-Dim i As Integer
-  i = 0
+Dim I As Integer
+  I = 0
      Do While Not R.EOF
          mc = mc + 1
          Load runt(mc)
          runt(mc).Caption = R(0) + "*" + Format(R!hme, "HH:MM") + "*" + R!EPO
          ETAIR(mc) = Trim(R(0))
          R.MoveNext
-         i = i + 1
-          If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
+         I = I + 1
+          If I > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
 
      Loop
 
@@ -4792,14 +4807,14 @@ End If
     DELT = "---- Yπενθύμιση --- " + Chr(13)
 
     ' Exit Sub
-    Dim i As Integer
-    i = 0
+    Dim I As Integer
+    I = 0
     Do While Not R.EOF
         ' + "Προθεσμία min:" + Format(r("DIFF"), "#####") + "/"
         DELT = DELT + R("Subject") + "/" + R("Location") + "/" + R("Body") + "/" + Format(R("StartDateTime"), "dd/mm/yyyy hh:mm") + Chr(13)
         R.MoveNext
-        i = i + 1
-        If i > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
+        I = I + 1
+        If I > 100 Then Exit Do  ' για να μην κολλαει αν χανει επαφη με σερβερ
     Loop
 
     MsgBox DELT
