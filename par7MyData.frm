@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -10,14 +10,14 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form Par7MyData 
    BackColor       =   &H00C0E0FF&
    Caption         =   "MyData"
-   ClientHeight    =   12525
+   ClientHeight    =   12516
    ClientLeft      =   60
-   ClientTop       =   405
-   ClientWidth     =   22350
+   ClientTop       =   408
+   ClientWidth     =   22356
    LinkTopic       =   "Form2"
    MDIChild        =   -1  'True
-   ScaleHeight     =   12525
-   ScaleWidth      =   22350
+   ScaleHeight     =   12516
+   ScaleWidth      =   22356
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.CommandButton PL8_4 
@@ -71,8 +71,8 @@ Begin VB.Form Par7MyData
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   19920
       Top             =   10560
-      _ExtentX        =   741
-      _ExtentY        =   741
+      _ExtentX        =   593
+      _ExtentY        =   593
       _Version        =   262150
    End
    Begin VB.CommandButton Command13 
@@ -222,13 +222,13 @@ Begin VB.Form Par7MyData
    End
    Begin MSComctlLib.Toolbar Toolbar1 
       Align           =   1  'Align Top
-      Height          =   1020
+      Height          =   996
       Left            =   0
       TabIndex        =   45
       Top             =   0
-      Width           =   22350
-      _ExtentX        =   39423
-      _ExtentY        =   1799
+      Width           =   22356
+      _ExtentX        =   39434
+      _ExtentY        =   1757
       ButtonWidth     =   3016
       ButtonHeight    =   1640
       AllowCustomize  =   0   'False
@@ -555,8 +555,8 @@ Begin VB.Form Par7MyData
       Top             =   11280
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -587,7 +587,7 @@ Begin VB.Form Par7MyData
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -603,8 +603,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   12
       Top             =   1185
       Width           =   12135
-      _ExtentX        =   21405
-      _ExtentY        =   6165
+      _ExtentX        =   21400
+      _ExtentY        =   6160
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -618,7 +618,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).DividerColor=   15790320
       Splits(0).SpringMode=   0   'False
@@ -626,17 +626,17 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(5)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -769,7 +769,7 @@ Begin VB.Form Par7MyData
       Width           =   3495
    End
    Begin VB.ListBox List1 
-      Height          =   255
+      Height          =   240
       Left            =   120
       TabIndex        =   6
       Top             =   6240
@@ -821,10 +821,10 @@ Begin VB.Form Par7MyData
       TabIndex        =   0
       Top             =   1185
       Width           =   1695
-      _ExtentX        =   2990
-      _ExtentY        =   661
+      _ExtentX        =   2985
+      _ExtentY        =   656
       _Version        =   393216
-      Format          =   291373057
+      Format          =   61341697
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -833,10 +833,10 @@ Begin VB.Form Par7MyData
       TabIndex        =   1
       Top             =   1185
       Width           =   1695
-      _ExtentX        =   2990
-      _ExtentY        =   661
+      _ExtentX        =   2985
+      _ExtentY        =   656
       _Version        =   393216
-      Format          =   291373057
+      Format          =   61341697
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -846,8 +846,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   13
       Top             =   5040
       Width           =   12135
-      _ExtentX        =   21405
-      _ExtentY        =   5530
+      _ExtentX        =   21400
+      _ExtentY        =   5525
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -861,7 +861,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).Caption=   "ËÉÓÔÁ ÔÉÌÏËÏÃÇÈÅÍÔÙÍ ÓÅ ÅÌÁÓ"
       Splits(0).DividerColor=   15790320
@@ -870,17 +870,17 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(5)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -969,8 +969,8 @@ Begin VB.Form Par7MyData
       Top             =   10440
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1001,7 +1001,7 @@ Begin VB.Form Par7MyData
       Caption         =   "Adodc2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1016,8 +1016,8 @@ Begin VB.Form Par7MyData
       Top             =   11400
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1048,7 +1048,7 @@ Begin VB.Form Par7MyData
       Caption         =   "AdoSYN"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1064,8 +1064,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   30
       Top             =   1185
       Width           =   9735
-      _ExtentX        =   17171
-      _ExtentY        =   5980
+      _ExtentX        =   17166
+      _ExtentY        =   5990
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -1079,7 +1079,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).DividerColor=   15790320
       Splits(0).SpringMode=   0   'False
@@ -1087,19 +1087,19 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0)._ColStyle=196612"
       Splits(0)._ColumnProps(5)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(6)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(7)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(9)=   "Column(1)._ColStyle=196612"
       Splits(0)._ColumnProps(10)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -1190,17 +1190,16 @@ Begin VB.Form Par7MyData
       TabIndex        =   40
       Top             =   8160
       Width           =   12165
-      _ExtentX        =   21458
-      _ExtentY        =   1720
+      _ExtentX        =   21463
+      _ExtentY        =   1715
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   16800
       Top             =   9600
-      _ExtentX        =   979
-      _ExtentY        =   979
+      _ExtentX        =   974
+      _ExtentY        =   974
       BackColor       =   -2147483643
       ImageWidth      =   40
       ImageHeight     =   40
@@ -1343,8 +1342,8 @@ Begin VB.Form Par7MyData
    Begin ComctlLib.ImageList ImageList11 
       Left            =   18600
       Top             =   9960
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483643
       ImageWidth      =   32
       ImageHeight     =   32
@@ -1500,6 +1499,8 @@ Dim ColS             As TrueOleDBGrid80.columns
 Dim f_Stelno_daiakin As Integer
 
 Dim F_brat           As Integer
+
+Dim F_NSPCODE           As Integer '5 EUNIKH EDPS  2=EPAY,MELON
 
 Dim F_demo           As Integer
 
@@ -1704,7 +1705,7 @@ Private Sub APODOS_Click()
 
         Dim synt As String
 
-102     synt = " where  HME>=#" + Format(APO.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "# "
+102     synt = " where  HME>=#" + Format(apo.Value, "MM/dd/yyyy") + "#  AND HME<#" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "# "
     
 104     update2_sql_from_dbf "SELECT * FROM EGGTIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM EGGTIM"
 106     update2_sql_from_dbf "SELECT * FROM TIM " + synt + " ORDER BY HME DESC", "SELECT top 1 * FROM TIM"
@@ -1718,8 +1719,8 @@ Private Sub APODOS_Click()
 114     Gdb.Execute "UPDATE TIM SET TRP='1.ÌÅÔÑ' WHERE TRP LIKE 'ÌÅ%' "
 116     Gdb.Execute "UPDATE TIM SET TRP='2.ÐÉÓÔ' WHERE TRP LIKE 'ÐÉ%' "
 
-118     APO.SetFocus
-120     EOS.SetFocus
+118     apo.SetFocus
+120     eos.SetFocus
 
         Dim R As New ADODB.Recordset
 
@@ -3035,7 +3036,7 @@ Private Sub cmdParochos2_Click()
    
 110     MsgBox "Get Form Url data: " & p.Item("items").Item(1).Item("url")
    
-112     p.Item("items").Item(1).Add "ExtraItem", "Extra Data Value"
+112     p.Item("items").Item(1).ADD "ExtraItem", "Extra Data Value"
    
 114     MsgBox "Parsed object output with added item: " & JSON.toString(p)
    
@@ -3161,7 +3162,14 @@ Private Sub cmdPROPLHROMH_Click()
     
     QQ = QQ + " ""paymentAmount"":" + Replace(POSO, ",", ".") + ","
     
-    QQ = QQ + " ""NspCode"":""2"" , "
+    If F_NSPCODE = 5 Then
+         QQ = QQ + " ""NspCode"":""5"" , "
+    Else
+        QQ = QQ + " ""NspCode"":""2"" , "
+    End If
+    
+    
+    
     QQ = QQ + " ""terminalId"":""" + TID + """ }"     '"99999069"   ' ÏÊ
 
     Open "C:\TXTFILES\REQUES111TAPOPAROXO" + mID_NUM + ".TXT" For Output As #1
@@ -4131,7 +4139,7 @@ Private Sub Command12_Click()
 
         Dim R As New ADODB.Recordset
  
-108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
+108     R.Open "SELECT * FROM  APESTALMENA2  WHERE ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "' ORDER BY MARK", Gdb, adOpenDynamic, adLockOptimistic
  
 110     Do While Not R.EOF
  
@@ -4681,7 +4689,7 @@ Private Sub cmdKOYKAKH_Click()
     sql = sql + "  dbo.TIM AS T ON G.ID_NUM = T.ID_NUM INNER JOIN "
     sql = sql + "  dbo.EID AS E ON G.KODE = E.KOD INNER JOIN "
     sql = sql + "  dbo.PARASTAT AS R ON LEFT(G.ATIM, 1) = R.EIDOS "
-    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(APO.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'"
+    sql = sql + "where R.MYEID='1.1' AND E.PROM LIKE '%ÊÏÕÊÁ%' AND G.HME>='" + Format(apo.Value, "MM/dd/yyyy") + "' AND G.HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'"
 
     Dim Reqpos As WinHttp.WinHttpRequest
 
@@ -6708,7 +6716,7 @@ Function FIND_QUERY()
         'If checkServer(0) Then
         ' MsgBox("OK")
         'End If
-102     If Year(APO) < 2021 Then
+102     If Year(apo) < 2021 Then
 104         MsgBox "ËÁÈÏÓ ÇÌÅÑÏÌÇÍÉÁ"
 106         FIND_QUERY = ""
 108         Unload Me
@@ -6749,7 +6757,7 @@ Function FIND_QUERY()
 134             fSynt = " WHERE ( isnull(ENTITYMARK,'')='' OR LEFT(ENTITYMARK,3)='ERR'  OR (INCMARK='-' AND AKYROMENO=1)     ) AND    LEFT(ATIM,1) IN     (  " + par + "  )   "
             End If
         
-136         fSynt = fSynt + " and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
+136         fSynt = fSynt + " and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "'    AND ISNULL(AJ1,0)+ISNULL(AJ2,0)+ISNULL(AJ3,0)+ISNULL(AJ4,0)+ISNULL(AJ5,0)+ISNULL(AJ6,0)+ISNULL(AJ7,0) >=0  "
     
 138         If Check1.Value = vbChecked Then
                 'where.Caption =
@@ -10570,6 +10578,8 @@ Public Sub loadpar7()
         
         F_brat = FINDPARAMETROI(1, "PAR7MYDATA", "f_brat", "0", "0=parochos.gr 1=bratnet ")
         
+        F_NSPCODE = FINDPARAMETROI(1, "PAR7MYDATA", "F_NSPCODE", "2", "2=EPAY,MELON 5=EDPS ")
+   
         F_ANAPODO = FINDPARAMETROI(3, "PAR1", "F_ANAPODO", "ÙØ", "Êùäéêïß ðáñ/êùí ìå áíÜðïäï ÖÏÑÔÙÓÇ/ÐÑÏÏÑÉÓÌÏ ;")
         
 100     F_TXTFILES = Trim(FINDPARAMETROI(1, "PAR7MYDATA", "F_TXTFILES", "TXTFILES", "ÖÁÊÅËÏÓ ÁÐÏÓÔÙËÙÍ "))
@@ -10709,8 +10719,8 @@ Public Sub loadpar7()
     
 226         If R!n1 = 0 Or R!n1 > 8 Then
 228             MsgBox "ËÁÈÏÓ ÓÔÉÓ ÁÍÔÉÓÔÏÉ×ÇÓÅÉÓ ÖÐÁ"
-230             APO.Enabled = False
-232             EOS.Enabled = False
+230             apo.Enabled = False
+232             eos.Enabled = False
 234             Command2.Enabled = False
 236             monoApestalmena.Enabled = False
             End If
@@ -10720,8 +10730,8 @@ Public Sub loadpar7()
  
 240     R.Close
   
-242     APO.Value = Now
-244     EOS.Value = Now
+242     apo.Value = Now
+244     eos.Value = Now
 
         Dim sql As String
 
@@ -10729,8 +10739,8 @@ Public Sub loadpar7()
 
 248     If sql = "0" Then
 
-250         APO.Enabled = False
-252         EOS.Enabled = False
+250         apo.Enabled = False
+252         eos.Enabled = False
 254         Command2.Enabled = False
 256         monoApestalmena.Enabled = False
 
@@ -11361,7 +11371,7 @@ Private Sub monoApestalmena_Click()
 130     sql = sql + "PEL.EPA,PEL.POL,AJ6,FPA6,AJ7,FPA7,TRP,ISNULL(APALAGIFPA,0) AS APALAGIFPA ,ISNULL(PEL.XRVMA,'') AS TK "
 
 132     sql = sql + "   FROM TIM INNER JOIN PEL ON TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD "
-134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+134     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 136     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+isnull(AJ5,0)+isnull(AJ6,0)+isnull(AJ7,0)>0  " + synt
 138     sql = sql + " order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11372,7 +11382,7 @@ Private Sub monoApestalmena_Click()
 146     sql = "SELECT SUM( AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7) AS [ÓÕÍ.ÊÁÈ],SUM( FPA1+FPA2+FPA3+FPA4+FPA6+FPA7) AS [ÓÕÍ.ÖÐÁ],CONVERT(CHAR(10),HME,103) AS HMEP "
 
 148     sql = sql + "   FROM TIM  "
-150     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(APO.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "'  "
+150     sql = sql + " WHERE     LEFT(ATIM,1) IN     (  " + par + "  )    and HME>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND HME<='" + Format(eos.Value, "MM/dd/yyyy") + "'  "
 152     sql = sql + "  AND AJ1+AJ2+AJ3+AJ4+AJ5+AJ6+AJ7>0  " + synt
 154     sql = sql + " GROUP BY HME order by HME"       '  OR INCMARK IS NULL OR INCMARK='ERROR'
 
@@ -11537,10 +11547,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid1.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc1.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc1.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc1.Recordset.FIELDS.Count - 1
@@ -11777,7 +11787,7 @@ End Sub
 Private Sub MydataAney()
         'Dim sql As String
 100     sql = "select  (select TOP 1 TITLOS FROM PARASTAT WHERE MYEID= RTRIM(SUBSTRING(A.TYPOS,1,4))+'%') AS [ÐÁÑÁÓÔ],P.EPO,ATIM,MARK,TOTALNETVALUE AS [ÊÁÈ.ÁÎÉÁ], A.* from APESTALMENA A LEFT JOIN PEL P ON P.AFM=A.AFM AND P.EIDOS='r' "
-102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
+102     sql = sql + " WHERE (ISANTIST IS NULL ) AND ISSUEDATE>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND  ISSUEDATE<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY ISSUEDATE DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -11789,7 +11799,7 @@ End Sub
 Private Sub EmporAney()
 
 100     sql = "select  ATIM,CONVERT(CHAR(10),HME,103) AS HMEP,P.EPO from TIM A LEFT JOIN PEL P ON P.KOD=A.KPE AND P.EIDOS='r' "
-102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(APO.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, EOS.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
+102     sql = sql + " WHERE LEFT(ATIM,1) IN ('G','g','Î') and (AADEKAU IS NULL) AND HME>='" + Format(apo.Value, "yyyy-MM-dd") + "'  AND HME<'" + Format(DateAdd("d", 1, eos.Value), "yyyy-MM-dd") + "'  ORDER BY HME DESC"
         '"SELECT * FROM APESTALMENA WHERE issueDate>='" + Format(apo.Value, "MM/dd/yyyy") + "'  AND issueDate<'" + Format(DateAdd("d", 1, eos.Value), "MM/dd/yyyy") + "' AND ISANTIST IS NULL order by MARK DESC"
 
 104     Adodc2.ConnectionString = gConnect
@@ -12837,10 +12847,10 @@ Private Sub TDBGrid2_HeadClick(ByVal ColIndex As Integer)
 102         sumes(k) = TDBGrid2.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-104     If Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
-106         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
+104     If Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc" Then   ' strSort
+106         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-108         Adodc2.Recordset.Sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
+108         Adodc2.Recordset.sort = "[" & TDBGrid2.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 110     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -15335,7 +15345,13 @@ Function to_pos(ByVal TID As String, _
     QQ = QQ + " ""totalValue"":" + Replace(Format(MFPA + MKAU, "#####0.00"), ",", ".") + ","
 
     QQ = QQ + " ""paymentAmount"":" + Replace(Format(MFPA + MKAU, "#####0.00"), ",", ".") + ","
-    QQ = QQ + " ""NspCode"":""2"" , "
+    
+    If F_NSPCODE = 5 Then
+         QQ = QQ + " ""NspCode"":""5"" , "
+    Else
+        QQ = QQ + " ""NspCode"":""2"" , "
+    End If
+    
     QQ = QQ + " ""terminalId"":""" + TID + """ }"     '"99999069"
 
    Open todaydir + "\ASKREQPAROX" + mID_NUM + "-" + Format(Now, "yyyy-MM-dd-HH-mm") + ".TXT" For Output As #1
