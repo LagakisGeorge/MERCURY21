@@ -227,24 +227,24 @@ Private Sub chkPalia_Click()
         f_PALIAXRONIA = Trim(FINDPARAMETROI(1, "PAR1", "F_PALIAXRONIA", "2005", "ц.18 DSN пакиас вяомиас"))
         Dim GTGDB As New ADODB.Connection
         GTGDB.Open gConnect + ";DATABASE=" + f_PALIAXRONIA
-        ADODC1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
+        Adodc1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
         
      Else
-        ADODC1.ConnectionString = gConnect
+        Adodc1.ConnectionString = gConnect
         'GTGDB.Open gConnect
      End If
 
 
-    ADODC1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
+    Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
    ' Adodc1.ConnectionString = gConnect
-   ADODC1.Refresh
+   Adodc1.Refresh
    
-   Do While Not ADODC1.Recordset.EOF
-        List1.AddItem ADODC1.Recordset("atim") + " ; " + ADODC1.Recordset("HMEP") + " ;" + CNull(ADODC1.Recordset("ENTITYMARK")) + "; " + Format(ADODC1.Recordset("сум.аниа"), "#####0.00")
+   Do While Not Adodc1.Recordset.EOF
+        List1.AddItem Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + CNull(Adodc1.Recordset("ENTITYMARK")) + "; " + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
    
    
    
-        ADODC1.Recordset.MoveNext
+        Adodc1.Recordset.MoveNext
    
    Loop
    
@@ -259,7 +259,7 @@ Private Sub Command1_Click()
 '  PAR1.par11Value.Caption = "* " + Trim(Adodc1.Recordset("atim")) + " " + Format(Adodc1.Recordset("hmep"), "DD/mm/yyyy") + " " + Trim$(ID_NUM)
    
    Dim c As String
-   c = CNull(ADODC1.Recordset("ENTITYMARK"))
+   c = CNull(Adodc1.Recordset("ENTITYMARK"))
    If Left(c, 3) = "дой" Then
        c = mID(c, 4, 15)
    End If
@@ -267,13 +267,13 @@ Private Sub Command1_Click()
   On Error Resume Next
   
   
-   Dim N As Integer
+   Dim n As Integer
       Dim C0 As String
       C0 = ""
-      For N = 0 To List1.ListCount - 1
+      For n = 0 To List1.ListCount - 1
         'Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + Adodc1.Recordset("ENTITYMARK") + " ;" + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
-        If List1.Selected(N) Then
-            c = Split(List1.List(N), ";")(2)
+        If List1.Selected(n) Then
+            c = Split(List1.List(n), ";")(2)
             If Left(c, 3) = "дой" Then
                c = mID(c, 4, 15)
             End If
@@ -328,20 +328,23 @@ Dim MAJI As String
 
    MAJI = Replace$(AJIA.Caption, ",", ".")
 
-   ADODC1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE AJI>=" + MAJI + " AND  KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
-   ADODC1.ConnectionString = gConnect
-   ADODC1.Refresh
+   Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE AJI>=" + MAJI + " AND  KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
+   Adodc1.ConnectionString = gConnect
+   Adodc1.Refresh
+   Dim n As Integer
+   n = 0
+   Do While Not Adodc1.Recordset.EOF
+        List1.AddItem Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + CNull(Adodc1.Recordset("ENTITYMARK")) + "; " + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
    
-   Do While Not ADODC1.Recordset.EOF
-        List1.AddItem ADODC1.Recordset("atim") + " ; " + ADODC1.Recordset("HMEP") + " ;" + CNull(ADODC1.Recordset("ENTITYMARK")) + "; " + Format(ADODC1.Recordset("сум.аниа"), "#####0.00")
    
-   
-   
-        ADODC1.Recordset.MoveNext
+        n = n + 1
+        Adodc1.Recordset.MoveNext
    
    Loop
    
-   
+   If n = 0 Then
+       MsgBox "ДЕМ УПАЯВОУМ СВЕТИЙА ПАЯ/ЙА ЛЕ АУТГМ ТГМ АНъА"
+   End If
    
    
    
