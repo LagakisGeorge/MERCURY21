@@ -1,11 +1,11 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   292093953
+         Format          =   371261441
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   292093954
+         Format          =   371261442
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   290717697
+      Format          =   371654657
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3809,13 +3809,13 @@ Private Sub ar_paraggt_LostFocus()
             End If
         End If
 
-134     TDBGrid1.columns(6).Width = 1544.882
-136     TDBGrid1.columns(5).Width = 2610.142
-138     TDBGrid1.columns(4).Width = 480.189
-140     TDBGrid1.columns(3).Width = 3550.142
-142     TDBGrid1.columns(2).Width = 929.7639
-144     TDBGrid1.columns(1).Width = 900.2835
-146     TDBGrid1.columns(0).Width = 1049.953
+134     tdbgrid1.columns(6).Width = 1544.882
+136     tdbgrid1.columns(5).Width = 2610.142
+138     tdbgrid1.columns(4).Width = 480.189
+140     tdbgrid1.columns(3).Width = 3550.142
+142     tdbgrid1.columns(2).Width = 929.7639
+144     tdbgrid1.columns(1).Width = 900.2835
+146     tdbgrid1.columns(0).Width = 1049.953
   
 End Sub
 
@@ -3947,12 +3947,12 @@ Private Sub b_Katax_Click()
   
         End If
 
-If HMERPARAD.Value < DTPicker1.Value Then
-   HMERPARAD.Value = DTPicker1.Value
+If HMERPARAD.Value < dtpicker1.Value Then
+   HMERPARAD.Value = dtpicker1.Value
 End If
 
 
-FORTOSH.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
+fortosh.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
 
 
 
@@ -3964,6 +3964,14 @@ FORTOSH.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + F
                par1b.PEL.Text = Trim(FKODPELSYGK)
             Else
 120            par1b.PEL.Text = Text2(0)
+               par1b.AJIA.Caption = SynoloG.Caption
+               If Len(PAR1.par11Value.Caption) < 3 Then
+                    MsgBox "ΔΕΝ ΥΠΑΡΧΕΙ ΣΥΣΧΕΤΙΖΟΜΜΕΝΟ ΠΑΡΑΣΤΑΤΙΚΟ"
+                    Exit Sub
+               End If
+               
+               
+               
             End If
 122         par1b.SHOW 1
    
@@ -4287,14 +4295,14 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
         Dim ans0 As Integer
 
         ' bazo +1 gia na me αφηνει την τελευταία μέρα να γράφω
-286     If DTPicker1.Value < gEnarjh Or DTPicker1.Value > gLhjh + 1 Then
+286     If dtpicker1.Value < gEnarjh Or dtpicker1.Value > gLhjh + 1 Then
 288         MsgBox "Ημερομηνία εκτός ορίων χρήσης " + Format(gEnarjh, "DD/MM/YYYY") + " - " + Format(gLhjh, "DD/MM/YYYY")
 
             Exit Sub
 
         End If
 
-290     If DTPicker1.Value > Now Then
+290     If dtpicker1.Value > Now Then
 292         ans0 = MsgBox("Προσοχή  ημερομηνία μεγαλυτερη της σημερινής.  Συνεχίζω;", vbYesNo)
 
 294         If ans0 <> vbYes Then
@@ -4331,7 +4339,7 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
         
         
 
-296     If f_FORM_EKTY > 0 And DateDiff("d", Now, DTPicker1.Value) <= -1 Then
+296     If f_FORM_EKTY > 0 And DateDiff("d", Now, dtpicker1.Value) <= -1 Then
 298         ans0 = MsgBox("Προσοχή  ημερομηνία μικρότερη της σημερινής.  Συνεχίζω;", vbYesNo)
 
 300         If ans0 <> vbYes Then
@@ -4467,7 +4475,7 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
 
 356     metasxhmatismos.Enabled = True
 
-358     f_dat = DTPicker1.Value
+358     f_dat = dtpicker1.Value
 
 360     f_matim = Right(PARAS.Text, 1) + Right("00000" + Trim(Text1.Text), f_psifia_atim) + SEIRA.Text
 
@@ -5000,7 +5008,7 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
 640     If ektyp.Value = 1 Then    ' ---------------------------------------------
 
 642         If f_FORM_EKTY >= 90 And f_FORM_EKTY <= 99 Then     ' φορμα τύπου f90.txt dot matrix '====================================
-644             DUM = printCrystal(f_matim, CDate(DTPicker1.Value))    'δημιουργει τα προσωρινά αρχεία
+644             DUM = printCrystal(f_matim, CDate(dtpicker1.Value))    'δημιουργει τα προσωρινά αρχεία
 
 646             If DUM < -900 Then
 648                 MsgBox "αδυνατη η εκτύπωση" + Chr(13) ' + "Διορθώστε το παραστατικό για να ξανατυπωθεί"
@@ -5013,12 +5021,12 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
 
                 Else
 
-650                 DUM = print_timol(f_matim, CDate(DTPicker1.Value))
+650                 DUM = print_timol(f_matim, CDate(dtpicker1.Value))
                 
                 End If
             ElseIf f_FORM_EKTY > 180 And f_FORM_EKTY <= 190 Then ' ελαιοτροβειο συνοδευτικο
                
-                    DUM = printCrystal(f_matim, CDate(DTPicker1.Value))    'δημιουργει τα προσωρινά αρχεία
+                    DUM = printCrystal(f_matim, CDate(dtpicker1.Value))    'δημιουργει τα προσωρινά αρχεία
             
              ''''''''''''''''''''''''''ElseIf f_FORM_EKTY = 188 Then      '     λιανικη
                             CrystalReport1.ReportFileName = "C:\Mercvb\reports\timol" + Format(f_FORM_EKTY, "000") + ".rpt"
@@ -5779,18 +5787,18 @@ OLD145:
 1268    If UBound(RR2) = 8 Then
             Dim LLC As Integer
 1270        For LLC = 0 To 8
-1272            TDBGrid1.columns(LLC).Width = RR2(LLC)
+1272            tdbgrid1.columns(LLC).Width = RR2(LLC)
             Next
         Else
-1274        TDBGrid1.columns(8).Width = 2500 'MARK
-1276        TDBGrid1.columns(7).Width = 0 'DI_NUM
-1278        TDBGrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
-1280        TDBGrid1.columns(5).Width = 1610  ' .142 'PARAT
-1282        TDBGrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
-1284        TDBGrid1.columns(3).Width = 3550 'EPO
-1286        TDBGrid1.columns(2).Width = 1100 'AJI
-1288        TDBGrid1.columns(1).Width = 1700 'ATIM
-1290        TDBGrid1.columns(0).Width = 1049 'HME
+1274        tdbgrid1.columns(8).Width = 2500 'MARK
+1276        tdbgrid1.columns(7).Width = 0 'DI_NUM
+1278        tdbgrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
+1280        tdbgrid1.columns(5).Width = 1610  ' .142 'PARAT
+1282        tdbgrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
+1284        tdbgrid1.columns(3).Width = 3550 'EPO
+1286        tdbgrid1.columns(2).Width = 1100 'AJI
+1288        tdbgrid1.columns(1).Width = 1700 'ATIM
+1290        tdbgrid1.columns(0).Width = 1049 'HME
        
         End If
 
@@ -6320,7 +6328,7 @@ Function Check_Dipla()
 
             Else    ' YPARXEI ALLA DEN PREPEI NA EXO MIKROTERI HMEROMHNIA APO TO PROHGOYMENO
 156             If Not re.EOF Then
-158                 If DTPicker1.Value < re("HME") And nNull(re("AKYROMENO")) <> 1 Then
+158                 If dtpicker1.Value < re("HME") And nNull(re("AKYROMENO")) <> 1 Then
 160                     MsgBox "η ημερομηνια είναι μικρότερη από την ημερομηνία του  προηγούμενου παραστατικού "
 162                     Check_Dipla = 0
                     End If
@@ -6597,7 +6605,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 224     r55.Open "select * from PINAKES WHERE ID=" + str(Combo4.ItemData(FIND_LISTINDEX(Combo4, Combo4.Text))), Gdb, adOpenDynamic, adLockOptimistic
 
 226     Dim m_pliromi As String: m_pliromi = "1;ΜΕ"
-228     If IsNull(r55!C1) Then
+228     If IsNull(r55!c1) Then
 
             '    If Combo4.Text = Combo4.List(0) Then    ' METRHTOIS
             ' SQLTIM = SQLTIM + "'" + LTrim(str(r55!AYJON)) + ";" + r55!PERIGRAFH + "'," 'ΤRP
@@ -6627,7 +6635,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
         'On Error GoTo enhm_eggtim_Err
 244     If Len(parat.Text) > mLenPARAT Then parat.Text = Left(parat.Text, mLenPARAT)
 246     If Len(SKOPOS.Text) > mLenSKOPOS Then parat.Text = Left(SKOPOS.Text, mLenSKOPOS)
-248     If Len(FORTOSH.Text) > mLenFORTOSH Then FORTOSH.Text = Left(FORTOSH.Text, mLenFORTOSH)
+248     If Len(fortosh.Text) > mLenFORTOSH Then fortosh.Text = Left(fortosh.Text, mLenFORTOSH)
 250     If Len(PROORISMOS.Text) > mLenPROORISMOS Then PROORISMOS.Text = Left(PROORISMOS.Text, mLenPROORISMOS)
 252     If Len(AYTOKINHTO.Text) > mLenAYTOKINHTO Then AYTOKINHTO.Text = Left(AYTOKINHTO.Text, mLenAYTOKINHTO)
 
@@ -6635,7 +6643,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 256     SQLTIM = SQLTIM + str(Val(Replace(metaf.Text, ",", "."))) + ","    ' METAF
 258     SQLTIM = SQLTIM + "'" + Replace(SKOPOS.Text, "'", "`") + "',"    ' SKOPOS
 260     SQLTIM = SQLTIM + "'" + Replace(PROORISMOS.Text, "'", "`") + "',"    ' PROORISMOS
-262     SQLTIM = SQLTIM + "'" + Replace(FORTOSH.Text, "'", "`") + "',"    ' FORTOSH
+262     SQLTIM = SQLTIM + "'" + Replace(fortosh.Text, "'", "`") + "',"    ' FORTOSH
 264     SQLTIM = SQLTIM + "'" + Replace(AYTOKINHTO.Text, "'", "`") + "',"    ' AYTOKINHTO
 266     SQLTIM = SQLTIM + str(get_kerdos) + ","  ' KERDOS
 
@@ -6645,7 +6653,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 272         SQLTIM = SQLTIM + "'" + Left(f_matim, f_psifia_atim + 2) + PEL.Recordset("kod") + "',"    ' KEY
         End If
 
-274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(Time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
+274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
 
         Dim NTIM As Long
 
@@ -7585,7 +7593,7 @@ Sub enhm_apot()
 120     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 122     fSCR.language = "vbscript"
 124     fSCR.addObject "eid", EID
-126     fSCR.addObject "mactext", MACtEXT
+126     fSCR.addObject "mactext", mactext
 
         Dim M_DOROKARTA As Single
 
@@ -7668,7 +7676,7 @@ Sub enhm_apot()
                         
 190                     If kostologhsh And F_STADIO = 4 Then  ' ' 1=ΠΡΟΣΦ 2=ΠΑΡΑΓΓ 3=ΔΑ 4=ΤΙΜ.ΠΟΛ 5=ΕΝΔΟΔΙΑΚΙΝΙΣΙ
 192                         PAR11.Label10 = EID.Recordset("XTI")
-194                         PAR11.label11 = NeaTim
+194                         PAR11.Label11 = NeaTim
 
 196                         PAR11.ltiproekptosis = Grid1.TextMatrix(k, F_T)
 198                         PAR11.UES = EID.Recordset("UES")
@@ -7701,9 +7709,9 @@ Sub enhm_apot()
                             End If
                             
 228                         If IsNull(EID.Recordset("lti3")) Then
-230                             PAR11.LTI3 = 0
+230                             PAR11.lti3 = 0
                             Else
-232                             PAR11.LTI3 = EID.Recordset("LTI3")
+232                             PAR11.lti3 = EID.Recordset("LTI3")
                             End If
 
                             '   PAR11.Text1(7) = EID.Recordset("LTI2")
@@ -7742,7 +7750,7 @@ Sub enhm_apot()
 260                             EID.Recordset("POS_KERD2") = (100 * EID.Recordset("LTI")) / EID.Recordset("XTI") - 100   '  EID.Recordset("XTI") - 100
                                 ' If F_XONDRIKH = 3 Then
 262                             EID.Recordset("LTI2") = Val(Replace(PAR11.LTI2.Text, ",", "."))
-264                             EID.Recordset("LTI3") = Val(Replace(PAR11.LTI3.Text, ",", "."))
+264                             EID.Recordset("LTI3") = Val(Replace(PAR11.lti3.Text, ",", "."))
                                 ' End If
                             End If
 
@@ -8070,7 +8078,7 @@ Sub enhm_pel(ByVal m_suma As Single, ByVal id_num As Long)
 176     sql = sql + "'" + cc4 + "',"    'EIDOS
 178     sql = sql + "'" + ccPel + "',"    'KOD
 
-180     sql = sql + "'" + Format(DTPicker1.Value, "MM/DD/YYYY") + "',"  'HME
+180     sql = sql + "'" + Format(dtpicker1.Value, "MM/DD/YYYY") + "',"  'HME
 182     sql = sql + str(gUserId) + ","  'USERID
 184     sql = sql + str(Val(mID$(f_matim, 2, 6))) + ","    'APA
 186     sql = sql + "'" + f_matim + "',"  'ATIM
@@ -8293,7 +8301,7 @@ Sub enhm_met(ByVal m_suma As Single, ByVal id_num As Long)
 164     sql = "INSERT INTO EGG (EIDOS,KOD,HME,USERID,APA,ATIM,AIT,XRE,XREOSI,PISTOSI,IDTIM,AAXREOPIS) VALUES ("
 166     sql = sql + "'" + cc4 + "',"    'EIDOS
 168     sql = sql + "'" + ccPel + "',"    'KOD
-170     sql = sql + "'" + Format(DTPicker1.Value, "MM/DD/YYYY") + "',"  'HME
+170     sql = sql + "'" + Format(dtpicker1.Value, "MM/DD/YYYY") + "',"  'HME
 172     sql = sql + str(gUserId) + ","  'USERID
 174     sql = sql + str(Val(mID$(f_matim, 2, 6))) + ","    'APA
 176     sql = sql + "'" + f_matim + "',"  'ATIM
@@ -8545,8 +8553,8 @@ Private Sub Command10_Click()
    
       Dim m As Integer
         Dim c As String
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         'PAR1.Text5.Text = "*" + C
         Dim mc As String
         mc = "p"     ' (FINDPARAMETROI(-1, "PAR1", "METASX_TIM", "3", "δωσε κωδ.παρ/κου METASX_TIM π.χ. T"))
@@ -8611,12 +8619,12 @@ Private Sub Command10_Click()
          'Text1.Text = PAR1.find_parastat(0, "p", 0)
          
          ar_paraggt.SetFocus
-         TDBGrid1.SetFocus
+         tdbgrid1.SetFocus
          
          
          
          
-         DTPicker1.Value = Now
+         dtpicker1.Value = Now
          DoEvents
          
           'Text1.Text = PAR1.find_parastat(0, "p", 0)
@@ -8631,7 +8639,7 @@ Private Sub Command10_Click()
          METASX_SE_TIM m, M_AJI(k), m_ID(k), False, 0
          Text1.Text = PAR1.find_parastat(0, "p", 0)
          
-         DTPicker1.Value = Now
+         dtpicker1.Value = Now
         SaveParastat 0
         Text1.Text = PAR1.find_parastat(0, "p", 1)
         DoEvents
@@ -8667,8 +8675,8 @@ Dim qrl As String '                    : qrl = "https://mydataapidev.aade.gr/Tim
      
 '================================= DEBUGGING=========================
      Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
        
  
 qrl = GGET_CVALUE("select QRURL FROM TIM WHERE ID_NUM=" + str(m_ID))
@@ -8712,9 +8720,9 @@ Private Sub submitpayment_Click()
 Dim c, D, SX As String
         'd = TDBGrid1.Columns("ID_NUM").value ' ή TDBGrid1.Col = 7: TDBGrid1.Text
 
-       TDBGrid1.Col = 7  'id_num  ακυρωτικου
+       tdbgrid1.Col = 7  'id_num  ακυρωτικου
 
-       D = TDBGrid1.Text
+       D = tdbgrid1.Text
 
 
         Dim midnum As String
@@ -9083,38 +9091,38 @@ Private Sub cmdΜΑΖ_ΕΚΤΥ_Click()
         Dim DB As DAO.Database
 100     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
-        Dim C1, c2 As String
-102     C1 = InputBox("ΔΩΣΕ ΑΡΧΙΚΟ ΠΑΡΑΣΤΑΤΙΚΟ Π.Χ. Τ000123")
+        Dim c1, c2 As String
+102     c1 = InputBox("ΔΩΣΕ ΑΡΧΙΚΟ ΠΑΡΑΣΤΑΤΙΚΟ Π.Χ. Τ000123")
 
-104     c2 = InputBox("ΔΩΣΕ ΤΕΛΙΚΟ ΠΑΡΑΣΤΑΤΙΚΟ Π.Χ. Τ000125", "", C1)
+104     c2 = InputBox("ΔΩΣΕ ΤΕΛΙΚΟ ΠΑΡΑΣΤΑΤΙΚΟ Π.Χ. Τ000125", "", c1)
 
-106     If Left$(C1, 1) = Left$(c2, 1) Then
+106     If Left$(c1, 1) = Left$(c2, 1) Then
 
         Else
 108         MsgBox " ΑΠΟ ΤΗΝ ΙΔΙΑ ΣΕΙΡΑ ΠΡΕΠΕΙ ΝΑ ΕΙΝΑΙ"
             Exit Sub
         End If
 
-110     If c2 < C1 Then
-112         MsgBox "TO " + c2 + " PREPEI NA EINAI MEGALYTERO TOY " + C1
+110     If c2 < c1 Then
+112         MsgBox "TO " + c2 + " PREPEI NA EINAI MEGALYTERO TOY " + c1
             Exit Sub
         End If
 
         Dim CTIT As String
 
-114     CTIT = GGET_CVALUE("select ISNULL(TITLOS,'')  from PARASTAT WHERE EIDOS='" + Left(C1, 1) + "'")
+114     CTIT = GGET_CVALUE("select ISNULL(TITLOS,'')  from PARASTAT WHERE EIDOS='" + Left(c1, 1) + "'")
 116     DB.Execute "update MEM SET C1='" + CTIT + "'"
 
         Dim c    As String
         Dim m_ID As Long
 
         Dim mF   As String
-118     mF = GGET_CVALUE("select ISNULL(FORMA1,'C:\MERCVB\REPORTS\TIMOL1.RPT')  from PARASTAT WHERE EIDOS='" + Left(C1, 1) + "'")
+118     mF = GGET_CVALUE("select ISNULL(FORMA1,'C:\MERCVB\REPORTS\TIMOL1.RPT')  from PARASTAT WHERE EIDOS='" + Left(c1, 1) + "'")
 
-120     F_TYPOS_PAR = GGET_CVALUE("select ISNULL(C1,'173')  from PARASTAT WHERE EIDOS='" + Left(C1, 1) + "'")
+120     F_TYPOS_PAR = GGET_CVALUE("select ISNULL(C1,'173')  from PARASTAT WHERE EIDOS='" + Left(c1, 1) + "'")
 
         Dim R As New ADODB.Recordset
-122     R.Open "SELECT * FROM TIM WHERE LEFT(ATIM,1)='" + Left(C1, 1) + "' AND  ATIM>='" + C1 + "' AND ATIM<='" + c2 + "' ORDER BY ATIM", Gdb, adOpenDynamic, adLockOptimistic
+122     R.Open "SELECT * FROM TIM WHERE LEFT(ATIM,1)='" + Left(c1, 1) + "' AND  ATIM>='" + c1 + "' AND ATIM<='" + c2 + "' ORDER BY ATIM", Gdb, adOpenDynamic, adLockOptimistic
 124     R.MoveFirst
 126     Do While Not R.EOF
 
@@ -9140,12 +9148,12 @@ Private Sub cmdΜΑΖ_ΕΚΤΥ_Click()
             POSTALCODE.Text = CNull(R("postalcode"))
             CITY.Text = CNull(R("city"))
             parat.Text = CNull(R("parat"))
-372         FORTOSH.Text = CNull(R("FORTOSH"))
-            If InStr(FORTOSH.Text, ";") > 0 Then
-               FORTDIE.Text = Split(FORTOSH.Text, ";")(0)
-               fortARit.Text = Split(FORTOSH.Text, ";")(1)
-               FORTPOL.Text = Split(FORTOSH.Text, ";")(2)
-               FORTTK.Text = Split(FORTOSH.Text, ";")(3)
+372         fortosh.Text = CNull(R("FORTOSH"))
+            If InStr(fortosh.Text, ";") > 0 Then
+               FORTDIE.Text = Split(fortosh.Text, ";")(0)
+               fortARit.Text = Split(fortosh.Text, ";")(1)
+               FORTPOL.Text = Split(fortosh.Text, ";")(2)
+               FORTTK.Text = Split(fortosh.Text, ";")(3)
             End If
              If nNull(R("TOWEIGH")) = 1 Then
                 Zygish.Value = vbChecked
@@ -9164,7 +9172,7 @@ Private Sub cmdΜΑΖ_ΕΚΤΥ_Click()
             
 134         DoEvents
 136         f_matim = R!ATIM
-138         DTPicker1.Value = R!hme
+138         dtpicker1.Value = R!hme
 
 
 
@@ -10267,7 +10275,7 @@ Sub WESTNET_import()
             'parat.Text = mID$(a$, 62, 14)
 
 150         Line Input #1, a$
-152         DTPicker1.Value = Replace(mID$(a$, 87, 26), ".", "/")
+152         dtpicker1.Value = Replace(mID$(a$, 87, 26), ".", "/")
 154         Text1.Text = mID$(a$, 55, 8)
    
 156         Line Input #1, a$
@@ -10745,7 +10753,7 @@ Me.Caption = "28028"
         mHME = xlsheet.cells(k + 1, 4)
         MATIM = xlsheet.cells(k + 1, 5)
         Text1.Text = MATIM
-        DTPicker1.Value = mHME
+        dtpicker1.Value = mHME
         MAPOT = xlsheet.cells(k + 1, 15)
         If Val(MAPOT) = 4 Then
            APOTH1.Text = APOTH1.List(1)
@@ -11325,7 +11333,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.Data1.ConnectionString = gConnect
+116     fpelat4.DATA1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -11366,10 +11374,10 @@ Private Sub Command4_Click()
 
         '</EhHeader>
 
-        Dim ko As String, ajia As String, N As Integer, TYPOS As Integer
+        Dim ko As String, AJIA As String, N As Integer, TYPOS As Integer
 
 100     ko = InputBox("δωσε το barcode του είδους ", , "")
-102     ajia = InputBox("δωσε αξία ", , "")
+102     AJIA = InputBox("δωσε αξία ", , "")
 104     TYPOS = Val(InputBox("Αποδ.ΠΥ=6 Δ.Α=9 ΤΠΥ=16 ", , ""))
 
 106     If TYPOS = 6 Or TYPOS = 9 Or TYPOS = 16 Then
@@ -11466,9 +11474,9 @@ Private Sub Command4_Click()
 182         timtext3 = "223344"
 184         Grid1.TextMatrix(k, f_p) = 1
 186         Grid1.TextMatrix(k, f_o) = "ΕΠΙΣΚΕΥΗ"
-188         Grid1.TextMatrix(k, F_T) = Round(Val(ajia) / (1 + g_Fpa(2) / 100), 2)
+188         Grid1.TextMatrix(k, F_T) = Round(Val(AJIA) / (1 + g_Fpa(2) / 100), 2)
 190         Grid1.TextMatrix(k, f_f) = 2
-192         Grid1.TextMatrix(k, f_a) = Round(Val(ajia) / (1 + g_Fpa(2) / 100), 2)
+192         Grid1.TextMatrix(k, f_a) = Round(Val(AJIA) / (1 + g_Fpa(2) / 100), 2)
 194         Grid1.row = k: Grid1.Col = 0: FindSynolo
 196         k = 2
 198         Grid1.TextMatrix(k, f_k) = ko
@@ -11518,7 +11526,7 @@ End Sub
 
         Dim par As New ADODB.Recordset
 
-100     f_dat = DTPicker1.Value
+100     f_dat = dtpicker1.Value
 
 102     f_matim = Right(PARAS.Text, 1) + Right("00000" + Trim(Text1.Text), f_psifia_atim) + SEIRA.Text
 
@@ -11642,7 +11650,7 @@ End Sub
 140         f_same_eline = 0
             'If par!C1 = "215" Then f_same_eline = 1
              
-142         If Val(nNull(par!C1)) = 215 Then f_same_eline = 1
+142         If Val(nNull(par!c1)) = 215 Then f_same_eline = 1
 144         DUM = printCrystal(f_matim, CDate(f_dat))
 146         f_same_eline = 0
             '
@@ -11718,9 +11726,9 @@ End Sub
 
 170         If f_FORM_EKTY >= 90 Then    ' φορμα τύπου f90.txt  '====================================
 172             f_same_eline = 0
-174             DUM = printCrystal(f_matim, CDate(DTPicker1.Value))    'δημιουργει τα προσωρινά αρχεία
+174             DUM = printCrystal(f_matim, CDate(dtpicker1.Value))    'δημιουργει τα προσωρινά αρχεία
 176             f_same_eline = 0
-178             DUM = print_timol(f_matim, CDate(DTPicker1.Value))
+178             DUM = print_timol(f_matim, CDate(dtpicker1.Value))
             
 180         ElseIf Len(Trim(F_FORMA1)) > 1 Then
 182             f_same_eline = 0
@@ -12468,8 +12476,8 @@ qrl = InputBox("σκανάρισε το qrcode", " ")
 
 
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -12506,7 +12514,7 @@ Private Sub DTPicker1_GotFocus()
 
         '</EhHeader>
 
-100     DTPicker1.ToolTipText = "."
+100     dtpicker1.ToolTipText = "."
 
         '<EhFooter>
         Exit Sub
@@ -12533,8 +12541,8 @@ Private Sub DTPicker1_KeyUp(KeyCode As Integer, Shift As Integer)
 100     If KeyCode = vbKeyReturn Then
 102         KeyCode = 0    'suppress the beep
 
-104         If DTPicker1.ToolTipText = "." Then
-106             DTPicker1.ToolTipText = ""
+104         If dtpicker1.ToolTipText = "." Then
+106             dtpicker1.ToolTipText = ""
             Else
 108             keybd_event VK_TAB, 0, 0, 0    'send a tab
             End If
@@ -12563,13 +12571,13 @@ Public Sub menuToTransport(parametros As Integer)
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 4  'PELKOD
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 4  'PELKOD
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
 
 Dim AFMEPIX As String
 AFMEPIX = GGET_CVALUE("SELECT TOP 1 AFMPEL FROM MEM ORDER BY ID")
@@ -12736,7 +12744,7 @@ Private Sub Form_Resize()
     Label3(0).Left = Text2(3).Left
     Text1.Height = POLAGOR.Height
     selectPEL.Height = POLAGOR.Height
-    DTPicker1.Height = POLAGOR.Height
+    dtpicker1.Height = POLAGOR.Height
     Combo8.Height = POLAGOR.Height
     APOTH1.Height = POLAGOR.Height
     Dim mtop As Long
@@ -12744,7 +12752,7 @@ Private Sub Form_Resize()
     
     Text1.Top = mtop
     selectPEL.Top = mtop
-    DTPicker1.Top = mtop
+    dtpicker1.Top = mtop
     Combo8.Top = mtop
     APOTH1.Top = mtop
     
@@ -12757,7 +12765,7 @@ Private Sub Form_Resize()
     
     If F_GRID_FONT_SIZE > 8 Then
         Grid1.Font.Size = F_GRID_FONT_SIZE
-        TDBGrid1.Font.Size = F_GRID_FONT_SIZE
+        tdbgrid1.Font.Size = F_GRID_FONT_SIZE
         GridPelaton.Font.Size = F_GRID_FONT_SIZE
     Else
         'Grid1.Font.Size = 12
@@ -12773,12 +12781,12 @@ Private Sub Form_Resize()
 'SSTab1.Tab = IIf(f_tab > SSTab1.Tabs - 1 Or f_tab < 0, SSTab1.Tabs - 1, f_tab)
 
 Label1(0).Left = Text2(1).Left
-label11(0).Left = Text2(2).Left
+Label11(0).Left = Text2(2).Left
  
  
  Label3(0).Top = Text2(3).Top - Label3(0).Height - 1 'ΔΙΕΥΘΥΝΣΗ
  Label1(0).Top = Label3(0).Top
-  label11(0).Top = Label3(0).Top
+  Label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
    
    Label4.Left = PARAS.Left
@@ -12787,8 +12795,8 @@ label11(0).Left = Text2(2).Left
    
    
  
-LABEL30.Left = 0
-LABEL31.Left = 0
+Label30.Left = 0
+Label31.Left = 0
 Label33.Left = 0
 'sda_epistrofis.Top = apallagesFPA.Top - 600
 
@@ -13026,7 +13034,7 @@ Private Sub GRIDPARTIDES_DblClick()
         On Error Resume Next
 
         Dim EIDOSKPE As String
-100     Dim cHME     As String: cHME = Format(DTPicker1.Value, "MM/DD/YYYY")
+100     Dim cHME     As String: cHME = Format(dtpicker1.Value, "MM/DD/YYYY")
 102     Dim ATIM     As String: ATIM = Right(PARAS.Text, 1) + Format(Text1.Text, String$(6, "0"))
 104     EIDOSKPE = PEL.Recordset("eidos") + PEL.Recordset("KOD")
 106     If PEL.Recordset("eidos") = "e" Then Exit Sub
@@ -13288,7 +13296,7 @@ Private Sub Label20_Click()
 
         '</EhHeader>
 
-100     UPDATE_PINAKES 8, Label20, FORTOSH
+100     UPDATE_PINAKES 8, Label20, fortosh
 
         '<EhFooter>
         Exit Sub
@@ -13706,7 +13714,7 @@ Private Sub POLAGOR_LostFocus()
 
         End If
 
-180     DTPicker1.Value = Now
+180     dtpicker1.Value = Now
 
         'PARAS.Enabled = True
 
@@ -15672,7 +15680,7 @@ Private Sub mmGridPelaton_DblClick(ByVal ask As Integer, _
 
         Dim rEgg As New ADODB.Recordset
 
-216     f_dat = DTPicker1.Value
+216     f_dat = dtpicker1.Value
 218     f_matim = Right(PARAS.Text, 1) + Right("0000000" + Trim(Text1.Text), f_psifia_atim) + SEIRA.Text
 220     ANS = vbNo
     
@@ -15856,12 +15864,12 @@ ORAPARAD.Value = re("ORAPARAD")
              POSTALCODE.Text = re("postalcode")
              CITY.Text = re("city")
              
-372         FORTOSH.Text = re("FORTOSH")
-            If InStr(FORTOSH.Text, ";") > 0 Then
-               FORTDIE.Text = Split(FORTOSH.Text, ";")(0)
-               fortARit.Text = Split(FORTOSH.Text, ";")(1)
-               FORTPOL.Text = Split(FORTOSH.Text, ";")(2)
-               FORTTK.Text = Split(FORTOSH.Text, ";")(3)
+372         fortosh.Text = re("FORTOSH")
+            If InStr(fortosh.Text, ";") > 0 Then
+               FORTDIE.Text = Split(fortosh.Text, ";")(0)
+               fortARit.Text = Split(fortosh.Text, ";")(1)
+               FORTPOL.Text = Split(fortosh.Text, ";")(2)
+               FORTTK.Text = Split(fortosh.Text, ";")(3)
             End If
             
              If nNull(re("TOWEIGH")) = 1 Then
@@ -15933,13 +15941,13 @@ ORAPARAD.Value = re("ORAPARAD")
             '   On Error Resume Next
 424         EID.Recordset.MoveFirst
 
-            Dim mAji As Double
+            Dim MAJI As Double
             Dim MFPA As Double
             
 426         If m_tim.EOF Then
-428             mAji = 0: MFPA = 0
+428             MAJI = 0: MFPA = 0
             Else
-430             mAji = m_tim("aji")
+430             MAJI = m_tim("aji")
 432             MFPA = m_tim!FPA1 + m_tim!fpa2 + m_tim!fpa3 + m_tim!FPA4 + m_tim!FPA6 + nNull(m_tim!FPA7) + nNull(m_tim!FPA8) + nNull(m_tim!FPA9)
                 
             End If
@@ -15954,7 +15962,7 @@ ORAPARAD.Value = re("ORAPARAD")
 434         If F_METAFORIKES >= 1 Then
 436             Textm(2).Text = m_tim!c2
 438             Textm(3).Text = m_tim!c3
-440             Textm(0).Text = m_tim!C1
+440             Textm(0).Text = m_tim!c1
 442             Textm(1).Text = str(m_tim!NUM1)
 444             Textm(4).Text = str(m_tim!NUM2)
              
@@ -16107,11 +16115,11 @@ ORAPARAD.Value = re("ORAPARAD")
         
 560         Grid1.row = k
 
-562         If Round(Abs(gVal(SynoloG.Caption) - mAji), 2) = 0.01 And Round(Abs(gVal(sfpa.Caption) - MFPA), 2) = 0.01 Then
-564             SynoloG.Caption = Format(mAji, "#####0.00")
+562         If Round(Abs(gVal(SynoloG.Caption) - MAJI), 2) = 0.01 And Round(Abs(gVal(sfpa.Caption) - MFPA), 2) = 0.01 Then
+564             SynoloG.Caption = Format(MAJI, "#####0.00")
 566             sfpa.Caption = Format(MFPA, "#####0.00")
     
-568             If mAji > gVal(SynoloG.Caption) Then
+568             If MAJI > gVal(SynoloG.Caption) Then
 570                 f_strogg = -0.01
                 Else
 572                 f_strogg = 0.01
@@ -16732,7 +16740,7 @@ Private Sub Form_Load()
             f_Arr_PIN(k_ARR, F_ARR_AYJON) = R_arr!AYJON
             f_Arr_PIN(k_ARR, F_ARR_TIMH) = R_arr!TIMH
             f_Arr_PIN(k_ARR, F_ARR_PERIGRAFH) = R_arr!PERIGRAFH
-            f_Arr_PIN(k_ARR, F_ARR_C1) = R_arr!C1
+            f_Arr_PIN(k_ARR, F_ARR_C1) = R_arr!c1
 
             R_arr.MoveNext
         Loop
@@ -17080,7 +17088,7 @@ Private Sub Form_Load()
         'Dim f_TIMES_METASX_LIAN As String
  
 390     f_LabAFM = FINDPARAMETROI(1, "PELAT2", "f_LabAFM", "ΑΦΜ /κειμ1", "Tίτλος ετικέτας ΑΦΜ")
-392     label11(0).Caption = f_LabAFM
+392     Label11(0).Caption = f_LabAFM
  
 394     Label18.Caption = "Πληρ"
 396     Label9.Caption = "Σχόλια"
@@ -17134,12 +17142,12 @@ Private Sub Form_Load()
 
         Dim R As New ADODB.Recordset
 
-442     Set Prospective = TDBGrid1.Styles.Add("Prospective")
+442     Set Prospective = tdbgrid1.Styles.ADD("Prospective")
 444     Prospective.Font.Italic = True
 446     Prospective.Font.Bold = True
 448     Prospective.ForeColor = vbBlue
         
-450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
+450     Set Distributors = tdbgrid1.Styles.ADD("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
@@ -17149,7 +17157,7 @@ Private Sub Form_Load()
         '
         '        ButtonFlag = 0
         '
-        TDBGrid1.FetchRowStyle = True
+        tdbgrid1.FetchRowStyle = True
         '
         '    Case 1
         '
@@ -17165,7 +17173,7 @@ Private Sub Form_Load()
         '
         '
 
-        TDBGrid1.Refresh
+        tdbgrid1.Refresh
 
         Me.Caption = Me.Caption + "--t1--" + str(GetCurrentTime() - TT)
 
@@ -17232,7 +17240,7 @@ Private Sub Form_Load()
         'R.Close
 
 476     If gXEIRISTHS < 2 Then
-478         TDBGrid1.Visible = False
+478         tdbgrid1.Visible = False
         End If
 
 480     F_UPPER = Val(FINDPARAMETROI(1, "APOT2", "F_UPPER", "1", "ΜΕΤΑΤΡΟΠΗ ΠΕΡΙΓΡΑΦΩΝ ΣΕ ΚΕΦΑΛΑΙΑ ΕΛΛΗΝΙΚΑ=1/0"))
@@ -17672,7 +17680,7 @@ Private Sub Form_Load()
 
             If f_Arr_PIN(k, F_ARR_TYPOS) = 8 Then
 
-                FORTOSH.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                fortosh.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
                 mok = 1
             End If
 
@@ -17862,7 +17870,7 @@ Private Sub Form_Load()
 
 1018    SKOPOS.Text = SKOPOS.List(0)
 
-1020    FORTOSH.Text = FORTOSH.List(0)
+1020    fortosh.Text = fortosh.List(0)
 
         Dim R44 As New ADODB.Recordset
 
@@ -18103,8 +18111,8 @@ Private Sub Form_Load()
 1228    PEL.RecordSource = "SELECT top 1 *FROM PEL"
 1230    PEL.ConnectionString = gConnect
 
-1232    EGGTIM.ConnectionString = gConnect
-1234    EGGTIM.RecordSource = "SELECT top 10 * FROM EGGTIM"
+1232    eggtim.ConnectionString = gConnect
+1234    eggtim.RecordSource = "SELECT top 10 * FROM EGGTIM"
 
 1236    DOK.ConnectionString = gConnect
 1238    DOK.RecordSource = "SELECT top 1 *FROM DOK"
@@ -18173,9 +18181,9 @@ Private Sub Form_Load()
 
         Set RSClone = LASTTIMOL.Recordset.Clone()
 
-1260    TDBGrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
-1262    TDBGrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
-1264    TDBGrid1.Splits(0).ExtendRightColumn = True
+1260    tdbgrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
+1262    tdbgrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
+1264    tdbgrid1.Splits(0).ExtendRightColumn = True
           
         Dim RR() As String
    
@@ -18186,19 +18194,19 @@ Private Sub Form_Load()
             Dim LLC As Integer
 
 1270        For LLC = 0 To 8
-1272            TDBGrid1.columns(LLC).Width = RR(LLC)
+1272            tdbgrid1.columns(LLC).Width = RR(LLC)
             Next
 
         Else
-1274        TDBGrid1.columns(8).Width = 2500 'MARK
-1276        TDBGrid1.columns(7).Width = 0 'DI_NUM
-1278        TDBGrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
-1280        TDBGrid1.columns(5).Width = 1610  ' .142 'PARAT
-1282        TDBGrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
-1284        TDBGrid1.columns(3).Width = 3550 'EPO
-1286        TDBGrid1.columns(2).Width = 1100 'AJI
-1288        TDBGrid1.columns(1).Width = 1700 'ATIM
-1290        TDBGrid1.columns(0).Width = 1049 'HME
+1274        tdbgrid1.columns(8).Width = 2500 'MARK
+1276        tdbgrid1.columns(7).Width = 0 'DI_NUM
+1278        tdbgrid1.columns(6).Width = 500 ' 500.882 'SXETIKO
+1280        tdbgrid1.columns(5).Width = 1610  ' .142 'PARAT
+1282        tdbgrid1.columns(4).Width = 480 ' 480.189 'KOD PELATH
+1284        tdbgrid1.columns(3).Width = 3550 'EPO
+1286        tdbgrid1.columns(2).Width = 1100 'AJI
+1288        tdbgrid1.columns(1).Width = 1700 'ATIM
+1290        tdbgrid1.columns(0).Width = 1049 'HME
        
         End If
        
@@ -18206,7 +18214,7 @@ Private Sub Form_Load()
 1292    EID.Enabled = True
 1294    PEL.Enabled = True
 
-1296    DTPicker1.Value = Now
+1296    dtpicker1.Value = Now
 
         HMERPARAD.Value = Now
         ORAPARAD.Value = Now
@@ -18517,21 +18525,21 @@ Sub PAR2SHOWING()
 
         ' Dim par2 As par2
 Dim m_ID As String
-TDBGrid1.Col = 8
- TDBGrid1.Col = 9: ' M_ID = Left(TDBGrid1.Text, 8)
-m_ID = TDBGrid1.columns("ID_NUM")
+tdbgrid1.Col = 8
+ tdbgrid1.Col = 9: ' M_ID = Left(TDBGrid1.Text, 8)
+m_ID = tdbgrid1.columns("ID_NUM")
 
 
 
 
-100     TDBGrid1.Col = 1
+100     tdbgrid1.Col = 1
         'Set par2 = New par2
 
-102     PAR2.Text1 = Left(TDBGrid1.Text, 8)
+102     PAR2.Text1 = Left(tdbgrid1.Text, 8)
 
-104     TDBGrid1.Col = 0
-106     PAR2.DTPicker1 = CDate(TDBGrid1.Text)
-108     PAR2.DTPicker2 = CDate(TDBGrid1.Text)
+104     tdbgrid1.Col = 0
+106     PAR2.dtpicker1 = CDate(tdbgrid1.Text)
+108     PAR2.dtpicker2 = CDate(tdbgrid1.Text)
 
 110     PAR2.CallFromOther.Caption = "1"
 
@@ -18842,10 +18850,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
         '
         '
 
-100     If LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-102         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+100     If LASTTIMOL.Recordset.sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+102         LASTTIMOL.Recordset.sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-104         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+104         LASTTIMOL.Recordset.sort = "[" & tdbgrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
         '<EhFooter>
@@ -18878,7 +18886,7 @@ Private Sub TDBGrid1_MouseUp(Button As Integer, _
             'MDIForm1.runt.Item(0).Caption = "Παρουσίαση"
             'MDIForm1.runt.Item(1).Caption = "Διόρθωση"
             On Error Resume Next
-102         TDBGrid1.SetFocus
+102         tdbgrid1.SetFocus
 104         Call Me.PopupMenu(MDIForm1.par1menu)
             ' LASTTIMOL.Refresh
 
@@ -18951,9 +18959,9 @@ Public Sub epanAkyr()
             Dim c, D, SX As String
 
 
-112             PAR1.TDBGrid1.Col = 7  'id_num  ακυρωτικου
+112             PAR1.tdbgrid1.Col = 7  'id_num  ακυρωτικου
 
-114             D = TDBGrid1.Text
+114             D = tdbgrid1.Text
                 ' d = InputBox("δωσε τον αριθμό του id", 0)
 
 116             SX = GET_CVALUE("select ISNULL(SXETMARK,'00') AS SXX from TIM WHERE ID_NUM=" + D)
@@ -18964,7 +18972,7 @@ Public Sub epanAkyr()
                 
                 
                 
-                If Len(TDBGrid1.columns("ENTITYMARK")) > 10 Then
+                If Len(tdbgrid1.columns("ENTITYMARK")) > 10 Then
                    MsgBox ("ΕΙΝΑΙ ΗΔΗ ΜΕ ΜΑΡΚ")
                    'If 1 = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'") Then
                    
@@ -18972,7 +18980,7 @@ Public Sub epanAkyr()
                     'End If
                 End If
                 Dim N As Integer
-                N = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'")
+                N = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(tdbgrid1.columns(1), 1) + "'")
                 
                 If N = 1 Then
                    MsgBox " ΔΕΝ ΕΙΝΑΙ ΑΚΥΡΩΤΙΚΟ. KANTE ΑΠΟΣΤΟΛΗ MYDATA"
@@ -19034,7 +19042,7 @@ Private Sub Text1_KeyPress(KeyAscii As Integer)
 102         KeyAscii = 0
 
 104         If POLAGOR.Text = POLAGOR.List(0) Then
-106             DTPicker1.SetFocus
+106             dtpicker1.SetFocus
             Else
 108             selectPEL.SetFocus
             End If
@@ -19914,7 +19922,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 172                     a = "insert INTO SN (ARIU,KOD,HME,KODPEL,ATIM) VALUES ("
 174                     a = a + "'" + snc1 + "',"
 176                     a = a + "'" + Grid1.TextMatrix(Grid1.row, f_k) + "',"
-178                     a = a + "'" + Format(DTPicker1.Value, "MM/DD/YYYY") + "',"
+178                     a = a + "'" + Format(dtpicker1.Value, "MM/DD/YYYY") + "',"
 180                     a = a + "'" + Text2(0).Text + "',"
 182                     a = a + "'" + Right(PARAS.Text, 1) + Right("00000" + Trim(Text1.Text), f_psifia_atim) + SEIRA.Text + "')"
 184                     Gdb.Execute a, snN1
@@ -20000,7 +20008,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 256         UGridEdit.kod.Caption = EID.Recordset("KOD")
 258         UGridEdit.ono.Caption = EID.Recordset("ONO")
 260         UGridEdit.CH1.Caption = EID.Recordset("CH1")
-262         UGridEdit.hme.Caption = Format(DTPicker1.Value, "DD/MM/YYYY")
+262         UGridEdit.hme.Caption = Format(dtpicker1.Value, "DD/MM/YYYY")
 
 264         UGridEdit.SHOW 1
 
@@ -20201,7 +20209,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 432             If Val(Grid1.TextMatrix(Grid1.row, f_p)) > 0 Then
                  
                     Dim M_FOROS As Single
-434                 If Month(DTPicker1.Value) > 10 Or Month(DTPicker1.Value) < 3 Then
+434                 If Month(dtpicker1.Value) > 10 Or Month(dtpicker1.Value) < 3 Then
 436                     M_FOROS = 0.5 * gVal(Grid1.TextMatrix(Grid1.row, f_p))
                     Else
 438                     M_FOROS = 2 * gVal(Grid1.TextMatrix(Grid1.row, f_p))
@@ -22127,7 +22135,7 @@ Function Gefyroma(g_hme, g_atim, g_eidoskpe, gfkod, gfaj, m_r, mgre)
 184     fSCR.addObject "abat2", abat2
 
         'fSCR.AddObject "cMEM", CMEM
-186     fSCR.addObject "mactext", MACtEXT
+186     fSCR.addObject "mactext", mactext
 
         Dim debug1
 
@@ -22399,7 +22407,7 @@ Function printCrystal(MATIM, char_date)
 
         Dim cENTITYMARK As String
 
-        Dim sql         As String, fDB As Database, D1 As Date, d2 As Date
+        Dim sql         As String, fDB As Database, d1 As Date, d2 As Date
 
         Dim synt        As String, DB As Database
 
@@ -22450,12 +22458,12 @@ Function printCrystal(MATIM, char_date)
 
         ' ΑΝ ΕΙΝΑΙ ΑΚΥΡΩΤΙΚΟ ΝΑ ΕΧΕΙ ΤΗΝ ΗΜΕΡΟΜΗΝΙΑ ΤΗΣ ΕΙΣΟΔΟΥ GWORKDAY
 104     If f_Akyr Then
-106         D1 = gWorkDay
+106         d1 = gWorkDay
         Else
-108         D1 = char_date
+108         d1 = char_date
         End If
 
-110     d2 = DateAdd("d", 1, D1)
+110     d2 = DateAdd("d", 1, d1)
 
 112     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
@@ -22591,7 +22599,7 @@ Function printCrystal(MATIM, char_date)
 
         End If
  
-178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
         '700     DB.Execute "delete *from tim"
 180     Rtim.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
         
@@ -22602,10 +22610,10 @@ Function printCrystal(MATIM, char_date)
 
 182     CURL = CNull(Rtim!QRURL)
 184     Set Image2.Picture = QRCodegenBarcode(CURL)
-186     PICTURE1.Picture = QRCodegenBarcode(CURL, 0, QRCodegenEcc_LOW, 1, 40, , , 500) ' Edited by Saturnian
+186     Picture1.Picture = QRCodegenBarcode(CURL, 0, QRCodegenEcc_LOW, 1, 40, , , 500) ' Edited by Saturnian
 188     Clipboard.Clear ' Edited by Saturnian
 190     Clipboard.SetData QRCodegenBarcode(CURL, 0, QRCodegenEcc_LOW, 1, 40, , , 500) ' Edited by Saturnian
-192     SavePicture PICTURE1.Picture, "C:\MERCVB\FOTOp.BMP"
+192     SavePicture Picture1.Picture, "C:\MERCVB\FOTOp.BMP"
 
         Dim stm             As ADODB.Stream
 
@@ -22977,8 +22985,8 @@ Function printCrystal(MATIM, char_date)
 '462         R("C2") = Rtim("C2")
 464         R("C1") = Rtim("C1")
           
-466         If Len(R!C1) = 0 Then
-468             R!C1 = "  "
+466         If Len(R!c1) = 0 Then
+468             R!c1 = "  "
             End If
 
 470         R("C13") = Rtim("C13")
@@ -23339,7 +23347,7 @@ Function printCrystal(MATIM, char_date)
 730             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
               
 732                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 736                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
                         ' e_pros = -1
@@ -23380,7 +23388,7 @@ Function printCrystal(MATIM, char_date)
 
                     ' Dim gia_akyr_tim As String
 770                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 774                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
 776                     e_pros = -1
@@ -23899,7 +23907,7 @@ Function printCrystal(MATIM, char_date)
                     On Error Resume Next
 
 1138                DB.Execute "select * into AS" + MATIM + " from EGGtim WHERE FPA>0"
-1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
+1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
                    
                 End If
          
@@ -23934,7 +23942,7 @@ Function printCrystal(MATIM, char_date)
 1150    DB.Execute "update MEM SET C2='" + SKOPOS.Text + "'"
         '  fmem("c2") = SKOPOS.Text    'skopos
 
-1152    DB.Execute "update MEM SET c3='" + FORTOSH.Text + "'"  'fortosi
+1152    DB.Execute "update MEM SET c3='" + fortosh.Text + "'"  'fortosi
 
 1154    DB.Execute "update MEM SET c4='" + PROORISMOS.Text + "'" 'paradosi
 
@@ -23945,7 +23953,7 @@ Function printCrystal(MATIM, char_date)
         'End If
 
 1156    DB.Execute "update MEM SET banks='" + Trim(Combo4.Text) + "'" 'τροποσ πληρωμης
-1158    DB.Execute "update MEM SET pict='" + Time$ + "'"
+1158    DB.Execute "update MEM SET pict='" + time$ + "'"
 1160    DB.Execute "update MEM SET par1='" + Text1.Text + "'"
 
         DB.Execute "update MEM SET par9='" + ENTITYUID + "'"
@@ -23954,7 +23962,7 @@ Function printCrystal(MATIM, char_date)
 1162    DB.Execute "update MEM SET par2 ='" + SEIRA.Text + "'"
 1164    DB.Execute "update MEM SET par3='" + AYTOKINHTO.Text + "'"
 1166    DB.Execute "update MEM SET par19='" + PEL.Recordset("PLAISIO") + "'" 'METAFORIKH ETAIREIA PELATH
-1168    DB.Execute "update MEM SET par6='" + Format(DTPicker1.Value, "dd/mm/yyyy") + "'"
+1168    DB.Execute "update MEM SET par6='" + Format(dtpicker1.Value, "dd/mm/yyyy") + "'"
 
 1170    DB.Execute "update MEM SET PAR7='" + mNomisma + "'"
 
@@ -24223,7 +24231,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         '</EhHeader>
 
-        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -24243,8 +24251,8 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         On Error GoTo MHNYMA
 
-100     D1 = DTPicker1.Value
-102     d2 = DateAdd("d", 1, D1)
+100     d1 = dtpicker1.Value
+102     d2 = DateAdd("d", 1, d1)
 
         'Set db = OpenDatabase("c:\mercvb\reports\reports.mdb")
         'If gConnect = "Access" Then
@@ -24351,7 +24359,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         
 142     sql = sql + "SPACE(100) AS MEMO, SPACE(40) AS C1,SPACE(40) AS C2,SPACE(40) AS C3,SPACE(40) AS C4, SPACE(40) AS PAR1,SPACE(40) AS PAR2,SPACE(40) AS PAR3,SPACE(40) AS PAR4,SPACE(40) AS PAR5,SPACE(40) AS PAR6,SPACE(40) AS PICT,SPACE(40) AS BANKS "
 
-144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
 146     Gdb.Execute sql
 
@@ -24413,15 +24421,15 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         'fmem.Edit
 168     fmem("c1") = Left(f_paras, Len(f_paras) - 1)    'parastatiko
 170     fmem("c2") = SKOPOS.Text    'skopos
-172     fmem("c3") = FORTOSH.Text    'fortosi
+172     fmem("c3") = fortosh.Text    'fortosi
 174     fmem("c4") = PROORISMOS.Text    'paradosi
 176     fmem("banks") = mID(Combo4.Text, 3, 30)  'τροποσ πληρωμης
-178     fmem("pict") = Left(Time$, 5)
+178     fmem("pict") = Left(time$, 5)
 180     fmem("par1") = Text1.Text
 182     fmem("par2") = SEIRA.Text
 184     fmem("par3") = AYTOKINHTO.Text
 186     fmem("par5") = MATIM2
-188     fmem("par6") = Format(DTPicker1.Value, "dd/mm/yyyy")
+188     fmem("par6") = Format(dtpicker1.Value, "dd/mm/yyyy")
 
 190     fmem("MEMO") = parat.Text
         'If Combo4.Text = Combo4.List(0) Then ' METRITOIS
@@ -24497,7 +24505,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         Dim PEL    As Recordset
 
-        Dim EGGTIM As Recordset
+        Dim eggtim As Recordset
 
         Dim m_entol_ektyp
 
@@ -24530,7 +24538,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 116     fSCR.addObject "cTIM", CTIM
 118     fSCR.addObject "cEGGTIM", cEGGTIM
 120     fSCR.addObject "cMEM", CMEM
-122     fSCR.addObject "mactext", MACtEXT
+122     fSCR.addObject "mactext", mactext
 
         'Set db = OpenDatabase(gDir, False, False, gConnect)
         'fSCR.ExecuteStatement "CPEL.DATABASENAME=" + Chr$(34) + gDir + Chr$(34)
@@ -25181,7 +25189,7 @@ Function mac(ByVal s As String) As String
         Dim X
 
         'On Error GoTo mac_Err
-100     MACtEXT.Text = "   "
+100     mactext.Text = "   "
 
         On Error GoTo err2
 
@@ -25189,9 +25197,9 @@ Function mac(ByVal s As String) As String
 104     fSCR.ExecuteStatement X
 
 106     If F928 = 1 Then
-108         mac = MACtEXT.Text
+108         mac = mactext.Text
         Else
-110         mac = to437(MACtEXT.Text)
+110         mac = to437(mactext.Text)
         End If
 
         Exit Function
@@ -25494,7 +25502,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim EGGTIM As Recordset
+        Dim eggtim As Recordset
 
         Dim m_entol_ektyp
 
@@ -25525,7 +25533,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 118     fSCR.addObject "cTIM", CTIM
 120     fSCR.addObject "DOK", DOK    'cEGGTIM
 122     fSCR.addObject "cMEM", CMEM
-124     fSCR.addObject "mactext", MACtEXT
+124     fSCR.addObject "mactext", mactext
 
 126     DOK.Recordset.MoveFirst
 
@@ -26067,11 +26075,11 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
 108     MIDENIZO_GRID
 
-110     TDBGrid1.Col = 4
-112     MKOD = TDBGrid1.Text
+110     tdbgrid1.Col = 4
+112     MKOD = tdbgrid1.Text
 
-114     TDBGrid1.Col = 1
-116     ATIM = TDBGrid1.Text
+114     tdbgrid1.Col = 1
+116     ATIM = tdbgrid1.Text
 
 
 
@@ -26117,8 +26125,8 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
 
         Next
 
-150     TDBGrid1.Col = 0
-152     DTPicker1.Value = CDate(TDBGrid1.Text)
+150     tdbgrid1.Col = 0
+152     dtpicker1.Value = CDate(tdbgrid1.Text)
 
 154     If k = PARAS.ListCount Then Exit Sub
         ' βρισκω τις παραμετρους του παραστατικού
@@ -26152,7 +26160,7 @@ Sub METASX_SE_TIM(ByVal mpar As Integer, _
      
 178     Combo8.ListIndex = Val(Left(RR!EIDPAR, 2))
      
-180     DTPicker1.Value = RR!hme
+180     dtpicker1.Value = RR!hme
      
 182     F_ID_NUM_DIOR = m_ID
      
@@ -26617,14 +26625,14 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 168     SKOPOS.Text = CNull(r3!SKOPOS)
 170     PROORISMOS.Text = CNull(r3!PROOR)
-172     FORTOSH.Text = CNull(r3!FORTOSH)
+172     fortosh.Text = CNull(r3!fortosh)
 174     AYTOKINHTO.Text = CNull(r3!AYTOK)
 176     parat.Text = CNull(r3!parat)
 
 178     Combo4.Text = Combo4.List(0)
         Dim k As Integer
    
-180     DTPicker1.Value = Now
+180     dtpicker1.Value = Now
 182     Text1.Text = aritm2
 
         ' For k = 0 To Combo4.ListCount - 1
@@ -26667,7 +26675,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 214     rakyr.Close
 
 216     If m_FORM_EKTY >= 90 And m_FORM_EKTY <= 99 Then     ' φορμα τύπου f90.txt dot matrix '====================================
-218         DUM = print_timol(f_matim, CDate(DTPicker1.Value))
+218         DUM = print_timol(f_matim, CDate(dtpicker1.Value))
 220     ElseIf m_FORM_EKTY = 10 Or m_FORM_EKTY = 11 Then
 222         CrystalReport1.ReportFileName = "C:\Mercvb\reports\timol1.rpt"
 224         Ucr9print.printingCR9 F_EKTYPOTHS, CrystalReport1.ReportFileName
@@ -26697,7 +26705,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 250     SKOPOS.Text = SKOPOS.List(0) ' ""   CNull(r3!SKOPOS)
 252     PROORISMOS.Text = PROORISMOS.List(0) ' CNull(r3!PROOR)
-254     FORTOSH.Text = FORTOSH.List(0) ' CNull(r3!FORTOSH)
+254     fortosh.Text = fortosh.List(0) ' CNull(r3!FORTOSH)
 256     AYTOKINHTO.Text = AYTOKINHTO.List(0) 'CNull(r3!AYTOK)
 258     parat.Text = "" ' CNull(r3!parat)
 
@@ -26857,14 +26865,14 @@ Dim ubl As String
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     FORTOSH.Text = CNull(r3!FORTOSH)
+194     fortosh.Text = CNull(r3!fortosh)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 
 198     Combo4.Text = Combo4.List(0)
         Dim k As Integer
    
-200     DTPicker1.Value = Now
+200     dtpicker1.Value = Now
              ' τον αριθμο που θα παρει  το ακυρωτικο  π.χ.  186
 202     Text1.Text = aritm2
 
@@ -27160,14 +27168,14 @@ End If
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     FORTOSH.Text = CNull(r3!FORTOSH)
+194     fortosh.Text = CNull(r3!fortosh)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 
 198     Combo4.Text = Combo4.List(0)
         Dim k As Integer
    
-200     DTPicker1.Value = Now
+200     dtpicker1.Value = Now
 202     Text1.Text = aritm2
 
         ' For k = 0 To Combo4.ListCount - 1
@@ -27601,7 +27609,7 @@ End Sub
   Public Sub toMydata()
   Dim m_ID_NUM As String
   
-  m_ID_NUM = TDBGrid1.columns("ID_NUM") ' ή TDBGrid1.Col = 7: TDBGrid1.Text
+  m_ID_NUM = tdbgrid1.columns("ID_NUM") ' ή TDBGrid1.Col = 7: TDBGrid1.Text
   
 
 536         If f_MYDATAcont = 0 Then
@@ -27610,11 +27618,11 @@ End Sub
             Else
                 Dim stelnei As Integer
                 Dim MATIM As String
-                TDBGrid1.Col = 1
-                MATIM = TDBGrid1.Text
+                tdbgrid1.Col = 1
+                MATIM = tdbgrid1.Text
                 Dim MARK As String
-                TDBGrid1.Col = 8
-                MARK = TDBGrid1.columns("ENTITYMARK")
+                tdbgrid1.Col = 8
+                MARK = tdbgrid1.columns("ENTITYMARK")
                 
                 
                 
@@ -27690,13 +27698,13 @@ Public Sub menu_ektyp_par(ByVal Ektyp1Email2 As Integer)
 
         Dim c As String
 
-        PAR1.TDBGrid1.Col = 2
-        c = Replace(PAR1.TDBGrid1.Text, ",", ".")
+        PAR1.tdbgrid1.Col = 2
+        c = Replace(PAR1.tdbgrid1.Text, ",", ".")
         
         
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
         
         
         PAR1.METASX_SE_TIM 99, c, m_ID, False, 0
@@ -27744,8 +27752,8 @@ Public Sub menu_diak_status()
 
      Dim c As String
 
-        PAR1.TDBGrid1.Col = 8
-        c = Replace(PAR1.TDBGrid1.Text, "ΔΟΚ", "")
+        PAR1.tdbgrid1.Col = 8
+        c = Replace(PAR1.tdbgrid1.Text, "ΔΟΚ", "")
 
        ' MARK = c '  InputBox("δωσε τo mark", "μαρκ")
 
@@ -27775,8 +27783,8 @@ Public Sub menuParadosis()
 Dim qrl As String: qrl = "https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=vZGdPC4qtv61lfj3tMcBWCVzle6HNmunsN6JjmX4e9gLqhLIIIUNGzIx6YzWdXmeg0fsTOtxriHc%2bCRo3shXRfuFVdEayG8L9Xt9%2fSH8HaE%3d"
 
            Dim m_ID As Long
-         PAR1.TDBGrid1.Col = 7
-       m_ID = Val(PAR1.TDBGrid1.Text)
+         PAR1.tdbgrid1.Col = 7
+       m_ID = Val(PAR1.tdbgrid1.Text)
 
 '"https://mydataapidev.aade.gr/TimologioQR/QRInfo?q=NziZ2b5egY41ooVijo%2fjtSMRj7CvuLB%2fxG1YnEyrsSdlsH7ef9ZcgJZCLIFhuHMUa6Cp8pQjpI4ErLYp4fpsmjaTE7asa34Phn2SIB5cM4c%3d"
 'https://mydataapidev.aade.gr/RegisterTransfer
@@ -27803,8 +27811,8 @@ Dim c, D, SX As String
 
 
         Dim midnum As String:
-           PAR1.TDBGrid1.Col = 7
-       midnum = Val(PAR1.TDBGrid1.Text)
+           PAR1.tdbgrid1.Col = 7
+       midnum = Val(PAR1.tdbgrid1.Text)
         
        ' midnum = (tdbgrid1.CurrentRow.cells(7).Value)
         'midnum = InputBox("id_num")

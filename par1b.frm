@@ -195,6 +195,16 @@ Begin VB.Form par1b
       EndProperty
       _Version        =   393216
    End
+   Begin VB.Label AJIA 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "0"
+      Height          =   180
+      Left            =   7560
+      TabIndex        =   8
+      Top             =   6120
+      Width           =   75
+   End
    Begin VB.Label Label1 
       Caption         =   "0"
       Height          =   375
@@ -217,24 +227,24 @@ Private Sub chkPalia_Click()
         f_PALIAXRONIA = Trim(FINDPARAMETROI(1, "PAR1", "F_PALIAXRONIA", "2005", "ц.18 DSN пакиас вяомиас"))
         Dim GTGDB As New ADODB.Connection
         GTGDB.Open gConnect + ";DATABASE=" + f_PALIAXRONIA
-        Adodc1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
+        ADODC1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
         
      Else
-        Adodc1.ConnectionString = gConnect
+        ADODC1.ConnectionString = gConnect
         'GTGDB.Open gConnect
      End If
 
 
-    Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
+    ADODC1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
    ' Adodc1.ConnectionString = gConnect
-   Adodc1.Refresh
+   ADODC1.Refresh
    
-   Do While Not Adodc1.Recordset.EOF
-        List1.AddItem Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + CNull(Adodc1.Recordset("ENTITYMARK")) + "; " + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
+   Do While Not ADODC1.Recordset.EOF
+        List1.AddItem ADODC1.Recordset("atim") + " ; " + ADODC1.Recordset("HMEP") + " ;" + CNull(ADODC1.Recordset("ENTITYMARK")) + "; " + Format(ADODC1.Recordset("сум.аниа"), "#####0.00")
    
    
    
-        Adodc1.Recordset.MoveNext
+        ADODC1.Recordset.MoveNext
    
    Loop
    
@@ -248,10 +258,10 @@ Private Sub Command1_Click()
 
 '  PAR1.par11Value.Caption = "* " + Trim(Adodc1.Recordset("atim")) + " " + Format(Adodc1.Recordset("hmep"), "DD/mm/yyyy") + " " + Trim$(ID_NUM)
    
-   Dim C As String
-   C = CNull(Adodc1.Recordset("ENTITYMARK"))
-   If Left(C, 3) = "дой" Then
-       C = mID(C, 4, 15)
+   Dim c As String
+   c = CNull(ADODC1.Recordset("ENTITYMARK"))
+   If Left(c, 3) = "дой" Then
+       c = mID(c, 4, 15)
    End If
    
   On Error Resume Next
@@ -263,11 +273,11 @@ Private Sub Command1_Click()
       For N = 0 To List1.ListCount - 1
         'Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + Adodc1.Recordset("ENTITYMARK") + " ;" + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
         If List1.Selected(N) Then
-            C = Split(List1.List(N), ";")(2)
-            If Left(C, 3) = "дой" Then
-               C = mID(C, 4, 15)
+            c = Split(List1.List(N), ";")(2)
+            If Left(c, 3) = "дой" Then
+               c = mID(c, 4, 15)
             End If
-            C0 = C0 + C + ";"
+            C0 = C0 + c + ";"
         End If
       Next
   
@@ -314,19 +324,20 @@ Private Sub Form_Paint()
    
 
 
+Dim MAJI As String
 
-   
+   MAJI = Replace$(AJIA.Caption, ",", ".")
 
-   Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
-   Adodc1.ConnectionString = gConnect
-   Adodc1.Refresh
+   ADODC1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [сум.аниа],ENTITYMARK FROM TIM WHERE AJI>=" + MAJI + " AND  KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
+   ADODC1.ConnectionString = gConnect
+   ADODC1.Refresh
    
-   Do While Not Adodc1.Recordset.EOF
-        List1.AddItem Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + CNull(Adodc1.Recordset("ENTITYMARK")) + "; " + Format(Adodc1.Recordset("сум.аниа"), "#####0.00")
+   Do While Not ADODC1.Recordset.EOF
+        List1.AddItem ADODC1.Recordset("atim") + " ; " + ADODC1.Recordset("HMEP") + " ;" + CNull(ADODC1.Recordset("ENTITYMARK")) + "; " + Format(ADODC1.Recordset("сум.аниа"), "#####0.00")
    
    
    
-        Adodc1.Recordset.MoveNext
+        ADODC1.Recordset.MoveNext
    
    Loop
    
