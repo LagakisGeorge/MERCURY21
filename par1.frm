@@ -1,11 +1,11 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
@@ -200,21 +200,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "ΗΜΕΡ/ΩΡΑ ΠΡΔ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblΗΜΕΡΩΡΑ"
-      Tab(1).Control(1)=   "LABEL30"
-      Tab(1).Control(2)=   "ORAPARAD"
-      Tab(1).Control(3)=   "HMERPARAD"
+      Tab(1).Control(0)=   "HMERPARAD"
+      Tab(1).Control(1)=   "ORAPARAD"
+      Tab(1).Control(2)=   "LABEL30"
+      Tab(1).Control(3)=   "lblΗΜΕΡΩΡΑ"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdypolo"
-      Tab(2).Control(1)=   "AJIA2PARAKR"
-      Tab(2).Control(2)=   "Combo2OnomaParak"
+      Tab(2).Control(0)=   "Label27"
+      Tab(2).Control(1)=   "Label28"
+      Tab(2).Control(2)=   "LABEL31"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "LABEL31"
-      Tab(2).Control(5)=   "Label28"
-      Tab(2).Control(6)=   "Label27"
+      Tab(2).Control(4)=   "Combo2OnomaParak"
+      Tab(2).Control(5)=   "AJIA2PARAKR"
+      Tab(2).Control(6)=   "cmdypolo"
       Tab(2).ControlCount=   7
       Begin VB.CommandButton elegxosAFM 
          Caption         =   "Ελεγχος"
@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   294387713
+         Format          =   136249345
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   294387714
+         Format          =   136249346
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   295305217
+      Format          =   291176449
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3845,7 +3845,7 @@ Private Sub b_akyr_Click()
              MDIForm1.StatusBar1.Panels(5).Text = ""
 
             '--------------------  initialization ----------------------------
-108         synolo.Caption = ""
+108         Synolo.Caption = ""
 110         sfpa.Caption = ""
 112         SynoloG.Caption = ""
 
@@ -4436,7 +4436,7 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
             End If
             
         Else
-338         If Val(synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
+338         If Val(Synolo.Caption) > 500 And Combo4.Text = Combo4.List(0) Then
                                     'm500 =¨
                  
                
@@ -6030,7 +6030,7 @@ Sub MIDENIZO_GRID()
 
         Dim L As Long
 
-100     synolo.Caption = ""
+100     Synolo.Caption = ""
 102     sfpa.Caption = ""
 104     SynoloG.Caption = ""
 
@@ -6381,7 +6381,7 @@ Sub enhm_eggtim(ByRef m_ID_NUM As Long, ByVal isAkyrotiko)
 
         '</EhHeader>
 
-        Dim k, L, m, n As Integer
+        Dim k, L, m, N As Integer
 
         Dim MHKOS As Integer
 
@@ -6655,7 +6655,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 272         SQLTIM = SQLTIM + "'" + Left(f_matim, f_psifia_atim + 2) + PEL.Recordset("kod") + "',"    ' KEY
         End If
 
-274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
+274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(Time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
 
         Dim NTIM As Long
 
@@ -7288,8 +7288,8 @@ ADD_RECORD:
   
 786         sql = sql + ") " 'ID_NUM
 
-788         n = 0
-790         n = GDBEXE("ENHM_EGGTIM", sql)  'Gdb.Execute sql, N
+788         N = 0
+790         N = GDBEXE("ENHM_EGGTIM", sql)  'Gdb.Execute sql, N
               
             ' η καθε παρτιδα παίρνει και την σειρα του ειδους
 792         If f_IS_PARTIDES = 1 Then
@@ -7363,7 +7363,7 @@ ADD_RECORD:
 
             '==========================================================================================
 
-844         If F_TRANS = 1 And n = 0 Then
+844         If F_TRANS = 1 And N = 0 Then
 846             Gdb.RollbackTrans
 848             F_TRANS = -1    'FLAG GIA NA MHN SYNEXISEI ENHMEROSI PELATI
 850             MsgBox "Λάθος στην σειρά " + Format(k, "###") + " στoν κωδικό " + Grid1.TextMatrix(k, f_k) + Chr(13) + " δεν κατεχωρήθη"
@@ -7432,10 +7432,10 @@ ADD_RECORD:
 896             sql = sql + Replace(str(Val(Grid1.TextMatrix(k, f_p))), ",", ".") + ","  'XRE
 898             sql = sql + "0,"   'PIS
 900             sql = sql + "'" + Grid1.TextMatrix(k, f_k) + "')"  'KODE
-902             n = 0
-904             n = GDBEXE("ENHM_EGGTIM", sql)  'Gdb.Execute sql, N
+902             N = 0
+904             N = GDBEXE("ENHM_EGGTIM", sql)  'Gdb.Execute sql, N
 
-906             If F_TRANS = 1 And n = 0 Then
+906             If F_TRANS = 1 And N = 0 Then
 908                 Gdb.RollbackTrans
 910                 F_TRANS = -1    'FLAG GIA NA MHN SYNEXISEI ENHMEROSI PELATI
 912                 MsgBox "Λάθος στην σειρά (ΕΝΔΟΔΙΑΚΙΝΗΣΗ) " + Format(k, "###") + " στoν κωδικό " + Grid1.TextMatrix(k, f_k) + Chr(13) + " δεν κατεχωρήθη"
@@ -7678,13 +7678,13 @@ Sub enhm_apot()
                         
 190                     If kostologhsh And F_STADIO = 4 Then  ' ' 1=ΠΡΟΣΦ 2=ΠΑΡΑΓΓ 3=ΔΑ 4=ΤΙΜ.ΠΟΛ 5=ΕΝΔΟΔΙΑΚΙΝΙΣΙ
 192                         PAR11.Label10 = EID.Recordset("XTI")
-194                         PAR11.label11 = NeaTim
+194                         PAR11.Label11 = NeaTim
 
 196                         PAR11.ltiproekptosis = Grid1.TextMatrix(k, F_T)
 198                         PAR11.UES = EID.Recordset("UES")
 
-200                         If Val(synolo.Caption) <> 0 Then
-202                             PAR11.Label4 = 100 * Val(metaf) / Val(synolo)
+200                         If Val(Synolo.Caption) <> 0 Then
+202                             PAR11.Label4 = 100 * Val(metaf) / Val(Synolo)
                             End If
 
 204                         PAR11.POSO.Caption = p
@@ -7725,8 +7725,8 @@ Sub enhm_apot()
 
 238                         If kostologhsh Then  ' μην τυχον και ακυρωσε την κοστολογηση εν τω μεταξύ
 
-240                             If Val(synolo.Caption) <> 0 Then
-242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(synolo)
+240                             If Val(Synolo.Caption) <> 0 Then
+242                                 EID.Recordset("POS_KERD3") = 100 * Val(metaf) / Val(Synolo)
                                 End If
 
 244                             If IsNull(EID.Recordset("lastupd")) Then
@@ -7970,7 +7970,7 @@ Sub enhm_pel(ByVal m_suma As Single, ByVal id_num As Long)
 
         Dim SQLT As String, TYP As Single
 
-        Dim n As Long
+        Dim N As Long
 
         Dim X As String
 
@@ -8008,7 +8008,7 @@ Sub enhm_pel(ByVal m_suma As Single, ByVal id_num As Long)
 126     SQL22 = "UPDATE TIM  SET EKPT5 =" + Replace(Format(TYP, "###########0.00"), ",", ".")
 128     SQL22 = SQL22 + " WHERE  ID_NUM=" + str(id_num)
         'HME='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND ATIM='" + f_matim + "'"
-130     n = GDBEXE("ENHM_PEL", SQL22)  'Gdb.Execute SQL22, N
+130     N = GDBEXE("ENHM_PEL", SQL22)  'Gdb.Execute SQL22, N
 
 132     Gdb.Execute "UPDATE PEL SET ENERGOS=1,TYP=" + Replace(str(TYP), ",", ".") + " WHERE  EIDOS='" + PEL.Recordset("EIDOS") + "' AND KOD='" + PEL.Recordset("kod") + "'"
     
@@ -8514,7 +8514,7 @@ Private Sub calcula_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(ComboPARAKRATISI.Text, 2), ".", ""))
 
-118     parakratisiT.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     parakratisiT.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -9082,7 +9082,7 @@ Private Sub cmdypolo_Click()
  
 116     D = GET_NVALUE("SELECT ISNULL(TIMH,0) FROM PINAKES WHERE TYPOS=" + mtyp + " AND AYJON=" + Replace(Left(Combo2OnomaParak.Text, 2), ".", ""))
 
-118     AJIA2PARAKR.Text = Replace(str(Round(gVal(synolo.Caption) * D / 100, 2)), ",", ".")
+118     AJIA2PARAKR.Text = Replace(str(Round(gVal(Synolo.Caption) * D / 100, 2)), ",", ".")
 
 End Sub
 
@@ -10305,7 +10305,7 @@ Sub WESTNET_import()
 188         Line Input #1, a$
             ' Line Input #1, a$
 
-            Dim n As Integer
+            Dim N As Integer
 
 190         For k = 1 To 20
 
@@ -11326,8 +11326,8 @@ Private Sub Command3_Click()
         Else
         
 108         If f_KENTRA_ADYNATISMATOS = 1 Then
-110             If kentroAdyn.ListIndex = 1 Then
-112                 fpelat4.kentroAdyn.ListIndex = 1
+110             If KentroAdyn.ListIndex = 1 Then
+112                 fpelat4.KentroAdyn.ListIndex = 1
                 End If
             End If
         
@@ -11335,7 +11335,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.Data1.ConnectionString = gConnect
+116     fpelat4.data1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -11376,7 +11376,7 @@ Private Sub Command4_Click()
 
         '</EhHeader>
 
-        Dim ko As String, AJIA As String, n As Integer, TYPOS As Integer
+        Dim ko As String, AJIA As String, N As Integer, TYPOS As Integer
 
 100     ko = InputBox("δωσε το barcode του είδους ", , "")
 102     AJIA = InputBox("δωσε αξία ", , "")
@@ -11424,7 +11424,7 @@ Private Sub Command4_Click()
                 '     Gdb.Execute sql, N
 
 130             sql = "UPDATE PEL SET EPO='" + Trim(R("CH2")) + "',DIE='" + Trim(R("CH3")) + "',EPA='" + Trim(R("CH4")) + "',THL='" + Left(Trim(R("CH5")), 10) + "' WHERE EIDOS='e' AND KOD='" + Trim(R("CH6")) + "'"
-132             Gdb.Execute sql, n
+132             Gdb.Execute sql, N
 
             End If
 
@@ -12193,8 +12193,8 @@ Private Sub Command6_Click()
         Else
 
 106         If f_KENTRA_ADYNATISMATOS = 1 Then
-108             If kentroAdyn.ListIndex = 1 Then
-110                 fff.kentroAdyn.ListIndex = 1
+108             If KentroAdyn.ListIndex = 1 Then
+110                 fff.KentroAdyn.ListIndex = 1
                 End If
             Else
 112             fff.PELPROM.Text = "e"  'PELPROM.Text
@@ -12783,12 +12783,12 @@ Private Sub Form_Resize()
 'SSTab1.Tab = IIf(f_tab > SSTab1.Tabs - 1 Or f_tab < 0, SSTab1.Tabs - 1, f_tab)
 
 Label1(0).Left = Text2(1).Left
-label11(0).Left = Text2(2).Left
+Label11(0).Left = Text2(2).Left
  
  
  Label3(0).Top = Text2(3).Top - Label3(0).Height - 1 'ΔΙΕΥΘΥΝΣΗ
  Label1(0).Top = Label3(0).Top
-  label11(0).Top = Label3(0).Top
+  Label11(0).Top = Label3(0).Top
    Label10(0).Top = Label3(0).Top
    
    Label4.Left = PARAS.Left
@@ -12915,12 +12915,12 @@ Private Sub Grid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As
         End If
 
 116     If Shift = 1 And Button = 1 Then
-            Dim n As Integer
-118         n = Grid1.row
+            Dim N As Integer
+118         N = Grid1.row
             Dim k As Integer
   
             Dim s As Integer
-120         For k = f_SeiresTimologioy To n Step -1
+120         For k = f_SeiresTimologioy To N Step -1
 122             For s = 1 To Grid1.ColS - 1
 124                 Grid1.TextMatrix(k, s) = Grid1.TextMatrix(k - 1, s)
                 Next
@@ -12928,7 +12928,7 @@ Private Sub Grid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As
             Next
   
 126         For s = 1 To Grid1.ColS - 1
-128             Grid1.TextMatrix(n, s) = ""
+128             Grid1.TextMatrix(N, s) = ""
             Next
 130         TIMText3.Text = ""
 
@@ -17090,7 +17090,7 @@ Private Sub Form_Load()
         'Dim f_TIMES_METASX_LIAN As String
  
 390     f_LabAFM = FINDPARAMETROI(1, "PELAT2", "f_LabAFM", "ΑΦΜ /κειμ1", "Tίτλος ετικέτας ΑΦΜ")
-392     label11(0).Caption = f_LabAFM
+392     Label11(0).Caption = f_LabAFM
  
 394     Label18.Caption = "Πληρ"
 396     Label9.Caption = "Σχόλια"
@@ -17144,12 +17144,12 @@ Private Sub Form_Load()
 
         Dim R As New ADODB.Recordset
 
-442     Set Prospective = TDBGrid1.Styles.ADD("Prospective")
+442     Set Prospective = TDBGrid1.Styles.Add("Prospective")
 444     Prospective.Font.Italic = True
 446     Prospective.Font.Bold = True
 448     Prospective.ForeColor = vbBlue
         
-450     Set Distributors = TDBGrid1.Styles.ADD("Distributors")
+450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
@@ -17347,8 +17347,8 @@ Private Sub Form_Load()
 576     f_IS_PARTIDES = Val(FINDPARAMETROI(1, "APOT2", "f_IS_PARTIDES", "0", "Αν Χρησιμοποιώ παρτίδες=1"))
 
 578     If f_KENTRA_ADYNATISMATOS = 1 Then
-580         kentroAdyn.Visible = True
-582         kentroAdyn.ListIndex = 0 ' Combo3.List(0)
+580         KentroAdyn.Visible = True
+582         KentroAdyn.ListIndex = 0 ' Combo3.List(0)
         End If
 
         '  'SkinFramework1.LoadSkin "c:\mercvb\Styles\Office2007.cjstyles", ""
@@ -18081,7 +18081,7 @@ Private Sub Form_Load()
         '  Set fDB = OpenDatabase(gDir, False, False, gConnect)
         'End If
 
-1222    synolo = " "    ' ΓΙΑ ΝΑ ΜΗΝ ΒΓΑΖΕΙ NULL
+1222    Synolo = " "    ' ΓΙΑ ΝΑ ΜΗΝ ΒΓΑΖΕΙ NULL
 
         '
         'If gConnect = "Access" Then
@@ -18348,7 +18348,7 @@ Public Function find_parastat(recno As Integer, par As String, ReadWrite As Inte
 
         'MEM..MoveFirst
         'For k = 1 To 9: f_mfpa(k) = R("fpa" + LTrim(Str(k))): Next
-        Dim n As Integer
+        Dim N As Integer
 
 110     If X = 0 Then
 112         find_parastat = 0
@@ -18369,9 +18369,9 @@ Public Function find_parastat(recno As Integer, par As String, ReadWrite As Inte
 124         R.Close
 
         Else
-126         Gdb.Execute "UPDATE ARITMISI SET ARITMISI=" + Text1.Text + "  WHERE  ID=" + str(X), n
+126         Gdb.Execute "UPDATE ARITMISI SET ARITMISI=" + Text1.Text + "  WHERE  ID=" + str(X), N
 
-128         If n = 0 Then
+128         If N = 0 Then
 130             MsgBox "Προσοχή αλλάξτε την αρίθμηση από <<Βοηθητικά>> <<Παράμετροι Παραστατικών>> "
             End If
         End If
@@ -18689,12 +18689,12 @@ TR3ALLO = Replace(TR3ALLO, ",", ".")
 
         On Error Resume Next
         Dim c As String
-        Dim n As Single
+        Dim N As Single
 
-        n = Val(TR1METR) + Val(TR2KARTA) + Val(TR3ALLO)
+        N = Val(TR1METR) + Val(TR2KARTA) + Val(TR3ALLO)
 
 
-        If n < 0.03 Then
+        If N < 0.03 Then
             MsgBox ("ΔΕΝ ΒΑΛΑΤΕ ΠΟΣΟ")
             Exit Sub
         End If
@@ -18712,7 +18712,7 @@ TR3ALLO = Replace(TR3ALLO, ",", ".")
 
 
 
-        Dim C0 As String: C0 = Replace(Format(n - 0, "######0.00"), ".", ",")
+        Dim C0 As String: C0 = Replace(Format(N - 0, "######0.00"), ".", ",")
         Dim N0 As Integer
         N0 = Len(C0)
         'lekt = "ΥΠΗΡΕΣΙΕΣ ΕΛΑΙΟΤΡΙΒΕΙΟΥ"
@@ -18852,10 +18852,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
         '
         '
 
-100     If LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-102         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+100     If LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+102         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-104         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+104         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
         '<EhFooter>
@@ -18981,10 +18981,10 @@ Public Sub epanAkyr()
                    Exit Sub
                     'End If
                 End If
-                Dim n As Integer
-                n = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'")
+                Dim N As Integer
+                N = GET_NVALUE("select ISMYDATA from PARASTAT WHERE EIDOS='" + Left(TDBGrid1.columns(1), 1) + "'")
                 
-                If n = 1 Then
+                If N = 1 Then
                    MsgBox " ΔΕΝ ΕΙΝΑΙ ΑΚΥΡΩΤΙΚΟ. KANTE ΑΠΟΣΤΟΛΗ MYDATA"
                    Exit Sub
                 
@@ -19491,7 +19491,7 @@ Private Sub Text2_LostFocus(index As Integer)
 
 110     If f_KENTRA_ADYNATISMATOS = 1 Then
 112         If X = "e" Then
-114             If kentroAdyn.List(0) = kentroAdyn.Text Then
+114             If KentroAdyn.List(0) = KentroAdyn.Text Then
 116                 MSYNT = "NUM3=0 AND "
 118                 Grid1.BackColor = &HFF8080     ' mple
                     'Grid1.BackColor = &H80FF80 ' prasino
@@ -19954,7 +19954,7 @@ Private Sub timText3_KeyUp(KeyCode As Integer, Shift As Integer)
 
 200     If KeyCode = 118 And Shift = 0 And F_PosostaOTA Then    ' --------------  F7 ------ 4% ota
 
-202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(synolo.Caption, ",", ".")) * F_PosostaOTA / 100
+202         Grid1.TextMatrix(Grid1.row, F_T) = Val(Replace(Synolo.Caption, ",", ".")) * F_PosostaOTA / 100
               
         End If
 
@@ -21746,7 +21746,7 @@ Private Static Sub FindSynolo()
 
 164     s = Round(0.00001 + s, f_psifiaAjias)
 
-166     synolo.Caption = Format(s, "####0.00")
+166     Synolo.Caption = Format(s, "####0.00")
 168     F = 0
         
 170     f_strogg_FPA = 0
@@ -21801,7 +21801,7 @@ Private Static Sub FindSynolo()
 
         If F_CUSTOMER_SCREEN = 1 Then
            
-            PAR1CUSTOMER.synolo.Caption = SynoloG.Caption
+            PAR1CUSTOMER.Synolo.Caption = SynoloG.Caption
         End If
 
 
@@ -21899,7 +21899,7 @@ Private Static Sub Find_Lian_Synolo() ' ypologismos lianikhs
 
 160     s = Round(0.00001 + s, f_psifiaAjias)
 
-162     synolo.Caption = Format(s, "####0.00")
+162     Synolo.Caption = Format(s, "####0.00")
 164     F = 0: For k = 1 To 9: F = F + SumFpa(k) * g_Fpa(k) / 100: Next
 
 166     F = Round(0.00001 + F, f_psifiaAjias)
@@ -22409,7 +22409,7 @@ Function printCrystal(MATIM, char_date)
 
         Dim cENTITYMARK As String
 
-        Dim sql         As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql         As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt        As String, DB As Database
 
@@ -22460,12 +22460,12 @@ Function printCrystal(MATIM, char_date)
 
         ' ΑΝ ΕΙΝΑΙ ΑΚΥΡΩΤΙΚΟ ΝΑ ΕΧΕΙ ΤΗΝ ΗΜΕΡΟΜΗΝΙΑ ΤΗΣ ΕΙΣΟΔΟΥ GWORKDAY
 104     If f_Akyr Then
-106         d1 = gWorkDay
+106         D1 = gWorkDay
         Else
-108         d1 = char_date
+108         D1 = char_date
         End If
 
-110     d2 = DateAdd("d", 1, d1)
+110     d2 = DateAdd("d", 1, D1)
 
 112     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
@@ -22601,7 +22601,7 @@ Function printCrystal(MATIM, char_date)
 
         End If
  
-178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
         '700     DB.Execute "delete *from tim"
 180     Rtim.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
         
@@ -23349,7 +23349,7 @@ Function printCrystal(MATIM, char_date)
 730             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
               
 732                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 736                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
                         ' e_pros = -1
@@ -23390,7 +23390,7 @@ Function printCrystal(MATIM, char_date)
 
                     ' Dim gia_akyr_tim As String
 770                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 774                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
 776                     e_pros = -1
@@ -23909,7 +23909,7 @@ Function printCrystal(MATIM, char_date)
                     On Error Resume Next
 
 1138                DB.Execute "select * into AS" + MATIM + " from EGGtim WHERE FPA>0"
-1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
+1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
                    
                 End If
          
@@ -23955,7 +23955,7 @@ Function printCrystal(MATIM, char_date)
         'End If
 
 1156    DB.Execute "update MEM SET banks='" + Trim(Combo4.Text) + "'" 'τροποσ πληρωμης
-1158    DB.Execute "update MEM SET pict='" + time$ + "'"
+1158    DB.Execute "update MEM SET pict='" + Time$ + "'"
 1160    DB.Execute "update MEM SET par1='" + Text1.Text + "'"
 
         DB.Execute "update MEM SET par9='" + ENTITYUID + "'"
@@ -24233,7 +24233,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         '</EhHeader>
 
-        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -24253,8 +24253,8 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         On Error GoTo MHNYMA
 
-100     d1 = DTPicker1.Value
-102     d2 = DateAdd("d", 1, d1)
+100     D1 = DTPicker1.Value
+102     d2 = DateAdd("d", 1, D1)
 
         'Set db = OpenDatabase("c:\mercvb\reports\reports.mdb")
         'If gConnect = "Access" Then
@@ -24361,7 +24361,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         
 142     sql = sql + "SPACE(100) AS MEMO, SPACE(40) AS C1,SPACE(40) AS C2,SPACE(40) AS C3,SPACE(40) AS C4, SPACE(40) AS PAR1,SPACE(40) AS PAR2,SPACE(40) AS PAR3,SPACE(40) AS PAR4,SPACE(40) AS PAR5,SPACE(40) AS PAR6,SPACE(40) AS PICT,SPACE(40) AS BANKS "
 
-144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
 146     Gdb.Execute sql
 
@@ -24426,7 +24426,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 172     fmem("c3") = FORTOSH.Text    'fortosi
 174     fmem("c4") = PROORISMOS.Text    'paradosi
 176     fmem("banks") = mID(Combo4.Text, 3, 30)  'τροποσ πληρωμης
-178     fmem("pict") = Left(time$, 5)
+178     fmem("pict") = Left(Time$, 5)
 180     fmem("par1") = Text1.Text
 182     fmem("par2") = SEIRA.Text
 184     fmem("par3") = AYTOKINHTO.Text
@@ -26513,15 +26513,15 @@ End Sub
 'End Sub
 
 Function FIND_LISTINDEX(MCOMBO As ComboBox, MTEXT As String) As Integer
-        Dim n As Integer
+        Dim N As Integer
     
-100     For n = 0 To MCOMBO.ListCount
-102         If MTEXT = MCOMBO.List(n) Then
+100     For N = 0 To MCOMBO.ListCount
+102         If MTEXT = MCOMBO.List(N) Then
                 Exit For
             End If
         Next
     
-104     FIND_LISTINDEX = n
+104     FIND_LISTINDEX = N
 
 End Function
 
@@ -27056,14 +27056,15 @@ Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOS
                MCCC = GGET_NVALUE("SELECT " + Replace(Format(NEATIMH, "000.000"), ",", ".") + " *SUM(POSO*" + Format(POSOSTOPOSOTHTAS, "000") + "/100) FROM  DOKEGGTIMAKYR" + Format(id_num, "00000000") + "")
                Dim CMCCC As String
                CMCCC = Replace(str(MCCC), ",", ".")
-               Gdb.Execute "UPDATE  DOKTIMAKYR" + Format(id_num, "00000000") + " SET EIDOS='" + EIDOSNEO + "', APALAGIFPA=99,AJ7=" + CMCCC + ",AJI=" + CMCCC + ",AJ1=0,AJ2=0,AJ3=0,AJ4=0,FPA1=0,FPA2=0,FPA3=0,FPA4=0,PARAKRATISI=0 ,B_C2=''  "
+               Gdb.Execute "UPDATE  DOKTIMAKYR" + Format(id_num, "00000000") + " SET  EIDOS='" + EIDOSNEO + "', APALAGIFPA=99,AJ7=" + CMCCC + ",AJI=" + CMCCC + ",AJ1=0,AJ2=0,AJ3=0,AJ4=0,FPA1=0,FPA2=0,FPA3=0,FPA4=0,PARAKRATISI=0 ,B_C2=''  "
                   
          Else
                Gdb.Execute "UPDATE  DOKTIMAKYR" + Format(id_num, "00000000") + " SET EIDOS='" + EIDOSNEO + "', APALAGIFPA=99,AJI=0,AJ1=0,AJ2=0,AJ3=0,AJ4=0,FPA1=0,FPA2=0,FPA3=0,FPA4=0,PARAKRATISI=" + Replace(Format(POSOTHTA, "##0.00"), ",", ".") + " ,B_C2='3;6'"
          
          End If
         
-        
+               'Gdb.Execute "UPDATE  DOKTIMAKYR" + Format(id_num, "00000000") + " SET  EIDOS='" + EIDOSNEO + "', APALAGIFPA=99,AJ7=" + CMCCC + ",AJI=" + CMCCC + ",AJ1=0,AJ2=0,AJ3=0,AJ4=0,FPA1=0,FPA2=0,FPA3=0,FPA4=0,PARAKRATISI=0 ,B_C2=''  "
+       
         Dim L As Long
         ' ΚΑΝΩ INSERT TO TIM GIA NA PAREI ID_NUM GIA NA TO BALO STO EGGTIM,EGG
 136     Gdb.Execute "INSERT INTO TIM select * FROM DOKTIMAKYR" + Format(id_num, "00000000"), L
@@ -27211,7 +27212,7 @@ End If
         '          DUM = print_timol(f_matim, CDate(DTPicker1.Value))'
         'ElseIf Len(Trim(F_FORMA1)) > 1 Then
 226     CrystalReport1.ReportFileName = mForma1
-228     Ucr9print.printingCR9 F_EKTYPOTHS, CrystalReport1.ReportFileName
+228     Ucr9print.printingCR9 "..", CrystalReport1.ReportFileName
         'CrystalReport1.Action = 1
             
         '        If Len(Trim(F_FORMA2)) > 1 Then
@@ -27269,16 +27270,16 @@ Public Function GGET_FPA_NHSION(ByVal CATFPA As Integer) As Integer  ' EIDRecord
         '                        '    mydata.AddItem "7 Άνευ Φ.Π.Α. 0%"
         '                        '    mydata.AddItem "8 Εγγραφές χωρίς ΦΠΑ (πχ Μισθοδοσία, Αποσβέσεις)"
 
-        Dim n As Integer, L As Integer
-100     n = GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND  AYJON=" + str(CATFPA))  ' => 24
+        Dim N As Integer, L As Integer
+100     N = GGET_NVALUE("SELECT TOP 1 TIMH FROM PINAKES WHERE TYPOS=1 AND  AYJON=" + str(CATFPA))  ' => 24
 
-102     If n = 24 Then
+102     If N = 24 Then
 104         L = GGET_NVALUE("SELECT TOP 1 AYJON FROM PINAKES WHERE N1=4 AND TYPOS=1")  ' => 17% (MYDATA=4 =>N1=4 TIMH=17% AYJON=4)
 
-106     ElseIf n = 13 Then
+106     ElseIf N = 13 Then
 108         L = GGET_NVALUE("SELECT TOP 1 AYJON FROM PINAKES WHERE N1=5 AND TYPOS=1")  ' => 9% (MYDATA=5 =>N1=5 TIMH=9% AYJON=7)
 
-110     ElseIf n = 6 Then
+110     ElseIf N = 6 Then
 112         L = GGET_NVALUE("SELECT TOP 1 AYJON FROM PINAKES WHERE N1=6 AND TYPOS=1")  ' => 4% (MYDATA=6 =>N1=6 TIMH=4% AYJON=4)    =>6
         Else
 114         L = CATFPA
