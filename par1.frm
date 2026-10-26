@@ -1,11 +1,11 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
@@ -200,21 +200,21 @@ Begin VB.Form par1
       TabCaption(1)   =   "«Ã≈—/Ÿ—¡ –—ƒ"
       TabPicture(1)   =   "par1.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "HMERPARAD"
-      Tab(1).Control(1)=   "ORAPARAD"
-      Tab(1).Control(2)=   "LABEL30"
-      Tab(1).Control(3)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(0)=   "lbl«Ã≈—Ÿ—¡"
+      Tab(1).Control(1)=   "LABEL30"
+      Tab(1).Control(2)=   "ORAPARAD"
+      Tab(1).Control(3)=   "HMERPARAD"
       Tab(1).ControlCount=   4
       TabCaption(2)   =   "Mydata"
       TabPicture(2)   =   "par1.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label27"
-      Tab(2).Control(1)=   "Label28"
-      Tab(2).Control(2)=   "LABEL31"
+      Tab(2).Control(0)=   "cmdypolo"
+      Tab(2).Control(1)=   "AJIA2PARAKR"
+      Tab(2).Control(2)=   "Combo2OnomaParak"
       Tab(2).Control(3)=   "Combo2TyposParakr"
-      Tab(2).Control(4)=   "Combo2OnomaParak"
-      Tab(2).Control(5)=   "AJIA2PARAKR"
-      Tab(2).Control(6)=   "cmdypolo"
+      Tab(2).Control(4)=   "LABEL31"
+      Tab(2).Control(5)=   "Label28"
+      Tab(2).Control(6)=   "Label27"
       Tab(2).ControlCount=   7
       Begin VB.CommandButton elegxosAFM 
          Caption         =   "≈ÎÂ„˜ÔÚ"
@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   312999937
+         Format          =   293208065
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   312999938
+         Format          =   293208066
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   313524225
+      Format          =   293404673
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3952,7 +3952,7 @@ If HMERPARAD.Value < DTPicker1.Value Then
 End If
 
 
-fortosh.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
+FORTOSH.Text = FORTDIE.Text + ";" + fortARit.Text + ";" + FORTPOL.Text + ";" + FORTTK.Text
 
 
 
@@ -6637,7 +6637,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
         'On Error GoTo enhm_eggtim_Err
 244     If Len(parat.Text) > mLenPARAT Then parat.Text = Left(parat.Text, mLenPARAT)
 246     If Len(SKOPOS.Text) > mLenSKOPOS Then parat.Text = Left(SKOPOS.Text, mLenSKOPOS)
-248     If Len(fortosh.Text) > mLenFORTOSH Then fortosh.Text = Left(fortosh.Text, mLenFORTOSH)
+248     If Len(FORTOSH.Text) > mLenFORTOSH Then FORTOSH.Text = Left(FORTOSH.Text, mLenFORTOSH)
 250     If Len(PROORISMOS.Text) > mLenPROORISMOS Then PROORISMOS.Text = Left(PROORISMOS.Text, mLenPROORISMOS)
 252     If Len(AYTOKINHTO.Text) > mLenAYTOKINHTO Then AYTOKINHTO.Text = Left(AYTOKINHTO.Text, mLenAYTOKINHTO)
 
@@ -6645,7 +6645,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 256     SQLTIM = SQLTIM + str(Val(Replace(metaf.Text, ",", "."))) + ","    ' METAF
 258     SQLTIM = SQLTIM + "'" + Replace(SKOPOS.Text, "'", "`") + "',"    ' SKOPOS
 260     SQLTIM = SQLTIM + "'" + Replace(PROORISMOS.Text, "'", "`") + "',"    ' PROORISMOS
-262     SQLTIM = SQLTIM + "'" + Replace(fortosh.Text, "'", "`") + "',"    ' FORTOSH
+262     SQLTIM = SQLTIM + "'" + Replace(FORTOSH.Text, "'", "`") + "',"    ' FORTOSH
 264     SQLTIM = SQLTIM + "'" + Replace(AYTOKINHTO.Text, "'", "`") + "',"    ' AYTOKINHTO
 266     SQLTIM = SQLTIM + str(get_kerdos) + ","  ' KERDOS
 
@@ -6655,7 +6655,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 272         SQLTIM = SQLTIM + "'" + Left(f_matim, f_psifia_atim + 2) + PEL.Recordset("kod") + "',"    ' KEY
         End If
 
-274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
+274     SQLTIM = SQLTIM + str(Val(Replace(parakratisiT.Text, ",", "."))) + "," + str(Val(Replace(AJIA2PARAKR.Text, ",", "."))) + ",'" + Format(Time$, "HH:mm") + "'," + Replace(str(gVal(isotimia.Text)), ",", ".") + ",'" + CURR.Text + "')"
 
         Dim NTIM As Long
 
@@ -7595,7 +7595,7 @@ Sub enhm_apot()
 120     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 122     fSCR.language = "vbscript"
 124     fSCR.addObject "eid", EID
-126     fSCR.addObject "mactext", mactext
+126     fSCR.addObject "mactext", MACtEXT
 
         Dim M_DOROKARTA As Single
 
@@ -9150,12 +9150,12 @@ Private Sub cmdÃ¡∆_≈ ‘’_Click()
             POSTALCODE.Text = CNull(R("postalcode"))
             CITY.Text = CNull(R("city"))
             parat.Text = CNull(R("parat"))
-372         fortosh.Text = CNull(R("FORTOSH"))
-            If InStr(fortosh.Text, ";") > 0 Then
-               FORTDIE.Text = Split(fortosh.Text, ";")(0)
-               fortARit.Text = Split(fortosh.Text, ";")(1)
-               FORTPOL.Text = Split(fortosh.Text, ";")(2)
-               FORTTK.Text = Split(fortosh.Text, ";")(3)
+372         FORTOSH.Text = CNull(R("FORTOSH"))
+            If InStr(FORTOSH.Text, ";") > 0 Then
+               FORTDIE.Text = Split(FORTOSH.Text, ";")(0)
+               fortARit.Text = Split(FORTOSH.Text, ";")(1)
+               FORTPOL.Text = Split(FORTOSH.Text, ";")(2)
+               FORTTK.Text = Split(FORTOSH.Text, ";")(3)
             End If
              If nNull(R("TOWEIGH")) = 1 Then
                 Zygish.Value = vbChecked
@@ -11335,7 +11335,7 @@ Private Sub Command3_Click()
             'fpelat4.Option1(1).value = True
         End If
 
-116     fpelat4.DATA1.ConnectionString = gConnect
+116     fpelat4.data1.ConnectionString = gConnect
 118     fpelat4.Refresh
 120     gApoMenu = False
 
@@ -12797,8 +12797,8 @@ label11(0).Left = Text2(2).Left
    
    
  
-Label30.Left = 0
-Label31.Left = 0
+LABEL30.Left = 0
+LABEL31.Left = 0
 Label33.Left = 0
 'sda_epistrofis.Top = apallagesFPA.Top - 600
 
@@ -13298,7 +13298,7 @@ Private Sub Label20_Click()
 
         '</EhHeader>
 
-100     UPDATE_PINAKES 8, Label20, fortosh
+100     UPDATE_PINAKES 8, Label20, FORTOSH
 
         '<EhFooter>
         Exit Sub
@@ -15866,12 +15866,12 @@ ORAPARAD.Value = re("ORAPARAD")
              POSTALCODE.Text = re("postalcode")
              CITY.Text = re("city")
              
-372         fortosh.Text = re("FORTOSH")
-            If InStr(fortosh.Text, ";") > 0 Then
-               FORTDIE.Text = Split(fortosh.Text, ";")(0)
-               fortARit.Text = Split(fortosh.Text, ";")(1)
-               FORTPOL.Text = Split(fortosh.Text, ";")(2)
-               FORTTK.Text = Split(fortosh.Text, ";")(3)
+372         FORTOSH.Text = re("FORTOSH")
+            If InStr(FORTOSH.Text, ";") > 0 Then
+               FORTDIE.Text = Split(FORTOSH.Text, ";")(0)
+               fortARit.Text = Split(FORTOSH.Text, ";")(1)
+               FORTPOL.Text = Split(FORTOSH.Text, ";")(2)
+               FORTTK.Text = Split(FORTOSH.Text, ";")(3)
             End If
             
              If nNull(re("TOWEIGH")) = 1 Then
@@ -17144,12 +17144,12 @@ Private Sub Form_Load()
 
         Dim R As New ADODB.Recordset
 
-442     Set Prospective = TDBGrid1.Styles.ADD("Prospective")
+442     Set Prospective = TDBGrid1.Styles.Add("Prospective")
 444     Prospective.Font.Italic = True
 446     Prospective.Font.Bold = True
 448     Prospective.ForeColor = vbBlue
         
-450     Set Distributors = TDBGrid1.Styles.ADD("Distributors")
+450     Set Distributors = TDBGrid1.Styles.Add("Distributors")
 452     Distributors.BackColor = vbRed
 454     Distributors.ForeColor = vbWhite
 
@@ -17682,7 +17682,7 @@ Private Sub Form_Load()
 
             If f_Arr_PIN(k, F_ARR_TYPOS) = 8 Then
 
-                fortosh.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
+                FORTOSH.AddItem f_Arr_PIN(k, F_ARR_PERIGRAFH)
                 mok = 1
             End If
 
@@ -17872,7 +17872,7 @@ Private Sub Form_Load()
 
 1018    SKOPOS.Text = SKOPOS.List(0)
 
-1020    fortosh.Text = fortosh.List(0)
+1020    FORTOSH.Text = FORTOSH.List(0)
 
         Dim R44 As New ADODB.Recordset
 
@@ -18113,8 +18113,8 @@ Private Sub Form_Load()
 1228    PEL.RecordSource = "SELECT top 1 *FROM PEL"
 1230    PEL.ConnectionString = gConnect
 
-1232    eggtim.ConnectionString = gConnect
-1234    eggtim.RecordSource = "SELECT top 10 * FROM EGGTIM"
+1232    EGGTIM.ConnectionString = gConnect
+1234    EGGTIM.RecordSource = "SELECT top 10 * FROM EGGTIM"
 
 1236    DOK.ConnectionString = gConnect
 1238    DOK.RecordSource = "SELECT top 1 *FROM DOK"
@@ -18852,10 +18852,10 @@ Private Sub TDBGrid1_HeadClick(ByVal ColIndex As Integer)
         '
         '
 
-100     If LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
-102         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
+100     If LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc" Then   ' strSort
+102         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-104         LASTTIMOL.Recordset.sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
+104         LASTTIMOL.Recordset.Sort = "[" & TDBGrid1.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
         '<EhFooter>
@@ -22137,7 +22137,7 @@ Function Gefyroma(g_hme, g_atim, g_eidoskpe, gfkod, gfaj, m_r, mgre)
 184     fSCR.addObject "abat2", abat2
 
         'fSCR.AddObject "cMEM", CMEM
-186     fSCR.addObject "mactext", mactext
+186     fSCR.addObject "mactext", MACtEXT
 
         Dim debug1
 
@@ -22409,7 +22409,7 @@ Function printCrystal(MATIM, char_date)
 
         Dim cENTITYMARK As String
 
-        Dim sql         As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql         As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt        As String, DB As Database
 
@@ -22460,12 +22460,12 @@ Function printCrystal(MATIM, char_date)
 
         ' ¡Õ ≈…Õ¡… ¡ ’—Ÿ‘… œ Õ¡ ≈◊≈… ‘«Õ «Ã≈—œÃ«Õ…¡ ‘«” ≈…”œƒœ’ GWORKDAY
 104     If f_Akyr Then
-106         d1 = gWorkDay
+106         D1 = gWorkDay
         Else
-108         d1 = char_date
+108         D1 = char_date
         End If
 
-110     d2 = DateAdd("d", 1, d1)
+110     d2 = DateAdd("d", 1, D1)
 
 112     Set DB = OpenDatabase("c:\mercvb\reports\reports.mdb")
 
@@ -22601,7 +22601,7 @@ Function printCrystal(MATIM, char_date)
 
         End If
  
-178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+178     sql = sql + " ,CURRENCY,isnull(ENTITYMARK,'') as ENTITYMARK,QRURL from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
         '700     DB.Execute "delete *from tim"
 180     Rtim.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
         
@@ -23349,7 +23349,7 @@ Function printCrystal(MATIM, char_date)
 730             If typos_par = 215 And Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
               
 732                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+734                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 736                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
                         ' e_pros = -1
@@ -23390,7 +23390,7 @@ Function printCrystal(MATIM, char_date)
 
                     ' Dim gia_akyr_tim As String
 770                 If Len(Trim(PAR_GIA_AKYROSH)) < 1 Then
-772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
+772                     gia_akyr_tim = GET_CVALUE("select SXETIKO from TIM where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';")
 774                     gia_akyr_tim = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + gia_akyr_tim)
                   
 776                     e_pros = -1
@@ -23909,7 +23909,7 @@ Function printCrystal(MATIM, char_date)
                     On Error Resume Next
 
 1138                DB.Execute "select * into AS" + MATIM + " from EGGtim WHERE FPA>0"
-1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
+1140                Gdb.Execute "SELECT * INTO AS" + MATIM + " FROM EGGTIM  WHERE ATIM='" + Left(MATIM, f_psifia_atim + 1) + "' and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "'", NCO
                    
                 End If
          
@@ -23944,7 +23944,7 @@ Function printCrystal(MATIM, char_date)
 1150    DB.Execute "update MEM SET C2='" + SKOPOS.Text + "'"
         '  fmem("c2") = SKOPOS.Text    'skopos
 
-1152    DB.Execute "update MEM SET c3='" + fortosh.Text + "'"  'fortosi
+1152    DB.Execute "update MEM SET c3='" + FORTOSH.Text + "'"  'fortosi
 
 1154    DB.Execute "update MEM SET c4='" + PROORISMOS.Text + "'" 'paradosi
 
@@ -23955,7 +23955,7 @@ Function printCrystal(MATIM, char_date)
         'End If
 
 1156    DB.Execute "update MEM SET banks='" + Trim(Combo4.Text) + "'" 'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
-1158    DB.Execute "update MEM SET pict='" + time$ + "'"
+1158    DB.Execute "update MEM SET pict='" + Time$ + "'"
 1160    DB.Execute "update MEM SET par1='" + Text1.Text + "'"
 
         DB.Execute "update MEM SET par9='" + ENTITYUID + "'"
@@ -24233,7 +24233,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         '</EhHeader>
 
-        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -24253,8 +24253,8 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
 
         On Error GoTo MHNYMA
 
-100     d1 = DTPicker1.Value
-102     d2 = DateAdd("d", 1, d1)
+100     D1 = DTPicker1.Value
+102     d2 = DateAdd("d", 1, D1)
 
         'Set db = OpenDatabase("c:\mercvb\reports\reports.mdb")
         'If gConnect = "Access" Then
@@ -24361,7 +24361,7 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         
 142     sql = sql + "SPACE(100) AS MEMO, SPACE(40) AS C1,SPACE(40) AS C2,SPACE(40) AS C3,SPACE(40) AS C4, SPACE(40) AS PAR1,SPACE(40) AS PAR2,SPACE(40) AS PAR3,SPACE(40) AS PAR4,SPACE(40) AS PAR5,SPACE(40) AS PAR6,SPACE(40) AS PICT,SPACE(40) AS BANKS "
 
-144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(d1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
+144     sql = sql + " INTO TIMREP2 from TIM inner join PEL on TIM.EIDOS=PEL.EIDOS AND TIM.KPE=PEL.KOD where " + synt + " and HME>='" + Format(D1, "mm/dd/yyyy") + "' and HME<'" + Format(d2, "mm/dd/yyyy") + "';"
 
 146     Gdb.Execute sql
 
@@ -24423,10 +24423,10 @@ Function PrintSqlCrystal(MATIM, char_date, ByVal id_num As Long)
         'fmem.Edit
 168     fmem("c1") = Left(f_paras, Len(f_paras) - 1)    'parastatiko
 170     fmem("c2") = SKOPOS.Text    'skopos
-172     fmem("c3") = fortosh.Text    'fortosi
+172     fmem("c3") = FORTOSH.Text    'fortosi
 174     fmem("c4") = PROORISMOS.Text    'paradosi
 176     fmem("banks") = mID(Combo4.Text, 3, 30)  'ÙÒÔÔÛ ÎÁÒ˘ÏÁÚ
-178     fmem("pict") = Left(time$, 5)
+178     fmem("pict") = Left(Time$, 5)
 180     fmem("par1") = Text1.Text
 182     fmem("par2") = SEIRA.Text
 184     fmem("par3") = AYTOKINHTO.Text
@@ -24507,7 +24507,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -24540,7 +24540,7 @@ Function ektyp_forma(ByVal arxeio As String, ByVal ATIM As String, ByVal hme As 
 116     fSCR.addObject "cTIM", CTIM
 118     fSCR.addObject "cEGGTIM", cEGGTIM
 120     fSCR.addObject "cMEM", CMEM
-122     fSCR.addObject "mactext", mactext
+122     fSCR.addObject "mactext", MACtEXT
 
         'Set db = OpenDatabase(gDir, False, False, gConnect)
         'fSCR.ExecuteStatement "CPEL.DATABASENAME=" + Chr$(34) + gDir + Chr$(34)
@@ -25191,7 +25191,7 @@ Function mac(ByVal s As String) As String
         Dim X
 
         'On Error GoTo mac_Err
-100     mactext.Text = "   "
+100     MACtEXT.Text = "   "
 
         On Error GoTo err2
 
@@ -25199,9 +25199,9 @@ Function mac(ByVal s As String) As String
 104     fSCR.ExecuteStatement X
 
 106     If F928 = 1 Then
-108         mac = mactext.Text
+108         mac = MACtEXT.Text
         Else
-110         mac = to437(mactext.Text)
+110         mac = to437(MACtEXT.Text)
         End If
 
         Exit Function
@@ -25504,7 +25504,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -25535,7 +25535,7 @@ Function toascii(ByVal arxeio As String, moutput As String)
 118     fSCR.addObject "cTIM", CTIM
 120     fSCR.addObject "DOK", DOK    'cEGGTIM
 122     fSCR.addObject "cMEM", CMEM
-124     fSCR.addObject "mactext", mactext
+124     fSCR.addObject "mactext", MACtEXT
 
 126     DOK.Recordset.MoveFirst
 
@@ -26627,7 +26627,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 168     SKOPOS.Text = CNull(r3!SKOPOS)
 170     PROORISMOS.Text = CNull(r3!PROOR)
-172     fortosh.Text = CNull(r3!fortosh)
+172     FORTOSH.Text = CNull(r3!FORTOSH)
 174     AYTOKINHTO.Text = CNull(r3!AYTOK)
 176     parat.Text = CNull(r3!parat)
 
@@ -26707,7 +26707,7 @@ Sub neo_akyr(ByVal id_num As Long, ATIM As String, ByRef ISOK As Integer)
 
 250     SKOPOS.Text = SKOPOS.List(0) ' ""   CNull(r3!SKOPOS)
 252     PROORISMOS.Text = PROORISMOS.List(0) ' CNull(r3!PROOR)
-254     fortosh.Text = fortosh.List(0) ' CNull(r3!FORTOSH)
+254     FORTOSH.Text = FORTOSH.List(0) ' CNull(r3!FORTOSH)
 256     AYTOKINHTO.Text = AYTOKINHTO.List(0) 'CNull(r3!AYTOK)
 258     parat.Text = "" ' CNull(r3!parat)
 
@@ -26867,7 +26867,7 @@ Dim ubl As String
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     fortosh.Text = CNull(r3!fortosh)
+194     FORTOSH.Text = CNull(r3!FORTOSH)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 
@@ -27105,7 +27105,7 @@ End If
 160         Dim SendAkyrToMyData As Integer: SendAkyrToMyData = 0
                 
 162         SendAkyrToMyData = GGET_NVALUE("SELECT ISNULL(ISMYDATA,0) FROM PARASTAT WHERE EIDOS='" & akyr & "'")
-164         If Len(Trim(f_myEID)) > 0 And f_ISMYDATA = 1 Then '  As String ' ‘’–œ” –¡—¡”‘¡‘‘… œ’ MYDATA  –.X. 1.1 ‘…ÃœÀœ√…œ
+164         If Len(Trim(f_myEID)) > 0 Then ' And f_ISMYDATA = 1 Then '  As String ' ‘’–œ” –¡—¡”‘¡‘‘… œ’ MYDATA  –.X. 1.1 ‘…ÃœÀœ√…œ
                 ' If POLAGOR.ListIndex = 1 Then  ' ”‘…Ú –ŸÀ«”≈…” ‘œ ¡ÀÀ¡∆Ÿ
                 'Par7MyData.Visible = False
                    
@@ -27177,7 +27177,7 @@ End If
 
 190     SKOPOS.Text = CNull(r3!SKOPOS)
 192     PROORISMOS.Text = CNull(r3!PROOR)
-194     fortosh.Text = CNull(r3!fortosh)
+194     FORTOSH.Text = CNull(r3!FORTOSH)
 196     AYTOKINHTO.Text = CNull(r3!AYTOK)
         'parat.Text = CNull(r3!parat)
 
