@@ -974,7 +974,7 @@ Begin VB.Form APOT2
       _Version        =   393216
       MousePointer    =   99
       Tabs            =   9
-      Tab             =   4
+      Tab             =   8
       TabHeight       =   529
       BackColor       =   12648384
       TabCaption(0)   =   "0.Προμηθ./ελαχ.στόκ"
@@ -1036,13 +1036,10 @@ Begin VB.Form APOT2
       Tab(3).ControlCount=   1
       TabCaption(4)   =   "4.Υπόλοιπα κατά Αποθ."
       TabPicture(4)   =   "APOT2.frx":0091
-      Tab(4).ControlEnabled=   -1  'True
-      Tab(4).Control(0)=   "Label5"
-      Tab(4).Control(0).Enabled=   0   'False
+      Tab(4).ControlEnabled=   0   'False
+      Tab(4).Control(0)=   "MSHFlexGrid1"
       Tab(4).Control(1)=   "Label6"
-      Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "MSHFlexGrid1"
-      Tab(4).Control(2).Enabled=   0   'False
+      Tab(4).Control(2)=   "Label5"
       Tab(4).ControlCount=   3
       TabCaption(5)   =   "5.BARCODES"
       TabPicture(5)   =   "APOT2.frx":00AD
@@ -1065,33 +1062,59 @@ Begin VB.Form APOT2
       Tab(7).ControlCount=   1
       TabCaption(8)   =   "Πεδία Χρήστη/CPV"
       TabPicture(8)   =   "APOT2.frx":0101
-      Tab(8).ControlEnabled=   0   'False
+      Tab(8).ControlEnabled=   -1  'True
       Tab(8).Control(0)=   "lhm1"
+      Tab(8).Control(0).Enabled=   0   'False
       Tab(8).Control(1)=   "lhm2"
+      Tab(8).Control(1).Enabled=   0   'False
       Tab(8).Control(2)=   "lhm3"
+      Tab(8).Control(2).Enabled=   0   'False
       Tab(8).Control(3)=   "LaB1"
+      Tab(8).Control(3).Enabled=   0   'False
       Tab(8).Control(4)=   "Lab2"
+      Tab(8).Control(4).Enabled=   0   'False
       Tab(8).Control(5)=   "LAB3"
+      Tab(8).Control(5).Enabled=   0   'False
       Tab(8).Control(6)=   "LNUM1"
+      Tab(8).Control(6).Enabled=   0   'False
       Tab(8).Control(7)=   "LNUM2"
+      Tab(8).Control(7).Enabled=   0   'False
       Tab(8).Control(8)=   "LNUM3"
+      Tab(8).Control(8).Enabled=   0   'False
       Tab(8).Control(9)=   "Lab4"
+      Tab(8).Control(9).Enabled=   0   'False
       Tab(8).Control(10)=   "Lab5"
+      Tab(8).Control(10).Enabled=   0   'False
       Tab(8).Control(11)=   "Lab6"
+      Tab(8).Control(11).Enabled=   0   'False
       Tab(8).Control(12)=   "Label10"
+      Tab(8).Control(12).Enabled=   0   'False
       Tab(8).Control(13)=   "HM1"
+      Tab(8).Control(13).Enabled=   0   'False
       Tab(8).Control(14)=   "HM2"
+      Tab(8).Control(14).Enabled=   0   'False
       Tab(8).Control(15)=   "HM3"
+      Tab(8).Control(15).Enabled=   0   'False
       Tab(8).Control(16)=   "CH1"
+      Tab(8).Control(16).Enabled=   0   'False
       Tab(8).Control(17)=   "CH2"
+      Tab(8).Control(17).Enabled=   0   'False
       Tab(8).Control(18)=   "CH3"
+      Tab(8).Control(18).Enabled=   0   'False
       Tab(8).Control(19)=   "NUM1"
+      Tab(8).Control(19).Enabled=   0   'False
       Tab(8).Control(20)=   "NUM2"
+      Tab(8).Control(20).Enabled=   0   'False
       Tab(8).Control(21)=   "NUM3"
+      Tab(8).Control(21).Enabled=   0   'False
       Tab(8).Control(22)=   "ch6"
+      Tab(8).Control(22).Enabled=   0   'False
       Tab(8).Control(23)=   "ch5"
+      Tab(8).Control(23).Enabled=   0   'False
       Tab(8).Control(24)=   "ch4"
+      Tab(8).Control(24).Enabled=   0   'False
       Tab(8).Control(25)=   "CPV"
+      Tab(8).Control(25).Enabled=   0   'False
       Tab(8).ControlCount=   26
       Begin VB.ComboBox discountOption 
          Height          =   315
@@ -1106,7 +1129,7 @@ Begin VB.Form APOT2
       Begin VB.TextBox CPV 
          BackColor       =   &H0080C0FF&
          Height          =   375
-         Left            =   -70440
+         Left            =   4560
          TabIndex        =   155
          Top             =   1320
          Width           =   1935
@@ -1166,7 +1189,7 @@ Begin VB.Form APOT2
       End
       Begin VB.TextBox ch4 
          Height          =   330
-         Left            =   -70440
+         Left            =   4560
          TabIndex        =   65
          Text            =   " "
          Top             =   2160
@@ -1174,14 +1197,14 @@ Begin VB.Form APOT2
       End
       Begin VB.TextBox ch5 
          Height          =   330
-         Left            =   -70440
+         Left            =   4560
          TabIndex        =   64
          Top             =   2730
          Width           =   1935
       End
       Begin VB.TextBox ch6 
          Height          =   1050
-         Left            =   -70440
+         Left            =   4560
          MultiLine       =   -1  'True
          TabIndex        =   63
          Top             =   3480
@@ -1189,42 +1212,42 @@ Begin VB.Form APOT2
       End
       Begin VB.TextBox NUM3 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   53
          Top             =   4215
          Width           =   2250
       End
       Begin VB.TextBox NUM2 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   52
          Top             =   3855
          Width           =   2250
       End
       Begin VB.TextBox NUM1 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   51
          Top             =   3465
          Width           =   2250
       End
       Begin VB.TextBox CH3 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   50
          Top             =   3105
          Width           =   2250
       End
       Begin VB.TextBox CH2 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   49
          Top             =   2685
          Width           =   2250
       End
       Begin VB.TextBox CH1 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   48
          Text            =   " "
          Top             =   2295
@@ -1232,21 +1255,21 @@ Begin VB.Form APOT2
       End
       Begin VB.TextBox HM3 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   47
          Top             =   1935
          Width           =   2250
       End
       Begin VB.TextBox HM2 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   46
          Top             =   1530
          Width           =   2250
       End
       Begin VB.TextBox HM1 
          Height          =   330
-         Left            =   -72825
+         Left            =   2175
          TabIndex        =   45
          Top             =   1095
          Width           =   2250
@@ -1541,7 +1564,7 @@ Begin VB.Form APOT2
       Begin MSHierarchicalFlexGridLib.MSHFlexGrid MSHFlexGrid1 
          Bindings        =   "APOT2.frx":0179
          Height          =   2775
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   18
          Top             =   1500
          Width           =   6015
@@ -1675,7 +1698,7 @@ Begin VB.Form APOT2
          BackStyle       =   0  'Transparent
          Caption         =   "CPV"
          Height          =   195
-         Left            =   -70440
+         Left            =   4560
          TabIndex        =   156
          Top             =   1080
          Width           =   315
@@ -1736,7 +1759,7 @@ Begin VB.Form APOT2
       End
       Begin VB.Label Label6 
          Height          =   255
-         Left            =   1800
+         Left            =   -73200
          TabIndex        =   75
          Top             =   1080
          Width           =   1455
@@ -1744,7 +1767,7 @@ Begin VB.Form APOT2
       Begin VB.Label Label5 
          Caption         =   "Δεσμευμένα"
          Height          =   255
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   74
          Top             =   1080
          Width           =   1215
@@ -1768,84 +1791,84 @@ Begin VB.Form APOT2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   240
-         Left            =   -70485
+         Left            =   4515
          TabIndex        =   68
          Top             =   3195
          Width           =   1980
       End
       Begin VB.Label Lab5 
          Height          =   330
-         Left            =   -70500
+         Left            =   4500
          TabIndex        =   67
          Top             =   2310
          Width           =   1995
       End
       Begin VB.Label Lab4 
          Height          =   210
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   66
          Top             =   1800
          Width           =   1950
       End
       Begin VB.Label LNUM3 
          Height          =   285
-         Left            =   -74970
+         Left            =   30
          TabIndex        =   62
          Top             =   4215
          Width           =   2205
       End
       Begin VB.Label LNUM2 
          Height          =   285
-         Left            =   -74925
+         Left            =   75
          TabIndex        =   61
          Top             =   3855
          Width           =   2100
       End
       Begin VB.Label LNUM1 
          Height          =   255
-         Left            =   -74955
+         Left            =   45
          TabIndex        =   60
          Top             =   3480
          Width           =   2130
       End
       Begin VB.Label LAB3 
          Height          =   300
-         Left            =   -74955
+         Left            =   45
          TabIndex        =   59
          Top             =   3120
          Width           =   2100
       End
       Begin VB.Label Lab2 
          Height          =   285
-         Left            =   -74940
+         Left            =   60
          TabIndex        =   58
          Top             =   2715
          Width           =   2070
       End
       Begin VB.Label LaB1 
          Height          =   315
-         Left            =   -74955
+         Left            =   45
          TabIndex        =   57
          Top             =   2295
          Width           =   2130
       End
       Begin VB.Label lhm3 
          Height          =   285
-         Left            =   -74940
+         Left            =   60
          TabIndex        =   56
          Top             =   1950
          Width           =   2130
       End
       Begin VB.Label lhm2 
          Height          =   270
-         Left            =   -74940
+         Left            =   60
          TabIndex        =   55
          Top             =   1545
          Width           =   2115
       End
       Begin VB.Label lhm1 
          Height          =   315
-         Left            =   -74955
+         Left            =   45
          TabIndex        =   54
          Top             =   1110
          Width           =   2085
