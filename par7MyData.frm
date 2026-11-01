@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   486866945
+      Format          =   239992833
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   486866945
+      Format          =   239992833
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -3733,10 +3734,10 @@ Function FERE_TRANSACTIONID(mID_NUM As String, _
         .setRequestHeader "Authorization", "Bearer " + ctoken
            
         .send
-        MsgBox ("ÁÐÁÍÔÇÓÇ ÁÐÏ ÐËÇÑÙÌÇ" + Chr(13) + Reqpos.responseText)
+       ' MsgBox ("ÁÐÁÍÔÇÓÇ ÁÐÏ ÐËÇÑÙÌÇ" + Chr(13) + Reqpos.responseText)
     End With
 
-    MILSEC (1000)
+    MILSEC (3000)
     answ = Reqpos.responseText
         
     Dim ser As Object
@@ -15616,11 +15617,11 @@ Function request2_pliromis(token, offline) As String
 
             .send (Q)
 
-            MsgBox ("ÁÐÁÍÔÇÓÇ ÁÐÏ offline_payment" + Chr(13) + Reqpos.responseText)
+           ' MsgBox ("ÁÐÁÍÔÇÓÇ ÁÐÏ offline_payment" + Chr(13) + Reqpos.responseText)
             
         End With
 
-        MILSEC (1000)
+        MILSEC (2000)
 
         If InStr("REQ1" + Chr(13) + Reqpos.responseText, "Result") > 0 Then
 
@@ -15817,7 +15818,7 @@ Public Function POS_submitpayment(ByVal MARK As String, _
         If Len(cmark) > 10 Then
             Gdb.Execute "UPDATE TIM SET MARKPLHR='" + cmark + "' WHERE ID_NUM=" + extid
             Gdb.Execute "update  REQPAYMENTS set MARK='" + cmark + "' where EXTERNALSYSTEMID='" + LTrim(str(extid)) + "'"
-            MsgBox "OK " + cmark
+           ' MsgBox "OK " + cmark
         Else
             ' MsgBox errorMessage
             MsgBox ERRMES
