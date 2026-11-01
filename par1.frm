@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   295174145
+         Format          =   294453249
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   295174146
+         Format          =   294453250
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   295632897
+      Format          =   295895041
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -3278,6 +3278,8 @@ Dim f_EkkremhDeltia As Integer
 Dim PAROX_URLADD          As String
 ' σταθερές για τις στήλες της τιμολόγησης
 
+Dim f_Stalthke_seParoxo As Integer
+
 Dim F_PROEPILFPA As Integer
 Dim f_AKRIBOS_TON_KODIKO  As Integer
 Dim F_GRIDLISTASTIMOL     As String
@@ -4015,7 +4017,7 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
         On Error GoTo SaveParastat_Err
 
         '</EhHeader>
-
+        f_Stalthke_seParoxo = 0
         Dim wrkDefault As Workspace
 
         Dim R As New ADODB.Recordset
@@ -5014,8 +5016,19 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
         
         End If
 
+Dim m_ok_ektyposi As Integer
+m_ok_ektyposi = 1
+If F_PAROCHOS = 1 And f_Stalthke_seParoxo = 0 Then
+    If MsgBox("ΔΕΝ ΠΗΡΕ ΜΑΡΚ. ΝΑ ΕΚΥΠΩΘΕΙ;", vbYesNo) = vbNo Then
+       m_ok_ektyposi = 0
+
+    End If
+    
+
+End If
+
         'εκτύπωση
-640     If ektyp.Value = 1 Then    ' ---------------------------------------------
+640     If ektyp.Value = 1 And m_ok_ektyposi = 1 Then      ' ---------------------------------------------
 
 642         If f_FORM_EKTY >= 90 And f_FORM_EKTY <= 99 Then     ' φορμα τύπου f90.txt dot matrix '====================================
 644             DUM = printCrystal(f_matim, CDate(DTPicker1.Value))    'δημιουργει τα προσωρινά αρχεία
@@ -7028,7 +7041,7 @@ mISANAPODO = "0": mANAPODOAITIA = Left(AnapodoAitia.Text, 1)
 564                         If ubl = "000" Then 'mydata
 566                             Par7MyData.ToXMLsub 0, ""
                             Else
-568                             Par7MyData.ToJason 0, 0
+568                             f_Stalthke_seParoxo = Par7MyData.ToJason(0, 0)
                             End If
                      
                             'Par7MyData.ToJason 0
@@ -8693,7 +8706,10 @@ Dim SQLDT As New ADODB.Recordset
             Par7MyData.loadpar7
             TID = Trim(TID)
             Dim DUM As String
-            DUM = Par7MyData.POS_submitpayment(cmark, midnum, posSignature, TID, AMOUNT, POSTransactionId)
+           If Len(CNull(posSignature)) < 3 Or Len(CNull(POSTransactionId)) < 3 Then
+           Else
+               DUM = Par7MyData.POS_submitpayment(cmark, midnum, posSignature, TID, AMOUNT, POSTransactionId)
+           End If
 '            Public Function POS_submitpayment(ByVal MARK As String, _
 '                                  ByVal extid As String, _
 '                                  ByVal signatureParochos As String, _
