@@ -385,6 +385,11 @@ dum2 = ADD_FIELD("PARASTAT", "DEFAULTAPALL", "INT")
 
 dum2 = ADD_FIELD("PARASTAT", "B2G", "INT")
 
+dum2 = ADD_FIELD("PARASTAT", "AGROTPETR", "INT DEFAULT(0)")
+
+
+
+
         dum2 = ADD_FIELD("PARASTAT", "UBL", "VARCHAR(30)")
         
         
