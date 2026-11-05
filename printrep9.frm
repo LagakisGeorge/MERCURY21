@@ -1,13 +1,13 @@
 VERSION 5.00
 Begin VB.Form Ucr9print 
    Caption         =   "Εκτύπωση"
-   ClientHeight    =   570
-   ClientLeft      =   105
-   ClientTop       =   450
-   ClientWidth     =   3105
+   ClientHeight    =   564
+   ClientLeft      =   108
+   ClientTop       =   456
+   ClientWidth     =   3108
    LinkTopic       =   "Form1"
-   ScaleHeight     =   570
-   ScaleWidth      =   3105
+   ScaleHeight     =   564
+   ScaleWidth      =   3108
    StartUpPosition =   3  'Windows Default
    Begin VB.TextBox Text1 
       Height          =   288
@@ -59,7 +59,7 @@ Dim crxApp As CRAXdDRT.Application
 Dim crxRpt As CRAXdDRT.Report
 Set crxApp = New CRAXdDRT.Application
 If Len(Dir(mfile)) = 0 Or Len(mfile) = 0 Then
-    MsgBox "501.Δεν υπάρχει το αρχείο " + mfile
+    MsgBox "501.Δεν υπάρχει το αρχείο εκτύπωσης " + mfile
     Exit Sub
 End If
 
