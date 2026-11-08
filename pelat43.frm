@@ -8,14 +8,14 @@ Begin VB.Form pelat43
    BackColor       =   &H00FF0000&
    Caption         =   "Form1"
    ClientHeight    =   10380
-   ClientLeft      =   8085
-   ClientTop       =   450
-   ClientWidth     =   12090
+   ClientLeft      =   8088
+   ClientTop       =   456
+   ClientWidth     =   12084
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    ScaleHeight     =   10380
-   ScaleWidth      =   12090
+   ScaleWidth      =   12084
    StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton zoomXreopistoseis 
       Caption         =   "Ρυθμιση"
@@ -56,15 +56,15 @@ Begin VB.Form pelat43
          TabIndex        =   24
          Top             =   1680
          Width           =   5655
-         _ExtentX        =   9975
-         _ExtentY        =   7858
+         _ExtentX        =   9970
+         _ExtentY        =   7853
          _Version        =   393216
          AllowUpdate     =   0   'False
          HeadLines       =   1
          RowHeight       =   15
          BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -73,7 +73,7 @@ Begin VB.Form pelat43
          EndProperty
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -148,7 +148,7 @@ Begin VB.Form pelat43
          Caption         =   "Συμψηφισμός με Κωδικό"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Size            =   9.6
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -195,10 +195,9 @@ Begin VB.Form pelat43
       TabIndex        =   13
       Top             =   6360
       Width           =   2655
-      _ExtentX        =   4683
-      _ExtentY        =   661
+      _ExtentX        =   4678
+      _ExtentY        =   656
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"pelat43.frx":0014
    End
    Begin VB.ComboBox Aitiologies 
@@ -229,8 +228,8 @@ Begin VB.Form pelat43
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   6600
       Top             =   6000
-      _ExtentX        =   741
-      _ExtentY        =   741
+      _ExtentX        =   593
+      _ExtentY        =   593
       _Version        =   262150
       Destination     =   1
    End
@@ -240,8 +239,8 @@ Begin VB.Form pelat43
       Top             =   8880
       Visible         =   0   'False
       Width           =   2655
-      _ExtentX        =   4683
-      _ExtentY        =   661
+      _ExtentX        =   4678
+      _ExtentY        =   656
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -272,7 +271,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -309,12 +308,12 @@ Begin VB.Form pelat43
       TabIndex        =   1
       Top             =   600
       Width           =   1575
-      _ExtentX        =   2778
-      _ExtentY        =   661
+      _ExtentX        =   2773
+      _ExtentY        =   656
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   199426049
+      Format          =   90505217
       CurrentDate     =   37743
    End
    Begin VB.ComboBox Combo1 
@@ -331,8 +330,8 @@ Begin VB.Form pelat43
       Top             =   9120
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4895
-      _ExtentY        =   582
+      _ExtentX        =   4890
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -363,7 +362,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -378,8 +377,8 @@ Begin VB.Form pelat43
       Top             =   8880
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4895
-      _ExtentY        =   582
+      _ExtentX        =   4890
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -410,7 +409,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -422,8 +421,8 @@ Begin VB.Form pelat43
    Begin Crystal.CrystalReport CrystalReport2 
       Left            =   0
       Top             =   0
-      _ExtentX        =   741
-      _ExtentY        =   741
+      _ExtentX        =   593
+      _ExtentY        =   593
       _Version        =   262150
       Destination     =   1
    End
@@ -489,7 +488,7 @@ Begin VB.Form pelat43
       Caption         =   "Ποσό"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -508,7 +507,7 @@ Begin VB.Form pelat43
       Caption         =   "Αιτιολογία"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -527,7 +526,7 @@ Begin VB.Form pelat43
       Caption         =   "Αριθμός Παραστατικού"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -553,6 +552,8 @@ Dim F_EKTYPOTHS As String '= FINDPARAMETROI(1, "PAR1", "F_EKTYPOTHS", "..", "Εκτ
 Dim f_er_symcif As String
 
 Dim mLock As Integer
+
+Dim F_DEFACOMBO As Integer ' DEFAULT ΕΠΙΛΟΓΗ ΤΟΥ COMBOBOX
 
 Dim f_tameio    '= FindParametroi(1,"PELAT43", "F_TAMEIO", "9990", "ΛΟΓΑΡΙΑΣΜΟΣ ΤΑΜΕΙΟ")
 
@@ -676,8 +677,8 @@ Private Sub Combo1_LostFocus()
               f_er_symcif = R!TaytPel
               f_symcif = 1
               Text4.Visible = True
-              Label4.Caption = "κωδικός " + IIf(R!TaytPel = "r", "Προμηθ.", "Πελάτη")
-              Label4.Visible = True
+              LABEL4.Caption = "κωδικός " + IIf(R!TaytPel = "r", "Προμηθ.", "Πελάτη")
+              LABEL4.Visible = True
             End If
             
             
@@ -717,7 +718,7 @@ Private Sub Command1_Click()
         '</EhHeader>
         Dim DB As Database
 
-        Dim R As New ADODB.Recordset, x As String, D, tam As Boolean
+        Dim R As New ADODB.Recordset, X As String, D, tam As Boolean
 
         Dim xpi, PEL, mXre
 
@@ -796,7 +797,7 @@ Adodc1.RecordSource = "select * from XREOPIS where PEL ='" + gBuff + "'"
 220             f_tam = tam
                 M_TAYT_KOD = D!KODLOG
 230             PEL = IIf(IsNull(D("taytpel")), "", D("taytpel"))
-240             x = IIf(IsNull(D("taytxpi")), "", D("taytxpi"))
+240             X = IIf(IsNull(D("taytxpi")), "", D("taytxpi"))
             End If
 
 250         D.MoveNext
@@ -812,7 +813,7 @@ Adodc1.RecordSource = "select * from XREOPIS where PEL ='" + gBuff + "'"
         Dim TaytPel, TaytXpi
 
 270     TaytPel = Trim(PEL)
-280     TaytXpi = x
+280     TaytXpi = X
 
         Dim nSize
 
@@ -1225,6 +1226,10 @@ DB.Execute "update MEM SET MEMO ='" + Olografos(Val(DOT(Text3.Text))) + "'"
 
 1420    Command2.Enabled = True
 
+
+ Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + str(Combo1.ListIndex) + "' WHERE  FORMA='" + "PELAT43" + "' AND VAR='" + "F_DEFACOMBO" + "'"
+
+
         Exit Sub
 
 UPDATE_TAMEIO:
@@ -1547,7 +1552,7 @@ Private Sub Command4_Click()
         On Error GoTo Command4_Click_Err
 
         '</EhHeader>
-        Dim R As New ADODB.Recordset, x As String, D, tam As Boolean
+        Dim R As New ADODB.Recordset, X As String, D, tam As Boolean
 
 100     R.Open "SELECT * FROM ARITMISI", Gdb, adOpenDynamic, adLockOptimistic
 110     R.MoveFirst
@@ -1607,8 +1612,8 @@ DataGrid1_Click_Err:
 End Sub
 
 Private Sub DataGrid1_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
-         Text4.Text = Data1.Recordset("KOD")
-         LabelEPO.Caption = Data1.Recordset("EPO")
+         Text4.Text = DATA1.Recordset("KOD")
+         LabelEPO.Caption = DATA1.Recordset("EPO")
          
          
 End Sub
@@ -1674,8 +1679,8 @@ Private Sub EPOsympsif_Change()
        '</EhHeader>
 
 100
-110       Data1.RecordSource = "select EPO,DIE,KOD from PEL where  EIDOS='" + f_er_symcif + "'  and EPO like '" + (SameLetters(EPOsympsif.Text)) + "%';"
-120     Data1.Refresh
+110       DATA1.RecordSource = "select EPO,DIE,KOD from PEL where  EIDOS='" + f_er_symcif + "'  and EPO like '" + (SameLetters(EPOsympsif.Text)) + "%';"
+120     DATA1.Refresh
 
 End Sub
 
@@ -1741,10 +1746,11 @@ F_EKTYPOTHS = FINDPARAMETROI(1, "PAR1", "F_EKTYPOTHS", "..", "Εκτυπωτής παραστατ
 
 110     Me.KeyPreview = True
 
- Data1.ConnectionString = gConnect
+ DATA1.ConnectionString = gConnect
 
 'EISPSQL.rpt  F_EISP_SQL
 F_EISP_SQL = FINDPARAMETROI(1, "PELAT43", "F_EISP_SQL", "", "Εναλλακτική φόρμα sql π.χ. EISPSQL.rpt")
+F_DEFACOMBO = Val(FINDPARAMETROI(1, "PELAT43", "F_DEFACOMBO", "2", "DEFAULT ΕΠΙΛΟΓΗ ΤΟΥ COMBOBOX"))
 
         f_KENTRA_ADYNATISMATOS = Val(FINDPARAMETROI(1, "PELAT2", "f_KENTRA_ADYNATISMATOS", "0", "Αν είναι κέντρο αδυνατίσματος=1"))
 
@@ -1843,8 +1849,8 @@ F_EISP_SQL = FINDPARAMETROI(1, "PELAT43", "F_EISP_SQL", "", "Εναλλακτική φόρμα s
         '     Combo1.AddItem "ΠΙΣΤΩΣΗ ΚΑΡΤΕΛΑΣ.."
         'End If
 
-390     Combo1.Text = Combo1.List(2)    'metrhta
-
+390     Combo1.Text = Combo1.List(F_DEFACOMBO)    'metrhta
+        
 400     Text1.Text = DDD
 
 410     R.Close
