@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
@@ -8,14 +8,14 @@ Begin VB.Form pelat43
    BackColor       =   &H00FF0000&
    Caption         =   "Form1"
    ClientHeight    =   10380
-   ClientLeft      =   8088
-   ClientTop       =   456
-   ClientWidth     =   12084
+   ClientLeft      =   8085
+   ClientTop       =   450
+   ClientWidth     =   12090
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
    ScaleHeight     =   10380
-   ScaleWidth      =   12084
+   ScaleWidth      =   12090
    StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton zoomXreopistoseis 
       Caption         =   "Ρυθμιση"
@@ -56,15 +56,15 @@ Begin VB.Form pelat43
          TabIndex        =   24
          Top             =   1680
          Width           =   5655
-         _ExtentX        =   9970
-         _ExtentY        =   7853
+         _ExtentX        =   9975
+         _ExtentY        =   7858
          _Version        =   393216
          AllowUpdate     =   0   'False
          HeadLines       =   1
          RowHeight       =   15
          BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -73,7 +73,7 @@ Begin VB.Form pelat43
          EndProperty
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -148,7 +148,7 @@ Begin VB.Form pelat43
          Caption         =   "Συμψηφισμός με Κωδικό"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   9.6
+            Size            =   9.75
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -195,9 +195,10 @@ Begin VB.Form pelat43
       TabIndex        =   13
       Top             =   6360
       Width           =   2655
-      _ExtentX        =   4678
-      _ExtentY        =   656
+      _ExtentX        =   4683
+      _ExtentY        =   661
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"pelat43.frx":0014
    End
    Begin VB.ComboBox Aitiologies 
@@ -228,8 +229,8 @@ Begin VB.Form pelat43
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   6600
       Top             =   6000
-      _ExtentX        =   593
-      _ExtentY        =   593
+      _ExtentX        =   741
+      _ExtentY        =   741
       _Version        =   262150
       Destination     =   1
    End
@@ -239,8 +240,8 @@ Begin VB.Form pelat43
       Top             =   8880
       Visible         =   0   'False
       Width           =   2655
-      _ExtentX        =   4678
-      _ExtentY        =   656
+      _ExtentX        =   4683
+      _ExtentY        =   661
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -271,7 +272,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -308,12 +309,12 @@ Begin VB.Form pelat43
       TabIndex        =   1
       Top             =   600
       Width           =   1575
-      _ExtentX        =   2773
-      _ExtentY        =   656
+      _ExtentX        =   2778
+      _ExtentY        =   661
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   90505217
+      Format          =   307888129
       CurrentDate     =   37743
    End
    Begin VB.ComboBox Combo1 
@@ -330,8 +331,8 @@ Begin VB.Form pelat43
       Top             =   9120
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4890
-      _ExtentY        =   572
+      _ExtentX        =   4895
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -362,7 +363,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -377,8 +378,8 @@ Begin VB.Form pelat43
       Top             =   8880
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4890
-      _ExtentY        =   572
+      _ExtentX        =   4895
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -409,7 +410,7 @@ Begin VB.Form pelat43
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -421,8 +422,8 @@ Begin VB.Form pelat43
    Begin Crystal.CrystalReport CrystalReport2 
       Left            =   0
       Top             =   0
-      _ExtentX        =   593
-      _ExtentY        =   593
+      _ExtentX        =   741
+      _ExtentY        =   741
       _Version        =   262150
       Destination     =   1
    End
@@ -488,7 +489,7 @@ Begin VB.Form pelat43
       Caption         =   "Ποσό"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -507,7 +508,7 @@ Begin VB.Form pelat43
       Caption         =   "Αιτιολογία"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -526,7 +527,7 @@ Begin VB.Form pelat43
       Caption         =   "Αριθμός Παραστατικού"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -645,10 +646,10 @@ Private Sub Combo1_LostFocus()
         f_symcif = 0
         f_er_symcif = "e"
         ' αν είναι Συμψηφισμός τότε epit=3 taytpel="r" ή "e" kai taytxpi="X/Π" ανάλογα αν ο αντισυμβαλλόμενος θα χρεωθεί ή θα πιστωθεί
-        If Not IsNull(R!epit) Then
+        If Not IsNull(R!EPIT) Then
             f_symcif = 0
             
-            If R!epit = 2 Then
+            If R!EPIT = 2 Then
                 Frame1.Visible = True
                 If IsNull(R!TaytPel) Then
                     MsgBox " δεν συμπληρώσατε Είδος(r/e) -> Παράμετροι Κινήσεων Πελατών"
@@ -660,7 +661,7 @@ Private Sub Combo1_LostFocus()
           
             End If
 
-            If R!epit = 2 Then
+            If R!EPIT = 2 Then
                 Frame1.Visible = True
                 If IsNull(R!TaytXpi) Then
                     MsgBox " δεν συμπληρώσατε Χρέωση/Πίστωση -> Παράμετροι Κινήσεων Πελατών"
@@ -673,16 +674,16 @@ Private Sub Combo1_LostFocus()
             End If
              
               
-            If R!epit = 2 Then
+            If R!EPIT = 2 Then
               f_er_symcif = R!TaytPel
               f_symcif = 1
               Text4.Visible = True
-              LABEL4.Caption = "κωδικός " + IIf(R!TaytPel = "r", "Προμηθ.", "Πελάτη")
-              LABEL4.Visible = True
+              Label4.Caption = "κωδικός " + IIf(R!TaytPel = "r", "Προμηθ.", "Πελάτη")
+              Label4.Visible = True
             End If
             
             
-             If R!epit = 5 Then
+             If R!EPIT = 5 Then
                  f_symcif = 5
              End If
              
@@ -1225,9 +1226,12 @@ DB.Execute "update MEM SET MEMO ='" + Olografos(Val(DOT(Text3.Text))) + "'"
 1410    Command1.Enabled = False
 
 1420    Command2.Enabled = True
-
-
+If Combo1.ListIndex < 0 Then
+Else
  Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + str(Combo1.ListIndex) + "' WHERE  FORMA='" + "PELAT43" + "' AND VAR='" + "F_DEFACOMBO" + "'"
+End If
+
+ 'Gdb.Execute "UPDATE PARAMETROI SET TIMH='" + str(Combo1.ListIndex) + "' WHERE  FORMA='" + "PELAT43" + "' AND VAR='" + "F_DEFACOMBO" + "'"
 
 
         Exit Sub
