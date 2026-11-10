@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Begin VB.Form EPIT1 
@@ -61,6 +61,7 @@ Begin VB.Form EPIT1
       _ExtentX        =   1508
       _ExtentY        =   238
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"epit1.frx":0004
    End
    Begin MSAdodcLib.Adodc Adodc1 
@@ -438,7 +439,7 @@ Begin VB.Form EPIT1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   445186049
+      Format          =   129564673
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker hmel 
@@ -452,7 +453,7 @@ Begin VB.Form EPIT1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   445186049
+      Format          =   129564673
       CurrentDate     =   38814
    End
    Begin VB.Label Label9 
@@ -898,13 +899,22 @@ Private Sub Command2_Click()
 300     RR!n4 = BRES_YPOLPEL(f_buff, F_KODPEL)
     
 310     RR.Update
+
+
+
+        RR.Edit
+         RR!n1 = Val(POSO.Text)    ' poso
+         RR!PAR1 = DDD
+        RR.Update
+        
+
     
 320     If gBuff = "e" Then
 330         CrystalReport1.ReportFileName = "C:\Mercvb\reports\paralepit.rpt"
         Else
 340         CrystalReport1.ReportFileName = "C:\Mercvb\reports\epitpromi.rpt"
         End If
-    
+        'CrystalReport1.REFR
 350     CrystalReport1.Destination = crptToPrinter
 360   '  CrystalReport1.Action = 1
 370    ' CrystalReport1.Action = 1
@@ -1077,7 +1087,7 @@ Function KARTELLA(mgdir)
 
         Dim k    As Long
 
-        Dim l    As Long, R As New ADODB.Recordset
+        Dim L    As Long, R As New ADODB.Recordset
 
         Dim MKOD As String
 
@@ -1163,7 +1173,7 @@ Function KARTELLA(mgdir)
 320     NX = 5: NP = 6: NY = 7
 330     SU = ayp: SX = 0: SP = 0
 
-340     For k = 2 To GR1.ROWS - 1
+340     For k = 2 To GR1.rows - 1
 350         GR1.TextMatrix(k, 1) = Format(GR1.TextMatrix(k, 1), "dd/mm/yyyy")
 
 360         If Val(GR1.TextMatrix(k, NX)) <> 0 Then
@@ -1191,8 +1201,8 @@ Function KARTELLA(mgdir)
 
 480         If k Mod 2 = 0 Then
 
-490             For l = 0 To GR1.ColS - 1
-500                 GR1.row = k: GR1.Col = l: GR1.CellBackColor = &HC0E0FF
+490             For L = 0 To GR1.ColS - 1
+500                 GR1.row = k: GR1.Col = L: GR1.CellBackColor = &HC0E0FF
                 Next
 
             End If
@@ -1201,7 +1211,7 @@ Function KARTELLA(mgdir)
 
 510     GR1.AddItem ("" & Chr(9) & "Σύνολα" & Chr(9) & "" & Chr(9) & "" & Chr(9) & "" & Chr(9) & Format(SX, "###,###.00") & Chr(9) & Format(SP, "###,###.00") & Chr(9))
 
-520     GR1.TopRow = GR1.ROWS - 10
+520     GR1.TopRow = GR1.rows - 10
 530     GR1.ColAlignment(5) = 6    ' RIGHT
 540     GR1.ColAlignment(6) = 6    ' RIGHT
 550     GR1.ColAlignment(7) = 6    ' RIGHT
@@ -1336,7 +1346,7 @@ Private Sub GR2_Click()
 
 140     MR = GR2.row
 
-150     For K2 = 1 To GR2.ROWS - 1
+150     For K2 = 1 To GR2.rows - 1
 160         GR2.row = K2
 
 170         If K2 = MR Then
@@ -1428,11 +1438,11 @@ Private Sub GR2_Click()
 440     R.Close
 450     GR1.ColS = NY + 1
 
-        Dim k, l, SX, SP, SU
+        Dim k, L, SX, SP, SU
 
 460     SU = yp: SX = 0: SP = 0
 
-470     For k = 1 To GR1.ROWS - 1
+470     For k = 1 To GR1.rows - 1
 480         GR1.TextMatrix(k, 1) = Format(GR1.TextMatrix(k, 1), "dd/mm/yyyy")
 
 490         If Val(GR1.TextMatrix(k, NX)) <> 0 Then
@@ -1453,8 +1463,8 @@ Private Sub GR2_Click()
 
 560         If k Mod 2 = 0 Then
 
-570             For l = 0 To GR1.ColS - 1
-580                 GR1.row = k: GR1.Col = l: GR1.CellBackColor = &HC0E0FF
+570             For L = 0 To GR1.ColS - 1
+580                 GR1.row = k: GR1.Col = L: GR1.CellBackColor = &HC0E0FF
                 Next
 
             End If
@@ -1482,8 +1492,8 @@ OLD100:
 
         'MSFlexGrid1.Row = MSFlexGrid1.Rows - 1
         '  EGG.Refresh
-620     If GR1.ROWS > 9 Then
-630         GR1.TopRow = GR1.ROWS - 7
+620     If GR1.rows > 9 Then
+630         GR1.TopRow = GR1.rows - 7
         End If
 
         'MSFlexGrid1.SetFocus
@@ -1896,7 +1906,7 @@ Label8_Click_Err:
 
 End Sub
 
-Private Sub Option1_Click(Index As Integer)
+Private Sub Option1_Click(index As Integer)
 
         '<EhHeader>
         On Error GoTo Option1_Click_Err
@@ -1906,7 +1916,7 @@ Private Sub Option1_Click(Index As Integer)
 
 100     If Option1(1) Then x = "e" Else x = "r"
 110     gBuff = x
-120     Option1_LostFocus Index
+120     Option1_LostFocus index
 
         '<EhFooter>
         Exit Sub
@@ -1924,7 +1934,7 @@ Option1_Click_Err:
 
 End Sub
 
-Private Sub Option1_KeyPress(Index As Integer, KeyAscii As Integer)
+Private Sub Option1_KeyPress(index As Integer, KeyAscii As Integer)
 
         '<EhHeader>
         On Error GoTo Option1_KeyPress_Err
@@ -1952,7 +1962,7 @@ Option1_KeyPress_Err:
 
 End Sub
 
-Private Sub Option1_LostFocus(Index As Integer)
+Private Sub Option1_LostFocus(index As Integer)
 
         '<EhHeader>
         On Error GoTo Option1_LostFocus_Err
@@ -2088,14 +2098,14 @@ RichTextBox1_GotFocus_Err:
 
 End Sub
 
-Private Sub Text2_GotFocus(Index As Integer)
+Private Sub Text2_GotFocus(index As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_GotFocus_Err
 
         '</EhHeader>
 
-100     Text2(Index).BackColor = vbYellow
+100     Text2(index).BackColor = vbYellow
 
         '<EhFooter>
         Exit Sub
@@ -2113,7 +2123,7 @@ Text2_GotFocus_Err:
 
 End Sub
 
-Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
+Private Sub Text2_KeyUp(index As Integer, KeyCode As Integer, Shift As Integer)
      If KeyCode = vbKeyReturn Then
          KeyCode = 0    'suppress the beep
          keybd_event VK_TAB, 0, 0, 0    'send a tab
@@ -2122,7 +2132,7 @@ Private Sub Text2_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integer)
 
 End Sub
 
-Private Sub Text2_LostFocus(Index As Integer)
+Private Sub Text2_LostFocus(index As Integer)
 
         '<EhHeader>
         On Error GoTo Text2_LostFocus_Err
@@ -2130,9 +2140,9 @@ Private Sub Text2_LostFocus(Index As Integer)
         '</EhHeader>
         Dim x As String
 
-100     Text2(Index).BackColor = vbWhite
+100     Text2(index).BackColor = vbWhite
 
-110     If Len(Trim(Text2(Index))) = 0 Then Exit Sub
+110     If Len(Trim(Text2(index))) = 0 Then Exit Sub
 
 120     Update.Enabled = False
 
@@ -2141,29 +2151,29 @@ Private Sub Text2_LostFocus(Index As Integer)
 
 150     If gUserId = 2 Then
 
-160         If Index = 1 Then  'eponumo
+160         If index = 1 Then  'eponumo
 170             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and EPO like '" + SameLetters(Text2(1).Text) + "%';"
             End If
 
-180         If Index = 0 Then    'kodikos
+180         If index = 0 Then    'kodikos
 190             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and KOD like '" + SameLetters(Text2(0).Text) + "%';"
             End If
 
-200         If Index = 2 Then    'afm
+200         If index = 2 Then    'afm
 210             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and AFM like '" + SameLetters(Text2(2).Text) + "%';"
             End If
 
         Else
 
-220         If Index = 1 Then  'eponumo
+220         If index = 1 Then  'eponumo
 230             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
             End If
 
-240         If Index = 0 Then    'kodikos
+240         If index = 0 Then    'kodikos
 250             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and KOD like '" + (SameLetters(Text2(0).Text)) + "%';"
             End If
 
-260         If Index = 2 Then    'afm
+260         If index = 2 Then    'afm
 270             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and AFM like '" + (SameLetters(Text2(2).Text)) + "%';"
             End If
         End If
@@ -2373,7 +2383,7 @@ End If
 
 520     GR2_Click
 
-        Dim k As Long, l As Long
+        Dim k As Long, L As Long
 
         'For k = 1 To GR2.rows
         '        GR1.row = k

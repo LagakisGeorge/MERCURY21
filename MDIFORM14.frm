@@ -1871,11 +1871,11 @@ Private Sub helpform_Click()
 End Sub
 
 Private Sub IMAGE2_Click()
-  If PICTURE1.Width > 1999 Then
-     PICTURE1.Width = 100
+  If Picture1.Width > 1999 Then
+     Picture1.Width = 100
      ' Image1.Width = 100
   Else
-        PICTURE1.Width = f_FARDOSIMAGE
+        Picture1.Width = f_FARDOSIMAGE
      
   End If
       
@@ -2321,8 +2321,8 @@ Private Sub mapot7_Click(index As Integer)
 100     If gXEIRISTHS <= 2 Then
 110         apot7.Dir1.Visible = False
 120         apot7.Text2.Visible = False
-130         apot7.APO.Visible = False
-140         apot7.EOS.Visible = False
+130         apot7.apo.Visible = False
+140         apot7.eos.Visible = False
 150         apot7.Label1.Visible = False
 160         apot7.Label2.Visible = False
         Else
@@ -2846,26 +2846,26 @@ gisOnlineMydata = 0
 
 350     f_FARDOSIMAGE = Val(FINDPARAMETROI(1, "MDIFORM1", "f_FARDOSIMAGE", "3040", "ΠΛΑΤΟΣ ΓΡΗΓΟΡΟΥ ΜΕΝΟΥ(ΑΡΧΙΚΟ=3040)"))
 
-360     PICTURE1.Width = f_FARDOSIMAGE
+360     Picture1.Width = f_FARDOSIMAGE
 
 
         'If f_FARDOSIMAGE > 0 Then
         '  Picture1.Visible = True
         'End If
 
-370     Listview1.ListItems.Add , "a1", "Καρτέλλα", 2, 2
-380     Listview1.ListItems.Add , "a2", "Διόρθ.Πελάτη", 3, 3
-390     Listview1.ListItems.Add , "a3", "Εισ.Παρ/κου", 6, 6
-400     Listview1.ListItems.Add , "a4", "Παραμ.Παραστατικων", 15, 15
-410     Listview1.ListItems.Add , "a5", "Πωλήσεις/Αγορές", 16, 16
-420     Listview1.ListItems.Add , "a6", "Προβολη Παρ/κού", 17, 17
-430     Listview1.ListItems.Add , "a7", "Υπόλοιπα Πελατών", 18, 18
+370     Listview1.ListItems.ADD , "a1", "Καρτέλλα", 2, 2
+380     Listview1.ListItems.ADD , "a2", "Διόρθ.Πελάτη", 3, 3
+390     Listview1.ListItems.ADD , "a3", "Εισ.Παρ/κου", 6, 6
+400     Listview1.ListItems.ADD , "a4", "Παραμ.Παραστατικων", 15, 15
+410     Listview1.ListItems.ADD , "a5", "Πωλήσεις/Αγορές", 16, 16
+420     Listview1.ListItems.ADD , "a6", "Προβολη Παρ/κού", 17, 17
+430     Listview1.ListItems.ADD , "a7", "Υπόλοιπα Πελατών", 18, 18
         'Listview1.ListItems.Add , "b3", "Aναζήτηση", 5, 5
     
-440     ListView2.ListItems.Add , "b1", "Πίνακες", 1, 1
-450     ListView2.ListItems.Add , "b2", "Back-Up", 17, 17
+440     ListView2.ListItems.ADD , "b1", "Πίνακες", 1, 1
+450     ListView2.ListItems.ADD , "b2", "Back-Up", 17, 17
         'Listview2.ListItems.Add , "a8", "Business Info", 25, 25
-460     ListView2.ListItems.Add , "b3", "Για το πρόγραμμα ", 18, 18
+460     ListView2.ListItems.ADD , "b3", "Για το πρόγραμμα ", 18, 18
 
 470     pelat.Enabled = True
 480     apot.Enabled = True
@@ -3392,7 +3392,7 @@ Private Sub MDIForm_Resize()
 
     'mainpic.Width = MDIForm1.Width
     'mainpic.Height = MDIForm1.Height
-    tvDir.Height = PICTURE1.Height
+    tvDir.Height = Picture1.Height
     
    ' mainpic.Picture = LoadPicture(gPicture)
 
@@ -4206,7 +4206,7 @@ End Sub
 
 Private Sub mtameiakes_Click()
 On Error Resume Next
-  TAMEIAKES.SHOW
+ ' TAMEIAKES.SHOW
 End Sub
 
 'Private Sub par1menu_Click()
@@ -5287,55 +5287,55 @@ Private Sub GetDriveList()
 '    roytina(3) = "dior"
     'For idx = 0 To 3 ' DriveBox.ListCount - 1
         'dPath = Left(DriveBox.List(idx), 2) & "\"
-        tvDir.Nodes.Add , , "Πελάτες", "Πελάτες", 1
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Διόρθωση"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Παρουσίαση Πελατών"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Καρτέλα Πελάτου"
-        tvDir.Nodes.Add "Πελάτες", tvwChild, , "Κινήσεις Πελατών"
+        tvDir.Nodes.ADD , , "Πελάτες", "Πελάτες", 1
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Διόρθωση"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Παρουσίαση Πελατών"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Καρτέλα Πελάτου"
+        tvDir.Nodes.ADD "Πελάτες", tvwChild, , "Κινήσεις Πελατών"
         
         
         
-        tvDir.Nodes.Add , , "Προμηθευτές", "Προμηθευτές", 1
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Εισαγωγή."
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Διορθωση"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Παρουσίαση Προμηθευτών"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Καρτέλα Προμηθευτή"
-        tvDir.Nodes.Add "Προμηθευτές", tvwChild, , "Κινήσεις Προμηθευτών"
+        tvDir.Nodes.ADD , , "Προμηθευτές", "Προμηθευτές", 1
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Εισαγωγή."
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Διορθωση"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Παρουσίαση Προμηθευτών"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Καρτέλα Προμηθευτή"
+        tvDir.Nodes.ADD "Προμηθευτές", tvwChild, , "Κινήσεις Προμηθευτών"
         
-        tvDir.Nodes.Add , , "Αποθήκη", "Αποθήκη", 1
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Διόρθωση"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Παρουσίαση Ειδών"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Τιμοκατάλογοι"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Κινήσεις Ειδών"
-        tvDir.Nodes.Add "Αποθήκη", tvwChild, , "Ρυθμιζόμενες Εκτυπώσεις"
+        tvDir.Nodes.ADD , , "Αποθήκη", "Αποθήκη", 1
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Διόρθωση"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Παρουσίαση Ειδών"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Τιμοκατάλογοι"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Κινήσεις Ειδών"
+        tvDir.Nodes.ADD "Αποθήκη", tvwChild, , "Ρυθμιζόμενες Εκτυπώσεις"
         
-        tvDir.Nodes.Add , , "Επιταγές", "Επιταγές", 1
-        tvDir.Nodes.Add "Επιταγές", tvwChild, , "Εισαγωγή"
-        tvDir.Nodes.Add "Επιταγές", tvwChild, , "Παρουσίαση-Διόρθωση"
-        
-        
-         tvDir.Nodes.Add , , "Παραστατικά", "Παραστατικά", 1
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Παραστατικά"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Προβολή κατά ημέρα"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Παρουσίαση ενός Παραστατικού"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Στατιστικά-Παρουσίαση Παραστατικών"
-        tvDir.Nodes.Add "Παραστατικά", tvwChild, , "Ταμείο Ημέρας"
+        tvDir.Nodes.ADD , , "Επιταγές", "Επιταγές", 1
+        tvDir.Nodes.ADD "Επιταγές", tvwChild, , "Εισαγωγή"
+        tvDir.Nodes.ADD "Επιταγές", tvwChild, , "Παρουσίαση-Διόρθωση"
         
         
-         tvDir.Nodes.Add , , "Βοηθητικά", "Βοηθητικά", 1
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "1.Πίνακες"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "2.Παράμετροι Προγράμματος"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "3.Παράμετροι Παραστατικών"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "4.Παράμετροι Κινήσεων Πελατών"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "5.Import-Export"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "6.Αλλαγή Κωδικών Χρήστη"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "7.Αποστολή σε φορητά τερματικά"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "8.Μεταφορές Αρχείων-Πόντοι"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "9.Αντίγραφα Επαναφορά"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "10.Συγκεντρωτική Τιμολογίων"
-        tvDir.Nodes.Add "Βοηθητικά", tvwChild, , "11.Ελεγχοι Πληρότητας Αρχείων"
+         tvDir.Nodes.ADD , , "Παραστατικά", "Παραστατικά", 1
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Παραστατικά"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Προβολή κατά ημέρα"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Παρουσίαση ενός Παραστατικού"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Στατιστικά-Παρουσίαση Παραστατικών"
+        tvDir.Nodes.ADD "Παραστατικά", tvwChild, , "Ταμείο Ημέρας"
+        
+        
+         tvDir.Nodes.ADD , , "Βοηθητικά", "Βοηθητικά", 1
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "1.Πίνακες"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "2.Παράμετροι Προγράμματος"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "3.Παράμετροι Παραστατικών"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "4.Παράμετροι Κινήσεων Πελατών"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "5.Import-Export"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "6.Αλλαγή Κωδικών Χρήστη"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "7.Αποστολή σε φορητά τερματικά"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "8.Μεταφορές Αρχείων-Πόντοι"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "9.Αντίγραφα Επαναφορά"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "10.Συγκεντρωτική Τιμολογίων"
+        tvDir.Nodes.ADD "Βοηθητικά", tvwChild, , "11.Ελεγχοι Πληρότητας Αρχείων"
         
    ' Next idx
 End Sub
@@ -5387,7 +5387,7 @@ Private Sub tvDir_Expand(ByVal Node As ComctlLib.Node)
     GoTo ExitSub
 ErrHdler:
     'If Drive not ready handle error and re-instate removed item
-    tvDir.Nodes.Add Node.key, tvwChild, , ""
+    tvDir.Nodes.ADD Node.key, tvwChild, , ""
     Resume ExitSub
 ExitSub:
     MousePointer = 0
