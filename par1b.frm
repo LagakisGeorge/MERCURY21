@@ -267,13 +267,13 @@ Private Sub Command1_Click()
   On Error Resume Next
   
   
-   Dim n As Integer
+   Dim N As Integer
       Dim C0 As String
       C0 = ""
-      For n = 0 To List1.ListCount - 1
+      For N = 0 To List1.ListCount - 1
         'Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + Adodc1.Recordset("ENTITYMARK") + " ;" + Format(Adodc1.Recordset("ΣΥΝ.ΑΞΙΑ"), "#####0.00")
-        If List1.Selected(n) Then
-            c = Split(List1.List(n), ";")(2)
+        If List1.Selected(N) Then
+            c = Split(List1.List(N), ";")(2)
             If Left(c, 3) = "ΔΟΚ" Then
                c = mID(c, 4, 15)
             End If
@@ -328,21 +328,21 @@ Dim MAJI As String
 
    MAJI = Replace$(AJIA.Caption, ",", ".")
 
-   Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [ΣΥΝ.ΑΞΙΑ],ENTITYMARK FROM TIM WHERE AJI>=" + MAJI + " AND  KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
+   Adodc1.RecordSource = "select ATIM,CONVERT(CHAR(10),HME,103) AS HMEP , AJI AS [ΣΥΝ.ΑΞΙΑ],ENTITYMARK FROM TIM WHERE   KPE='" + PEL.Text + "' AND LEFT(ATIM,1) IN (select EIDOS from PARASTAT WHERE ISMYDATA=1) order by HME DESC"
    Adodc1.ConnectionString = gConnect
    Adodc1.Refresh
-   Dim n As Integer
-   n = 0
+   Dim N As Integer
+   N = 0
    Do While Not Adodc1.Recordset.EOF
         List1.AddItem Adodc1.Recordset("atim") + " ; " + Adodc1.Recordset("HMEP") + " ;" + CNull(Adodc1.Recordset("ENTITYMARK")) + "; " + Format(Adodc1.Recordset("ΣΥΝ.ΑΞΙΑ"), "#####0.00")
    
    
-        n = n + 1
+        N = N + 1
         Adodc1.Recordset.MoveNext
    
    Loop
    
-   If n = 0 Then
+   If N = 0 Then
        MsgBox "δεν υπαρχουν σχετικα παρ/κα με αυτην την αξία"
    End If
    
