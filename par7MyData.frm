@@ -824,7 +824,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   295829505
+      Format          =   280494081
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +836,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   295829505
+      Format          =   280494081
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1193,6 +1193,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   21458
       _ExtentY        =   1720
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
@@ -2605,7 +2606,7 @@ End Sub
 
 Private Sub cmdPAROCHOS_Click()
 
-        Dim c As String
+        Dim C As String
 
         If F_dokimi = 3 Then
             ' makeJsonClass
@@ -2613,11 +2614,11 @@ Private Sub cmdPAROCHOS_Click()
            
             ' c = getBratToken()
         Else
-100         c = getToken()
+100         C = getToken()
 
         End If
       
-102     MsgBox c
+102     MsgBox C
 
 End Sub
 
@@ -3114,9 +3115,9 @@ Private Sub cmdPROPLHROMH_Click()
     TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  PERIGRAFH LIKE '%POS%'") ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
     TID = Trim(TID) '.TrimEnd()
     
-    Dim c As String
+    Dim C As String
 
-    c = getToken()
+    C = getToken()
     
     Mctypos = "8.4"
     
@@ -3128,7 +3129,7 @@ Private Sub cmdPROPLHROMH_Click()
 
     Dim POSO As String
 
-    gf_Bearer = c
+    gf_Bearer = C
 
     POSO = InputBox("–œ”œ ; ", "–œ”œ –—œ≈…”–—¡Œ«”")
 
@@ -3540,7 +3541,7 @@ Sub deletemarK()
 
 102     If B = "3921" Then
 104         a = InputBox("‰˘ÛÂ Ï·ÒÍ Ôı Ë· ·ÍıÒ˘ËÂﬂ")
-106         c = CANCEL_INVOICE(Trim(a), Trim(a))
+106         C = CANCEL_INVOICE(Trim(a), Trim(a))
 108         MsgBox "ok"
         Else
 110         MsgBox "Î·ËÔÚ"
@@ -4135,7 +4136,7 @@ Private Sub Command12_Click()
 
         On Error GoTo 0
  
-        Dim c, D, SX As String
+        Dim C, D, SX As String
 
         Dim R As New ADODB.Recordset
  
@@ -4159,12 +4160,12 @@ Private Sub Command12_Click()
 112         TIMOL = R!AA   '    GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + d)
 114         SX = R!MARK
    
-116         c = CANCEL_INVOICE(Trim(SX), TIMOL)
+116         C = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-118         If Len(Trim(c)) > 5 Then
-120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + c + "' WHERE ID=" + str(R!ID)
+118         If Len(Trim(C)) > 5 Then
+120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + C + "' WHERE ID=" + str(R!ID)
                 'Gdb.Execute "update DOKTIMCANC set SXETMARK='" + C + "' WHERE ID_NUM=" + str(R!ID_NUM)
-122             List1.AddItem SX + " AK " + c
+122             List1.AddItem SX + " AK " + C
             End If   '
    
 124         R.MoveNext
@@ -7087,7 +7088,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                     '    MsgBox (" –—œ¬À«Ã¡ ”‘œ –¡—¡”‘¡‘… œ " + sqldt(0)("ATIM").ToString)
                     '  End If
 
-                    Dim eggtim As New ADODB.Recordset
+                    Dim EGGTIM As New ADODB.Recordset
 
 232                 Me.Caption = "–¡—¡”‘¡‘… ¡ " + str(I + 1)
                 
@@ -7116,12 +7117,12 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 248                     C56 = C56 + " FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD "
 250                     C56 = C56 + " WHERE  POSO<>0  " + exei_axia + "  and ID_NUM=" + str(SQLDT("ID_NUM"))
 252                     C56 = C56 + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA),CONVERT(INTEGER,KATHGORIA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO,MIKTAKILA,G.ONOMA,G.MONA,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION,MIKTA"   ' G.FPA,KATHGORIA,APALLFPA "
-254                     eggtim.Open C56, Gdb, adOpenDynamic, adLockOptimistic
+254                     EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
                     Else   ' ÃœÕœ ¡–œ –¡—¡”‘¡‘… œ
 256                     C56 = "SELECT D.DISCOUNTOPTION,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,G.KODE,G.POSO,ISNULL(G.MIKTAKILA,0) AS MIKTAKILA,G.ONOMA,G.MONA,G.ID,'1' AS KATHGORIA,CONVERT(INTEGER,G.FPA) AS FPA,ROUND(SUM(ISNULL(KAU_AJIA,0)),3) AS KAU_AJIA,MIKTA, "
 258                     C56 = C56 + " ROUND(SUM(ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL  "
 260                     C56 = C56 + " FROM EGGTIM  G  INNER JOIN EID D  ON G.KODE=D.KOD WHERE POSO<>0 " + exei_axia + " AND ID_NUM=" + str(SQLDT("ID_NUM")) + " GROUP BY G.ID,CONVERT(INTEGER,G.FPA), ISNULL(D.APALLFPA,0),G.KODE,G.POSO, MIKTAKILA,G.ONOMA,G.MONA ,G.OTHERMEASUREMENTUNITQUANTITY , G.OTHERMEASUREMENTUNITTITLE,D.DISCOUNTOPTION,MIKTA " ' G.FPA,APALLFPA "
-262                     eggtim.Open C56, Gdb, adOpenDynamic, adLockOptimistic
+262                     EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
                     
                     End If
                 
@@ -7140,20 +7141,20 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 
                     Dim PROTO          As Long: PROTO = 0 ' ‘œ –—œ‘œ ≈√√‘…Ã √…¡ Õ¡ PAREI THN DIAFORA STO KAU_AJIA
 
-268                 Do While Not eggtim.EOF
+268                 Do While Not EGGTIM.EOF
 
-                        If PROTO = 0 Then PROTO = eggtim!ID
-270                     suma_kathg = suma_kathg + eggtim!kau_ajia
-272                     SUM_MIK2 = SUM_MIK2 + eggtim!MIK_AJIA
+                        If PROTO = 0 Then PROTO = EGGTIM!ID
+270                     suma_kathg = suma_kathg + EGGTIM!kau_ajia
+272                     SUM_MIK2 = SUM_MIK2 + EGGTIM!MIK_AJIA
 
-                        SUMESFPASEIRON = SUMESFPASEIRON + (eggtim!MIK_AJIA - eggtim!kau_ajia)
+                        SUMESFPASEIRON = SUMESFPASEIRON + (EGGTIM!MIK_AJIA - EGGTIM!kau_ajia)
 
-274                     eggtim.MoveNext
+274                     EGGTIM.MoveNext
                     Loop
 
 276                 SUM_MIK2 = GGET_NVALUE("SELECT SUM(MIK_AJIA) FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM")))
 
-278                 eggtim.MoveFirst
+278                 EGGTIM.MoveFirst
                 
                     'Dim DUM As New DataTable
 280                 F_ID_NUMS(I + 1) = SQLDT("ID_NUM") ' ' ¡–œ»« ≈’≈… ‘¡ ID_NUM √…¡ Õ¡ ‘¡ »’Ã¡‘¡… œ‘¡Õ ≈—»≈… « ¡–¡Õ‘«”« ¡–œ ¡¡ƒ≈
@@ -7834,19 +7835,19 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 
                         Dim MclassificationCategory, MclassificationType As String
                         '====================================================================================================================
-576                     Do While Not eggtim.EOF
+576                     Do While Not EGGTIM.EOF
                             'For n = 1 To 3 ' SEIRES TIMOLOGIOY
 578                         L = L + 1
 
                             Dim AJ As Double
 
-580                         If IsNull(eggtim("KAU_AJIA")) Then
+580                         If IsNull(EGGTIM("KAU_AJIA")) Then
 582                             AJ = 0
                             Else
-584                             AJ = eggtim("KAU_AJIA")  ' Math.Round(EGGTIM(L)("POSO") * EGGTIM(L)("TIMM") * (1 - EGGTIM(L)("EKPT") / 100), 2)
+584                             AJ = EGGTIM("KAU_AJIA")  ' Math.Round(EGGTIM(L)("POSO") * EGGTIM(L)("TIMM") * (1 - EGGTIM(L)("EKPT") / 100), 2)
                             End If
 
-586                         SumEsodExod(eggtim("KATHGORIA")) = SumEsodExod(eggtim("KATHGORIA")) + AJ
+586                         SumEsodExod(EGGTIM("KATHGORIA")) = SumEsodExod(EGGTIM("KATHGORIA")) + AJ
 
                             Dim VAT As String
 
@@ -7859,13 +7860,13 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             '7 ¢ÌÂı ÷.–.¡. 0%
                             '8 ≈„„Ò·ˆ›Ú ˜˘ÒﬂÚ ÷–¡  (˜ ÃÈÛËÔ‰ÔÛﬂ·, ¡ÔÛ‚›ÛÂÈÚ)
                             
-588                         VAT = Format(antFPA(eggtim("FPA")), "0")
+588                         VAT = Format(antFPA(EGGTIM("FPA")), "0")
 590                         SYN_KAU = SYN_KAU + AJ
 
-592                         If eggtim("FPA") = 5 Then
+592                         If EGGTIM("FPA") = 5 Then
 594                             fpaRow = 0
                             Else
-596                             fpaRow = eggtim("MIK_AJIA") - eggtim("KAU_AJIA")
+596                             fpaRow = EGGTIM("MIK_AJIA") - EGGTIM("KAU_AJIA")
 
 598                             If fpaRow > 0 And OK_DIFF = 0 Then
 600                                 fpaRow = fpaRow + DIFF_FPA
@@ -7893,16 +7894,16 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                             
                                 Dim monada As Integer
 
-614                             monada = GGET_NVALUE("SELECT ISNULL(TIMH,1) as mm FROM PINAKES WHERE TYPOS=2 AND PERIGRAFH LIKE '%" + eggtim("MONA") + "%' ")
+614                             monada = GGET_NVALUE("SELECT ISNULL(TIMH,1) as mm FROM PINAKES WHERE TYPOS=2 AND PERIGRAFH LIKE '%" + EGGTIM("MONA") + "%' ")
 
 616                             If monada = 0 Then monada = 1
-618                             Set elem2Field = docStock.createElement("itemCode"): elem2Field.Text = eggtim("kode"): elemField.appendChild elem2Field
-620                             Set elem2Field = docStock.createElement("itemDescr"): elem2Field.Text = eggtim("onoma"): elemField.appendChild elem2Field
+618                             Set elem2Field = docStock.createElement("itemCode"): elem2Field.Text = EGGTIM("kode"): elemField.appendChild elem2Field
+620                             Set elem2Field = docStock.createElement("itemDescr"): elem2Field.Text = EGGTIM("onoma"): elemField.appendChild elem2Field
 
                                 If m_is_benzinadiko = 1 Then
                                     If isDiakin >= 1 Then
-                                        If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(eggtim("kode"))) > 0 Then   'ÏÔÌÔ ÛÙÔı ‚ÂÌÊÈÌ·‰ÈÍÔı Ì· ‚„·ÊÂÈ fuelcode
-                                            Set elem2Field = docStock.createElement("fuelCode"): elem2Field.Text = Trim(eggtim("kode")): elemField.appendChild elem2Field
+                                        If InStr("10 11 12 13 14 15 20 21 30 31 32 33 34 35 36 37 38 40 41 42 43 44 50 60 61 70 71 72", Trim(EGGTIM("kode"))) > 0 Then   'ÏÔÌÔ ÛÙÔı ‚ÂÌÊÈÌ·‰ÈÍÔı Ì· ‚„·ÊÂÈ fuelcode
+                                            Set elem2Field = docStock.createElement("fuelCode"): elem2Field.Text = Trim(EGGTIM("kode")): elemField.appendChild elem2Field
                                         End If
                                     End If
                                 End If
@@ -7911,13 +7912,13 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                 ' EAN EINAI SYGK.DELTIO EPISTROFHS
                                 If isDiakin = 2 Then ' DA ”’√ ≈Õ‘—Ÿ‘… œ  À–    'And Split(f_SDA, ";")(1) = Left(sqlDt("ATIM"), 1) Then
                                     If Split(ctypos, ";")(0) = "10.1" Then
-                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(eggtim("poso") - eggtim("MIKTA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso") - EGGTIM("MIKTA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                     Else
-                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(eggtim("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+                                        Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                     End If
                                     ' Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(eggtim("poso") - eggtim("MIKTAKILA"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                 Else
-622                                 Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(eggtim("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
+622                                 Set elem2Field = docStock.createElement("quantity"): elem2Field.Text = Replace(Format(EGGTIM("poso"), "######0.000"), ",", "."): elemField.appendChild elem2Field
                                 End If
 
 624                             Set elem2Field = docStock.createElement("measurementUnit"): elem2Field.Text = str(monada): elemField.appendChild elem2Field
@@ -7936,11 +7937,11 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 634                         Set elem2Field = docStock.createElement("vatCategory"): elem2Field.Text = mVat: elemField.appendChild elem2Field
 636                         Set elem2Field = docStock.createElement("vatAmount"): elem2Field.Text = chDec(Format(fpaRow, "######0.##")): elemField.appendChild elem2Field
 
-                            If IsNull(eggtim("DISCOUNTOPTION")) Then
+                            If IsNull(EGGTIM("DISCOUNTOPTION")) Then
                             
                             Else
 
-                                If nNull(eggtim("DISCOUNTOPTION")) = 0 Then
+                                If nNull(EGGTIM("DISCOUNTOPTION")) = 0 Then
                                     Set elem2Field = docStock.createElement("discountOption"): elem2Field.Text = "false": elemField.appendChild elem2Field
                                 Else
                                     Set elem2Field = docStock.createElement("discountOption"): elem2Field.Text = "true": elemField.appendChild elem2Field
@@ -7959,7 +7960,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 644                                 mAPAL = str(SQLDT("APALAGIFPA"))
                                 Else
 
-646                                 If eggtim("apal") = 0 Then mAPAL = str(SQLDT("APALAGIFPA")) Else mAPAL = str(eggtim("apal"))
+646                                 If EGGTIM("apal") = 0 Then mAPAL = str(SQLDT("APALAGIFPA")) Else mAPAL = str(EGGTIM("apal"))
                                 End If
 
 648                             If Val(mAPAL) = 99 Then
@@ -7984,7 +7985,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
                                     MclassificationCategory = Split(cTyposExod, ";")(1)
 660                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                 Else
-                                    MclassificationCategory = fKatEXod(eggtim("kathgoria"))
+                                    MclassificationCategory = fKatEXod(EGGTIM("kathgoria"))
 662                                 Set elem3Field = docStock.createElement("ecls:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                     ' fKatEsod(EGGTIM("kathgoria"))
                                 End If
@@ -8021,19 +8022,19 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 686                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
                                 Else
                             
-688                                 If eggtim("kathgoria") = 8 Or Len(Trim(Split(ctypos, ";")(1))) = 0 Or fKatEsod(eggtim("kathgoria")) = "category1_95" Then ' Â„„ıÔ‰ÔÛÈ· π ≈◊≈…  ≈Õœ ≈3 –.◊. 1_95 CATEGORY
+688                                 If EGGTIM("kathgoria") = 8 Or Len(Trim(Split(ctypos, ";")(1))) = 0 Or fKatEsod(EGGTIM("kathgoria")) = "category1_95" Then ' Â„„ıÔ‰ÔÛÈ· π ≈◊≈…  ≈Õœ ≈3 –.◊. 1_95 CATEGORY
                                     Else ' 3/4/23 ---------------- –¡…—Õ≈… ‘œ ≈3  ¡–œ ‘œ –¡—¡”‘¡‘… œ
 
                                         Dim E3type As String
 
-690                                     If F_E3_APOKATHG_EID = 1 Then E3type = FkatE3Esod(eggtim("kathgoria")) Else E3type = Split(ctypos, ";")(1)
+690                                     If F_E3_APOKATHG_EID = 1 Then E3type = FkatE3Esod(EGGTIM("kathgoria")) Else E3type = Split(ctypos, ";")(1)
 
                                            MclassificationType = E3type
 692                                     Set elem3Field = docStock.createElement("n1:classificationType"): elem3Field.Text = MclassificationType: elem2Field.appendChild elem3Field
                                     End If
 
                                     ' Í·ÙÁ„ÔÒÈ· ·Ô ÙÔ " ·ÙÁ„ÔÒﬂ· ›È‰ÔıÚ"
-                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(eggtim("kathgoria")))
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria")))
 694                                 Set elem3Field = docStock.createElement("n1:classificationCategory"): elem3Field.Text = MclassificationCategory: elem2Field.appendChild elem3Field
 
                                 End If
@@ -8045,10 +8046,10 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 700                         .appendChild elemField
 
                             '25-7
-                            Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(eggtim("ID"))
+                            Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(EGGTIM("ID"))
 
                         
-702                         eggtim.MoveNext
+702                         EGGTIM.MoveNext
                             'Next
                         Loop
 
@@ -8284,7 +8285,7 @@ Public Function ToXMLsub(ByVal noask As Integer, _
 
 904                 .appendChild invoice
                 
-906                 eggtim.Close
+906                 EGGTIM.Close
                 
 908                 SQLDT.MoveNext
                 Loop
@@ -9362,7 +9363,7 @@ Sub MAKE_request(TXML As String, _
 
 102     strXML = ""
 
-        Dim c As String
+        Dim C As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -10857,7 +10858,7 @@ Form_Load_Err:
 
 End Sub
 
-Function FINDTYPOS(c As String) As String
+Function FINDTYPOS(C As String) As String
 
         '<EhHeader>
         On Error GoTo FINDTYPOS_Err
@@ -10865,7 +10866,7 @@ Function FINDTYPOS(c As String) As String
         '</EhHeader>
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!MYEID + s4!myTypEsod + s4!mycateg) Then
 104         FINDTYPOS = ";;;;;;"
@@ -10898,7 +10899,7 @@ FINDTYPOS_Err:
 
 End Function
     
-Function FINDEXODTYPOS(c As String) As String
+Function FINDEXODTYPOS(C As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10907,7 +10908,7 @@ Function FINDEXODTYPOS(c As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FINDEXODTYPOS = ""
@@ -10935,7 +10936,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FIND2_EXODTYPOS(c As String) As String
+Function FIND2_EXODTYPOS(C As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10944,7 +10945,7 @@ Function FIND2_EXODTYPOS(c As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FIND2_EXODTYPOS = ""
@@ -10972,7 +10973,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FindTRP(c As String) As String
+Function FindTRP(C As String) As String
 
         '<EhHeader>
         On Error GoTo FindTRP_Err
@@ -10980,7 +10981,7 @@ Function FindTRP(c As String) As String
         '</EhHeader>
         Dim sqlDT4 As New ADODB.Recordset
 
-100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + c + "", Gdb, adOpenDynamic, adLockOptimistic
+100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + C + "", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(sqlDT4(0)) Then
 104         FindTRP = ""
@@ -11421,7 +11422,7 @@ End Sub
 
 Private Sub RESEND_CANCEL_Click()
 
-        Dim c, D, SX As String
+        Dim C, D, SX As String
 
 100     D = InputBox("‰˘ÛÂ ÙÔÌ ·ÒÈËÏ¸ ÙÔı id", 0)
    
@@ -11438,10 +11439,10 @@ Private Sub RESEND_CANCEL_Click()
 
 108     TIMOL = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + D)
    
-110     c = CANCEL_INVOICE(SX, TIMOL)
+110     C = CANCEL_INVOICE(SX, TIMOL)
 
-112     If Len(c) > 5 Then
-114         Gdb.Execute "update TIM set ENTITYMARK='" + c + "' WHERE ID_NUM=" + D
+112     If Len(C) > 5 Then
+114         Gdb.Execute "update TIM set ENTITYMARK='" + C + "' WHERE ID_NUM=" + D
         End If
 
 End Sub
@@ -11630,7 +11631,7 @@ Private Sub TESTXARAL_Click()
 
         On Error GoTo 0
  
-        Dim c, D, SX As String
+        Dim C, D, SX As String
 
         'Dim R2 As New ADODB.Recordset
  
@@ -11658,14 +11659,14 @@ Private Sub TESTXARAL_Click()
 112         SX = R!entitymark   '   R!MARK
             'List1.AddItem
    
-114         c = CANCEL_INVOICE(Trim(SX), TIMOL)
+114         C = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-116         If Len(c) > 5 Then
+116         If Len(C) > 5 Then
 
-                Gdb.Execute "update TIM set C12='" + c + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
+                Gdb.Execute "update TIM set C12='" + C + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
       
-                Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + c + "' WHERE ID_NUM=" + str(id_num)
-118             List1.AddItem SX + " AK " + c
+                Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + C + "' WHERE ID_NUM=" + str(id_num)
+118             List1.AddItem SX + " AK " + C
 
                 ' loadpar7
                              
@@ -11980,14 +11981,14 @@ Private Sub UPLOAD_Click()
        
 End Sub
 
-Function chDec(c As String) As String
+Function chDec(C As String) As String
 
         '<EhHeader>
         On Error GoTo chDec_Err
 
         '</EhHeader>
 
-100     chDec = Replace(c, ",", ".")
+100     chDec = Replace(C, ",", ".")
 
         '<EhFooter>
         Exit Function
@@ -12382,7 +12383,7 @@ Private Sub SEND_EXPENS_Click()
 
 106     strXML = ""
 
-        Dim c As String
+        Dim C As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -13165,7 +13166,7 @@ Public Function ToJason(ByVal noask As Integer, _
                     '    MsgBox (" –—œ¬À«Ã¡ ”‘œ –¡—¡”‘¡‘… œ " + sqldt(0)("ATIM").ToString)
                     '  End If
 
-                    Dim eggtim As New ADODB.Recordset
+                    Dim EGGTIM As New ADODB.Recordset
 
 228                 Me.Caption = "–¡—¡”‘¡‘… ¡ " + str(I + 1)
                 
@@ -13187,7 +13188,7 @@ Public Function ToJason(ByVal noask As Integer, _
 234                 C56 = "SELECT  KODE,ONOMA,POSO,CONVERT(INTEGER,ISNULL(KATHGORIA,'1') ) AS KATHGORIA, CONVERT(INTEGER,G.FPA) AS FPA,ROUND((ISNULL(KAU_AJIA,0)),2) AS KAU_AJIA,ROUND((ISNULL(MIK_AJIA,0)),2) AS MIK_AJIA, ISNULL(D.APALLFPA,0) AS APAL,ISNULL(D.CPV,'') AS CPV,ISNULL(G.ONOMA,'') AS ONOMA,ISNULL(G.MONA,'‘≈Ã') AS MONA,G.ID AS ID "
 236                 C56 = C56 & " FROM EGGTIM G  INNER JOIN EID D  ON G.KODE=D.KOD "
 238                 C56 = C56 & " WHERE POSO<>0  " + exei_axia + "  and ID_NUM=" & str(SQLDT("ID_NUM"))
-240                 eggtim.Open C56, Gdb, adOpenDynamic, adLockOptimistic
+240                 EGGTIM.Open C56, Gdb, adOpenDynamic, adLockOptimistic
 
                     ' –—œ”œ◊« œ◊… √…¡ –¡—œ◊œ
 242                 If fMydataFromEID1 = 1 Then  '≈Õ«Ã≈—Ÿ”« ¡–œ  ¡‘«√œ—…¡ ≈…ƒŸÕ
@@ -13216,15 +13217,15 @@ Public Function ToJason(ByVal noask As Integer, _
 
 246                 SUM_MIK2 = 0
 
-248                 Do While Not eggtim.EOF
-250                     suma_kathg = suma_kathg + eggtim!kau_ajia
-252                     SUM_MIK2 = SUM_MIK2 + eggtim!MIK_AJIA
-254                     eggtim.MoveNext
+248                 Do While Not EGGTIM.EOF
+250                     suma_kathg = suma_kathg + EGGTIM!kau_ajia
+252                     SUM_MIK2 = SUM_MIK2 + EGGTIM!MIK_AJIA
+254                     EGGTIM.MoveNext
                     Loop
 
 256                 SUM_MIK2 = GGET_NVALUE("SELECT SUM(MIK_AJIA) FROM EGGTIM WHERE ID_NUM=" + str(SQLDT("ID_NUM")))
 
-258                 eggtim.MoveFirst
+258                 EGGTIM.MoveFirst
                 
                     'Dim DUM As New DataTable
 260                 F_ID_NUMS(I + 1) = SQLDT("ID_NUM") ' ' ¡–œ»« ≈’≈… ‘¡ ID_NUM √…¡ Õ¡ ‘¡ »’Ã¡‘¡… œ‘¡Õ ≈—»≈… « ¡–¡Õ‘«”« ¡–œ ¡¡ƒ≈
@@ -13430,12 +13431,12 @@ Public Function ToJason(ByVal noask As Integer, _
                                 
 434                             SJ = SJ + Chr(13) + " ""counterpart"":{ "
 436                             SJ = SJ + Chr(13) + " ""vatNumber"":""" + Trim(SQLDT("AFM")) + """"
-438                             SJ = SJ + Chr(13) + ", ""name"":""" + Trim(SQLDT("EPO")) + """"
+438                             SJ = SJ + Chr(13) + ", ""name"":""" + CLearstring(Trim(SQLDT("EPO"))) + """"
 440                             SJ = SJ + Chr(13) + ",""branch"":" + pelst3 ' + """"
-442                             SJ = SJ + Chr(13) + ",""street"":""" + Trim(SQLDT("DIE")) + """"
+442                             SJ = SJ + Chr(13) + ",""street"":""" + CLearstring(Trim(SQLDT("DIE"))) + """"
 444                             SJ = SJ + Chr(13) + ",""streetNumber"":""" + pelst2 + """"
 446                             SJ = SJ + Chr(13) + ",""postalCode"":""" + Trim(SQLDT("TK")) + """"
-448                             SJ = SJ + Chr(13) + ",""city"":""" + Trim(SQLDT("pol")) + """"
+448                             SJ = SJ + Chr(13) + ",""city"":""" + CLearstring(Trim(SQLDT("pol"))) + """"
 450                             SJ = SJ + Chr(13) + ",""country"":""" + Trim(SQLDT("COUNTRY")) + """"
 
                                 If m_is_benzinadiko = 1 Then
@@ -14163,19 +14164,19 @@ Public Function ToJason(ByVal noask As Integer, _
                         Dim MclassificationCategory, MclassificationType As String
 
                         '====================================================================================================================
-654                     Do While Not eggtim.EOF
+654                     Do While Not EGGTIM.EOF
                             'For n = 1 To 3 ' SEIRES TIMOLOGIOY
 656                         L = L + 1
 
                             Dim AJ As Double
 
-658                         If IsNull(eggtim("KAU_AJIA")) Then
+658                         If IsNull(EGGTIM("KAU_AJIA")) Then
 660                             AJ = 0
                             Else
-662                             AJ = eggtim("KAU_AJIA")  ' Math.Round(EGGTIM(L)("POSO") * EGGTIM(L)("TIMM") * (1 - EGGTIM(L)("EKPT") / 100), 2)
+662                             AJ = EGGTIM("KAU_AJIA")  ' Math.Round(EGGTIM(L)("POSO") * EGGTIM(L)("TIMM") * (1 - EGGTIM(L)("EKPT") / 100), 2)
                             End If
 
-664                         SumEsodExod(eggtim("KATHGORIA")) = SumEsodExod(eggtim("KATHGORIA")) + AJ
+664                         SumEsodExod(EGGTIM("KATHGORIA")) = SumEsodExod(EGGTIM("KATHGORIA")) + AJ
 
                             Dim VAT As String
 
@@ -14188,13 +14189,13 @@ Public Function ToJason(ByVal noask As Integer, _
                             '7 ¢ÌÂı ÷.–.¡. 0%
                             '8 ≈„„Ò·ˆ›Ú ˜˘ÒﬂÚ ÷–¡  (˜ ÃÈÛËÔ‰ÔÛﬂ·, ¡ÔÛ‚›ÛÂÈÚ)
                             
-666                         VAT = Format(antFPA(eggtim("FPA")), "0")
+666                         VAT = Format(antFPA(EGGTIM("FPA")), "0")
 668                         SYN_KAU = SYN_KAU + AJ
 
-670                         If eggtim("FPA") = 5 Then
+670                         If EGGTIM("FPA") = 5 Then
 672                             fpaRow = 0
                             Else
-674                             fpaRow = eggtim("MIK_AJIA") - eggtim("KAU_AJIA")
+674                             fpaRow = EGGTIM("MIK_AJIA") - EGGTIM("KAU_AJIA")
 
 676                             If fpaRow > 0 And OK_DIFF = 0 Then
 678                                 fpaRow = fpaRow + DIFF_FPA
@@ -14224,10 +14225,13 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If
                            
 702                         SJ = SJ + Chr(13) + ",""recType"":0"
-704                         SJ = SJ + Chr(13) + ",""quantity"":" + Replace(Format(Round(eggtim("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
+704                         SJ = SJ + Chr(13) + ",""quantity"":" + Replace(Format(Round(EGGTIM("POSO"), 2), "#####0.00"), ",", ".") ' Replace(str(EGGTIM("POSO")), ",", ".")
 
-                            m_onoma = Replace(eggtim("onoma"), """", "`")
+                            m_onoma = Replace(EGGTIM("onoma"), """", "`")
                             m_onoma = Replace(m_onoma, "\", "/")
+                             m_onoma = Replace(m_onoma, Chr(13), "")
+                              m_onoma = Replace(m_onoma, Chr(10), "")
+                            
 706                         SJ = SJ + Chr(13) + ",""entityName"":""" + m_onoma + """"
                            
 708                         SJ = SJ + Chr(13) + ",""netValue"":" + Replace(Format(Round(AJ, 2), "#####0.00"), ",", ".")
@@ -14239,7 +14243,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
                             If m_is_benzinadiko = 1 Then
                                 ' newitem(NEGG).fuelCode = EGGTIM.rows(NEGG)("KODE") ' 30 ' "ITEMCODE"
-                                SJ = SJ + Chr(13) + ",""fuelCode"":" + eggtim("KODE")
+                                SJ = SJ + Chr(13) + ",""fuelCode"":" + EGGTIM("KODE")
                             End If
 
 712                         Dim FPAUBL As String: FPAUBL = GGET_CVALUE("Select ISNULL(C2,'') AS UBL FROM PINAKES  WHERE TYPOS=1 AND N1=" + VAT)
@@ -14260,7 +14264,7 @@ Public Function ToJason(ByVal noask As Integer, _
                             'newitem(NEGG).vatPercent = IIf(VAT = 1, 24, IIf(VAT = 2, 13, IIf(VAT = 3, 6, IIf(VAT = 4, 17, IIf(VAT = 5, 9, IIf(VAT = 6, 4, 0))))))
                             ' newitem(NEGG).MeasurementUnit = 1
                           
-                            Dim monada As String: monada = eggtim("MONA")
+                            Dim monada As String: monada = EGGTIM("MONA")
 
                             Dim Unitmy As String
 
@@ -14273,7 +14277,7 @@ Public Function ToJason(ByVal noask As Integer, _
 728
 
 730                         If Len(monada) < 2 Then
-732                             MsgBox ("9382.ƒ≈Õ ≈◊Ÿ MON.MET  ”≈…—¡ " + str(NEGG) + "--" + eggtim("ONOMA"))
+732                             MsgBox ("9382.ƒ≈Õ ≈◊Ÿ MON.MET  ”≈…—¡ " + str(NEGG) + "--" + EGGTIM("ONOMA"))
 734                             ToJasonSub = 0
 
                                 Exit Function
@@ -14292,7 +14296,7 @@ Public Function ToJason(ByVal noask As Integer, _
                             End If
 
 744                         If Len(UNITUBL) = 0 Then
-746                             MsgBox ("9389.ƒ≈Õ ≈◊Ÿ MON.MET  UBL ”≈…—¡ ? " + str(NEGG) + "--" + eggtim("ONOMA"))
+746                             MsgBox ("9389.ƒ≈Õ ≈◊Ÿ MON.MET  UBL ”≈…—¡ ? " + str(NEGG) + "--" + EGGTIM("ONOMA"))
 748                             ToJasonSub = 0
 
                                 Exit Function
@@ -14308,12 +14312,12 @@ Public Function ToJason(ByVal noask As Integer, _
 
 754                         SJ = SJ + Chr(13) + ",""totalValue"":" + Replace(Format(Round(AJ + fpaRow, 2), "#####0.00"), ",", ".")
 
-756                         SJ = SJ + Chr(13) + ", ""cpvCode"":""" + eggtim("CPV") + """"
+756                         SJ = SJ + Chr(13) + ", ""cpvCode"":""" + EGGTIM("CPV") + """"
 
                             '-------------------------------------------------------------------------------
-758                         If Len(eggtim("CPV")) = 0 Then
+758                         If Len(EGGTIM("CPV")) = 0 Then
 760                             If IS_B2G = 1 Then
-762                                 MsgBox ("9405.ƒ≈Õ ≈◊Ÿ CPV ”‘œ  " + eggtim("ONOMA"))
+762                                 MsgBox ("9405.ƒ≈Õ ≈◊Ÿ CPV ”‘œ  " + EGGTIM("ONOMA"))
 764                                 ToJasonSub = 0
 
                                     Exit Function
@@ -14333,7 +14337,7 @@ Public Function ToJason(ByVal noask As Integer, _
 772                                 mAPAL = str(SQLDT("APALAGIFPA"))
                                 Else
 
-774                                 If eggtim("apal") = 0 Then mAPAL = str(SQLDT("APALAGIFPA")) Else mAPAL = str(eggtim("apal"))
+774                                 If EGGTIM("apal") = 0 Then mAPAL = str(SQLDT("APALAGIFPA")) Else mAPAL = str(EGGTIM("apal"))
                                 End If
 
 776                             If Val(mAPAL) = 99 Then
@@ -14416,13 +14420,13 @@ Public Function ToJason(ByVal noask As Integer, _
 
                                 Else
                             
-832                                 If eggtim("kathgoria") = 8 Or Len(Trim(Split(ctypos, ";")(1))) = 0 Or fKatEsod(eggtim("kathgoria")) = "category1_95" Then ' Â„„ıÔ‰ÔÛÈ· π ≈◊≈…  ≈Õœ ≈3 –.◊. 1_95 CATEGORY
+832                                 If EGGTIM("kathgoria") = 8 Or Len(Trim(Split(ctypos, ";")(1))) = 0 Or fKatEsod(EGGTIM("kathgoria")) = "category1_95" Then ' Â„„ıÔ‰ÔÛÈ· π ≈◊≈…  ≈Õœ ≈3 –.◊. 1_95 CATEGORY
                                     Else ' 3/4/23 ---------------- –¡…—Õ≈… ‘œ ≈3  ¡–œ ‘œ –¡—¡”‘¡‘… œ
 
                                         Dim E3type As String
 
 834                                     If F_E3_APOKATHG_EID = 1 Then
-836                                         E3type = FkatE3Esod(eggtim("kathgoria"))
+836                                         E3type = FkatE3Esod(EGGTIM("kathgoria"))
                                         Else
 838                                         E3type = Split(ctypos, ";")(1)
                                         End If
@@ -14438,7 +14442,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
                                     'newitem(NEGG).classificationCategory = fKatEsod(EGGTIM.Rows(NEGG)("kathgoria"))
                                     
-                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(eggtim("kathgoria")))
+                                    MclassificationCategory = IIf(isDiakin = 2, "category3", fKatEsod(EGGTIM("kathgoria")))
 846                                 SJ = SJ + Chr(13) + ",""classificationCategory"":""" + MclassificationCategory + """"
 
                                 End If
@@ -14450,9 +14454,9 @@ Public Function ToJason(ByVal noask As Integer, _
 852                         ' .appendChild elemField
 854                         SJ = SJ + Chr(13) + "}" ' Â‰˘ ÍÎÂÈÌÂÈ Á ÛÂÈÒ·=============================================
 
-                            Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(eggtim("ID"))
+                            Gdb.Execute "UPDATE EGGTIM SET CLASSIFICATIONTYPE='" + MclassificationType + "',CLASSIFICATIONCATEGORY='" + MclassificationCategory + "' WHERE ID=" + str(EGGTIM("ID"))
 
-856                         eggtim.MoveNext
+856                         EGGTIM.MoveNext
                             'Next
                         Loop
 
@@ -14911,7 +14915,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
 1120                ' .appendChild invoice
                 
-1122                eggtim.Close
+1122                EGGTIM.Close
 
                     ' End If  'pos=1
                     
@@ -15493,8 +15497,13 @@ Function to_pos(ByVal TID As String, _
 
         Dim answer As String: answer = ""
 
-        For HH = 1 To 5
-            MILSEC 4000 '5sec
+
+         For HH = 1 To 5
+            MILSEC 1000 '2000 2/11/26  '4sec 2/11
+
+
+                ' For HH = 1 To 5
+                '  MILSEC 4000 '5sec
             req2 = FERE_TRANSACTIONID(mID_NUM, answer)
             answerToFile LTrim(Trim(mID_NUM)), req2
                 
@@ -15887,3 +15896,11 @@ Sub CancelPosPayment(ByVal extid As String, ByVal signature As String)
 
 End Sub
 
+Function CLearstring(m_onoma As String)
+'**** ¬√¡∆≈… ‘œ’Ú ¡Õ≈–…»’Ã«‘œ’Ú ◊¡—¡ ‘«—≈Ú
+    m_onoma = Replace(m_onoma, """", "`")
+    m_onoma = Replace(m_onoma, "\", "/")
+    m_onoma = Replace(m_onoma, Chr(13), "")
+    m_onoma = Replace(m_onoma, Chr(10), "")
+     CLearstring = m_onoma
+End Function
