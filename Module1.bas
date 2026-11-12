@@ -309,6 +309,11 @@ Public Sub Update_Structures()
         
 130     dum2 = ADD_FIELD("GRA", "ID", "INT IDENTITY(1,1)")
 140     dum2 = ADD_FIELD("MEM", "ID", "INT IDENTITY(1,1)")
+         dum2 = ADD_FIELD("MEM", "USERPOS", "NVARCHAR(50)")
+         dum2 = ADD_FIELD("MEM", "PWDPOS", "NVARCHAR(50)")
+
+
+
 150     dum2 = ADD_FIELD("SN", "ID", "INT IDENTITY(1,1)")
 
 152     dum2 = ADD_FIELD("PINAKES", "ID", "INT IDENTITY(1,1)")
@@ -2517,7 +2522,7 @@ UPDATE_YPOLOIPA2_Err:
 End Sub
 
 
-Public Sub TelHmeAgoras(ByVal apo As Date, ByVal eos As Date)
+Public Sub TelHmeAgoras(ByVal APO As Date, ByVal EOS As Date)
 MDIForm1.Caption = " "
         '===================================================================================
         '<EhHeader>
@@ -2552,7 +2557,7 @@ MDIForm1.Caption = " "
         Dim EGGTIM As New ADODB.Recordset
 
         ''E','á',
-120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
+120     EGGTIM.Open "SELECT * FROM EGGTIM WHERE LEFT(ATIM,1) IN ('E','á','ë'," + ago + ") AND HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "' ORDER BY HME", Gdb, adOpenDynamic, adLockOptimistic
 
         Dim R As New ADODB.Recordset
 
@@ -3053,8 +3058,8 @@ MILSEC_Err:
 End Sub
 
 Function ypoloipa_pel(ByVal mBUFF As String, _
-                      ByVal apo As Date, _
-                      ByVal eos As Date, ByVal ENERGOS As Integer) As Single
+                      ByVal APO As Date, _
+                      ByVal EOS As Date, ByVal ENERGOS As Integer) As Single
 
         'ypologismos ypoloipon
         '<EhHeader>
@@ -4232,7 +4237,7 @@ R.Close
 End Sub
 
 
-Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker, eos As DTPicker)
+Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, APO As DTPicker, EOS As DTPicker)
         'into DOKEGGT1
         'B = "CREATE VIEW dbo.[EIDT3]" _
 
@@ -4287,7 +4292,7 @@ Public Sub UPDATE_YPOLOIPA3(mTable As String, List11 As ListBox, apo As DTPicker
         a = a + " SUM(CASE APOT  WHEN 3  THEN isnull(XRE,0) ELSE 0  END ) AS S3X," & " SUM(CASE APOT  WHEN 3  THEN isnull(PIS,0) ELSE 0  END ) AS S3P,"
         a = a + " SUM(CASE APOT  WHEN 4  THEN isnull(XRE,0) ELSE 0  END ) AS S4X," & " SUM(CASE APOT  WHEN 4  THEN isnull(PIS,0) ELSE 0  END ) AS S4P  "
 190     a = a + " INTO DOKEGGT1 FROM EGGTIM  "
-200     a = a + "where HME>='" + Format(apo, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, eos), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
+200     a = a + "where HME>='" + Format(APO, "MM/DD/YYYY") + "' AND HME < '" + Format(DateAdd("D", 1, EOS), "MM/DD/YYYY") + "'  GROUP BY KODE"   'AND ascii(left(ATIM,1)) in (" + pol + ")
 
         Dim TT As Long
 
