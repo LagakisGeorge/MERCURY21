@@ -3,6 +3,7 @@ Object = "{CCA214C0-DFEB-4C91-9F0D-2665F77F6E23}#1.2#0"; "IDAutomationLinear.dll
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "mschrt20.ocx"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
@@ -25,7 +26,7 @@ Begin VB.Form APOT2
       Caption         =   "WEB"
       Height          =   360
       Left            =   12360
-      TabIndex        =   150
+      TabIndex        =   151
       Top             =   9840
       Visible         =   0   'False
       Width           =   735
@@ -33,14 +34,14 @@ Begin VB.Form APOT2
    Begin VB.Frame Frame2 
       Height          =   1215
       Left            =   0
-      TabIndex        =   136
+      TabIndex        =   137
       Top             =   2880
       Width           =   6975
       Begin VB.TextBox pos_kerd2 
          BackColor       =   &H00E0E0E0&
          Height          =   375
          Left            =   1920
-         TabIndex        =   143
+         TabIndex        =   144
          Top             =   480
          Width           =   975
       End
@@ -48,7 +49,7 @@ Begin VB.Form APOT2
          BackColor       =   &H00E0E0E0&
          Height          =   375
          Left            =   2880
-         TabIndex        =   142
+         TabIndex        =   143
          Top             =   480
          Width           =   975
       End
@@ -56,7 +57,7 @@ Begin VB.Form APOT2
          BackColor       =   &H00E0E0E0&
          Height          =   375
          Left            =   4200
-         TabIndex        =   141
+         TabIndex        =   142
          Top             =   480
          Width           =   975
       End
@@ -64,7 +65,7 @@ Begin VB.Form APOT2
          BackColor       =   &H00E0E0E0&
          Height          =   375
          Left            =   3000
-         TabIndex        =   140
+         TabIndex        =   141
          Top             =   840
          Width           =   975
       End
@@ -72,7 +73,7 @@ Begin VB.Form APOT2
          BackColor       =   &H00E0E0E0&
          Height          =   375
          Left            =   1920
-         TabIndex        =   139
+         TabIndex        =   140
          Top             =   840
          Width           =   855
       End
@@ -81,14 +82,14 @@ Begin VB.Form APOT2
          Height          =   375
          HideSelection   =   0   'False
          Left            =   960
-         TabIndex        =   138
+         TabIndex        =   139
          Top             =   480
          Width           =   975
       End
       Begin MSFlexGridLib.MSFlexGrid times 
          Height          =   1215
          Left            =   0
-         TabIndex        =   137
+         TabIndex        =   138
          Top             =   0
          Width           =   6615
          _ExtentX        =   11663
@@ -107,7 +108,7 @@ Begin VB.Form APOT2
       Caption         =   "Frame1"
       Height          =   2895
       Left            =   0
-      TabIndex        =   118
+      TabIndex        =   119
       Top             =   0
       Width           =   6972
       Begin VB.CommandButton Command1 
@@ -116,7 +117,7 @@ Begin VB.Form APOT2
          Height          =   255
          Left            =   3600
          Style           =   1  'Graphical
-         TabIndex        =   153
+         TabIndex        =   154
          Top             =   2640
          Width           =   1935
       End
@@ -125,7 +126,7 @@ Begin VB.Form APOT2
          Caption         =   "Ενεργό"
          Height          =   255
          Left            =   5115
-         TabIndex        =   152
+         TabIndex        =   153
          Top             =   360
          Width           =   1455
       End
@@ -134,7 +135,7 @@ Begin VB.Form APOT2
          Height          =   288
          Index           =   16
          Left            =   1680
-         TabIndex        =   146
+         TabIndex        =   147
          Top             =   2640
          Width           =   1815
       End
@@ -143,7 +144,7 @@ Begin VB.Form APOT2
          Height          =   315
          Left            =   4800
          Style           =   2  'Dropdown List
-         TabIndex        =   145
+         TabIndex        =   146
          Top             =   2280
          Width           =   1800
       End
@@ -163,7 +164,7 @@ Begin VB.Form APOT2
          Height          =   288
          Index           =   4
          Left            =   1680
-         TabIndex        =   144
+         TabIndex        =   145
          Top             =   2280
          Width           =   1335
       End
@@ -182,7 +183,7 @@ Begin VB.Form APOT2
          Height          =   375
          Index           =   0
          Left            =   1680
-         TabIndex        =   127
+         TabIndex        =   128
          Top             =   240
          Width           =   1815
       End
@@ -203,7 +204,7 @@ Begin VB.Form APOT2
          Index           =   1
          Left            =   1680
          MaxLength       =   80
-         TabIndex        =   126
+         TabIndex        =   127
          Top             =   720
          Width           =   4890
       End
@@ -211,7 +212,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          Height          =   315
          Left            =   1680
-         TabIndex        =   125
+         TabIndex        =   126
          Top             =   1560
          Width           =   1575
       End
@@ -219,7 +220,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          Height          =   315
          Left            =   1680
-         TabIndex        =   124
+         TabIndex        =   125
          Top             =   1920
          Width           =   1575
       End
@@ -227,7 +228,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          Height          =   315
          Left            =   4800
-         TabIndex        =   123
+         TabIndex        =   124
          Top             =   1920
          Width           =   1785
       End
@@ -237,14 +238,14 @@ Begin VB.Form APOT2
          Height          =   330
          Index           =   6
          Left            =   1680
-         TabIndex        =   122
+         TabIndex        =   123
          Top             =   1155
          Width           =   1815
       End
       Begin VB.CommandButton Command6 
          Height          =   375
          Left            =   3720
-         TabIndex        =   121
+         TabIndex        =   122
          ToolTipText     =   "Αλλαγή κωδικού"
          Top             =   240
          Width           =   135
@@ -253,14 +254,14 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          Height          =   315
          Left            =   4800
-         TabIndex        =   120
+         TabIndex        =   121
          Top             =   1560
          Width           =   1785
       End
       Begin VB.TextBox lastupd 
          Height          =   285
          Left            =   4800
-         TabIndex        =   119
+         TabIndex        =   120
          Top             =   1200
          Width           =   1785
       End
@@ -281,7 +282,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   11
          Left            =   120
-         TabIndex        =   149
+         TabIndex        =   150
          Top             =   2280
          Width           =   1455
       End
@@ -302,7 +303,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   26
          Left            =   3240
-         TabIndex        =   148
+         TabIndex        =   149
          Top             =   2280
          Width           =   1575
       End
@@ -323,7 +324,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   27
          Left            =   120
-         TabIndex        =   147
+         TabIndex        =   148
          Top             =   2640
          Width           =   1095
       End
@@ -343,7 +344,7 @@ Begin VB.Form APOT2
          Height          =   375
          Index           =   0
          Left            =   120
-         TabIndex        =   135
+         TabIndex        =   136
          Top             =   360
          Width           =   1455
       End
@@ -363,7 +364,7 @@ Begin VB.Form APOT2
          Height          =   375
          Index           =   1
          Left            =   120
-         TabIndex        =   134
+         TabIndex        =   135
          Top             =   720
          Width           =   1455
       End
@@ -383,7 +384,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   2
          Left            =   120
-         TabIndex        =   133
+         TabIndex        =   134
          Top             =   1560
          Width           =   1455
       End
@@ -403,7 +404,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   3
          Left            =   120
-         TabIndex        =   132
+         TabIndex        =   133
          Top             =   1920
          Width           =   1455
       End
@@ -423,7 +424,7 @@ Begin VB.Form APOT2
          Height          =   180
          Index           =   4
          Left            =   3240
-         TabIndex        =   131
+         TabIndex        =   132
          Top             =   1920
          Width           =   1695
       End
@@ -443,7 +444,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   13
          Left            =   0
-         TabIndex        =   130
+         TabIndex        =   131
          Top             =   1200
          Width           =   1935
       End
@@ -463,7 +464,7 @@ Begin VB.Form APOT2
          Height          =   330
          Index           =   25
          Left            =   3480
-         TabIndex        =   129
+         TabIndex        =   130
          Top             =   1560
          Width           =   1095
       End
@@ -483,7 +484,7 @@ Begin VB.Form APOT2
          Height          =   180
          Index           =   5
          Left            =   3600
-         TabIndex        =   128
+         TabIndex        =   129
          Top             =   1200
          Width           =   1695
       End
@@ -492,7 +493,7 @@ Begin VB.Form APOT2
       Bindings        =   "APOT2.frx":000C
       Height          =   2625
       Left            =   7080
-      TabIndex        =   100
+      TabIndex        =   101
       Top             =   2880
       Width           =   7635
       _ExtentX        =   13462
@@ -615,28 +616,21 @@ Begin VB.Form APOT2
    Begin ADOMERCNEW.msEditor2 msEditor1 
       Height          =   2415
       Left            =   7080
-      TabIndex        =   89
+      TabIndex        =   90
       Top             =   6240
       Width           =   3855
-      _ExtentX        =   6795
-      _ExtentY        =   4255
-      BackColor       =   12648447
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   7.8
-         Charset         =   161
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   6795
+      _extenty        =   4255
+      backcolor       =   12648447
+      font            =   "APOT2.frx":0021
+      backcolor       =   12648447
    End
    Begin VB.PictureBox Picture4 
       Height          =   1335
       Left            =   15000
       ScaleHeight     =   1284
       ScaleWidth      =   6924
-      TabIndex        =   80
+      TabIndex        =   81
       TabStop         =   0   'False
       Top             =   10320
       Width           =   6972
@@ -647,7 +641,7 @@ Begin VB.Form APOT2
       Height          =   495
       Left            =   13320
       Style           =   1  'Graphical
-      TabIndex        =   79
+      TabIndex        =   80
       Top             =   5640
       Width           =   1455
    End
@@ -655,7 +649,7 @@ Begin VB.Form APOT2
       Caption         =   "Αναζήτηση απο ρυθμιζόμενες"
       Height          =   255
       Left            =   10980
-      TabIndex        =   78
+      TabIndex        =   79
       Top             =   9180
       Visible         =   0   'False
       Width           =   2535
@@ -712,7 +706,7 @@ Begin VB.Form APOT2
       Caption         =   "Υπολογισμός Mηνιαίων "
       Height          =   255
       Left            =   480
-      TabIndex        =   77
+      TabIndex        =   78
       Top             =   8760
       Value           =   1  'Checked
       Width           =   2175
@@ -721,14 +715,14 @@ Begin VB.Form APOT2
       Caption         =   "Νέα Εγγραφή"
       Height          =   495
       Left            =   9840
-      TabIndex        =   75
+      TabIndex        =   76
       Top             =   5640
       Width           =   1095
    End
    Begin VB.TextBox Text4 
       Height          =   375
       Left            =   1680
-      TabIndex        =   72
+      TabIndex        =   73
       Top             =   11040
       Visible         =   0   'False
       Width           =   2175
@@ -737,7 +731,7 @@ Begin VB.Form APOT2
       Caption         =   "ΕΤΙΚΕΤΤΑ"
       Height          =   195
       Left            =   6480
-      TabIndex        =   68
+      TabIndex        =   69
       Top             =   10920
       Visible         =   0   'False
       Width           =   1485
@@ -977,84 +971,90 @@ Begin VB.Form APOT2
       TabHeight       =   529
       BackColor       =   12648384
       TabCaption(0)   =   "0.Προμηθ./ελαχ.στόκ"
-      TabPicture(0)   =   "APOT2.frx":0021
+      TabPicture(0)   =   "APOT2.frx":004D
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label1(15)"
-      Tab(0).Control(1)=   "Label1(16)"
-      Tab(0).Control(2)=   "Label1(17)"
-      Tab(0).Control(3)=   "Label1(18)"
-      Tab(0).Control(4)=   "Label2"
-      Tab(0).Control(5)=   "Label1(24)"
-      Tab(0).Control(6)=   "Label3"
-      Tab(0).Control(7)=   "Label1(28)"
-      Tab(0).Control(8)=   "Label1(29)"
-      Tab(0).Control(9)=   "Label7"
-      Tab(0).Control(10)=   "lbLTI2"
-      Tab(0).Control(11)=   "lblLTI3"
-      Tab(0).Control(12)=   "Label8"
+      Tab(0).Control(0)=   "efk"
+      Tab(0).Control(1)=   "litra"
+      Tab(0).Control(2)=   "LTI2"
+      Tab(0).Control(3)=   "lti3"
+      Tab(0).Control(4)=   "PROMPOL"
+      Tab(0).Control(5)=   "Text1(18)"
+      Tab(0).Control(6)=   "Text1(17)"
+      Tab(0).Control(7)=   "exoda"
+      Tab(0).Control(8)=   "Text1(15)"
+      Tab(0).Control(9)=   "Text1(10)"
+      Tab(0).Control(10)=   "Text1(7)"
+      Tab(0).Control(11)=   "Text1(8)"
+      Tab(0).Control(12)=   "Text1(9)"
       Tab(0).Control(13)=   "Label9"
-      Tab(0).Control(14)=   "Text1(9)"
-      Tab(0).Control(15)=   "Text1(8)"
-      Tab(0).Control(16)=   "Text1(7)"
-      Tab(0).Control(17)=   "Text1(10)"
-      Tab(0).Control(18)=   "Text1(15)"
-      Tab(0).Control(19)=   "exoda"
-      Tab(0).Control(20)=   "Text1(17)"
-      Tab(0).Control(21)=   "Text1(18)"
-      Tab(0).Control(22)=   "PROMPOL"
-      Tab(0).Control(23)=   "lti3"
-      Tab(0).Control(24)=   "LTI2"
-      Tab(0).Control(25)=   "litra"
-      Tab(0).Control(26)=   "efk"
+      Tab(0).Control(14)=   "Label8"
+      Tab(0).Control(15)=   "lblLTI3"
+      Tab(0).Control(16)=   "lbLTI2"
+      Tab(0).Control(17)=   "Label7"
+      Tab(0).Control(18)=   "Label1(29)"
+      Tab(0).Control(19)=   "Label1(28)"
+      Tab(0).Control(20)=   "Label3"
+      Tab(0).Control(21)=   "Label1(24)"
+      Tab(0).Control(22)=   "Label2"
+      Tab(0).Control(23)=   "Label1(18)"
+      Tab(0).Control(24)=   "Label1(17)"
+      Tab(0).Control(25)=   "Label1(16)"
+      Tab(0).Control(26)=   "Label1(15)"
       Tab(0).ControlCount=   27
       TabCaption(1)   =   "1.Γραφική παράσταση"
-      TabPicture(1)   =   "APOT2.frx":003D
+      TabPicture(1)   =   "APOT2.frx":0069
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).ControlCount=   0
+      Tab(1).Control(0)=   "graph1"
+      Tab(1).ControlCount=   1
       TabCaption(2)   =   "2.Παράμετροι Λογιστ."
-      TabPicture(2)   =   "APOT2.frx":0059
+      TabPicture(2)   =   "APOT2.frx":0085
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label1(19)"
-      Tab(2).Control(1)=   "Label1(20)"
-      Tab(2).Control(2)=   "Label4"
-      Tab(2).Control(3)=   "lblΑπαλλαγήΦΠΑ"
-      Tab(2).Control(4)=   "Label11"
-      Tab(2).Control(5)=   "Text1(11)"
-      Tab(2).Control(6)=   "Text1(12)"
-      Tab(2).Control(7)=   "DataGrid2"
-      Tab(2).Control(8)=   "timokat"
-      Tab(2).Control(9)=   "ONO2"
-      Tab(2).Control(10)=   "apallagesFPA"
-      Tab(2).Control(11)=   "discountOption"
+      Tab(2).Control(0)=   "discountOption"
+      Tab(2).Control(1)=   "apallagesFPA"
+      Tab(2).Control(2)=   "ONO2"
+      Tab(2).Control(3)=   "timokat"
+      Tab(2).Control(4)=   "DataGrid2"
+      Tab(2).Control(5)=   "Text1(12)"
+      Tab(2).Control(6)=   "Text1(11)"
+      Tab(2).Control(7)=   "Label11"
+      Tab(2).Control(8)=   "lblΑπαλλαγήΦΠΑ"
+      Tab(2).Control(9)=   "Label4"
+      Tab(2).Control(10)=   "Label1(20)"
+      Tab(2).Control(11)=   "Label1(19)"
       Tab(2).ControlCount=   12
       TabCaption(3)   =   "3.Κινήσεις κατα μήνα"
-      TabPicture(3)   =   "APOT2.frx":0075
+      TabPicture(3)   =   "APOT2.frx":00A1
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "MSFlexGrid1"
       Tab(3).ControlCount=   1
       TabCaption(4)   =   "4.Υπόλοιπα κατά Αποθ."
-      TabPicture(4)   =   "APOT2.frx":0091
+      TabPicture(4)   =   "APOT2.frx":00BD
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label5"
+      Tab(4).Control(0)=   "MSHFlexGrid1"
       Tab(4).Control(1)=   "Label6"
-      Tab(4).Control(2)=   "MSHFlexGrid1"
+      Tab(4).Control(2)=   "Label5"
       Tab(4).ControlCount=   3
       TabCaption(5)   =   "5.BARCODES"
+      TabPicture(5)   =   "APOT2.frx":00D9
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "DataGrid1"
-      Tab(5).Control(1)=   "Text3"
+      Tab(5).Control(0)=   "Adodc2"
+      Tab(5).Control(1)=   "Command11"
       Tab(5).Control(2)=   "Command10"
-      Tab(5).Control(3)=   "Command11"
-      Tab(5).Control(4)=   "Adodc2"
+      Tab(5).Control(3)=   "Text3"
+      Tab(5).Control(4)=   "DataGrid1"
       Tab(5).ControlCount=   5
       TabCaption(6)   =   "6.Κίνηση περισυνή"
+      TabPicture(6)   =   "APOT2.frx":00F5
       Tab(6).ControlEnabled=   0   'False
       Tab(6).Control(0)=   "MSFlexGrid2"
       Tab(6).ControlCount=   1
       TabCaption(7)   =   "7.Γραφημα περισυνό"
+      TabPicture(7)   =   "APOT2.frx":0111
       Tab(7).ControlEnabled=   0   'False
-      Tab(7).ControlCount=   0
+      Tab(7).Control(0)=   "graph2"
+      Tab(7).ControlCount=   1
       TabCaption(8)   =   "Πεδία Χρήστη/CPV"
+      TabPicture(8)   =   "APOT2.frx":012D
       Tab(8).ControlEnabled=   -1  'True
       Tab(8).Control(0)=   "lhm1"
       Tab(8).Control(0).Enabled=   0   'False
@@ -1078,42 +1078,44 @@ Begin VB.Form APOT2
       Tab(8).Control(9).Enabled=   0   'False
       Tab(8).Control(10)=   "Lab5"
       Tab(8).Control(10).Enabled=   0   'False
-      Tab(8).Control(11)=   "Label10"
+      Tab(8).Control(11)=   "Lab6"
       Tab(8).Control(11).Enabled=   0   'False
-      Tab(8).Control(12)=   "HM1"
+      Tab(8).Control(12)=   "Label10"
       Tab(8).Control(12).Enabled=   0   'False
-      Tab(8).Control(13)=   "HM2"
+      Tab(8).Control(13)=   "HM1"
       Tab(8).Control(13).Enabled=   0   'False
-      Tab(8).Control(14)=   "HM3"
+      Tab(8).Control(14)=   "HM2"
       Tab(8).Control(14).Enabled=   0   'False
-      Tab(8).Control(15)=   "CH1"
+      Tab(8).Control(15)=   "HM3"
       Tab(8).Control(15).Enabled=   0   'False
-      Tab(8).Control(16)=   "CH2"
+      Tab(8).Control(16)=   "CH1"
       Tab(8).Control(16).Enabled=   0   'False
-      Tab(8).Control(17)=   "CH3"
+      Tab(8).Control(17)=   "CH2"
       Tab(8).Control(17).Enabled=   0   'False
-      Tab(8).Control(18)=   "NUM1"
+      Tab(8).Control(18)=   "CH3"
       Tab(8).Control(18).Enabled=   0   'False
-      Tab(8).Control(19)=   "NUM2"
+      Tab(8).Control(19)=   "NUM1"
       Tab(8).Control(19).Enabled=   0   'False
-      Tab(8).Control(20)=   "NUM3"
+      Tab(8).Control(20)=   "NUM2"
       Tab(8).Control(20).Enabled=   0   'False
-      Tab(8).Control(21)=   "ch6"
+      Tab(8).Control(21)=   "NUM3"
       Tab(8).Control(21).Enabled=   0   'False
-      Tab(8).Control(22)=   "ch5"
+      Tab(8).Control(22)=   "ch6"
       Tab(8).Control(22).Enabled=   0   'False
-      Tab(8).Control(23)=   "ch4"
+      Tab(8).Control(23)=   "ch5"
       Tab(8).Control(23).Enabled=   0   'False
-      Tab(8).Control(24)=   "CPV"
+      Tab(8).Control(24)=   "ch4"
       Tab(8).Control(24).Enabled=   0   'False
-      Tab(8).ControlCount=   25
+      Tab(8).Control(25)=   "CPV"
+      Tab(8).Control(25).Enabled=   0   'False
+      Tab(8).ControlCount=   26
       Begin VB.ComboBox discountOption 
          Height          =   315
-         ItemData        =   "APOT2.frx":00AD
+         ItemData        =   "APOT2.frx":0149
          Left            =   -72960
-         List            =   "APOT2.frx":00B4
+         List            =   "APOT2.frx":0156
          Style           =   2  'Dropdown List
-         TabIndex        =   17
+         TabIndex        =   157
          Top             =   2760
          Width           =   1572
       End
@@ -1121,7 +1123,7 @@ Begin VB.Form APOT2
          BackColor       =   &H0080C0FF&
          Height          =   375
          Left            =   4560
-         TabIndex        =   154
+         TabIndex        =   155
          Top             =   1320
          Width           =   1935
       End
@@ -1131,7 +1133,7 @@ Begin VB.Form APOT2
          Height          =   315
          Left            =   -72975
          Style           =   2  'Dropdown List
-         TabIndex        =   101
+         TabIndex        =   102
          Top             =   1800
          Width           =   4575
       End
@@ -1139,42 +1141,42 @@ Begin VB.Form APOT2
          Height          =   375
          Left            =   -72945
          MultiLine       =   -1  'True
-         TabIndex        =   99
+         TabIndex        =   100
          Top             =   1248
          Width           =   4545
       End
       Begin VB.TextBox efk 
          Height          =   324
          Left            =   -69384
-         TabIndex        =   96
+         TabIndex        =   97
          Top             =   3120
          Width           =   636
       End
       Begin VB.TextBox litra 
          Height          =   288
          Left            =   -69384
-         TabIndex        =   95
+         TabIndex        =   96
          Top             =   2652
          Width           =   636
       End
       Begin VB.TextBox LTI2 
          Height          =   375
          Left            =   -69360
-         TabIndex        =   94
+         TabIndex        =   95
          Top             =   1560
          Width           =   615
       End
       Begin VB.TextBox lti3 
          Height          =   375
          Left            =   -69360
-         TabIndex        =   92
+         TabIndex        =   93
          Top             =   2160
          Width           =   615
       End
       Begin VB.TextBox PROMPOL 
          Height          =   375
          Left            =   -69360
-         TabIndex        =   87
+         TabIndex        =   88
          Top             =   1020
          Width           =   615
       End
@@ -1342,6 +1344,7 @@ Begin VB.Form APOT2
          _Version        =   393216
       End
       Begin MSDataGridLib.DataGrid DataGrid2 
+         Bindings        =   "APOT2.frx":017A
          Height          =   1308
          Left            =   -74508
          TabIndex        =   30
@@ -1476,6 +1479,7 @@ Begin VB.Form APOT2
          Width           =   2070
       End
       Begin MSDataGridLib.DataGrid DataGrid1 
+         Bindings        =   "APOT2.frx":0190
          Height          =   2940
          Left            =   -73965
          TabIndex        =   26
@@ -1551,6 +1555,7 @@ Begin VB.Form APOT2
          Width           =   1815
       End
       Begin MSHierarchicalFlexGridLib.MSHFlexGrid MSHFlexGrid1 
+         Bindings        =   "APOT2.frx":01A5
          Height          =   2775
          Left            =   -74760
          TabIndex        =   18
@@ -1562,6 +1567,14 @@ Begin VB.Form APOT2
          FixedCols       =   0
          _NumberOfBands  =   1
          _Band(0).Cols   =   2
+      End
+      Begin MSChart20Lib.MSChart graph1 
+         Height          =   3495
+         Left            =   -74880
+         OleObjectBlob   =   "APOT2.frx":01BA
+         TabIndex        =   17
+         Top             =   1020
+         Width           =   6375
       End
       Begin VB.TextBox Text1 
          DataField       =   " "
@@ -1655,13 +1668,21 @@ Begin VB.Form APOT2
          Cols            =   5
          GridLines       =   2
       End
+      Begin MSChart20Lib.MSChart graph2 
+         Height          =   3495
+         Left            =   -74970
+         OleObjectBlob   =   "APOT2.frx":1FC3
+         TabIndex        =   38
+         Top             =   1050
+         Width           =   6375
+      End
       Begin VB.Label Label11 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "Δικαίωμα Εκπτωσης"
          Height          =   192
          Left            =   -74640
-         TabIndex        =   38
+         TabIndex        =   158
          Top             =   2760
          Width           =   1380
       End
@@ -1671,7 +1692,7 @@ Begin VB.Form APOT2
          Caption         =   "CPV"
          Height          =   195
          Left            =   4560
-         TabIndex        =   155
+         TabIndex        =   156
          Top             =   1080
          Width           =   315
       End
@@ -1681,7 +1702,7 @@ Begin VB.Form APOT2
          Caption         =   "Απαλλαγή ΦΠΑ"
          Height          =   195
          Left            =   -74640
-         TabIndex        =   102
+         TabIndex        =   103
          Top             =   1800
          Width           =   1140
       End
@@ -1689,7 +1710,7 @@ Begin VB.Form APOT2
          Caption         =   "Ε.Φ.Κ."
          Height          =   324
          Left            =   -70476
-         TabIndex        =   98
+         TabIndex        =   99
          Top             =   3120
          Width           =   948
       End
@@ -1697,7 +1718,7 @@ Begin VB.Form APOT2
          Caption         =   "Λίτρα"
          Height          =   324
          Left            =   -70476
-         TabIndex        =   97
+         TabIndex        =   98
          Top             =   2652
          Width           =   792
       End
@@ -1707,7 +1728,7 @@ Begin VB.Form APOT2
          Caption         =   "Χονδρική 3η"
          Height          =   195
          Left            =   -70560
-         TabIndex        =   93
+         TabIndex        =   94
          Top             =   2160
          Width           =   900
       End
@@ -1717,7 +1738,7 @@ Begin VB.Form APOT2
          Caption         =   "Χονδρική 2η"
          Height          =   195
          Left            =   -70680
-         TabIndex        =   91
+         TabIndex        =   92
          Top             =   1560
          Width           =   900
       End
@@ -1725,14 +1746,14 @@ Begin VB.Form APOT2
          Caption         =   "Προμήθεια Πωλητή"
          Height          =   375
          Left            =   -70800
-         TabIndex        =   88
+         TabIndex        =   89
          Top             =   1020
          Width           =   1095
       End
       Begin VB.Label Label6 
          Height          =   255
          Left            =   -73200
-         TabIndex        =   74
+         TabIndex        =   75
          Top             =   1080
          Width           =   1455
       End
@@ -1740,7 +1761,7 @@ Begin VB.Form APOT2
          Caption         =   "Δεσμευμένα"
          Height          =   255
          Left            =   -74760
-         TabIndex        =   73
+         TabIndex        =   74
          Top             =   1080
          Width           =   1215
       End
@@ -1748,9 +1769,25 @@ Begin VB.Form APOT2
          Caption         =   "Περιγραφή 2η είδους"
          Height          =   390
          Left            =   -74640
-         TabIndex        =   69
+         TabIndex        =   70
          Top             =   1320
          Width           =   1650
+      End
+      Begin VB.Label Lab6 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   7.8
+            Charset         =   161
+            Weight          =   400
+            Underline       =   -1  'True
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   4515
+         TabIndex        =   68
+         Top             =   3195
+         Width           =   1980
       End
       Begin VB.Label Lab5 
          Height          =   330
@@ -1961,16 +1998,16 @@ Begin VB.Form APOT2
       ForeColor       =   &H000000FF&
       Height          =   2655
       Left            =   7080
-      TabIndex        =   81
+      TabIndex        =   82
       Top             =   0
       Width           =   7695
       Begin VB.ComboBox ENERGA 
          Height          =   315
-         ItemData        =   "APOT2.frx":00C8
+         ItemData        =   "APOT2.frx":3DCC
          Left            =   6480
-         List            =   "APOT2.frx":00CF
+         List            =   "APOT2.frx":3DD9
          Style           =   2  'Dropdown List
-         TabIndex        =   151
+         TabIndex        =   152
          Top             =   600
          Width           =   1215
       End
@@ -1986,7 +2023,7 @@ Begin VB.Form APOT2
          EndProperty
          Height          =   375
          Left            =   2040
-         TabIndex        =   117
+         TabIndex        =   118
          ToolTipText     =   "Περιγραφή $ Κωδικός  Συνδυασμένη αναζήτηση π.χ. LL$456 η περιγραφή αρχίζει από LL και ο κωδικός αρχίζει με 456"
          Top             =   800
          Width           =   1575
@@ -2003,7 +2040,7 @@ Begin VB.Form APOT2
          EndProperty
          Height          =   375
          Left            =   2040
-         TabIndex        =   116
+         TabIndex        =   117
          ToolTipText     =   "Aναζήτηση"
          Top             =   380
          Width           =   1575
@@ -2013,7 +2050,7 @@ Begin VB.Form APOT2
          Caption         =   "με υπόλοιπο"
          Height          =   375
          Left            =   5280
-         TabIndex        =   115
+         TabIndex        =   116
          Top             =   960
          Width           =   2000
       End
@@ -2029,7 +2066,7 @@ Begin VB.Form APOT2
          EndProperty
          Height          =   375
          Left            =   2040
-         TabIndex        =   114
+         TabIndex        =   115
          Top             =   1200
          Width           =   1575
       End
@@ -2045,7 +2082,7 @@ Begin VB.Form APOT2
          EndProperty
          Height          =   375
          Left            =   2040
-         TabIndex        =   113
+         TabIndex        =   114
          Top             =   1620
          Width           =   1575
       End
@@ -2053,7 +2090,7 @@ Begin VB.Form APOT2
          Caption         =   "αναζήτηση"
          Height          =   375
          Left            =   3720
-         TabIndex        =   112
+         TabIndex        =   113
          Top             =   1080
          Width           =   1455
       End
@@ -2061,7 +2098,7 @@ Begin VB.Form APOT2
          Height          =   315
          Left            =   2040
          Style           =   2  'Dropdown List
-         TabIndex        =   111
+         TabIndex        =   112
          Top             =   2040
          Width           =   1575
       End
@@ -2069,7 +2106,7 @@ Begin VB.Form APOT2
          Caption         =   "Εττικέτα"
          Height          =   255
          Left            =   3720
-         TabIndex        =   110
+         TabIndex        =   111
          Top             =   1440
          Width           =   1455
       End
@@ -2077,7 +2114,7 @@ Begin VB.Form APOT2
          Caption         =   "Εττικέτα ράφι"
          Height          =   225
          Left            =   3720
-         TabIndex        =   109
+         TabIndex        =   110
          Top             =   1770
          Width           =   1455
       End
@@ -2086,7 +2123,7 @@ Begin VB.Form APOT2
          Caption         =   "Από Scanner"
          Height          =   195
          Left            =   5280
-         TabIndex        =   108
+         TabIndex        =   109
          ToolTipText     =   "Aπό αριθμό τιμ. 1234"
          Top             =   1320
          Width           =   2000
@@ -2095,23 +2132,24 @@ Begin VB.Form APOT2
          Caption         =   "Εττικέτα με περιγραφή"
          Height          =   405
          Left            =   5280
-         TabIndex        =   107
+         TabIndex        =   108
          Top             =   1560
          Width           =   1600
       End
       Begin VB.CommandButton Command13 
          Height          =   360
          Left            =   6720
-         TabIndex        =   106
+         TabIndex        =   107
          Top             =   1560
          Width           =   120
       End
       Begin VB.PictureBox Picture3 
          Height          =   495
          Left            =   3840
+         Picture         =   "APOT2.frx":3DF4
          ScaleHeight     =   444
          ScaleWidth      =   564
-         TabIndex        =   105
+         TabIndex        =   106
          TabStop         =   0   'False
          Top             =   480
          Width           =   615
@@ -2120,7 +2158,7 @@ Begin VB.Form APOT2
          Height          =   315
          Left            =   5280
          Style           =   2  'Dropdown List
-         TabIndex        =   104
+         TabIndex        =   105
          Top             =   600
          Width           =   1212
       End
@@ -2129,7 +2167,7 @@ Begin VB.Form APOT2
          Caption         =   "Παλιές Χρονιές"
          Height          =   372
          Left            =   5280
-         TabIndex        =   103
+         TabIndex        =   104
          Top             =   120
          Width           =   1800
       End
@@ -2148,7 +2186,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   7
          Left            =   45
-         TabIndex        =   86
+         TabIndex        =   87
          Top             =   840
          Width           =   1335
       End
@@ -2167,7 +2205,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   8
          Left            =   45
-         TabIndex        =   85
+         TabIndex        =   86
          Top             =   480
          Width           =   1335
       End
@@ -2186,7 +2224,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   9
          Left            =   45
-         TabIndex        =   84
+         TabIndex        =   85
          Top             =   1320
          Width           =   1335
       End
@@ -2205,7 +2243,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   10
          Left            =   45
-         TabIndex        =   83
+         TabIndex        =   84
          Top             =   1740
          Width           =   1575
       End
@@ -2224,7 +2262,7 @@ Begin VB.Form APOT2
          Height          =   255
          Index           =   22
          Left            =   120
-         TabIndex        =   82
+         TabIndex        =   83
          Top             =   2040
          Width           =   1575
       End
@@ -2242,7 +2280,7 @@ Begin VB.Form APOT2
       Caption         =   "Προμήθεια Πωλητή"
       Height          =   375
       Left            =   4200
-      TabIndex        =   90
+      TabIndex        =   91
       Top             =   5520
       Width           =   1095
    End
@@ -2250,7 +2288,7 @@ Begin VB.Form APOT2
       Caption         =   "flag"
       Height          =   255
       Left            =   240
-      TabIndex        =   76
+      TabIndex        =   77
       Top             =   8760
       Visible         =   0   'False
       Width           =   615
@@ -2260,14 +2298,14 @@ Begin VB.Form APOT2
       ForeColor       =   &H00FFFFFF&
       Height          =   375
       Left            =   4935
-      TabIndex        =   71
+      TabIndex        =   72
       Top             =   2265
       Width           =   795
    End
    Begin ATLCONTROLLibCtl.BarCode BarCode4 
       Height          =   900
       Left            =   8880
-      TabIndex        =   70
+      TabIndex        =   71
       Top             =   10920
       Visible         =   0   'False
       Width           =   1995
@@ -3984,20 +4022,20 @@ Private Sub Command16_Click()
             '   dum = Update_Next_Pel(x)
             On Error GoTo NoUpdate
 
-440         DATA1.Recordset.AddNew
+440         Data1.Recordset.AddNew
 
             On Error Resume Next
 
-450         DATA1.Recordset("kod") = UCase(Text1(0))  ', "0000")
-460         DATA1.Recordset("ONO") = Left(Text1(1).Text, DATA1.Recordset("ONO").DefinedSize)
+450         Data1.Recordset("kod") = UCase(Text1(0))  ', "0000")
+460         Data1.Recordset("ONO") = Left(Text1(1).Text, Data1.Recordset("ONO").DefinedSize)
 
-470         DATA1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
+470         Data1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
 
-480         DATA1.Recordset("mon") = Combo1.Text
+480         Data1.Recordset("mon") = Combo1.Text
 
             '       DATA2.Recordset("kodlog") = Val(left(Combo3.Text, 3)) ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
-490         DATA1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+490         Data1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
             'Data1.Recordset("kodlog") = Right(Combo3.Text, 3)
 
             '       'αν εχω προσθέσει υπο οικογένεια την καταχωρεί αυτόματα
@@ -4006,31 +4044,31 @@ Private Sub Command16_Click()
             '           Gdb.Execute SQL3
             '       End If
 
-500         DATA1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
+500         Data1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
 
-510         DATA1.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))
-520         DATA1.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
-530         DATA1.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(Text1(10).Text)
-540         DATA1.Recordset("pos_kerD") = Val(Replace(pos_kerd2.Text, ",", "."))    ' Val(pos_KERD2.Text)
+510         Data1.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))
+520         Data1.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
+530         Data1.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(Text1(10).Text)
+540         Data1.Recordset("pos_kerD") = Val(Replace(pos_kerd2.Text, ",", "."))    ' Val(pos_KERD2.Text)
 
-550         DATA1.Recordset("prom") = Text1(7).Text
-560         DATA1.Recordset("spa") = Val(Text1(9).Text)
+550         Data1.Recordset("prom") = Text1(7).Text
+560         Data1.Recordset("spa") = Val(Text1(9).Text)
             'DATA1.Recordset("erg") = Val(Text1(6).Text)
-570         DATA1.Recordset("ues") = Text1(6).Text
+570         Data1.Recordset("ues") = Text1(6).Text
 
-580         DATA1.Recordset("kodsynod") = Text1(12).Text
-590         DATA1.Recordset("kodlogag") = Text1(11).Text
+580         Data1.Recordset("kodsynod") = Text1(12).Text
+590         Data1.Recordset("kodlogag") = Text1(11).Text
 
-600         DATA1.Recordset("CH1") = CH1.Text
+600         Data1.Recordset("CH1") = CH1.Text
 
-610         DATA1.Recordset("ERG") = Text1(6).Text    'ΕΡΓ
-620         DATA1.Recordset("KODERG") = lti5.Text    ' ΚΩΔ.ΠΡΟΜΗΘΕΥΤΗ
+610         Data1.Recordset("ERG") = Text1(6).Text    'ΕΡΓ
+620         Data1.Recordset("KODERG") = lti5.Text    ' ΚΩΔ.ΠΡΟΜΗΘΕΥΤΗ
 630         'DATA1.Recordset("MEMO") = Text14.Text
-640         DATA1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+640         Data1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
             On Error GoTo NoUpdate
 
-650         DATA1.Recordset.Update
+650         Data1.Recordset.Update
 
             On Error Resume Next
 
@@ -4218,7 +4256,7 @@ Private Sub Command2_Click()
 520         DATA2.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(lti5.Text)
 
             DATA2.Recordset("lti2") = Val(Replace(LTI2.Text, ",", "."))    ' Val(lti5.Text)
-            DATA2.Recordset("lti3") = Val(Replace(lti3.Text, ",", "."))    ' Val(lti5.Text)
+            DATA2.Recordset("lti3") = Val(Replace(LTI3.Text, ",", "."))    ' Val(lti5.Text)
 
             DATA2.Recordset("energo") = IIf(chkEnergos.Value = vbChecked, 1, 0)
 
@@ -4632,7 +4670,7 @@ Private Sub Command3_Click()
 110     apot21.Text2.Text = Text1(1).Text
 120     apot21.Text3.Text = " Αποθ." + Combo9.Text
 130   '  apot21.Label1.Caption = str(Val(Left(Me.Combo9.Text, 2)))
-140     apot21.Label2.Caption = IIf(IsNull(DATA1.Recordset("apos")), "", DATA1.Recordset("apos"))
+140     apot21.Label2.Caption = IIf(IsNull(Data1.Recordset("apos")), "", Data1.Recordset("apos"))
       If Val(Left(Me.Combo9.Text, 2)) = 99 Then
          apot21.filtroPEL.Caption = " APOT>0 "
       Else
@@ -8707,10 +8745,9 @@ DataGrid1_Click_Err:
 End Sub
 
 Private Sub DBGrid1_Click()
-     'mDBGrid1_RowColChange
-     MILSEC 1000  '3000
      mDBGrid1_RowColChange
-     Screen.MousePointer = vbNormal
+     MILSEC 3000
+     mDBGrid1_RowColChange
 End Sub
 
 Private Sub DBGRID1_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -8795,8 +8832,6 @@ End Sub
 
 Private Sub mDBGrid1_RowColChange()    '(LastRow As Variant, ByVal LastCol As Integer)
 
-       'Exit Sub
- 'Screen.MousePointer = vbHourglass
         '<EhHeader>
         On Error GoTo mDBGrid1_RowColChange_Err
 
@@ -8824,7 +8859,7 @@ mmkod = DBGrid1.columns(0).Text
 120     DATA2.Refresh
 
         If DATA2.Recordset.EOF Then
-            Screen.MousePointer = vbNormal
+
             Exit Sub
 
         End If
@@ -8942,7 +8977,7 @@ mmkod = DBGrid1.columns(0).Text
 430     lti5.Text = DATA2.Recordset("lti5")
 
         LTI2.Text = nNull(DATA2.Recordset("lti2"))
-        lti3.Text = nNull(DATA2.Recordset("lti3"))
+        LTI3.Text = nNull(DATA2.Recordset("lti3"))
  
 
         ' DATA2.Recordset("APALLFPA") = Val(Left(apallagesFPA.Text, 2))
@@ -9194,9 +9229,9 @@ OLD700:
 
 1350    R.Close
 
-'1360    R.Open SQL2, Gdb, adOpenForwardOnly, adLockReadOnly
-'1370    Label6.Caption = CNull(R(0))
-'1380    R.Close
+1360    'R.Open SQL2, Gdb, adOpenForwardOnly, adLockReadOnly
+1370   ' Label6.Caption = CNull(R(0))
+1380   ' R.Close
 
 1390    MSHFlexGrid1.ColWidth(0) = 1
 
@@ -9415,7 +9450,7 @@ OLD700:
 
      diastaseis_Grid
 
-Screen.MousePointer = vbNormal
+
 
         Exit Sub
 
@@ -9866,20 +9901,20 @@ F_FAKEL_KOINOS = Trim$(F_FAKEL_KOINOS)
 760     f_lab5 = FINDPARAMETROI(1, "APOT2", "F_lab5", "Κειμ5", "Ετικέτα κειμ.5")
 770     f_lab6 = FINDPARAMETROI(1, "APOT2", "F_lab6", "Κειμ6", "Ετικέτα κειμ.6")
 
-780     LaB1.Caption = f_lab1
-790     Lab2.Caption = f_lab2
-800     LAB3.Caption = f_lab3
+780     lab1.Caption = f_lab1
+790     lab2.Caption = f_lab2
+800     lab3.Caption = f_lab3
 
-810     Lab4.Caption = f_lab4
-820     Lab5.Caption = f_lab5
-830     Lab6.Caption = f_lab6
+810     lab4.Caption = f_lab4
+820     lab5.Caption = f_lab5
+830     lab6.Caption = f_lab6
 
 840     f_num1 = FINDPARAMETROI(1, "APOT2", "F_num1", "Αριθ1", "Ετικέτα κειμ.1")
 850     f_num2 = FINDPARAMETROI(1, "APOT2", "F_num2", "Αριθ2", "Ετικέτα κειμ.2")
 860     f_num3 = FINDPARAMETROI(1, "APOT2", "F_num3", "Αριθ3", "Ετικέτα κειμ.3")
-870     LNUM1.Caption = f_num1
-880     LNUM2.Caption = f_num2
-890     LNUM3.Caption = f_num3
+870     Lnum1.Caption = f_num1
+880     Lnum2.Caption = f_num2
+890     Lnum3.Caption = f_num3
 
         ' Data1.DatabaseName = gDir
         'Data1.Connect = gConnect
@@ -10040,9 +10075,9 @@ DBGrid1.columns(3).alignment = dbgRight
 
 
 
-1390    DATA1.RecordSource = "SELECT TOP 100 *FROM EID"
-1400    DATA1.ConnectionString = gConnect
-1410    DATA1.Refresh
+1390    Data1.RecordSource = "SELECT TOP 100 *FROM EID"
+1400    Data1.ConnectionString = gConnect
+1410    Data1.Refresh
 
 1420    DATA2.ConnectionString = gConnect
 
@@ -10398,7 +10433,7 @@ Private Sub kod_LostFocus()
 120     erg.Text = ""
 130     barc.Text = ""
 
-140    ' cmdAnazit_Click
+140     cmdAnazit_Click
 
         'End If
 
@@ -11322,7 +11357,7 @@ FIND_N_NUMBER:
 340     rec.Close
 
 350     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-360     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA1.Recordset("KOD") + "'"
+360     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + Data1.Recordset("KOD") + "'"
 370     Return
 
         '<EhFooter>
@@ -11739,9 +11774,9 @@ Dim CC As String
 
 CC = F_ARXEIO_ETIK
 If Len(CC) = 0 Then
-     CD1.InitDir = "c:\mercvb"
-     CD1.ShowOpen
-     CC = CD1.FILENAME
+     cd1.InitDir = "c:\mercvb"
+     cd1.ShowOpen
+     CC = cd1.FILENAME
 End If
 
 On Error Resume Next
