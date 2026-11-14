@@ -128,7 +128,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   294912001
+      Format          =   86507521
       CurrentDate     =   38947
    End
    Begin VB.TextBox Text3 
@@ -244,7 +244,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   294912001
+      Format          =   86507521
       CurrentDate     =   38947
    End
    Begin TrueOleDBGrid80.TDBGrid G1 
@@ -752,11 +752,11 @@ EGGTIM = " EGGTIM "
 390  On Error GoTo 0
 Dim sql As String
 sql = "SELECT * FROM " + FFILE2 '+ " order by KODE,[Hμερ/νία]"
-data1.RecordSource = sql
+Data1.RecordSource = sql
 
-data1.Refresh
+Data1.Refresh
 
-If data1.Recordset.EOF Then
+If Data1.Recordset.EOF Then
       
       
    Gdb.Execute "DROP TABLE " + FFILE2
@@ -768,39 +768,39 @@ End If
 
 On Error GoTo 0
 
-data1.Recordset.MoveFirst
+Data1.Recordset.MoveFirst
 Dim mk As String
-mk = data1.Recordset("KODE")
+mk = Data1.Recordset("KODE")
 Dim SSUM As Single
 SSUM = 0
-Do While Not data1.Recordset.EOF
+Do While Not Data1.Recordset.EOF
   '[Εισαγωγές],E.PIS AS [Εξαγωγές]
-  If mk = data1.Recordset("KODE") Then ' STO IDIO EIDOS
+  If mk = Data1.Recordset("KODE") Then ' STO IDIO EIDOS
        'ΟΚ
   Else ' ΑΛΛΑΞΑ ΕΙΔΟΣ
-       mk = data1.Recordset("KODE")
+       mk = Data1.Recordset("KODE")
        SSUM = 0 ' ΞΑΝΑΜΗΔΕΝΙΖΩ ΤΟ ΝΕΟ ΕΙΔΟΣ
   End If
   
-     SSUM = SSUM + data1.Recordset("Εισαγωγές") - data1.Recordset("Εξαγωγές")
-     Gdb.Execute "UPDATE " + FFILE2 + " SET [Υπόλοιπο] =" + Replace(Format(SSUM, "###########0.00"), ",", ".") + " WHERE ID=" + str(data1.Recordset("ID"))
+     SSUM = SSUM + Data1.Recordset("Εισαγωγές") - Data1.Recordset("Εξαγωγές")
+     Gdb.Execute "UPDATE " + FFILE2 + " SET [Υπόλοιπο] =" + Replace(Format(SSUM, "###########0.00"), ",", ".") + " WHERE ID=" + str(Data1.Recordset("ID"))
   
-  data1.Recordset.MoveNext
+  Data1.Recordset.MoveNext
   
 
 
 Loop
 
-data1.Refresh
+Data1.Refresh
 
 
 
 
 'MsgBox "OK"
 
-data1.Refresh
+Data1.Refresh
 
-If data1.Recordset.EOF Then
+If Data1.Recordset.EOF Then
    
 End If
    
@@ -825,27 +825,27 @@ g1.Refresh
 
 'On Error GoTo OUT
 
-         data1.Recordset.MoveFirst
+         Data1.Recordset.MoveFirst
 '          TDBGrid.Splits(0).columns(1).Width = 3500
          Dim sumes(0 To 20) As Single
 
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
             sumes(k) = 0
          Next
 
 
 
            ' On Error GoTo ektos
-         Do While Not data1.Recordset.EOF
-             For k = 0 To data1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+         Do While Not Data1.Recordset.EOF
+             For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
 
-                     sumes(k) = sumes(k) + nNull(data1.Recordset.FIELDS(k).Value)
+                     sumes(k) = sumes(k) + nNull(Data1.Recordset.FIELDS(k).Value)
                     End If
                 Next
-                data1.Recordset.MoveNext
+                Data1.Recordset.MoveNext
          Loop
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
                If sumes(k) > 0 Then
 
@@ -917,7 +917,7 @@ Do While Not rrd.EOF
     If IsNull(rrd!kod) Then
     Else
       Text1.Text = rrd!kod
-      TEXT2.Text = CNull(rrd!ono)
+      Text2.Text = CNull(rrd!ono)
       paint_grid
     End If
     rrd.MoveNext
@@ -1203,7 +1203,7 @@ End Sub '   Exit Sub
 '        '</EhFooter>
 
 Private Sub cXronies_Click()
-  If cXronies.Value = vbChecked Then
+  If cXRONIES.Value = vbChecked Then
       paint_grid
   End If
 End Sub
@@ -1244,10 +1244,10 @@ f_PALIAXRONIA = Trim(FINDPARAMETROI(1, "PAR1", "F_PALIAXRONIA", "2005", "Γ.18 DS
 
      If Check4.Value = vbChecked Then    '   <> gDir Then ' palia xronia
         GTGDB.Open gConnect + ";DATABASE=" + f_PALIAXRONIA
-        data1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
+        Data1.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA
         
      Else
-        data1.ConnectionString = gConnect
+        Data1.ConnectionString = gConnect
         GTGDB.Open gConnect
      End If
 
@@ -1334,13 +1334,13 @@ f_AAJEX = 0
         's = s + "iif(PATINDEX ( '%" + left(atim, 1) + "%' ,'" + F_pis_APOU + "')>0,POSO,iif(PATINDEX ( '%" + left(atim, 1) + "%' ,'" + F_apis_APOU + "')>0,-POSO,0)) AS [PISTOSI] "
         '      instr('" + F_xre_APOU + "',)>0,poso,iif(instr('" + F_axre_APOU + "',left(atim,1))>0,-poso,0)) as [Χρέωση],"
         '      s = s + "iif(instr('" + F_pis_APOU + "',left(atim,1))>0,poso,iif(instr('" + F_apis_APOU + "',left(atim,1))>0,-poso,0)) as [Πίστωση] "
-If CHECK_PROOD.Value = vbChecked Then
+If CHECK_PROOD.Value = vbChecked Then 'EXEI PROODEYTIKA
 
      On Error Resume Next
      GTGDB.Execute "DROP TABLE " + fFILE
      
      On Error GoTo exitcode
-     If cXronies.Value = vbChecked Then
+     If cXRONIES.Value = vbChecked Then
         Dim SQL11 As String
         SQL11 = "SELECT * INTO " + fFILE + " FROM EGGTIM  where " + filtroPEL.Caption + " AND HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and KODE='" + Text1.Text + "' "
      
@@ -1489,10 +1489,14 @@ If CHECK_PROOD.Value = vbChecked Then
 '     s = s + " where " + filtroPEL.Caption + " E.HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND E.HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  AND E.APOT=" + Label1.Caption + " and E.KODE='" + Text1.Text + "' "
 '     s = s + " Group By  CONVERT(CHAR(12),E.HME,3) ,E.ATIM ,E.XRE ,E.PIS ,E.POSO,E.TIMM,E.EKPT,PEL.EPO,E.KERDOS,E.FCURRENCY,E.ID,convert(char(10),E.HME,2) order by convert(char(10),E.HME,2),E.ATIM ;"
         
-Else
+Else 'XORIS PRRODEYTIKA
 
      s = "select CONVERT(CHAR(12),E.HME,3) as [Hμερ/νία],E.ATIM as [Αρ Παρ/κού],E.XRE AS [Εισαγωγές],E.PIS AS [Εξαγωγές]"
-     s = s + " ,'     ' as [Υπόλοιπο],E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100 AS [TEΛΙΚ.TIMH], PEL.EPO,"
+     
+    's = s + ", SUM(ISNULL(E.XRE, 0) - ISNULL(E.PIS, 0)) OVER ( ORDER BY E.ID  ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW    ) AS [Υπόλοιπο]"
+     s = s + ", ' ' AS [Υπόλοιπο]"
+    
+     s = s + " ,E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100 AS [TEΛΙΚ.TIMH], PEL.EPO,"
      
      s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEIS + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE (CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEIS + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ΑΞΙΑ EIΣΑΓ],"
      s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEX + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEX + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ΑΞΙΑ EΞΑΓ], "
@@ -1510,8 +1514,16 @@ Else
 
 End If
         
-        
-        
+' 'SELECT
+'    ID,
+'  XRE,PIS,   SUM(ISNULL(XRE, 0) - ISNULL(PIS, 0)) OVER (
+'        ORDER BY HME, ID
+'        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+'    ) AS TrexonYpoloipo
+'From EGGTIM
+'WHERE KODE='1004305'
+'ORDER BY HME, ID;
+'
 '         select CONVERT(CHAR(12),t1.HME,3) as [Hμερ/νία],t1.ATIM as [Αρ Παρ/κού],t1.XRE AS [Εισαγωγές],t1.PIS AS [Εξαγωγές] ,
 '
 '
@@ -1581,13 +1593,13 @@ DoEvents
 '     End If
 
 
-380     data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
+380     Data1.RecordSource = s + s1  ' "SELECT *FROM EGGTIM"
 
-390     data1.Refresh
+390     Data1.Refresh
 
-data1.Refresh
+Data1.Refresh
 
-If data1.Recordset.EOF Then
+If Data1.Recordset.EOF Then
    Exit Sub
    
 End If
@@ -1602,27 +1614,27 @@ g1.Refresh
 
 'On Error GoTo OUT
 
-         data1.Recordset.MoveFirst
+         Data1.Recordset.MoveFirst
 '          TDBGrid.Splits(0).columns(1).Width = 3500
          Dim sumes(0 To 20) As Single
          
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
             sumes(k) = 0
          Next
          
          
          
            ' On Error GoTo ektos
-         Do While Not data1.Recordset.EOF
-             For k = 0 To data1.Recordset.FIELDS.Count - 1
-                 If IsNumeric(data1.Recordset.FIELDS(k).Value) And data1.Recordset.FIELDS(k).Type <> 202 Then
+         Do While Not Data1.Recordset.EOF
+             For k = 0 To Data1.Recordset.FIELDS.Count - 1
+                 If IsNumeric(Data1.Recordset.FIELDS(k).Value) And Data1.Recordset.FIELDS(k).Type <> 202 Then
                  
-                     sumes(k) = sumes(k) + nNull(data1.Recordset.FIELDS(k).Value)
+                     sumes(k) = sumes(k) + nNull(Data1.Recordset.FIELDS(k).Value)
                     End If
                 Next
-                data1.Recordset.MoveNext
+                Data1.Recordset.MoveNext
          Loop
-         For k = 0 To data1.Recordset.FIELDS.Count - 1
+         For k = 0 To Data1.Recordset.FIELDS.Count - 1
 
                If sumes(k) > 0 Then
                   
@@ -1692,7 +1704,7 @@ Me.MousePointer = vbNormal
 
 
 Dim m_ep As String
-m_ep = Text1.Text + " " + TEXT2.Text + " ΚΙΝΗΣΕΙΣ ΑΠΟ " + Format(DTPicker1.Value, "DD/MM/YYYY") + " ΕΩΣ " + Format(DTPicker2.Value, "DD/MM/YYYY")
+m_ep = Text1.Text + " " + Text2.Text + " ΚΙΝΗΣΕΙΣ ΑΠΟ " + Format(DTPicker1.Value, "DD/MM/YYYY") + " ΕΩΣ " + Format(DTPicker2.Value, "DD/MM/YYYY")
 
 
 400     If Check1 Then
