@@ -18,6 +18,14 @@ Begin VB.Form pelat4
    ScaleHeight     =   12525
    ScaleWidth      =   17880
    WindowState     =   2  'Maximized
+   Begin VB.CheckBox CREDIT 
+      Caption         =   "ΑΠΛΗΡΩΤΑ"
+      Height          =   315
+      Left            =   4440
+      TabIndex        =   57
+      Top             =   6120
+      Width           =   1215
+   End
    Begin VB.CommandButton CmdDeltia 
       Caption         =   "Δ.Α. εκκρεμή"
       Height          =   405
@@ -29,10 +37,10 @@ Begin VB.Form pelat4
    Begin VB.CheckBox cXronies 
       Caption         =   "5 τελ.χρονιές"
       Height          =   315
-      Left            =   5040
+      Left            =   5640
       TabIndex        =   54
       Top             =   6120
-      Width           =   1815
+      Width           =   1335
    End
    Begin TrueOleDBGrid80.TDBGrid tdbgrid1 
       Bindings        =   "pelat4.frx":0000
@@ -547,7 +555,7 @@ Begin VB.Form pelat4
       _ExtentX        =   2275
       _ExtentY        =   476
       _Version        =   393216
-      Format          =   154468353
+      Format          =   155516929
       CurrentDate     =   38854
    End
    Begin VB.CommandButton Command7 
@@ -835,7 +843,7 @@ Begin VB.Form pelat4
       _ExtentX        =   2275
       _ExtentY        =   476
       _Version        =   393216
-      Format          =   308281345
+      Format          =   155123713
       CurrentDate     =   38854
    End
    Begin MSChart20Lib.MSChart graph1 
@@ -861,6 +869,7 @@ Begin VB.Form pelat4
       Cols            =   10
       FixedCols       =   0
       ScrollBars      =   2
+      AllowUserResizing=   1
       _NumberOfBands  =   1
       _Band(0).Cols   =   10
    End
@@ -1502,7 +1511,7 @@ Dim R As New ADODB.Recordset
 DBGRID22.Clear
 List1.Clear
 
-    R.Open "select METAF,ATIM,CONVERT(CHAR(10),HME,103) AS [Ημερομηνία],ID_NUM from TIM where ISNULL(AKYROMENO,0)=0 AND left(ATIM,1) in (SELECT EIDOS FROM PARASTAT WHERE STADIO=3 AND POL=1) and EIDOS='" + data1.Recordset("EIDOS") + "' AND KPE='" + data1.Recordset("kod") + "' and ART IS null ORDER BY HME;", Gdb, adOpenForwardOnly, adLockReadOnly
+    R.Open "select METAF,ATIM,CONVERT(CHAR(10),HME,103) AS [Ημερομηνία],ID_NUM from TIM where ISNULL(AKYROMENO,0)=0 AND left(ATIM,1) in (SELECT EIDOS FROM PARASTAT WHERE STADIO=3 AND POL=1) and EIDOS='" + Data1.Recordset("EIDOS") + "' AND KPE='" + Data1.Recordset("kod") + "' and ART IS null ORDER BY HME;", Gdb, adOpenForwardOnly, adLockReadOnly
 
      'If Not r.EOF Then
 
@@ -1727,13 +1736,13 @@ neakartela 0
                Dim COMPANY As String
                COMPANY = GGET_CVALUE("SELECT TOP 1 PELONO FROM MEM")
   
-  With tdbgrid1.PrintInfo
+  With TDBGrid1.PrintInfo
 
         ' Set the page header
 
         .PageHeaderFont.Italic = True
 
-        .PageHeader = "\t  " + COMPANY + ":      " + IIf(gBuff = "e", "Πελατης:", "Προμηθευτής: ") + data1.Recordset("EPO")
+        .PageHeader = "\t  " + COMPANY + ":      " + IIf(gBuff = "e", "Πελατης:", "Προμηθευτής: ") + Data1.Recordset("EPO")
 
         .SettingsOrientation = 1 '1 - Portrait or 2 - Landscape orientation.
 
@@ -1768,14 +1777,14 @@ Private Sub CMDEXIT_Click()
         On Error GoTo CMDEXIT_Click_Err
 
         '</EhHeader>
-        Dim x As Integer
+        Dim X As Integer
 
-100     x = Val(APOALLO)
+100     X = Val(APOALLO)
 
         'ME.HIDE
 110     Unload Me
 
-120     If x = 0 Then
+120     If X = 0 Then
 130         If gApoMenu = True Then
 140             SendKeys "%"
 150             SendKeys "{ENTER}+{DOWN}+{DOWN}+{DOWN}"
@@ -1817,8 +1826,8 @@ Private Sub Command10_Click()
         'Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='e' and KOD >= '" + a1 + "' and KOD<='" + a2 + " ';"
         'Data1.Refresh
 
-120     data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='e' and KOD >= '" + a1 + "' and KOD<='" + a2 + " ';"
-130     data1.Refresh
+120     Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='e' and KOD >= '" + a1 + "' and KOD<='" + a2 + " ';"
+130     Data1.Refresh
 
         f_direct = 1
 
@@ -1838,18 +1847,18 @@ Private Sub Command10_Click()
 180     utDialog.SHOW 1
 190     PROTH_FORA = False
 
-200     data1.Recordset.MoveFirst
+200     Data1.Recordset.MoveFirst
 
         On Error Resume Next
 
        '  f_direct = 0 ' τυπωνει απευθειας χωρις να ρωτα εκτυπωτη =1
-210     Do While Not data1.Recordset.EOF
+210     Do While Not Data1.Recordset.EOF
 
 220         MILSEC 2500
 230         DBGrid2_RowColChange 0, 0
 
 240         cmdPRINTKARTELA_Click
-250         data1.Recordset.MoveNext
+250         Data1.Recordset.MoveNext
 260         MILSEC 2500
 
         Loop
@@ -1889,13 +1898,13 @@ Private Sub cmdKARTELAseEXCEL_Click()
         Dim excel  As Object:
         Set excel = CreateObject("Excel.Application")
 
-        Dim workbook As Object: Set workbook = excel.Workbooks.Add '  As New excel.workbook
+        Dim workbook As Object: Set workbook = excel.Workbooks.ADD '  As New excel.workbook
 
         Dim myXL As Object: Set myXL = workbook.ActiveSheet '  '    As excel.Worksheet
 
 100     Set excel = New excel.Application
         ' Excel.Visible = True
-102     Set workbook = excel.Workbooks.Add
+102     Set workbook = excel.Workbooks.ADD
 
        ' On Error Resume Next
 
@@ -1965,26 +1974,26 @@ Private Sub cmdKARTELAseEXCEL_Click()
 180     .LineStyle = xlContinuous
 182     .ColorIndex = 0
 184     .TintAndShade = 0
-186     .Weight = xlMedium
+186     .WEIGHT = xlMedium
     End With
     
 188 With myXL.range("A3:G5").Borders(xlEdgeTop)
 190     .LineStyle = xlContinuous
 192     .ColorIndex = 0
 194     .TintAndShade = 0
-196     .Weight = xlMedium
+196     .WEIGHT = xlMedium
     End With
 198 With myXL.range("A3:G5").Borders(xlEdgeBottom)
 200     .LineStyle = xlContinuous
 202     .ColorIndex = 0
 204     .TintAndShade = 0
-206     .Weight = xlMedium
+206     .WEIGHT = xlMedium
     End With
 208 With myXL.range("A3:G5").Borders(xlEdgeRight)
 210     .LineStyle = xlContinuous
 212     .ColorIndex = 0
 214     .TintAndShade = 0
-216     .Weight = xlMedium
+216     .WEIGHT = xlMedium
     End With
 218 myXL.range("A3:G5").Borders(xlInsideVertical).LineStyle = xlNone
 220 myXL.range("A3:G5").Borders(xlInsideHorizontal).LineStyle = xlNone
@@ -2023,7 +2032,7 @@ Private Sub cmdKARTELAseEXCEL_Click()
 
         Dim sxre, spis, DB As Database, dbac As Database
 
-        Dim MKOD, mEpo
+        Dim MKOD, MEPO
 
        ' On Error Resume Next
 
@@ -2033,14 +2042,14 @@ Private Sub cmdKARTELAseEXCEL_Click()
 
         Dim T As String
 
-234     MKOD = data1.Recordset("kod")
+234     MKOD = Data1.Recordset("kod")
 236     sxre = 0
 238     spis = 0
 
         Dim R
 
-240     egg.RecordSource = "SELECT * FROM KARTELA"
-242     Set R = egg.Recordset
+240     EGG.RecordSource = "SELECT * FROM KARTELA"
+242     Set R = EGG.Recordset
         ' Printer.FontName = "COURIER"
 
         Dim ra As New ADODB.Recordset
@@ -2159,12 +2168,12 @@ Private Sub cmdKARTELAseEXCEL_Click()
 
      '   On Error GoTo cmdKARTELAseEXCEL_Click_Err
 
-306     myXL.cells(3, 1) = data1.Recordset("epo") + "   Κωδ." + data1.Recordset("kod")
+306     myXL.cells(3, 1) = Data1.Recordset("epo") + "   Κωδ." + Data1.Recordset("kod")
 308     myXL.rows(3).Font.Size = 14
 310     myXL.rows(3).Font.fontStyle = 12
 
-312     myXL.cells(4, 1) = data1.Recordset("die")
-314     myXL.cells(5, 1) = "Tηλέφωνο " + data1.Recordset("thl")
+312     myXL.cells(4, 1) = Data1.Recordset("die")
+314     myXL.cells(5, 1) = "Tηλέφωνο " + Data1.Recordset("thl")
 
 
     '         myXL.cells(5, 1) = "Hμερ/νία"
@@ -2262,37 +2271,37 @@ Private Sub cmdKARTELAseEXCEL_Click()
 346        .LineStyle = xlContinuous
 348        .ColorIndex = 0
 350         .TintAndShade = 0
-352        .Weight = xlThin
+352        .WEIGHT = xlThin
         End With
 354    With myXL.range(mRange).Borders(xlEdgeTop)
 356        .LineStyle = xlContinuous
 358        .ColorIndex = 0
 360        .TintAndShade = 0
-362        .Weight = xlThin
+362        .WEIGHT = xlThin
        End With
 364    With myXL.range(mRange).Borders(xlEdgeBottom)
 366        .LineStyle = xlContinuous
 368        .ColorIndex = 0
 370        .TintAndShade = 0
-372        .Weight = xlThin
+372        .WEIGHT = xlThin
        End With
 374    With myXL.range(mRange).Borders(xlEdgeRight)
 376        .LineStyle = xlContinuous
 378        .ColorIndex = 0
 380        .TintAndShade = 0
-382        .Weight = xlThin
+382        .WEIGHT = xlThin
        End With
 384 With myXL.range(mRange).Borders(xlInsideVertical)
 386     .LineStyle = xlContinuous
 388     .ColorIndex = 0
 390     .TintAndShade = 0
-392     .Weight = xlThin
+392     .WEIGHT = xlThin
     End With
 394 With myXL.range(mRange).Borders(xlInsideHorizontal)
 396     .LineStyle = xlContinuous
 398     .ColorIndex = 0
 400     .TintAndShade = 0
-402     .Weight = xlThin
+402     .WEIGHT = xlThin
     End With
 404 myXL.range("A6:G6").Select
 406 With selection.Interior
@@ -2365,7 +2374,7 @@ Private Sub Command12_Click()
 
         '</EhHeader>
  
-        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -2375,7 +2384,7 @@ Private Sub Command12_Click()
 
 100     f_psifia_atim = 6
 
-        Dim x As String
+        Dim X As String
 
 110     DBGRID22.Col = 1
 
@@ -2384,7 +2393,7 @@ Private Sub Command12_Click()
 
         On Error Resume Next
 
-130     D1 = CDate(Format(DBGRID22.Text, "dd/mm/yyyy"))
+130     d1 = CDate(Format(DBGRID22.Text, "dd/mm/yyyy"))
 
         '   d2 = DateAdd("d", 1, d1)
         Dim MATIM As String, file As String
@@ -2394,7 +2403,7 @@ Private Sub Command12_Click()
  
         '20120903T015014 -1.pdf
  
-160     file = "C:\PDF\" + Format(D1, "YYYYMMDD") + Trim(MATIM) + " -1.PDF"
+160     file = "C:\PDF\" + Format(d1, "YYYYMMDD") + Trim(MATIM) + " -1.PDF"
 
 170     If Len(Dir(file)) > 2 Then
  
@@ -2407,7 +2416,7 @@ Private Sub Command12_Click()
 210         Shell OpenFile, vbNormalFocus
             ' AcroPDF1.LoadFile FILE
       
-220         file = "C:\PDF\" + Format(D1, "YYYYMMDD") + Trim(MATIM) + " -2.PDF"
+220         file = "C:\PDF\" + Format(d1, "YYYYMMDD") + Trim(MATIM) + " -2.PDF"
 230         ' ARL = "C:\MERCVB\READER\AcroRd32.exe " ', vbNormalFocus
 240         fl = file
             ' fl = "20130719τ01808 -2.PDF"
@@ -2436,7 +2445,7 @@ Command12_Click_Err:
 End Sub
 
 Private Sub Command13_Click()
-    data1.Recordset.Move 0
+    Data1.Recordset.Move 0
 End Sub
 
 Private Sub cmdPRINTKARTELA_Click()
@@ -2448,7 +2457,7 @@ Private Sub cmdPRINTKARTELA_Click()
         '</EhHeader>
         Dim R, sxre, spis, DB As Database, dbac As Database
 
-        Dim MKOD, mEpo
+        Dim MKOD, MEPO
 
         'Set db = OpenDatabase(gDir, False, False, gConnect)
         'Set dbac = OpenDatabase("c:\mercvb\reports\reports.mdb")
@@ -2470,18 +2479,18 @@ Private Sub cmdPRINTKARTELA_Click()
         'If YPARXEI(1) = 1 Then
         'dbac.Execute "drop table mem"
 
-100     egg.RecordSource = "SELECT * FROM KARTELA"
+100     EGG.RecordSource = "SELECT * FROM KARTELA"
 
 110     If f_direct = 2 Then
             '  On Error Resume Next
             
             
             Dim t2 As String
-       If data1.Recordset("eidos") = "e" Then
+       If Data1.Recordset("eidos") = "e" Then
           t2 = "select ATIM as [Αρ_Παρ],HME as [Ημερ/νία],EID as [Είδ],"
           t2 = t2 + "APA as [Αριθ_Παρ],AIT as [Αιτιολογία],ISNULL(XREOSI,0) as [Χρέωση],ISNULL(PISTOSI,0) as [Πίστωση],"
           t2 = t2 + "PROOD as [Υπόλοιπο] into KARTELADOK   from EGG "
-          t2 = t2 + "where EIDOS='e' and KOD='" + data1.Recordset("kod") + "' order by HME,ATIM;"
+          t2 = t2 + "where EIDOS='e' and KOD='" + Data1.Recordset("kod") + "' order by HME,ATIM;"
           Gdb.Execute "DROP TABLE  KARTELAP "
           
           Gdb.Execute "DROP TABLE  KARTELADOK "
@@ -2491,9 +2500,9 @@ Private Sub cmdPRINTKARTELA_Click()
           
           
          ' Gdb.Execute "select * into kartelap in 'c:\mercvb\reports\reports.mdb' from pel where kod='" + MKOD + "' and eidos='e'"
-          Gdb.Execute "select * into KARTELAP  from PEL where KOD='" + data1.Recordset("kod") + "' and EIDOS='e'"
+          Gdb.Execute "select * into KARTELAP  from PEL where KOD='" + Data1.Recordset("kod") + "' and EIDOS='e'"
        Else
-          Gdb.Execute "select ATIM as [Αρ_Παρ],FORMAT(hme,'DD/MM/YY') as [Ημερ/νία],EID as [Είδ],APA as [Αριθ_Παρ],AIT as [Αιτιολογία],iif(xre<0,-xre,0) as [Χρέωση],iif(xre>0,xre,0) as [Πίστωση],FORMAT(PROOD,'###,###.00') as [Υπόλοιπο] into kartela in 'c:\mercvb\reports\reports.mdb' from egg where eidos='r' and kod='" + data1.Recordset("kod") + "' order by hme,atim;"
+          Gdb.Execute "select ATIM as [Αρ_Παρ],FORMAT(hme,'DD/MM/YY') as [Ημερ/νία],EID as [Είδ],APA as [Αριθ_Παρ],AIT as [Αιτιολογία],iif(xre<0,-xre,0) as [Χρέωση],iif(xre>0,xre,0) as [Πίστωση],FORMAT(PROOD,'###,###.00') as [Υπόλοιπο] into kartela in 'c:\mercvb\reports\reports.mdb' from egg where eidos='r' and kod='" + Data1.Recordset("kod") + "' order by hme,atim;"
           Gdb.Execute "select * into KARTELAP  from PEL where KOD='" + MKOD + "' and EIDOS='r'"
        
        '   Gdb.Execute "select * into kartelap in 'c:\mercvb\reports\reports.mdb' from pel where kod='" + MKOD + "' and eidos='r'"
@@ -2540,7 +2549,7 @@ Private Sub cmdPRINTKARTELA_Click()
 
         Dim T As String
 
-210     MKOD = data1.Recordset("kod")
+210     MKOD = Data1.Recordset("kod")
         'If Option1(1) Then
         '  t = "select ATIM as [Αρ_Παρ],HME as [Ημερ/νία],EID as [Είδ],"
         '  t = t + "APA as [Αριθ_Παρ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],"
@@ -2559,7 +2568,7 @@ Private Sub cmdPRINTKARTELA_Click()
 220     sxre = 0
 230     spis = 0
     
-240     Set R = egg.Recordset
+240     Set R = EGG.Recordset
         ' Printer.FontName = "COURIER"
 
         On Error Resume Next
@@ -2609,16 +2618,16 @@ Private Sub cmdPRINTKARTELA_Click()
 340     Printer.Print "------------------------------------------------------------------------------------------"
 350     R22.Close
 
-360     If data1.Recordset("EIDOS") = "e" Then
+360     If Data1.Recordset("EIDOS") = "e" Then
 370         Printer.Print "Πελάτης     "
         Else
 380         Printer.Print "Προμηθευτής "
         End If
 
         'Open "C:\KARTELA.TXT" For Output As #1
-390     Printer.Print data1.Recordset("epo") + "   Κωδ." + data1.Recordset("kod")
-400     Printer.Print data1.Recordset("die")
-410     Printer.Print "Tηλέφωνο " + data1.Recordset("thl")
+390     Printer.Print Data1.Recordset("epo") + "   Κωδ." + Data1.Recordset("kod")
+400     Printer.Print Data1.Recordset("die")
+410     Printer.Print "Tηλέφωνο " + Data1.Recordset("thl")
 420     Printer.Print
 
         ' Printer.Print "Χρέωση   Πίστωση    Υπόλοιπο";
@@ -2781,9 +2790,9 @@ Dim N As Integer
 
 
 
-   FPELAT42.PEL_EPO = data1.Recordset("EPO")
-   FPELAT42.PEL_KOD = data1.Recordset("KOD")
-   FPELAT42.PEL_EIDOS = data1.Recordset("EIDOS")
+   FPELAT42.PEL_EPO = Data1.Recordset("EPO")
+   FPELAT42.PEL_KOD = Data1.Recordset("KOD")
+   FPELAT42.PEL_EIDOS = Data1.Recordset("EIDOS")
    
    
    
@@ -2846,14 +2855,14 @@ RR.Close
         '</EhHeader>
         Dim DUM
 
-        Dim x As String
+        Dim X As String
         
-        x = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
+        X = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
 
-        gBuff = x
+        gBuff = X
         
-100     pelat43.PELDATA1.ConnectionString = data1.ConnectionString
-110     pelat43.PELDATA1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + data1.Recordset("EIDOS") + "' and KOD='" + data1.Recordset("KOD") + "'"
+100     pelat43.PELDATA1.ConnectionString = Data1.ConnectionString
+110     pelat43.PELDATA1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + Data1.Recordset("EIDOS") + "' and KOD='" + Data1.Recordset("KOD") + "'"
 120     pelat43.PELDATA1.Refresh
 130     pelat43.Left = 0
 140     pelat43.Top = 0
@@ -2866,10 +2875,10 @@ RR.Close
    
            ' DATA1.Refresh
     
-            If IsNull(data1.Recordset("num5")) Then
-                ypolmhx.Caption = data1.Recordset("num2")
+            If IsNull(Data1.Recordset("num5")) Then
+                ypolmhx.Caption = Data1.Recordset("num2")
             Else
-                ypolmhx.Caption = data1.Recordset("num2") - data1.Recordset("num5")
+                ypolmhx.Caption = Data1.Recordset("num2") - Data1.Recordset("num5")
             End If
         End If
 If F_NEA_KRTELLA = 0 Then
@@ -2942,7 +2951,7 @@ Private Sub cmdPRINTMEEIDH_Click()
         '</EhHeader>
         Dim a, B, c, D
 
-        Dim x                As String
+        Dim X                As String
 
         Dim polepis          As String, AGOEPIS As String, pol As String, ago As String
 
@@ -2976,7 +2985,7 @@ Private Sub cmdPRINTMEEIDH_Click()
         '===========  TO PARAKATO EINAI GIA 2 XRONIES
 150     If Check1.Value = vbChecked Then    '   <> gDir Then ' palia xronia
 160         MGYRNA_FETOS = 1
-170         egg.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
+170         EGG.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
 180         Gdb.Close
 190         Gdb.Open gConnect + ";DATABASE=" + f_PALIAXRONIA    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
         
@@ -2984,13 +2993,13 @@ Private Sub cmdPRINTMEEIDH_Click()
 
             ' XRONIES.AddItem Left(R("TITLOS") + Space(20), 20) + R("DSN")
 210         f_PROPERSI = Trim(mID(XRONIES.Text, 21, 20))
-220         egg.ConnectionString = gConnect + ";DATABASE=" + f_PROPERSI    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
+220         EGG.ConnectionString = gConnect + ";DATABASE=" + f_PROPERSI    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
 230         Gdb.Close
 240         Gdb.Open gConnect + ";DATABASE=" + f_PROPERSI    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
 250         MGYRNA_FETOS = 2
 
         Else
-260         egg.ConnectionString = gConnect
+260         EGG.ConnectionString = gConnect
         End If
 
 270     a = Get_AJ(pol, polepis, ago, AGOEPIS)
@@ -2999,31 +3008,31 @@ Private Sub cmdPRINTMEEIDH_Click()
 
 280     ANS = MsgBox("Με στήλη κέρδος;", vbYesNo)
 
-290     a = data1.Recordset("kod")
+290     a = Data1.Recordset("kod")
 
-300     x = "select ATIM,CONVERT(CHAR(10),HME,103)+' ' as [Ημερoμηνία],KODE as [Κωδικός],LEFT(ONOMA,30) as [Περιγραφή],POSO as [Ποσότητα],"
-310     x = x + " str(TIMM*POSO,10,2) as [Αξία],EKPT AS [ΕΚΠΤΩΣΗ],str(TIMM*POSO*(1-EKPT/100),10,2) as [Αξία μετά την εκπτωση],LEFT(ATIM,1)"
+300     X = "select ATIM,CONVERT(CHAR(10),HME,103)+' ' as [Ημερoμηνία],KODE as [Κωδικός],LEFT(ONOMA,30) as [Περιγραφή],POSO as [Ποσότητα],"
+310     X = X + " str(TIMM*POSO,10,2) as [Αξία],EKPT AS [ΕΚΠΤΩΣΗ],str(TIMM*POSO*(1-EKPT/100),10,2) as [Αξία μετά την εκπτωση],LEFT(ATIM,1)"
 
 320     If ANS = vbYes Then
-330         x = x + " ,STR(CASE WHEN LEFT(ATIM,1) IN (" + pol + ") THEN POSO*(TIMM-EID.XTI) ELSE 0 END ,10,2) AS [Κέρδος],EID.XTI AS [ΤΙΜ.ΑΓΟΡ] "
+330         X = X + " ,STR(CASE WHEN LEFT(ATIM,1) IN (" + pol + ") THEN POSO*(TIMM-EID.XTI) ELSE 0 END ,10,2) AS [Κέρδος],EID.XTI AS [ΤΙΜ.ΑΓΟΡ] "
         End If
 
-340     x = x + " FROM EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD "
-350     x = x + " where EIDOS='" + data1.Recordset("EIDOS") + "'"
+340     X = X + " FROM EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD "
+350     X = X + " where EIDOS='" + Data1.Recordset("EIDOS") + "'"
 
 360     If Len(SELE_PARASTATIKA) > 0 Then
 370         SELE_PARASTATIKA = Left(SELE_PARASTATIKA, Len(SELE_PARASTATIKA) - 1)
-380         x = x + " AND left (ATIM,1) IN (" + SELE_PARASTATIKA + ")  "
+380         X = X + " AND left (ATIM,1) IN (" + SELE_PARASTATIKA + ")  "
         End If
 
-390     x = x + "  AND PELKOD='" + data1.Recordset("kod") + "' ORDER BY HME,ATIM,PROOD_AJ;"
+390     X = X + "  AND PELKOD='" + Data1.Recordset("kod") + "' ORDER BY HME,ATIM,PROOD_AJ;"
 
         'On Error GoTo Command6_Click_Err
-400     egg.RecordSource = x
+400     EGG.RecordSource = X
 
-410     egg.Refresh
+410     EGG.Refresh
 
-420     a = print3_xar(x, "0001101", data1.Recordset("epo") + "   Κωδ." + data1.Recordset("kod"), 1)    'typos2
+420     a = print3_xar(X, "0001101", Data1.Recordset("epo") + "   Κωδ." + Data1.Recordset("kod"), 1)    'typos2
 
 430     If MGYRNA_FETOS > 0 Then
 
@@ -3059,13 +3068,13 @@ Private Sub Command7_Click()
 
 100     gApoMenu = False
 
-110     fff.ffbuff = f_buff + data1.Recordset("kod") ' Text1(0).Text
+110     fff.ffbuff = f_buff + Data1.Recordset("kod") ' Text1(0).Text
 
 120    ' fff.Command5.Enabled = False
    
         ' fff.ffbuff = f_buff + DATA1.Recordset("kod")    ' Text1(0).Text
          fff.PELPROM.Text = PELPROM.Text
-         fff.Text2(0).Text = Left(data1.Recordset!kod, 5)
+         fff.Text2(0).Text = Left(Data1.Recordset!kod, 5)
           fff.Text2(1).Text = ""
         fff.Text2_LostFocus 0
         
@@ -3073,8 +3082,8 @@ Private Sub Command7_Click()
 
         If f_KENTRA_ADYNATISMATOS = 1 Then
             If kentroAdyn.ListIndex >= 0 Then
-                fff.Text2(0).Text = data1.Recordset("KOD")
-                fff.data1.ConnectionString = gConnect
+                fff.Text2(0).Text = Data1.Recordset("KOD")
+                fff.Data1.ConnectionString = gConnect
                 fff.kentroAdyn.ListIndex = kentroAdyn.ListIndex ' Comb
             End If
    
@@ -3089,7 +3098,7 @@ Private Sub Command7_Click()
         On Error GoTo LATOS
 
 150     pelat2.PELPROM.Text = PELPROM.Text
-160     pelat2.Text2(0).Text = Left(data1.Recordset!kod, 5)
+160     pelat2.Text2(0).Text = Left(Data1.Recordset!kod, 5)
 
 170     pelat2.SHOW
 
@@ -3122,7 +3131,7 @@ Private Sub Command8_Click()
         On Error GoTo Command8_Click_Err
 
         '</EhHeader>
-        Dim sql  As String, fDB As Database, D1 As Date, d2 As Date
+        Dim sql  As String, fDB As Database, d1 As Date, d2 As Date
 
         Dim synt As String, DB As Database
 
@@ -3132,7 +3141,7 @@ Private Sub Command8_Click()
 
 100     f_psifia_atim = 6
 
-        Dim x As String
+        Dim X As String
 
 110     DBGRID22.Col = 1
 
@@ -3140,28 +3149,28 @@ Private Sub Command8_Click()
 120     If DBGRID22.row = -1 Then Exit Sub
 
         On Error Resume Next
-        tdbgrid1.Col = 0
-        D1 = CDate(Format(tdbgrid1.Text, "dd/MM/yyyy"))
+        TDBGrid1.Col = 0
+        d1 = CDate(Format(TDBGrid1.Text, "dd/MM/yyyy"))
         
 130   '  d1 = CDate(Format(DBGRID22.Text, "dd/MM/yyyy"))
-140     d2 = DateAdd("d", 1, D1)
+140     d2 = DateAdd("d", 1, d1)
 
 150     DBGRID22.Col = 0
 
 Dim M_ATIM As String
-   tdbgrid1.Col = 1
-   M_ATIM = tdbgrid1.Text
+   TDBGrid1.Col = 1
+   M_ATIM = TDBGrid1.Text
    
 
 
 
-160     x = "select KODE,EID.ERG,ATIM,left(ONOMA,35) as [Περιγραφή],POSO as [Ποσότητα],TIMM as [Tιμ_Μον]," & " EKPT as [Εκπτωση],str(KAU_AJIA,10,2) as [K_Αξία],str(MIK_AJIA,10,2) as [ΜΕΦΠΑ_Αξία] from EGGTIM INNER JOIN EID  ON EGGTIM.KODE=EID.KOD where" & " left(ATIM," + str(f_psifia_atim + 1) + ")='" + M_ATIM + "'"
-170     x = x + " and HME>='" + Format(D1, "MM/dd/yyyy") + "' and HME<'" + Format(d2, "MM/dd/yyyy") + "'"
-180     x = x + " order by PROOD_AJ;"
+160     X = "select KODE,EID.ERG,ATIM,left(ONOMA,35) as [Περιγραφή],POSO as [Ποσότητα],TIMM as [Tιμ_Μον]," & " EKPT as [Εκπτωση],str(KAU_AJIA,10,2) as [K_Αξία],str(MIK_AJIA,10,2) as [ΜΕΦΠΑ_Αξία] from EGGTIM INNER JOIN EID  ON EGGTIM.KODE=EID.KOD where" & " left(ATIM," + str(f_psifia_atim + 1) + ")='" + M_ATIM + "'"
+170     X = X + " and HME>='" + Format(d1, "MM/dd/yyyy") + "' and HME<'" + Format(d2, "MM/dd/yyyy") + "'"
+180     X = X + " order by PROOD_AJ;"
 
         Dim TIT As String
 
-190     TIT = DbGrid2.Text + " " + DBGRID22.Text + Format(D1, "dd/mm/yyyy")
+190     TIT = DBGRid2.Text + " " + DBGRID22.Text + Format(d1, "dd/mm/yyyy")
 
 200     f_PROPERSI = FINDPARAMETROI(1, "PAR1", "F_PROPERSI", "2005", "Γ.19 ΒΑΣΗ ΠΡΟΠΕΡΣΙΝΗΣ ΧΡΟΝΙΑΣ")
 210     f_PALIAXRONIA = Trim(FINDPARAMETROI(1, "PAR1", "F_PALIAXRONIA", "2005", "Γ.18 DSN ΠΑΛΙΑΣ ΧΡΟΝΙΑΣ"))
@@ -3194,7 +3203,7 @@ Dim M_ATIM As String
 
         End If
 
-310     DUM = print3_xar(x, "111111111", TIT, 0)
+310     DUM = print3_xar(X, "111111111", TIT, 0)
         
 320     If Check2.Value = vbChecked Or Check1.Value = vbChecked Then    '   <> gDir Then ' palia xronia
 330         gConnect = mgconnect
@@ -3237,14 +3246,14 @@ Private Sub cmdGraph_Click()
 
         Dim k As Integer
 
-100     If data1.Recordset.EOF Then Exit Sub
+100     If Data1.Recordset.EOF Then Exit Sub
 110     graph1.Visible = True
 
 120     MSFlexGrid1.Visible = False
-        tdbgrid1.Visible = False
+        TDBGrid1.Visible = False
         
 
-130     R.Open "SELECT MONTH(HME),SUM(XREOSI),SUM(PISTOSI) FROM EGG WHERE KOD='" + data1.Recordset("kod") + "' AND EIDOS='" + data1.Recordset("EIDOS") + "' GROUP BY MONTH(HME) ", Gdb, adOpenForwardOnly, adLockReadOnly
+130     R.Open "SELECT MONTH(HME),SUM(XREOSI),SUM(PISTOSI) FROM EGG WHERE KOD='" + Data1.Recordset("kod") + "' AND EIDOS='" + Data1.Recordset("EIDOS") + "' GROUP BY MONTH(HME) ", Gdb, adOpenForwardOnly, adLockReadOnly
 
         Dim A_XRE(12)   As Single
 
@@ -3288,8 +3297,8 @@ Private Sub cmdGraph_Click()
             '  GA = "g" + Format(k, "00")
             '  MA = "M" + Format(k, "00")
 
-260         graph1.row = 1: graph1.Column = k: graph1.DATA = A_XRE(k)    ' DATA2.Recordset(G)
-270         graph1.row = 2: graph1.Column = k: graph1.DATA = A_PIS(k)    'DATA2.Recordset(M)
+260         graph1.row = 1: graph1.Column = k: graph1.Data = A_XRE(k)    ' DATA2.Recordset(G)
+270         graph1.row = 2: graph1.Column = k: graph1.Data = A_PIS(k)    'DATA2.Recordset(M)
 280         graph1.ColumnLabel = k
 290         graph1.Refresh
         Next
@@ -3298,7 +3307,7 @@ Private Sub cmdGraph_Click()
 310     MSFlexGrid1.Visible = True
 
 320     graph1.Visible = False
-        tdbgrid1.Visible = True
+        TDBGrid1.Visible = True
         
         '<EhFooter>
         Exit Sub
@@ -3387,8 +3396,8 @@ Sub neakartela(ByVal withID As Integer)
 
 Dim myp2 As String
 
-               tdbgrid1.Visible = True
-               tdbgrid1.FilterBar = False
+               TDBGrid1.Visible = True
+               TDBGrid1.FilterBar = False
                
               
 
@@ -3566,7 +3575,7 @@ Dim myp2 As String
               
               
              Dim R As New ADODB.Recordset
-             R.Open "select AYP FROM PEL WHERE EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "'", FDB2, adOpenForwardOnly, adLockReadOnly
+             R.Open "select AYP FROM PEL WHERE EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "'", FDB2, adOpenForwardOnly, adLockReadOnly
 
              If R.EOF Then
                 R.Close
@@ -3576,7 +3585,7 @@ Dim myp2 As String
                R.Close
                
                
-              Dim SQL2 As String: SQL2 = "select sum(ISNULL(XREOSI,0)),sum(ISNULL(PISTOSI,0)) from EGG WHERE  HME>='" + Format(gEnarjh, "MM/DD/YYYY") + "' AND HME<'" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' and KOD='" + data1.Recordset("KOD") + "'"
+              Dim SQL2 As String: SQL2 = "select sum(ISNULL(XREOSI,0)),sum(ISNULL(PISTOSI,0)) from EGG WHERE  HME>='" + Format(gEnarjh, "MM/DD/YYYY") + "' AND HME<'" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' and KOD='" + Data1.Recordset("KOD") + "'"
 
                
 
@@ -3611,7 +3620,7 @@ Dim myp2 As String
              fFILE = "TEMP" + Format(Now, "YYMMDDHHmm")
              
                
-         If cXronies.Value = vbChecked Then
+         If cXRONIES.Value = vbChecked Then
          
 '                    R.Open "select AYP FROM PEL WHERE EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "'", FDB2, adOpenForwardOnly, adLockReadOnly
 '
@@ -3628,35 +3637,35 @@ Dim myp2 As String
              
              Dim SQL11 As String
              
-                   SQLL = "SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,isnull(XREOSI,0) AS [ΧΡΕΟΣΗ],isnull(PISTOSI,0) AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + " into " + fFILE + "  FROM EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+                   SQLL = "SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,isnull(XREOSI,0) AS [ΧΡΕΟΣΗ],isnull(PISTOSI,0) AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + " into " + fFILE + "  FROM EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
              
              
              SQL11 = SQLL
 
-             SQL11 = SQL11 + " UNION SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + " FROM  " + f_PALIAXRONIA + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+             SQL11 = SQL11 + " UNION SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + " FROM  " + f_PALIAXRONIA + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
              ' SELECT *  FROM " + f_PALIAXRONIA + ".dbo.EGGTIM  where " + filtroPEL.Caption + " HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<'" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  AND APOT=" + Label1.Caption + " and KODE='" + Text1.Text + "' "
              Dim mPROP As String
              mPROP = FINDPARAMETROI(1, "PAR1", "F_PROPERSI", "", "Γ.19 ΒΑΣΗ ΠΡΟΠΕΡΣΙΝΗΣ ΧΡΟΝΙΑΣ")
-             SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+             SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
              Dim mPROP2 As String
 
 
              Dim mPROP3 As String
              mPROP3 = FINDPARAMETROI(1, "PAR1", "F_PROPERSI2", "", "Γ.19 ΒΑΣΗ ΧΡΟΝΙΑΣ ΠΡΙΝ 3 XPONIA")
              If Len(mPROP3) > 0 Then
-                  SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP3 + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+                  SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP3 + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
              End If
 
              Dim mPROP4 As String
              mPROP4 = FINDPARAMETROI(1, "PAR1", "F_PROPERSI3", "", "Γ.19 ΒΑΣΗ ΧΡΟΝΙΑΣ ΠΡΙΝ 4 XPONIA")
              If Len(mPROP4) > 0 Then
-                SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP4 + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+                SQL11 = SQL11 + " UNION " + " SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ] " + cIDq + "  FROM " + mPROP4 + ".dbo.EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
              End If
              
              Gdb.Execute SQL11
                  SQLL = "select * from " + fFILE + "   Order by SUBSTRING(HME,7,4)+SUBSTRING(HME,4,2)+SUBSTRING(HME,1,2) "
            Else
-                  SQLL = "SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ],ATIM2 AS [ΠΛΗΡ] " + cIDq + " FROM EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
+                  SQLL = "SELECT convert(char(10),HME,103) as [HME],ATIM,AIT,XREOSI AS [ΧΡΕΟΣΗ],PISTOSI AS [ΠΙΣΤΩΣΗ],ROUND( " + myp2 + "+ sum(" + mxreo + ") over(order by  HME,ID ) ,2)    as [ΥΠΟΛΟΙΠΟ],ATIM2 AS [ΠΛΗΡ] " + cIDq + " FROM EGG WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'  "
            End If
             Adodc1.RecordSource = SQLL
            
@@ -3697,19 +3706,19 @@ Dim Col As TrueDBGrid80.Column
                
                On Error GoTo 0
                ' TDBGRID1.columns(0).FooterText = "Footer0"USERID as [Χρήστης]
-               tdbgrid1.MoveLast
+               TDBGrid1.MoveLast
                ' TDBGRID1.columns(1).FooterText = "Footer1"
                    
                 Dim r7 As New ADODB.Recordset
-                r7.Open "SELECT SUM(ISNULL(XREOSI,0)) AS SX,SUM(ISNULL(PISTOSI,0) ) AS SP FROM EGG  WHERE  EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'", FDB2, adOpenDynamic, adLockOptimistic
+                r7.Open "SELECT SUM(ISNULL(XREOSI,0)) AS SX,SUM(ISNULL(PISTOSI,0) ) AS SP FROM EGG  WHERE  EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "' and   HME>='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND HME<='" + Format(DTPicker2.Value, "MM/DD/YYYY") + "'", FDB2, adOpenDynamic, adLockOptimistic
                 Dim sxre As Single, spis As Single
                 sxre = nNull(r7(0))
                 spis = nNull(r7(1))
                 Dim l2 As Integer
-                 With tdbgrid1
+                 With TDBGrid1
                       .HeadLines = 2
-                       tdbgrid1.HeadFont.Size = CMDEXIT.FontSize
-                       tdbgrid1.FooterFont.Size = CMDEXIT.FontSize
+                       TDBGrid1.HeadFont.Size = CmdExit.FontSize
+                       TDBGrid1.FooterFont.Size = CmdExit.FontSize
                       
                              .columns(0).Width = 1100
                              .columns(2).Width = 3100
@@ -3734,33 +3743,36 @@ Dim Col As TrueDBGrid80.Column
                  
                  
                 
-                 tdbgrid1.columns(3).FooterText = Format(sxre, "######0.00")
-                 tdbgrid1.columns(4).FooterText = Format(spis, "######0.00")
+                 TDBGrid1.columns(3).FooterText = Format(sxre, "######0.00")
+                 TDBGrid1.columns(4).FooterText = Format(spis, "######0.00")
                  
                  
-                  tdbgrid1.columns(1).Width = 1200
-                  tdbgrid1.columns(0).Width = 1200
+                  TDBGrid1.columns(1).Width = 1200
+                  TDBGrid1.columns(0).Width = 1200
                   
                    If withID = 1 Then
                   
                Else
-                  tdbgrid1.columns(2).Width = 2500
-                  tdbgrid1.columns(3).Width = 1200
-                  tdbgrid1.columns(4).Width = 1200
+                  TDBGrid1.columns(2).Width = 2500
+                  TDBGrid1.columns(3).Width = 1200
+                  TDBGrid1.columns(4).Width = 1200
                   
                End If
-               tdbgrid1.MoveLast
+               TDBGrid1.MoveLast
+               
+               Exit Sub
+               
                Dim YPOL5 As Single
-             ' If gVal(TDBGrid1.columns(5).Text) > 0 Then
+              If CREDIT.Value = vbChecked Then '   gVal(tdbgrid1.columns(5).Text) > 0 Then
                   Dim YpolApl As Single
-                    YpolApl = gVal(tdbgrid1.columns(5).Text)
+                    YpolApl = gVal(TDBGrid1.columns(5).Text)
                     Dim napl As Integer
                     Dim NNN As Integer
-                    For napl = tdbgrid1.row To 0 Step -1
+                    For napl = TDBGrid1.row To 0 Step -1
                       
-                        If data1.Recordset("eidos") = "r" Then NNN = 4 Else NNN = 5
+                        If Data1.Recordset("eidos") = "r" Then NNN = 4 Else NNN = 5
                             YPOL5 = YpolApl
-                            YpolApl = YpolApl - gVal(tdbgrid1.columns(NNN).Text)
+                            YpolApl = YpolApl - gVal(TDBGrid1.columns(NNN).Text)
                        ' If Left(TDBGrid1.columns(6).Text, 1) <> "*" Then
                               ' ENHMERVNEI THN DATABASE
                              
@@ -3769,19 +3781,19 @@ Dim Col As TrueDBGrid80.Column
                         'End If
                         If YpolApl <= 0 Then
                            If YPOL5 > 0 Then
-                              tdbgrid1.columns(6).Text = Format(YPOL5, "###0") ' " "
+                              TDBGrid1.columns(6).Text = Format(YPOL5, "###0") ' " "
                            Else
-                              tdbgrid1.columns(6).Text = ""
+                              TDBGrid1.columns(6).Text = ""
                            End If
                               
                         Else
-                              tdbgrid1.columns(6).Text = "*" ' + TDBGrid1.columns(8).Text
+                              TDBGrid1.columns(6).Text = "*" ' + TDBGrid1.columns(8).Text
                         End If
-                        tdbgrid1.MovePrevious
+                        TDBGrid1.MovePrevious
                     Next
-                     tdbgrid1.MoveLast
-             ' End If
-If cXronies.Value = vbChecked Then
+                     TDBGrid1.MoveLast
+              End If
+If cXRONIES.Value = vbChecked Then
    Gdb.Execute "DROP TABLE " + fFILE
 
 End If
@@ -3813,13 +3825,13 @@ Private Sub DBGrid2_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
           
           
            If F_NEA_KRTELLA = 1 Then
-                tdbgrid1.Visible = True
+                TDBGrid1.Visible = True
                 neakartela 1
                 'δεν κανω εξοδο για να σχεδιασει και το flexgrid γιατι δεν δουλευει η καρτελλα σε excel
                 'Exit Sub
               Else
               
-              tdbgrid1.Visible = False
+              TDBGrid1.Visible = False
                 'Exit Sub
                 
                 
@@ -3838,9 +3850,9 @@ Private Sub DBGrid2_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 
         On Error Resume Next
 
-110     Label2.Caption = Left(data1.Recordset!kod, 5) + " " + data1.Recordset!EPO
-120     Label3.Caption = data1.Recordset!DIE
-130     Label4.Caption = data1.Recordset!THL
+110     Label2.Caption = Left(Data1.Recordset!kod, 5) + " " + Data1.Recordset!EPO
+120     Label3.Caption = Data1.Recordset!DIE
+130     Label4.Caption = Data1.Recordset!THL
 
         On Error GoTo DBGrid2_RowColChange_Err
 
@@ -3859,18 +3871,18 @@ Private Sub DBGrid2_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 
             Dim NR5 As Long
    
-            If IsNull(data1.Recordset("HM1")) Then
+            If IsNull(Data1.Recordset("HM1")) Then
                 NR5 = 0
             Else
-                R5.Open "SELECT COUNT(*) FROM EGG WHERE  XREOSI+PISTOSI=0 AND HME>='" + Format(data1.Recordset("HM1"), "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "'", Gdb, adOpenDynamic, adLockOptimistic
+                R5.Open "SELECT COUNT(*) FROM EGG WHERE  XREOSI+PISTOSI=0 AND HME>='" + Format(Data1.Recordset("HM1"), "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "'", Gdb, adOpenDynamic, adLockOptimistic
                 NR5 = R5(0)
                 R5.Close
 
                 On Error Resume Next
 
-                If Year(data1.Recordset("HM1")) < Year(gLhjh) Then
+                If Year(Data1.Recordset("HM1")) < Year(gLhjh) Then
                     FCONNECTIONPALIA.Open gConnect + ";DATABASE=" + f_PALIAXRONIA
-                    R5.Open "SELECT COUNT(*) FROM EGG WHERE  XREOSI+PISTOSI=0 AND HME>='" + Format(data1.Recordset("HM1"), "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' AND KOD='" + data1.Recordset("KOD") + "'", FCONNECTIONPALIA, adOpenDynamic, adLockOptimistic
+                    R5.Open "SELECT COUNT(*) FROM EGG WHERE  XREOSI+PISTOSI=0 AND HME>='" + Format(Data1.Recordset("HM1"), "MM/DD/YYYY") + "' AND EIDOS='" + gBuff + "' AND KOD='" + Data1.Recordset("KOD") + "'", FCONNECTIONPALIA, adOpenDynamic, adLockOptimistic
                     NR5 = NR5 + R5(0)
                     R5.Close
                     FCONNECTIONPALIA.Close
@@ -3878,16 +3890,16 @@ Private Sub DBGrid2_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
       
             End If
    
-            If IsNull(data1.Recordset("num2")) Then
-                data1.Recordset("num2") = 0
+            If IsNull(Data1.Recordset("num2")) Then
+                Data1.Recordset("num2") = 0
             End If
 
-            ypolmhx.Caption = data1.Recordset("num2") - NR5 ' DATA1.Recordset("num5")
+            ypolmhx.Caption = Data1.Recordset("num2") - NR5 ' DATA1.Recordset("num5")
    
-            If IsNull(data1.Recordset("num4")) Then
-                ypolposo.Caption = data1.Recordset("num1")
+            If IsNull(Data1.Recordset("num4")) Then
+                ypolposo.Caption = Data1.Recordset("num1")
             Else
-                ypolposo.Caption = data1.Recordset("num1") - data1.Recordset("num4")
+                ypolposo.Caption = Data1.Recordset("num1") - Data1.Recordset("num4")
             End If
 
         End If
@@ -3957,13 +3969,13 @@ Function KARTELLA(mgdir)
         '   End If
         'End If
 
-130     If data1.Recordset.RecordCount = 0 Then Exit Function
-140     If IsNull(data1.Recordset("kod")) Then Exit Function
+130     If Data1.Recordset.RecordCount = 0 Then Exit Function
+140     If IsNull(Data1.Recordset("kod")) Then Exit Function
 
         On Error GoTo KARTELLA_Err
 
         'ΥΠΟΛΟΓΙΖΕΙ ΤΑ ΠΡΟΟΔΕΥΤΙΚΑ
-150     s = data1.Recordset("kod")
+150     s = Data1.Recordset("kod")
 
         'EGG.DatabaseName = mgdir
         
@@ -3992,7 +4004,7 @@ Function KARTELLA(mgdir)
         '===========  TO PARAKATO EINAI GIA 2 XRONIES
 240     If Check1.Value = vbChecked Then    '   <> gDir Then ' palia xronia
 
-250         egg.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
+250         EGG.ConnectionString = gConnect + ";DATABASE=" + f_PALIAXRONIA    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
             '   gConnect ";DATABASE=" + f_PALIAXRONIA
 260         R.Open "select AYP FROM PEL WHERE EIDOS='" + gBuff + "' AND KOD='" + s + "'", gConnect + ";DATABASE=" + f_PALIAXRONIA, adOpenForwardOnly, adLockReadOnly
 
@@ -4014,7 +4026,7 @@ Function KARTELLA(mgdir)
             '      Exit Function
             '  End If
     
-320         egg.ConnectionString = gConnect + ";DATABASE=" + f_PROPERSI    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
+320         EGG.ConnectionString = gConnect + ";DATABASE=" + f_PROPERSI    ' "DSN=" + LTrim(Str(f_PALIAXRONIA))
 
             '   gConnect ";DATABASE=" + f_PALIAXRONIA
             On Error Resume Next
@@ -4030,8 +4042,8 @@ Function KARTELLA(mgdir)
 
 360         ayp = R(0)
         Else
-370         egg.ConnectionString = gConnect
-380         yp = IIf(IsNull(data1.Recordset("AYP")), 0, data1.Recordset("AYP"))
+370         EGG.ConnectionString = gConnect
+380         yp = IIf(IsNull(Data1.Recordset("AYP")), 0, Data1.Recordset("AYP"))
 
             If CH_SYGK.Value = vbChecked Then
                  If Len(MAFM) < 9 Then
@@ -4108,7 +4120,7 @@ Function KARTELLA(mgdir)
         'If DATA1.Recordset.RecordCount > 0 Then
         '  If IsNull(DATA1.Recordset("kod")) Then Exit Sub
 
-500     s = data1.Recordset("kod")
+500     s = Data1.Recordset("kod")
         'If x2 = "e" Then
 
         Dim N                As Integer
@@ -4146,15 +4158,15 @@ Function KARTELLA(mgdir)
         End If
 
 640     If Check1.Value = vbChecked Then    '   <> gDir Then ' palia xronia
-650         egg.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο],USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
+650         EGG.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο],USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
 660     ElseIf Check2.Value = vbChecked Then    '   <> gDir Then ' palia xronia
-670         egg.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο],USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
+670         EGG.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο],USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
 
         Else
             If CH_SYGK.Value = vbChecked Then
-               egg.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο]," & "USERID as [Χρήστης],ID from EGG where XREOSI+PISTOSI<>0 AND " + FILTRO + SELE_PARASTATIKA + " HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "' AND EIDOS in ('" + X2 + "') and KOD in (select KOD FROM PEL WHERE AFM='" + MAFM + "' AND  EIDOS in ('" + X2 + "')  )  order by HME,ID;"
+               EGG.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο]," & "USERID as [Χρήστης],ID from EGG where XREOSI+PISTOSI<>0 AND " + FILTRO + SELE_PARASTATIKA + " HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "' AND EIDOS in ('" + X2 + "') and KOD in (select KOD FROM PEL WHERE AFM='" + MAFM + "' AND  EIDOS in ('" + X2 + "')  )  order by HME,ID;"
             Else
-680            egg.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο]," & "USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "' AND EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
+680            EGG.RecordSource = "select CONVERT(CHAR(10),HME,3) as [Ημερoμηνία], EID as [Είδ], APA as [Αριθ_Παρ],ATIM as [Πελατ],AIT as [Αιτιολογία],XREOSI as [Χρέωση],PISTOSI as [Πίστωση],PROOD as [Υπόλοιπο]," & "USERID as [Χρήστης],ID from EGG where " + FILTRO + SELE_PARASTATIKA + " HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "' AND EIDOS in ('" + X2 + "') and KOD='" + s + "' order by HME,ID;"
             End If
         End If
 
@@ -4164,7 +4176,7 @@ Function KARTELLA(mgdir)
         'EGG.DatabaseName = mgdir
 
         '  EGG.Recordset.Close
-690     egg.Refresh
+690     EGG.Refresh
 
 
 'EMFANIZE ANOMALIA STIN KARTELA KAI TO EKANA PROAIRETIKO
@@ -4178,17 +4190,17 @@ End If
 'ΟΙ ΠΑΡΑΚΑΤΩ 12 ΣΕΙΡΕΣ ΕΙΝΑΙ ΓΙΑ ΝΑ ΒΓΑΖΕΙ ΠΑΝΩ ΑΠΟ 2000 ΣΕΙΡΕΣ ΤΟ GRID
 '================================================================================
 '' Assuming that rs is your ADO recordset  MSFlexGrid1
-   MSFlexGrid1.rows = egg.Recordset.RecordCount + 1
+   MSFlexGrid1.rows = EGG.Recordset.RecordCount + 1
 Dim rsVar As Variant
-   rsVar = egg.Recordset.GetString(adClipString, egg.Recordset.RecordCount)
+   rsVar = EGG.Recordset.GetString(adClipString, EGG.Recordset.RecordCount)
 '
-   MSFlexGrid1.ColS = egg.Recordset.FIELDS.Count
+   MSFlexGrid1.ColS = EGG.Recordset.FIELDS.Count
 '
 '   ' Set column names in the grid
-   Dim i As Long
-   For i = 0 To egg.Recordset.FIELDS.Count - 1
+   Dim I As Long
+   For I = 0 To EGG.Recordset.FIELDS.Count - 1
 
-       MSFlexGrid1.TextMatrix(0, i) = egg.Recordset.FIELDS(i).Name
+       MSFlexGrid1.TextMatrix(0, I) = EGG.Recordset.FIELDS(I).Name
 
    Next
 '
@@ -4342,16 +4354,16 @@ Private Sub DBGRID22_Click()
 
         '</EhHeader>
 
-100     timtext3.Text = DBGRID22.Text
-110     timtext3.BackColor = DBGRID22.BackColor
-120     timtext3.Visible = False
+100     TIMText3.Text = DBGRID22.Text
+110     TIMText3.BackColor = DBGRID22.BackColor
+120     TIMText3.Visible = False
 
         ' ΤΟ ΤΕΧΤ3 ΠΑΡΑΛΑΜΒΑΝΕΙ ΤIΣ ΔΙΑΣΤΑΣΕΙΣ ΑΠΟ ΤΟ GRID
-130     timtext3.Top = DBGRID22.Top + DBGRID22.CellTop
-140     timtext3.Left = DBGRID22.Left + DBGRID22.CellLeft
-150     timtext3.Width = DBGRID22.CellWidth - 15
-160     timtext3.Height = DBGRID22.CellHeight - 25
-170     timtext3.Visible = True
+130     TIMText3.Top = DBGRID22.Top + DBGRID22.CellTop
+140     TIMText3.Left = DBGRID22.Left + DBGRID22.CellLeft
+150     TIMText3.Width = DBGRID22.CellWidth - 15
+160     TIMText3.Height = DBGRID22.CellHeight - 25
+170     TIMText3.Visible = True
 
         DBGRID22.Col = 2
 
@@ -4414,7 +4426,7 @@ End Sub
 
 Private Sub DBGRID22_MouseUp(Button As Integer, _
                              Shift As Integer, _
-                             x As Single, _
+                             X As Single, _
                              Y As Single)
 
         '<EhHeader>
@@ -4477,7 +4489,7 @@ Private Sub Form_Activate()
 
 
 
-    Set Prospective = tdbgrid1.Styles.Add("Prospective")
+    Set Prospective = TDBGrid1.Styles.ADD("Prospective")
 
     Prospective.Font.Italic = True
 
@@ -4487,7 +4499,7 @@ Private Sub Form_Activate()
 
     
 
-    Set Distributors = tdbgrid1.Styles.Add("Distributors")
+    Set Distributors = TDBGrid1.Styles.ADD("Distributors")
 
     Distributors.BackColor = vbRed
 
@@ -4699,10 +4711,10 @@ Private Sub Form_Load()
 
         'El.mForm_Load Me
         
-        tdbgrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
-          tdbgrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
-          tdbgrid1.Splits(0).ExtendRightColumn = True
-          tdbgrid1.FilterBar = False
+        TDBGrid1.MarqueeStyle = 3  'SEIRA MARKARISMENH
+          TDBGrid1.Splits(0).AlternatingRowStyle = True    'ENALAX XROMATA SEIRON
+          TDBGrid1.Splits(0).ExtendRightColumn = True
+          TDBGrid1.FilterBar = False
  F_EKTYPOTHS = FINDPARAMETROI(1, "PAR1", "F_EKTYPOTHS", "..", "Εκτυπωτής παραστατικών(με .. προεπιλεγμένος)") '
         
         F_MONOENERGOS = Val(FINDPARAMETROI(1, "PAR1", "F_MONOENERGOS", "0", "ΔΕΙΧΝΕΙ ΜΟΝΟ ΤΟΥΣ ΕΝΕΡΓΟΥΣ=1 ΟΛΟΥΣ=0")) '
@@ -4866,13 +4878,13 @@ f_2000MORE_ROWS = Val(FINDPARAMETROI(1, "PELAT4", "f_2000MORE_ROWS", "1", "Ενεργ
 
 
 
-    tdbgrid1.columns(6).Width = 1544.882
-    tdbgrid1.columns(5).Width = 2610.142
-    tdbgrid1.columns(4).Width = 480.189
-    tdbgrid1.columns(3).Width = 3550.142
-    tdbgrid1.columns(2).Width = 929.7639
-    tdbgrid1.columns(1).Width = 900.2835
-    tdbgrid1.columns(0).Width = 1049.953
+    TDBGrid1.columns(6).Width = 1544.882
+    TDBGrid1.columns(5).Width = 2610.142
+    TDBGrid1.columns(4).Width = 480.189
+    TDBGrid1.columns(3).Width = 3550.142
+    TDBGrid1.columns(2).Width = 929.7639
+    TDBGrid1.columns(1).Width = 900.2835
+    TDBGrid1.columns(0).Width = 1049.953
 
 
 
@@ -4915,14 +4927,14 @@ Private Sub Form_Paint()
         '</EhHeader>
 100     If PROTH = 1 Then
 110         PROTH = 2
-120         data1.ConnectionString = gConnect
-130         data1.RecordSource = "select top 10 *from PEL WHERE EIDOS='z';"
-140         data1.Refresh
-150         egg.ConnectionString = gConnect
+120         Data1.ConnectionString = gConnect
+130         Data1.RecordSource = "select top 10 *from PEL WHERE EIDOS='z';"
+140         Data1.Refresh
+150         EGG.ConnectionString = gConnect
 
 160         If Len(Text2(0).Text) > 0 Then
-170             data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1) + "' and KOD like '" + Text2(0).Text + "%';"
-180             data1.Refresh
+170             Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1) + "' and KOD like '" + Text2(0).Text + "%';"
+180             Data1.Refresh
 190             Text2_LostFocus 0
             End If
 
@@ -5039,8 +5051,8 @@ Private Sub Form_Resize()
     
     End If
 
-    tdbgrid1.HeadFont.Size = CMDEXIT.FontSize
-    tdbgrid1.FooterFont.Size = CMDEXIT.FontSize
+    TDBGrid1.HeadFont.Size = CmdExit.FontSize
+    TDBGrid1.FooterFont.Size = CmdExit.FontSize
     
     ' El.FormResize Me
     ' El.mForm_Resize Me
@@ -5063,24 +5075,24 @@ Private Sub kentroAdyn_Click()
     On Error Resume Next
 
     If f_KENTRA_ADYNATISMATOS = 1 Then
-        If data1.Recordset("NUM3") = 0 Then ' HTAN STO SVMA
+        If Data1.Recordset("NUM3") = 0 Then ' HTAN STO SVMA
             If kentroAdyn.Text = "ΣΩΜΑ" Then  ' PARAMENEI STO SOMA
                 'MHN KANEIS TIPOTA
-                Text2(0).Text = data1.Recordset("kod")
+                Text2(0).Text = Data1.Recordset("kod")
                 f_msynt = "NUM3=0 AND "
             Else  ' TO GYRIZEI STO PROSOPO
-                Text2(0).Text = "10" + data1.Recordset("KOD")
+                Text2(0).Text = "10" + Data1.Recordset("KOD")
                 f_msynt = "NUM3=1 AND "
             End If
         End If
    
-        If data1.Recordset("NUM3") = 1 Then ' HTAN STO PROSOPO
+        If Data1.Recordset("NUM3") = 1 Then ' HTAN STO PROSOPO
             If kentroAdyn.Text <> "ΣΩΜΑ" Then  ' PARAMENEI STO PROSOPO
                 'MHN KANEIS TIPOTA
-                Text2(0).Text = data1.Recordset("kod")
+                Text2(0).Text = Data1.Recordset("kod")
                 f_msynt = "NUM3=1 AND "
             Else  ' TO GYRIZEI STO SOMA
-                Text2(0).Text = mID(data1.Recordset("KOD"), 3, 4)
+                Text2(0).Text = mID(Data1.Recordset("KOD"), 3, 4)
                 f_msynt = "NUM3=1 AND "
           
             End If
@@ -5121,7 +5133,7 @@ Private Sub MSFlexGrid1_Click()
 
         Dim a, mgdir, DUM
 
-100     timtext3.Visible = False
+100     TIMText3.Visible = False
 
 110     If MSFlexGrid1.rows < 3 Then Exit Sub
 
@@ -5133,7 +5145,7 @@ Private Sub MSFlexGrid1_Click()
         Dim L1 As String
         Dim k As Long
         Dim L As Long
-        Dim D1 As String
+        Dim d1 As String
         
              MSFlexGrid1.Col = 0
         ' βρισκω την σειρά που έκανα κλικ
@@ -5182,7 +5194,7 @@ Private Sub MSFlexGrid1_Click()
 
 280     If Not IsDate(MSFlexGrid1.Text) Then Exit Sub
 
-290     D1 = Trim(MSFlexGrid1.Text)
+290     d1 = Trim(MSFlexGrid1.Text)
 
 300   '  d2 = DateAdd("d", 1, d1)
         
@@ -5215,7 +5227,7 @@ Private Sub MSFlexGrid1_Click()
         
         
         
-     DUM = mpelat41_show(gDir, D1, L1)
+     DUM = mpelat41_show(gDir, d1, L1)
         ' Else
         '    mgdir = gDir + "\" + Right(Format(Year(Now) - 1, "0000"), 2)
         '   DUM = mpelat41_show(mgdir)
@@ -5546,7 +5558,7 @@ End Sub
 
 Private Sub MSFlexGrid1_MouseUp(Button As Integer, _
                                 Shift As Integer, _
-                                x As Single, _
+                                X As Single, _
                                 Y As Single)
                                 
                                 
@@ -5574,7 +5586,7 @@ Sub rePrint(Button As Integer) ' 2=dexi klik
 100     If Button = 2 Then
 
 
-Dim D1 As String
+Dim d1 As String
 
 
 110         Set DB = OpenDatabase("C:\MERCVB\REPORTS\REPORTS.MDB")
@@ -5635,45 +5647,45 @@ Dim D1 As String
               
               Dim DATE1 As String, L1 As String
       
-                If tdbgrid1.row < 0 Then Exit Sub
-                    tdbgrid1.Col = 1
+                If TDBGrid1.row < 0 Then Exit Sub
+                    TDBGrid1.Col = 1
          
-                  L1 = tdbgrid1.Text
-                      tdbgrid1.Col = 0
-                      DATE1 = tdbgrid1.Text
+                  L1 = TDBGrid1.Text
+                      TDBGrid1.Col = 0
+                      DATE1 = TDBGrid1.Text
               
               
               
-              tdbgrid1.Col = 4: D1 = tdbgrid1.Text
+              TDBGrid1.Col = 4: d1 = TDBGrid1.Text
               
               
               
               
               
-              DB.Execute "update MEM SET N1=" + str(gVal(Replace(D1, ",", ".")))
+              DB.Execute "update MEM SET N1=" + str(gVal(Replace(d1, ",", ".")))
 
-               DB.Execute "update MEM SET MEMO='" + Olografos(gVal(Replace(D1, ",", "."))) + "'"
-
-
+               DB.Execute "update MEM SET MEMO='" + Olografos(gVal(Replace(d1, ",", "."))) + "'"
 
 
-              tdbgrid1.Col = 2: D1 = tdbgrid1.Text
+
+
+              TDBGrid1.Col = 2: d1 = TDBGrid1.Text
 164          ' RR!par10 = d1   ' Text1.Text ' ar.parastatikoy
-              tdbgrid1.Col = 1: D1 = tdbgrid1.Text
-              DB.Execute "update MEM SET PAR10=" + D1
+              TDBGrid1.Col = 1: d1 = TDBGrid1.Text
+              DB.Execute "update MEM SET PAR10=" + d1
 
-166           tdbgrid1.Col = 0: D1 = tdbgrid1.Text
-              MDATE = D1
+166           TDBGrid1.Col = 0: d1 = TDBGrid1.Text
+              MDATE = d1
                MDATE = Split(MDATE, "/")(1) + "/" + Split(MDATE, "/")(0) + "/" + Split(MDATE, "/")(2)
               'RR!hme = d1  'DTPicker1.value
  DB.Execute "update MEM SET HME=#" + MDATE + "#"
             
-              tdbgrid1.Col = 3: D1 = tdbgrid1.Text
+              TDBGrid1.Col = 3: d1 = TDBGrid1.Text
 168         '  RR!par12 = d1    'AITIOLOGIA
 
               DB.Execute "update MEM SET PAR9='" + DATE1 + "'"
                
-              tdbgrid1.Col = 2: D1 = tdbgrid1.Text: DB.Execute "update MEM SET par11='" + D1 + "'"
+              TDBGrid1.Col = 2: d1 = TDBGrid1.Text: DB.Execute "update MEM SET par11='" + d1 + "'"
               
              'TDBGrid1.Col = 3: d1 = TDBGrid1.Text: DB.Execute "update MEM SET par11='" + d1 + "'"
 
@@ -5698,12 +5710,12 @@ Dim D1 As String
 
         
          
-DB.Execute "update MEM SET par2='" + data1.Recordset("kod") + "'"
+DB.Execute "update MEM SET par2='" + Data1.Recordset("kod") + "'"
 
-DB.Execute "update MEM SET C1='" + data1.Recordset("epO") + "'"
-DB.Execute "update MEM SET C2='" + data1.Recordset("epA") + "'"
-DB.Execute "update MEM SET C3='" + Left(data1.Recordset("die"), 25) + "'"
-DB.Execute "update MEM SET C4='" + data1.Recordset("afm") + "'"
+DB.Execute "update MEM SET C1='" + Data1.Recordset("epO") + "'"
+DB.Execute "update MEM SET C2='" + Data1.Recordset("epA") + "'"
+DB.Execute "update MEM SET C3='" + Left(Data1.Recordset("die"), 25) + "'"
+DB.Execute "update MEM SET C4='" + Data1.Recordset("afm") + "'"
 
 
 
@@ -5720,11 +5732,11 @@ DB.Execute "update MEM SET C4='" + data1.Recordset("afm") + "'"
 
 230
 
-240         sql = "select sum(XREOSI) AS XX0,sum(PISTOSI) AS PP0 from EGG WHERE  HME>='" + "01/01/" + LTrim(str(Year(Now))) + "' AND HME<='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND EIDOS ='" + data1.Recordset("eidos") + "' and KOD='" + data1.Recordset("KOD") + "'"
+240         sql = "select sum(XREOSI) AS XX0,sum(PISTOSI) AS PP0 from EGG WHERE  HME>='" + "01/01/" + LTrim(str(Year(Now))) + "' AND HME<='" + Format(DTPicker1.Value, "MM/DD/YYYY") + "' AND EIDOS ='" + Data1.Recordset("eidos") + "' and KOD='" + Data1.Recordset("KOD") + "'"
 
 250         R.Open sql, Gdb, adOpenForwardOnly, adLockReadOnly
 260       '  RR!par3 = Format(R(0) + data1.Recordset("ayp") - R(1), "###,000.00")
-                DB.Execute "update MEM SET par3='" + Format(R(0) + data1.Recordset("ayp") - R(1), "###,000.00") + "'"
+                DB.Execute "update MEM SET par3='" + Format(R(0) + Data1.Recordset("ayp") - R(1), "###,000.00") + "'"
 
 
 270         R.Close
@@ -5736,7 +5748,7 @@ DB.Execute "update MEM SET C4='" + data1.Recordset("afm") + "'"
            
 290        ' RR.Update
 
-300         If data1.Recordset("eidos") = "e" Then
+300         If Data1.Recordset("eidos") = "e" Then
                 'If MSFlexGrid1.TextMatrix(MSFlexGrid1.row, 2) = "ΜΕ" Then
 310             CrystalReport1.ReportFileName = "C:\MERCVB\REPORTS\EISPR.RPT"
                 'Else
@@ -5853,15 +5865,15 @@ Private Sub PELPROM_Change()
         Dim R As New ADODB.Recordset
 
         'If Option1(1) Then x = "e" Else x = "r"
-        Dim x As String
+        Dim X As String
 
 130     If f_buff = "r" Then
-140         x = "2"
+140         X = "2"
         Else
-150         x = "1"
+150         X = "1"
         End If
 
-160     R.Open "select POL,TITLOS,EIDOS from PARASTAT where POL=" + x + " ORDER BY POL,TITLOS;", Gdb, adOpenDynamic, adLockOptimistic
+160     R.Open "select POL,TITLOS,EIDOS from PARASTAT where POL=" + X + " ORDER BY POL,TITLOS;", Gdb, adOpenDynamic, adLockOptimistic
 170     List1.Clear
 
 180     If R.RecordCount = 0 Then
@@ -5898,18 +5910,18 @@ Private Sub PELPROM_Change()
         Loop
 
 310     If Len(Trim(Text2(1))) > 0 Then    'eponumo
-320         data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
+320         Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
         End If
 
 330     If Len(Trim(Text2(0))) > 0 Then    'kodikos
-340         data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and KOD like '" + Text2(0).Text + "%';"
+340         Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and KOD like '" + Text2(0).Text + "%';"
         End If
 
 350     If Len(Trim(Text2(2))) > 0 Then    'afm
-360         data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and AFM like '" + Text2(2).Text + "%';"
+360         Data1.RecordSource = "select EPO,THL,DIE,* from PEL where EIDOS='" + f_buff + "' and AFM like '" + Text2(2).Text + "%';"
         End If
 
-370     data1.Refresh
+370     Data1.Refresh
 
         '<EhFooter>
         Exit Sub
@@ -5961,7 +5973,7 @@ Sub SHOWTIMOL()
 
         Dim a, mgdir, DUM
 
-100     timtext3.Visible = False
+100     TIMText3.Visible = False
 
  
 
@@ -5969,18 +5981,18 @@ Sub SHOWTIMOL()
 
 110   ' If TDBGrid1.row < 1 Then Exit Sub
      
-         tdbgrid1.Col = 1
-         Dim D1 As String, L1 As String
+         TDBGrid1.Col = 1
+         Dim d1 As String, L1 As String
          
      
      
         ' MSFlexGrid1.height = 1215
         ' If left(Command5.Caption, 1) = "Π" Then
-120     L1 = tdbgrid1.Text
-         tdbgrid1.Col = 0
-         D1 = tdbgrid1.Text
+120     L1 = TDBGrid1.Text
+         TDBGrid1.Col = 0
+         d1 = TDBGrid1.Text
 
-If Len(L1) > 0 And Len(D1) > 0 Then DUM = mpelat41_show(gDir, D1, L1)
+If Len(L1) > 0 And Len(d1) > 0 Then DUM = mpelat41_show(gDir, d1, L1)
         ' Else
         '    mgdir = gDir + "\" + Right(Format(Year(Now) - 1, "0000"), 2)
         '   DUM = mpelat41_show(mgdir)
@@ -5996,36 +6008,36 @@ End Sub
 
 Private Sub TDBGrid1_DblClick()
 'διαγραφη εγγραφης-----------------------------------------------
-      Dim D1 As String, L1 As String
+      Dim d1 As String, L1 As String
       
-110      If tdbgrid1.row < 0 Then Exit Sub
-         tdbgrid1.Col = 1
+110      If TDBGrid1.row < 0 Then Exit Sub
+         TDBGrid1.Col = 1
          
-120     L1 = tdbgrid1.Text
-         tdbgrid1.Col = 0
-         D1 = tdbgrid1.Text
+120     L1 = TDBGrid1.Text
+         TDBGrid1.Col = 0
+         d1 = TDBGrid1.Text
       
         Dim m_hme, m_ait, m_xreosi, m_pistosi, m_apa
 
        
 
 
-     tdbgrid1.Col = 0: m_hme = tdbgrid1.Text
+     TDBGrid1.Col = 0: m_hme = TDBGrid1.Text
     
-130     tdbgrid1.Col = 1: m_apa = tdbgrid1.Text
+130     TDBGrid1.Col = 1: m_apa = TDBGrid1.Text
 
-140     tdbgrid1.Col = 2: m_ait = tdbgrid1.Text
+140     TDBGrid1.Col = 2: m_ait = TDBGrid1.Text
 
-150     tdbgrid1.Col = 3: m_xreosi = tdbgrid1.Text
+150     TDBGrid1.Col = 3: m_xreosi = TDBGrid1.Text
 
-160     tdbgrid1.Col = 4: m_pistosi = tdbgrid1.Text
+160     TDBGrid1.Col = 4: m_pistosi = TDBGrid1.Text
       
       If Val(m_xreosi) = 0 Then m_xreosi = ""
       If Val(m_pistosi) = 0 Then m_pistosi = ""
       
       Dim m_ID As String
       
-        tdbgrid1.Col = 7: m_ID = tdbgrid1.Text
+        TDBGrid1.Col = 7: m_ID = TDBGrid1.Text
       
      DiagEggraf m_hme, m_ait, m_xreosi, m_pistosi, m_apa, m_ID
       
@@ -6102,13 +6114,13 @@ If KeyCode = 114 Then  'F3
 
     Dim cait, d2atim, dapa As String
     Dim ID As String
-    tdbgrid1.Col = 7
-    ID = tdbgrid1.Text  'MSFlexGrid1.TextMatrix(CurRow, 9)
+    TDBGrid1.Col = 7
+    ID = TDBGrid1.Text  'MSFlexGrid1.TextMatrix(CurRow, 9)
 
 120    '  c = MSFlexGrid1.TextMatrix(CurRow, 4)    ' ATIM
 
-    tdbgrid1.Col = 2
-    cait = tdbgrid1.Text
+    TDBGrid1.Col = 2
+    cait = TDBGrid1.Text
 
 
   ' c = InputBox("διόρθωση Αιτιολογίας", , c)
@@ -6117,12 +6129,12 @@ If KeyCode = 114 Then  'F3
     
     
     
-    tdbgrid1.Col = 1
-    dapa = tdbgrid1.Text
+    TDBGrid1.Col = 1
+    dapa = TDBGrid1.Text
     
     
-    tdbgrid1.Col = 1
-    d2atim = tdbgrid1.Text
+    TDBGrid1.Col = 1
+    d2atim = TDBGrid1.Text
     
     
    ' d2 = MSFlexGrid1.TextMatrix(CurRow, 3)    ' ATIM
@@ -6130,12 +6142,12 @@ If KeyCode = 114 Then  'F3
 
 Dim POSO As Single
 
-tdbgrid1.Col = 3
-If tdbgrid1.Text > 0 Then
-    POSO = gVal(tdbgrid1.Text)
+TDBGrid1.Col = 3
+If TDBGrid1.Text > 0 Then
+    POSO = gVal(TDBGrid1.Text)
 Else
-    tdbgrid1.Col = 4
-    POSO = -gVal(tdbgrid1.Text)
+    TDBGrid1.Col = 4
+    POSO = -gVal(TDBGrid1.Text)
 End If
 
 
@@ -6152,7 +6164,7 @@ End Sub
 
 
 
-Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub TDBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
      rePrint Button
    
 
@@ -6204,7 +6216,7 @@ Private Sub Text2_KeyUp(index As Integer, KeyCode As Integer, Shift As Integer)
 
 100     If KeyCode = 13 Then
 110         If index <= 1 Then Text2(index + 1).SetFocus
-120         If index = 2 Then DbGrid2.SetFocus    ' Text2(1).SetFocus
+120         If index = 2 Then DBGRid2.SetFocus    ' Text2(1).SetFocus
         End If
 
 130     If KeyCode = 38 Then
@@ -6234,7 +6246,7 @@ Private Sub Text2_LostFocus(index As Integer)
         On Error GoTo Text2_LostFocus_Err
 
         '</EhHeader>
-        Dim x As String
+        Dim X As String
 
 100     Text2(index).BackColor = vbWhite
 
@@ -6252,14 +6264,14 @@ Private Sub Text2_LostFocus(index As Integer)
 160     If Len(Trim(Text2(index))) = 0 Then Exit Sub
 170     PROTH_FORA = False
 180     Me.MousePointer = vbHourglass
-190     x = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
-200     gBuff = x
+190     X = mID(PELPROM_STRING, PELPROM.ListIndex + 1, 1)
+200     gBuff = X
 
         If f_KENTRA_ADYNATISMATOS = 1 Then
               If gXEIRISTHS = 1 Then
                  msEditor1.Visible = False
               End If
-            If x = "e" Then
+            If X = "e" Then
                 If kentroAdyn.List(0) = kentroAdyn.Text Then
                     f_msynt = "NUM3=0 AND "
                 Else
@@ -6270,28 +6282,28 @@ Private Sub Text2_LostFocus(index As Integer)
 
 280     If index = 1 Then  'eponumo
             If F_MONOENERGOS = 0 Then
-               data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + x + "'  and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
+               Data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + X + "'  and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
             Else
             
-290            data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + x + "' AND ISNULL(ENERGOS,1)=1 and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
+290            Data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + X + "' AND ISNULL(ENERGOS,1)=1 and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
             End If
         End If
 
 300     If index = 0 Then    'kodikos
-310         data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + x + "' and KOD like '" + Text2(0).Text + "%';"
+310         Data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + X + "' and KOD like '" + Text2(0).Text + "%';"
         End If
 
 320     If index = 2 Then    'afm
-330         data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + x + "' and (AFM like '%" + Text2(2).Text + "%' OR " + f_pedioAFM + " like '%" + Text2(2).Text + "%' );"
+330         Data1.RecordSource = "select EPO,THL,DIE,* from PEL where " + f_msynt + " EIDOS='" + X + "' and (AFM like '%" + Text2(2).Text + "%' OR " + f_pedioAFM + " like '%" + Text2(2).Text + "%' );"
         End If
 
-340     data1.Refresh
+340     Data1.Refresh
   
   
   
   
   
-        Set msEditor1.mDataSource = data1  ' for code you have to use the 'adoNotes' instead of the Adodc1
+        Set msEditor1.mDataSource = Data1  ' for code you have to use the 'adoNotes' instead of the Adodc1
         msEditor1.MaxLength = 8000          ' Optional maximum length.
         '
         msEditor1.mDataField = "MEMO" '  "nNotes"     ' The field of your text
@@ -6303,31 +6315,31 @@ Private Sub Text2_LostFocus(index As Integer)
    
             ' data1.Refresh
    
-            If IsNull(data1.Recordset("num5")) Then
-                ypolmhx.Caption = data1.Recordset("num2")
+            If IsNull(Data1.Recordset("num5")) Then
+                ypolmhx.Caption = Data1.Recordset("num2")
             Else
-                ypolmhx.Caption = data1.Recordset("num2") - data1.Recordset("num5")
+                ypolmhx.Caption = Data1.Recordset("num2") - Data1.Recordset("num5")
             End If
    
-            If IsNull(data1.Recordset("num4")) Then
-                ypolposo.Caption = data1.Recordset("num1")
+            If IsNull(Data1.Recordset("num4")) Then
+                ypolposo.Caption = Data1.Recordset("num1")
             Else
-                ypolposo.Caption = data1.Recordset("num1") - data1.Recordset("num4")
+                ypolposo.Caption = Data1.Recordset("num1") - Data1.Recordset("num4")
             End If
 
         End If
 
-350     DbGrid2.columns(0).Width = 4000
+350     DBGRid2.columns(0).Width = 4000
 
 360     cmdPRINTKARTELA.Enabled = True
 370     cmdEIDHSYNOLIKA.Enabled = True
 380     cmdXREOPISTOSEIS.Enabled = True
 
-390     x = ""
+390     X = ""
 
 400     If MSFlexGrid1.rows > 1 Then MSFlexGrid1.TopRow = IIf(MSFlexGrid1.rows - 10 <= 0, 1, MSFlexGrid1.rows - 10)
 410     Me.MousePointer = vbNormal
-420     DbGrid2.SetFocus
+420     DBGRid2.SetFocus
 
         DBGrid2_RowColChange 0, 0
 
@@ -6346,11 +6358,11 @@ Text2_LostFocus_Err:
 
 End Sub
 
-Function mpelat41_show(mgdir, ByVal D1 As String, ByVal L1 As String)
+Function mpelat41_show(mgdir, ByVal d1 As String, ByVal L1 As String)
 
 Dim d2 As Date
 
- If IsDate(D1) Then d2 = DateAdd("d", 1, D1)
+ If IsDate(d1) Then d2 = DateAdd("d", 1, d1)
  
         '<EhHeader>
         On Error GoTo mpelat41_show_Err
@@ -6419,9 +6431,9 @@ Dim d2 As Date
 '
 '300     d2 = DateAdd("d", 1, d1)
    Dim SQL2 As String
-   SQL2 = "select ATIM,HME as SHME,KODE,ONOMA,CONVERT(decimal(10,2),POSO) as [ΠΟΣΟΤ]," & " CONVERT(decimal(10,4),TIMM)AS TIMH,CONVERT(decimal(10,2),TIMM*POSO) as [AΞIA ΠΡΟ ΕΚΠΤ],CONVERT(decimal(10,2),EKPT)AS [ΕΚΠΤ],CONVERT(decimal(10,2),TIMM*POSO*(100-EKPT)/100) as [AΞIA ΜΕΤΑ ΕΚΠΤ],APOT AS [Αποθ],CONVERT(decimal(10,2),POSO*KERDOS) AS [KΡΔ],EID.ERG from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD where PELKOD='" + data1.Recordset!kod + "' AND  ATIM='" + L1 + "' and DAY(HME)=" + str(Day(D1)) + " and month(HME)=" + str(Month(D1)) + " order by PROOD_AJ;"
+   SQL2 = "select ATIM,HME as SHME,KODE,ONOMA,CONVERT(decimal(10,2),POSO) as [ΠΟΣΟΤ]," & " CONVERT(decimal(10,4),TIMM)AS TIMH,CONVERT(decimal(10,2),TIMM*POSO) as [AΞIA ΠΡΟ ΕΚΠΤ],CONVERT(decimal(10,2),EKPT)AS [ΕΚΠΤ],CONVERT(decimal(10,2),TIMM*POSO*(100-EKPT)/100) as [AΞIA ΜΕΤΑ ΕΚΠΤ],APOT AS [Αποθ],CONVERT(decimal(10,2),POSO*KERDOS) AS [KΡΔ],EID.ERG from EGGTIM INNER JOIN EID ON EGGTIM.KODE=EID.KOD where PELKOD='" + Data1.Recordset!kod + "' AND  ATIM='" + L1 + "' and DAY(HME)=" + str(Day(d1)) + " and month(HME)=" + str(Month(d1)) + " order by PROOD_AJ;"
   ' write_query SQL2
-310     data2.RecordSource = SQL2
+310     DATA2.RecordSource = SQL2
    Dim mGDB As New ADODB.Connection
    Dim mCon As String
 320     If Check1.Value = vbChecked Then    '   <> gDir Then ' palia xronia
@@ -6432,18 +6444,18 @@ Dim d2 As Date
 360          mCon = gConnect
         End If
 
-data2.ConnectionString = mCon
+DATA2.ConnectionString = mCon
 mGDB.Open mCon
 
 
 
 
         'Data2.Refresh
-370     data2.Refresh
+370     DATA2.Refresh
 
         Dim R As New ADODB.Recordset
 
-380     R.Open "select SUM(ISNULL(TIMM,0)*ISNULL(POSO,0) ) as [ΑΞΙΑ ΠΡΟ ΕΚΠ],SUM(ISNULL(POSO,0)*ISNULL(KERDOS,0) ) AS [KΡΔ],SUM(ISNULL(TIMM,0)*ISNULL(POSO,0)*(100-ISNULL(EKPT,0))/100) as [AΞIA META EKΠ],ATIM,HME" & " from EGGTIM where ATIM='" + L1 + "' and HME>='" + Format(D1, "MM/DD/yyyy") + "' and HME<'" + Format(d2, "MM/DD/yyyy") + "' GROUP BY ATIM,HME  ;", mGDB, adOpenForwardOnly, adLockReadOnly
+380     R.Open "select SUM(ISNULL(TIMM,0)*ISNULL(POSO,0) ) as [ΑΞΙΑ ΠΡΟ ΕΚΠ],SUM(ISNULL(POSO,0)*ISNULL(KERDOS,0) ) AS [KΡΔ],SUM(ISNULL(TIMM,0)*ISNULL(POSO,0)*(100-ISNULL(EKPT,0))/100) as [AΞIA META EKΠ],ATIM,HME" & " from EGGTIM where ATIM='" + L1 + "' and HME>='" + Format(d1, "MM/DD/yyyy") + "' and HME<'" + Format(d2, "MM/DD/yyyy") + "' GROUP BY ATIM,HME  ;", mGDB, adOpenForwardOnly, adLockReadOnly
 
 390     DBGRID22.TextMatrix(0, 0) = "ΠΑΡ/ΚΟ"
 400     DBGRID22.ColWidth(0) = 0
@@ -6489,7 +6501,7 @@ mGDB.Open mCon
         'Dim R As New ADODB.Recordset
 590     R.Close
 
-600     R.Open "select ATIM,PARAT,PROOR,SKOPOS,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,AJI,AJ1,AJ2,AJ3,AJ4,AJ5,AJ6,AJ7 from TIM where" & " ATIM='" + L1 + "' and HME>='" + Format(D1, "MM/DD/yyyy") + "' and HME<'" + Format(d2, "MM/DD/yyyy") + "';", mGDB, adOpenForwardOnly, adLockReadOnly
+600     R.Open "select ATIM,PARAT,PROOR,SKOPOS,B_N1,B_N2,FPA1,FPA2,FPA3,FPA4,FPA6,FPA7,AJI,AJ1,AJ2,AJ3,AJ4,AJ5,AJ6,AJ7 from TIM where" & " ATIM='" + L1 + "' and HME>='" + Format(d1, "MM/DD/yyyy") + "' and HME<'" + Format(d2, "MM/DD/yyyy") + "';", mGDB, adOpenForwardOnly, adLockReadOnly
 
 610     If Not R.EOF Then
 
@@ -6624,14 +6636,14 @@ Private Sub THLEFONA_Click()
 
 Dim ANS As Integer
 ANS = MsgBox("Αναλυτικά;", vbYesNo)
-100     data2.ConnectionString = gConnect
+100     DATA2.ConnectionString = gConnect
 If ANS = vbYes Then
-110     data2.RecordSource = " SELECT * FROM THLEFONA WHERE KOD='" + data1.Recordset("KOD") + "' AND EIDOS='e' order by HME DESC"
+110     DATA2.RecordSource = " SELECT * FROM THLEFONA WHERE KOD='" + Data1.Recordset("KOD") + "' AND EIDOS='e' order by HME DESC"
 Else
-        data2.RecordSource = " SELECT count(*) as AR,MONTH(HME) AS [MHNAΣ],YEAR(HME) AS [ETOΣ] FROM THLEFONA WHERE KOD='" + data1.Recordset("KOD") + "' AND EIDOS='e' GROUP BY YEAR(HME),MONTH(HME) ORDER by YEAR(HME) DESC,MONTH(HME) DESC"
+        DATA2.RecordSource = " SELECT count(*) as AR,MONTH(HME) AS [MHNAΣ],YEAR(HME) AS [ETOΣ] FROM THLEFONA WHERE KOD='" + Data1.Recordset("KOD") + "' AND EIDOS='e' GROUP BY YEAR(HME),MONTH(HME) ORDER by YEAR(HME) DESC,MONTH(HME) DESC"
 End If
 
-120     data2.Refresh
+120     DATA2.Refresh
 
         '<EhFooter>
         Exit Sub
@@ -6653,8 +6665,8 @@ Private Sub TIMText3_DblClick()
 
 
  Dim FF As New APOT2
-        FF.kod.Text = timtext3.Text   ' "10"
-        FF.CMDEXIT.Enabled = False
+        FF.kod.Text = TIMText3.Text   ' "10"
+        FF.CmdExit.Enabled = False
         FF.anazitisi 0
         FF.SHOW
         'MsgBox "ok"
@@ -6673,7 +6685,7 @@ Private Sub TIMText3_LostFocus()
 
         '</EhHeader>
 
-100     timtext3.Visible = False
+100     TIMText3.Visible = False
 
         '<EhFooter>
         Exit Sub

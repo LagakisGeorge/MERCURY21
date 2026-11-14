@@ -1,25 +1,25 @@
 VERSION 5.00
 Object = "{CCA214C0-DFEB-4C91-9F0D-2665F77F6E23}#1.2#0"; "IDAutomationLinear.dll"
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
-Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "mschrt20.ocx"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCHRT20.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form APOT2 
    BackColor       =   &H00C0C000&
    Caption         =   "Διόρθωση Είδους"
-   ClientHeight    =   12384
+   ClientHeight    =   12390
    ClientLeft      =   60
-   ClientTop       =   408
+   ClientTop       =   405
    ClientWidth     =   17820
    Icon            =   "APOT2.frx":0000
    LinkTopic       =   "Form2"
    LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   12384
+   ScaleHeight     =   12390
    ScaleWidth      =   17820
    WindowState     =   2  'Maximized
    Begin VB.CommandButton cmdWEB 
@@ -92,8 +92,8 @@ Begin VB.Form APOT2
          TabIndex        =   138
          Top             =   0
          Width           =   6615
-         _ExtentX        =   11663
-         _ExtentY        =   2138
+         _ExtentX        =   11668
+         _ExtentY        =   2143
          _Version        =   393216
          Rows            =   3
          Cols            =   7
@@ -153,7 +153,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -173,7 +173,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -192,7 +192,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -271,7 +271,7 @@ Begin VB.Form APOT2
          Caption         =   "Υπόλοιπο"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -292,7 +292,7 @@ Begin VB.Form APOT2
          Caption         =   "Κατηγορία"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -313,7 +313,7 @@ Begin VB.Form APOT2
          Caption         =   "Κωδ.Προμηθ."
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -333,7 +333,7 @@ Begin VB.Form APOT2
          Caption         =   "Κωδικός"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -353,7 +353,7 @@ Begin VB.Form APOT2
          Caption         =   "Περιγραφή"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -373,7 +373,7 @@ Begin VB.Form APOT2
          Caption         =   "Μονάδα μέτρησης"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   -1  'True
@@ -393,7 +393,7 @@ Begin VB.Form APOT2
          Caption         =   "Κατηγ.ΦΠΑ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -413,7 +413,7 @@ Begin VB.Form APOT2
          Caption         =   "Υποοικογένεια"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   -1  'True
@@ -433,7 +433,7 @@ Begin VB.Form APOT2
          Caption         =   "Βοηθ.Κλειδί(BARCODE)"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -453,7 +453,7 @@ Begin VB.Form APOT2
          Caption         =   "Οικογένεια"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   -1  'True
@@ -473,7 +473,7 @@ Begin VB.Form APOT2
          Caption         =   "Τελ.Αγορά"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   -1  'True
@@ -496,8 +496,8 @@ Begin VB.Form APOT2
       TabIndex        =   101
       Top             =   2880
       Width           =   7635
-      _ExtentX        =   13462
-      _ExtentY        =   4636
+      _ExtentX        =   13467
+      _ExtentY        =   4630
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -511,25 +511,25 @@ Begin VB.Form APOT2
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   974
+      Splits(0).RecordSelectorWidth=   979
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).DividerColor=   15790320
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
-      Splits(0)._ColumnProps(1)=   "Column(0).Width=2731"
+      Splits(0)._ColumnProps(1)=   "Column(0).Width=2725"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
-      Splits(0)._ColumnProps(5)=   "Column(1).Width=2731"
+      Splits(0)._ColumnProps(5)=   "Column(1).Width=2725"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
       Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2646"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -619,8 +619,8 @@ Begin VB.Form APOT2
       TabIndex        =   90
       Top             =   6240
       Width           =   3855
-      _extentx        =   6795
-      _extenty        =   4255
+      _extentx        =   6800
+      _extenty        =   4260
       backcolor       =   12648447
       font            =   "APOT2.frx":0021
       backcolor       =   12648447
@@ -628,8 +628,8 @@ Begin VB.Form APOT2
    Begin VB.PictureBox Picture4 
       Height          =   1335
       Left            =   15000
-      ScaleHeight     =   1284
-      ScaleWidth      =   6924
+      ScaleHeight     =   1275
+      ScaleWidth      =   6915
       TabIndex        =   81
       TabStop         =   0   'False
       Top             =   10320
@@ -661,7 +661,7 @@ Begin VB.Form APOT2
       Visible         =   0   'False
       Width           =   1200
       _ExtentX        =   2117
-      _ExtentY        =   572
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -692,7 +692,7 @@ Begin VB.Form APOT2
       Caption         =   "Adodc3"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -754,8 +754,8 @@ Begin VB.Form APOT2
    Begin VB.PictureBox Picture2 
       Height          =   2535
       Left            =   11040
-      ScaleHeight     =   2484
-      ScaleWidth      =   3624
+      ScaleHeight     =   2475
+      ScaleWidth      =   3615
       TabIndex        =   35
       Top             =   6210
       Width           =   3675
@@ -765,9 +765,9 @@ Begin VB.Form APOT2
       AutoSize        =   -1  'True
       Height          =   450
       Left            =   12960
-      ScaleHeight     =   20.4
+      ScaleHeight     =   19.5
       ScaleMode       =   2  'Point
-      ScaleWidth      =   40.2
+      ScaleWidth      =   39.75
       TabIndex        =   34
       Top             =   10920
       Visible         =   0   'False
@@ -803,8 +803,8 @@ Begin VB.Form APOT2
       Top             =   9240
       Visible         =   0   'False
       Width           =   1335
-      _ExtentX        =   2350
-      _ExtentY        =   572
+      _ExtentX        =   2355
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -835,7 +835,7 @@ Begin VB.Form APOT2
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -850,8 +850,8 @@ Begin VB.Form APOT2
       Top             =   9480
       Visible         =   0   'False
       Width           =   1335
-      _ExtentX        =   2350
-      _ExtentY        =   572
+      _ExtentX        =   2355
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -882,7 +882,7 @@ Begin VB.Form APOT2
       Caption         =   "DATA2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -897,8 +897,8 @@ Begin VB.Form APOT2
       Top             =   9480
       Visible         =   0   'False
       Width           =   1335
-      _ExtentX        =   2350
-      _ExtentY        =   572
+      _ExtentX        =   2355
+      _ExtentY        =   582
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -929,7 +929,7 @@ Begin VB.Form APOT2
       Caption         =   "DATA1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -962,8 +962,8 @@ Begin VB.Form APOT2
       TabIndex        =   2
       Top             =   4200
       Width           =   7092
-      _ExtentX        =   12510
-      _ExtentY        =   8615
+      _ExtentX        =   12515
+      _ExtentY        =   8625
       _Version        =   393216
       MousePointer    =   99
       Tabs            =   9
@@ -973,33 +973,33 @@ Begin VB.Form APOT2
       TabCaption(0)   =   "0.Προμηθ./ελαχ.στόκ"
       TabPicture(0)   =   "APOT2.frx":004D
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "efk"
-      Tab(0).Control(1)=   "litra"
-      Tab(0).Control(2)=   "LTI2"
-      Tab(0).Control(3)=   "lti3"
-      Tab(0).Control(4)=   "PROMPOL"
-      Tab(0).Control(5)=   "Text1(18)"
-      Tab(0).Control(6)=   "Text1(17)"
-      Tab(0).Control(7)=   "exoda"
-      Tab(0).Control(8)=   "Text1(15)"
-      Tab(0).Control(9)=   "Text1(10)"
-      Tab(0).Control(10)=   "Text1(7)"
-      Tab(0).Control(11)=   "Text1(8)"
-      Tab(0).Control(12)=   "Text1(9)"
+      Tab(0).Control(0)=   "Label1(15)"
+      Tab(0).Control(1)=   "Label1(16)"
+      Tab(0).Control(2)=   "Label1(17)"
+      Tab(0).Control(3)=   "Label1(18)"
+      Tab(0).Control(4)=   "Label2"
+      Tab(0).Control(5)=   "Label1(24)"
+      Tab(0).Control(6)=   "Label3"
+      Tab(0).Control(7)=   "Label1(28)"
+      Tab(0).Control(8)=   "Label1(29)"
+      Tab(0).Control(9)=   "Label7"
+      Tab(0).Control(10)=   "lbLTI2"
+      Tab(0).Control(11)=   "lblLTI3"
+      Tab(0).Control(12)=   "Label8"
       Tab(0).Control(13)=   "Label9"
-      Tab(0).Control(14)=   "Label8"
-      Tab(0).Control(15)=   "lblLTI3"
-      Tab(0).Control(16)=   "lbLTI2"
-      Tab(0).Control(17)=   "Label7"
-      Tab(0).Control(18)=   "Label1(29)"
-      Tab(0).Control(19)=   "Label1(28)"
-      Tab(0).Control(20)=   "Label3"
-      Tab(0).Control(21)=   "Label1(24)"
-      Tab(0).Control(22)=   "Label2"
-      Tab(0).Control(23)=   "Label1(18)"
-      Tab(0).Control(24)=   "Label1(17)"
-      Tab(0).Control(25)=   "Label1(16)"
-      Tab(0).Control(26)=   "Label1(15)"
+      Tab(0).Control(14)=   "Text1(9)"
+      Tab(0).Control(15)=   "Text1(8)"
+      Tab(0).Control(16)=   "Text1(7)"
+      Tab(0).Control(17)=   "Text1(10)"
+      Tab(0).Control(18)=   "Text1(15)"
+      Tab(0).Control(19)=   "exoda"
+      Tab(0).Control(20)=   "Text1(17)"
+      Tab(0).Control(21)=   "Text1(18)"
+      Tab(0).Control(22)=   "PROMPOL"
+      Tab(0).Control(23)=   "lti3"
+      Tab(0).Control(24)=   "LTI2"
+      Tab(0).Control(25)=   "litra"
+      Tab(0).Control(26)=   "efk"
       Tab(0).ControlCount=   27
       TabCaption(1)   =   "1.Γραφική παράσταση"
       TabPicture(1)   =   "APOT2.frx":0069
@@ -1009,18 +1009,18 @@ Begin VB.Form APOT2
       TabCaption(2)   =   "2.Παράμετροι Λογιστ."
       TabPicture(2)   =   "APOT2.frx":0085
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "discountOption"
-      Tab(2).Control(1)=   "apallagesFPA"
-      Tab(2).Control(2)=   "ONO2"
-      Tab(2).Control(3)=   "timokat"
-      Tab(2).Control(4)=   "DataGrid2"
-      Tab(2).Control(5)=   "Text1(12)"
-      Tab(2).Control(6)=   "Text1(11)"
-      Tab(2).Control(7)=   "Label11"
-      Tab(2).Control(8)=   "lblΑπαλλαγήΦΠΑ"
-      Tab(2).Control(9)=   "Label4"
-      Tab(2).Control(10)=   "Label1(20)"
-      Tab(2).Control(11)=   "Label1(19)"
+      Tab(2).Control(0)=   "Label1(19)"
+      Tab(2).Control(1)=   "Label1(20)"
+      Tab(2).Control(2)=   "Label4"
+      Tab(2).Control(3)=   "lblΑπαλλαγήΦΠΑ"
+      Tab(2).Control(4)=   "Label11"
+      Tab(2).Control(5)=   "Text1(11)"
+      Tab(2).Control(6)=   "Text1(12)"
+      Tab(2).Control(7)=   "DataGrid2"
+      Tab(2).Control(8)=   "timokat"
+      Tab(2).Control(9)=   "ONO2"
+      Tab(2).Control(10)=   "apallagesFPA"
+      Tab(2).Control(11)=   "discountOption"
       Tab(2).ControlCount=   12
       TabCaption(3)   =   "3.Κινήσεις κατα μήνα"
       TabPicture(3)   =   "APOT2.frx":00A1
@@ -1030,18 +1030,18 @@ Begin VB.Form APOT2
       TabCaption(4)   =   "4.Υπόλοιπα κατά Αποθ."
       TabPicture(4)   =   "APOT2.frx":00BD
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "MSHFlexGrid1"
+      Tab(4).Control(0)=   "Label5"
       Tab(4).Control(1)=   "Label6"
-      Tab(4).Control(2)=   "Label5"
+      Tab(4).Control(2)=   "MSHFlexGrid1"
       Tab(4).ControlCount=   3
       TabCaption(5)   =   "5.BARCODES"
       TabPicture(5)   =   "APOT2.frx":00D9
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "Adodc2"
-      Tab(5).Control(1)=   "Command11"
+      Tab(5).Control(0)=   "DataGrid1"
+      Tab(5).Control(1)=   "Text3"
       Tab(5).Control(2)=   "Command10"
-      Tab(5).Control(3)=   "Text3"
-      Tab(5).Control(4)=   "DataGrid1"
+      Tab(5).Control(3)=   "Command11"
+      Tab(5).Control(4)=   "Adodc2"
       Tab(5).ControlCount=   5
       TabCaption(6)   =   "6.Κίνηση περισυνή"
       TabPicture(6)   =   "APOT2.frx":00F5
@@ -1303,7 +1303,7 @@ Begin VB.Form APOT2
          Visible         =   0   'False
          Width           =   1560
          _ExtentX        =   2752
-         _ExtentY        =   572
+         _ExtentY        =   582
          ConnectMode     =   0
          CursorLocation  =   3
          IsolationLevel  =   -1
@@ -1334,7 +1334,7 @@ Begin VB.Form APOT2
          Caption         =   "Adodc3"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1351,13 +1351,13 @@ Begin VB.Form APOT2
          Top             =   3420
          Width           =   6060
          _ExtentX        =   10689
-         _ExtentY        =   2307
+         _ExtentY        =   2302
          _Version        =   393216
          HeadLines       =   1
          RowHeight       =   15
          BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1366,7 +1366,7 @@ Begin VB.Form APOT2
          EndProperty
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1414,8 +1414,8 @@ Begin VB.Form APOT2
          Top             =   3660
          Visible         =   0   'False
          Width           =   2070
-         _ExtentX        =   3641
-         _ExtentY        =   572
+         _ExtentX        =   3651
+         _ExtentY        =   582
          ConnectMode     =   0
          CursorLocation  =   3
          IsolationLevel  =   -1
@@ -1446,7 +1446,7 @@ Begin VB.Form APOT2
          Caption         =   "BARCODES"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1492,7 +1492,7 @@ Begin VB.Form APOT2
          RowHeight       =   15
          BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1501,7 +1501,7 @@ Begin VB.Form APOT2
          EndProperty
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1561,8 +1561,8 @@ Begin VB.Form APOT2
          TabIndex        =   18
          Top             =   1500
          Width           =   6015
-         _ExtentX        =   10605
-         _ExtentY        =   4890
+         _ExtentX        =   10610
+         _ExtentY        =   4895
          _Version        =   393216
          FixedCols       =   0
          _NumberOfBands  =   1
@@ -1648,8 +1648,8 @@ Begin VB.Form APOT2
          TabIndex        =   4
          Top             =   1140
          Width           =   5295
-         _ExtentX        =   9335
-         _ExtentY        =   6160
+         _ExtentX        =   9340
+         _ExtentY        =   6165
          _Version        =   393216
          Rows            =   13
          Cols            =   5
@@ -1661,8 +1661,8 @@ Begin VB.Form APOT2
          TabIndex        =   37
          Top             =   1035
          Width           =   5115
-         _ExtentX        =   9017
-         _ExtentY        =   6075
+         _ExtentX        =   9022
+         _ExtentY        =   6085
          _Version        =   393216
          Rows            =   13
          Cols            =   5
@@ -1776,7 +1776,7 @@ Begin VB.Form APOT2
       Begin VB.Label Lab6 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   400
             Underline       =   -1  'True
@@ -1988,7 +1988,7 @@ Begin VB.Form APOT2
       Caption         =   "Αναζήτηση"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   9.6
+         Size            =   9.75
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2014,7 +2014,7 @@ Begin VB.Form APOT2
       Begin VB.TextBox ono 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2031,7 +2031,7 @@ Begin VB.Form APOT2
       Begin VB.TextBox kod 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2057,7 +2057,7 @@ Begin VB.Form APOT2
       Begin VB.TextBox erg 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2073,7 +2073,7 @@ Begin VB.Form APOT2
       Begin VB.TextBox barc 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2147,8 +2147,8 @@ Begin VB.Form APOT2
          Height          =   495
          Left            =   3840
          Picture         =   "APOT2.frx":3DF4
-         ScaleHeight     =   444
-         ScaleWidth      =   564
+         ScaleHeight     =   435
+         ScaleWidth      =   555
          TabIndex        =   106
          TabStop         =   0   'False
          Top             =   480
@@ -2176,7 +2176,7 @@ Begin VB.Form APOT2
          Caption         =   "Περιγραφή"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2195,7 +2195,7 @@ Begin VB.Form APOT2
          Caption         =   "Κωδικός"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2214,7 +2214,7 @@ Begin VB.Form APOT2
          Caption         =   "Βοηθ.Κωδικός(Εργ)"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2233,7 +2233,7 @@ Begin VB.Form APOT2
          Caption         =   "Barcode"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2252,7 +2252,7 @@ Begin VB.Form APOT2
          Caption         =   "Αποθήκη"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2315,7 +2315,7 @@ Begin VB.Form APOT2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2327,7 +2327,7 @@ Begin VB.Form APOT2
       DataToEncode    =   ""
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -2337,8 +2337,8 @@ Begin VB.Form APOT2
       ShowText        =   0
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin ATLCONTROLLibCtl.BarCode BarCode3 
@@ -2354,7 +2354,7 @@ Begin VB.Form APOT2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2366,7 +2366,7 @@ Begin VB.Form APOT2
       DataToEncode    =   "123456789012"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -2376,8 +2376,8 @@ Begin VB.Form APOT2
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin ATLCONTROLLibCtl.BarCode BarCode2 
@@ -2393,7 +2393,7 @@ Begin VB.Form APOT2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2405,7 +2405,7 @@ Begin VB.Form APOT2
       DataToEncode    =   "123456789012"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -2415,8 +2415,8 @@ Begin VB.Form APOT2
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin ATLCONTROLLibCtl.BarCode BarCode1 
@@ -2432,7 +2432,7 @@ Begin VB.Form APOT2
       BackColor       =   16777215
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial Black"
-         Size            =   8.4
+         Size            =   8.25
          Charset         =   0
          Weight          =   900
          Underline       =   0   'False
@@ -2444,7 +2444,7 @@ Begin VB.Form APOT2
       DataToEncode    =   "0940"
       Orientation     =   0
       BarHeight       =   1
-      NarrowBarWidth  =   0.03
+      NarrowBarWidth  =   0,03
       Wide2NarrowRatio=   2
       AddCheckDigit   =   1
       AddCheckDigitToText=   0
@@ -2454,8 +2454,8 @@ Begin VB.Form APOT2
       ShowText        =   1
       CodabarStartCharacter=   "A"
       CodabarStopCharacter=   "B"
-      LeftMarginCM    =   0.2
-      TopMarginCM     =   0.2
+      LeftMarginCM    =   0,2
+      TopMarginCM     =   0,2
       SupplementToEncode=   ""
    End
    Begin VB.Label PROTEIN 
@@ -4684,6 +4684,7 @@ Private Sub Command3_Click()
      End If
 
 
+apot21.DTPicker1.Value = Now - 90 ' CDate("01/01/2000")
 
 
 
