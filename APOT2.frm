@@ -619,11 +619,18 @@ Begin VB.Form APOT2
       TabIndex        =   90
       Top             =   6240
       Width           =   3855
-      _extentx        =   6800
-      _extenty        =   4260
-      backcolor       =   12648447
-      font            =   "APOT2.frx":0021
-      backcolor       =   12648447
+      _ExtentX        =   6800
+      _ExtentY        =   4260
+      BackColor       =   12648447
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   161
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
    End
    Begin VB.PictureBox Picture4 
       Height          =   1335
@@ -971,7 +978,7 @@ Begin VB.Form APOT2
       TabHeight       =   529
       BackColor       =   12648384
       TabCaption(0)   =   "0.Προμηθ./ελαχ.στόκ"
-      TabPicture(0)   =   "APOT2.frx":004D
+      TabPicture(0)   =   "APOT2.frx":0021
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label1(15)"
       Tab(0).Control(1)=   "Label1(16)"
@@ -1002,12 +1009,12 @@ Begin VB.Form APOT2
       Tab(0).Control(26)=   "efk"
       Tab(0).ControlCount=   27
       TabCaption(1)   =   "1.Γραφική παράσταση"
-      TabPicture(1)   =   "APOT2.frx":0069
+      TabPicture(1)   =   "APOT2.frx":003D
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "graph1"
       Tab(1).ControlCount=   1
       TabCaption(2)   =   "2.Παράμετροι Λογιστ."
-      TabPicture(2)   =   "APOT2.frx":0085
+      TabPicture(2)   =   "APOT2.frx":0059
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Label1(19)"
       Tab(2).Control(1)=   "Label1(20)"
@@ -1023,19 +1030,19 @@ Begin VB.Form APOT2
       Tab(2).Control(11)=   "discountOption"
       Tab(2).ControlCount=   12
       TabCaption(3)   =   "3.Κινήσεις κατα μήνα"
-      TabPicture(3)   =   "APOT2.frx":00A1
+      TabPicture(3)   =   "APOT2.frx":0075
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "MSFlexGrid1"
       Tab(3).ControlCount=   1
       TabCaption(4)   =   "4.Υπόλοιπα κατά Αποθ."
-      TabPicture(4)   =   "APOT2.frx":00BD
+      TabPicture(4)   =   "APOT2.frx":0091
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label5"
       Tab(4).Control(1)=   "Label6"
       Tab(4).Control(2)=   "MSHFlexGrid1"
       Tab(4).ControlCount=   3
       TabCaption(5)   =   "5.BARCODES"
-      TabPicture(5)   =   "APOT2.frx":00D9
+      TabPicture(5)   =   "APOT2.frx":00AD
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "DataGrid1"
       Tab(5).Control(1)=   "Text3"
@@ -1044,17 +1051,17 @@ Begin VB.Form APOT2
       Tab(5).Control(4)=   "Adodc2"
       Tab(5).ControlCount=   5
       TabCaption(6)   =   "6.Κίνηση περισυνή"
-      TabPicture(6)   =   "APOT2.frx":00F5
+      TabPicture(6)   =   "APOT2.frx":00C9
       Tab(6).ControlEnabled=   0   'False
       Tab(6).Control(0)=   "MSFlexGrid2"
       Tab(6).ControlCount=   1
       TabCaption(7)   =   "7.Γραφημα περισυνό"
-      TabPicture(7)   =   "APOT2.frx":0111
+      TabPicture(7)   =   "APOT2.frx":00E5
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "graph2"
       Tab(7).ControlCount=   1
       TabCaption(8)   =   "Πεδία Χρήστη/CPV"
-      TabPicture(8)   =   "APOT2.frx":012D
+      TabPicture(8)   =   "APOT2.frx":0101
       Tab(8).ControlEnabled=   -1  'True
       Tab(8).Control(0)=   "lhm1"
       Tab(8).Control(0).Enabled=   0   'False
@@ -1111,9 +1118,9 @@ Begin VB.Form APOT2
       Tab(8).ControlCount=   26
       Begin VB.ComboBox discountOption 
          Height          =   315
-         ItemData        =   "APOT2.frx":0149
+         ItemData        =   "APOT2.frx":011D
          Left            =   -72960
-         List            =   "APOT2.frx":0156
+         List            =   "APOT2.frx":012A
          Style           =   2  'Dropdown List
          TabIndex        =   157
          Top             =   2760
@@ -1344,7 +1351,7 @@ Begin VB.Form APOT2
          _Version        =   393216
       End
       Begin MSDataGridLib.DataGrid DataGrid2 
-         Bindings        =   "APOT2.frx":017A
+         Bindings        =   "APOT2.frx":014E
          Height          =   1308
          Left            =   -74508
          TabIndex        =   30
@@ -1479,7 +1486,7 @@ Begin VB.Form APOT2
          Width           =   2070
       End
       Begin MSDataGridLib.DataGrid DataGrid1 
-         Bindings        =   "APOT2.frx":0190
+         Bindings        =   "APOT2.frx":0164
          Height          =   2940
          Left            =   -73965
          TabIndex        =   26
@@ -1555,7 +1562,7 @@ Begin VB.Form APOT2
          Width           =   1815
       End
       Begin MSHierarchicalFlexGridLib.MSHFlexGrid MSHFlexGrid1 
-         Bindings        =   "APOT2.frx":01A5
+         Bindings        =   "APOT2.frx":0179
          Height          =   2775
          Left            =   -74760
          TabIndex        =   18
@@ -1571,7 +1578,7 @@ Begin VB.Form APOT2
       Begin MSChart20Lib.MSChart graph1 
          Height          =   3495
          Left            =   -74880
-         OleObjectBlob   =   "APOT2.frx":01BA
+         OleObjectBlob   =   "APOT2.frx":018E
          TabIndex        =   17
          Top             =   1020
          Width           =   6375
@@ -1671,7 +1678,7 @@ Begin VB.Form APOT2
       Begin MSChart20Lib.MSChart graph2 
          Height          =   3495
          Left            =   -74970
-         OleObjectBlob   =   "APOT2.frx":1FC3
+         OleObjectBlob   =   "APOT2.frx":1F97
          TabIndex        =   38
          Top             =   1050
          Width           =   6375
@@ -2003,9 +2010,9 @@ Begin VB.Form APOT2
       Width           =   7695
       Begin VB.ComboBox ENERGA 
          Height          =   315
-         ItemData        =   "APOT2.frx":3DCC
+         ItemData        =   "APOT2.frx":3DA0
          Left            =   6480
-         List            =   "APOT2.frx":3DD9
+         List            =   "APOT2.frx":3DAD
          Style           =   2  'Dropdown List
          TabIndex        =   152
          Top             =   600
@@ -2146,7 +2153,7 @@ Begin VB.Form APOT2
       Begin VB.PictureBox Picture3 
          Height          =   495
          Left            =   3840
-         Picture         =   "APOT2.frx":3DF4
+         Picture         =   "APOT2.frx":3DC8
          ScaleHeight     =   435
          ScaleWidth      =   555
          TabIndex        =   106
@@ -2485,6 +2492,8 @@ Dim F_ET_EPIX_Y As Long
    Dim F_ET_KOD_X, F_ET_KOD_Y
             Dim F_ET_BAR_X, F_ET_BAR_Y
             Dim F_ET_TIM_X, F_ET_TIM_Y
+
+Dim f_CHECK_PROOD As Integer
 
 Dim F_ARXEIO_ETIK   As String
 
@@ -4684,8 +4693,11 @@ Private Sub Command3_Click()
      End If
 
 
-apot21.DTPicker1.Value = Now - 90 ' CDate("01/01/2000")
+'apot21.DTPicker1.Value = Now - 90 ' CDate("01/01/2000")
 
+If f_CHECK_PROOD = 2 Then
+    apot21.CHECK_PROOD = vbUnchecked
+End If
 
 
 
@@ -9761,6 +9773,8 @@ ENERGA.Text = ENERGA.List(0)
         
         F_EuroPerLiter = Val(FINDPARAMETROI(1, "APOT2", "F_EuroPerLiter", "0.2", "ΤΙΜΗ ΕΙΔ.ΦΟΡ. ΑΝΑ ΛΙΤΡΟ"))
  
+ 
+ f_CHECK_PROOD = Val(FINDPARAMETROI(1, "APOT2", "f_CHECK_PROOD", "1", "1=ΠΡΟΟΔΕΥΤΙΚΑ ΥΠΟΛ 2=ΧΩΡΙΣ ΠΡΟΟΔΕΥΤΙΚΑ"))
         F_DEK_LIANIKIS = Val(FINDPARAMETROI(1, "APOT2", "F_DEK_LIANIKIS", "2", "ΔΕΚΑΔΙΚΑ ΛΙΑΝΙΚΗΣ"))
 
         F_0_BARCODE = Val(FINDPARAMETROI(1, "APOT2", "F_0_BARCODE", "0", "1=ΑΓΝΟΩ ΤΟ 1ο ΨΗΦΙΟ ΑΝ ΕΙΝΑΙ 0  0=ΤΟ ΒΑRCODE ΟΠΩΣ ΕΙΝΑΙ"))
