@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -10,14 +10,14 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form Par7MyData 
    BackColor       =   &H00C0E0FF&
    Caption         =   "MyData"
-   ClientHeight    =   12525
+   ClientHeight    =   12516
    ClientLeft      =   60
-   ClientTop       =   405
-   ClientWidth     =   22350
+   ClientTop       =   408
+   ClientWidth     =   22356
    LinkTopic       =   "Form2"
    MDIChild        =   -1  'True
-   ScaleHeight     =   12525
-   ScaleWidth      =   22350
+   ScaleHeight     =   12516
+   ScaleWidth      =   22356
    Visible         =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.CommandButton PL8_4 
@@ -71,8 +71,8 @@ Begin VB.Form Par7MyData
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   19920
       Top             =   10560
-      _ExtentX        =   741
-      _ExtentY        =   741
+      _ExtentX        =   593
+      _ExtentY        =   593
       _Version        =   262150
    End
    Begin VB.CommandButton Command13 
@@ -222,13 +222,13 @@ Begin VB.Form Par7MyData
    End
    Begin MSComctlLib.Toolbar Toolbar1 
       Align           =   1  'Align Top
-      Height          =   1020
+      Height          =   996
       Left            =   0
       TabIndex        =   45
       Top             =   0
-      Width           =   22350
-      _ExtentX        =   39423
-      _ExtentY        =   1799
+      Width           =   22356
+      _ExtentX        =   39434
+      _ExtentY        =   1757
       ButtonWidth     =   3016
       ButtonHeight    =   1640
       AllowCustomize  =   0   'False
@@ -555,8 +555,8 @@ Begin VB.Form Par7MyData
       Top             =   11280
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -587,7 +587,7 @@ Begin VB.Form Par7MyData
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -603,8 +603,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   12
       Top             =   1185
       Width           =   12135
-      _ExtentX        =   21405
-      _ExtentY        =   6165
+      _ExtentX        =   21400
+      _ExtentY        =   6160
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -618,7 +618,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).DividerColor=   15790320
       Splits(0).SpringMode=   0   'False
@@ -626,17 +626,17 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(5)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -769,7 +769,7 @@ Begin VB.Form Par7MyData
       Width           =   3495
    End
    Begin VB.ListBox List1 
-      Height          =   255
+      Height          =   240
       Left            =   120
       TabIndex        =   6
       Top             =   6240
@@ -821,10 +821,10 @@ Begin VB.Form Par7MyData
       TabIndex        =   0
       Top             =   1185
       Width           =   1695
-      _ExtentX        =   2990
-      _ExtentY        =   661
+      _ExtentX        =   2985
+      _ExtentY        =   656
       _Version        =   393216
-      Format          =   280494081
+      Format          =   202964993
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -833,10 +833,10 @@ Begin VB.Form Par7MyData
       TabIndex        =   1
       Top             =   1185
       Width           =   1695
-      _ExtentX        =   2990
-      _ExtentY        =   661
+      _ExtentX        =   2985
+      _ExtentY        =   656
       _Version        =   393216
-      Format          =   280494081
+      Format          =   202964993
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -846,8 +846,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   13
       Top             =   5040
       Width           =   12135
-      _ExtentX        =   21405
-      _ExtentY        =   5530
+      _ExtentX        =   21400
+      _ExtentY        =   5525
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -861,7 +861,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).Caption=   "ËÉÓÔÁ ÔÉÌÏËÏÃÇÈÅÍÔÙÍ ÓÅ ÅÌÁÓ"
       Splits(0).DividerColor=   15790320
@@ -870,17 +870,17 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(5)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(6)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(7)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(8)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -969,8 +969,8 @@ Begin VB.Form Par7MyData
       Top             =   10440
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1001,7 +1001,7 @@ Begin VB.Form Par7MyData
       Caption         =   "Adodc2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1016,8 +1016,8 @@ Begin VB.Form Par7MyData
       Top             =   11400
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   873
+      _ExtentX        =   3196
+      _ExtentY        =   868
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1048,7 +1048,7 @@ Begin VB.Form Par7MyData
       Caption         =   "AdoSYN"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1064,8 +1064,8 @@ Begin VB.Form Par7MyData
       TabIndex        =   30
       Top             =   1185
       Width           =   9735
-      _ExtentX        =   17171
-      _ExtentY        =   5980
+      _ExtentX        =   17166
+      _ExtentY        =   5990
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -1079,7 +1079,7 @@ Begin VB.Form Par7MyData
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   1005
+      Splits(0).RecordSelectorWidth=   995
       Splits(0)._SavedRecordSelectors=   0   'False
       Splits(0).DividerColor=   15790320
       Splits(0).SpringMode=   0   'False
@@ -1087,19 +1087,19 @@ Begin VB.Form Par7MyData
       Splits(0)._ColumnProps(0)=   "Columns.Count=2"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2752"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
-      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2672"
+      Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2667"
       Splits(0)._ColumnProps(4)=   "Column(0)._ColStyle=196612"
       Splits(0)._ColumnProps(5)=   "Column(0).Order=1"
       Splits(0)._ColumnProps(6)=   "Column(1).Width=2752"
       Splits(0)._ColumnProps(7)=   "Column(1).DividerColor=0"
-      Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2672"
+      Splits(0)._ColumnProps(8)=   "Column(1)._WidthInPix=2667"
       Splits(0)._ColumnProps(9)=   "Column(1)._ColStyle=196612"
       Splits(0)._ColumnProps(10)=   "Column(1).Order=2"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -1190,17 +1190,16 @@ Begin VB.Form Par7MyData
       TabIndex        =   40
       Top             =   8160
       Width           =   12165
-      _ExtentX        =   21458
-      _ExtentY        =   1720
+      _ExtentX        =   21463
+      _ExtentY        =   1715
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"par7MyData.frx":005E
    End
    Begin MSComctlLib.ImageList ImageList1 
       Left            =   16800
       Top             =   9600
-      _ExtentX        =   979
-      _ExtentY        =   979
+      _ExtentX        =   974
+      _ExtentY        =   974
       BackColor       =   -2147483643
       ImageWidth      =   40
       ImageHeight     =   40
@@ -1343,8 +1342,8 @@ Begin VB.Form Par7MyData
    Begin ComctlLib.ImageList ImageList11 
       Left            =   18600
       Top             =   9960
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       BackColor       =   -2147483643
       ImageWidth      =   32
       ImageHeight     =   32
@@ -1773,12 +1772,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     DATA1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     DATA1.RecordSource = arxeio
-110     DATA1.Refresh
+108     Data1.RecordSource = arxeio
+110     Data1.Refresh
 
-112     Set rDBF = DATA1.Recordset
+112     Set rDBF = Data1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -2606,7 +2605,7 @@ End Sub
 
 Private Sub cmdPAROCHOS_Click()
 
-        Dim C As String
+        Dim c As String
 
         If F_dokimi = 3 Then
             ' makeJsonClass
@@ -2614,11 +2613,11 @@ Private Sub cmdPAROCHOS_Click()
            
             ' c = getBratToken()
         Else
-100         C = getToken()
+100         c = getToken()
 
         End If
       
-102     MsgBox C
+102     MsgBox c
 
 End Sub
 
@@ -3115,9 +3114,9 @@ Private Sub cmdPROPLHROMH_Click()
     TID = GGET_CVALUE("select ISNULL(C1,'') AS C1 from PINAKES where TYPOS=12 AND  PERIGRAFH LIKE '%POS%'") ' Mid(sqlDt.Rows(klm)("TRP"), 1, 1))
     TID = Trim(TID) '.TrimEnd()
     
-    Dim C As String
+    Dim c As String
 
-    C = getToken()
+    c = getToken()
     
     Mctypos = "8.4"
     
@@ -3129,7 +3128,7 @@ Private Sub cmdPROPLHROMH_Click()
 
     Dim POSO As String
 
-    gf_Bearer = C
+    gf_Bearer = c
 
     POSO = InputBox("ÐÏÓÏ ; ", "ÐÏÓÏ ÐÑÏÅÉÓÐÑÁÎÇÓ")
 
@@ -3541,7 +3540,7 @@ Sub deletemarK()
 
 102     If B = "3921" Then
 104         a = InputBox("äùóå ìáñê ðïõ èá áêõñùèåß")
-106         C = CANCEL_INVOICE(Trim(a), Trim(a))
+106         c = CANCEL_INVOICE(Trim(a), Trim(a))
 108         MsgBox "ok"
         Else
 110         MsgBox "ëáèïò"
@@ -4136,7 +4135,7 @@ Private Sub Command12_Click()
 
         On Error GoTo 0
  
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
         Dim R As New ADODB.Recordset
  
@@ -4160,12 +4159,12 @@ Private Sub Command12_Click()
 112         TIMOL = R!AA   '    GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + d)
 114         SX = R!MARK
    
-116         C = CANCEL_INVOICE(Trim(SX), TIMOL)
+116         c = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-118         If Len(Trim(C)) > 5 Then
-120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + C + "' WHERE ID=" + str(R!ID)
+118         If Len(Trim(c)) > 5 Then
+120             Gdb.Execute "update APESTALMENA2 set CANCELATIONMARK='" + c + "' WHERE ID=" + str(R!ID)
                 'Gdb.Execute "update DOKTIMCANC set SXETMARK='" + C + "' WHERE ID_NUM=" + str(R!ID_NUM)
-122             List1.AddItem SX + " AK " + C
+122             List1.AddItem SX + " AK " + c
             End If   '
    
 124         R.MoveNext
@@ -9363,7 +9362,7 @@ Sub MAKE_request(TXML As String, _
 
 102     strXML = ""
 
-        Dim C As String
+        Dim c As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -10858,7 +10857,7 @@ Form_Load_Err:
 
 End Sub
 
-Function FINDTYPOS(C As String) As String
+Function FINDTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDTYPOS_Err
@@ -10866,7 +10865,7 @@ Function FINDTYPOS(C As String) As String
         '</EhHeader>
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!MYEID + s4!myTypEsod + s4!mycateg) Then
 104         FINDTYPOS = ";;;;;;"
@@ -10899,7 +10898,7 @@ FINDTYPOS_Err:
 
 End Function
     
-Function FINDEXODTYPOS(C As String) As String
+Function FINDEXODTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10908,7 +10907,7 @@ Function FINDEXODTYPOS(C As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FINDEXODTYPOS = ""
@@ -10936,7 +10935,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FIND2_EXODTYPOS(C As String) As String
+Function FIND2_EXODTYPOS(c As String) As String
 
         '<EhHeader>
         On Error GoTo FINDEXODTYPOS_Err
@@ -10945,7 +10944,7 @@ Function FIND2_EXODTYPOS(C As String) As String
         
         Dim s4 As New ADODB.Recordset
 
-100     s4.Open "select * from PARASTAT where EIDOS='" + C + "'", Gdb, adOpenDynamic, adLockOptimistic
+100     s4.Open "select * from PARASTAT where EIDOS='" + c + "'", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(s4!myTypEXod + s4!myCatExod) Then
 104         FIND2_EXODTYPOS = ""
@@ -10973,7 +10972,7 @@ FINDEXODTYPOS_Err:
 
 End Function
     
-Function FindTRP(C As String) As String
+Function FindTRP(c As String) As String
 
         '<EhHeader>
         On Error GoTo FindTRP_Err
@@ -10981,7 +10980,7 @@ Function FindTRP(C As String) As String
         '</EhHeader>
         Dim sqlDT4 As New ADODB.Recordset
 
-100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + C + "", Gdb, adOpenDynamic, adLockOptimistic
+100     sqlDT4.Open "select N1 from PINAKES where TYPOS=12 AND  AYJON=" + c + "", Gdb, adOpenDynamic, adLockOptimistic
 
 102     If IsNull(sqlDT4(0)) Then
 104         FindTRP = ""
@@ -11422,7 +11421,7 @@ End Sub
 
 Private Sub RESEND_CANCEL_Click()
 
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
 100     D = InputBox("äùóå ôïí áñéèìü ôïõ id", 0)
    
@@ -11439,10 +11438,10 @@ Private Sub RESEND_CANCEL_Click()
 
 108     TIMOL = GET_CVALUE("select ATIM from TIM WHERE ID_NUM=" + D)
    
-110     C = CANCEL_INVOICE(SX, TIMOL)
+110     c = CANCEL_INVOICE(SX, TIMOL)
 
-112     If Len(C) > 5 Then
-114         Gdb.Execute "update TIM set ENTITYMARK='" + C + "' WHERE ID_NUM=" + D
+112     If Len(c) > 5 Then
+114         Gdb.Execute "update TIM set ENTITYMARK='" + c + "' WHERE ID_NUM=" + D
         End If
 
 End Sub
@@ -11631,7 +11630,7 @@ Private Sub TESTXARAL_Click()
 
         On Error GoTo 0
  
-        Dim C, D, SX As String
+        Dim c, D, SX As String
 
         'Dim R2 As New ADODB.Recordset
  
@@ -11659,14 +11658,14 @@ Private Sub TESTXARAL_Click()
 112         SX = R!entitymark   '   R!MARK
             'List1.AddItem
    
-114         C = CANCEL_INVOICE(Trim(SX), TIMOL)
+114         c = CANCEL_INVOICE(Trim(SX), TIMOL)
 
-116         If Len(C) > 5 Then
+116         If Len(c) > 5 Then
 
-                Gdb.Execute "update TIM set C12='" + C + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
+                Gdb.Execute "update TIM set C12='" + c + "',C13='" + SX + "' WHERE ID_NUM=" + str(id_num)
       
-                Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + C + "' WHERE ID_NUM=" + str(id_num)
-118             List1.AddItem SX + " AK " + C
+                Gdb.Execute "update DOKTIMCANCEL set CANCELATIONMARK='" + c + "' WHERE ID_NUM=" + str(id_num)
+118             List1.AddItem SX + " AK " + c
 
                 ' loadpar7
                              
@@ -11981,14 +11980,14 @@ Private Sub UPLOAD_Click()
        
 End Sub
 
-Function chDec(C As String) As String
+Function chDec(c As String) As String
 
         '<EhHeader>
         On Error GoTo chDec_Err
 
         '</EhHeader>
 
-100     chDec = Replace(C, ",", ".")
+100     chDec = Replace(c, ",", ".")
 
         '<EhFooter>
         Exit Function
@@ -12383,7 +12382,7 @@ Private Sub SEND_EXPENS_Click()
 
 106     strXML = ""
 
-        Dim C As String
+        Dim c As String
 
         '---------------------------------------------------- DIABAZEI ALLA ANSI ----------------------------
         'Open "c:\"+F_TXTFILES+"\inv.xml" For Input As intFile
@@ -12661,12 +12660,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     DATA1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     DATA1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     DATA1.Refresh
+110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     Data1.Refresh
 
-114     Set rDBF = DATA1.Recordset
+114     Set rDBF = Data1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
@@ -13293,7 +13292,7 @@ Public Function ToJason(ByVal noask As Integer, _
 
 308                 If Len(gf_Bearer) < 2 Then
 310                     MsgBox ("ÁÄÕÍÁÔÇ Ç ÓÕÍÄÅÓÇ ÌÅ ÔÏÍ ÐÁÑÏ×Ï")
-                        'Exit Function
+                        Exit Function
                     End If
                 
                     Dim IS_B2G As Integer, ubl As String
