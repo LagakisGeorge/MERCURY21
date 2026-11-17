@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form apot7 
    BackColor       =   &H00FF0000&
@@ -806,7 +806,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   172621825
+      Format          =   153419777
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker eos 
@@ -821,7 +821,7 @@ Begin VB.Form apot7
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   172621825
+      Format          =   153419777
       CurrentDate     =   38814
    End
    Begin MSAdodcLib.Adodc Adodc2 
@@ -1202,13 +1202,13 @@ Private Sub CMDAPOTHIKEYSI_Click()
 
         '</EhHeader>
 
-100     cd1.InitDir = File1.Path
+100     CD1.InitDir = File1.Path
 
-110     cd1.ShowSave
+110     CD1.ShowSave
 
         Dim F
 
-120     F = cd1.FILENAME
+120     F = CD1.FILENAME
 
 130     Open F For Output As #5
 140     Print #5, Text2.Text
@@ -2145,10 +2145,10 @@ Private Sub Command3_Click()
        ' Exit Sub
         If m = 0 Then
            '–¡Ÿ Õ¡ –…¡”Ÿ ‘œ –¡—¡”‘¡‘… œ ”‘œ COMBOBOX ME TO GRAMMA TOY KAI NA PARV TON ARIUMO
-           Dim K As Integer
-           For K = 0 To PAR1.PARAS.ListCount - 1
-              If Right(PAR1.PARAS.List(K), 1) = Left(mc, 1) Then
-                 m = K
+           Dim k As Integer
+           For k = 0 To PAR1.PARAS.ListCount - 1
+              If Right(PAR1.PARAS.List(k), 1) = Left(mc, 1) Then
+                 m = k
                  Exit For
               End If
            Next
@@ -2589,7 +2589,7 @@ Private Sub Command5_Click()
 100     Set xlwbook = xl.Workbooks.Open("C:\EKTYP.XLS")
 110     Set xlsheet = xlwbook.Sheets.Item(1)
 
-        Dim K
+        Dim k
 
         Dim a$, B, X
 
@@ -2603,7 +2603,7 @@ Private Sub Command5_Click()
 
         Dim F As String, RECS As Integer
 
-120     K = 5
+120     k = 5
 
         Dim CH1, CH2, CH3
 
@@ -2617,13 +2617,13 @@ Private Sub Command5_Click()
 
 130     Do While True  ' Not xlsheet.cells(mRow, 1) = Null ' Not data1.Recordset.EOF
 
-140         If IsNull(xlsheet.cells(K, 1)) Then
+140         If IsNull(xlsheet.cells(k, 1)) Then
 
                 Exit Do
 
             End If
 
-150         If IsEmpty(xlsheet.cells(K, 1)) Then
+150         If IsEmpty(xlsheet.cells(k, 1)) Then
 
                 Exit Do
 
@@ -2631,13 +2631,13 @@ Private Sub Command5_Click()
 
             On Error Resume Next
 
-160         kod = LTrim(str(xlsheet.cells(K + 1, 3)))    '
+160         kod = LTrim(str(xlsheet.cells(k + 1, 3)))    '
 
-170         If UCase(LTrim(str(xlsheet.cells(K + 1, 1)))) = "P" Then
+170         If UCase(LTrim(str(xlsheet.cells(k + 1, 1)))) = "P" Then
 180             FileCopy "c:\mercvb\images\" + kod + ".JPG", "c:\par\" + kod + ".JPG"
             End If
 
-190         K = K + 1
+190         k = k + 1
         Loop
 
 200     Set xlsheet = Nothing
@@ -3353,7 +3353,7 @@ Function prints(ByVal N As Long, _
                 ByVal AJIA_KEPYO As Single, _
                 ByVal log As String, _
                 ByVal xpi As String, _
-                ByVal ajia As Single, _
+                ByVal AJIA As Single, _
                 ByVal ATIM As String, _
                 ByVal mait As String, _
                 ByVal mPOL As String)
@@ -3363,7 +3363,7 @@ Function prints(ByVal N As Long, _
 
         '</EhHeader>
     
-100     prints = "4" + Format(N, "00000") + mPOL + mKPE + Left(MATIM + Space(18), 18) + Format(hme, "DD/MM/YYYY") + Left(to437(Ait16) + Space(60), 60) + Replace(Format(AJIA_KEPYO, "00000000000.00"), ".", ",") + Left(log + Space(7), 20) + xpi + Replace(Format(ajia, "00000000000.00"), ".", ",") + Left(ATIM + Space(20), 20) + Left(to437(mait) + Space(60), 60)
+100     prints = "4" + Format(N, "00000") + mPOL + mKPE + Left(MATIM + Space(18), 18) + Format(hme, "DD/MM/YYYY") + Left(to437(Ait16) + Space(60), 60) + Replace(Format(AJIA_KEPYO, "00000000000.00"), ".", ",") + Left(log + Space(7), 20) + xpi + Replace(Format(AJIA, "00000000000.00"), ".", ",") + Left(ATIM + Space(20), 20) + Left(to437(mait) + Space(60), 60)
 
         '<EhFooter>
         Exit Function
@@ -4266,7 +4266,9 @@ Public Sub CMDPROVOLI_Click()
              
              
              
-             
+             Dim ANS3 As Integer
+             ANS3 = MsgBox("ME A»—OI”MATA; ", vbYesNo)
+             If ANS3 = vbYes Then
              
              
             
@@ -4277,11 +4279,11 @@ Public Sub CMDPROVOLI_Click()
                           Exit Do
                  End If
 
-200             For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
-                  If Adodc2.Recordset.FIELDS(K).Type = 200 Then
+200             For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+                  If Adodc2.Recordset.FIELDS(k).Type = 200 Then
                   Else
-210                 If IsNumeric(Adodc2.Recordset.FIELDS(K).Value) And Adodc2.Recordset.FIELDS(K).Type <> 202 Then
-220                     sumes(K) = sumes(K) + nNull(Adodc2.Recordset.FIELDS(K).Value)
+210                 If IsNumeric(Adodc2.Recordset.FIELDS(k).Value) And Adodc2.Recordset.FIELDS(k).Type <> 202 Then
+220                     sumes(k) = sumes(k) + nNull(Adodc2.Recordset.FIELDS(k).Value)
                     End If
                   End If
                 Next
@@ -4297,18 +4299,18 @@ Public Sub CMDPROVOLI_Click()
                           Set FF = Nothing
  MDIForm1.MousePointer = vbNormal
 
+            End If
 
+240         For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 
-240         For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
-
-250             If sumes(K) > 0 Then
-260                 TDBGrid.Splits(0).columns(K).FooterText = Format(sumes(K), "######0.00")
+250             If sumes(k) > 0 Then
+260                 TDBGrid.Splits(0).columns(k).FooterText = Format(sumes(k), "######0.00")
                     
 
                 End If
                 
-                If Plath_Grid(K) > 0 Then
-                    TDBGrid.Splits(0).columns(K).Width = Plath_Grid(K)
+                If Plath_Grid(k) > 0 Then
+                    TDBGrid.Splits(0).columns(k).Width = Plath_Grid(k)
                 End If
                 
                
@@ -4475,9 +4477,9 @@ Private Sub CMDEXECUTE_Click()
 
         Dim SEIRES(30)
 
-        Dim MLINE As String, K
+        Dim MLINE As String, k
 
-100     For K = 1 To 30: SEIRES(K) = "": Next
+100     For k = 1 To 30: SEIRES(k) = "": Next
 
 110     lo = 0
 120     Me.MousePointer = vbHourglass
@@ -4613,7 +4615,7 @@ End If
 
 230     File1.Refresh
 
-240     cd1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
+240     CD1.InitDir = "c:\mercvb\queries\RYTMIZOMENES"
 
 250     DoEvents
 
@@ -4676,7 +4678,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     Adodc2.Recordset.Sort = strSort
+160     Adodc2.Recordset.sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4729,18 +4731,18 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
         'TDBGrid.HoldFields
         Dim sumes(100) As String
 
-100     For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
-110         sumes(K) = TDBGrid.Splits(0).columns(K).FooterText    '  = Format(SUMES(k), "######0.00")
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For K = 0 To Adodc2.Recordset.FIELDS.Count - 1
-160         TDBGrid.Splits(0).columns(K).FooterText = sumes(K)   '  = Format(SUMES(k), "######0.00")
+150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
+160         TDBGrid.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
         '    Adodc2.Recordset.Sort = "[" & TDBGrid.Columns(ColIndex).DataField & "] desc" ' strSort
