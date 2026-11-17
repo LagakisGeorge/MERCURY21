@@ -128,7 +128,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   86507521
+      Format          =   309723137
       CurrentDate     =   38947
    End
    Begin VB.TextBox Text3 
@@ -244,7 +244,7 @@ Begin VB.Form apot21
       _ExtentX        =   4419
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   86507521
+      Format          =   309788673
       CurrentDate     =   38947
    End
    Begin TrueOleDBGrid80.TDBGrid G1 
@@ -724,12 +724,12 @@ f_AAJEX = 0
 
 
 Dim FFILE2 As String
-Dim EGGTIM As String
+Dim eggtim As String
   FFILE2 = "TEMPPROS" + Format(Now, "YYMMDDHHmm")
 
 
  filtroPEL.Caption = "APOT>=1 "
-EGGTIM = " EGGTIM "
+eggtim = " EGGTIM "
 
 
 
@@ -739,7 +739,7 @@ EGGTIM = " EGGTIM "
      s = s + "(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AJEX + "' )>0 THEN ROUND(E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE(CASE WHEN CHARINDEX(LEFT(ATIM,1),'" + f_AAJEX + "' )>0 THEN ROUND(-E.POSO*E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100,2) ELSE 0 END ) END ) AS [ÁÎÉÁ EÎÁÃ], "
    
      s1 = "E.TIMM as [Téì Ìïí],CONVERT(DECIMAL(10,2),E.EKPT) AS [Åêð%],CONVERT(DECIMAL(10,2),ISNULL(E.EKPT2,0)) AS [2ç Åêð%],E.KERDOS AS [ÊÅÑÄÏÓ],E.POSO AS [ÐÏÓÏÔÇÔÁ],CONVERT(DECIMAL(10,2),E.FCURRENCY) AS [ÎÅÍÏ ÍÏÌ],E.ID  "
-     s1 = s1 + " INTO " + FFILE2 + " FROM  " + EGGTIM + " E LEFT join PEL on E.EIDOS=PEL.EIDOS and E.PELKOD=PEL.KOD INNER JOIN PARASTAT ON PARASTAT.EIDOS=LEFT(E.ATIM,1) "
+     s1 = s1 + " INTO " + FFILE2 + " FROM  " + eggtim + " E LEFT join PEL on E.EIDOS=PEL.EIDOS and E.PELKOD=PEL.KOD INNER JOIN PARASTAT ON PARASTAT.EIDOS=LEFT(E.ATIM,1) "
      s1 = s1 + " where " + filtroPEL.Caption + " AND  E.HME>='" + Format(DTPicker1, "MM/DD/YYYY") + "' AND E.HME<='" + Format(DateAdd("d", 1, DTPicker2), "MM/DD/YYYY") + "'  " + " and E.KODE>='" + apo.Text + "' AND E.KODE<='" + eos.Text + "'"
      s1 = s1 + " order by E.KODE,convert(char(10),E.HME,2),E.ATIM ;"
      
@@ -1493,8 +1493,8 @@ Else 'XORIS PRRODEYTIKA
 
      s = "select CONVERT(CHAR(12),E.HME,3) as [Hìåñ/íßá],E.ATIM as [Áñ Ðáñ/êïý],E.XRE AS [ÅéóáãùãÝò],E.PIS AS [ÅîáãùãÝò]"
      
-    's = s + ", SUM(ISNULL(E.XRE, 0) - ISNULL(E.PIS, 0)) OVER ( ORDER BY E.ID  ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW    ) AS [Õðüëïéðï]"
-     s = s + ", ' ' AS [Õðüëïéðï]"
+    s = s + ", SUM(  ISNULL(E.XRE, 0) - ISNULL(E.PIS, 0)  ) OVER ( ORDER BY E.ID  ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW    ) AS [Õðüëïéðï]"
+    ' s = s + ", ' ' AS [Õðüëïéðï]"
     
      s = s + " ,E.TIMM*(100-E.EKPT)/100*(100-ISNULL(E.EKPT2,0))/100 AS [TEËÉÊ.TIMH], PEL.EPO,"
      
