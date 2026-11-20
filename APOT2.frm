@@ -8759,7 +8759,7 @@ End Sub
 
 Private Sub DBGrid1_Click()
      mDBGrid1_RowColChange
-     MILSEC 3000
+     MILSEC 300
      mDBGrid1_RowColChange
 End Sub
 

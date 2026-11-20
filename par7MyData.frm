@@ -20,6 +20,14 @@ Begin VB.Form Par7MyData
    ScaleWidth      =   22350
    Visible         =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdSkroutz 
+      Caption         =   "skroutz"
+      Height          =   360
+      Left            =   15360
+      TabIndex        =   73
+      Top             =   10320
+      Width           =   990
+   End
    Begin VB.CommandButton PL8_4 
       Caption         =   "PL8_4"
       Height          =   360
@@ -824,7 +832,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   281280513
+      Format          =   307560449
       CurrentDate     =   36494
    End
    Begin MSComCtl2.DTPicker APO 
@@ -836,7 +844,7 @@ Begin VB.Form Par7MyData
       _ExtentX        =   2990
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   281280513
+      Format          =   307494913
       CurrentDate     =   36494
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid2 
@@ -1773,12 +1781,12 @@ Private Sub update2_sql_from_dbf(arxeio As String, SQLQ As String)
 104     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-106     Data1.DatabaseName = "C:\LAGEURO"   'Text1.Text
+106     DATA1.DatabaseName = "C:\LAGEURO"   'Text1.Text
 
-108     Data1.RecordSource = arxeio
-110     Data1.Refresh
+108     DATA1.RecordSource = arxeio
+110     DATA1.Refresh
 
-112     Set rDBF = Data1.Recordset
+112     Set rDBF = DATA1.Recordset
 
         'Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         'sql.Execute "DELETE FROM " + arxeio
@@ -2827,7 +2835,9 @@ End Function
 
 ' "https://www1.aade.gr/aadeapps5/oilbft-deddhe/api/v1/checkDeddhe/824048676"
 'End Sub
-
+'curl -X GET https://api.skroutz.gr/merchants/cps/orders/1234567 \
+'  -H 'Accept: application/vnd.skroutz+json; version=3.0' \
+ ' -H 'Authorization: Bearer your_access_token_here'
 Function getToken() As String
 
         'παιρνω το τοκεν απο τον παροχο
@@ -3684,6 +3694,55 @@ cmdDOMDocumentUTF8_Click_Err:
 
 End Sub
 
+Sub FERE_paraggelia_skroutz() '( As String 'result@transcactionid
+
+    '---------------------------------------------------------------------
+    Dim URI     As String
+Dim answ As String
+
+    Dim Q       As String
+Q = InputBox("παραγγελια")
+
+    'Dim answ As String
+    Dim ctoken  As String
+
+    Dim userpos As String, PWDPOS As String
+
+
+ uripos = "https://api.skroutz.gr/merchants/ecommerce/orders/" + Q
+     '  https://api.skroutz.gr/merchants/cps/orders/" + Q ' 1234567"
+ 
+    Dim Reqpos As WinHttp.WinHttpRequest
+
+    Set Reqpos = New WinHttp.WinHttpRequest
+        
+    With Reqpos
+        .Open "GET", uripos, async:=False
+        .setRequestHeader "Content-Type", "application/vnd.skroutz+json; version=3.0"
+        .setRequestHeader "Accept", "application/vnd.skroutz+json; version=3.0"
+        .setRequestHeader "Authorization", "Bearer " + "b6nTdd-rEwvLtMvcUxJBGuGCaKnboSJBrIMyuqR4rWMUjyDa6RtX_ZRst7MfwPcJNrdnh2rowhyy-yCbgj0XrA=="
+           
+        .send
+       ' MsgBox ("ΑΠΑΝΤΗΣΗ ΑΠΟ ΠΛΗΡΩΜΗ" + Chr(13) + Reqpos.responseText)
+    End With
+
+    MILSEC (1000)
+    answ = Reqpos.responseText
+        
+    Dim ser As Object
+
+    Set ser = JSON.parse(answ)
+    MsgBox answ
+        
+  '  F_posSignature = ser.Item(1)("TransactionId")   'ser.Item(0)("TransactionId") '("signature")
+    'posTimestamp = ser.Item("paymentToken")("timestamp")
+        
+   ' FERE_TRANSACTIONID = F_posSignature 'ser.Item("TransactionId") '("signature")
+        
+End Sub
+
+
+
 Function FERE_TRANSACTIONID(mID_NUM As String, _
                             ByRef answ As String) As String 'result@transcactionid
 
@@ -3751,6 +3810,10 @@ Function FERE_TRANSACTIONID(mID_NUM As String, _
     FERE_TRANSACTIONID = F_posSignature 'ser.Item("TransactionId") '("signature")
         
 End Function
+
+Private Sub cmdSkroutz_Click()
+     FERE_paraggelia_skroutz
+End Sub
 
 Private Sub cmdTEST2_Click()
 
@@ -12661,12 +12724,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
         
         '  On Error GoTo 0
 
-108     Data1.DatabaseName = "C:\LAGEURO" ' Text1.Text
+108     DATA1.DatabaseName = "C:\LAGEURO" ' Text1.Text
 
-110     Data1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
-112     Data1.Refresh
+110     DATA1.RecordSource = "SELECT * FROM PEL WHERE EIDOS='e' ORDER BY KOD DESC"
+112     DATA1.Refresh
 
-114     Set rDBF = Data1.Recordset
+114     Set rDBF = DATA1.Recordset
 
 116     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
         ' sql.Execute "DELETE FROM " + arxeio
