@@ -220,6 +220,7 @@ Begin VB.Form APOT2
          Enabled         =   0   'False
          Height          =   315
          Left            =   1680
+         Style           =   2  'Dropdown List
          TabIndex        =   125
          Top             =   1920
          Width           =   1575
@@ -980,33 +981,33 @@ Begin VB.Form APOT2
       TabCaption(0)   =   "0.–ÒÔÏÁË./ÂÎ·˜.ÛÙ¸Í"
       TabPicture(0)   =   "APOT2.frx":0021
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label1(15)"
-      Tab(0).Control(1)=   "Label1(16)"
-      Tab(0).Control(2)=   "Label1(17)"
-      Tab(0).Control(3)=   "Label1(18)"
-      Tab(0).Control(4)=   "Label2"
-      Tab(0).Control(5)=   "Label1(24)"
-      Tab(0).Control(6)=   "Label3"
-      Tab(0).Control(7)=   "Label1(28)"
-      Tab(0).Control(8)=   "Label1(29)"
-      Tab(0).Control(9)=   "Label7"
-      Tab(0).Control(10)=   "lbLTI2"
-      Tab(0).Control(11)=   "lblLTI3"
-      Tab(0).Control(12)=   "Label8"
+      Tab(0).Control(0)=   "efk"
+      Tab(0).Control(1)=   "litra"
+      Tab(0).Control(2)=   "LTI2"
+      Tab(0).Control(3)=   "lti3"
+      Tab(0).Control(4)=   "PROMPOL"
+      Tab(0).Control(5)=   "Text1(18)"
+      Tab(0).Control(6)=   "Text1(17)"
+      Tab(0).Control(7)=   "exoda"
+      Tab(0).Control(8)=   "Text1(15)"
+      Tab(0).Control(9)=   "Text1(10)"
+      Tab(0).Control(10)=   "Text1(7)"
+      Tab(0).Control(11)=   "Text1(8)"
+      Tab(0).Control(12)=   "Text1(9)"
       Tab(0).Control(13)=   "Label9"
-      Tab(0).Control(14)=   "Text1(9)"
-      Tab(0).Control(15)=   "Text1(8)"
-      Tab(0).Control(16)=   "Text1(7)"
-      Tab(0).Control(17)=   "Text1(10)"
-      Tab(0).Control(18)=   "Text1(15)"
-      Tab(0).Control(19)=   "exoda"
-      Tab(0).Control(20)=   "Text1(17)"
-      Tab(0).Control(21)=   "Text1(18)"
-      Tab(0).Control(22)=   "PROMPOL"
-      Tab(0).Control(23)=   "lti3"
-      Tab(0).Control(24)=   "LTI2"
-      Tab(0).Control(25)=   "litra"
-      Tab(0).Control(26)=   "efk"
+      Tab(0).Control(14)=   "Label8"
+      Tab(0).Control(15)=   "lblLTI3"
+      Tab(0).Control(16)=   "lbLTI2"
+      Tab(0).Control(17)=   "Label7"
+      Tab(0).Control(18)=   "Label1(29)"
+      Tab(0).Control(19)=   "Label1(28)"
+      Tab(0).Control(20)=   "Label3"
+      Tab(0).Control(21)=   "Label1(24)"
+      Tab(0).Control(22)=   "Label2"
+      Tab(0).Control(23)=   "Label1(18)"
+      Tab(0).Control(24)=   "Label1(17)"
+      Tab(0).Control(25)=   "Label1(16)"
+      Tab(0).Control(26)=   "Label1(15)"
       Tab(0).ControlCount=   27
       TabCaption(1)   =   "1.√Ò·ˆÈÍﬁ ·Ò‹ÛÙ·ÛÁ"
       TabPicture(1)   =   "APOT2.frx":003D
@@ -1016,18 +1017,18 @@ Begin VB.Form APOT2
       TabCaption(2)   =   "2.–·Ò‹ÏÂÙÒÔÈ ÀÔ„ÈÛÙ."
       TabPicture(2)   =   "APOT2.frx":0059
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label1(19)"
-      Tab(2).Control(1)=   "Label1(20)"
-      Tab(2).Control(2)=   "Label4"
-      Tab(2).Control(3)=   "lbl¡·ÎÎ·„ﬁ÷–¡"
-      Tab(2).Control(4)=   "Label11"
-      Tab(2).Control(5)=   "Text1(11)"
-      Tab(2).Control(6)=   "Text1(12)"
-      Tab(2).Control(7)=   "DataGrid2"
-      Tab(2).Control(8)=   "timokat"
-      Tab(2).Control(9)=   "ONO2"
-      Tab(2).Control(10)=   "apallagesFPA"
-      Tab(2).Control(11)=   "discountOption"
+      Tab(2).Control(0)=   "discountOption"
+      Tab(2).Control(1)=   "apallagesFPA"
+      Tab(2).Control(2)=   "ONO2"
+      Tab(2).Control(3)=   "timokat"
+      Tab(2).Control(4)=   "DataGrid2"
+      Tab(2).Control(5)=   "Text1(12)"
+      Tab(2).Control(6)=   "Text1(11)"
+      Tab(2).Control(7)=   "Label11"
+      Tab(2).Control(8)=   "lbl¡·ÎÎ·„ﬁ÷–¡"
+      Tab(2).Control(9)=   "Label4"
+      Tab(2).Control(10)=   "Label1(20)"
+      Tab(2).Control(11)=   "Label1(19)"
       Tab(2).ControlCount=   12
       TabCaption(3)   =   "3. ÈÌﬁÛÂÈÚ Í·Ù· ÏﬁÌ·"
       TabPicture(3)   =   "APOT2.frx":0075
@@ -1037,18 +1038,18 @@ Begin VB.Form APOT2
       TabCaption(4)   =   "4.’¸ÎÔÈ· Í·Ù‹ ¡ÔË."
       TabPicture(4)   =   "APOT2.frx":0091
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label5"
+      Tab(4).Control(0)=   "MSHFlexGrid1"
       Tab(4).Control(1)=   "Label6"
-      Tab(4).Control(2)=   "MSHFlexGrid1"
+      Tab(4).Control(2)=   "Label5"
       Tab(4).ControlCount=   3
       TabCaption(5)   =   "5.BARCODES"
       TabPicture(5)   =   "APOT2.frx":00AD
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "DataGrid1"
-      Tab(5).Control(1)=   "Text3"
+      Tab(5).Control(0)=   "Adodc2"
+      Tab(5).Control(1)=   "Command11"
       Tab(5).Control(2)=   "Command10"
-      Tab(5).Control(3)=   "Command11"
-      Tab(5).Control(4)=   "Adodc2"
+      Tab(5).Control(3)=   "Text3"
+      Tab(5).Control(4)=   "DataGrid1"
       Tab(5).ControlCount=   5
       TabCaption(6)   =   "6. ﬂÌÁÛÁ ÂÒÈÛıÌﬁ"
       TabPicture(6)   =   "APOT2.frx":00C9
@@ -3890,11 +3891,11 @@ Private Sub Command15_Click()
 
         Dim STR_EKT As String
 
-100     STR_EKT = DATA2.Recordset("kod") + " " + Format(DATA2.Recordset("hm2"), "DD/MM/YYYY") + " "
+100     STR_EKT = data2.Recordset("kod") + " " + Format(data2.Recordset("hm2"), "DD/MM/YYYY") + " "
 
-110     STR_EKT = STR_EKT + Left(DATA2.Recordset("ch2") + Space(25), 25) + " " + Left(DATA2.Recordset("ch4") + Space(20), 20)
+110     STR_EKT = STR_EKT + Left(data2.Recordset("ch2") + Space(25), 25) + " " + Left(data2.Recordset("ch4") + Space(20), 20)
 
-120     STR_EKT = STR_EKT + " " + Left(DATA2.Recordset("ch3") + Space(22), 22) + " " + Left(DATA2.Recordset("ono") + Space(25), 25) + " " + Left(DATA2.Recordset("mon") + Space(4), 3) + " " + Format(1, "#0") + " " + Left(DATA2.Recordset("ch1") + Space(15), 15)
+120     STR_EKT = STR_EKT + " " + Left(data2.Recordset("ch3") + Space(22), 22) + " " + Left(data2.Recordset("ono") + Space(25), 25) + " " + Left(data2.Recordset("mon") + Space(4), 3) + " " + Format(1, "#0") + " " + Left(data2.Recordset("ch1") + Space(15), 15)
 
         'Printer.FontName = "Courier New"
         'Printer.FontSize = 8
@@ -4031,20 +4032,20 @@ Private Sub Command16_Click()
             '   dum = Update_Next_Pel(x)
             On Error GoTo NoUpdate
 
-440         Data1.Recordset.AddNew
+440         DATA1.Recordset.AddNew
 
             On Error Resume Next
 
-450         Data1.Recordset("kod") = UCase(Text1(0))  ', "0000")
-460         Data1.Recordset("ONO") = Left(Text1(1).Text, Data1.Recordset("ONO").DefinedSize)
+450         DATA1.Recordset("kod") = UCase(Text1(0))  ', "0000")
+460         DATA1.Recordset("ONO") = Left(Text1(1).Text, DATA1.Recordset("ONO").DefinedSize)
 
-470         Data1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
+470         DATA1.Recordset("FPA") = Val(Left(Combo2.Text, 2))
 
-480         Data1.Recordset("mon") = Combo1.Text
+480         DATA1.Recordset("mon") = Combo1.Text
 
             '       DATA2.Recordset("kodlog") = Val(left(Combo3.Text, 3)) ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
-490         Data1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+490         DATA1.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
             'Data1.Recordset("kodlog") = Right(Combo3.Text, 3)
 
             '       '·Ì Â˜˘ ÒÔÛË›ÛÂÈ ıÔ ÔÈÍÔ„›ÌÂÈ· ÙÁÌ Í·Ù·˜˘ÒÂﬂ ·ıÙ¸Ï·Ù·
@@ -4053,31 +4054,31 @@ Private Sub Command16_Click()
             '           Gdb.Execute SQL3
             '       End If
 
-500         Data1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
+500         DATA1.Recordset("kodlog") = Val(Left(Combo3.Text, 3))
 
-510         Data1.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))
-520         Data1.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
-530         Data1.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(Text1(10).Text)
-540         Data1.Recordset("pos_kerD") = Val(Replace(pos_kerd2.Text, ",", "."))    ' Val(pos_KERD2.Text)
+510         DATA1.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))
+520         DATA1.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
+530         DATA1.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(Text1(10).Text)
+540         DATA1.Recordset("pos_kerD") = Val(Replace(pos_kerd2.Text, ",", "."))    ' Val(pos_KERD2.Text)
 
-550         Data1.Recordset("prom") = Text1(7).Text
-560         Data1.Recordset("spa") = Val(Text1(9).Text)
+550         DATA1.Recordset("prom") = Text1(7).Text
+560         DATA1.Recordset("spa") = Val(Text1(9).Text)
             'DATA1.Recordset("erg") = Val(Text1(6).Text)
-570         Data1.Recordset("ues") = Text1(6).Text
+570         DATA1.Recordset("ues") = Text1(6).Text
 
-580         Data1.Recordset("kodsynod") = Text1(12).Text
-590         Data1.Recordset("kodlogag") = Text1(11).Text
+580         DATA1.Recordset("kodsynod") = Text1(12).Text
+590         DATA1.Recordset("kodlogag") = Text1(11).Text
 
-600         Data1.Recordset("CH1") = CH1.Text
+600         DATA1.Recordset("CH1") = CH1.Text
 
-610         Data1.Recordset("ERG") = Text1(6).Text    '≈—√
-620         Data1.Recordset("KODERG") = lti5.Text    '  Ÿƒ.–—œÃ«»≈’‘«
+610         DATA1.Recordset("ERG") = Text1(6).Text    '≈—√
+620         DATA1.Recordset("KODERG") = lti5.Text    '  Ÿƒ.–—œÃ«»≈’‘«
 630         'DATA1.Recordset("MEMO") = Text14.Text
-640         Data1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+640         DATA1.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
 
             On Error GoTo NoUpdate
 
-650         Data1.Recordset.Update
+650         DATA1.Recordset.Update
 
             On Error Resume Next
 
@@ -4118,7 +4119,7 @@ Private Sub Command16_Click()
 
             End If
 
-820         If flag.Caption = "1" Then  ' ≈—◊≈‘¡… ¡–œ ‘¡ ‘…ÃœÀœ√…¡
+820         If FLAG.Caption = "1" Then  ' ≈—◊≈‘¡… ¡–œ ‘¡ ‘…ÃœÀœ√…¡
 830             MDIForm1.StatusBar1.Panels(6).Text = Text1(0).Text
 840             Unload Me
             End If
@@ -4235,86 +4236,86 @@ Private Sub Command2_Click()
             On Error Resume Next
             
             
-            DATA2.Recordset("APALLFPA") = Val(Left(apallagesFPA.Text, 2))
+            data2.Recordset("APALLFPA") = Val(Left(apallagesFPA.Text, 2))
             apallagesFPA.Enabled = False
             
 
-310         DATA2.Recordset("ONO") = Left(Text1(1).Text, DATA2.Recordset("ONO").DefinedSize)
-320         DATA2.Recordset("ONO2") = Left(ONO2.Text, DATA2.Recordset("ONO2").DefinedSize)
-330         DATA2.Recordset("FPA") = Val(Left(Combo2.Text, 2))
-340         DATA2.Recordset("mon") = Combo1.Text
+310         data2.Recordset("ONO") = Left(Text1(1).Text, data2.Recordset("ONO").DefinedSize)
+320         data2.Recordset("ONO2") = Left(ONO2.Text, data2.Recordset("ONO2").DefinedSize)
+330         data2.Recordset("FPA") = Val(Left(Combo2.Text, 2))
+340         data2.Recordset("mon") = Combo1.Text
             'YPOOIKOGENEIA
-350         DATA2.Recordset("kodlog") = Left(Combo3.Text, 3)    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+350         data2.Recordset("kodlog") = Left(Combo3.Text, 3)    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
             'OIKOGENEIA
-360         DATA2.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
-370         DATA2.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
-380         DATA2.Recordset("kodSYNOD") = Text1(11).Text     'Right(Combo3.Text, 3)
-390         DATA2.Recordset("kodlogAG") = Text1(12).Text     'Right(Combo3.Text, 3)
-400         DATA2.Recordset("PROM") = Text1(7).Text     'Right(Combo3.Text, 3)
-410         DATA2.Recordset("SPA") = Val(Text1(9).Text)     'Right(Combo3.Text, 3)
-420         DATA2.Recordset("PROMHU") = Val(Text1(15).Text)     ' BONUS
-430         DATA2.Recordset("UES") = Text1(10).Text     'Right(Combo3.Text, 3)
-440         DATA2.Recordset("EPIUYP") = Val(Text1(8).Text)     'Right(Combo3.Text, 3)
-450         DATA2.Recordset("koderg") = Text1(16).Text
-460         DATA2.Recordset("SYSKMAX") = Text1(18).Text    'SYSKEYASIA
-470         DATA2.Recordset("SYSKMIN") = Text1(17).Text    ' YPOSYSKEYASIA
-480         DATA2.Recordset("pos_kerd2") = Val(Replace(pos_kerd2.Text, ",", "."))
-490         DATA2.Recordset("pos_kerd") = Val(Replace(pos_kerd.Text, ",", "."))    ' Val(pos_KERD.Text)
-500         DATA2.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))    ' Val(xti.Text)
-510         DATA2.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
-520         DATA2.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(lti5.Text)
+360         data2.Recordset("aeg") = Val(Left(Combo4.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+370         data2.Recordset("KATHGORIA") = Val(Left(Combo5.Text, 3))    ' Combo3.ListIndex  'Right(Combo3.Text, 3)
+380         data2.Recordset("kodSYNOD") = Text1(11).Text     'Right(Combo3.Text, 3)
+390         data2.Recordset("kodlogAG") = Text1(12).Text     'Right(Combo3.Text, 3)
+400         data2.Recordset("PROM") = Text1(7).Text     'Right(Combo3.Text, 3)
+410         data2.Recordset("SPA") = Val(Text1(9).Text)     'Right(Combo3.Text, 3)
+420         data2.Recordset("PROMHU") = Val(Text1(15).Text)     ' BONUS
+430         data2.Recordset("UES") = Text1(10).Text     'Right(Combo3.Text, 3)
+440         data2.Recordset("EPIUYP") = Val(Text1(8).Text)     'Right(Combo3.Text, 3)
+450         data2.Recordset("koderg") = Text1(16).Text
+460         data2.Recordset("SYSKMAX") = Text1(18).Text    'SYSKEYASIA
+470         data2.Recordset("SYSKMIN") = Text1(17).Text    ' YPOSYSKEYASIA
+480         data2.Recordset("pos_kerd2") = Val(Replace(pos_kerd2.Text, ",", "."))
+490         data2.Recordset("pos_kerd") = Val(Replace(pos_kerd.Text, ",", "."))    ' Val(pos_KERD.Text)
+500         data2.Recordset("xti") = Val(Replace(xti0.Text, ",", "."))    ' Val(xti.Text)
+510         data2.Recordset("lti") = Val(Replace(lti.Text, ",", "."))    'Val(lti.Text)
+520         data2.Recordset("lti5") = Val(Replace(lti5.Text, ",", "."))    ' Val(lti5.Text)
 
-            DATA2.Recordset("lti2") = Val(Replace(LTI2.Text, ",", "."))    ' Val(lti5.Text)
-            DATA2.Recordset("lti3") = Val(Replace(LTI3.Text, ",", "."))    ' Val(lti5.Text)
+            data2.Recordset("lti2") = Val(Replace(LTI2.Text, ",", "."))    ' Val(lti5.Text)
+            data2.Recordset("lti3") = Val(Replace(LTI3.Text, ",", "."))    ' Val(lti5.Text)
 
-            DATA2.Recordset("energo") = IIf(chkEnergos.Value = vbChecked, 1, 0)
+            data2.Recordset("energo") = IIf(chkEnergos.Value = vbChecked, 1, 0)
 
             If discountOption.Text = discountOption.List(0) Then
-                DATA2.Recordset("discountOption") = Null
+                data2.Recordset("discountOption") = Null
             ElseIf discountOption.Text = discountOption.List(1) Then
-                DATA2.Recordset("discountOption") = 0
+                data2.Recordset("discountOption") = 0
             Else
-                DATA2.Recordset("discountOption") = 1
+                data2.Recordset("discountOption") = 1
             End If
              
 
 
 
-530         DATA2.Recordset("ERG") = Text1(6).Text
+530         data2.Recordset("ERG") = Text1(6).Text
 540         ' DATA2.Recordset("MEMO") = Text14.Text
-550         DATA2.Recordset("NUM1") = NUM1
-560         DATA2.Recordset("NUM2") = NUM2
-570         DATA2.Recordset("NUM3") = NUM3
-            DATA2.Recordset("prompol") = Val(Replace(PROMPOL.Text, ",", "."))
+550         data2.Recordset("NUM1") = NUM1
+560         data2.Recordset("NUM2") = NUM2
+570         data2.Recordset("NUM3") = num3
+            data2.Recordset("prompol") = Val(Replace(PROMPOL.Text, ",", "."))
 
-580         DATA2.Recordset("CH1") = Trim(CH1)
-590         DATA2.Recordset("CH2") = Trim(CH2)
-600         DATA2.Recordset("CH3") = Trim(CH3)
+580         data2.Recordset("CH1") = Trim(CH1)
+590         data2.Recordset("CH2") = Trim(CH2)
+600         data2.Recordset("CH3") = Trim(CH3)
 
-610         DATA2.Recordset("CH4") = Trim(ch4)
-620         DATA2.Recordset("CH5") = Trim(ch5)
-630         DATA2.Recordset("CH6") = Trim(ch6)
+610         data2.Recordset("CH4") = Trim(ch4)
+620         data2.Recordset("CH5") = Trim(ch5)
+630         data2.Recordset("CH6") = Trim(ch6)
 
-            DATA2.Recordset("CPV") = Trim(CPV.Text)
+            data2.Recordset("CPV") = Trim(CPV.Text)
 
-640         DATA2.Recordset("HM1") = HM1
-650         DATA2.Recordset("HM2") = HM2
-660         DATA2.Recordset("HM3") = HM3
-670         DATA2.Recordset("lastupd") = lastupd
+640         data2.Recordset("HM1") = HM1
+650         data2.Recordset("HM2") = HM2
+660         data2.Recordset("HM3") = HM3
+670         data2.Recordset("lastupd") = lastupd
 
-            DATA2.Recordset("litra") = Val(Replace(litra.Text, ",", "."))
+            data2.Recordset("litra") = Val(Replace(litra.Text, ",", "."))
     
-            DATA2.Recordset("efk") = Val(Replace(efk.Text, ",", "."))
+            data2.Recordset("efk") = Val(Replace(efk.Text, ",", "."))
 
 
 
             On Error GoTo no_update
 
-680         DATA2.Recordset.Update
+680         data2.Recordset.Update
 
             On Error Resume Next
 
-            DATA2.Recordset.Move 0
+            data2.Recordset.Move 0
 
 690         For k = 1 To 3
 700             Text1(k).Enabled = False
@@ -4415,7 +4416,7 @@ Private Sub Command2_Click()
 
 
 
-         If Len(Dir("C:\MERCVB\TEST.EXE", vbNormal)) > 0 And cXRONIES.Value = vbChecked Then
+         If Len(Dir("C:\MERCVB\TEST.EXE", vbNormal)) > 0 And cXronies.Value = vbChecked Then
 
 'OK ----00 START=021     LEN=13    FIX=                            BARCODE                                                                 A
 'OK----01       036         30                                    –≈—…√—¡÷«                                                              G
@@ -4679,14 +4680,14 @@ Private Sub Command3_Click()
 110     apot21.Text2.Text = Text1(1).Text
 120     apot21.Text3.Text = " ¡ÔË." + Combo9.Text
 130   '  apot21.Label1.Caption = str(Val(Left(Me.Combo9.Text, 2)))
-140     apot21.Label2.Caption = IIf(IsNull(Data1.Recordset("apos")), "", Data1.Recordset("apos"))
+140     apot21.Label2.Caption = IIf(IsNull(DATA1.Recordset("apos")), "", DATA1.Recordset("apos"))
       If Val(Left(Me.Combo9.Text, 2)) = 99 Then
          apot21.filtroPEL.Caption = " APOT>0 "
       Else
         apot21.filtroPEL.Caption = " APOT=" + str(Val(Left(Me.Combo9.Text, 2)))
       End If
-     If Me.cXRONIES.Value = vbChecked Then
-         apot21.cXRONIES.Value = vbChecked
+     If Me.cXronies.Value = vbChecked Then
+         apot21.cXronies.Value = vbChecked
         ' DATA1.ConnectionString = gConnect + ";DATABASE=" + Trim(mID(APOT2.XRONIES.Text, 21, 20))
      Else
          'DATA1.ConnectionString = gConnect
@@ -4705,7 +4706,7 @@ End If
 'filtroPEL.Caption
 
 
-150     If cXRONIES.Value = vbChecked Then
+150     If cXronies.Value = vbChecked Then
 160         Gdb.Close
             'f_PROPERSI = Trim(mID(XRONIES.Text, 21, 20))
 170         Gdb.Open gConnect + ";DATABASE=" + Trim(mID(XRONIES.Text, 21, 20))
@@ -4717,7 +4718,7 @@ End If
 
 190     apot21.SHOW 1
 
-200     If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+200     If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
         '<EhFooter>
         Exit Sub
@@ -5195,7 +5196,7 @@ Sub PAYLOS()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER
@@ -5208,7 +5209,7 @@ Sub PAYLOS()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono2")
+200     MPER = data2.Recordset("ono2")
 210     mtimes = InputBox("–¸Û· ÍÔıÙÈ‹;", MPER, 1)
 
         Dim nTIMES
@@ -5244,7 +5245,7 @@ Sub PAYLOS()
 420             Printer.Print Tab(F_ArPerEtik + 10); mlabel
 430             Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
 440             Printer.FontSize = 6
-450             Printer.Print Tab(F_ArPerEtik + 8); DATA2.Recordset("kod")    ' mlabel
+450             Printer.Print Tab(F_ArPerEtik + 8); data2.Recordset("kod")    ' mlabel
 460             Printer.FontSize = 8
 470             Printer.EndDoc
             End If
@@ -5283,7 +5284,7 @@ Sub PAYLOS()
         End If
 
 570     re("atim") = "S" + Format(aaparast, "000000")
-580     re("poso") = DATA2.Recordset("SYSKMAX") * mtimes
+580     re("poso") = data2.Recordset("SYSKMAX") * mtimes
 590     re("timm") = 0
 600     re("kode") = Text1(0)
 610     re("onoma") = Text1(1)
@@ -5296,12 +5297,12 @@ Sub PAYLOS()
 680     re("eidos") = "r"
 690     re("APOT") = 1
 700     re("PIS") = 0
-710     re("XRE") = DATA2.Recordset("SYSKMAX") * mtimes
+710     re("XRE") = data2.Recordset("SYSKMAX") * mtimes
 720     re.Update
     
         ' ¡÷¡…—≈—”« ¡ ’ÀŸÕ
 
-730     If DATA2.Recordset("NUM1") > 0 Then
+730     If data2.Recordset("NUM1") > 0 Then
 740         re.AddNew
 
 750         If IsDate(Left(XEIR, 10)) Then
@@ -5311,9 +5312,9 @@ Sub PAYLOS()
             End If
 
 780         re("atim") = "S" + Format(aaparast, "000000")
-790         re("poso") = Round(DATA2.Recordset("SYSKMAX") * mtimes * DATA2.Recordset("NUM1") / 1000 * 1.02, 5)
+790         re("poso") = Round(data2.Recordset("SYSKMAX") * mtimes * data2.Recordset("NUM1") / 1000 * 1.02, 5)
 800         re("timm") = 0
-810         re("kode") = Trim(DATA2.Recordset("CH1"))  '”’”◊≈‘…”Ã≈Õœ”  Ÿƒ… œ” ¡ ’À«”
+810         re("kode") = Trim(data2.Recordset("CH1"))  '”’”◊≈‘…”Ã≈Õœ”  Ÿƒ… œ” ¡ ’À«”
 820         re("onoma") = ""
 830         re("mona") = " …À"
 840         re("kau_ajia") = 0
@@ -5323,7 +5324,7 @@ Sub PAYLOS()
 880         re("pelkod") = "0001"
 890         re("eidos") = "r"
 900         re("APOT") = 1
-910         re("PIS") = Round(DATA2.Recordset("SYSKMAX") * mtimes * DATA2.Recordset("NUM1") / 1000 * 1.02, 5)
+910         re("PIS") = Round(data2.Recordset("SYSKMAX") * mtimes * data2.Recordset("NUM1") / 1000 * 1.02, 5)
 920         re("XRE") = 0
 930         re.Update
         End If
@@ -5376,7 +5377,7 @@ FIND_N_NUMBER:
 
 1190    rec.Update
 1200    mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-1210    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA2.Recordset("KODE") + "'"
+1210    Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + data2.Recordset("KODE") + "'"
 1220    Return
 
         '<EhFooter>
@@ -5439,7 +5440,7 @@ Sub LAG_ETIK()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER
@@ -5452,10 +5453,10 @@ Sub LAG_ETIK()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -5488,7 +5489,7 @@ Sub LAG_ETIK()
 410             Printer.Print Tab(F_ArPerEtik + 10); mlabel
 420             Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
 430             Printer.FontSize = 6
-440             Printer.Print Tab(F_ArPerEtik + 8); DATA2.Recordset("kod")    ' mlabel
+440             Printer.Print Tab(F_ArPerEtik + 8); data2.Recordset("kod")    ' mlabel
 
 450             Printer.FontSize = 8
 460             Printer.Print
@@ -5516,7 +5517,7 @@ FIND_N_NUMBER:
 
 560     rec.Update
 570     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-580     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA2.Recordset("KODE") + "'"
+580     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + data2.Recordset("KODE") + "'"
 590     Return
 
         '<EhFooter>
@@ -5579,7 +5580,7 @@ Sub diesel_ETIK()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER
@@ -5592,10 +5593,10 @@ Sub diesel_ETIK()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -5639,7 +5640,7 @@ Sub diesel_ETIK()
 410             Printer.Print Tab(F_ArPerEtik + 20); mlabel
 420             Printer.FontName = "ean13"    ' "128"
 430             Printer.FontSize = 6
-440             Printer.Print Tab(F_ArPerEtik + 8); DATA2.Recordset("kod")    ' mlabel
+440             Printer.Print Tab(F_ArPerEtik + 8); data2.Recordset("kod")    ' mlabel
 450             Printer.FontName = "Arial Greek"   'CommonDialog1'.FontName
 460             Printer.FontSize = 8
 470             Printer.Print
@@ -5667,9 +5668,9 @@ FIND_N_NUMBER:
 
 570     rec.Update
 580     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-590     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA2.Recordset("KOD") + "'"
+590     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + data2.Recordset("KOD") + "'"
 
-600     Gdb.Execute "INSERT INTO BARCODES (ERG,KOD) VALUES('" + mlabel + "','" + DATA2.Recordset("KOD") + "')"
+600     Gdb.Execute "INSERT INTO BARCODES (ERG,KOD) VALUES('" + mlabel + "','" + data2.Recordset("KOD") + "')"
 
 610     Return
 
@@ -5733,7 +5734,7 @@ Sub LAG2_ETIK()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER
@@ -5746,10 +5747,10 @@ Sub LAG2_ETIK()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -5854,7 +5855,7 @@ FIND_N_NUMBER:
 
 590     rec.Update
 600     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-610     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA2.Recordset("KODE") + "'"
+610     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + data2.Recordset("KODE") + "'"
 620     Return
 
         '<EhFooter>
@@ -5919,7 +5920,7 @@ Sub patrick_etik()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER  ' EPISTREFEI TO mlabel
@@ -5932,10 +5933,10 @@ Sub patrick_etik()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -5990,7 +5991,7 @@ FIND_N_NUMBER:
 450     rec.Update
 460     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
 
-470     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + DATA2.Recordset("KOD") + "','" + mlabel + "')", nn
+470     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + data2.Recordset("KOD") + "','" + mlabel + "')", nn
 
 480     If nn = 0 Then
 490         MsgBox "ƒ≈Õ ¡–œ»« ≈’‘« ≈ ‘œ BARCODE"
@@ -6061,7 +6062,7 @@ Sub SOKRATIS_etik()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER  ' EPISTREFEI TO mlabel
@@ -6074,10 +6075,10 @@ Sub SOKRATIS_etik()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -6136,7 +6137,7 @@ FIND_N_NUMBER:
 440     rec.Update
 450     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
 
-460     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + DATA2.Recordset("KOD") + "','" + mlabel + "')", nn
+460     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + data2.Recordset("KOD") + "','" + mlabel + "')", nn
 
 470     If nn = 0 Then
 480         MsgBox "ƒ≈Õ ¡–œ»« ≈’‘« ≈ ‘œ BARCODE"
@@ -6208,7 +6209,7 @@ Sub GATIDIS_ETIK()
 
         Dim r1 As New ADODB.Recordset
 
-140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + DATA2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
+140     r1.Open "SELECT * FROM BARCODES WHERE KOD='" + data2.Recordset("KOD") + "'", Gdb, adOpenForwardOnly, adLockReadOnly
 
 150     If r1.EOF Then
 160         GoSub FIND_N_NUMBER  ' EPISTREFEI TO mlabel
@@ -6221,10 +6222,10 @@ Sub GATIDIS_ETIK()
             End If
         End If
 
-200     MPER = DATA2.Recordset("ono")
+200     MPER = data2.Recordset("ono")
 210     mtimes = InputBox("–¸ÛÂÚ ÂÙÈÍ›ÙÂÚ;", MPER, 1)
 
-220     TIMM = Format(DATA2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
+220     TIMM = Format(data2.Recordset("lti5"), "#####." + String(F_DEK_LIANIKIS, "0"))
 
         'timologio = EGGTIM.Recordset("kode") + left(TIM.Recordset("atim"), 6) + "=" + EGGTIM.Recordset("pelkod") + Format(EGGTIM.Recordset("xti") * (100 + g_Fpa(2)) / 100, "####.00") + "-" + Format(EGGTIM.Recordset("hme"), "dd/mm/yyyy")
 
@@ -6284,7 +6285,7 @@ FIND_N_NUMBER:
 440     rec.Update
 450     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
 
-460     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + DATA2.Recordset("KOD") + "','" + mlabel + "')", nn
+460     Gdb.Execute "insert into BARCODES (KOD,ERG) VALUES ('" + data2.Recordset("KOD") + "','" + mlabel + "')", nn
 
 470     If nn = 0 Then
 480         MsgBox "ƒ≈Õ ¡–œ»« ≈’‘« ≈ ‘œ BARCODE"
@@ -8868,39 +8869,39 @@ mmkod = DBGrid1.columns(0).Text
 
 100    ' DBGrid1.BackColorSel = vbBlue
         ' apot2.MousePointer = vbHourglass
-110     DATA2.RecordSource = " select * from EID WHERE KOD='" + mmkod + "'"
-120     DATA2.Refresh
+110     data2.RecordSource = " select * from EID WHERE KOD='" + mmkod + "'"
+120     data2.Refresh
 
-        If DATA2.Recordset.EOF Then
+        If data2.Recordset.EOF Then
 
             Exit Sub
 
         End If
 
 
-        If DATA2.Recordset("energo") = 1 Then chkEnergos.Value = vbChecked Else chkEnergos.Value = vbUnchecked
+        If data2.Recordset("energo") = 1 Then chkEnergos.Value = vbChecked Else chkEnergos.Value = vbUnchecked
 
 
-        Set msEditor1.mDataSource = DATA2   ' for code you have to use the 'adoNotes' instead of the Adodc1
+        Set msEditor1.mDataSource = data2   ' for code you have to use the 'adoNotes' instead of the Adodc1
         msEditor1.MaxLength = 8000          ' Optional maximum length.
         '
         msEditor1.mDataField = "MEMO" '  "nNotes"     ' The field of your text
         msEditor1.Enabled = True
 
         '  apot2.Caption = Now
-130     Text1(0).Text = DATA2.Recordset("kod")
-140     Text1(1).Text = DATA2.Recordset("ONO")
+130     Text1(0).Text = data2.Recordset("kod")
+140     Text1(1).Text = data2.Recordset("ONO")
 
-150     Text1(16).Text = DATA2.Recordset("koderg")
+150     Text1(16).Text = data2.Recordset("koderg")
 
-160     Text1(4).Text = IIf(IsNull(DATA2.Recordset("pos")), " ", DATA2.Recordset("pos"))
+160     Text1(4).Text = IIf(IsNull(data2.Recordset("pos")), " ", data2.Recordset("pos"))
 
-170     Combo2.Text = DATA2.Recordset("FPA")
+170     Combo2.Text = data2.Recordset("FPA")
         
         Dim N As Integer
-        If IsNull(DATA2.Recordset("discountOption")) Then
+        If IsNull(data2.Recordset("discountOption")) Then
             discountOption.Text = discountOption.List(0)
-         ElseIf DATA2.Recordset("discountOption") = 0 Then
+         ElseIf data2.Recordset("discountOption") = 0 Then
             discountOption.Text = discountOption.List(0)
         Else
             discountOption.Text = discountOption.List(0)
@@ -8909,7 +8910,7 @@ mmkod = DBGrid1.columns(0).Text
          
         Combo5.ListIndex = -1
 180     For N = 0 To Combo5.ListCount - 1
-190         If Val(Left(Combo5.List(N), 3)) = Val(nNull(DATA2.Recordset("kathgoria"))) Then
+190         If Val(Left(Combo5.List(N), 3)) = Val(nNull(data2.Recordset("kathgoria"))) Then
 200             Combo5.Text = Combo5.List(N)    'OIKOGENEIA
                 Exit For
             End If
@@ -8917,7 +8918,7 @@ mmkod = DBGrid1.columns(0).Text
 
         'Combo5.Text = Combo5.List(Val(DATA2.Recordset("KATHGORIA")) - 1)
 
-210     Combo1.Text = DATA2.Recordset("mon")
+210     Combo1.Text = data2.Recordset("mon")
 
         ' Combo4.Text = Combo4.List(Val(Data2.Recordset("AEG")) - 1) 'OIKOGENEIA
         'Dim n As Integer
@@ -8925,7 +8926,7 @@ mmkod = DBGrid1.columns(0).Text
 
         Combo4.ListIndex = -1: Combo4.Text = ""
 220     For N = 0 To Combo4.ListCount - 1
-230         If Val(Left(Combo4.List(N), 3)) = Val(nNull(DATA2.Recordset("AEG"))) Then
+230         If Val(Left(Combo4.List(N), 3)) = Val(nNull(data2.Recordset("AEG"))) Then
 240             Combo4.Text = Combo4.List(N)    'OIKOGENEIA
                 Exit For
             End If
@@ -8955,7 +8956,7 @@ mmkod = DBGrid1.columns(0).Text
 
 300             Combo3.AddItem Format(R("ayjon"), "00") + " " + Left(R("PERIGRAFH") + Space(20), 20)
 
-310             If R("AYJON") = Val(DATA2.Recordset("kodlog")) Then
+310             If R("AYJON") = Val(data2.Recordset("kodlog")) Then
 320                 NYP0 = NYP
                 End If
 
@@ -8973,70 +8974,70 @@ mmkod = DBGrid1.columns(0).Text
 
         'Combo3.Text = Combo3.List(Val(Data2.Recordset("kodlog")) - 1)
 
-370     xti0.Text = DATA2.Recordset("xti")
+370     xti0.Text = data2.Recordset("xti")
 
         'If IsNull(Data2.Recordset("pos_kerd2")) Then
-380     pos_kerd2.Text = nNull(DATA2.Recordset("pos_kerd2"))
+380     pos_kerd2.Text = nNull(data2.Recordset("pos_kerd2"))
         'End If
 
         'If IsNull(Data2.Recordset("pos_kerd")) Then
-390     pos_kerd.Text = nNull(DATA2.Recordset("pos_kerd"))
+390     pos_kerd.Text = nNull(data2.Recordset("pos_kerd"))
         'End If
 
-400     Text1(6).Text = CNull(DATA2.Recordset("ERG"))
-410     ONO2.Text = CNull(DATA2.Recordset("ono2"))
+400     Text1(6).Text = CNull(data2.Recordset("ERG"))
+410     ONO2.Text = CNull(data2.Recordset("ono2"))
 
-420     lti.Text = DATA2.Recordset("lti")
-430     lti5.Text = DATA2.Recordset("lti5")
+420     lti.Text = data2.Recordset("lti")
+430     lti5.Text = data2.Recordset("lti5")
 
-        LTI2.Text = nNull(DATA2.Recordset("lti2"))
-        LTI3.Text = nNull(DATA2.Recordset("lti3"))
+        LTI2.Text = nNull(data2.Recordset("lti2"))
+        LTI3.Text = nNull(data2.Recordset("lti3"))
  
 
         ' DATA2.Recordset("APALLFPA") = Val(Left(apallagesFPA.Text, 2))
         
-        If IsNull(DATA2.Recordset("APALLFPA")) Then
+        If IsNull(data2.Recordset("APALLFPA")) Then
              apallagesFPA.Text = ""
         Else
-             apallagesFPA.Text = apallagesFPA.List(DATA2.Recordset("APALLFPA") - 1)
+             apallagesFPA.Text = apallagesFPA.List(data2.Recordset("APALLFPA") - 1)
         End If
          
 
-        PROMPOL.Text = nNull(DATA2.Recordset("PROMPOL"))
-440     XondrmeFPA.Text = DATA2.Recordset("lti") * (1 + g_Fpa(DATA2.Recordset("fpa")) / 100)
+        PROMPOL.Text = nNull(data2.Recordset("PROMPOL"))
+440     XondrmeFPA.Text = data2.Recordset("lti") * (1 + g_Fpa(data2.Recordset("fpa")) / 100)
 
-450     If IsNull(DATA2.Recordset("MEMO")) Then
+450     If IsNull(data2.Recordset("MEMO")) Then
 460         ' Text14.Text = ""
         Else
 470         ' Text14.Text = DATA2.Recordset("MEMO")
         End If
 
-480     Text1(15).Text = DATA2.Recordset("PROMHU")    ' BONUS
+480     Text1(15).Text = data2.Recordset("PROMHU")    ' BONUS
 
-490     Text1(11).Text = DATA2.Recordset("kodSYNOD")
-500     Text1(12).Text = DATA2.Recordset("kodlogAG")
+490     Text1(11).Text = data2.Recordset("kodSYNOD")
+500     Text1(12).Text = data2.Recordset("kodlogAG")
 
-510     Text1(7).Text = CNull(DATA2.Recordset("PROM"))    'Right(Combo3.Text, 3)
-520     Text1(9).Text = DATA2.Recordset("SPA")   'Right(Combo3.Text, 3)
+510     Text1(7).Text = CNull(data2.Recordset("PROM"))    'Right(Combo3.Text, 3)
+520     Text1(9).Text = data2.Recordset("SPA")   'Right(Combo3.Text, 3)
 
-530     Text1(10).Text = CNull(DATA2.Recordset("UES"))    'Right(Combo3.Text, 3)
-540     Text1(8).Text = DATA2.Recordset("EPIUYP")
+530     Text1(10).Text = CNull(data2.Recordset("UES"))    'Right(Combo3.Text, 3)
+540     Text1(8).Text = data2.Recordset("EPIUYP")
 
-550     exoda.Text = DATA2.Recordset("pos_kerd3")
-
-
-            litra.Text = nNull(DATA2.Recordset("litra"))
-           efk.Text = nNull(DATA2.Recordset("efk"))
+550     exoda.Text = data2.Recordset("pos_kerd3")
 
 
+            litra.Text = nNull(data2.Recordset("litra"))
+           efk.Text = nNull(data2.Recordset("efk"))
 
 
-560     If IsNull(DATA2.Recordset("POS01")) Then mPos01 = 0 Else mPos01 = DATA2.Recordset("POS01")
 
-570     If IsNull(DATA2.Recordset("POS02")) Then mPos02 = 0 Else mPos02 = DATA2.Recordset("POS02")
 
-580     If IsNull(DATA2.Recordset("POS03")) Then mPos03 = 0 Else mPos03 = DATA2.Recordset("POS03")
-590     If IsNull(DATA2.Recordset("POS04")) Then mPos04 = 0 Else mPos04 = DATA2.Recordset("POS04")
+560     If IsNull(data2.Recordset("POS01")) Then mPos01 = 0 Else mPos01 = data2.Recordset("POS01")
+
+570     If IsNull(data2.Recordset("POS02")) Then mPos02 = 0 Else mPos02 = data2.Recordset("POS02")
+
+580     If IsNull(data2.Recordset("POS03")) Then mPos03 = 0 Else mPos03 = data2.Recordset("POS03")
+590     If IsNull(data2.Recordset("POS04")) Then mPos04 = 0 Else mPos04 = data2.Recordset("POS04")
 
         ' Label2.Caption = "‘≈À.≈Õ«Ã≈—Ÿ”«: KEN‘— :" + Format(mPos01, "###0") + " ’–.1: " + Format(mPos02, "###0") + " ’–.3: " + Format(mPos03, "###0")
 
@@ -9067,8 +9068,8 @@ mmkod = DBGrid1.columns(0).Text
 
 
 
-680     Text1(18).Text = DATA2.Recordset("SYSKMAX")    'SYSKEYASIA
-690     Text1(17).Text = DATA2.Recordset("SYSKMIN")    ' YPOSYSKEYASIA
+680     Text1(18).Text = data2.Recordset("SYSKMAX")    'SYSKEYASIA
+690     Text1(17).Text = data2.Recordset("SYSKMIN")    ' YPOSYSKEYASIA
 700     MSFlexGrid1.row = 0
 710     MSFlexGrid1.Col = 1
 720     MSFlexGrid1.Text = "¡„ÔÒ›Ú"
@@ -9089,10 +9090,10 @@ mmkod = DBGrid1.columns(0).Text
         '  G.row = 1 + addit: G.Column = l: G.Data = Stat(l, addit2 + 1) - Stat(l, addit2 + 2)
         ' G.row = 4 + addit: G.Column = l: G.Data = Stat(l, addit2 + 4) - Stat(l, addit2 + 5)
         'Next
-790     If DATA2.Recordset.RecordCount = 0 Then
+790     If data2.Recordset.RecordCount = 0 Then
 800         Me.MousePointer = vbNormal
 
-810         If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+810         If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
             Exit Sub
 
@@ -9108,7 +9109,7 @@ mmkod = DBGrid1.columns(0).Text
 
 840     synt = " HME>='" + Format(gEnarjh, "MM/DD/YYYY") + "' AND HME<'" + Format(gLhjh, "MM/DD/YYYY") + "' "
 
-850     If cXRONIES.Value = vbChecked Then
+850     If cXronies.Value = vbChecked Then
 860         Gdb.Close
             'f_PROPERSI = Trim(mID(XRONIES.Text, 21, 20))
 870         Gdb.Open gConnect + ";DATABASE=" + Trim(mID(XRONIES.Text, 21, 20))
@@ -9117,7 +9118,7 @@ mmkod = DBGrid1.columns(0).Text
 
 890     If Check1.Value = vbUnchecked Then GoTo OLD700
 
-900     R.Open "SELECT MONTH(HME),SUM(XRE),SUM(PIS),SUM(XRE*TIMM*(100-EKPT)/100),SUM(PIS*TIMM*(100-EKPT)/100) FROM EGGTIM WHERE " + synt + " AND KODE='" + DATA2.Recordset("kod") + "' GROUP BY MONTH(HME) ", Gdb, adOpenForwardOnly, adLockReadOnly
+900     R.Open "SELECT MONTH(HME),SUM(XRE),SUM(PIS),SUM(XRE*TIMM*(100-EKPT)/100),SUM(PIS*TIMM*(100-EKPT)/100) FROM EGGTIM WHERE " + synt + " AND KODE='" + data2.Recordset("kod") + "' GROUP BY MONTH(HME) ", Gdb, adOpenForwardOnly, adLockReadOnly
 
         Dim A_XRE(12)   As Single
 
@@ -9286,7 +9287,7 @@ OLD700:
             
          
             If f_site > 0 Then ' = Val(FindParametroi(1,"MDIFORM1", "F_SITE", "0", " Ÿƒ… œ” SITE 1=VM 2=TOYS"))
-                PI = DATA2.Recordset("pic0")
+                PI = data2.Recordset("pic0")
 
                 If f_site = 222 Then
                     pi2 = F_FAKEL_KOINOS + "\images\" + PI
@@ -9326,34 +9327,34 @@ OLD700:
 
         'DBGRID1.Columns(1).width = 4000
 
-1610    NUM1.BackColor = IIf(IsNull(DATA2.Recordset("NUM1")), vbWhite, vbYellow)
-1620    NUM2.BackColor = IIf(IsNull(DATA2.Recordset("NUM2")), vbWhite, vbYellow)
-1630    NUM3.BackColor = IIf(IsNull(DATA2.Recordset("NUM3")), vbWhite, vbYellow)
-1640    CH1.BackColor = IIf(IsNull(DATA2.Recordset("ch1")), vbWhite, vbYellow)
-1650    CH2.BackColor = IIf(IsNull(DATA2.Recordset("ch2")), vbWhite, vbYellow)
-1660    CH3.BackColor = IIf(IsNull(DATA2.Recordset("ch3")), vbWhite, vbYellow)
-1670    ch4.BackColor = IIf(IsNull(DATA2.Recordset("ch4")), vbWhite, vbYellow)
-1680    ch5.BackColor = IIf(IsNull(DATA2.Recordset("ch5")), vbWhite, vbYellow)
+1610    NUM1.BackColor = IIf(IsNull(data2.Recordset("NUM1")), vbWhite, vbYellow)
+1620    NUM2.BackColor = IIf(IsNull(data2.Recordset("NUM2")), vbWhite, vbYellow)
+1630    num3.BackColor = IIf(IsNull(data2.Recordset("NUM3")), vbWhite, vbYellow)
+1640    CH1.BackColor = IIf(IsNull(data2.Recordset("ch1")), vbWhite, vbYellow)
+1650    CH2.BackColor = IIf(IsNull(data2.Recordset("ch2")), vbWhite, vbYellow)
+1660    CH3.BackColor = IIf(IsNull(data2.Recordset("ch3")), vbWhite, vbYellow)
+1670    ch4.BackColor = IIf(IsNull(data2.Recordset("ch4")), vbWhite, vbYellow)
+1680    ch5.BackColor = IIf(IsNull(data2.Recordset("ch5")), vbWhite, vbYellow)
 
-1690    NUM1 = IIf(IsNull(DATA2.Recordset("NUM1")), "", DATA2.Recordset("NUM1"))
-1700    NUM2 = IIf(IsNull(DATA2.Recordset("NUM2")), "", DATA2.Recordset("NUM2"))
-1710    NUM3 = IIf(IsNull(DATA2.Recordset("NUM3")), "", DATA2.Recordset("NUM3"))
+1690    NUM1 = IIf(IsNull(data2.Recordset("NUM1")), "", data2.Recordset("NUM1"))
+1700    NUM2 = IIf(IsNull(data2.Recordset("NUM2")), "", data2.Recordset("NUM2"))
+1710    num3 = IIf(IsNull(data2.Recordset("NUM3")), "", data2.Recordset("NUM3"))
 
-1720    CH1 = IIf(IsNull(DATA2.Recordset("CH1")), "", DATA2.Recordset("CH1"))
-1730    CH2 = IIf(IsNull(DATA2.Recordset("CH2")), "", DATA2.Recordset("CH2"))
-1740    CH3 = IIf(IsNull(DATA2.Recordset("CH3")), "", DATA2.Recordset("CH3"))
+1720    CH1 = IIf(IsNull(data2.Recordset("CH1")), "", data2.Recordset("CH1"))
+1730    CH2 = IIf(IsNull(data2.Recordset("CH2")), "", data2.Recordset("CH2"))
+1740    CH3 = IIf(IsNull(data2.Recordset("CH3")), "", data2.Recordset("CH3"))
 
-1750    ch4 = IIf(IsNull(DATA2.Recordset("CH4")), "", DATA2.Recordset("CH4"))
-1760    ch5 = IIf(IsNull(DATA2.Recordset("CH5")), "", DATA2.Recordset("CH5"))
+1750    ch4 = IIf(IsNull(data2.Recordset("CH4")), "", data2.Recordset("CH4"))
+1760    ch5 = IIf(IsNull(data2.Recordset("CH5")), "", data2.Recordset("CH5"))
 
-1770    If IsNull(DATA2.Recordset("CH6")) Then ch6 = "" Else ch6 = DATA2.Recordset("CH6")
+1770    If IsNull(data2.Recordset("CH6")) Then ch6 = "" Else ch6 = data2.Recordset("CH6")
 
-        If IsNull(DATA2.Recordset("CPV")) Then CPV = "" Else CPV = DATA2.Recordset("CPV")
+        If IsNull(data2.Recordset("CPV")) Then CPV = "" Else CPV = data2.Recordset("CPV")
 
-1780    HM1 = IIf(IsNull(DATA2.Recordset("HM1")), "", DATA2.Recordset("HM1"))
-1790    HM2 = IIf(IsNull(DATA2.Recordset("HM2")), "", DATA2.Recordset("HM2"))
-1800    HM3 = IIf(IsNull(DATA2.Recordset("HM3")), "", DATA2.Recordset("HM3"))
-        lastupd = IIf(IsNull(DATA2.Recordset("LASTUPD")), "", DATA2.Recordset("LASTUPD"))
+1780    HM1 = IIf(IsNull(data2.Recordset("HM1")), "", data2.Recordset("HM1"))
+1790    HM2 = IIf(IsNull(data2.Recordset("HM2")), "", data2.Recordset("HM2"))
+1800    HM3 = IIf(IsNull(data2.Recordset("HM3")), "", data2.Recordset("HM3"))
+        lastupd = IIf(IsNull(data2.Recordset("LASTUPD")), "", data2.Recordset("LASTUPD"))
 
         '===============================================================================
         '==================== PALIA XRONIA =============================================
@@ -9362,7 +9363,7 @@ OLD700:
 1810    If Check1.Value = vbUnchecked Then
 1820        Me.MousePointer = vbNormal
 
-1830        If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+1830        If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
             Exit Sub
 
@@ -9378,7 +9379,7 @@ OLD700:
 1850    If Len(PaLIAXRONIA) = 0 Then
 1860        Me.MousePointer = vbNormal
 
-1870        If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+1870        If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
             Exit Sub
 
@@ -9391,7 +9392,7 @@ OLD700:
         On Error Resume Next
 
 1890    R.Close
-1900    R.Open "SELECT MONTH(HME),SUM(XRE),SUM(PIS),SUM(XRE*TIMM),SUM(PIS*TIMM) FROM EGGTIM WHERE KODE='" + DATA2.Recordset("kod") + "' GROUP BY MONTH(HME) ", DB2, adOpenForwardOnly, adLockReadOnly
+1900    R.Open "SELECT MONTH(HME),SUM(XRE),SUM(PIS),SUM(XRE*TIMM),SUM(PIS*TIMM) FROM EGGTIM WHERE KODE='" + data2.Recordset("kod") + "' GROUP BY MONTH(HME) ", DB2, adOpenForwardOnly, adLockReadOnly
 
 1910    For k = 1 To 12
 1920        A_XRE(k) = 0: A_PIS(k) = 0: A_XREAJ(k) = 0: A_PISAJ(k) = 0
@@ -9412,7 +9413,7 @@ OLD700:
 
         End If
 
-1990    MSFlexGrid2.Visible = False
+1990    MSFLEXGRID2.Visible = False
 
 2000    SM2 = 0: SG2 = 0
 2010    SM = 0: SG = 0
@@ -9423,11 +9424,11 @@ OLD700:
 2050        graph2.ColumnLabel = k
 2060        graph2.Refresh
 
-2070        MSFlexGrid2.row = k
-2080        MSFlexGrid2.Col = 0
-2090        MSFlexGrid2.Text = k
+2070        MSFLEXGRID2.row = k
+2080        MSFLEXGRID2.Col = 0
+2090        MSFLEXGRID2.Text = k
 
-2100        MSFlexGrid2.Col = 1
+2100        MSFLEXGRID2.Col = 1
 
 2110        SM = SM + A_PIS(k)    'DATA2.Recordset(M)
 2120        SG = SG + A_XRE(k)    ' DATA2.Recordset(G)
@@ -9435,30 +9436,30 @@ OLD700:
 2130        SM2 = SM2 + A_PISAJ(k)    'DATA2.Recordset(M)
 2140        SG2 = SG2 + A_XREAJ(k)    ' DATA2.Recordset(G)
 
-2150        MSFlexGrid2.Text = Format(A_XRE(k), "#####.##")    ' Format(IIf(IsNull(DATA2.Recordset(G)), 0, DATA2.Recordset(G)), "####.##")
+2150        MSFLEXGRID2.Text = Format(A_XRE(k), "#####.##")    ' Format(IIf(IsNull(DATA2.Recordset(G)), 0, DATA2.Recordset(G)), "####.##")
 
-2160        MSFlexGrid2.Col = 2
-2170        MSFlexGrid2.Text = Format(A_XREAJ(k), "#####.##")    ' Format(IIf(IsNull(DATA2.Recordset(G)), 0, DATA2.Recordset("XTI") * DATA2.Recordset(G)), "#####,##")
+2160        MSFLEXGRID2.Col = 2
+2170        MSFLEXGRID2.Text = Format(A_XREAJ(k), "#####.##")    ' Format(IIf(IsNull(DATA2.Recordset(G)), 0, DATA2.Recordset("XTI") * DATA2.Recordset(G)), "#####,##")
 
-2180        MSFlexGrid2.Col = 3
-2190        MSFlexGrid2.Text = Format(A_PIS(k), "#####.##")    'Format(IIf(IsNull(DATA2.Recordset(M)), 0, DATA2.Recordset(M)), "#####,##")
+2180        MSFLEXGRID2.Col = 3
+2190        MSFLEXGRID2.Text = Format(A_PIS(k), "#####.##")    'Format(IIf(IsNull(DATA2.Recordset(M)), 0, DATA2.Recordset(M)), "#####,##")
 
-2200        MSFlexGrid2.Col = 4
-2210        MSFlexGrid2.Text = Format(A_PISAJ(k), "#####.##")    'Format(IIf(IsNull(DATA2.Recordset(MA)), 0, DATA2.Recordset("LTI") * DATA2.Recordset(MA)), "#####,##")
+2200        MSFLEXGRID2.Col = 4
+2210        MSFLEXGRID2.Text = Format(A_PISAJ(k), "#####.##")    'Format(IIf(IsNull(DATA2.Recordset(MA)), 0, DATA2.Recordset("LTI") * DATA2.Recordset(MA)), "#####,##")
 
         Next
 
-2220    If MSFlexGrid2.rows >= 14 Then
+2220    If MSFLEXGRID2.rows >= 14 Then
 
-2230        MSFlexGrid2.rows = 13
+2230        MSFLEXGRID2.rows = 13
         End If
 
-2240    MSFlexGrid2.AddItem ("”˝ÌÔÎ·" & Chr(9) & Format(SG, "####.##") & Chr(9) & Format(SG2, "####.##") & Chr(9) & Format(SM, "####.##") & Chr(9) & Format(SM2, "####.##"))
-2250    MSFlexGrid2.Visible = True
+2240    MSFLEXGRID2.AddItem ("”˝ÌÔÎ·" & Chr(9) & Format(SG, "####.##") & Chr(9) & Format(SG2, "####.##") & Chr(9) & Format(SM, "####.##") & Chr(9) & Format(SM2, "####.##"))
+2250    MSFLEXGRID2.Visible = True
 
 2260    Me.MousePointer = vbNormal
 
-2270    If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+2270    If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
 
      diastaseis_Grid
@@ -9469,13 +9470,13 @@ OLD700:
 
 NOCONNECT:
 
-2280    If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+2280    If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
         Exit Sub
 
 LATOSEXo:
 
-2290    If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+2290    If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
         Exit Sub
 
@@ -9486,7 +9487,7 @@ LATOS:
 
 oxi_palia:
 
-2320    If cXRONIES.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
+2320    If cXronies.Value = vbChecked Then Gdb.Close: Gdb.Open gConnect
 
         Exit Sub
 
@@ -9744,7 +9745,7 @@ ENERGA.Text = ENERGA.List(0)
         ' Picture4.Picture = LoadPicture(gPicture)
 
         'APOT2.SHOW
-        times.RowHeight(0) = 200
+        TIMES.RowHeight(0) = 200
         ' f_Refresh = True
 
         ''SkinFramework1.LoadSkin "c:\mercvb\Styles\Office2007.cjstyles", "NormalOffice2007.ini"
@@ -9882,15 +9883,15 @@ F_FAKEL_KOINOS = Trim$(F_FAKEL_KOINOS)
 
 510     F_sygx = Val(FINDPARAMETROI(1, "APOT2", "F_SYGX", "1", "≈–…‘—≈–≈‘¡… ”’√◊ŸÕ≈’”«  Ÿƒ… ŸÕ=1 0=œ◊…"))   'posa psifia tha exei h kathe seira
 
-520     times.TextMatrix(0, 1) = "TÈÏﬁ ¡„ÔÒ‹Ú"
-530     times.TextMatrix(0, 2) = "Mark Up"
-540     times.TextMatrix(0, 3) = "◊˘ÒﬂÚ ÷–¡"
-550     times.TextMatrix(0, 4) = "ÃÂ ÷–¡"
+520     TIMES.TextMatrix(0, 1) = "TÈÏﬁ ¡„ÔÒ‹Ú"
+530     TIMES.TextMatrix(0, 2) = "Mark Up"
+540     TIMES.TextMatrix(0, 3) = "◊˘ÒﬂÚ ÷–¡"
+550     TIMES.TextMatrix(0, 4) = "ÃÂ ÷–¡"
 
-560     times.TextMatrix(1, 0) = "◊ÔÌ‰Ò.‘ÈÏﬁ"
-570     times.TextMatrix(2, 0) = "ÀÈ·Ì.‘ÈÏﬁ"
+560     TIMES.TextMatrix(1, 0) = "◊ÔÌ‰Ò.‘ÈÏﬁ"
+570     TIMES.TextMatrix(2, 0) = "ÀÈ·Ì.‘ÈÏﬁ"
 
-        times.TextMatrix(0, 6) = "–ÒÔÙÂÈÌ¸ÏÂÌÁ"
+        TIMES.TextMatrix(0, 6) = "–ÒÔÙÂÈÌ¸ÏÂÌÁ"
 
 580     F_KOD = Val(FINDPARAMETROI(1, "APOT2", "F_KOD", "1", "≈Ïˆ·ÌﬂÊÂÙ·È Á ·Ì·ÊﬁÙÁÛÁ ÏÂ Í˘‰ÈÍ¸=1"))
 590     F_ONO = Val(FINDPARAMETROI(1, "APOT2", "F_ONO", "1", "≈Ïˆ·ÌﬂÊÂÙ·È Á ·Ì·ÊﬁÙÁÛÁ ÏÂ œÕœÃ¡=1"))
@@ -10090,11 +10091,11 @@ DBGrid1.columns(3).alignment = dbgRight
 
 
 
-1390    Data1.RecordSource = "SELECT TOP 100 *FROM EID"
-1400    Data1.ConnectionString = gConnect
-1410    Data1.Refresh
+1390    DATA1.RecordSource = "SELECT TOP 100 *FROM EID"
+1400    DATA1.ConnectionString = gConnect
+1410    DATA1.Refresh
 
-1420    DATA2.ConnectionString = gConnect
+1420    data2.ConnectionString = gConnect
 
 1430    data22.ConnectionString = gConnect
 1440    data22.RecordSource = "select TOP 30  KOD,ONO,CONVERT(decimal(10,2),LTI) AS [À…¡Õ.‘…Ã«],CONVERT(decimal(10,2),XTI) AS [XONƒ.‘…Ã«]  from EID where POS>0;"
@@ -10238,14 +10239,14 @@ Private Sub Form_Resize()
     search.Width = DBGrid1.Width
     
     
-  times.Left = Frame1.Left
+  TIMES.Left = Frame1.Left
   
  
  ' El.mForm_Load Me
          'mForm_Load Me, fh, fw, ft, fl
 ' Exit Sub
 
-times.Width = Frame2.Width
+TIMES.Width = Frame2.Width
 
 search.Width = DBGrid1.Width
 
@@ -10253,52 +10254,52 @@ search.Width = DBGrid1.Width
  
  search.Height = DBGrid1.Top - search.Top - 30
 
-    times.row = 1
-    times.Col = 1
-    xti0.Top = times.Top + times.CellTop
-    xti0.Left = times.Left + times.CellLeft
-    xti0.Width = times.CellWidth - 15
-    xti0.Height = times.CellHeight - 25
+    TIMES.row = 1
+    TIMES.Col = 1
+    xti0.Top = TIMES.Top + TIMES.CellTop
+    xti0.Left = TIMES.Left + TIMES.CellLeft
+    xti0.Width = TIMES.CellWidth - 15
+    xti0.Height = TIMES.CellHeight - 25
 
-    times.row = 1
-    times.Col = 2
-    pos_kerd2.Top = times.Top + times.CellTop
-    pos_kerd2.Left = times.Left + times.CellLeft
-    pos_kerd2.Width = times.CellWidth - 15
-    pos_kerd2.Height = times.CellHeight - 25
+    TIMES.row = 1
+    TIMES.Col = 2
+    pos_kerd2.Top = TIMES.Top + TIMES.CellTop
+    pos_kerd2.Left = TIMES.Left + TIMES.CellLeft
+    pos_kerd2.Width = TIMES.CellWidth - 15
+    pos_kerd2.Height = TIMES.CellHeight - 25
 
-    times.row = 1
-    times.Col = 3
-    lti.Top = times.Top + times.CellTop
-    lti.Left = times.Left + times.CellLeft
-    lti.Width = times.CellWidth - 15
-    lti.Height = times.CellHeight - 25
+    TIMES.row = 1
+    TIMES.Col = 3
+    lti.Top = TIMES.Top + TIMES.CellTop
+    lti.Left = TIMES.Left + TIMES.CellLeft
+    lti.Width = TIMES.CellWidth - 15
+    lti.Height = TIMES.CellHeight - 25
 
-    times.row = 1
-    times.Col = 4
-    XondrmeFPA.Top = times.Top + times.CellTop
-    XondrmeFPA.Left = times.Left + times.CellLeft
-    XondrmeFPA.Width = times.CellWidth - 15
-    XondrmeFPA.Height = times.CellHeight - 25
+    TIMES.row = 1
+    TIMES.Col = 4
+    XondrmeFPA.Top = TIMES.Top + TIMES.CellTop
+    XondrmeFPA.Left = TIMES.Left + TIMES.CellLeft
+    XondrmeFPA.Width = TIMES.CellWidth - 15
+    XondrmeFPA.Height = TIMES.CellHeight - 25
 
-    times.row = 2
-    times.Col = 2
-    pos_kerd.Top = times.Top + times.CellTop - 25
-    pos_kerd.Left = times.Left + times.CellLeft
-    pos_kerd.Width = times.CellWidth - 15
-    pos_kerd.Height = times.CellHeight - 25
+    TIMES.row = 2
+    TIMES.Col = 2
+    pos_kerd.Top = TIMES.Top + TIMES.CellTop - 25
+    pos_kerd.Left = TIMES.Left + TIMES.CellLeft
+    pos_kerd.Width = TIMES.CellWidth - 15
+    pos_kerd.Height = TIMES.CellHeight - 25
 
-    times.row = 2
-    times.Col = 4
-    lti5.Top = times.Top + times.CellTop - 25
-    lti5.Left = times.Left + times.CellLeft
-    lti5.Width = times.CellWidth - 15
-    lti5.Height = times.CellHeight - 25
+    TIMES.row = 2
+    TIMES.Col = 4
+    lti5.Top = TIMES.Top + TIMES.CellTop - 25
+    lti5.Left = TIMES.Left + TIMES.CellLeft
+    lti5.Width = TIMES.CellWidth - 15
+    lti5.Height = TIMES.CellHeight - 25
         
-    times.Width = (3 * XondrmeFPA.Width + XondrmeFPA.Left - times.Left) + 200
-    times.Height = times.CellHeight * 3
-    Picture4.Width = times.Width ' + 10
-    Picture4.Height = times.Height + 10
+    TIMES.Width = (3 * XondrmeFPA.Width + XondrmeFPA.Left - TIMES.Left) + 200
+    TIMES.Height = TIMES.CellHeight * 3
+    Picture4.Width = TIMES.Width ' + 10
+    Picture4.Height = TIMES.Height + 10
 
 End Sub
 
@@ -10982,7 +10983,7 @@ Sub YPOL_TIMON(ByVal index As Integer, ByRef D As TextBox)
 150     If index = 5 Then  'pos_kerd2
 160         If Val(Combo2.Text) > 0 Then
 170             ' ÒÔÙÂÈÌ¸ÏÂÌÁ ÙÈÏÁ   proteinX.Caption = Val(XTI0.Text) * (100 + Val(pos_KERD2.Text)) / 100
-                times.TextMatrix(1, 6) = Round(gVal(xti0.Text) * (100 + gVal(pos_kerd2.Text)) / 100, 2)
+                TIMES.TextMatrix(1, 6) = Round(gVal(xti0.Text) * (100 + gVal(pos_kerd2.Text)) / 100, 2)
                 XondrmeFPA.Text = Format(Val(Replace(XondrmeFPA.Text, ",", ".")), "#####.00")
                 lti.Text = Format(Val(Replace(lti.Text, ",", ".")), "#####." + String(f_dek_xondr, "0"))
                 lti5.Text = Format(Val(Replace(lti5.Text, ",", ".")), "#####.00")
@@ -11003,7 +11004,7 @@ Sub YPOL_TIMON(ByVal index As Integer, ByRef D As TextBox)
 220     If index = 14 Then
 230         If Val(Combo2.Text) > 0 Then
 240             ' ÒÔÙÂÈÌÔÏÂÌÁ ÙÈÏÁ  '  proteinX.Caption = Val(XTI0.Text) * (1 + g_Fpa(Val(Combo2.Text)) / 100) * (100 + Val(pos_KERD.Text)) / 100
-                times.TextMatrix(2, 6) = Round(gVal(xti0.Text) * (1 + g_Fpa(gVal(Combo2.Text)) / 100) * (100 + Val(pos_kerd.Text)) / 100, 2)
+                TIMES.TextMatrix(2, 6) = Round(gVal(xti0.Text) * (1 + g_Fpa(gVal(Combo2.Text)) / 100) * (100 + Val(pos_kerd.Text)) / 100, 2)
                 XondrmeFPA.Text = Format(Val(Replace(XondrmeFPA.Text, ",", ".")), "#####.00")
                 lti.Text = Format(Val(Replace(lti.Text, ",", ".")), "#####." + String(f_dek_xondr, "0"))
                 lti5.Text = Format(Val(Replace(lti5.Text, ",", ".")), "#####.00")
@@ -11052,33 +11053,33 @@ Sub alignGridTimon()
 
         '</EhHeader>
 
-100     xti0.Left = times.Left + times.CellWidth + 60
-110     xti0.Top = times.Top + times.CellHeight + 70
-120     xti0.Width = times.CellWidth
+100     xti0.Left = TIMES.Left + TIMES.CellWidth + 60
+110     xti0.Top = TIMES.Top + TIMES.CellHeight + 70
+120     xti0.Width = TIMES.CellWidth
 
         'markup xontrikhs
-130     pos_kerd2.Left = times.Left + 2 * times.CellWidth + 60
-140     pos_kerd2.Top = times.Top + times.CellHeight + 70
-150     pos_kerd2.Width = times.CellWidth
+130     pos_kerd2.Left = TIMES.Left + 2 * TIMES.CellWidth + 60
+140     pos_kerd2.Top = TIMES.Top + TIMES.CellHeight + 70
+150     pos_kerd2.Width = TIMES.CellWidth
         'timh xontrikhs
-160     lti.Left = times.Left + 3 * times.CellWidth + 80
-170     lti.Top = times.Top + times.CellHeight + 70
-180     lti.Width = times.CellWidth
+160     lti.Left = TIMES.Left + 3 * TIMES.CellWidth + 80
+170     lti.Top = TIMES.Top + TIMES.CellHeight + 70
+180     lti.Width = TIMES.CellWidth
         'timh xontrikhs me fpa
-190     XondrmeFPA.Left = times.Left + 4 * times.CellWidth + 90
-200     XondrmeFPA.Top = times.Top + times.CellHeight + 70
-210     XondrmeFPA.Width = times.CellWidth
+190     XondrmeFPA.Left = TIMES.Left + 4 * TIMES.CellWidth + 90
+200     XondrmeFPA.Top = TIMES.Top + TIMES.CellHeight + 70
+210     XondrmeFPA.Width = TIMES.CellWidth
 
         'markup lianikhs
-220     pos_kerd.Left = times.Left + 2 * times.CellWidth + 80
-230     pos_kerd.Top = times.Top + 2 * times.CellHeight + 70
-240     pos_kerd.Width = times.CellWidth
+220     pos_kerd.Left = TIMES.Left + 2 * TIMES.CellWidth + 80
+230     pos_kerd.Top = TIMES.Top + 2 * TIMES.CellHeight + 70
+240     pos_kerd.Width = TIMES.CellWidth
         'timh lianikhs me fpa
-250     lti5.Left = times.Left + 4 * times.CellWidth + 90
-260     lti5.Top = times.Top + 2 * times.CellHeight + 50
-270     lti5.Width = times.CellWidth
+250     lti5.Left = TIMES.Left + 4 * TIMES.CellWidth + 90
+260     lti5.Top = TIMES.Top + 2 * TIMES.CellHeight + 50
+270     lti5.Width = TIMES.CellWidth
 
-280     lti5.Height = times.CellHeight
+280     lti5.Height = TIMES.CellHeight
 
         '<EhFooter>
         Exit Sub
@@ -11317,7 +11318,7 @@ Sub MAKIS_ETIK()
 
         Dim MPER
 
-100     MPER = DATA2.Recordset("ONO")
+100     MPER = data2.Recordset("ONO")
 
         Dim mtimes, TIMM, pos_kerd
 
@@ -11372,7 +11373,7 @@ FIND_N_NUMBER:
 340     rec.Close
 
 350     mlabel = Right("00000000" + LTrim(str(rec("EPEL"))), 8)
-360     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + Data1.Recordset("KOD") + "'"
+360     Gdb.Execute "UPDATE EID SET ERG='" + mlabel + "' WHERE KOD='" + DATA1.Recordset("KOD") + "'"
 370     Return
 
         '<EhFooter>
@@ -11789,9 +11790,9 @@ Dim CC As String
 
 CC = F_ARXEIO_ETIK
 If Len(CC) = 0 Then
-     cd1.InitDir = "c:\mercvb"
-     cd1.ShowOpen
-     CC = cd1.FILENAME
+     CD1.InitDir = "c:\mercvb"
+     CD1.ShowOpen
+     CC = CD1.FILENAME
 End If
 
 On Error Resume Next
