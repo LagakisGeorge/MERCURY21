@@ -345,7 +345,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   281477121
+         Format          =   449249281
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -359,7 +359,7 @@ Begin VB.Form par1
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   281477122
+         Format          =   449249282
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -2063,7 +2063,7 @@ Begin VB.Form par1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   282853377
+      Format          =   449904641
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -5881,7 +5881,7 @@ OLD145:
         
               If F_DIOR = 0 Then  ' ÛÙÁÌ ‰ÈÔÒË˘ÛÁ ÙÈÏÔÎÔ„ÈÔı Ì· ÏÁÌ  ‚„·ÊÂÈ Ó·Ì· ÛıÌÔ‰ÂıÙÈÍÔ
         
-                 If f_hotel = 1 Then
+                 If f_hotel = 1 Or f_hotel = 11 Then
                      forosDiamonis id_num, f_matim, "1111", "e", "–≈À¢‘«” À…¡Õ… «”", 0, 100
                  ElseIf f_hotel = 2 Then  'maleas titlos kthshs
                      forosDiamonis id_num, f_matim, PEL.Recordset("KOD"), "e", PEL.Recordset("EPO"), 0.003, 50
@@ -17206,7 +17206,7 @@ Private Sub Form_Load()
 384     f_TIMES_METASX_DA = Val(FINDPARAMETROI(3, "PAR1", "f_CAPTION_METASX_DA", "0", "TO META”◊.(DA) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
 386     f_TIMES_METASX_TIM = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_TIM", "0", "TO META”◊.(TIM) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
 388     f_TIMES_METASX_LIAN = Val(FINDPARAMETROI(3, "PAR1", "f_TIMES_METASX_LIAN", "0", "TO META”◊.(LIAN) ME TIME”=0 ◊Ÿ—…” ‘…Ã≈”=1"))
-        f_hotel = Val(FINDPARAMETROI(3, "PAR1", "F_HOTEL", "0", "1=HOTEL ME AYTOMATO FORO 0=OXI 2=ÂÎ·ÔÙÒ"))
+        f_hotel = Val(FINDPARAMETROI(3, "PAR1", "F_HOTEL", "0", "1=HOTEL ME AYTOMATO FORO 0=OXI 2=ÂÎ·ÔÙÒ 11=RBNB "))
  
         'Dim f_TIMES_METASX_TIM As String  '  = FINDPARAMETROI(3, "PAR1", "f_CAPTION_METASX_TIM", "Iaoao?ciaoeoiuo oa TIM", "AoeeYoa iaoao?ciaoeoiiy oa TIM")
         'Dim f_TIMES_METASX_LIAN As String
@@ -27248,7 +27248,7 @@ Sub forosDiamonis(ByVal id_num As Long, ATIM As String, mPELKOD As String, EIDOS
             Gdb.Execute "UPDATE  DOKEGGTIMAKYR" + Format(id_num, "00000000") + " SET POSO=POSO*" + Format(POSOSTOPOSOTHTAS, "000") + "/100,EIDOS='" + EIDOSNEO + "',TIMM=" + Replace(Format(NEATIMH, "000.000"), ",", ".") + ",PELKOD='" + mPELKOD + "',HME='" + cHME + "',ATIM='" + atimakyr + "', ID_NUM=" + C_ID_NUM
             Gdb.Execute "UPDATE  DOKEGGTIMAKYR" + Format(id_num, "00000000") + " SET KODE='08', FPA=7,ONOMA='–’—«Õ¡”',KAU_AJIA=POSO*TIMM,MIK_AJIA=POSO*TIMM "
 Else
-         Gdb.Execute "UPDATE  DOKEGGTIMAKYR" + Format(id_num, "00000000") + " SET EIDOS='" + EIDOSNEO + "',KAU_AJIA=0,MIK_AJIA=0,TIMM=0,PELKOD='" + mPELKOD + "',HME='" + cHME + "',ATIM='" + atimakyr + "', ID_NUM=" + C_ID_NUM
+         Gdb.Execute "UPDATE  DOKEGGTIMAKYR" + Format(id_num, "00000000") + " SET FPA=7,EIDOS='" + EIDOSNEO + "',KAU_AJIA=0,MIK_AJIA=0,TIMM=0,PELKOD='" + mPELKOD + "',HME='" + cHME + "',ATIM='" + atimakyr + "', ID_NUM=" + C_ID_NUM
 End If
 
 146     Gdb.Execute "UPDATE  DOKEGGAKYR" + Format(id_num, "00000000") + " SET  EIDOS='" + EIDOSNEO + "', KOD='" + mPELKOD + "',HME='" + cHME + "', XREOSI=-XREOSI,PISTOSI=-PISTOSI,XRE=-XRE,ATIM='" + atimakyr + "',IDTIM=" + C_ID_NUM
@@ -27279,6 +27279,16 @@ End If
                 'Par7MyData.Visible = False
                    
 166             If SendAkyrToMyData = 1 Then
+                   
+                   If f_hotel = 11 Then
+                      ' À¡»œ”  ¡‘«√œ—…¡ ÷–¡ ¡¡ƒ≈=8 ( 7 ƒ… « Ã¡”)  ¡… ¡–¡ÀÀ¡√« 99)
+                   
+                   
+                       ' ¬¡À≈ ”≈…—¡ ”‘œ ¡ ’—Ÿ‘… œ …ƒ…œ Ã≈ ‘«Õ –¡—œ◊« ’–«—≈”…¡”
+                       Dim MSEIRAA As String
+                       MSEIRAA = GGET_CVALUE("SELECT SYNT_TITL FROM PARASTAT WHERE EIDOS='" + Left$(ATIM, 1) + "'")
+                       Gdb.Execute "UPDATE PARASTAT SET SYNT_TITL='" + MSEIRAA + "' WHERE EIDOS='" + akyr + "'"
+                   End If
                    
 168                 Dim mStelno As Integer: mStelno = 1
 170                 If mStelno = 1 Then
