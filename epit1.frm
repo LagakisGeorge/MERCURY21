@@ -1,20 +1,19 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Begin VB.Form EPIT1 
    BackColor       =   &H00FF0000&
    Caption         =   "Εισαγωγή Επιταγής"
-   ClientHeight    =   9315
+   ClientHeight    =   13500
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   15435
    LinkTopic       =   "Form2"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   9315
+   ScaleHeight     =   13500
    ScaleWidth      =   15435
    WindowState     =   2  'Maximized
    Begin VB.CheckBox ISXEIROGRAFO 
@@ -53,15 +52,14 @@ Begin VB.Form EPIT1
       Width           =   3495
    End
    Begin RichTextLib.RichTextBox RichTextBox1 
-      Height          =   135
+      Height          =   2415
       Left            =   120
       TabIndex        =   27
       Top             =   8520
-      Width           =   855
-      _ExtentX        =   1508
-      _ExtentY        =   238
+      Width           =   3135
+      _ExtentX        =   5530
+      _ExtentY        =   4260
       _Version        =   393217
-      Enabled         =   -1  'True
       TextRTF         =   $"epit1.frx":0004
    End
    Begin MSAdodcLib.Adodc Adodc1 
@@ -439,7 +437,7 @@ Begin VB.Form EPIT1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   129564673
+      Format          =   497942529
       CurrentDate     =   38814
    End
    Begin MSComCtl2.DTPicker hmel 
@@ -453,7 +451,7 @@ Begin VB.Form EPIT1
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   129564673
+      Format          =   497942529
       CurrentDate     =   38814
    End
    Begin VB.Label Label9 
@@ -804,7 +802,7 @@ Private Sub Command2_Click()
         
        '  Gdb.Execute "UPDATE XREOPIS SET ARITMISI=" + str(Val(Text1.Text)) + " 1  WHERE EIDOS=" + Right(Combo2.Text, 3)
 
-'         Dim R As New ADODB.Recordset
+         Dim R As New ADODB.Recordset
 '
 '          R.Open "SELECT ISNULL(ARITMISI,0)  FROM XREOPIS  WHERE EIDOS=" + Right(Combo2.Text, 3), Gdb, adOpenForwardOnly, adLockReadOnly
 '          If Not R.EOF Then
@@ -832,7 +830,8 @@ Private Sub Command2_Click()
         Dim DDD
 
         ' R.Close
-        'R.Open "SELECT ARITMISI FROM XREOPIS WHERE EIDOS=7", Gdb, adOpenForwardOnly, adLockReadOnly
+         Gdb.Execute "UPDATE XREOPIS SET ARITMISI=ARITMISI+1 WHERE EIDOS=" + Right(Combo2.Text, 3)
+        R.Open "SELECT ARITMISI FROM XREOPIS WHERE EIDOS=" + Right(Combo2.Text, 3), Gdb, adOpenForwardOnly, adLockReadOnly
         
         
         
@@ -848,7 +847,7 @@ Private Sub Command2_Click()
         
         
 
-100     DDD = Text1.Text  ' R("ARITMISI")
+100     DDD = R(0) 'Text1.Text  ' R("ARITMISI")
 
         ' R.Close
 
@@ -865,7 +864,7 @@ Private Sub Command2_Click()
 
 130     RR.Edit
 140     RR!n1 = Val(POSO.Text)    ' poso
-150     RR!PAR1 = DDD
+150     RR!PAR1 = str(DDD)
 
 160     RR!hme = hmee.Value
 
@@ -1912,10 +1911,10 @@ Private Sub Option1_Click(index As Integer)
         On Error GoTo Option1_Click_Err
 
         '</EhHeader>
-        Dim x
+        Dim X
 
-100     If Option1(1) Then x = "e" Else x = "r"
-110     gBuff = x
+100     If Option1(1) Then X = "e" Else X = "r"
+110     gBuff = X
 120     Option1_LostFocus index
 
         '<EhFooter>
@@ -2138,7 +2137,7 @@ Private Sub Text2_LostFocus(index As Integer)
         On Error GoTo Text2_LostFocus_Err
 
         '</EhHeader>
-        Dim x As String
+        Dim X As String
 
 100     Text2(index).BackColor = vbWhite
 
@@ -2146,35 +2145,35 @@ Private Sub Text2_LostFocus(index As Integer)
 
 120     Update.Enabled = False
 
-130     If Option1(1) Then x = "e" Else x = "r"
-140     gBuff = x
+130     If Option1(1) Then X = "e" Else X = "r"
+140     gBuff = X
 
 150     If gUserId = 2 Then
 
 160         If index = 1 Then  'eponumo
-170             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and EPO like '" + SameLetters(Text2(1).Text) + "%';"
+170             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + X + "' and EPO like '" + SameLetters(Text2(1).Text) + "%';"
             End If
 
 180         If index = 0 Then    'kodikos
-190             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and KOD like '" + SameLetters(Text2(0).Text) + "%';"
+190             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + X + "' and KOD like '" + SameLetters(Text2(0).Text) + "%';"
             End If
 
 200         If index = 2 Then    'afm
-210             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + x + "' and AFM like '" + SameLetters(Text2(2).Text) + "%';"
+210             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where KOD NOT LIKE '997%' AND KOD NOT LIKE '998%' AND EIDOS='" + X + "' and AFM like '" + SameLetters(Text2(2).Text) + "%';"
             End If
 
         Else
 
 220         If index = 1 Then  'eponumo
-230             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
+230             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + X + "' and EPO like '" + (SameLetters(Text2(1).Text)) + "%';"
             End If
 
 240         If index = 0 Then    'kodikos
-250             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and KOD like '" + (SameLetters(Text2(0).Text)) + "%';"
+250             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + X + "' and KOD like '" + (SameLetters(Text2(0).Text)) + "%';"
             End If
 
 260         If index = 2 Then    'afm
-270             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + x + "' and AFM like '" + (SameLetters(Text2(2).Text)) + "%';"
+270             Data1.RecordSource = "select KOD,EPO,STR(TYP,10,2),AYP,DOY,EPA,AFM,DIE from PEL where EIDOS='" + X + "' and AFM like '" + (SameLetters(Text2(2).Text)) + "%';"
             End If
         End If
 
