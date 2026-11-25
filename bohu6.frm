@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
 Begin VB.Form bohu6 
@@ -11,6 +11,7 @@ Begin VB.Form bohu6
    ClientTop       =   765
    ClientWidth     =   15555
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    ScaleHeight     =   9135
    ScaleWidth      =   15555
@@ -205,6 +206,22 @@ Begin VB.Form bohu6
       TabIndex        =   15
       Top             =   5640
       Width           =   7215
+      Begin VB.CommandButton cmdΑριθμοςΠαραστ 
+         Caption         =   "Αριθμος Παραστ/κων που κοπηκαν"
+         Height          =   675
+         Left            =   5280
+         TabIndex        =   63
+         Top             =   1095
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdTESTUBL 
+         Caption         =   "TEST UBL"
+         Height          =   360
+         Left            =   5760
+         TabIndex        =   62
+         Top             =   240
+         Width           =   990
+      End
       Begin VB.CommandButton CmdDiakinisi 
          Caption         =   "diakinisi"
          Height          =   360
@@ -255,11 +272,11 @@ Begin VB.Form bohu6
       End
       Begin VB.CommandButton Command26 
          Caption         =   "Παραμετροποιηση Παρόχου"
-         Height          =   255
+         Height          =   375
          Left            =   3720
          TabIndex        =   55
          Top             =   240
-         Width           =   2895
+         Width           =   1935
       End
       Begin VB.CommandButton SELECTTIM 
          Caption         =   "SELECTTIM"
@@ -288,11 +305,11 @@ Begin VB.Form bohu6
       End
       Begin VB.CommandButton IOSIFIDIS 
          Caption         =   "Αποστολή Αρχείου ASCII  σε Λογιστική"
-         Height          =   435
+         Height          =   675
          Left            =   3720
          TabIndex        =   22
-         Top             =   1335
-         Width           =   2880
+         Top             =   1095
+         Width           =   1440
       End
       Begin VB.CommandButton Command20 
          Caption         =   "ΜΕΤΑΤΡΟΠΗ ΚΙΝΗΣΕΩΝ ΤΑΜΕΙΑΚΗΣ ΣΕ ΠΑΡΑΣΤΑΤΙΚΑ"
@@ -875,6 +892,10 @@ Gdb.Execute sql
 
 End Sub
 
+Private Sub cmdTESTUBL_Click()
+  Text2.Text = "SELECT UBL ,EIDOS ,TITLOS FROM PARASTAT WHERE  ISMYDATA=1 AND EIDOS IN (select DISTINCT Left(ATIM,1) AS PAR FROM TIM ) order by TITLOS"
+End Sub
+
 Private Sub CmdupdateStructures_Click()
 Update_Structures
 End Sub
@@ -887,6 +908,10 @@ Private Sub cmdWebservice_Click()
   
   
   
+End Sub
+
+Private Sub cmdΑριθμοςΠαραστ_Click()
+  Text2.Text = "select count(*) ,left(ATIM,1) AS PAR FROM TIM GROUP BY left(ATIM,1)"
 End Sub
 
 Private Sub cmdΤΗΛΕΦ_Click()
@@ -947,13 +972,13 @@ Private Sub Command11_Click()
 
         '</EhHeader>
 
-100     cd1.InitDir = "c:\mercvb\queries"
+100     CD1.InitDir = "c:\mercvb\queries"
 
-110     cd1.ShowSave
+110     CD1.ShowSave
 
         Dim F
 
-120     F = cd1.FILENAME
+120     F = CD1.FILENAME
 
         On Error Resume Next
 
@@ -1198,7 +1223,7 @@ Private Sub Command15_Click()
 150     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 160     fSCR.language = "vbscript"
 170     fSCR.addObject "ADODC2", Adodc2
-180     fSCR.addObject "mactext", MACtEXT
+180     fSCR.addObject "mactext", mactext
 
         ' Me.Caption = mac("Adodc2.Recordset(0)")  ok 6-12-06
 
@@ -1271,7 +1296,7 @@ Private Sub Command17_Click()
 
 'TeST git
 
-If times.Value = vbChecked Then
+If TIMES.Value = vbChecked Then
     TIMES_UPD
 End If
 
@@ -1992,7 +2017,7 @@ Private Sub IOSIFIDIS_Click()
 140     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 150     fSCR.language = "vbscript"
 160     fSCR.addObject "R", Adodc2.Recordset
-170     fSCR.addObject "mactext", MACtEXT
+170     fSCR.addObject "mactext", mactext
 
 180     F928 = 0
 
@@ -2275,7 +2300,7 @@ Function ToAsciiMultiLine(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim EGGTIM As Recordset
+        Dim eggtim As Recordset
 
         Dim m_entol_ektyp
 
@@ -2373,7 +2398,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim EGGTIM As Recordset
+        Dim eggtim As Recordset
 
         Dim m_entol_ektyp
 
@@ -3173,10 +3198,10 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         Adodc2.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         Adodc2.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
 150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
@@ -3383,9 +3408,9 @@ End Sub
            
            Else
               ' DBGrid1.Visible = True
-150             data2.Connect = "ODBC;" + gConnect
-                data2.RecordSource = Text2.Text
-170             data2.Refresh
+150             Data2.Connect = "ODBC;" + gConnect
+                Data2.RecordSource = Text2.Text
+170             Data2.Refresh
            End If
            
 160
@@ -3454,12 +3479,12 @@ Private Sub update_sql_from_dbf(arxeio As String)
 130     sql.Open conSQL
         'SET DBF=DATA.Open conDBF
 
-140     data1.DatabaseName = Text1.Text
+140     Data1.DatabaseName = Text1.Text
 
-150     data1.RecordSource = arxeio
-160     data1.Refresh
+150     Data1.RecordSource = arxeio
+160     Data1.Refresh
 
-170     Set rDBF = data1.Recordset
+170     Set rDBF = Data1.Recordset
 
 180     Label1.Caption = arxeio + " " + Format(rDBF.RecordCount, "######")
 190     sql.Execute "DELETE FROM " + arxeio
@@ -4773,7 +4798,7 @@ Private Sub TDBGrid_GroupColMove(ByVal Position As Integer, _
 
 150     TDBGrid.HoldFields
 
-160     Adodc2.Recordset.Sort = strSort
+160     Adodc2.Recordset.sort = strSort
 
         '<EhFooter>
         Exit Sub
@@ -4802,7 +4827,7 @@ Function mac(ByVal s As String) As String
 
         On Error GoTo mac_Err
 
-100     MACtEXT.Text = "   "
+100     mactext.Text = "   "
 
         On Error GoTo err2
 
@@ -4810,9 +4835,9 @@ Function mac(ByVal s As String) As String
 120     fSCR.ExecuteStatement X
 
 130     If F928 = 1 Then
-140         mac = MACtEXT.Text
+140         mac = mactext.Text
         Else
-150         mac = to437(MACtEXT.Text)
+150         mac = to437(mactext.Text)
         End If
 
         Exit Function
