@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form bohu5 
    BackColor       =   &H00FF0000&
    Caption         =   "Imports"
@@ -411,7 +411,7 @@ Begin VB.Form bohu5
          _ExtentX        =   3016
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   168951809
+         Format          =   444661761
          CurrentDate     =   39117
       End
       Begin VB.Label Label3 
@@ -4239,7 +4239,7 @@ F_LINKED_PARAST = (FINDPARAMETROI(1, "BOHU5", "F_LINKED_PARAST", "AT", " Ÿƒ… œ… 
 
 
 
- If InStr(F_DOUTSIOSREM, "49705") = 0 Then
+ If InStr(F_DOUTSIOSREM, "5") = 0 Then
     IMPORTSERV.Enabled = False
     
     
