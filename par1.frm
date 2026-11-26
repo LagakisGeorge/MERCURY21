@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "msflxgrd.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "mshflxgd.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#4.6#0"; "crystl32.ocx"
 Object = "{562E3E04-2C31-4ECE-83F4-4017EEE51D40}#8.0#0"; "todg8.ocx"
@@ -13,15 +13,15 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form par1 
    BackColor       =   &H00FF0000&
    Caption         =   "Νέο Παραστατικό"
-   ClientHeight    =   12510
-   ClientLeft      =   -5595
+   ClientHeight    =   12516
+   ClientLeft      =   -5592
    ClientTop       =   540
    ClientWidth     =   19260
    ForeColor       =   &H0000FF00&
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MDIChild        =   -1  'True
-   ScaleHeight     =   12510
+   ScaleHeight     =   12516
    ScaleWidth      =   19260
    WindowState     =   2  'Maximized
    Begin VB.CommandButton Command10 
@@ -100,8 +100,8 @@ Begin VB.Form par1
    Begin VB.PictureBox Picture1 
       Height          =   492
       Left            =   18480
-      ScaleHeight     =   435
-      ScaleWidth      =   435
+      ScaleHeight     =   444
+      ScaleWidth      =   444
       TabIndex        =   154
       TabStop         =   0   'False
       Top             =   480
@@ -148,8 +148,8 @@ Begin VB.Form par1
       TabIndex        =   139
       Top             =   720
       Width           =   4845
-      _ExtentX        =   8546
-      _ExtentY        =   6006
+      _ExtentX        =   8551
+      _ExtentY        =   6011
       _Version        =   393216
       TabHeight       =   520
       BackColor       =   -2147483635
@@ -340,12 +340,12 @@ Begin VB.Form par1
          TabIndex        =   171
          Top             =   840
          Width           =   1215
-         _ExtentX        =   2143
-         _ExtentY        =   556
+         _ExtentX        =   2138
+         _ExtentY        =   550
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   449249281
+         Format          =   200474625
          CurrentDate     =   38294
       End
       Begin MSComCtl2.DTPicker ORAPARAD 
@@ -354,12 +354,12 @@ Begin VB.Form par1
          TabIndex        =   172
          Top             =   1440
          Width           =   1215
-         _ExtentX        =   2143
-         _ExtentY        =   556
+         _ExtentX        =   2138
+         _ExtentY        =   550
          _Version        =   393216
          CalendarTitleBackColor=   16711680
          CalendarTrailingForeColor=   16711680
-         Format          =   449249282
+         Format          =   200474626
          CurrentDate     =   38294
       End
       Begin VB.Label EPOtritou 
@@ -562,7 +562,7 @@ Begin VB.Form par1
          BackColor       =   &H00FFFFC0&
          BeginProperty Font 
             Name            =   "Courier New"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -606,7 +606,7 @@ Begin VB.Form par1
          Caption         =   "AME EGTL"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -624,7 +624,7 @@ Begin VB.Form par1
          Caption         =   "Diesel Θέρμ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -642,7 +642,7 @@ Begin VB.Form par1
          Caption         =   "Αμολ.100"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -662,7 +662,7 @@ Begin VB.Form par1
          Caption         =   "VPAM98"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -682,7 +682,7 @@ Begin VB.Form par1
          Caption         =   "Αμόλυβδη 95"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -702,7 +702,7 @@ Begin VB.Form par1
          Caption         =   "V Power"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -722,7 +722,7 @@ Begin VB.Form par1
          Caption         =   "Diesel Κίν"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -815,7 +815,7 @@ Begin VB.Form par1
          BackColor       =   &H00FFFFC0&
          BeginProperty Font 
             Name            =   "Courier New"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -870,7 +870,7 @@ Begin VB.Form par1
          Caption         =   "Εντολέας"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -926,7 +926,7 @@ Begin VB.Form par1
          Caption         =   "Περιγραφή"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -946,7 +946,7 @@ Begin VB.Form par1
          Caption         =   "Αριθ.Τεμαχίων"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -966,7 +966,7 @@ Begin VB.Form par1
          Caption         =   "Είδος Συσκευασίας"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -986,7 +986,7 @@ Begin VB.Form par1
          Caption         =   "Είδος Εμπορεύματος"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -1006,7 +1006,7 @@ Begin VB.Form par1
          Caption         =   "Μικ.Βάρος"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -1093,7 +1093,7 @@ Begin VB.Form par1
       Top             =   9840
       Width           =   1200
       _ExtentX        =   2117
-      _ExtentY        =   661
+      _ExtentY        =   656
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1124,7 +1124,7 @@ Begin VB.Form par1
       Caption         =   "PARTIDES"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1184,8 +1184,8 @@ Begin VB.Form par1
    Begin MSCommLib.MSComm MSComm1 
       Left            =   1680
       Top             =   10200
-      _ExtentX        =   1005
-      _ExtentY        =   1005
+      _ExtentX        =   995
+      _ExtentY        =   995
       _Version        =   393216
       DTREnable       =   -1  'True
    End
@@ -1205,8 +1205,8 @@ Begin VB.Form par1
       Top             =   4560
       Visible         =   0   'False
       Width           =   3225
-      _ExtentX        =   5689
-      _ExtentY        =   4471
+      _ExtentX        =   5694
+      _ExtentY        =   4466
       _Version        =   393216
       Rows            =   12
       Cols            =   3
@@ -1218,7 +1218,7 @@ Begin VB.Form par1
       Visible         =   0   'False
       Width           =   1200
       _ExtentX        =   2117
-      _ExtentY        =   582
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1249,7 +1249,7 @@ Begin VB.Form par1
       Caption         =   "Adodc1"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1266,7 +1266,7 @@ Begin VB.Form par1
       Top             =   8040
       Width           =   10428
       _ExtentX        =   18415
-      _ExtentY        =   4154
+      _ExtentY        =   4149
       _LayoutType     =   0
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -1280,7 +1280,7 @@ Begin VB.Form par1
       Columns(1)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns.Count   =   2
       Splits(0)._UserFlags=   0
-      Splits(0).RecordSelectorWidth=   688
+      Splits(0).RecordSelectorWidth=   699
       Splits(0)._SavedRecordSelectors=   -1  'True
       Splits(0).DividerColor=   14215660
       Splits(0).SpringMode=   0   'False
@@ -1297,8 +1297,8 @@ Begin VB.Form par1
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
-      PrintInfos(0).PageHeaderFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
-      PrintInfos(0).PageFooterFont=   "Size=8.25,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageHeaderFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
+      PrintInfos(0).PageFooterFont=   "Size=7.8,Charset=161,Weight=400,Underline=0,Italic=0,Strikethrough=0,Name=MS Sans Serif"
       PrintInfos(0).PageHeaderHeight=   0
       PrintInfos(0).PageFooterHeight=   0
       PrintInfos.Count=   1
@@ -1414,8 +1414,8 @@ Begin VB.Form par1
       TabIndex        =   29
       Top             =   4845
       Width           =   5565
-      _ExtentX        =   9816
-      _ExtentY        =   4789
+      _ExtentX        =   9821
+      _ExtentY        =   4784
       _Version        =   393216
       AllowUpdate     =   0   'False
       BackColor       =   11064319
@@ -1423,7 +1423,7 @@ Begin VB.Form par1
       RowHeight       =   20
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1432,7 +1432,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Courier New"
-         Size            =   8.25
+         Size            =   8.4
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1540,7 +1540,7 @@ Begin VB.Form par1
       Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -1651,8 +1651,8 @@ Begin VB.Form par1
    Begin Crystal.CrystalReport CrystalReport1 
       Left            =   2625
       Top             =   9600
-      _ExtentX        =   741
-      _ExtentY        =   741
+      _ExtentX        =   593
+      _ExtentY        =   593
       _Version        =   262150
       Destination     =   1
       PrintFileType   =   5
@@ -1665,7 +1665,7 @@ Begin VB.Form par1
       Top             =   4920
       Width           =   5340
       _ExtentX        =   9419
-      _ExtentY        =   4683
+      _ExtentY        =   4678
       _Version        =   393216
       _NumberOfBands  =   1
       _Band(0).Cols   =   2
@@ -1676,8 +1676,8 @@ Begin VB.Form par1
       Top             =   9600
       Visible         =   0   'False
       Width           =   2055
-      _ExtentX        =   3625
-      _ExtentY        =   582
+      _ExtentX        =   3620
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1708,7 +1708,7 @@ Begin VB.Form par1
       Caption         =   "DOK"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1723,8 +1723,8 @@ Begin VB.Form par1
       Top             =   9270
       Visible         =   0   'False
       Width           =   2175
-      _ExtentX        =   3836
-      _ExtentY        =   661
+      _ExtentX        =   3831
+      _ExtentY        =   656
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1755,7 +1755,7 @@ Begin VB.Form par1
       Caption         =   "EGGTIM"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1770,8 +1770,8 @@ Begin VB.Form par1
       Top             =   9270
       Visible         =   0   'False
       Width           =   1815
-      _ExtentX        =   3201
-      _ExtentY        =   661
+      _ExtentX        =   3196
+      _ExtentY        =   656
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1802,7 +1802,7 @@ Begin VB.Form par1
       Caption         =   "PEL"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -1817,8 +1817,8 @@ Begin VB.Form par1
       Top             =   9480
       Visible         =   0   'False
       Width           =   1455
-      _ExtentX        =   2566
-      _ExtentY        =   582
+      _ExtentX        =   2561
+      _ExtentY        =   572
       ConnectMode     =   0
       CursorLocation  =   3
       IsolationLevel  =   -1
@@ -1849,7 +1849,7 @@ Begin VB.Form par1
       Caption         =   "EID"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2033,7 +2033,7 @@ Begin VB.Form par1
       Top             =   1320
       Width           =   10320
       _ExtentX        =   18203
-      _ExtentY        =   6165
+      _ExtentY        =   6160
       _Version        =   393216
       BackColor       =   16744576
       Rows            =   300
@@ -2042,7 +2042,7 @@ Begin VB.Form par1
       AllowUserResizing=   1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2058,12 +2058,12 @@ Begin VB.Form par1
       TabIndex        =   5
       Top             =   240
       Width           =   1215
-      _ExtentX        =   2143
-      _ExtentY        =   556
+      _ExtentX        =   2138
+      _ExtentY        =   550
       _Version        =   393216
       CalendarTitleBackColor=   16711680
       CalendarTrailingForeColor=   16711680
-      Format          =   449904641
+      Format          =   199294977
       CurrentDate     =   38294
    End
    Begin MSDataGridLib.DataGrid GridPelaton 
@@ -2073,7 +2073,7 @@ Begin VB.Form par1
       TabIndex        =   27
       Top             =   1320
       Width           =   10296
-      _ExtentX        =   18150
+      _ExtentX        =   18140
       _ExtentY        =   6138
       _Version        =   393216
       AllowUpdate     =   0   'False
@@ -2085,7 +2085,7 @@ Begin VB.Form par1
       RowDividerStyle =   6
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2094,7 +2094,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   0   'False
@@ -2145,7 +2145,7 @@ Begin VB.Form par1
       Top             =   3120
       Visible         =   0   'False
       Width           =   3765
-      _ExtentX        =   6641
+      _ExtentX        =   6646
       _ExtentY        =   1799
       _Version        =   393216
       AllowUpdate     =   -1  'True
@@ -2156,7 +2156,7 @@ Begin VB.Form par1
       AllowAddNew     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2165,7 +2165,7 @@ Begin VB.Form par1
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "System"
-         Size            =   9.75
+         Size            =   9.6
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2372,7 +2372,7 @@ Begin VB.Form par1
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2390,7 +2390,7 @@ Begin VB.Form par1
          BackColor       =   &H000080FF&
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2497,7 +2497,7 @@ Begin VB.Form par1
          Caption         =   "Πληρωτέο"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2518,7 +2518,7 @@ Begin VB.Form par1
          Caption         =   "Φόροι/Παρακρ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2538,7 +2538,7 @@ Begin VB.Form par1
          Caption         =   "Απαλλαγές ΦΠΑ"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2568,7 +2568,7 @@ Begin VB.Form par1
          Caption         =   "Ισοτιμία"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2587,7 +2587,7 @@ Begin VB.Form par1
          Caption         =   "άλλα έξοδα"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   161
             Weight          =   700
             Underline       =   0   'False
@@ -2607,7 +2607,7 @@ Begin VB.Form par1
       Caption         =   "Γεν.Εκπτωση"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2626,7 +2626,7 @@ Begin VB.Form par1
       Caption         =   "DEL ADDRES              /SXOLIA"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2645,7 +2645,7 @@ Begin VB.Form par1
       Caption         =   "cont          Αρ.Αυτοκ."
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -2664,7 +2664,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2682,7 +2682,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2700,7 +2700,7 @@ Begin VB.Form par1
       BackColor       =   &H00FF8080&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2799,7 +2799,7 @@ Begin VB.Form par1
       Caption         =   "ΦΠΑ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2852,7 +2852,7 @@ Begin VB.Form par1
       Caption         =   "Πληρωτέο"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2905,7 +2905,7 @@ Begin VB.Form par1
       Caption         =   "Προσοχή οι τιμες είναι με ΦΠΑ"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -2924,7 +2924,7 @@ Begin VB.Form par1
       Caption         =   "DESTIN    proorismos"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2944,7 +2944,7 @@ Begin VB.Form par1
       Caption         =   "DEL.TERMS    fort"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2963,7 +2963,7 @@ Begin VB.Form par1
       Caption         =   "DEL.TIM      skopos"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -2982,7 +2982,7 @@ Begin VB.Form par1
       Caption         =   "PAYM.TERM"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   400
          Underline       =   -1  'True
@@ -3028,7 +3028,7 @@ Begin VB.Form par1
       Caption         =   "Σειρά"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3047,7 +3047,7 @@ Begin VB.Form par1
       Caption         =   "Αριθμός"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -3066,7 +3066,7 @@ Begin VB.Form par1
       Caption         =   "Παραστατικό"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3085,7 +3085,7 @@ Begin VB.Form par1
       Caption         =   "Είδος"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3105,7 +3105,7 @@ Begin VB.Form par1
       Caption         =   "Αποθήκη"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -3125,7 +3125,7 @@ Begin VB.Form par1
       Caption         =   "Πωλητής"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   -1  'True
@@ -3144,7 +3144,7 @@ Begin VB.Form par1
       Caption         =   "Διεύθυνση"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3164,7 +3164,7 @@ Begin VB.Form par1
       Caption         =   "Α.Φ.Μ."
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3184,7 +3184,7 @@ Begin VB.Form par1
       Caption         =   "Επώνυμο"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -3204,7 +3204,7 @@ Begin VB.Form par1
       Caption         =   "Κωδικός"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   161
          Weight          =   700
          Underline       =   0   'False
@@ -5019,11 +5019,18 @@ Public Sub SaveParastat(ByVal isAkyrotiko As Boolean)
 Dim m_ok_ektyposi As Integer
 m_ok_ektyposi = 1
 If F_PAROCHOS = 1 And f_Stalthke_seParoxo = 0 Then
-    If MsgBox("ΔΕΝ ΠΗΡΕ ΜΑΡΚ. ΝΑ ΕΚΥΠΩΘΕΙ;", vbYesNo) = vbNo Then
-       m_ok_ektyposi = 0
-
-    End If
+    Dim IsMyDaOrPar As String
+    IsMyDaOrPar = GGET_CVALUE("select ISNULL(UBL,'000') FROM PARASTAT WHERE EIDOS='" + Left(f_matim, 1) + "'")
+    If IsMyDaOrPar = "000" Then
     
+    Else
+      If GGET_NVALUE("SELECT ISNULL(ISMYDATA,0)  FROM PARASTAT WHERE EIDOS='" + Left(f_matim, 1) + "'") = 1 Then
+        If MsgBox("ΔΕΝ ΠΗΡΕ ΜΑΡΚ. ΝΑ ΕΚΥΠΩΘΕΙ;", vbYesNo) = vbNo Then
+           m_ok_ektyposi = 0
+
+        End If
+      End If
+    End If
 
 End If
 
@@ -16243,11 +16250,24 @@ ORAPARAD.Value = re("ORAPARAD")
 564             SynoloG.Caption = Format(MAJI, "#####0.00")
 566             sfpa.Caption = Format(MFPA, "#####0.00")
     
+               
+    
+    
+    
 568             If MAJI > gVal(SynoloG.Caption) Then
 570                 f_strogg = -0.01
                 Else
 572                 f_strogg = 0.01
                 End If
+                
+                 If gVal(synolo.Caption) = 0 Then ' ΑΝ Η ΚΑΘΑΡΗ ΑΞΙΑ ΕΙΝΑΙ 0 ΤΟΤΕ ΚΑΙ ΤΟ ΦΠΑ=0 ΚΑΙ ΤΟ ΣΥΝΟΛΟ=0
+                      SynoloG.Caption = Format(0, "#####0.00")
+                      sfpa.Caption = Format(0, "#####0.00")
+                      MAJI = 0
+                      f_strogg = 0
+                 End If
+                
+                
 
             End If
 
