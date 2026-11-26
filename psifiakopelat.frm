@@ -24,6 +24,16 @@ Begin VB.Form psifiakopelat
    ScaleWidth      =   21690
    ShowInTaskbar   =   0   'False
    WindowState     =   2  'Maximized
+   Begin VB.ComboBox ComCOUNTRY 
+      Height          =   315
+      ItemData        =   "psifiakopelat.frx":0000
+      Left            =   12600
+      List            =   "psifiakopelat.frx":000A
+      Style           =   2  'Dropdown List
+      TabIndex        =   51
+      Top             =   1200
+      Width           =   855
+   End
    Begin VB.CommandButton Command4 
       Caption         =   "¡Õ‘…”‘œ…◊…”« ‘…ÃœÀ.Ã≈ Ã¡— "
       Height          =   375
@@ -114,9 +124,9 @@ Begin VB.Form psifiakopelat
    End
    Begin VB.ComboBox InvoiceKind 
       Height          =   315
-      ItemData        =   "psifiakopelat.frx":0000
+      ItemData        =   "psifiakopelat.frx":0016
       Left            =   7320
-      List            =   "psifiakopelat.frx":0010
+      List            =   "psifiakopelat.frx":0026
       Style           =   2  'Dropdown List
       TabIndex        =   26
       Top             =   2350
@@ -124,9 +134,9 @@ Begin VB.Form psifiakopelat
    End
    Begin VB.ComboBox providedServiceCategory 
       Height          =   315
-      ItemData        =   "psifiakopelat.frx":0051
+      ItemData        =   "psifiakopelat.frx":0067
       Left            =   360
-      List            =   "psifiakopelat.frx":0053
+      List            =   "psifiakopelat.frx":0069
       Style           =   2  'Dropdown List
       TabIndex        =   25
       Top             =   2350
@@ -258,7 +268,7 @@ Begin VB.Form psifiakopelat
          _ExtentX        =   3836
          _ExtentY        =   503
          _Version        =   393216
-         Format          =   456785921
+         Format          =   316538881
          CurrentDate     =   45743
       End
       Begin VB.Label Label1 
@@ -311,9 +321,9 @@ Begin VB.Form psifiakopelat
          Strikethrough   =   0   'False
       EndProperty
       Height          =   405
-      ItemData        =   "psifiakopelat.frx":0055
+      ItemData        =   "psifiakopelat.frx":006B
       Left            =   6600
-      List            =   "psifiakopelat.frx":0057
+      List            =   "psifiakopelat.frx":006D
       TabIndex        =   8
       Top             =   1560
       Width           =   2535
@@ -329,9 +339,9 @@ Begin VB.Form psifiakopelat
          Strikethrough   =   0   'False
       EndProperty
       Height          =   405
-      ItemData        =   "psifiakopelat.frx":0059
+      ItemData        =   "psifiakopelat.frx":006F
       Left            =   3960
-      List            =   "psifiakopelat.frx":005B
+      List            =   "psifiakopelat.frx":0071
       Style           =   2  'Dropdown List
       TabIndex        =   7
       Top             =   1560
@@ -476,14 +486,14 @@ Begin VB.Form psifiakopelat
       Width           =   16575
       Begin VB.TextBox sxolia2 
          Height          =   372
-         Left            =   9960
+         Left            =   9600
          TabIndex        =   46
          Top             =   360
-         Width           =   4092
+         Width           =   3735
       End
    End
    Begin TrueOleDBGrid80.TDBGrid CARGrid 
-      Bindings        =   "psifiakopelat.frx":005D
+      Bindings        =   "psifiakopelat.frx":0073
       Height          =   2800
       Left            =   0
       TabIndex        =   38
@@ -654,7 +664,7 @@ Begin VB.Form psifiakopelat
       _Version        =   393216
    End
    Begin TrueOleDBGrid80.TDBGrid TDBGrid 
-      Bindings        =   "psifiakopelat.frx":0070
+      Bindings        =   "psifiakopelat.frx":0086
       Height          =   2000
       Left            =   0
       TabIndex        =   45
@@ -822,7 +832,7 @@ Begin VB.Form psifiakopelat
       Width           =   1572
    End
    Begin TrueOleDBGrid80.TDBGrid TIMGrid 
-      Bindings        =   "psifiakopelat.frx":0089
+      Bindings        =   "psifiakopelat.frx":009F
       Height          =   2100
       Left            =   0
       TabIndex        =   5
@@ -1295,7 +1305,7 @@ Function fupdateclient(Message As Integer, ByVal clientID As String, _
         
         
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 100     Set docStock = New MSXML2.DOMDocument
 
@@ -1573,7 +1583,7 @@ Function fupdateclientFIM(Message As Integer, ByVal clientID As String, ByVal Se
         
         
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 100     Set docStock = New MSXML2.DOMDocument
 
@@ -1807,7 +1817,7 @@ Function fupdateclientTIM(Message As Integer, ByVal clientID As String, _
         
         
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 100     Set docStock = New MSXML2.DOMDocument
 
@@ -1845,9 +1855,15 @@ Function fupdateclientTIM(Message As Integer, ByVal clientID As String, _
               Set elem2Field = docStock.createElement("dcrudt:invoiceCounterparty"): elem2Field.Text = AFM: elemStock.appendChild elem2Field
          End If
 
+          Dim MGR As String
 
 
-           Set elem2Field = docStock.createElement("dcrudt:invoiceCounterpartyCountry"): elem2Field.Text = "GR": elemStock.appendChild elem2Field
+          MGR = GGET_CVALUE("SELECT COUNTRY FROM CARS WHERE NEWDIGITALCLIENTID='" + clientID + "'")
+          If Len(MGR) < 2 Then
+             MGR = "GR"
+          End If
+           
+          Set elem2Field = docStock.createElement("dcrudt:invoiceCounterpartyCountry"): elem2Field.Text = MGR: elemStock.appendChild elem2Field
              
             
             
@@ -2096,9 +2112,9 @@ Public Sub loadpar72()
             End If
 
 
-210         PAROX_USER = CNull(R.Fields("PAROXUSER").Value) '"glagakis@gmail.com"
-212         PAROX_PASS = CNull(R.Fields("PAROXPASS").Value) '"y39213921!!Y"
-214         PAROX_KEY = CNull(R.Fields("PAROXKEY").Value) '"32657FD7929B483AABBD1C633401E945"
+210         PAROX_USER = CNull(R.FIELDS("PAROXUSER").Value) '"glagakis@gmail.com"
+212         PAROX_PASS = CNull(R.FIELDS("PAROXPASS").Value) '"y39213921!!Y"
+214         PAROX_KEY = CNull(R.FIELDS("PAROXKEY").Value) '"32657FD7929B483AABBD1C633401E945"
 
         End If
  
@@ -2275,7 +2291,7 @@ Public Function newclient2(Message As Integer, ByVal garaz3epark2 As Integer, _
 
         Dim elemField As MSXML2.IXMLDOMElement
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 106    ' varStock = Array(Array("≈’—Ÿ12345", 10.32), Array("•45632", 5.43)) 'Yen sign used here to show Unicode.  '
     
@@ -2580,7 +2596,7 @@ End Sub
 
         Dim elemField As MSXML2.IXMLDOMElement
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 100     Set docStock = New MSXML2.DOMDocument
 
@@ -3033,7 +3049,7 @@ Private Function killClient(ByVal park2garage3 As Integer, ByVal clientID As Str
    
      
 
-        Dim i         As Integer
+        Dim I         As Integer
     
 
 
@@ -3184,7 +3200,7 @@ Private Sub LOADFORM()
         ADD_FIELD "CARS", "CANCELEDID", "VARCHAR(15)"
         ADD_FIELD "CARS", "HME", "DATETIME"
         ADD_FIELD "CARS", "COMMENTS", "VARCHAR(120)"
-        
+        ADD_FIELD "CARS", "COUNTRY", "VARCHAR(3)"
         
         ADD_FIELD "CARS", "AFM", "VARCHAR(10)"
          ADD_FIELD "CARS", "COMPLETIONID", "VARCHAR(15)"
@@ -3339,17 +3355,20 @@ End If
         '7 = ’ÁÒÂÛﬂ· ¬‹ÛÂÈ ‘ÈÏÔÍ·Ù·Î¸„Ôı (–‹ÒÍÈÌ„Í/ –ÎıÌÙﬁÒÈ·)
         '8 = ’ÁÒÂÛﬂ·  ·Ù¸ÈÌ ”ıÏˆ˘Ìﬂ·Ú (–‹ÒÍÈÌ„Í/ –ÎıÌÙﬁÒÈ·)
         '9 = …‰È¸˜ÒÁÛÁ (–‹ÒÍÈÌ„Í/ –ÎıÌÙﬁÒÈ·,”ıÌÂÒ„Âﬂ·)
+        
+        ComCOUNTRY.Text = ComCOUNTRY.List(0)
+        
         If F_ISCAR = 1 Then
 160         R.Open "SELECT * FROM PINAKES WHERE TYPOS=52 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
-            Dim i As Integer
-            i = 0
+            Dim I As Integer
+            I = 0
 170         Do While Not R.EOF
-                i = i + 1
+                I = I + 1
 180             providedServiceCategory.AddItem str(R!AYJON) + ";" + R!PERIGRAFH
             
 190             R.MoveNext
             Loop
-            If i = 0 Then
+            If I = 0 Then
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (52,1,'1 ≈Ò„·Ûﬂ· ÏÂ ·ÌÙ·ÎÎ·ÍÙÈÍ‹',1 )"
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (52,2,'2 ≈Ò„·Ûﬂ· ÏÂ ·ÌÙ·ÎÎ·ÍÙÈÍ‹ ÂÎ‹ÙÁ',2 )"
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (52,3,'3 ≈Ò„·Ûﬂ· ˜˘ÒﬂÚ ·ÌÙ·ÎÎ·ÍÙÈÍ‹ ',3 )"
@@ -3367,14 +3386,14 @@ End If
 
 1160        R.Open "SELECT * FROM PINAKES WHERE TYPOS=53 ORDER BY AYJON", Gdb, adOpenDynamic, adLockOptimistic
            
-            i = 0
+            I = 0
 1170        Do While Not R.EOF
-                i = i + 1
+                I = I + 1
 1180            providedServiceCategory.AddItem str(R!AYJON) + ";" + R!PERIGRAFH
             
 1190            R.MoveNext
             Loop
-            If i = 0 Then
+            If I = 0 Then
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (53,1,'4 ƒ˘ÒÂ‹Ì ıÁÒÂÛﬂ· ',4 )"
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (53,2,'5 ÀÔÈ· ',5 )"
                 Gdb.Execute "insert into PINAKES (TYPOS,AYJON,PERIGRAFH,TIMH) VALUES (53,3,'7 ‘ÈÏÔÍ·Ù‹ÎÔ„ÔÚ ',7 )"
@@ -4406,7 +4425,7 @@ If Len(vid) > 10 Then
 '   UPDATE_PEL "VEHICLECATEGORY", Left(VCAT.Text, Adodc1.Recordset("VEHICLECATEGORY").DefinedSize), 0, x, MKOD
 '   UPDATE_PEL "VEHICLEFACTORY", Left(VFACT.Text, Adodc1.Recordset("VEHICLEFACTORY").DefinedSize), 0, x, MKOD
 '   UPDATE_PEL "NEWDIGITALCLIENTID", Left(vid, Adodc1.Recordset("NEWDIGITALCLIENTID").DefinedSize), 0, x, MKOD
-   Gdb.Execute "INSERT INTO CARS(COMMENTS,VEHICLEREGISTRATIONNUMBER,VEHICLECATEGORY,VEHICLEFACTORY,NEWDIGITALCLIENTID,HME) VALUES ('" + txSXOLIA.Text + "','" + ARKYKL.Text + "','" + VCAT.Text + "','" + VFACT.Text + "','" + vid + "',GETDATE() )"
+   Gdb.Execute "INSERT INTO CARS(COUNTRY,COMMENTS,VEHICLEREGISTRATIONNUMBER,VEHICLECATEGORY,VEHICLEFACTORY,NEWDIGITALCLIENTID,HME) VALUES ('" + ComCOUNTRY.Text + "','" + txSXOLIA.Text + "','" + ARKYKL.Text + "','" + VCAT.Text + "','" + VFACT.Text + "','" + vid + "',GETDATE() )"
    
  End If
  
@@ -4421,6 +4440,9 @@ End Sub
 
 Private Sub cmdNEA_Click()
   cmdKatax.Enabled = True
+   If Len(Trim(ComCOUNTRY.Text)) = 0 Then
+           ComCOUNTRY.Text = ComCOUNTRY.List(0)
+   End If
   
 End Sub
 
@@ -4434,7 +4456,7 @@ Private Sub cmdOLD_Click()
         ' = 3600
         AdoCarsOLD.Refresh
         'ADOCARGrid.columns(1).Width = 3600
-
+       
 
 End Sub
 
@@ -4472,7 +4494,7 @@ Dim URL22 As String
 
         Dim elemField As MSXML2.IXMLDOMElement
 
-        Dim i         As Integer
+        Dim I         As Integer
     
         ''102     Set docStock = New MSXML2.DOMDocument
         ''104     With docStock
@@ -4815,12 +4837,17 @@ Private Sub Command3_Click()
     Dim iInvoiceKind As Integer: iInvoiceKind = Val(Left$(InvoiceKind.Text, 2))
     
     If iInvoiceKind = 2 Then 'TIMOLOGIO
+      If GGET_CVALUE("SELECT COUNTRY FROM CARS WHERE ID=" + ID) = "GR" Then
        If Len(afmonoma.Text) = 9 And Val(afmonoma) > 1000 Then
            'OK
        Else
           MsgBox "”’Ã–À«—Ÿ”‘≈ ‘œ ¡÷Ã." + Chr(13) + "ƒ≈Õ ≈√…Õ≈ «  ¡‘◊Ÿ—«”«"
           Exit Sub
        End If
+       Else
+          ' JENO
+       
+      End If
        If afmonoma.Visible = False Then
           MsgBox "”’Ã–À«—Ÿ”‘≈ ‘œ ¡÷Ã." + Chr(13) + "ƒ≈Õ ≈√…Õ≈ «  ¡‘◊Ÿ—«”«"
           Exit Sub
@@ -4891,7 +4918,7 @@ Private Sub Command3_Click()
     End If
    
     If Len(vid) > 10 Then
-        Gdb.Execute "UPDATE CARS SET AFM='" + AFM + "',PROVIDEDSERVICECATEGORY=" + str(iprovidedServiceCategory) + ",INVOICEKIND=" + str(iInvoiceKind) + " where ID=" + ID
+        Gdb.Execute "UPDATE CARS SET COUNTRY='" + ComCOUNTRY.Text + "',AFM='" + AFM + "',PROVIDEDSERVICECATEGORY=" + str(iprovidedServiceCategory) + ",INVOICEKIND=" + str(iInvoiceKind) + " where ID=" + ID
         afmonoma.Text = ""
     Else
         '  MsgBox "ƒ≈Õ ≈ À≈…”≈ « ≈√√—¡÷«"
@@ -5378,17 +5405,17 @@ Private Sub TDBGrid_HeadClick(ByVal ColIndex As Integer)
         '</EhHeader>
         Dim sumes(100) As String
 
-100     For k = 0 To Adodc2.Recordset.Fields.Count - 1
+100     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 110         sumes(k) = TDBGrid.Splits(0).columns(k).FooterText    '  = Format(SUMES(k), "######0.00")
         Next
 
-120     If AdoCarsOLD.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
-130         AdoCarsOLD.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
+120     If AdoCarsOLD.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc" Then   ' strSort
+130         AdoCarsOLD.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] desc"    ' strSort
         Else
-140         AdoCarsOLD.Recordset.Sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
+140         AdoCarsOLD.Recordset.sort = "[" & TDBGrid.columns(ColIndex).DataField & "] asc"    ' strSort
         End If
 
-150     For k = 0 To Adodc2.Recordset.Fields.Count - 1
+150     For k = 0 To Adodc2.Recordset.FIELDS.Count - 1
 160         TDBGrid.Splits(0).columns(k).FooterText = sumes(k)   '  = Format(SUMES(k), "######0.00")
         Next
 
