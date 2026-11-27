@@ -893,7 +893,11 @@ Gdb.Execute sql
 End Sub
 
 Private Sub cmdTESTUBL_Click()
-  Text2.Text = "SELECT UBL ,EIDOS ,TITLOS FROM PARASTAT WHERE  ISMYDATA=1 AND EIDOS IN (select DISTINCT Left(ATIM,1) AS PAR FROM TIM ) order by TITLOS"
+Dim Q As String
+Q = "SELECT UBL ,EIDOS ,TITLOS,FORMA1,FORMA2,(SELECT COUNT(*) FROM TIM WHERE LEFT(ATIM,1)=PARASTAT.EIDOS) AS ARITMOSPARAST"
+
+Q = Q + " FROM PARASTAT WHERE  ISMYDATA=1 AND EIDOS IN (select DISTINCT Left(ATIM,1) AS PAR FROM TIM ) order by TITLOS"
+  Text2.Text = Q ' "SELECT UBL ,EIDOS ,TITLOS,FORMA1,FORMA2 FROM PARASTAT WHERE  ISMYDATA=1 AND EIDOS IN (select DISTINCT Left(ATIM,1) AS PAR FROM TIM ) order by TITLOS"
 End Sub
 
 Private Sub CmdupdateStructures_Click()
@@ -972,13 +976,13 @@ Private Sub Command11_Click()
 
         '</EhHeader>
 
-100     CD1.InitDir = "c:\mercvb\queries"
+100     cd1.InitDir = "c:\mercvb\queries"
 
-110     CD1.ShowSave
+110     cd1.ShowSave
 
         Dim F
 
-120     F = CD1.FILENAME
+120     F = cd1.FILENAME
 
         On Error Resume Next
 
@@ -1223,7 +1227,7 @@ Private Sub Command15_Click()
 150     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 160     fSCR.language = "vbscript"
 170     fSCR.addObject "ADODC2", Adodc2
-180     fSCR.addObject "mactext", mactext
+180     fSCR.addObject "mactext", MACtEXT
 
         ' Me.Caption = mac("Adodc2.Recordset(0)")  ok 6-12-06
 
@@ -1296,7 +1300,7 @@ Private Sub Command17_Click()
 
 'TeST git
 
-If TIMES.Value = vbChecked Then
+If times.Value = vbChecked Then
     TIMES_UPD
 End If
 
@@ -2017,7 +2021,7 @@ Private Sub IOSIFIDIS_Click()
 140     Set fSCR = CreateObject("MSScriptControl.ScriptControl")
 150     fSCR.language = "vbscript"
 160     fSCR.addObject "R", Adodc2.Recordset
-170     fSCR.addObject "mactext", mactext
+170     fSCR.addObject "mactext", MACtEXT
 
 180     F928 = 0
 
@@ -2300,7 +2304,7 @@ Function ToAsciiMultiLine(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -2398,7 +2402,7 @@ Function toascii2(ByVal arxeio As String, moutput As String)
 
         Dim PEL    As Recordset
 
-        Dim eggtim As Recordset
+        Dim EGGTIM As Recordset
 
         Dim m_entol_ektyp
 
@@ -3408,9 +3412,9 @@ End Sub
            
            Else
               ' DBGrid1.Visible = True
-150             Data2.Connect = "ODBC;" + gConnect
-                Data2.RecordSource = Text2.Text
-170             Data2.Refresh
+150             DATA2.Connect = "ODBC;" + gConnect
+                DATA2.RecordSource = Text2.Text
+170             DATA2.Refresh
            End If
            
 160
@@ -4827,7 +4831,7 @@ Function mac(ByVal s As String) As String
 
         On Error GoTo mac_Err
 
-100     mactext.Text = "   "
+100     MACtEXT.Text = "   "
 
         On Error GoTo err2
 
@@ -4835,9 +4839,9 @@ Function mac(ByVal s As String) As String
 120     fSCR.ExecuteStatement X
 
 130     If F928 = 1 Then
-140         mac = mactext.Text
+140         mac = MACtEXT.Text
         Else
-150         mac = to437(mactext.Text)
+150         mac = to437(MACtEXT.Text)
         End If
 
         Exit Function
